@@ -2,11 +2,13 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
 
 // Components
 @import 'components/footer';
 @import 'components/search';
+@import 'components/nav';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

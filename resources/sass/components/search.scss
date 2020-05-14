@@ -1,3 +1,17 @@
-.top-search  {
-     
+.top-search input[type="text"] {
+  width: 350px;
+  display: block;
+}
+
+@include lg-screens {
+    .top-search input[type="text"] {
+      width: 200px;
+    }
+}
+
+@include md-screens {
+    .top-search input[type="text"] {
+      width: 5px;
+      display: block;
+    }
 }
