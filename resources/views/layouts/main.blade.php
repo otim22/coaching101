@@ -11,11 +11,12 @@
         <title>@yield('title') {{ config('app.name') }}</title>
       </head>
 <body>
-    @include('layouts.partials.nav')
 
-    @yield('content')
+        @include('layouts.partials.nav')
 
-    @include('layouts.partials.footer')
+        @yield('content')
+
+        @include('layouts.partials.footer')
 
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

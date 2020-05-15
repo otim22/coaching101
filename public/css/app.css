@@ -1,5 +1,133 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+/*--------------------------
+      Global Styles
+---------------------------*/
+
+html,
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #9b9b9b;
+}
+
+::-moz-selection {
+  background-color: #0af;
+  color: #ffffff;
+}
+
+::selection {
+  background-color: #0af;
+  color: #ffffff;
+}
+
+a {
+  color: #0af;
+  transition: color 0.3s linear;
+  -webkit-transition: color 0.3s linear;
+  -moz-transition: color 0.3s linear;
+  -ms-transition: color 0.3s linear;
+  -o-transition: color 0.3s linear;
+}
+
+a:hover {
+  color: #006699;
+  text-decoration: none;
+}
+
+textarea {
+  resize: none;
+}
+
+section {
+  position: relative;
+  padding: 110px 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.wrapper-boxed {
+  padding: 0 50px 50px 50px;
+}
+
+/* Import Droid Serif Font*/
+
+@font-face {
+  font-family: "Droidserif italic";
+  src: url("/fonts/DroidSerif-Italic.ttf");
+}
+
+/*-------------------------
+    RESET Default Styles
+--------------------------*/
+
+*,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+:active,
+:focus {
+  outline: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  border: none;
+}
+
+button,
+button:focus,
+.btn.focus,
+.btn:focus,
+.form-control,
+.form-control:focus {
+  outline: none;
+  background-color: transparent;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+}
+
+textarea {
+  resize: none;
+}
+
+select {
+  background-color: transparent;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 575px) {
+  .wrapper-boxed {
+    padding: 0 10px 10px 10px;
+  }
+}
+
 .top-search input[type=text] {
   width: 350px;
   display: block;
@@ -19,12 +147,123 @@
 }
 
 .increased-font {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .logo-font {
-  font-size: 25px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.background-style {
+  padding-top: 50px;
+  padding-bottom: 5px;
+}
+
+/*-------------------------
+   Background & Colors
+--------------------------*/
+
+/* Colors */
+
+.color-white {
+  color: #ffffff !important;
+}
+
+.color-gray {
+  color: #f0f0f0 !important;
+}
+
+.color-dark {
+  color: #282828 !important;
+}
+
+.color-theme {
+  color: #0af !important;
+}
+
+.color-heading {
+  color: #222222 !important;
+}
+
+.color-body {
+  color: #9b9b9b !important;
+}
+
+/* backgrounds */
+
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.bg-gray {
+  background-color: #f0f0f0 !important;
+}
+
+.bg-gray-2 {
+  background-color: #d6d6d6 !important;
+}
+
+.bg-dark {
+  background-color: #282828 !important;
+}
+
+.bg-heading {
+  background-color: #222222 !important;
+}
+
+.bg-theme {
+  background-color: #0af !important;
+}
+
+.bg-cyan {
+  background-color: #6cb2eb !important;
+}
+
+.bg-img {
+  position: relative;
+  z-index: 1;
+}
+
+.bg-overlay:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(27, 26, 26, 0.05);
+}
+
+.bg-overlay-2:before {
+  background-color: rgba(27, 26, 26, 0.25);
+}
+
+.bg-overlay-3:before {
+  background-color: rgba(27, 26, 26, 0.75);
+}
+
+.bg-overlay-4:before {
+  background-color: rgba(27, 26, 26, 0.55);
+}
+
+.bg-overlay-5:before {
+  background-color: rgba(27, 26, 26, 0.15);
+}
+
+.bg-parallax {
+  background-attachment: fixed;
+}
+
+.headerDivider {
+  border-left: 1px solid #d6d6d6;
+  width: 1px;
+  height: 140px;
+  position: absolute;
+  right: 90px;
 }
 
 /*!

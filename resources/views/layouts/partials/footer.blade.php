@@ -1,9 +1,9 @@
-<section>
+<footer class="bg-dark text-white pt-4">
     <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <h5>Features</h5>
-                <ul class="list-unstyled text-small">
+                <ul class="list-unstyled">
                     <li><a class="text-muted" href="#">Cool stuff</a></li>
                     <li><a class="text-muted" href="#">Random feature</a></li>
                     <li><a class="text-muted" href="#">Team feature</a></li>
@@ -11,7 +11,7 @@
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <h5>Resources</h5>
-                  <ul class="list-unstyled text-small">
+                  <ul class="list-unstyled">
                     <li><a class="text-muted" href="#">Resource</a></li>
                     <li><a class="text-muted" href="#">Resource name</a></li>
                     <li><a class="text-muted" href="#">Another resource</a></li>
@@ -19,7 +19,7 @@
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <h5>About</h5>
-              <ul class="list-unstyled text-small">
+              <ul class="list-unstyled">
                 <li><a class="text-muted" href="#">Team</a></li>
                 <li><a class="text-muted" href="#">Locations</a></li>
                 <li><a class="text-muted" href="#">Privacy</a></li>
@@ -35,4 +35,4 @@
             </div>
         </div>
     </div>
-</section>
+</footer>
