@@ -17,6 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/category', 'CategoryController@create')->name('category');
+Route::get('/teach', 'TeachController@create')->name('teach');
+Route::get('/edit-profile', 'UserController@edit')->name('edit-profile');
+Route::get('/account', 'AccountController@create')->name('account');
+Route::get('/edit-credit-card', 'CreditCardController@edit')->name('edit-credit-card');
+Route::get('/support', 'SupportController@create')->name('support');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

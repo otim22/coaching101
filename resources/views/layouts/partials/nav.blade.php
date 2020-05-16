@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark increased-font py-2">
     <div class="container">
-        <a class="navbar-brand logo-font" href="#"><span class="logo-font">Coaching101</span></a>
+        @if (Route::has('login'))
+        <a class="navbar-brand logo-font" href="{{ url('/') }}"><span class="logo-font">Coaching101</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -298,48 +299,62 @@
             </form>
 
             <ul class="navbar-nav ml-auto nav nav-pills">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Teach on Coaching101</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sign Up</a>
-                </li>
+                    <li class="nav-item mt-1">
+                        <a class="nav-link" href="{{ url('/teach') }}">Start Coaching</a>
+                    </li>
+                    <li class="nav-item mt-1">
+                        <a class="nav-link" href="{{ url('/teach') }}">Start Teaching</a>
+                    </li>
+                    @guest
+                    <li class="nav-item mt-1">
+                        <a class="nav-link" href="{{ route('login') }}">Log In</a>
+                    </li>
+                    @if (Route::has('register'))
+                        <li class="nav-item mt-1">
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        </li>
+                    @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <div class="rounded-initials text-center">
+                                <span class="initial-text"><h5>OF</h5></span>
+                            </div>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item d-flex" href="{{ route('edit-profile') }}">
+                                <div class="mr-2 mt-1">
+                                    <div class="rounded-initials text-center">
+                                        <span class="initial-text"><h5>OF</h5></span>
+                                    </div>
+                                </div>
+                                <div class="mr-1">
+                                    <p>{{ Auth::user()->name }} <br>
+                                    {{ Auth::user()->email }}</p>
+                                </div>
+                             </a>
+                            <a class="dropdown-item" href="{{ route('account') }}">Account</a>
+                            <a class="dropdown-item" href="{{ route('edit-credit-card') }}">Payment methods</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('support') }}">Help</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('account') }}">Start teaching</a>
+                            <a class="dropdown-item" href="{{ route('teach') }}">Start coaching</a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
             </ul>
         </div>
+        @endif
     </div>
 </nav>
-
-<!-- <nav id="menu">
-    <div class="container">
-        <label for="tm" id="toggle-menu">Navigation <span class="drop-icon">▾</span></label>
-        <input type="checkbox" id="tm">
-        <ul class="main-menu clearfix">
-            <li><a href="#">Sample</a></li>
-            <li><a href="#">2-level DD
-                <span class="drop-icon">▾</span>
-                <label title="Toggle Drop-down" class="drop-icon" for="sm1">▾</label>
-                </a>
-                <input type="checkbox" id="sm1">
-                <ul class="sub-menu">
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.2
-                        <span class="drop-icon">▾</span>
-                        <label title="Toggle Drop-down" class="drop-icon" for="sm2">▾</label>
-                        </a>
-                        <input type="checkbox" id="sm2">
-                        <ul class="sub-menu">
-                            <li><a href="#">Item 2.2.1</a></li>
-                            <li><a href="#">Item 2.2.2</a></li>
-                            <li><a href="#">Item 2.2.3</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Item 3.4</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Another Sample</a></li>
-        </ul>
-    </div>
-</nav> -->
