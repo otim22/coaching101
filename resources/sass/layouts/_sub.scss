@@ -1,0 +1,17 @@
+@include sm-screens {
+    .coach {
+        margin-top: 35px;
+    }
+}
+
+@include xs-screens {
+    .coach {
+        margin-top: 35px;
+    }
+}
+
+@include xs-sm-screens {
+    .coach {
+        margin-top: 35px;
+    }
+}

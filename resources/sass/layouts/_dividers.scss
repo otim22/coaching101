@@ -1,7 +1,31 @@
-.headerDivider {
+.header-divider {
     border-left: 1px solid $color-gray-2;
    width: 1px;
    height: 140px;
    position: absolute;
    right: 90px;
+}
+
+@include md-screens {
+    .header-divider {
+        right: 60px;
+    }
+}
+
+@include sm-screens {
+    .header-divider {
+        border-left: 1px $color-gray-2;
+    }
+}
+
+@include xs-screens {
+    .header-divider {
+        border-left: 1px $color-gray-2;
+    }
+}
+
+@include xs-sm-screens {
+    .header-divider {
+        border-left: 1px $color-gray-2;
+    }
 }

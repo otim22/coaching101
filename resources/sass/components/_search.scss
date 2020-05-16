@@ -15,3 +15,9 @@
       display: block;
     }
 }
+
+@include md-screens {
+    .top-search  {
+      visibility: hidden !important;
+    }
+}
