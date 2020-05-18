@@ -227,7 +227,7 @@ select {
 }
 
 .list-unstyled a {
-  color: #9b9b9b;
+  color: #d6d6d6;
   white-space: nowrap;
   overflow: hidden;
   transition: color 0.3s linear;
@@ -238,12 +238,12 @@ select {
 }
 
 .list-unstyled a:hover {
-  color: #006699;
+  color: #666666;
   text-decoration: none;
 }
 
 .footer-text {
-  color: #9b9b9b;
+  color: #d6d6d6;
   transition: color 0.3s linear;
   -webkit-transition: color 0.3s linear;
   -moz-transition: color 0.3s linear;
@@ -252,7 +252,7 @@ select {
 }
 
 .footer-text:hover {
-  color: #006699;
+  color: #666666;
   text-decoration: none;
 }
 

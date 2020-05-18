@@ -299,18 +299,18 @@
             </form>
 
             <ul class="navbar-nav ml-auto nav nav-pills">
-                    <li class="nav-item mt-1">
-                        <a class="nav-link" href="{{ url('/teach') }}">Start Coaching</a>
+                    <li class="nav-item {{ Helper::set_active(['student']) }} mt-1">
+                        <a class="nav-link" href="{{ url('/student') }}">Start Coaching</a>
                     </li>
-                    <li class="nav-item mt-1">
-                        <a class="nav-link" href="{{ url('/teach') }}">Start Teaching</a>
+                    <li class="nav-item {{ Helper::set_active(['teacher']) }} mt-1">
+                        <a class="nav-link" href="{{ url('/teacher') }}">Start Teaching</a>
                     </li>
                     @guest
-                    <li class="nav-item mt-1">
+                    <li class="nav-item {{ Helper::set_active(['login']) }} mt-1">
                         <a class="nav-link" href="{{ route('login') }}">Log In</a>
                     </li>
                     @if (Route::has('register'))
-                        <li class="nav-item mt-1">
+                        <li class="nav-item {{ Helper::set_active(['register']) }} mt-1">
                             <a class="nav-link" href="{{ route('register') }}">Register</a>
                         </li>
                     @endif
@@ -318,7 +318,7 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <div class="rounded-initials text-center">
-                                <span class="initial-text"><h5>OF</h5></span>
+                                <span class="initial-text"><h5>{{ Helper::generate_initials(Auth::user()->name) }}</h5></span>
                             </div>
                         </a>
 
@@ -326,7 +326,7 @@
                             <a class="dropdown-item d-flex" href="{{ route('edit-profile') }}">
                                 <div class="mr-2 mt-1">
                                     <div class="rounded-initials text-center">
-                                        <span class="initial-text"><h5>OF</h5></span>
+                                        <span class="initial-text"><h5>{{ Helper::generate_initials(Auth::user()->name) }}</h5></span>
                                     </div>
                                 </div>
                                 <div class="mr-1">
@@ -334,7 +334,7 @@
                                     {{ Auth::user()->email }}</p>
                                 </div>
                              </a>
-                            <a class="dropdown-item" href="{{ route('account') }}">Account</a>
+                            <a class="dropdown-item" href="{{ route('edit-account') }}">Account</a>
                             <a class="dropdown-item" href="{{ route('edit-credit-card') }}">Payment methods</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('support') }}">Help</a>
@@ -344,8 +344,8 @@
                                 {{ __('Logout') }}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('account') }}">Start teaching</a>
-                            <a class="dropdown-item" href="{{ route('teach') }}">Start coaching</a>
+                            <a class="dropdown-item" href="{{ route('teacher') }}">Start teaching</a>
+                            <a class="dropdown-item" href="{{ route('student') }}">Start coaching</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

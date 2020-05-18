@@ -18,10 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/category', 'CategoryController@create')->name('category');
-Route::get('/teach', 'TeachController@create')->name('teach');
-Route::get('/edit-profile', 'UserController@edit')->name('edit-profile');
-Route::get('/account', 'AccountController@create')->name('account');
-Route::get('/edit-credit-card', 'CreditCardController@edit')->name('edit-credit-card');
+Route::get('/teacher', 'TeacherController@create')->name('teacher');
+Route::get('/student', 'StudentController@create')->name('student');
+Route::get('/edit-profile', 'UserController@create')->name('edit-profile');
+Route::get('/edit-account', 'AccountController@create')->name('edit-account');
+Route::get('/edit-credit-card', 'PaymentController@create')->name('edit-credit-card');
 Route::get('/support', 'SupportController@create')->name('support');
 
 Auth::routes();

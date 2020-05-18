@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Teach;
+use App\Teacher;
 use Illuminate\Http\Request;
 
-class TeachController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class TeachController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.teacher.index');
     }
 
     /**
@@ -41,10 +41,10 @@ class TeachController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Teach  $teach
+     * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Teach $teach)
+    public function show(Teacher $teacher)
     {
         //
     }
@@ -52,10 +52,10 @@ class TeachController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Teach  $teach
+     * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teach $teach)
+    public function edit(Teacher $teacher)
     {
         //
     }
@@ -64,10 +64,10 @@ class TeachController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Teach  $teach
+     * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teach $teach)
+    public function update(Request $request, Teacher $teacher)
     {
         //
     }
@@ -75,10 +75,10 @@ class TeachController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Teach  $teach
+     * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teach $teach)
+    public function destroy(Teacher $teacher)
     {
         //
     }

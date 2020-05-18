@@ -1,21 +1,21 @@
 .list-unstyled a {
-    color: $color-body;
+    color: $color-gray-2;
     white-space: nowrap;
     overflow:hidden;
     @include transition(color .3s linear);
 
     &:hover {
-        color: darken($color-theme, 20%);
+        color: darken($color-white, 60%);
         text-decoration: none;
     }
 }
 
 .footer-text {
-    color: $color-body;
+    color: $color-gray-2;
     @include transition(color .3s linear);
 
     &:hover {
-        color: darken($color-theme, 20%);
+        color: darken($color-white, 60%);
         text-decoration: none;
     }
 }
