@@ -14,7 +14,7 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mb-4 d-flex justify-content-between">
                 <div>
-                    <h4>What to learn</h4>
+                    <h2>What to learn</h2>
                 </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-3">
@@ -109,7 +109,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <h4>Category recommendations </h4>
+                <h2>Category recommendations </h2>
             </div>
         </div>
         <div class="row">
@@ -195,7 +195,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
-                <h4>Students are viewing</h4>
+                <h2>Students are viewing</h2>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="card mb-4 shadow-sm">
@@ -297,7 +297,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h5>Teach students online</h5>
+                        <h3>Teach students online</h3>
                         <p>Top teachers from best schools teaching millions of students on Coaching101.</p>
                     </div>
                 </div>

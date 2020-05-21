@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark increased-font py-2">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-heading increased-font py-2">
     <div class="container">
         @if (Route::has('login'))
         <a class="navbar-brand logo-font" href="{{ url('/') }}"><span class="logo-font">Coaching101</span></a>

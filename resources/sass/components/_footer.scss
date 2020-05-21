@@ -1,21 +1,25 @@
 .list-unstyled a {
-    color: $color-gray-2;
+    color: $color-body;
     white-space: nowrap;
     overflow:hidden;
     @include transition(color .3s linear);
 
     &:hover {
-        color: darken($color-white, 60%);
+        color:$color-white;
         text-decoration: none;
     }
 }
 
+.wraps-text {
+    white-space: nowrap;
+}
+
 .footer-text {
-    color: $color-gray-2;
+    color: $color-body;
     @include transition(color .3s linear);
 
     &:hover {
-        color: darken($color-white, 60%);
+        color: $color-white;
         text-decoration: none;
     }
 }

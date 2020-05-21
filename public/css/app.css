@@ -128,6 +128,10 @@ select {
   }
 }
 
+.side-font {
+  font-weight: bold;
+}
+
 .increased-font {
   font-size: 16px;
 }
@@ -227,7 +231,7 @@ select {
 }
 
 .list-unstyled a {
-  color: #d6d6d6;
+  color: #9b9b9b;
   white-space: nowrap;
   overflow: hidden;
   transition: color 0.3s linear;
@@ -238,12 +242,16 @@ select {
 }
 
 .list-unstyled a:hover {
-  color: #666666;
+  color: #ffffff;
   text-decoration: none;
 }
 
+.wraps-text {
+  white-space: nowrap;
+}
+
 .footer-text {
-  color: #d6d6d6;
+  color: #9b9b9b;
   transition: color 0.3s linear;
   -webkit-transition: color 0.3s linear;
   -moz-transition: color 0.3s linear;
@@ -252,7 +260,7 @@ select {
 }
 
 .footer-text:hover {
-  color: #666666;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -352,6 +360,28 @@ select {
 
 .bg-parallax {
   background-attachment: fixed;
+}
+
+.fast-transition {
+  position: relative;
+  /* For positioning the pseudo-element */
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.fast-transition::before {
+  /* Position the pseudo-element. */
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* Create the box shadow at expanded size. */
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
+  /* Hidden by default. */
+  opacity: 1;
+  transition: opacity 500ms;
 }
 
 .header-divider {

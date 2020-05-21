@@ -62,19 +62,19 @@
             <nav>
                   <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-science-tab" data-toggle="tab" href="#nav-science" role="tab" aria-controls="nav-science" aria-selected="true">
-                        Sciences
+                        <h5>Sciences</h5>
                     </a>
                     <a class="nav-item nav-link" id="nav-mathematics-tab" data-toggle="tab" href="#nav-mathematics" role="tab" aria-controls="nav-mathematics" aria-selected="true">
-                        Mathematics
+                        <h5>Mathematics</h5>
                     </a>
                     <a class="nav-item nav-link" id="nav-languages-tab" data-toggle="tab" href="#nav-languages" role="tab" aria-controls="nav-languages" aria-selected="false">
-                        Languages
+                        <h5>Languages</h5>
                     </a>
                     <a class="nav-item nav-link" id="nav-social-tab" data-toggle="tab" href="#nav-social" role="tab" aria-controls="nav-social" aria-selected="false">
-                        Social Sciences
+                        <h5>Social Sciences</h5>
                     </a>
                     <a class="nav-item nav-link" id="nav-voc-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-voc" aria-selected="false">
-                        Vocational Subjects
+                        <h5>Vocational Subjects</h5>
                     </a>
                   </div>
                 </nav>
@@ -528,7 +528,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-2">
-                <h3>Mosted viewed </h3>
+                <h2>Mosted viewed </h2>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="card mb-4 shadow-sm">
@@ -622,7 +622,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                <h4>Get coaching from the best teachers</h4>
+                <h3>Get coaching from the best teachers</h3>
                 <p>Ace your examinations</p>
                 <button type="button" class="btn btn-primary" name="button">Get started</button>
             </div>
@@ -634,7 +634,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <h4>Top Categories</h4>
+                <h2>Top categories</h2>
             </div>
         </div>
         <div class="row">
@@ -720,17 +720,17 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-5 col-lg-5 text-center">
-                <h4>Get coaching from top teachers</h4>
+                <h3>Get coaching from top teachers</h3>
                 <p>Find top teachers from around the best schools teaching millions of fellow students on Coaching101. Get inspired to learn, grow and share with the world.</p>
-                <button type="button" class="btn btn-primary" name="button">Start coaching today</button>
+                <button type="button" class="btn btn-primary" name="button">Start coaching</button>
             </div>
             <div class="col-md-2 col-lg-2">
                 <div class="header-divider"></div>
             </div>
             <div class="col-sm-12 col-md-5 col-lg-5 text-center coach">
-                <h4>Become a coach</h4>
+                <h3>Become a teacher</h3>
                 <p>Top teachers from best schools teaching millions of students on Coaching101. We provide the platform and tools so you can skill the students.</p>
-                <button type="button" class="btn btn-primary" name="button">Start teaching today</button>
+                <button type="button" class="btn btn-primary" name="button">Start teaching</button>
             </div>
         </div>
     </div>
