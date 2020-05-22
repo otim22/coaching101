@@ -23,6 +23,6 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('site.student.index');
+        return view('app.student.index');
     }
 }

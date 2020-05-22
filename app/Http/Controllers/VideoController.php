@@ -23,6 +23,6 @@ class VideoController extends Controller
      */
     public function create()
     {
-        return view('site.videos.index');
+        return view('app.videos.index');
     }
 }

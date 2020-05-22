@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         $roles = Role::pluck('name', 'name')->all();
 
-        return view('site.profile.index', compact('roles'));
+        return view('app.profile.index', compact('roles'));
     }
 
     /**
@@ -131,7 +131,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        
+
         return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
     }

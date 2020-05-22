@@ -23,6 +23,6 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('site.category.index');
+        return view('app.category.index');
     }
 }

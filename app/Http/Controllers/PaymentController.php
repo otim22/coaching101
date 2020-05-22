@@ -23,6 +23,6 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        return view('site.payment.index');
+        return view('app.payment.index');
     }
 }

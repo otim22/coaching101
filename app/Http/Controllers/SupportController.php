@@ -23,6 +23,6 @@ class SupportController extends Controller
      */
     public function create()
     {
-        return view('site.support.index');
+        return view('app.support.index');
     }
 }
