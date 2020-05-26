@@ -21,7 +21,8 @@ import store from './store/index';
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('class-creation', require('./components/ClassCreation.vue').default);
+Vue.component('class-creation', require('./views/ClassCreation.vue').default);
+Vue.component('notification-container', require('./components/notification/NotificationContainer.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
