@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/category', 'CategoryController@create')->name('category');
 Route::get('/teacher', 'TeacherController@create')->name('teacher');
-Route::post('/teacher-submission', 'TeacherController@store');
+Route::post('/courses', 'TeacherController@store');
 Route::get('/student', 'StudentController@create')->name('student');
 Route::get('/video', 'VideoController@create')->name('video');
 Route::get('/edit-profile', 'UserController@create')->name('edit-profile');
