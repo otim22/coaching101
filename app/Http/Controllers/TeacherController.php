@@ -35,7 +35,10 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        var_dump(request('name'));
+        var_dump(request('email'));
+        // var_dump(request('releasedate'));
+        // var_dump(request('image'));
     }
 
     /**

@@ -11,6 +11,7 @@
         <title>@yield('title') {{ config('app.name') }}</title>
       </head>
 <body>
+    <div id="app">
 
         @include('layouts.partials.nav')
 
@@ -18,6 +19,7 @@
 
         @include('layouts.partials.footer')
 
+    </div>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

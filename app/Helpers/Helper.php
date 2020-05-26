@@ -21,7 +21,8 @@ class Helper
         if (count($words) >= 2) {
             return strtoupper(substr($words[0], 0, 1) . substr(end($words), 0, 1));
         }
-        return $this->makeInitialsFromSingleWord($name);
+
+        return $this->make_initials_from_single_word($name);
     }
 
     /**
@@ -30,9 +31,10 @@ class Helper
      * @param string $name
      * @return string
      */
-    protected function makeInitialsFromSingleWord(string $name) : string
+    protected function make_initials_from_single_word(string $name) : string
     {
         preg_match_all('#([A-Z]+)#', $name, $capitals);
+
         if (count($capitals[1]) >= 2) {
             return substr(implode('', $capitals[1]), 0, 2);
         }
