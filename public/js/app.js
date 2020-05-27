@@ -2034,75 +2034,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2127,7 +2058,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      selected: 'tailorClass',
+      selected: [],
+      checkedItem: '',
+      creations: [{
+        title: 'Plan your course',
+        body: ['Introduction', 'Course structure', 'Setup & test video']
+      }, {
+        title: 'Create your content',
+        body: ['Film & edit', 'Curriculum']
+      }, {
+        title: 'Publish your course',
+        body: ['Course landing page', 'Pricing', 'Promotions', 'Course messages']
+      }],
       submit: false,
       course: {
         name1: null,
@@ -2158,10 +2100,17 @@ __webpack_require__.r(__webpack_exports__);
       this.submit = true;
       this.$store.dispatch('course/createCourse', this.course).then(function () {
         _this.submit = false;
-        console.log('success', _this.course);
-      })["catch"](function (err) {
+      })["catch"](function (error) {
         _this.submit = false;
+        console.log('Sorry something  went wrong', error.message);
       });
+    }
+  },
+  computed: {
+    pickSelected: function pickSelected() {
+      for (var i = 0; i < this.selected.length; i++) {
+        this.checkedItem = this.selected[i];
+      }
     }
   }
 });
@@ -38810,292 +38759,98 @@ var render = function() {
             }
           },
           [
-            _c("div", { staticClass: "mb-4" }, [
-              _c("h5", { staticClass: "side-font mb-3" }, [
-                _vm._v("Plan your course")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check mb-2" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selected,
-                      expression: "selected"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "tailorClass",
-                    id: "tailorClass",
-                    value: "tailorClass"
-                  },
-                  domProps: { checked: _vm._q(_vm.selected, "tailorClass") },
-                  on: {
-                    change: function($event) {
-                      _vm.selected = "tailorClass"
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm._m(0)
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check mb-2" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selected,
-                      expression: "selected"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "courseStructure",
-                    id: "courseStructure",
-                    value: "courseStructure"
-                  },
-                  domProps: {
-                    checked: _vm._q(_vm.selected, "courseStructure")
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.selected = "courseStructure"
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm._m(1)
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check mb-2" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selected,
-                      expression: "selected"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "setupTest",
-                    id: "setupTest",
-                    value: "setupTest"
-                  },
-                  domProps: { checked: _vm._q(_vm.selected, "setupTest") },
-                  on: {
-                    change: function($event) {
-                      _vm.selected = "setupTest"
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm._m(2)
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-4" }, [
-              _c("h5", { staticClass: "side-font mb-3" }, [
-                _vm._v("Create your content")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check mb-2" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selected,
-                      expression: "selected"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "filmEdit",
-                    id: "filmEdit",
-                    value: "filmEdit"
-                  },
-                  domProps: { checked: _vm._q(_vm.selected, "filmEdit") },
-                  on: {
-                    change: function($event) {
-                      _vm.selected = "filmEdit"
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm._m(3)
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check mb-2" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selected,
-                      expression: "selected"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "exampleRadios",
-                    id: "curriculum",
-                    value: "curriculum"
-                  },
-                  domProps: { checked: _vm._q(_vm.selected, "curriculum") },
-                  on: {
-                    change: function($event) {
-                      _vm.selected = "curriculum"
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm._m(4)
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-4" }, [
-              _c("h5", { staticClass: "side-font mb-3" }, [
-                _vm._v("Publish your course")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check mb-2" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selected,
-                      expression: "selected"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "landingPage",
-                    id: "landingPage",
-                    value: "landingPage"
-                  },
-                  domProps: { checked: _vm._q(_vm.selected, "landingPage") },
-                  on: {
-                    change: function($event) {
-                      _vm.selected = "landingPage"
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm._m(5)
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check mb-2" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selected,
-                      expression: "selected"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "pricing",
-                    id: "pricing",
-                    value: "pricing"
-                  },
-                  domProps: { checked: _vm._q(_vm.selected, "pricing") },
-                  on: {
-                    change: function($event) {
-                      _vm.selected = "pricing"
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm._m(6)
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check mb-2" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selected,
-                      expression: "selected"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "promotions",
-                    value: "promotions"
-                  },
-                  domProps: { checked: _vm._q(_vm.selected, "promotions") },
-                  on: {
-                    change: function($event) {
-                      _vm.selected = "promotions"
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm._m(7)
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selected,
-                      expression: "selected"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "courseMessage",
-                    id: "courseMessage",
-                    value: "courseMessage"
-                  },
-                  domProps: { checked: _vm._q(_vm.selected, "courseMessage") },
-                  on: {
-                    change: function($event) {
-                      _vm.selected = "courseMessage"
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm._m(8)
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary mt-5",
-                  attrs: { type: "submit" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.createCourse($event)
-                    }
-                  }
-                },
-                [_vm._v("Submit for review")]
+            _vm._l(_vm.creations, function(creation, index) {
+              return _c(
+                "div",
+                { staticClass: "mb-4" },
+                [
+                  _c("h5", { staticClass: "side-font mb-3" }, [
+                    _vm._v(_vm._s(creation.title))
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(creation.body, function(elem) {
+                    return _c(
+                      "div",
+                      { key: elem.key, staticClass: "form-check mb-2" },
+                      [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: elem }
+                          },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.selected,
+                                  expression: "selected"
+                                }
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: { type: "checkbox", id: elem },
+                              domProps: {
+                                value: elem,
+                                checked: Array.isArray(_vm.selected)
+                                  ? _vm._i(_vm.selected, elem) > -1
+                                  : _vm.selected
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.selected,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = elem,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.selected = $$a.concat([$$v]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.selected = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.selected = $$c
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(
+                              "\n                                        " +
+                                _vm._s(elem) +
+                                "\n                                "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  })
+                ],
+                2
               )
-            ])
-          ]
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary mt-5",
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.createCourse($event)
+                  }
+                }
+              },
+              [_vm._v("Submit for review")]
+            )
+          ],
+          2
         )
       ]),
       _vm._v(" "),
@@ -39108,8 +38863,8 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.selected === "tailorClass",
-                expression: "selected === 'tailorClass'"
+                value: _vm.checkedItem === "Introduction" || _vm.pickSelected,
+                expression: "checkedItem === 'Introduction' || pickSelected"
               }
             ],
             attrs: { course: _vm.course }
@@ -39120,8 +38875,9 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.selected === "courseStructure",
-                expression: "selected === 'courseStructure'"
+                value:
+                  _vm.checkedItem === "Course structure" || _vm.pickSelected,
+                expression: "checkedItem === 'Course structure' || pickSelected"
               }
             ],
             attrs: { course: _vm.course }
@@ -39132,8 +38888,10 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.selected === "setupTest",
-                expression: "selected === 'setupTest'"
+                value:
+                  _vm.checkedItem === "Setup & test video" || _vm.pickSelected,
+                expression:
+                  "checkedItem === 'Setup & test video' || pickSelected"
               }
             ],
             attrs: { course: _vm.course }
@@ -39144,8 +38902,8 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.selected === "filmEdit",
-                expression: "selected === 'filmEdit'"
+                value: _vm.checkedItem === "Film & edit" || _vm.pickSelected,
+                expression: "checkedItem === 'Film & edit' || pickSelected"
               }
             ],
             attrs: { course: _vm.course }
@@ -39156,8 +38914,8 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.selected === "curriculum",
-                expression: "selected === 'curriculum'"
+                value: _vm.checkedItem === "Curriculum" || _vm.pickSelected,
+                expression: "checkedItem === 'Curriculum' || pickSelected"
               }
             ],
             attrs: { course: _vm.course }
@@ -39168,8 +38926,10 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.selected === "landingPage",
-                expression: "selected === 'landingPage'"
+                value:
+                  _vm.checkedItem === "Course landing page" || _vm.pickSelected,
+                expression:
+                  "checkedItem === 'Course landing page' || pickSelected"
               }
             ],
             attrs: { course: _vm.course }
@@ -39180,8 +38940,8 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.selected === "pricing",
-                expression: "selected === 'pricing'"
+                value: _vm.checkedItem === "Pricing" || _vm.pickSelected,
+                expression: "checkedItem === 'Pricing' || pickSelected"
               }
             ],
             attrs: { course: _vm.course }
@@ -39192,8 +38952,8 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.selected === "promotions",
-                expression: "selected === 'promotions'"
+                value: _vm.checkedItem === "Promotions" || _vm.pickSelected,
+                expression: "checkedItem === 'Promotions' || pickSelected"
               }
             ],
             attrs: { course: _vm.course }
@@ -39204,8 +38964,9 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.selected === "courseMessage",
-                expression: "selected === 'courseMessage'"
+                value:
+                  _vm.checkedItem === "Course messages" || _vm.pickSelected,
+                expression: "checkedItem === 'Course messages' || pickSelected"
               }
             ],
             attrs: { course: _vm.course }
@@ -39216,152 +38977,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "tailorClass" } },
-        [
-          _vm._v(
-            "\n                                            Introduction\n                                    "
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "courseStructure" } },
-        [
-          _vm._v(
-            "\n                                        Course structure\n                                "
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "setupTest" } },
-        [
-          _vm._v(
-            "\n                                            Setup & test video\n                                    "
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "filmEdit" } },
-        [
-          _vm._v(
-            "\n                                    Film & edit\n                                "
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "curriculum" } },
-        [
-          _vm._v(
-            "\n                                    Curriculum\n                                "
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "landingPage" } },
-        [
-          _vm._v(
-            "\n                                    Course landing page\n                                "
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "pricing" } },
-        [
-          _vm._v(
-            "\n                                    Pricing\n                                "
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "promotions" } },
-        [
-          _vm._v(
-            "\n                                    Promotions\n                                "
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "courseMessage" } },
-        [
-          _vm._v(
-            "\n                                    Course messages\n                                "
-          )
-        ]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39618,7 +39234,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h4", [_vm._v("Tailor Class")]),
+    _c("h4", [_vm._v("Introduction")]),
     _vm._v(" "),
     _c("p"),
     _c("legend", { attrs: { for: "name1" } }, [_vm._v("Your Name 1:")]),

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>Tailor Class</h4>
+        <h4>Introduction</h4>
         <p>
             <legend for="name1">Your Name 1:</legend>
             <input id="name1" type="text" name="name1" v-model="course.name1">

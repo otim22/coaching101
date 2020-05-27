@@ -3,101 +3,32 @@
         <div class="row">
                 <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
                     <form @keyup.enter="createCourse">
-                        <div class="mb-4">
-                            <h5 class="side-font mb-3">Plan your course</h5>
-                            <div class="form-check mb-2">
-                                    <input class="form-check-input" type="radio" name="tailorClass" id="tailorClass" value="tailorClass" v-model="selected">
-                                    <a href="#">
-                                        <label class="form-check-label" for="tailorClass">
-                                                Introduction
-                                        </label>
-                                    </a>
-                            </div>
-                            <div class="form-check mb-2">
-                                    <input class="form-check-input" type="radio" name="courseStructure" id="courseStructure" value="courseStructure"
-                                    v-model="selected">
-                                    <a href="#">
-                                    <label class="form-check-label" for="courseStructure">
-                                            Course structure
+                        <div class="mb-4" v-for="(creation, index) in creations">
+                            <h5 class="side-font mb-3">{{ creation.title }}</h5>
+                            <div class="form-check mb-2" v-for="elem in creation.body" :key="elem.key">
+                                <label class="form-check-label" :for="elem">
+                                <input class="form-check-input"
+                                            type="checkbox"
+                                            :id="elem"
+                                            :value="elem"
+                                            v-model="selected">
+                                            {{ elem }}
                                     </label>
-                                </a>
-                            </div>
-                            <div class="form-check mb-2">
-                                    <input class="form-check-input" type="radio" name="setupTest" id="setupTest" value="setupTest" v-model="selected">
-                                    <a href="#">
-                                        <label class="form-check-label" for="setupTest">
-                                                Setup & test video
-                                        </label>
-                                </a>
                             </div>
                         </div>
-                        <div class="mb-4">
-                            <h5 class="side-font mb-3">Create your content</h5>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="radio" name="filmEdit" id="filmEdit" value="filmEdit" v-model="selected">
-                                <a href="#">
-                                    <label class="form-check-label" for="filmEdit">
-                                        Film & edit
-                                    </label>
-                                </a>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="curriculum" value="curriculum" v-model="selected">
-                                <a href="#">
-                                    <label class="form-check-label" for="curriculum">
-                                        Curriculum
-                                    </label>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <h5 class="side-font mb-3">Publish your course</h5>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="radio" name="landingPage" id="landingPage" value="landingPage" v-model="selected">
-                                <a href="#">
-                                    <label class="form-check-label" for="landingPage">
-                                        Course landing page
-                                    </label>
-                                </a>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="radio" name="pricing" id="pricing" value="pricing" v-model="selected">
-                                <a href="#">
-                                    <label class="form-check-label" for="pricing">
-                                        Pricing
-                                    </label>
-                                </a>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="radio" id="promotions" value="promotions" v-model="selected">
-                                <a href="#">
-                                    <label class="form-check-label" for="promotions">
-                                        Promotions
-                                    </label>
-                                </a>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="courseMessage" id="courseMessage" value="courseMessage" v-model="selected">
-                                <a href="#">
-                                    <label class="form-check-label" for="courseMessage">
-                                        Course messages
-                                    </label>
-                                </a>
-                            </div>
-                            <button @click.prevent="createCourse" type="submit" class="btn btn-primary mt-5">Submit for review</button>
-                        </div>
+                        <button @click.prevent="createCourse" type="submit" class="btn btn-primary mt-5">Submit for review</button>
                     </form>
                 </div>
             <div class="col-sm-12 col-md-9 col-lg-9 fast-transition mt-2">
-                <Introduction v-show="selected === 'tailorClass'" :course="course" />
-                <CourseStructure  v-show="selected === 'courseStructure'" :course="course" />
-                <SetupTest v-show="selected === 'setupTest'" :course="course"  />
-                <Film v-show="selected === 'filmEdit'" :course="course"  />
-                <Curriculum v-show="selected === 'curriculum'" :course="course"  />
-                <LandingPage v-show="selected === 'landingPage'" :course="course"  />
-                <Pricing v-show="selected === 'pricing'" :course="course"  />
-                <Promotion v-show="selected === 'promotions'" :course="course"  />
-                <CourseMessage v-show="selected === 'courseMessage'" :course="course"  />
+                <Introduction v-show="checkedItem === 'Introduction' || pickSelected" :course="course" />
+                <CourseStructure  v-show="checkedItem === 'Course structure' || pickSelected" :course="course" />
+                <SetupTest v-show="checkedItem === 'Setup & test video' || pickSelected" :course="course"  />
+                <Film v-show="checkedItem === 'Film & edit' || pickSelected" :course="course"  />
+                <Curriculum v-show="checkedItem === 'Curriculum' || pickSelected" :course="course"  />
+                <LandingPage v-show="checkedItem === 'Course landing page' || pickSelected" :course="course"  />
+                <Pricing v-show="checkedItem === 'Pricing' || pickSelected" :course="course"  />
+                <Promotion v-show="checkedItem === 'Promotions' || pickSelected" :course="course"  />
+                <CourseMessage v-show="checkedItem === 'Course messages' || pickSelected" :course="course"  />
             </div>
         </div>
     </div>
@@ -129,7 +60,22 @@ export default {
     },
     data() {
         return {
-            selected: 'tailorClass',
+            selected: [],
+            checkedItem: '',
+            creations: [
+                {
+                    title: 'Plan your course',
+                    body: ['Introduction', 'Course structure', 'Setup & test video']
+                },
+                {
+                    title: 'Create your content',
+                    body: ['Film & edit', 'Curriculum']
+                },
+                {
+                    title: 'Publish your course',
+                    body: ['Course landing page', 'Pricing', 'Promotions', 'Course messages']
+                },
+            ],
             submit: false,
             course: {
                 name1: null,
@@ -159,11 +105,18 @@ export default {
             this.$store.dispatch('course/createCourse', this.course)
                 .then(() => {
                     this.submit = false;
-                    console.log('success', this.course)
                 })
-                .catch(err => {
+                .catch(error => {
                     this.submit = false
+                    console.log('Sorry something  went wrong', error.message)
                 })
+        }
+    },
+    computed: {
+        pickSelected: function() {
+            for (let i = 0; i < this.selected.length; i++) {
+              this.checkedItem = this.selected[i];
+            }
         }
     }
 }
