@@ -2469,8 +2469,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "setup-test",
   props: {
@@ -39993,283 +39991,277 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "container p-4" }, [
-      _vm._m(0),
+  return _c("div", { staticClass: "container p-4" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "row bg-gray p-3" }, [
+      _vm._m(1),
       _vm._v(" "),
-      _c("div", { staticClass: "row bg-gray p-3" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-sm-12 col-md-4 col-lg-4  pb-3 text-center" },
-          [
-            _c("div", { staticClass: "mt-3 mb-2" }, [
-              _c(
-                "svg",
-                {
-                  staticClass: "bi bi-caret-right-square",
-                  attrs: {
-                    width: "2em",
-                    height: "2em",
-                    viewBox: "0 0 16 16",
-                    fill: "currentColor",
-                    xmlns: "http://www.w3.org/2000/svg"
-                  }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      d:
-                        "M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      d:
-                        "M5.795 12.456A.5.5 0 0 1 5.5 12V4a.5.5 0 0 1 .832-.374l4.5 4a.5.5 0 0 1 0 .748l-4.5 4a.5.5 0 0 1-.537.082z"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("Free expert video help")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v("Get personalized advice on your audio and video")
-            ]),
-            _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-sm-12 col-md-4 col-lg-4  pb-3 text-center" },
+        [
+          _c("div", { staticClass: "mt-3 mb-2" }, [
             _c(
-              "a",
+              "svg",
               {
-                staticClass: "btn btn-secondary btn-sm",
-                attrs: { href: "#", type: "button", name: "button" }
+                staticClass: "bi bi-caret-right-square",
+                attrs: {
+                  width: "2em",
+                  height: "2em",
+                  viewBox: "0 0 16 16",
+                  fill: "currentColor",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }
               },
-              [_vm._v("Learn more")]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-5" }, [
-        _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12" }, [
-          _c("div", [
-            _c("h5", { staticClass: "mb-3" }, [
-              _c(
-                "svg",
-                {
-                  staticClass: "bi bi-bell",
+              [
+                _c("path", {
                   attrs: {
-                    width: "1em",
-                    height: "1em",
-                    viewBox: "0 0 16 16",
-                    fill: "currentColor",
-                    xmlns: "http://www.w3.org/2000/svg"
+                    "fill-rule": "evenodd",
+                    d:
+                      "M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
                   }
-                },
-                [
-                  _c("path", {
-                    attrs: { d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z" }
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      d:
-                        "M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"
-                    }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "ml-2 text-bold" }, [_vm._v("Tips")])
-            ]),
-            _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
-            _vm._m(4),
-            _vm._v(" "),
-            _vm._m(5),
-            _vm._v(" "),
-            _vm._m(6),
-            _vm._v(" "),
-            _vm._m(7)
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    "fill-rule": "evenodd",
+                    d:
+                      "M5.795 12.456A.5.5 0 0 1 5.5 12V4a.5.5 0 0 1 .832-.374l4.5 4a.5.5 0 0 1 0 .748l-4.5 4a.5.5 0 0 1-.537.082z"
+                  }
+                })
+              ]
+            )
           ]),
           _vm._v(" "),
-          _c("div", [
-            _c("h5", { staticClass: "mb-3" }, [
-              _c(
-                "svg",
-                {
-                  staticClass: "bi bi-info-circle",
+          _c("h5", [_vm._v("Free expert video help")]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Get personalized advice on your audio and video")]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-secondary btn-sm",
+              attrs: { href: "#", type: "button", name: "button" }
+            },
+            [_vm._v("Learn more")]
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row mt-5" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12" }, [
+        _c("div", [
+          _c("h5", { staticClass: "mb-3" }, [
+            _c(
+              "svg",
+              {
+                staticClass: "bi bi-bell",
+                attrs: {
+                  width: "1em",
+                  height: "1em",
+                  viewBox: "0 0 16 16",
+                  fill: "currentColor",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: { d: "M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z" }
+                }),
+                _vm._v(" "),
+                _c("path", {
                   attrs: {
-                    width: "1em",
-                    height: "1em",
-                    viewBox: "0 0 16 16",
-                    fill: "currentColor",
-                    xmlns: "http://www.w3.org/2000/svg"
+                    "fill-rule": "evenodd",
+                    d:
+                      "M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"
                   }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      d:
-                        "M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      d:
-                        "M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("circle", { attrs: { cx: "8", cy: "4.5", r: "1" } })
-                ]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "ml-2 text-bold" }, [
-                _vm._v("Requirements")
-              ])
-            ]),
+                })
+              ]
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "mb-4" }, [
-              _c("ul", [
-                _c("li", [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "bi bi-check",
-                      attrs: {
-                        width: "1em",
-                        height: "1em",
-                        viewBox: "0 0 16 16",
-                        fill: "currentColor",
-                        xmlns: "http://www.w3.org/2000/svg"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          d:
-                            "M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(
-                    "\n                                Film and export in HD to create videos of at least 720p, or 1080p if possible\n                            "
-                  )
-                ]),
+            _c("span", { staticClass: "ml-2 text-bold" }, [_vm._v("Tips")])
+          ]),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
+          _vm._m(4),
+          _vm._v(" "),
+          _vm._m(5),
+          _vm._v(" "),
+          _vm._m(6),
+          _vm._v(" "),
+          _vm._m(7)
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("h5", { staticClass: "mb-3" }, [
+            _c(
+              "svg",
+              {
+                staticClass: "bi bi-info-circle",
+                attrs: {
+                  width: "1em",
+                  height: "1em",
+                  viewBox: "0 0 16 16",
+                  fill: "currentColor",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    "fill-rule": "evenodd",
+                    d:
+                      "M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                  }
+                }),
                 _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "bi bi-check",
-                      attrs: {
-                        width: "1em",
-                        height: "1em",
-                        viewBox: "0 0 16 16",
-                        fill: "currentColor",
-                        xmlns: "http://www.w3.org/2000/svg"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          d:
-                            "M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(
-                    "\n                                Audio should come out of both the left and right channels and be synced to your video\n                            "
-                  )
-                ]),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"
+                  }
+                }),
                 _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "bi bi-check",
-                      attrs: {
-                        width: "1em",
-                        height: "1em",
-                        viewBox: "0 0 16 16",
-                        fill: "currentColor",
-                        xmlns: "http://www.w3.org/2000/svg"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          d:
-                            "M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(
-                    "\n                                Audio should be free of echo and background noise so as not to be distracting to students\n                            "
-                  )
-                ])
-              ])
+                _c("circle", { attrs: { cx: "8", cy: "4.5", r: "1" } })
+              ]
+            ),
+            _vm._v(" "),
+            _c("span", { staticClass: "ml-2 text-bold" }, [
+              _vm._v("Requirements")
             ])
           ]),
           _vm._v(" "),
-          _c("div", [
-            _c("h5", { staticClass: "mb-3 mt-5" }, [
-              _c(
-                "svg",
-                {
-                  staticClass: "bi bi-layout-text-window-reverse",
-                  attrs: {
-                    width: "1em",
-                    height: "1em",
-                    viewBox: "0 0 16 16",
-                    fill: "currentColor",
-                    xmlns: "http://www.w3.org/2000/svg"
-                  }
-                },
-                [
-                  _c("path", {
+          _c("div", { staticClass: "mb-4" }, [
+            _c("ul", [
+              _c("li", [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "bi bi-check",
                     attrs: {
-                      "fill-rule": "evenodd",
-                      d:
-                        "M2 1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm12-1a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"
+                      width: "1em",
+                      height: "1em",
+                      viewBox: "0 0 16 16",
+                      fill: "currentColor",
+                      xmlns: "http://www.w3.org/2000/svg"
                     }
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      d:
-                        "M5 15V4H4v11h1zM.5 4h15V3H.5v1zM13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"
-                    }
-                  })
-                ]
-              ),
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d:
+                          "M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(
+                  "\n                            Film and export in HD to create videos of at least 720p, or 1080p if possible\n                        "
+                )
+              ]),
               _vm._v(" "),
-              _c("span", { staticClass: "ml-2 text-bold" }, [
-                _vm._v("Resources")
+              _c("li", [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "bi bi-check",
+                    attrs: {
+                      width: "1em",
+                      height: "1em",
+                      viewBox: "0 0 16 16",
+                      fill: "currentColor",
+                      xmlns: "http://www.w3.org/2000/svg"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d:
+                          "M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(
+                  "\n                            Audio should come out of both the left and right channels and be synced to your video\n                        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "bi bi-check",
+                    attrs: {
+                      width: "1em",
+                      height: "1em",
+                      viewBox: "0 0 16 16",
+                      fill: "currentColor",
+                      xmlns: "http://www.w3.org/2000/svg"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d:
+                          "M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(
+                  "\n                            Audio should be free of echo and background noise so as not to be distracting to students\n                        "
+                )
               ])
-            ]),
-            _vm._v(" "),
-            _vm._m(8)
+            ])
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("h5", { staticClass: "mb-3 mt-5" }, [
+            _c(
+              "svg",
+              {
+                staticClass: "bi bi-layout-text-window-reverse",
+                attrs: {
+                  width: "1em",
+                  height: "1em",
+                  viewBox: "0 0 16 16",
+                  fill: "currentColor",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    "fill-rule": "evenodd",
+                    d:
+                      "M2 1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm12-1a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"
+                  }
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    "fill-rule": "evenodd",
+                    d:
+                      "M5 15V4H4v11h1zM.5 4h15V3H.5v1zM13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c("span", { staticClass: "ml-2 text-bold" }, [_vm._v("Resources")])
+          ]),
+          _vm._v(" "),
+          _vm._m(8)
         ])
       ])
     ])
@@ -40410,7 +40402,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", [
           _vm._v(
-            "\n                                Make a home studio on a budget\n                            "
+            "\n                            Make a home studio on a budget\n                        "
           )
         ])
       ]),
@@ -40424,7 +40416,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", [
           _vm._v(
-            "\n                                Our policies for instructors and students\n                            "
+            "\n                            Our policies for instructors and students\n                        "
           )
         ])
       ]),
@@ -40438,7 +40430,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", [
           _vm._v(
-            "\n                                A place to talk with other instructors\n                            "
+            "\n                            A place to talk with other instructors\n                        "
           )
         ])
       ])
