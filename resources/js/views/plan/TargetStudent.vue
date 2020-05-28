@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2">
+    <div class="container p-4">
         <div class="mb-4">
             <h2>Target your students</h2>
             <hr />

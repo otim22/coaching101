@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-                <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+                <div class="col-sm-12 col-md-3 col-lg-3 mt-5">
                     <form @keyup.enter="createCourse">
                         <div class="mb-4" v-for="(creation, index) in creations">
                             <h5 class="side-font mb-3">{{ creation.title }}</h5>
@@ -62,7 +62,7 @@ export default {
     data() {
         return {
             selected: [],
-            checkedItem: 'Target your students',
+            checkedItem: 'Course structure',
             creations: [
                 {
                     title: 'Plan your course',
