@@ -5,13 +5,14 @@
                     <form @keyup.enter="createCourse">
                         <div class="mb-4" v-for="(creation, index) in creations">
                             <h5 class="side-font mb-3">{{ creation.title }}</h5>
-                            <div class="form-check mb-2" v-for="elem in creation.body" :key="elem.key">
-                                <label class="form-check-label" :for="elem">
+                            <div class="form-check hover-me mb-2" v-for="elem in creation.body" :key="elem.key">
+                                <label class="hover-me form-check-label" :for="elem">
                                 <input class="form-check-input"
                                             type="checkbox"
                                             :id="elem"
                                             :value="elem"
-                                            v-model="selected">
+                                            v-model="selected"
+                                            @change="pickSelected($event)">
                                             {{ elem }}
                                     </label>
                             </div>
@@ -20,22 +21,22 @@
                     </form>
                 </div>
             <div class="col-sm-12 col-md-9 col-lg-9 fast-transition mt-2">
-                <Introduction v-show="checkedItem === 'Introduction' || pickSelected" :course="course" />
-                <CourseStructure  v-show="checkedItem === 'Course structure' || pickSelected" :course="course" />
-                <SetupTest v-show="checkedItem === 'Setup & test video' || pickSelected" :course="course"  />
-                <Film v-show="checkedItem === 'Film & edit' || pickSelected" :course="course"  />
-                <Curriculum v-show="checkedItem === 'Curriculum' || pickSelected" :course="course"  />
-                <LandingPage v-show="checkedItem === 'Course landing page' || pickSelected" :course="course"  />
-                <Pricing v-show="checkedItem === 'Pricing' || pickSelected" :course="course"  />
-                <Promotion v-show="checkedItem === 'Promotions' || pickSelected" :course="course"  />
-                <CourseMessage v-show="checkedItem === 'Course messages' || pickSelected" :course="course"  />
+                <TargetStudent v-show="checkedItem === 'Target your students'" :course="course" />
+                <CourseStructure  v-show="checkedItem === 'Course structure'" :course="course" />
+                <SetupTest v-show="checkedItem === 'Setup & test video'" :course="course"  />
+                <Film v-show="checkedItem === 'Film & edit'" :course="course"  />
+                <Curriculum v-show="checkedItem === 'Curriculum'" :course="course"  />
+                <LandingPage v-show="checkedItem === 'Course landing page'" :course="course"  />
+                <Pricing v-show="checkedItem === 'Pricing'" :course="course"  />
+                <Promotion v-show="checkedItem === 'Promotions'" :course="course"  />
+                <CourseMessage v-show="checkedItem === 'Course messages'" :course="course"  />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import Introduction from './plan/Introduction'
+import TargetStudent from './plan/TargetStudent'
 import CourseStructure from './plan/CourseStructure'
 import SetupTest from './plan/SetupTest'
 import Film from './create/Film'
@@ -65,15 +66,15 @@ export default {
             creations: [
                 {
                     title: 'Plan your course',
-                    body: ['Introduction', 'Course structure', 'Setup & test video']
+                    body: ['Target your students', 'Course structure', 'Setup & test video'],
                 },
                 {
                     title: 'Create your content',
-                    body: ['Film & edit', 'Curriculum']
+                    body: ['Film & edit', 'Curriculum'],
                 },
                 {
                     title: 'Publish your course',
-                    body: ['Course landing page', 'Pricing', 'Promotions', 'Course messages']
+                    body: ['Course landing page', 'Pricing', 'Promotions', 'Course messages'],
                 },
             ],
             submit: false,
@@ -110,14 +111,27 @@ export default {
                     this.submit = false
                     console.log('Sorry something  went wrong', error.message)
                 })
+        },
+        pickSelected($event) {
+            this.checkedItem = $event.target.defaultValue
+            console.log('test', this.selected)
         }
     },
-    computed: {
-        pickSelected: function() {
-            for (let i = 0; i < this.selected.length; i++) {
-              this.checkedItem = this.selected[i];
-            }
-        }
-    }
+    // computed: {
+    //     pickSelected: function() {
+    //         for (let i = 0; i < this.selected.length; i++) {
+    //           this.checkedItem = this.selected[i];
+    //         }
+    //     }
+    // }
 }
 </script>
+
+<style lang="scss" scoped>
+    .hover-me {
+        cursor: pointer;
+    }
+    .hover-me:hover {
+        background-color: #f0f0f0;
+    }
+</style>
