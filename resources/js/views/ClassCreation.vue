@@ -62,7 +62,7 @@ export default {
     data() {
         return {
             selected: [],
-            checkedItem: 'Course structure',
+            checkedItem: 'Setup & test video',
             creations: [
                 {
                     title: 'Plan your course',
