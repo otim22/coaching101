@@ -2047,7 +2047,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'class-creation',
   components: {
-    Introduction: Introduction,
+    TargetStudent: _plan_TargetStudent__WEBPACK_IMPORTED_MODULE_0__["default"],
     CourseStructure: _plan_CourseStructure__WEBPACK_IMPORTED_MODULE_1__["default"],
     SetupTest: _plan_SetupTest__WEBPACK_IMPORTED_MODULE_2__["default"],
     Film: _create_Film__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -2060,7 +2060,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       selected: [],
-      checkedItem: '',
+      checkedItem: 'Target your students',
       creations: [{
         title: 'Plan your course',
         body: ['Target your students', 'Course structure', 'Setup & test video']
@@ -2103,12 +2103,10 @@ __webpack_require__.r(__webpack_exports__);
         _this.submit = false;
       })["catch"](function (error) {
         _this.submit = false;
-        console.log('Sorry something  went wrong', error.message);
       });
     },
     pickSelected: function pickSelected($event) {
       this.checkedItem = $event.target.defaultValue;
-      console.log('test', this.selected);
     }
   } // computed: {
   //     pickSelected: function() {
@@ -2290,8 +2288,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "introduction",
+  name: "target-student",
   props: {
     course: {
       type: Object,
@@ -39367,63 +39379,77 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h4", [_vm._v("Introduction")]),
-    _vm._v(" "),
-    _c("p"),
-    _c("legend", { attrs: { for: "name1" } }, [_vm._v("Your Name 1:")]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.course.name1,
-          expression: "course.name1"
-        }
-      ],
-      attrs: { id: "name1", type: "text", name: "name1" },
-      domProps: { value: _vm.course.name1 },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.$set(_vm.course, "name1", $event.target.value)
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("p"),
-    _vm._v(" "),
-    _c("p"),
-    _c("legend", { attrs: { for: "email1" } }, [_vm._v("Your Email 1:")]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.course.email1,
-          expression: "course.email1"
-        }
-      ],
-      attrs: { id: "email1", name: "email1", type: "email" },
-      domProps: { value: _vm.course.email1 },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.$set(_vm.course, "email1", $event.target.value)
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("p")
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "p-2" }, [
+      _c("div", { staticClass: "mb-4" }, [
+        _c("h2", [_vm._v("Target your students")]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("p", { staticClass: "lead mb-4" }, [
+          _vm._v(
+            "The descriptions you write here will help students decide if your class is the one for them."
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "whatStudentsLearn" } }, [
+            _vm._v("What will students learn in your class?")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control form-control-sm",
+            attrs: { type: "email", id: "whatStudentsLearn" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-sm btn-secondary mt-2" }, [
+          _vm._v("Add an answer")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-4" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "whatStudentsLearn" } }, [
+            _vm._v("Are there any class requirements or prerequisites?")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control form-control-sm",
+            attrs: { type: "email", id: "whatStudentsLearn" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-sm btn-secondary mt-2" }, [
+          _vm._v("Add an answer")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "whatStudentsLearn" } }, [
+            _vm._v("Who are your target students?")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control form-control-sm",
+            attrs: { type: "email", id: "whatStudentsLearn" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-sm btn-secondary mt-2" }, [
+          _vm._v("Add an answer")
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

@@ -49,7 +49,7 @@ import CourseMessage from './publish/CourseMessage'
 export default {
     name: 'class-creation',
     components: {
-        Introduction,
+        TargetStudent,
         CourseStructure,
         SetupTest,
         Film,
@@ -62,7 +62,7 @@ export default {
     data() {
         return {
             selected: [],
-            checkedItem: '',
+            checkedItem: 'Target your students',
             creations: [
                 {
                     title: 'Plan your course',
@@ -109,12 +109,10 @@ export default {
                 })
                 .catch(error => {
                     this.submit = false
-                    console.log('Sorry something  went wrong', error.message)
                 })
         },
         pickSelected($event) {
             this.checkedItem = $event.target.defaultValue
-            console.log('test', this.selected)
         }
     },
     // computed: {
