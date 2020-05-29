@@ -2060,7 +2060,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       selected: [],
-      checkedItem: 'Film & edit',
+      checkedItem: 'Curriculum',
       creations: [{
         title: 'Plan your course',
         body: ['Target your students', 'Course structure', 'Setup & test video']
@@ -2129,6 +2129,42 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39542,63 +39578,150 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h4", [_vm._v("Curriculum")]),
+  return _c("div", { staticClass: "container p-4" }, [
+    _vm._m(0),
     _vm._v(" "),
-    _c("p"),
-    _c("legend", { attrs: { for: "name5" } }, [_vm._v("Your Name 5:")]),
+    _vm._m(1),
     _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.course.name5,
-          expression: "course.name5"
-        }
-      ],
-      attrs: { id: "name5", name: "name5" },
-      domProps: { value: _vm.course.name5 },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.$set(_vm.course, "name5", $event.target.value)
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("p"),
-    _vm._v(" "),
-    _c("p"),
-    _c("legend", { attrs: { for: "email5" } }, [_vm._v("Your Email 5:")]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.course.email5,
-          expression: "course.email5"
-        }
-      ],
-      attrs: { id: "email5", name: "email5", type: "email5" },
-      domProps: { value: _vm.course.email5 },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.$set(_vm.course, "email5", $event.target.value)
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("p")
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12" }, [
+        _c("div", { staticClass: "card p-3" }, [
+          _c("div", { staticClass: "d-flex justify-content-between" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "one" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-secondary btn-sm",
+                  attrs: { href: "#" }
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "bi bi-plus",
+                      attrs: {
+                        width: "1em",
+                        height: "1em",
+                        viewBox: "0 0 16 16",
+                        fill: "currentColor",
+                        xmlns: "http://www.w3.org/2000/svg"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "fill-rule": "evenodd",
+                          d:
+                            "M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          "fill-rule": "evenodd",
+                          d:
+                            "M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(
+                    "\n                            Content\n                        "
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-secondary btn-sm mt-3",
+            attrs: { href: "#" }
+          },
+          [
+            _c(
+              "svg",
+              {
+                staticClass: "bi bi-plus",
+                attrs: {
+                  width: "1em",
+                  height: "1em",
+                  viewBox: "0 0 16 16",
+                  fill: "currentColor",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    "fill-rule": "evenodd",
+                    d:
+                      "M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"
+                  }
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    "fill-rule": "evenodd",
+                    d:
+                      "M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"
+                  }
+                })
+              ]
+            ),
+            _vm._v("\n                New section\n            ")
+          ]
+        )
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 mb-3" }, [
+        _c("h2", [_vm._v("Curriculum")]),
+        _vm._v(" "),
+        _c("hr")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12" }, [
+        _c("p", [
+          _vm._v(
+            "\n                Start putting together your course by creating sections, lectures and practice (quizzes, coding exercises and assignments).\n                If you’re intending to offer your course for free, the total length of video content must be less than 2 hours.\n            "
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "one" }, [
+      _c("p", [
+        _vm._v(
+          "\n                            Leacture 1:\n                            Introduction\n                        "
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
