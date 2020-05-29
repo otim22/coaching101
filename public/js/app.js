@@ -2060,7 +2060,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       selected: [],
-      checkedItem: 'Course landing page',
+      checkedItem: 'Course messages',
       creations: [{
         title: 'Plan your course',
         body: ['Target your students', 'Course structure', 'Setup & test video']
@@ -2702,6 +2702,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "course-message",
   props: {
@@ -2723,6 +2746,16 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41289,63 +41322,76 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h4", [_vm._v("Course Message")]),
-    _vm._v(" "),
-    _c("p"),
-    _c("legend", { attrs: { for: "name9" } }, [_vm._v("Your Name 9:")]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.course.name9,
-          expression: "course.name9"
-        }
-      ],
-      attrs: { id: "name9", name: "name9" },
-      domProps: { value: _vm.course.name9 },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.$set(_vm.course, "name9", $event.target.value)
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("p"),
-    _vm._v(" "),
-    _c("p"),
-    _c("legend", { attrs: { for: "email9" } }, [_vm._v("Your Email 9:")]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.course.email9,
-          expression: "course.email9"
-        }
-      ],
-      attrs: { id: "email9", name: "email9", type: "email9" },
-      domProps: { value: _vm.course.email9 },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.$set(_vm.course, "email9", $event.target.value)
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("p")
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 mb-3" }, [
+          _c("h2", [_vm._v("Course Messages")]),
+          _vm._v(" "),
+          _c("hr")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 p-3" }, [
+          _c("p", [
+            _vm._v(
+              "Write messages to your students (optional) that will be sent automatically when they join or complete your course to encourage students to engage with course content. If you do not wish to send a welcome or congratulations message, leave the text box blank."
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "welcomeMessage" } }, [
+              _vm._v("Welcome Message")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group" }, [
+              _c("textarea", {
+                staticClass: "form-control",
+                attrs: { id: "welcomeMessage", rows: "3" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group-append" }, [
+                _c("span", { staticClass: "input-group-text" }, [
+                  _vm._v("1000")
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "congratulationsMessage" } }, [
+              _vm._v("Congratulations Message")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group" }, [
+              _c("textarea", {
+                staticClass: "form-control",
+                attrs: { id: "congratulationsMessage", rows: "3" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group-append" }, [
+                _c("span", { staticClass: "input-group-text" }, [
+                  _vm._v("1000")
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -41442,27 +41488,51 @@ var staticRenderFns = [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "title" } }, [_vm._v("Course title")]),
           _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "title",
-              placeholder: "Your course title"
-            }
-          })
+          _c("div", { staticClass: "input-group" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "title",
+                placeholder: "Your course title",
+                "aria-label": "Your course title",
+                "aria-describedby": "title"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group-append" }, [
+              _c(
+                "span",
+                { staticClass: "input-group-text", attrs: { id: "title" } },
+                [_vm._v("50")]
+              )
+            ])
+          ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "subtitle" } }, [_vm._v("Subtitle")]),
           _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "subtitle",
-              placeholder: "Write your subtitle"
-            }
-          })
+          _c("div", { staticClass: "input-group" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "subtitle",
+                placeholder: "Write your subtitle",
+                "aria-label": "Write your subtitle",
+                "aria-describedby": "subtitle"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group-append" }, [
+              _c(
+                "span",
+                { staticClass: "input-group-text", attrs: { id: "subtitle" } },
+                [_vm._v("150")]
+              )
+            ])
+          ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
@@ -41550,7 +41620,7 @@ var staticRenderFns = [
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group mt-4" }, [
+        _c("div", { staticClass: "form-group mt-5" }, [
           _c("h5", [_vm._v("Instructor profile(s)")])
         ])
       ])

@@ -10,11 +10,21 @@
             <div class="col-sm-12 col-md-12 col-lg-12 p-3">
                 <div class="form-group">
                     <label for="title">Course title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Your course title">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="title" placeholder="Your course title" aria-label="Your course title" aria-describedby="title">
+                        <div class="input-group-append">
+                                <span class="input-group-text" id="title">50</span>
+                          </div>
+                  </div>
                 </div>
                 <div class="form-group">
                     <label for="subtitle">Subtitle</label>
-                    <input type="text" class="form-control" id="subtitle" placeholder="Write your subtitle">
+                    <div class="input-group">
+                    <input type="text" class="form-control" id="subtitle" placeholder="Write your subtitle" aria-label="Write your subtitle" aria-describedby="subtitle">
+                    <div class="input-group-append">
+                            <span class="input-group-text" id="subtitle">150</span>
+                      </div>
+                </div>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
@@ -54,7 +64,7 @@
                         </select>
                     </div>
                   </div>
-                <div class="form-group mt-4">
+                <div class="form-group mt-5">
                     <h5>Instructor profile(s)</h5>
                 </div>
 

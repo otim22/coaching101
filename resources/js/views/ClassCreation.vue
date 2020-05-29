@@ -62,7 +62,7 @@ export default {
     data() {
         return {
             selected: [],
-            checkedItem: 'Course landing page',
+            checkedItem: 'Course messages',
             creations: [
                 {
                     title: 'Plan your course',
