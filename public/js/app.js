@@ -2060,7 +2060,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       selected: [],
-      checkedItem: 'Curriculum',
+      checkedItem: 'Course landing page',
       creations: [{
         title: 'Plan your course',
         body: ['Target your students', 'Course structure', 'Setup & test video']
@@ -2723,6 +2723,69 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41304,63 +41367,204 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h4", [_vm._v("Landing Page")]),
+  return _c("div", { staticClass: "container p-4" }, [
+    _vm._m(0),
     _vm._v(" "),
-    _c("p"),
-    _c("legend", { attrs: { for: "name6" } }, [_vm._v("Your Name 6:")]),
+    _vm._m(1),
     _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.course.name6,
-          expression: "course.name6"
-        }
-      ],
-      attrs: { id: "name6", name: "name6" },
-      domProps: { value: _vm.course.name6 },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.$set(_vm.course, "name6", $event.target.value)
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("p"),
-    _vm._v(" "),
-    _c("p"),
-    _c("legend", { attrs: { for: "email6" } }, [_vm._v("Your Email 6:")]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.course.email6,
-          expression: "course.email6"
-        }
-      ],
-      attrs: { id: "email6", name: "email6", type: "email6" },
-      domProps: { value: _vm.course.email6 },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.$set(_vm.course, "email6", $event.target.value)
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("p")
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("p", { attrs: { for: "subtitle" } }, [
+          _c(
+            "svg",
+            {
+              staticClass: "bi bi-person-circle",
+              attrs: {
+                width: "2em",
+                height: "2em",
+                viewBox: "0 0 16 16",
+                fill: "currentColor",
+                xmlns: "http://www.w3.org/2000/svg"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  "fill-rule": "evenodd",
+                  d: "M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  "fill-rule": "evenodd",
+                  d:
+                    "M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c("span", { staticClass: "ml-2" }, [_vm._v(" Otim fredrick")])
+        ]),
+        _vm._v(" "),
+        _vm._m(2)
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 mb-3" }, [
+        _c("h2", [_vm._v("Course landing page")]),
+        _vm._v(" "),
+        _c("hr")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 p-3" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "title" } }, [_vm._v("Course title")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "title",
+              placeholder: "Your course title"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "subtitle" } }, [_vm._v("Subtitle")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "subtitle",
+              placeholder: "Write your subtitle"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "description" } }, [
+            _vm._v("Description")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "description",
+              placeholder: "Description of the course"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-row" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("label", { attrs: { for: "category" } }, [_vm._v("Basic info")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-4" }, [
+            _c(
+              "select",
+              { staticClass: "form-control", attrs: { id: "category" } },
+              [
+                _c("option", { attrs: { selected: "" } }, [
+                  _vm._v("-- Subject --")
+                ]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Mathematics")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Science")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Languages")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Social sciences")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Vocational subjects")])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-4" }, [
+            _c(
+              "select",
+              { staticClass: "form-control", attrs: { id: "category" } },
+              [
+                _c("option", { attrs: { selected: "" } }, [
+                  _vm._v("-- Class --")
+                ]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Senior one")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Senior two")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Senior three")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Senior four")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Senior five")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Senior six")])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-4" }, [
+            _c(
+              "select",
+              { staticClass: "form-control", attrs: { id: "category" } },
+              [
+                _c("option", { attrs: { selected: "" } }, [
+                  _vm._v("-- Term --")
+                ]),
+                _vm._v(" "),
+                _c("option", [_vm._v("One")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Two")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Three")])
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group mt-4" }, [
+          _c("h5", [_vm._v("Instructor profile(s)")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("Update your profile")])
+    ])
+  }
+]
 render._withStripped = true
 
 
