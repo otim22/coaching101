@@ -27,8 +27,6 @@
                 <Film v-show="checkedItem === 'Film & edit'" :course="course"  />
                 <Curriculum v-show="checkedItem === 'Curriculum'" :course="course"  />
                 <LandingPage v-show="checkedItem === 'Course landing page'" :course="course"  />
-                <Pricing v-show="checkedItem === 'Pricing'" :course="course"  />
-                <Promotion v-show="checkedItem === 'Promotions'" :course="course"  />
                 <CourseMessage v-show="checkedItem === 'Course messages'" :course="course"  />
             </div>
         </div>
@@ -42,8 +40,6 @@ import SetupTest from './plan/SetupTest'
 import Film from './create/Film'
 import Curriculum from './create/Curriculum'
 import LandingPage from './publish/LandingPage'
-import Pricing from './publish/Pricing'
-import Promotion from './publish/Promotion'
 import CourseMessage from './publish/CourseMessage'
 
 export default {
@@ -55,8 +51,6 @@ export default {
         Film,
         Curriculum,
         LandingPage,
-        Pricing,
-        Promotion,
         CourseMessage
     },
     data() {
@@ -74,7 +68,7 @@ export default {
                 },
                 {
                     title: 'Publish your course',
-                    body: ['Course landing page', 'Pricing', 'Promotions', 'Course messages'],
+                    body: ['Course landing page', 'Course messages'],
                 },
             ],
             submit: false,
