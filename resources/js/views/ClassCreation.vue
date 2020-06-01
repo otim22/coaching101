@@ -56,7 +56,7 @@ export default {
     data() {
         return {
             selected: [],
-            checkedItem: 'Course messages',
+            checkedItem: 'Curriculum',
             creations: [
                 {
                     title: 'Plan your course',
