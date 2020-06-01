@@ -115,20 +115,16 @@ export default {
             resourceFiles: ''
         }
     },
+    mounted () {
+        this.addLine()
+    },
     methods: {
         uploadContent() {
             this.contentFiles = this.$refs.contentFiles.files[0];
         },
         uplaodResource() {
             this.contentFiles = this.$refs.contentFiles.files[0];
-        }
-    },
-    watch: {
-        lines () {
-          this.blockRemoval = this.lines.length <= 1
-        }
-    },
-    methods: {
+        },
         addLine () {
             let checkEmptyLines = this.lines.filter(line => line.number === null)
 
@@ -149,8 +145,10 @@ export default {
             }
         }
     },
-    mounted () {
-        this.addLine()
+    watch: {
+        lines () {
+          this.blockRemoval = this.lines.length <= 1
+        }
     }
 }
 </script>

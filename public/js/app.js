@@ -2121,10 +2121,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var _name$props$data$meth;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -2225,7 +2221,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = (_name$props$data$meth = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: "curriculum",
   props: {
     course: {
@@ -2241,12 +2237,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       resourceFiles: ''
     };
   },
+  mounted: function mounted() {
+    this.addLine();
+  },
   methods: {
     uploadContent: function uploadContent() {
       this.contentFiles = this.$refs.contentFiles.files[0];
     },
     uplaodResource: function uplaodResource() {
       this.contentFiles = this.$refs.contentFiles.files[0];
+    },
+    addLine: function addLine() {
+      var checkEmptyLines = this.lines.filter(function (line) {
+        return line.number === null;
+      });
+
+      if (checkEmptyLines.length >= 1 && this.lines.length > 0) {
+        return;
+      }
+
+      this.lines.push({
+        title: null,
+        uploadContent: null,
+        description: null,
+        uplaodResource: null
+      });
+    },
+    removeLine: function removeLine(lineId) {
+      if (!this.blockRemoval) {
+        this.lines.splice(lineId, 1);
+      }
     }
   },
   watch: {
@@ -2254,31 +2274,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.blockRemoval = this.lines.length <= 1;
     }
   }
-}, _defineProperty(_name$props$data$meth, "methods", {
-  addLine: function addLine() {
-    var checkEmptyLines = this.lines.filter(function (line) {
-      return line.number === null;
-    });
-
-    if (checkEmptyLines.length >= 1 && this.lines.length > 0) {
-      return;
-    }
-
-    this.lines.push({
-      title: null,
-      uploadContent: null,
-      description: null,
-      uplaodResource: null
-    });
-  },
-  removeLine: function removeLine(lineId) {
-    if (!this.blockRemoval) {
-      this.lines.splice(lineId, 1);
-    }
-  }
-}), _defineProperty(_name$props$data$meth, "mounted", function mounted() {
-  this.addLine();
-}), _name$props$data$meth);
+});
 
 /***/ }),
 
