@@ -1996,6 +1996,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _create_Curriculum__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./create/Curriculum */ "./resources/js/views/create/Curriculum.vue");
 /* harmony import */ var _publish_LandingPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./publish/LandingPage */ "./resources/js/views/publish/LandingPage.vue");
 /* harmony import */ var _publish_CourseMessage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./publish/CourseMessage */ "./resources/js/views/publish/CourseMessage.vue");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2050,9 +2052,11 @@ __webpack_require__.r(__webpack_exports__);
     CourseMessage: _publish_CourseMessage__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   data: function data() {
+    var _course;
+
     return {
       selected: [],
-      checkedItem: 'Curriculum',
+      checkedItem: 'Course landing page',
       creations: [{
         title: 'Plan your course',
         body: ['Target your students', 'Course structure', 'Setup & test video']
@@ -2064,26 +2068,16 @@ __webpack_require__.r(__webpack_exports__);
         body: ['Course landing page', 'Course messages']
       }],
       submit: false,
-      course: {
-        name1: null,
-        email1: null,
-        name2: null,
-        email2: null,
-        name3: null,
-        email3: null,
-        name4: null,
-        email4: null,
-        name5: null,
-        email5: null,
-        name6: null,
-        email6: null,
-        name7: null,
-        email7: null,
-        name8: null,
-        email8: null,
-        name9: null,
-        email9: null
-      }
+      course: (_course = {
+        students_learn: null,
+        class_requirement: null,
+        target_students: null,
+        course_title: null,
+        main_content: null,
+        content_description: null,
+        extra_resource: null,
+        email4: null
+      }, _defineProperty(_course, "email4", null), _defineProperty(_course, "course_title", null), _defineProperty(_course, "course_subtitle", null), _defineProperty(_course, "course_description", null), _defineProperty(_course, "default_subject", '-- Subject --'), _defineProperty(_course, "selected_subjects", ['Mathematics', 'Science', 'English', 'Chemistry', 'Biology', 'Swahili', 'French', 'Agriculture', 'Food & nutrition', 'Social Studies', 'CRE', 'IRE', 'Geography', 'Entreprenuership', 'Commerce', 'Accounts', 'Economics', 'Divinity', 'History']), _defineProperty(_course, "default_class", '-- Class --'), _defineProperty(_course, "selected_classes", ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six']), _defineProperty(_course, "default_level", '-- Level --'), _defineProperty(_course, "selected_levels", ['Term one', 'Term two', 'Term three']), _defineProperty(_course, "welcome_message", null), _defineProperty(_course, "congratulations_message", null), _course)
     };
   },
   methods: {
@@ -2233,19 +2227,19 @@ __webpack_require__.r(__webpack_exports__);
     return {
       lines: [],
       blockRemoval: true,
-      contentFiles: '',
-      resourceFiles: ''
+      mainContentFiles: '',
+      extraResourceFiles: ''
     };
   },
   mounted: function mounted() {
     this.addLine();
   },
   methods: {
-    uploadContent: function uploadContent() {
-      this.contentFiles = this.$refs.contentFiles.files[0];
+    uploadMainContent: function uploadMainContent() {
+      this.mainContentFiles = this.$refs.mainContentFiles.files[0];
     },
-    uplaodResource: function uplaodResource() {
-      this.contentFiles = this.$refs.contentFiles.files[0];
+    uploadExtraResource: function uploadExtraResource() {
+      this.extraResourceFiles = this.$refs.extraResourceFiles.files[0];
     },
     addLine: function addLine() {
       var checkEmptyLines = this.lines.filter(function (line) {
@@ -2257,10 +2251,10 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.lines.push({
-        title: null,
-        uploadContent: null,
-        description: null,
-        uplaodResource: null
+        content_title: null,
+        main_content_files: null,
+        content_description: null,
+        extra_resource_files: null
       });
     },
     removeLine: function removeLine(lineId) {
@@ -2832,6 +2826,30 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39482,6 +39500,7 @@ var render = function() {
         _c(
           "form",
           {
+            attrs: { enctype: "multipart/form-data" },
             on: {
               keyup: function($event) {
                 if (
@@ -39733,8 +39752,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: line.title,
-                      expression: "line.title"
+                      value: line.content_title,
+                      expression: "line.content_title"
                     }
                   ],
                   staticClass: "form-control",
@@ -39745,13 +39764,13 @@ var render = function() {
                     "aria-label": "Your content title",
                     "aria-describedby": "title"
                   },
-                  domProps: { value: line.title },
+                  domProps: { value: line.content_title },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(line, "title", $event.target.value)
+                      _vm.$set(line, "content_title", $event.target.value)
                     }
                   }
                 })
@@ -39765,7 +39784,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "custom-file" }, [
                     _c("input", {
-                      ref: "contentFiles",
+                      ref: "mainContentFiles",
                       refInFor: true,
                       staticClass: "custom-file-input",
                       attrs: {
@@ -39775,7 +39794,7 @@ var render = function() {
                       },
                       on: {
                         change: function($event) {
-                          return _vm.uploadContent()
+                          return _vm.uploadMainContent()
                         }
                       }
                     }),
@@ -39802,8 +39821,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: line.description,
-                      expression: "line.description"
+                      value: line.content_description,
+                      expression: "line.content_description"
                     }
                   ],
                   staticClass: "form-control",
@@ -39815,13 +39834,13 @@ var render = function() {
                     "aria-label": "Add a description",
                     "aria-describedby": "description"
                   },
-                  domProps: { value: line.description },
+                  domProps: { value: line.content_description },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(line, "description", $event.target.value)
+                      _vm.$set(line, "content_description", $event.target.value)
                     }
                   }
                 })
@@ -39835,7 +39854,7 @@ var render = function() {
                 _c("div", { staticClass: "input-group mb-3" }, [
                   _c("div", { staticClass: "custom-file" }, [
                     _c("input", {
-                      ref: "resourceFiles",
+                      ref: "extraResourceFiles",
                       refInFor: true,
                       staticClass: "custom-file-input",
                       attrs: {
@@ -39845,7 +39864,7 @@ var render = function() {
                       },
                       on: {
                         change: function($event) {
-                          return _vm.uplaodResource()
+                          return _vm.uploadExtraResource()
                         }
                       }
                     }),
@@ -41435,77 +41454,133 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container p-4" }, [
-      _c("div", { staticClass: "mb-4" }, [
-        _c("h2", [_vm._v("Target your students")]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("p", { staticClass: "lead mb-4" }, [
-          _vm._v(
-            "The descriptions you write here will help students decide if your class is the one for them."
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "whatStudentsLearn" } }, [
-            _vm._v("What will students learn in your class?")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control form-control-sm",
-            attrs: { type: "email", id: "whatStudentsLearn" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-sm btn-secondary mt-2" }, [
-          _vm._v("Add an answer")
-        ])
+  return _c("div", { staticClass: "container p-4" }, [
+    _c("div", { staticClass: "mb-4" }, [
+      _c("h2", [_vm._v("Target your students")]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("p", { staticClass: "lead mb-4" }, [
+        _vm._v(
+          "The descriptions you write here will help students decide if your class is the one for them."
+        )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "mb-4" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "whatStudentsLearn" } }, [
-            _vm._v("Are there any class requirements or prerequisites?")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control form-control-sm",
-            attrs: { type: "email", id: "whatStudentsLearn" }
-          })
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "students_learn" } }, [
+          _vm._v("What will students learn in your class?")
         ]),
         _vm._v(" "),
-        _c("button", { staticClass: "btn btn-sm btn-secondary mt-2" }, [
-          _vm._v("Add an answer")
-        ])
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.course.students_learn,
+              expression: "course.students_learn"
+            }
+          ],
+          staticClass: "form-control form-control-sm",
+          attrs: {
+            type: "email",
+            id: "students_learn",
+            name: "students_learn"
+          },
+          domProps: { value: _vm.course.students_learn },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.course, "students_learn", $event.target.value)
+            }
+          }
+        })
       ]),
       _vm._v(" "),
-      _c("div", [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "whatStudentsLearn" } }, [
-            _vm._v("Who are your target students?")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control form-control-sm",
-            attrs: { type: "email", id: "whatStudentsLearn" }
-          })
+      _c("button", { staticClass: "btn btn-sm btn-secondary mt-2" }, [
+        _vm._v("Add an answer")
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "mb-4" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "class_requirement" } }, [
+          _vm._v("Are there any class requirements or prerequisites?")
         ]),
         _vm._v(" "),
-        _c("button", { staticClass: "btn btn-sm btn-secondary mt-2" }, [
-          _vm._v("Add an answer")
-        ])
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.course.class_requirement,
+              expression: "course.class_requirement"
+            }
+          ],
+          staticClass: "form-control form-control-sm",
+          attrs: {
+            type: "email",
+            id: "class_requirement",
+            name: "class_requirement"
+          },
+          domProps: { value: _vm.course.class_requirement },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.course, "class_requirement", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn btn-sm btn-secondary mt-2" }, [
+        _vm._v("Add an answer")
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "target_students" } }, [
+          _vm._v("Who are your target students?")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.course.target_students,
+              expression: "course.target_students"
+            }
+          ],
+          staticClass: "form-control form-control-sm",
+          attrs: {
+            type: "email",
+            id: "target_students",
+            name: "target_students"
+          },
+          domProps: { value: _vm.course.target_students },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.course, "target_students", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn btn-sm btn-secondary mt-2" }, [
+        _vm._v("Add an answer")
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -41527,73 +41602,133 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "welcomeMessage" } }, [
+            _vm._v("Welcome Message")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.course.welcome_message,
+                  expression: "course.welcome_message"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                id: "welcomeMessage",
+                name: "welcomeMessage",
+                rows: "3"
+              },
+              domProps: { value: _vm.course.welcome_message },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.course, "welcome_message", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(2)
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "congratulationsMessage" } }, [
+            _vm._v("Congratulations Message")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.course.congratulations_message,
+                  expression: "course.congratulations_message"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                id: "congratulationsMessage",
+                name: "congratulationsMessage",
+                rows: "3"
+              },
+              domProps: { value: _vm.course.congratulations_message },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.course,
+                    "congratulations_message",
+                    $event.target.value
+                  )
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(3)
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 mb-3" }, [
-          _c("h2", [_vm._v("Course Messages")]),
-          _vm._v(" "),
-          _c("hr")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 p-3" }, [
-          _c("p", [
-            _vm._v(
-              "Write messages to your students (optional) that will be sent automatically when they join or complete your course to encourage students to engage with course content. If you do not wish to send a welcome or congratulations message, leave the text box blank."
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "welcomeMessage" } }, [
-              _vm._v("Welcome Message")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "input-group" }, [
-              _c("textarea", {
-                staticClass: "form-control",
-                attrs: { id: "welcomeMessage", rows: "3" }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group-append" }, [
-                _c("span", { staticClass: "input-group-text" }, [
-                  _vm._v("1000")
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "congratulationsMessage" } }, [
-              _vm._v("Congratulations Message")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "input-group" }, [
-              _c("textarea", {
-                staticClass: "form-control",
-                attrs: { id: "congratulationsMessage", rows: "3" }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group-append" }, [
-                _c("span", { staticClass: "input-group-text" }, [
-                  _vm._v("1000")
-                ])
-              ])
-            ])
-          ])
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 mb-3" }, [
+        _c("h2", [_vm._v("Course Messages")]),
+        _vm._v(" "),
+        _c("hr")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 p-3" }, [
+        _c("p", [
+          _vm._v(
+            "Write messages to your students (optional) that will be sent automatically when they join or complete your course to encourage students to engage with course content. If you do not wish to send a welcome or congratulations message, leave the text box blank."
+          )
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("1000")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("1000")])
     ])
   }
 ]
@@ -41621,52 +41756,340 @@ var render = function() {
   return _c("div", { staticClass: "container p-4" }, [
     _vm._m(0),
     _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("p", { attrs: { for: "subtitle" } }, [
-          _c(
-            "svg",
-            {
-              staticClass: "bi bi-person-circle",
-              attrs: {
-                width: "2em",
-                height: "2em",
-                viewBox: "0 0 16 16",
-                fill: "currentColor",
-                xmlns: "http://www.w3.org/2000/svg"
-              }
-            },
-            [
-              _c("path", {
-                attrs: {
-                  d:
-                    "M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"
-                }
-              }),
-              _vm._v(" "),
-              _c("path", {
-                attrs: {
-                  "fill-rule": "evenodd",
-                  d: "M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
-                }
-              }),
-              _vm._v(" "),
-              _c("path", {
-                attrs: {
-                  "fill-rule": "evenodd",
-                  d:
-                    "M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"
-                }
-              })
-            ]
-          ),
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 p-3" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "course_title" } }, [
+            _vm._v("Course title")
+          ]),
           _vm._v(" "),
-          _c("span", { staticClass: "ml-2" }, [_vm._v(" Otim fredrick")])
+          _c("div", { staticClass: "input-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.course.course_title,
+                  expression: "course.course_title"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "course_title",
+                placeholder: "Your course title",
+                "aria-label": "Your course title",
+                "aria-describedby": "course_title",
+                name: "course_title"
+              },
+              domProps: { value: _vm.course.course_title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.course, "course_title", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
         ]),
         _vm._v(" "),
-        _vm._m(2)
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "subtitle" } }, [_vm._v("Subtitle")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.course.course_subtitle,
+                  expression: "course.course_subtitle"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "course_subtitle",
+                placeholder: "Write your subtitle",
+                "aria-label": "Write your subtitle",
+                "aria-describedby": "course_subtitle",
+                name: "course_subtitle"
+              },
+              domProps: { value: _vm.course.course_subtitle },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.course, "course_subtitle", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(2)
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "description" } }, [
+            _vm._v("Description")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.course.course_description,
+                expression: "course.course_description"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "description",
+              placeholder: "Description of the course",
+              name: "course_description"
+            },
+            domProps: { value: _vm.course.course_description },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.course, "course_description", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-row" }, [
+          _vm._m(3),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-4" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.course.default_subject,
+                    expression: "course.default_subject"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "selectSubject" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.course,
+                      "default_subject",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { domProps: { selected: true } }, [
+                  _vm._v(
+                    "\n                                    " +
+                      _vm._s(_vm.course.default_subject) +
+                      "\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.course.selected_subjects, function(selectedSubject) {
+                  return _c(
+                    "option",
+                    { domProps: { value: selectedSubject } },
+                    [
+                      _vm._v(
+                        "\n                                    " +
+                          _vm._s(selectedSubject) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-4" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.course.default_class,
+                    expression: "course.default_class"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "selectClass" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.course,
+                      "default_class",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { domProps: { selected: true } }, [
+                  _vm._v(
+                    "\n                                    " +
+                      _vm._s(_vm.course.default_class) +
+                      "\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.course.selected_classes, function(selectedClass) {
+                  return _c("option", { domProps: { value: selectedClass } }, [
+                    _vm._v(
+                      "\n                                        " +
+                        _vm._s(selectedClass) +
+                        "\n                        "
+                    )
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-4" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.course.default_level,
+                    expression: "course.default_level"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "selectLevel" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.course,
+                      "default_level",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { domProps: { selected: true } }, [
+                  _vm._v(
+                    "\n                                    " +
+                      _vm._s(_vm.course.default_level) +
+                      "\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.course.selected_levels, function(selectedLevel) {
+                  return _c("option", { domProps: { value: selectedLevel } }, [
+                    _vm._v(
+                      "\n                                        " +
+                        _vm._s(selectedLevel) +
+                        "\n                        "
+                    )
+                  ])
+                })
+              ],
+              2
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12" }, [
+        _vm._m(4),
+        _vm._v(" "),
+        _c("div", { staticClass: "mt-4" }, [
+          _c("p", { attrs: { for: "subtitle" } }, [
+            _c(
+              "svg",
+              {
+                staticClass: "bi bi-person-circle",
+                attrs: {
+                  width: "2em",
+                  height: "2em",
+                  viewBox: "0 0 16 16",
+                  fill: "currentColor",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"
+                  }
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    "fill-rule": "evenodd",
+                    d: "M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                  }
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    "fill-rule": "evenodd",
+                    d:
+                      "M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c("span", { staticClass: "ml-2" }, [_vm._v(" Otim fredrick")])
+          ]),
+          _vm._v(" "),
+          _vm._m(5)
+        ])
       ])
     ])
   ])
@@ -41688,147 +42111,40 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 p-3" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "title" } }, [_vm._v("Course title")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "input-group" }, [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "title",
-                placeholder: "Your course title",
-                "aria-label": "Your course title",
-                "aria-describedby": "title"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "input-group-append" }, [
-              _c(
-                "span",
-                { staticClass: "input-group-text", attrs: { id: "title" } },
-                [_vm._v("50")]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "subtitle" } }, [_vm._v("Subtitle")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "input-group" }, [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "subtitle",
-                placeholder: "Write your subtitle",
-                "aria-label": "Write your subtitle",
-                "aria-describedby": "subtitle"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "input-group-append" }, [
-              _c(
-                "span",
-                { staticClass: "input-group-text", attrs: { id: "subtitle" } },
-                [_vm._v("150")]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "description" } }, [
-            _vm._v("Description")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "description",
-              placeholder: "Description of the course"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-row" }, [
-          _c("div", { staticClass: "col-md-12" }, [
-            _c("label", { attrs: { for: "category" } }, [_vm._v("Basic info")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group col-md-4" }, [
-            _c(
-              "select",
-              { staticClass: "form-control", attrs: { id: "category" } },
-              [
-                _c("option", { attrs: { selected: "" } }, [
-                  _vm._v("-- Subject --")
-                ]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Mathematics")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Science")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Languages")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Social sciences")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Vocational subjects")])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group col-md-4" }, [
-            _c(
-              "select",
-              { staticClass: "form-control", attrs: { id: "category" } },
-              [
-                _c("option", { attrs: { selected: "" } }, [
-                  _vm._v("-- Class --")
-                ]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Senior one")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Senior two")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Senior three")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Senior four")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Senior five")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Senior six")])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group col-md-4" }, [
-            _c(
-              "select",
-              { staticClass: "form-control", attrs: { id: "category" } },
-              [
-                _c("option", { attrs: { selected: "" } }, [
-                  _vm._v("-- Term --")
-                ]),
-                _vm._v(" "),
-                _c("option", [_vm._v("One")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Two")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Three")])
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group mt-5" }, [
-          _c("h5", [_vm._v("Instructor profile(s)")])
-        ])
-      ])
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c(
+        "span",
+        { staticClass: "input-group-text", attrs: { id: "course_title" } },
+        [_vm._v("50")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c(
+        "span",
+        { staticClass: "input-group-text", attrs: { id: "course_subtitle" } },
+        [_vm._v("150")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("label", { attrs: { for: "category" } }, [_vm._v("Basic info")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group mt-5" }, [
+      _c("h4", [_vm._v("Instructor profile")])
     ])
   },
   function() {

@@ -25,7 +25,7 @@
                                     placeholder="Your content title"
                                     aria-label="Your content title"
                                     aria-describedby="title"
-                                    v-model="line.title">
+                                    v-model="line.content_title">
                     </div>
                     <div class="form-group">
                         <label for="title">Content</label>
@@ -37,9 +37,9 @@
                                 <input type="file"
                                             class="custom-file-input"
                                             id="contentFiles"
-                                            ref="contentFiles"
+                                            ref="mainContentFiles"
                                             aria-describedby="contentFilesId"
-                                            @change="uploadContent()">
+                                            @change="uploadMainContent()">
                                 <label class="custom-file-label" for="contentFiles">Choose file</label>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                     placeholder="Include a description. What students will be able to do after completing the class."
                                     aria-label="Add a description"
                                     aria-describedby="description"
-                                    v-model="line.description">
+                                    v-model="line.content_description">
                     </div>
                     <div class="form-group">
                         <label for="resource">Resource</label>
@@ -61,9 +61,9 @@
                                 <input type="file"
                                             class="custom-file-input"
                                             id="select-file"
-                                            ref="resourceFiles"
+                                            ref="extraResourceFiles"
                                             aria-describedby="select-file"
-                                            @change="uplaodResource()">
+                                            @change="uploadExtraResource()">
                                 <label class="custom-file-label" for="select-file">No file selected</label>
                             </div>
                             <small id="emailHelp" class="form-text text-muted">
@@ -111,19 +111,19 @@ export default {
         return {
             lines: [],
             blockRemoval: true,
-            contentFiles: '',
-            resourceFiles: ''
+            mainContentFiles: '',
+            extraResourceFiles: ''
         }
     },
     mounted () {
         this.addLine()
     },
     methods: {
-        uploadContent() {
-            this.contentFiles = this.$refs.contentFiles.files[0];
+        uploadMainContent() {
+            this.mainContentFiles = this.$refs.mainContentFiles.files[0];
         },
-        uplaodResource() {
-            this.contentFiles = this.$refs.contentFiles.files[0];
+        uploadExtraResource() {
+            this.extraResourceFiles = this.$refs.extraResourceFiles.files[0];
         },
         addLine () {
             let checkEmptyLines = this.lines.filter(line => line.number === null)
@@ -133,10 +133,10 @@ export default {
             }
 
             this.lines.push({
-                title: null,
-                uploadContent: null,
-                description: null,
-                uplaodResource: null
+                content_title: null,
+                main_content_files: null,
+                content_description: null,
+                extra_resource_files: null
             })
         },
         removeLine (lineId) {

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
                 <div class="col-sm-12 col-md-3 col-lg-3 mt-5">
-                    <form @keyup.enter="createCourse">
+                    <form @keyup.enter="createCourse" enctype="multipart/form-data">
                         <div class="mb-4" v-for="(creation, index) in creations">
                             <h5 class="side-font mb-3">{{ creation.title }}</h5>
                             <div class="form-check hover-me mb-2" v-for="elem in creation.body" :key="elem.key">
@@ -26,7 +26,7 @@
                 <SetupTest v-show="checkedItem === 'Setup & test video'" :course="course"  />
                 <Film v-show="checkedItem === 'Film & edit'" :course="course"  />
                 <Curriculum v-show="checkedItem === 'Curriculum'" :course="course"  />
-                <LandingPage v-show="checkedItem === 'Course landing page'" :course="course"  />
+                <LandingPage v-show="checkedItem === 'Course landing page'" :course="course" />
                 <CourseMessage v-show="checkedItem === 'Course messages'" :course="course"  />
             </div>
         </div>
@@ -56,7 +56,7 @@ export default {
     data() {
         return {
             selected: [],
-            checkedItem: 'Curriculum',
+            checkedItem: 'Course landing page',
             creations: [
                 {
                     title: 'Plan your course',
@@ -73,24 +73,30 @@ export default {
             ],
             submit: false,
             course: {
-                name1: null,
-                email1: null,
-                name2: null,
-                email2: null,
-                name3: null,
-                email3: null,
-                name4: null,
+                students_learn: null,
+                class_requirement: null,
+                target_students: null,
+                course_title: null,
+                main_content: null,
+                content_description: null,
+                extra_resource: null,
                 email4: null,
-                name5: null,
-                email5: null,
-                name6: null,
-                email6: null,
-                name7: null,
-                email7: null,
-                name8: null,
-                email8: null,
-                name9: null,
-                email9: null,
+                email4: null,
+                course_title: null,
+                course_subtitle: null,
+                course_description: null,
+                default_subject: '-- Subject --',
+                selected_subjects: [
+                    'Mathematics', 'Science', 'English', 'Chemistry','Biology', 'Swahili', 'French', 'Agriculture',
+                    'Food & nutrition', 'Social Studies', 'CRE', 'IRE','Geography','Entreprenuership', 'Commerce',
+                    'Accounts', 'Economics', 'Divinity','History'
+                ],
+                default_class: '-- Class --',
+                selected_classes: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
+                default_level: '-- Level --',
+                selected_levels: ['Term one', 'Term two', 'Term three'],
+                welcome_message: null,
+                congratulations_message: null,
             }
         };
     },
