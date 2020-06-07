@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="welcomeMessage">Welcome Message</label>
                     <div class="input-group">
-                        <textarea class="form-control" id="welcomeMessage" v-model="course.welcome_message" name="welcomeMessage" rows="3"></textarea>
+                        <textarea class="form-control" id="welcomeMessage" v-model="courseMessage.welcome_message" name="welcomeMessage" rows="3"></textarea>
                         <div class="input-group-append">
                             <span class="input-group-text">1000</span>
                         </div>
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label for="congratulationsMessage">Congratulations Message</label>
                     <div class="input-group">
-                        <textarea class="form-control" id="congratulationsMessage" v-model="course.congratulations_message" name="congratulationsMessage" rows="3"></textarea>
+                        <textarea class="form-control" id="congratulationsMessage" v-model="courseMessage.congratulations_message" name="congratulationsMessage" rows="3"></textarea>
                         <div class="input-group-append">
                             <span class="input-group-text">1000</span>
                         </div>
@@ -40,13 +40,7 @@
 export default {
     name: "course-message",
     props: {
-        course: {
-            type: Object,
-            required: true
-        }
+        courseMessage: { type: Object }
     }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

@@ -127,12 +127,6 @@
 <script>
 export default {
     name: "setup-test",
-    props: {
-        course: {
-            type: Object,
-            required: true
-        }
-    }
 }
 </script>
 

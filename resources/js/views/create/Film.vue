@@ -127,12 +127,6 @@
 <script>
 export default {
     name: "film",
-    props: {
-        course: {
-            type: Object,
-            required: true
-        }
-    }
 }
 </script>
 

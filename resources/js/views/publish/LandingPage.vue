@@ -2,7 +2,7 @@
     <div class="container p-4">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-                <h2>Course landing page</h2>
+                <h2>Course course page</h2>
                 <hr />
             </div>
         </div>
@@ -17,7 +17,7 @@
                                     placeholder="Your course title"
                                     aria-label="Your course title"
                                     aria-describedby="course_title"
-                                    v-model="course.course_title"
+                                    v-model="landing.course_title"
                                     name="course_title">
                         <div class="input-group-append">
                                 <span class="input-group-text" id="course_title">50</span>
@@ -33,7 +33,7 @@
                                 placeholder="Write your subtitle"
                                 aria-label="Write your subtitle"
                                 aria-describedby="course_subtitle"
-                                v-model="course.course_subtitle"
+                                v-model="landing.course_subtitle"
                                 name="course_subtitle">
                     <div class="input-group-append">
                             <span class="input-group-text" id="course_subtitle">150</span>
@@ -46,7 +46,7 @@
                                 class="form-control"
                                 id="description"
                                 placeholder="Description of the course"
-                                v-model="course.course_description"
+                                v-model="landing.course_description"
                                 name="course_description">
                 </div>
                 <div class="form-row">
@@ -54,33 +54,33 @@
                         <label for="category">Basic info</label>
                     </div>
                     <div class="form-group col-md-4">
-                        <select id="selectSubject" v-model="course.default_subject"  class="form-control">
+                        <select id="selectSubject" v-model="landing.default_subject"  class="form-control">
                             <option :selected="true">
-                                        {{ course.default_subject }}
+                                        {{ landing.default_subject }}
                             </option>
-                            <option  v-for="selectedSubject in course.selected_subjects"
+                            <option  v-for="selectedSubject in landing.selected_subjects"
                                         :value="selectedSubject">
                                         {{ selectedSubject }}
                             </option>
                         </select>
                     </div>
                     <div class="form-group col-md-4">
-                        <select id="selectClass" v-model="course.default_class" class="form-control">
+                        <select id="selectClass" v-model="landing.default_class" class="form-control">
                             <option  :selected="true">
-                                        {{ course.default_class }}
+                                        {{ landing.default_class }}
                             </option>
-                            <option v-for="selectedClass in course.selected_classes"
+                            <option v-for="selectedClass in landing.selected_classes"
                                             :value="selectedClass">
                                             {{ selectedClass }}
                             </option>
                         </select>
                     </div>
                     <div class="form-group col-md-4">
-                        <select id="selectLevel" v-model="course.default_level" class="form-control">
+                        <select id="selectLevel" v-model="landing.default_level" class="form-control">
                             <option  :selected="true">
-                                        {{ course.default_level }}
+                                        {{ landing.default_level }}
                             </option>
-                            <option v-for="selectedLevel in course.selected_levels"
+                            <option v-for="selectedLevel in landing.selected_levels"
                                             :value="selectedLevel">
                                             {{ selectedLevel }}
                             </option>
@@ -114,10 +114,7 @@
 export default {
     name: "landing-page",
     props: {
-        course: { type: Object, required: true }
+        landing: { type: Object }
     },
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

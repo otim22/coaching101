@@ -122,12 +122,6 @@
 <script>
 export default {
     name: "course-structure",
-    props: {
-        course: {
-            type: Object,
-            required: true
-        }
-    }
 }
 </script>
 

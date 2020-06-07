@@ -17,10 +17,7 @@
 export default {
     name: "pricing",
     props: {
-        course: {
-            type: Object,
-            required: true
-        }
+        course: { type: Object }
     }
 }
 </script>

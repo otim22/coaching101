@@ -25,9 +25,11 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
+        var_dump(request('plan'));
         var_dump(request('students_learn'));
         var_dump(request('class_requirement'));
         var_dump(request('target_students'));
+        var_dump(request('curriculums'));
         var_dump(request('course_title'));
         var_dump(request('course_subtitle'));
         var_dump(request('course_description'));
