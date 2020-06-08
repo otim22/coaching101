@@ -39,8 +39,10 @@
 <script>
 export default {
     name: "course-message",
-    props: {
-        courseMessage: { type: Object }
+    computed: {
+        courseMessage() {
+            return this.$store.state.course.courseMessage
+        }
     }
 }
 </script>

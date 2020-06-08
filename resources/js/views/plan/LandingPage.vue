@@ -2,7 +2,7 @@
     <div class="container p-4">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-                <h2>Course course page</h2>
+                <h2>Course introduction page</h2>
                 <hr />
             </div>
         </div>
@@ -42,12 +42,13 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Course description</label>
-                    <input type="text"
+                    <textarea type="text"
                                 class="form-control"
                                 id="description"
+                                rows="3"
                                 placeholder="Description of the course"
                                 v-model="landing.course_description"
-                                name="course_description">
+                                name="course_description" />
                 </div>
                 <div class="form-row">
                     <div class="col-md-12">
@@ -113,8 +114,10 @@
 <script>
 export default {
     name: "landing-page",
-    props: {
-        landing: { type: Object }
-    },
+    computed: {
+        landing() {
+            return this.$store.state.course.landing
+        }
+    }
 }
 </script>

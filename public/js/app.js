@@ -2048,7 +2048,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       selected: [],
-      checkedItem: 'Curriculum',
+      checkedItem: 'Course introduction',
       creations: [{
         title: 'Plan your course',
         body: ['Course introduction', 'Course structure']
@@ -2059,37 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
         title: 'Your audience',
         body: ['Target your students', 'Course messages']
       }],
-      submit: false,
-      students_learn: [{
-        students_learn: null
-      }],
-      class_requirement: [{
-        class_requirement: null
-      }],
-      target_students: [{
-        target_student: null
-      }],
-      curriculums: [{
-        content_title: null,
-        main_content_files: null,
-        content_description: null,
-        extra_resource_files: null
-      }],
-      landing: {
-        course_title: null,
-        course_subtitle: null,
-        course_description: null,
-        default_subject: '-- Subject --',
-        selected_subjects: ['Mathematics', 'Science', 'English', 'Chemistry', 'Biology', 'Swahili', 'French', 'Agriculture', 'Food & nutrition', 'Social Studies', 'CRE', 'IRE', 'Geography', 'Entreprenuership', 'Commerce', 'Accounts', 'Economics', 'Divinity', 'History'],
-        default_class: '-- Class --',
-        selected_classes: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
-        default_level: '-- Level --',
-        selected_levels: ['Term one', 'Term two', 'Term three']
-      },
-      courseMessage: {
-        welcome_message: null,
-        congratulations_message: null
-      }
+      submit: false
     };
   },
   methods: {
@@ -2234,17 +2204,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "curriculum",
-  props: {
-    curriculums: {
-      type: Array
-    }
-  },
   data: function data() {
     return {
       blockRemoval: true,
       mainContentFiles: '',
       extraResourceFiles: ''
     };
+  },
+  computed: {
+    curriculums: function curriculums() {
+      return this.$store.state.course.curriculums;
+    }
   },
   methods: {
     uploadMainContent: function uploadMainContent() {
@@ -2685,11 +2655,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "landing-page",
-  props: {
-    landing: {
-      type: Object
+  computed: {
+    landing: function landing() {
+      return this.$store.state.course.landing;
     }
   }
 });
@@ -2745,9 +2716,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "course-message",
-  props: {
-    courseMessage: {
-      type: Object
+  computed: {
+    courseMessage: function courseMessage() {
+      return this.$store.state.course.courseMessage;
     }
   }
 });
@@ -2849,15 +2820,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "target-student",
-  props: {
-    students_learn: {
-      type: Array
+  computed: {
+    students_learn: function students_learn() {
+      return this.$store.state.course.students_learn;
     },
-    class_requirement: {
-      type: Array
+    class_requirement: function class_requirement() {
+      return this.$store.state.course.class_requirement;
     },
-    target_students: {
-      type: Array
+    target_students: function target_students() {
+      return this.$store.state.course.target_students;
     }
   },
   methods: {
@@ -39504,7 +39475,7 @@ var render = function() {
         { staticClass: "col-sm-12 col-md-9 col-lg-9 fast-transition mt-2" },
         [
           _vm.checkedItem === "Course introduction"
-            ? _c("LandingPage", { attrs: { landing: _vm.landing } })
+            ? _c("LandingPage")
             : _vm._e(),
           _vm._v(" "),
           _vm.checkedItem === "Course structure"
@@ -39513,25 +39484,13 @@ var render = function() {
           _vm._v(" "),
           _vm.checkedItem === "Film & edit" ? _c("Film") : _vm._e(),
           _vm._v(" "),
-          _vm.checkedItem === "Curriculum"
-            ? _c("Curriculum", { attrs: { curriculums: _vm.curriculums } })
-            : _vm._e(),
+          _vm.checkedItem === "Curriculum" ? _c("Curriculum") : _vm._e(),
           _vm._v(" "),
           _vm.checkedItem === "Target your students"
-            ? _c("TargetStudent", {
-                attrs: {
-                  students_learn: _vm.students_learn,
-                  class_requirement: _vm.class_requirement,
-                  target_students: _vm.target_students
-                }
-              })
+            ? _c("TargetStudent")
             : _vm._e(),
           _vm._v(" "),
-          _vm.checkedItem === "Course messages"
-            ? _c("CourseMessage", {
-                attrs: { courseMessage: _vm.courseMessage }
-              })
-            : _vm._e()
+          _vm.checkedItem === "Course messages" ? _c("CourseMessage") : _vm._e()
         ],
         1
       )
@@ -40915,7 +40874,7 @@ var render = function() {
             _vm._v("Course description")
           ]),
           _vm._v(" "),
-          _c("input", {
+          _c("textarea", {
             directives: [
               {
                 name: "model",
@@ -40928,6 +40887,7 @@ var render = function() {
             attrs: {
               type: "text",
               id: "description",
+              rows: "3",
               placeholder: "Description of the course",
               name: "course_description"
             },
@@ -41179,7 +41139,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 mb-3" }, [
-        _c("h2", [_vm._v("Course course page")]),
+        _c("h2", [_vm._v("Course introduction page")]),
         _vm._v(" "),
         _c("hr")
       ])
@@ -55312,12 +55272,11 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*!**********************************************!*\
   !*** ./resources/js/store/modules/course.js ***!
   \**********************************************/
-/*! exports provided: namespaced, state, mutations, actions, getters */
+/*! exports provided: state, mutations, actions, getters */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "namespaced", function() { return namespaced; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "state", function() { return state; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mutations", function() { return mutations; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return actions; });
@@ -55336,29 +55295,62 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
-var namespaced = true;
 var state = {
-  courses: [],
-  course: {},
-  coursesTotal: 0,
-  perPage: 10
-};
+  students_learn: [{
+    students_learn: null
+  }],
+  class_requirement: [{
+    class_requirement: null
+  }],
+  target_students: [{
+    target_student: null
+  }],
+  curriculums: [{
+    content_title: null,
+    main_content_files: null,
+    content_description: null,
+    extra_resource_files: null
+  }],
+  landing: {
+    course_title: null,
+    course_subtitle: null,
+    course_description: null,
+    default_subject: '-- Subject --',
+    selected_subjects: ['Mathematics', 'Science', 'English', 'Chemistry', 'Biology', 'Swahili', 'French', 'Agriculture', 'Food & nutrition', 'Social Studies', 'CRE', 'IRE', 'Geography', 'Entreprenuership', 'Commerce', 'Accounts', 'Economics', 'Divinity', 'History'],
+    default_class: '-- Class --',
+    selected_classes: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
+    default_level: '-- Level --',
+    selected_levels: ['Term one', 'Term two', 'Term three']
+  },
+  courseMessage: {
+    welcome_message: null,
+    congratulations_message: null
+  }
+}; // Mutations
+
 var mutations = {
-  GET_COURSE: function GET_COURSE(state, course) {
+  addCourse: function addCourse(state, course) {
+    state.courses = [].concat(_toConsumableArray(state.courses), [course]);
+  },
+  removeCourse: function removeCourse(state, course) {
+    state.courses = [].concat(_toConsumableArray(state.courses), [course]);
+  },
+  editCourse: function editCourse(state, course) {
+    state.courses = [].concat(_toConsumableArray(state.courses), [course]);
+  },
+  getCourse: function getCourse(state, course) {
     state.course = course;
   },
-  GET_COURSES_TOTAL: function GET_COURSES_TOTAL(state, coursesTotal) {
+  getCoursesTotal: function getCoursesTotal(state, coursesTotal) {
     state.coursesTotal = coursesTotal;
-  },
-  ADD_COURSE: function ADD_COURSE(state, course) {
-    state.courses = [].concat(_toConsumableArray(state.courses), [course]);
   }
-};
+}; // Actions
+
 var actions = {
   createCourse: function createCourse(_ref, course) {
     var commit = _ref.commit;
     return _services_courseService_js__WEBPACK_IMPORTED_MODULE_0__["default"].postCourse(course).then(function () {
-      commit('ADD_COURSE', course);
+      commit('addCourse', course);
       var notification = {
         type: 'success',
         message: 'Your course has been created!'
@@ -55376,47 +55368,9 @@ var actions = {
       });
       throw error;
     });
-  },
-  fetchCourses: function fetchCourses(_ref2, _ref3) {
-    var commit = _ref2.commit,
-        dispatch = _ref2.dispatch,
-        state = _ref2.state;
-    var page = _ref3.page;
-    return _services_courseService_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCourses(state.perPage, page).then(function (response) {
-      commit('GET_COURSES_TOTAL', parseInt(response.headers['x-total-count']));
-      commit('GET_COURSE', response.data);
-    })["catch"](function (error) {
-      var notification = {
-        type: 'error',
-        message: 'There was a problem fetching courses: ' + error.message
-      };
-      dispatch('notification/add', notification, {
-        root: true
-      });
-    });
-  },
-  fetchCourse: function fetchCourse(_ref4, id) {
-    var commit = _ref4.commit,
-        getters = _ref4.getters,
-        state = _ref4.state;
-
-    if (id == state.course.id) {
-      return state.course;
-    }
-
-    var course = getters.getCourseById(id);
-
-    if (course) {
-      commit('GET_COURSE', course);
-      return course;
-    } else {
-      return _services_courseService_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCourse(id).then(function (response) {
-        commit('GET_COURSE', response.data);
-        return response.data;
-      });
-    }
   }
-};
+}; // Getters
+
 var getters = {
   courses: function courses(state) {
     return state.courses;

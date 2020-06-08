@@ -1,31 +1,69 @@
 import courseService from '../../services/courseService.js'
 
-export const namespaced = true
-
 export const state = {
-    courses: [],
-    course: {},
-    coursesTotal: 0,
-    perPage: 10
-}
-
-export const mutations = {
-    GET_COURSE(state, course) {
-        state.course = course
+    students_learn: [
+        { students_learn: null }
+    ],
+    class_requirement: [
+        { class_requirement: null }
+    ],
+    target_students: [
+        { target_student: null }
+    ],
+    curriculums: [
+        {
+            content_title: null,
+            main_content_files: null,
+            content_description: null,
+            extra_resource_files: null
+        }
+    ],
+    landing: {
+        course_title: null,
+        course_subtitle: null,
+        course_description: null,
+        default_subject: '-- Subject --',
+        selected_subjects: [
+            'Mathematics', 'Science', 'English', 'Chemistry','Biology', 'Swahili', 'French', 'Agriculture',
+            'Food & nutrition', 'Social Studies', 'CRE', 'IRE','Geography','Entreprenuership', 'Commerce',
+            'Accounts', 'Economics', 'Divinity','History'
+        ],
+        default_class: '-- Class --',
+        selected_classes: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
+        default_level: '-- Level --',
+        selected_levels: ['Term one', 'Term two', 'Term three'],
     },
-    GET_COURSES_TOTAL(state, coursesTotal) {
-        state.coursesTotal = coursesTotal
-    },
-    ADD_COURSE(state, course) {
-        state.courses = [...state.courses, course]
+    courseMessage: {
+        welcome_message: null,
+        congratulations_message: null,
     }
 }
 
+// Mutations
+export const mutations = {
+    addCourse(state, course) {
+        state.courses = [...state.courses, course]
+    },
+    removeCourse(state, course) {
+        state.courses = [...state.courses, course]
+    },
+    editCourse(state, course) {
+        state.courses = [...state.courses, course]
+    },
+    getCourse(state, course) {
+        state.course = course
+    },
+    getCoursesTotal(state, coursesTotal) {
+        state.coursesTotal = coursesTotal
+    }
+}
+
+// Actions
 export const actions = {
-    createCourse({commit}, course) {
+    createCourse({ commit }, course) {
         return courseService.postCourse(course)
                 .then(() => {
-                    commit('ADD_COURSE', course)
+                    commit('addCourse', course)
                     const notification = {
                         type: 'success',
                         message: 'Your course has been created!'
@@ -40,38 +78,10 @@ export const actions = {
                     dispatch('notification/add', notification, { root: true })
                     throw error
                 })
-    },
-    fetchCourses({ commit, dispatch, state }, { page }) {
-        return courseService.getCourses(state.perPage, page)
-            .then(response => {
-                commit('GET_COURSES_TOTAL', parseInt(response.headers['x-total-count']))
-                commit('GET_COURSE', response.data)
-            })
-            .catch(error => {
-                const notification = {
-                    type: 'error',
-                    message: 'There was a problem fetching courses: ' + error.message
-                }
-                dispatch('notification/add', notification, { root: true })
-            })
-    },
-    fetchCourse({ commit, getters, state }, id) {
-        if (id == state.course.id) {
-            return state.course
-        }
-        let course = getters.getCourseById(id)
-        if (course) {
-            commit('GET_COURSE', course)
-            return course
-        } else {
-            return courseService.getCourse(id).then(response => {
-                commit('GET_COURSE', response.data)
-                return response.data
-          })
-        }
     }
 }
 
+// Getters
 export const getters = {
     courses: state => {
         return state.courses

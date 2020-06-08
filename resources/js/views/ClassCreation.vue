@@ -21,12 +21,12 @@
                 </form>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9 fast-transition mt-2">
-                <LandingPage v-if="checkedItem === 'Course introduction'" :landing="landing" />
+                <LandingPage v-if="checkedItem === 'Course introduction'" />
                 <CourseStructure  v-if="checkedItem === 'Course structure'" />
                 <Film v-if="checkedItem === 'Film & edit'" />
-                <Curriculum v-if="checkedItem === 'Curriculum'" :curriculums="curriculums"  />
-                <TargetStudent v-if="checkedItem === 'Target your students'" :students_learn="students_learn" :class_requirement="class_requirement" :target_students="target_students" />
-                <CourseMessage v-if="checkedItem === 'Course messages'" :courseMessage="courseMessage"  />
+                <Curriculum v-if="checkedItem === 'Curriculum'"  />
+                <TargetStudent v-if="checkedItem === 'Target your students'" />
+                <CourseMessage v-if="checkedItem === 'Course messages'" />
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@ export default {
     data() {
         return {
             selected: [],
-            checkedItem: 'Curriculum',
+            checkedItem: 'Course introduction',
             creations: [
                 {
                     title: 'Plan your course',
@@ -68,43 +68,7 @@ export default {
                     body: ['Target your students', 'Course messages'],
                 },
             ],
-            submit: false,
-            students_learn: [
-                { students_learn: null }
-            ],
-            class_requirement: [
-                { class_requirement: null }
-            ],
-            target_students: [
-                { target_student: null }
-            ],
-            curriculums: [
-                {
-                    content_title: null,
-                    main_content_files: null,
-                    content_description: null,
-                    extra_resource_files: null
-                }
-            ],
-            landing: {
-                course_title: null,
-                course_subtitle: null,
-                course_description: null,
-                default_subject: '-- Subject --',
-                selected_subjects: [
-                    'Mathematics', 'Science', 'English', 'Chemistry','Biology', 'Swahili', 'French', 'Agriculture',
-                    'Food & nutrition', 'Social Studies', 'CRE', 'IRE','Geography','Entreprenuership', 'Commerce',
-                    'Accounts', 'Economics', 'Divinity','History'
-                ],
-                default_class: '-- Class --',
-                selected_classes: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
-                default_level: '-- Level --',
-                selected_levels: ['Term one', 'Term two', 'Term three'],
-            },
-            courseMessage: {
-                welcome_message: null,
-                congratulations_message: null,
-            },
+            submit: false
         };
     },
     methods: {

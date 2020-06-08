@@ -105,14 +105,16 @@
 <script>
 export default {
     name: "curriculum",
-    props: {
-        curriculums: { type: Array }
-    },
     data() {
         return {
             blockRemoval: true,
             mainContentFiles: '',
             extraResourceFiles: ''
+        }
+    },
+    computed: {
+        curriculums() {
+            return this.$store.state.course.curriculums
         }
     },
     methods: {
