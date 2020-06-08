@@ -18,7 +18,7 @@
                                     aria-label="Your course title"
                                     aria-describedby="course_title"
                                     v-model="landing.course_title"
-                                    name="course_title">
+                                    name="landing.course_title">
                         <div class="input-group-append">
                                 <span class="input-group-text" id="course_title">50</span>
                           </div>
@@ -34,7 +34,7 @@
                                 aria-label="Write your subtitle"
                                 aria-describedby="course_subtitle"
                                 v-model="landing.course_subtitle"
-                                name="course_subtitle">
+                                name="landing.course_subtitle">
                     <div class="input-group-append">
                             <span class="input-group-text" id="course_subtitle">150</span>
                       </div>
@@ -48,7 +48,7 @@
                                 rows="3"
                                 placeholder="Description of the course"
                                 v-model="landing.course_description"
-                                name="course_description" />
+                                name="landing.course_description" />
                 </div>
                 <div class="form-row">
                     <div class="col-md-12">
@@ -114,9 +114,9 @@
 <script>
 export default {
     name: "landing-page",
-    computed: {
-        landing() {
-            return this.$store.state.course.landing
+    props: {
+        landing: {
+            type: Object
         }
     }
 }

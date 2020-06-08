@@ -85,15 +85,15 @@
 <script>
 export default {
     name: "target-student",
-    computed: {
-        students_learn() {
-            return this.$store.state.course.students_learn
+    props: {
+        students_learn: {
+            type: Array
         },
-        class_requirement() {
-            return this.$store.state.course.class_requirement
+        class_requirement: {
+            type: Array
         },
-        target_students() {
-            return this.$store.state.course.target_students
+        target_students: {
+            type: Array
         }
     },
     methods: {

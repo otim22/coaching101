@@ -105,6 +105,11 @@
 <script>
 export default {
     name: "curriculum",
+    props: {
+        curriculums: {
+            type: Array
+        }
+    },
     data() {
         return {
             blockRemoval: true,
@@ -112,10 +117,8 @@ export default {
             extraResourceFiles: ''
         }
     },
-    computed: {
-        curriculums() {
-            return this.$store.state.course.curriculums
-        }
+    mounted() {
+        console.log('Curriculum ' + this.curriculums)
     },
     methods: {
         uploadMainContent() {

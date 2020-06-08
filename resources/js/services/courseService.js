@@ -11,13 +11,10 @@ const apiClient = axios.create({
 })
 
 export default {
-    getCourses(perPage, page) {
-        return apiClient.get('/courses?_limit=' + perPage + '&_page=' + page )
+    postCourse(course) {
+        return apiClient.post('/courses', course)
     },
     getCourse(id) {
         return apiClient.get('/courses/' + id)
-    },
-    postCourse(course) {
-        return apiClient.post('/courses', course)
     }
 }

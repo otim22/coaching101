@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="welcomeMessage">Welcome Message</label>
                     <div class="input-group">
-                        <textarea class="form-control" id="welcomeMessage" v-model="courseMessage.welcome_message" name="welcomeMessage" rows="3"></textarea>
+                        <textarea class="form-control" id="welcomeMessage" v-model="course_message.welcome_message" name="welcomeMessage" rows="3"></textarea>
                         <div class="input-group-append">
                             <span class="input-group-text">1000</span>
                         </div>
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label for="congratulationsMessage">Congratulations Message</label>
                     <div class="input-group">
-                        <textarea class="form-control" id="congratulationsMessage" v-model="courseMessage.congratulations_message" name="congratulationsMessage" rows="3"></textarea>
+                        <textarea class="form-control" id="congratulationsMessage" v-model="course_message.congratulations_message" name="congratulationsMessage" rows="3"></textarea>
                         <div class="input-group-append">
                             <span class="input-group-text">1000</span>
                         </div>
@@ -39,9 +39,9 @@
 <script>
 export default {
     name: "course-message",
-    computed: {
-        courseMessage() {
-            return this.$store.state.course.courseMessage
+    props: {
+        course_message: {
+            type: Object
         }
     }
 }

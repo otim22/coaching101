@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 mt-5">
-                <form @keyup.enter="createCourse" enctype="multipart/form-data">
+                <form id="course-form" @keyup.enter="createCourse" enctype="multipart/form-data">
                     <div class="mb-4" v-for="(creation, index) in creations">
                         <h5 class="side-font mb-3">{{ creation.title }}</h5>
                         <div class="form-check hover-me mb-2" v-for="elem in creation.body" :key="elem.key">
@@ -21,12 +21,12 @@
                 </form>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9 fast-transition mt-2">
-                <LandingPage v-if="checkedItem === 'Course introduction'" />
+                <LandingPage v-if="checkedItem === 'Course introduction'" :landing="courseItem.landing" />
                 <CourseStructure  v-if="checkedItem === 'Course structure'" />
                 <Film v-if="checkedItem === 'Film & edit'" />
-                <Curriculum v-if="checkedItem === 'Curriculum'"  />
-                <TargetStudent v-if="checkedItem === 'Target your students'" />
-                <CourseMessage v-if="checkedItem === 'Course messages'" />
+                <Curriculum v-if="checkedItem === 'Curriculum'" :curriculums="courseItem.curriculums" />
+                <TargetStudent v-if="checkedItem === 'Target your students'" :students_learn="courseItem.students_learn" :class_requirement="courseItem.class_requirement" :target_students="courseItem.target_students" />
+                <CourseMessage v-if="checkedItem === 'Course messages'" :course_message="courseItem.course_message" />
             </div>
         </div>
     </div>
@@ -71,29 +71,31 @@ export default {
             submit: false
         };
     },
+    computed: {
+        courseItem: {
+            get() {
+                return this.$store.state.course.courseItem
+            },
+            set(value) {
+                this.courseItem = value
+            }
+        }
+    },
     methods: {
         createCourse() {
             this.submit = true;
-            this.$store.dispatch('course/createCourse', this.course)
-                                .then(() => {
-                                    this.submit = false;
-                                })
-                                .catch(error => {
-                                    this.submit = false
-                                })
-            this.course = null
+            this.$store.dispatch('course/createCourse', this.courseItem)
+                .then(() => {
+                    this.submit = false;
+                })
+                .catch(error => {
+                    this.submit = false
+                })
         },
         pickSelected($event) {
             this.checkedItem = $event.target.defaultValue
         }
     }
-    // computed: {
-    //     pickSelected: function() {
-    //         for (let i = 0; i < this.selected.length; i++) {
-    //           this.checkedItem = this.selected[i];
-    //         }
-    //     }
-    // }
 }
 </script>
 

@@ -1,41 +1,46 @@
 import courseService from '../../services/courseService.js'
 
+export const namespaced = true
+
 export const state = {
-    students_learn: [
-        { students_learn: null }
-    ],
-    class_requirement: [
-        { class_requirement: null }
-    ],
-    target_students: [
-        { target_student: null }
-    ],
-    curriculums: [
-        {
-            content_title: null,
-            main_content_files: null,
-            content_description: null,
-            extra_resource_files: null
-        }
-    ],
-    landing: {
-        course_title: null,
-        course_subtitle: null,
-        course_description: null,
-        default_subject: '-- Subject --',
-        selected_subjects: [
-            'Mathematics', 'Science', 'English', 'Chemistry','Biology', 'Swahili', 'French', 'Agriculture',
-            'Food & nutrition', 'Social Studies', 'CRE', 'IRE','Geography','Entreprenuership', 'Commerce',
-            'Accounts', 'Economics', 'Divinity','History'
+    courses: [],
+    courseItem: {
+        landing: {
+            course_title: null,
+            course_subtitle: null,
+            course_description: null,
+            default_subject: '-- Subject --',
+            selected_subjects: [
+                'Mathematics', 'Science', 'English', 'Chemistry','Biology', 'Swahili', 'French', 'Agriculture',
+                'Food & nutrition', 'Social Studies', 'CRE', 'IRE','Geography','Entreprenuership', 'Commerce',
+                'Accounts', 'Economics', 'Divinity','History'
+            ],
+            default_class: '-- Class --',
+            selected_classes: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
+            default_level: '-- Level --',
+            selected_levels: ['Term one', 'Term two', 'Term three'],
+        },
+        curriculums: [
+            {
+                content_title: null,
+                main_content_files: null,
+                content_description: null,
+                extra_resource_files: null
+            }
         ],
-        default_class: '-- Class --',
-        selected_classes: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
-        default_level: '-- Level --',
-        selected_levels: ['Term one', 'Term two', 'Term three'],
-    },
-    courseMessage: {
-        welcome_message: null,
-        congratulations_message: null,
+        course_message: {
+            welcome_message: null,
+            congratulations_message: null,
+        },
+        students_learn: [
+            { students_learn: null }
+        ],
+        class_requirement: [
+            { class_requirement: null }
+        ],
+        target_students: [
+            { target_student: null }
+        ]
     }
 }
 
@@ -45,25 +50,19 @@ export const mutations = {
         state.courses = [...state.courses, course]
     },
     removeCourse(state, course) {
-        state.courses = [...state.courses, course]
-    },
-    editCourse(state, course) {
-        state.courses = [...state.courses, course]
+        state.courses.splice(state.courses.indexOf(course), 1)
     },
     getCourse(state, course) {
         state.course = course
-    },
-    getCoursesTotal(state, coursesTotal) {
-        state.coursesTotal = coursesTotal
     }
 }
 
 // Actions
 export const actions = {
-    createCourse({ commit }, course) {
+    createCourse({ commit, dispatch }, course) {
         return courseService.postCourse(course)
-                .then(() => {
-                    commit('addCourse', course)
+                .then((res) => {
+                    commit('addCourse', res.data)
                     const notification = {
                         type: 'success',
                         message: 'Your course has been created!'
@@ -83,9 +82,7 @@ export const actions = {
 
 // Getters
 export const getters = {
-    courses: state => {
-        return state.courses
-    },
+    courses: state => state.courses,
     getCourseById: state => id => {
         return state.courses.find(course => course.id === id)
     }

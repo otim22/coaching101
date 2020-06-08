@@ -2062,29 +2062,31 @@ __webpack_require__.r(__webpack_exports__);
       submit: false
     };
   },
+  computed: {
+    courseItem: {
+      get: function get() {
+        return this.$store.state.course.courseItem;
+      },
+      set: function set(value) {
+        this.courseItem = value;
+      }
+    }
+  },
   methods: {
     createCourse: function createCourse() {
       var _this = this;
 
       this.submit = true;
-      this.$store.dispatch('course/createCourse', this.course).then(function () {
+      this.$store.dispatch('course/createCourse', this.courseItem).then(function () {
         _this.submit = false;
       })["catch"](function (error) {
         _this.submit = false;
       });
-      this.course = null;
     },
     pickSelected: function pickSelected($event) {
       this.checkedItem = $event.target.defaultValue;
     }
-  } // computed: {
-  //     pickSelected: function() {
-  //         for (let i = 0; i < this.selected.length; i++) {
-  //           this.checkedItem = this.selected[i];
-  //         }
-  //     }
-  // }
-
+  }
 });
 
 /***/ }),
@@ -2204,6 +2206,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "curriculum",
+  props: {
+    curriculums: {
+      type: Array
+    }
+  },
   data: function data() {
     return {
       blockRemoval: true,
@@ -2211,10 +2218,8 @@ __webpack_require__.r(__webpack_exports__);
       extraResourceFiles: ''
     };
   },
-  computed: {
-    curriculums: function curriculums() {
-      return this.$store.state.course.curriculums;
-    }
+  mounted: function mounted() {
+    console.log('Curriculum ' + this.curriculums);
   },
   methods: {
     uploadMainContent: function uploadMainContent() {
@@ -2658,9 +2663,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "landing-page",
-  computed: {
-    landing: function landing() {
-      return this.$store.state.course.landing;
+  props: {
+    landing: {
+      type: Object
     }
   }
 });
@@ -2716,9 +2721,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "course-message",
-  computed: {
-    courseMessage: function courseMessage() {
-      return this.$store.state.course.courseMessage;
+  props: {
+    course_message: {
+      type: Object
     }
   }
 });
@@ -2820,15 +2825,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "target-student",
-  computed: {
-    students_learn: function students_learn() {
-      return this.$store.state.course.students_learn;
+  props: {
+    students_learn: {
+      type: Array
     },
-    class_requirement: function class_requirement() {
-      return this.$store.state.course.class_requirement;
+    class_requirement: {
+      type: Array
     },
-    target_students: function target_students() {
-      return this.$store.state.course.target_students;
+    target_students: {
+      type: Array
     }
   },
   methods: {
@@ -39353,7 +39358,7 @@ var render = function() {
         _c(
           "form",
           {
-            attrs: { enctype: "multipart/form-data" },
+            attrs: { id: "course-form", enctype: "multipart/form-data" },
             on: {
               keyup: function($event) {
                 if (
@@ -39475,7 +39480,7 @@ var render = function() {
         { staticClass: "col-sm-12 col-md-9 col-lg-9 fast-transition mt-2" },
         [
           _vm.checkedItem === "Course introduction"
-            ? _c("LandingPage")
+            ? _c("LandingPage", { attrs: { landing: _vm.courseItem.landing } })
             : _vm._e(),
           _vm._v(" "),
           _vm.checkedItem === "Course structure"
@@ -39484,13 +39489,27 @@ var render = function() {
           _vm._v(" "),
           _vm.checkedItem === "Film & edit" ? _c("Film") : _vm._e(),
           _vm._v(" "),
-          _vm.checkedItem === "Curriculum" ? _c("Curriculum") : _vm._e(),
-          _vm._v(" "),
-          _vm.checkedItem === "Target your students"
-            ? _c("TargetStudent")
+          _vm.checkedItem === "Curriculum"
+            ? _c("Curriculum", {
+                attrs: { curriculums: _vm.courseItem.curriculums }
+              })
             : _vm._e(),
           _vm._v(" "),
-          _vm.checkedItem === "Course messages" ? _c("CourseMessage") : _vm._e()
+          _vm.checkedItem === "Target your students"
+            ? _c("TargetStudent", {
+                attrs: {
+                  students_learn: _vm.courseItem.students_learn,
+                  class_requirement: _vm.courseItem.class_requirement,
+                  target_students: _vm.courseItem.target_students
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.checkedItem === "Course messages"
+            ? _c("CourseMessage", {
+                attrs: { course_message: _vm.courseItem.course_message }
+              })
+            : _vm._e()
         ],
         1
       )
@@ -40813,7 +40832,7 @@ var render = function() {
                 placeholder: "Your course title",
                 "aria-label": "Your course title",
                 "aria-describedby": "course_title",
-                name: "course_title"
+                name: "landing.course_title"
               },
               domProps: { value: _vm.landing.course_title },
               on: {
@@ -40852,7 +40871,7 @@ var render = function() {
                 placeholder: "Write your subtitle",
                 "aria-label": "Write your subtitle",
                 "aria-describedby": "course_subtitle",
-                name: "course_subtitle"
+                name: "landing.course_subtitle"
               },
               domProps: { value: _vm.landing.course_subtitle },
               on: {
@@ -40889,7 +40908,7 @@ var render = function() {
               id: "description",
               rows: "3",
               placeholder: "Description of the course",
-              name: "course_description"
+              name: "landing.course_description"
             },
             domProps: { value: _vm.landing.course_description },
             on: {
@@ -41233,8 +41252,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.courseMessage.welcome_message,
-                  expression: "courseMessage.welcome_message"
+                  value: _vm.course_message.welcome_message,
+                  expression: "course_message.welcome_message"
                 }
               ],
               staticClass: "form-control",
@@ -41243,14 +41262,14 @@ var render = function() {
                 name: "welcomeMessage",
                 rows: "3"
               },
-              domProps: { value: _vm.courseMessage.welcome_message },
+              domProps: { value: _vm.course_message.welcome_message },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
                   _vm.$set(
-                    _vm.courseMessage,
+                    _vm.course_message,
                     "welcome_message",
                     $event.target.value
                   )
@@ -41273,8 +41292,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.courseMessage.congratulations_message,
-                  expression: "courseMessage.congratulations_message"
+                  value: _vm.course_message.congratulations_message,
+                  expression: "course_message.congratulations_message"
                 }
               ],
               staticClass: "form-control",
@@ -41283,14 +41302,14 @@ var render = function() {
                 name: "congratulationsMessage",
                 rows: "3"
               },
-              domProps: { value: _vm.courseMessage.congratulations_message },
+              domProps: { value: _vm.course_message.congratulations_message },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
                   _vm.$set(
-                    _vm.courseMessage,
+                    _vm.course_message,
                     "congratulations_message",
                     $event.target.value
                   )
@@ -55227,14 +55246,11 @@ var apiClient = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   timeout: 10000
 });
 /* harmony default export */ __webpack_exports__["default"] = ({
-  getCourses: function getCourses(perPage, page) {
-    return apiClient.get('/courses?_limit=' + perPage + '&_page=' + page);
+  postCourse: function postCourse(course) {
+    return apiClient.post('/courses', course);
   },
   getCourse: function getCourse(id) {
     return apiClient.get('/courses/' + id);
-  },
-  postCourse: function postCourse(course) {
-    return apiClient.post('/courses', course);
   }
 });
 
@@ -55272,11 +55288,12 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*!**********************************************!*\
   !*** ./resources/js/store/modules/course.js ***!
   \**********************************************/
-/*! exports provided: state, mutations, actions, getters */
+/*! exports provided: namespaced, state, mutations, actions, getters */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "namespaced", function() { return namespaced; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "state", function() { return state; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mutations", function() { return mutations; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return actions; });
@@ -55295,36 +55312,40 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
+var namespaced = true;
 var state = {
-  students_learn: [{
-    students_learn: null
-  }],
-  class_requirement: [{
-    class_requirement: null
-  }],
-  target_students: [{
-    target_student: null
-  }],
-  curriculums: [{
-    content_title: null,
-    main_content_files: null,
-    content_description: null,
-    extra_resource_files: null
-  }],
-  landing: {
-    course_title: null,
-    course_subtitle: null,
-    course_description: null,
-    default_subject: '-- Subject --',
-    selected_subjects: ['Mathematics', 'Science', 'English', 'Chemistry', 'Biology', 'Swahili', 'French', 'Agriculture', 'Food & nutrition', 'Social Studies', 'CRE', 'IRE', 'Geography', 'Entreprenuership', 'Commerce', 'Accounts', 'Economics', 'Divinity', 'History'],
-    default_class: '-- Class --',
-    selected_classes: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
-    default_level: '-- Level --',
-    selected_levels: ['Term one', 'Term two', 'Term three']
-  },
-  courseMessage: {
-    welcome_message: null,
-    congratulations_message: null
+  courses: [],
+  courseItem: {
+    landing: {
+      course_title: null,
+      course_subtitle: null,
+      course_description: null,
+      default_subject: '-- Subject --',
+      selected_subjects: ['Mathematics', 'Science', 'English', 'Chemistry', 'Biology', 'Swahili', 'French', 'Agriculture', 'Food & nutrition', 'Social Studies', 'CRE', 'IRE', 'Geography', 'Entreprenuership', 'Commerce', 'Accounts', 'Economics', 'Divinity', 'History'],
+      default_class: '-- Class --',
+      selected_classes: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
+      default_level: '-- Level --',
+      selected_levels: ['Term one', 'Term two', 'Term three']
+    },
+    curriculums: [{
+      content_title: null,
+      main_content_files: null,
+      content_description: null,
+      extra_resource_files: null
+    }],
+    course_message: {
+      welcome_message: null,
+      congratulations_message: null
+    },
+    students_learn: [{
+      students_learn: null
+    }],
+    class_requirement: [{
+      class_requirement: null
+    }],
+    target_students: [{
+      target_student: null
+    }]
   }
 }; // Mutations
 
@@ -55333,24 +55354,19 @@ var mutations = {
     state.courses = [].concat(_toConsumableArray(state.courses), [course]);
   },
   removeCourse: function removeCourse(state, course) {
-    state.courses = [].concat(_toConsumableArray(state.courses), [course]);
-  },
-  editCourse: function editCourse(state, course) {
-    state.courses = [].concat(_toConsumableArray(state.courses), [course]);
+    state.courses.splice(state.courses.indexOf(course), 1);
   },
   getCourse: function getCourse(state, course) {
     state.course = course;
-  },
-  getCoursesTotal: function getCoursesTotal(state, coursesTotal) {
-    state.coursesTotal = coursesTotal;
   }
 }; // Actions
 
 var actions = {
   createCourse: function createCourse(_ref, course) {
-    var commit = _ref.commit;
-    return _services_courseService_js__WEBPACK_IMPORTED_MODULE_0__["default"].postCourse(course).then(function () {
-      commit('addCourse', course);
+    var commit = _ref.commit,
+        dispatch = _ref.dispatch;
+    return _services_courseService_js__WEBPACK_IMPORTED_MODULE_0__["default"].postCourse(course).then(function (res) {
+      commit('addCourse', res.data);
       var notification = {
         type: 'success',
         message: 'Your course has been created!'

@@ -25,18 +25,22 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        var_dump(request('plan'));
+        dd($request);
+        // var_dump(request('course_title'));
+        // var_dump(request('course_subtitle'));
+        // var_dump(request('course_description'));
+        // var_dump(request('default_subject'));
+        // var_dump(request('default_class'));
+        // var_dump(request('default_level'));
+
+        // var_dump(request('content_title'));
+        // var_dump(request('content_description'));
+
         var_dump(request('students_learn'));
-        var_dump(request('class_requirement'));
-        var_dump(request('target_students'));
-        var_dump(request('curriculums'));
-        var_dump(request('course_title'));
-        var_dump(request('course_subtitle'));
-        var_dump(request('course_description'));
-        var_dump(request('default_subject'));
-        var_dump(request('default_class'));
-        var_dump(request('default_level'));
-        var_dump(request('welcome_message'));
-        var_dump(request('congratulations_message'));
+        // var_dump(request('class_requirement'));
+        // var_dump(request('target_students'));
+        
+        // var_dump(request('welcome_message'));
+        // var_dump(request('congratulations_message'));
     }
 }
