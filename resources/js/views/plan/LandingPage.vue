@@ -25,7 +25,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                    <label for="subtitle">Subtitle</label>
+                    <label for="subtitle">Course subtitle</label>
                     <div class="input-group">
                     <input type="text"
                                 class="form-control"
@@ -41,7 +41,7 @@
                 </div>
                 </div>
                 <div class="form-group">
-                    <label for="description">Description</label>
+                    <label for="description">Course description</label>
                     <input type="text"
                                 class="form-control"
                                 id="description"

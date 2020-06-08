@@ -21,11 +21,11 @@
                 </form>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9 fast-transition mt-2">
-                <TargetStudent v-if="checkedItem === 'Target your students'" :students_learn="students_learn" :class_requirement="class_requirement" :target_students="target_students" />
+                <LandingPage v-if="checkedItem === 'Course introduction'" :landing="landing" />
                 <CourseStructure  v-if="checkedItem === 'Course structure'" />
                 <Film v-if="checkedItem === 'Film & edit'" />
                 <Curriculum v-if="checkedItem === 'Curriculum'" :curriculums="curriculums"  />
-                <LandingPage v-if="checkedItem === 'Course landing page'" :landing="landing" />
+                <TargetStudent v-if="checkedItem === 'Target your students'" :students_learn="students_learn" :class_requirement="class_requirement" :target_students="target_students" />
                 <CourseMessage v-if="checkedItem === 'Course messages'" :courseMessage="courseMessage"  />
             </div>
         </div>
@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import TargetStudent from './plan/TargetStudent'
+import LandingPage from './plan/LandingPage'
 import CourseStructure from './plan/CourseStructure'
 import Film from './create/Film'
 import Curriculum from './create/Curriculum'
-import LandingPage from './publish/LandingPage'
+import TargetStudent from './publish/TargetStudent'
 import CourseMessage from './publish/CourseMessage'
 
 export default {
@@ -57,15 +57,15 @@ export default {
             creations: [
                 {
                     title: 'Plan your course',
-                    body: ['Target your students', 'Course structure'],
+                    body: ['Course introduction', 'Course structure'],
                 },
                 {
                     title: 'Create your content',
                     body: ['Film & edit', 'Curriculum'],
                 },
                 {
-                    title: 'Publish your course',
-                    body: ['Course landing page', 'Course messages'],
+                    title: 'Your audience',
+                    body: ['Target your students', 'Course messages'],
                 },
             ],
             submit: false,
@@ -76,7 +76,7 @@ export default {
                 { class_requirement: null }
             ],
             target_students: [
-                { target_students: null }
+                { target_student: null }
             ],
             curriculums: [
                 {

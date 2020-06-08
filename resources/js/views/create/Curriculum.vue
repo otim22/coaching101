@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="content_title">Title</label>
+                        <label for="content_title">Content title</label>
                         <input type="text"
                                     class="form-control"
                                     id="content_title"
@@ -42,8 +42,8 @@
                                     name="content_title">
                     </div>
                     <div class="form-group">
-                        <label for="title">Content</label>
-                        <div class="input-group mb-3">
+                        <label for="title">Content files</label>
+                        <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="contentFilesId">Upload</span>
                             </div>
@@ -59,17 +59,16 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="content_description">Description</label>
-                        <input type="text"
+                        <label for="content_description">Content description</label>
+                        <textarea type="text"
+                                    rows="3"
                                     class="form-control"
                                     id="content_description"
                                     placeholder="Include a description. What students will be able to do after completing the class."
-                                    aria-label="Add a description"
-                                    aria-describedby="content_description"
-                                    v-model="curriculum.content_description">
+                                    v-model="curriculum.content_description"/>
                     </div>
                     <div class="form-group">
-                        <label for="resource">Resource</label>
+                        <label for="resource">Resource attachments</label>
                         <div class="input-group mb-3">
                             <div class="custom-file">
                                 <input type="file"

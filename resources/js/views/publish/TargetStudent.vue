@@ -62,7 +62,7 @@
                                 ref="target_students"
                                 class="form-control form-control-sm mb-2"
                                 :id="elem.key"
-                                v-model="elem.target_students"
+                                v-model="elem.target_student"
                                 name="target_students">
                 </div>
             </div>
@@ -103,7 +103,7 @@ export default {
         },
         addTargetStudentsInput () {
             this.target_students.push({
-                target_students: null
+                target_student: null
             })
         }
     }
