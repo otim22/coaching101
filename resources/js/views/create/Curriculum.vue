@@ -45,16 +45,18 @@
                         <label for="title">Content files</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="contentFilesId">Upload</span>
+                                <span class="input-group-text">Upload</span>
                             </div>
                             <div class="custom-file">
                                 <input type="file"
                                             class="custom-file-input"
-                                            id="contentFiles"
-                                            ref="mainContentFiles"
-                                            aria-describedby="contentFilesId"
-                                            @change="uploadMainContent()">
-                                <label class="custom-file-label" for="contentFiles">Choose file</label>
+                                            :ref="'main_content_files ' + index"
+                                            aria-describedby="main_content_files"
+                                            @change="uploadMainContent(index)"
+                                            tabindex="-1">
+                                <label class="custom-file-label" for="contentFiles">
+                                    {{ curriculum.main_content_files.length > 0 ? curriculum.main_content_files[index] : 'No file added'  }}
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -73,11 +75,12 @@
                             <div class="custom-file">
                                 <input type="file"
                                             class="custom-file-input"
-                                            id="select-file"
-                                            ref="extraResourceFiles"
-                                            aria-describedby="select-file"
-                                            @change="uploadExtraResource()">
-                                <label class="custom-file-label" for="select-file">No file selected</label>
+                                            aria-describedby="extra_resource_files"
+                                            @change="uploadExtraResource(index)"
+                                            tabindex="-1">
+                                <label class="custom-file-label" for="select-file">
+                                    {{ curriculum.extra_resource_files.length > 0 ? curriculum.extra_resource_files[index] : 'No file added'  }}
+                                </label>
                             </div>
                             <small id="emailHelp" class="form-text text-muted">
                                 <strong>Note:</strong>  A resource is for any type of document that can be used to help students in the class. This file is going to be more like an extra class. Make sure everything the file size is less than 500 MB.
@@ -113,32 +116,22 @@ export default {
     data() {
         return {
             blockRemoval: true,
-            mainContentFiles: '',
-            extraResourceFiles: ''
+            blockaddition: false,
         }
     },
-    mounted() {
-        console.log('Curriculum ' + this.curriculums)
-    },
     methods: {
-        uploadMainContent() {
-            this.mainContentFiles = this.$refs.mainContentFiles.files[0];
+        uploadMainContent(index) {
+            return this.$set(this.curriculums[0].main_content_files, index, event.target.files[0].name);
         },
-        uploadExtraResource() {
-            this.extraResourceFiles = this.$refs.extraResourceFiles.files[0];
+        uploadExtraResource(index) {
+            return this.$set(this.curriculums[0].extra_resource_files, index, event.target.files[0].name);
         },
         addCurriculum () {
-            let checkEmptyCurriculums = this.curriculums.filter(curriculum => curriculum.number === null)
-
-            if (checkEmptyCurriculums.length >= 1 && this.curriculums.length > 0) {
-                return
-            }
-
             this.curriculums.push({
                 content_title: null,
-                main_content_files: null,
+                main_content_files: [],
                 content_description: null,
-                extra_resource_files: null
+                extra_resource_files: []
             })
         },
         removeCurriculum(index) {
@@ -149,10 +142,12 @@ export default {
     },
     watch: {
         'curriculums': {
-            handler() {
-                this.blockRemoval = this.curriculums.length <= 1
+            handler(val, oldVal) {
+                if (val !== oldVal) this.blockaddition = true
+                console.log(val, oldVal);
             },
-            deep: true
+            immediate: true,
+            deep: true,
         }
     }
 }

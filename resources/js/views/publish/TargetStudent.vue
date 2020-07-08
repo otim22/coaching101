@@ -58,7 +58,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="form-group">
                     <label for="target_students">Who are your target students?</label>
-                    <input v-for="elem in target_students" :key="elem.key" type="email"
+                    <input v-for="elem in target_student" :key="elem.key" type="email"
                                 ref="target_students"
                                 class="form-control form-control-sm mb-2"
                                 :id="elem.key"
@@ -92,7 +92,7 @@ export default {
         class_requirement: {
             type: Array
         },
-        target_students: {
+        target_student: {
             type: Array
         }
     },
@@ -108,7 +108,7 @@ export default {
             })
         },
         addTargetStudentsInput () {
-            this.target_students.push({
+            this.target_student.push({
                 target_student: null
             })
         }

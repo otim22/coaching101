@@ -17,8 +17,8 @@
                                     placeholder="Your course title"
                                     aria-label="Your course title"
                                     aria-describedby="course_title"
-                                    v-model="landing.course_title"
-                                    name="landing.course_title">
+                                    v-model="introduction.course_title"
+                                    name="introduction.course_title">
                         <div class="input-group-append">
                                 <span class="input-group-text" id="course_title">50</span>
                           </div>
@@ -33,8 +33,8 @@
                                 placeholder="Write your subtitle"
                                 aria-label="Write your subtitle"
                                 aria-describedby="course_subtitle"
-                                v-model="landing.course_subtitle"
-                                name="landing.course_subtitle">
+                                v-model="introduction.course_subtitle"
+                                name="introduction.course_subtitle">
                     <div class="input-group-append">
                             <span class="input-group-text" id="course_subtitle">150</span>
                       </div>
@@ -47,43 +47,43 @@
                                 id="description"
                                 rows="3"
                                 placeholder="Description of the course"
-                                v-model="landing.course_description"
-                                name="landing.course_description" />
+                                v-model="introduction.course_description"
+                                name="introduction.course_description" />
                 </div>
                 <div class="form-row">
                     <div class="col-md-12">
                         <label for="category">Basic info</label>
                     </div>
                     <div class="form-group col-md-4">
-                        <select id="selectSubject" v-model="landing.default_subject"  class="form-control">
+                        <select id="selectSubject" v-model="introduction.default_subject"  class="form-control">
                             <option :selected="true">
-                                        {{ landing.default_subject }}
+                                        {{ introduction.default_subject }}
                             </option>
-                            <option  v-for="selectedSubject in landing.selected_subjects"
-                                        :value="selectedSubject">
-                                        {{ selectedSubject }}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <select id="selectClass" v-model="landing.default_class" class="form-control">
-                            <option  :selected="true">
-                                        {{ landing.default_class }}
-                            </option>
-                            <option v-for="selectedClass in landing.selected_classes"
-                                            :value="selectedClass">
-                                            {{ selectedClass }}
+                            <option  v-for="subject_option in introduction.subject_options"
+                                        :value="subject_option">
+                                        {{ subject_option }}
                             </option>
                         </select>
                     </div>
                     <div class="form-group col-md-4">
-                        <select id="selectLevel" v-model="landing.default_level" class="form-control">
+                        <select id="selectClass" v-model="introduction.default_class" class="form-control">
                             <option  :selected="true">
-                                        {{ landing.default_level }}
+                                        {{ introduction.default_class }}
                             </option>
-                            <option v-for="selectedLevel in landing.selected_levels"
-                                            :value="selectedLevel">
-                                            {{ selectedLevel }}
+                            <option v-for="class_option in introduction.class_options"
+                                            :value="class_option">
+                                            {{ class_option }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <select id="selectLevel" v-model="introduction.default_level" class="form-control">
+                            <option  :selected="true">
+                                        {{ introduction.default_level }}
+                            </option>
+                            <option v-for="level_option in introduction.level_options"
+                                            :value="level_option">
+                                            {{ level_option }}
                             </option>
                         </select>
                     </div>
@@ -113,9 +113,9 @@
 
 <script>
 export default {
-    name: "landing-page",
+    name: "course-introduction",
     props: {
-        landing: {
+        introduction: {
             type: Object
         }
     }

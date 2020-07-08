@@ -21,11 +21,11 @@
                 </form>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9 fast-transition mt-2">
-                <LandingPage v-if="checkedItem === 'Course introduction'" :landing="courseItem.landing" />
+                <CourseIntroduction v-if="checkedItem === 'Course introduction'" :introduction="courseItem.introduction" />
                 <CourseStructure  v-if="checkedItem === 'Course structure'" />
                 <Film v-if="checkedItem === 'Film & edit'" />
                 <Curriculum v-if="checkedItem === 'Curriculum'" :curriculums="courseItem.curriculums" />
-                <TargetStudent v-if="checkedItem === 'Target your students'" :students_learn="courseItem.students_learn" :class_requirement="courseItem.class_requirement" :target_students="courseItem.target_students" />
+                <TargetStudent v-if="checkedItem === 'Target your students'" :students_learn="courseItem.students_learn" :class_requirement="courseItem.class_requirement" :target_student="courseItem.target_student" />
                 <CourseMessage v-if="checkedItem === 'Course messages'" :course_message="courseItem.course_message" />
             </div>
         </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import LandingPage from './plan/LandingPage'
+import CourseIntroduction from './plan/CourseIntroduction'
 import CourseStructure from './plan/CourseStructure'
 import Film from './create/Film'
 import Curriculum from './create/Curriculum'
@@ -47,7 +47,7 @@ export default {
         CourseStructure,
         Film,
         Curriculum,
-        LandingPage,
+        CourseIntroduction,
         CourseMessage
     },
     data() {

@@ -18,17 +18,20 @@ class CreateCoursesTable extends Migration
             $table->string('course_title');
             $table->string('course_subtitle');
             $table->string('course_description');
-            $table->enum('subject', [
-                'Mathematics', 'Science', 'English', 'Chemistry','Biology', 'Swahili', 'French', 'Agriculture',
-                'Food & nutrition', 'Social Studies', 'CRE', 'IRE','Geography','Entreprenuership', 'Commerce',
-                'Accounts', 'Economics', 'Divinity','History'
-            ]);
-            $table->enum('class', ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six']);
-            $table->enum('level', ['Term one', 'Term two', 'Term three']);
+            $table->string('default_subject');
+            // $table->enum('subject', [
+            //     'Mathematics', 'Science', 'English', 'Chemistry','Biology', 'Swahili', 'French', 'Agriculture',
+            //     'Food & nutrition', 'Social Studies', 'CRE', 'IRE','Geography','Entreprenuership', 'Commerce',
+            //     'Accounts', 'Economics', 'Divinity','History'
+            // ]);
+            $table->string('default_class');
+            // $table->enum('class', ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six']);
+            $table->string('default_level');
+            // $table->enum('level', ['Term one', 'Term two', 'Term three']);
             $table->string('content_title');
-            $table->string('content_file');
+            $table->string('main_content_files')->nullable();
             $table->string('content_description');
-            $table->string('resource_attachment');
+            $table->string('extra_resource_files')->nullable();
             $table->string('students_learn');
             $table->string('class_requirement');
             $table->string('target_student');

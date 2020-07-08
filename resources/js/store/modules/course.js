@@ -5,42 +5,42 @@ export const namespaced = true
 export const state = {
     courses: [],
     courseItem: {
-        landing: {
+        introduction: {
             course_title: null,
             course_subtitle: null,
             course_description: null,
             default_subject: '-- Subject --',
-            selected_subjects: [
+            subject_options: [
                 'Mathematics', 'Science', 'English', 'Chemistry','Biology', 'Swahili', 'French', 'Agriculture',
                 'Food & nutrition', 'Social Studies', 'CRE', 'IRE','Geography','Entreprenuership', 'Commerce',
                 'Accounts', 'Economics', 'Divinity','History'
             ],
             default_class: '-- Class --',
-            selected_classes: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
+            class_options: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
             default_level: '-- Level --',
-            selected_levels: ['Term one', 'Term two', 'Term three'],
+            level_options: ['Term one', 'Term two', 'Term three'],
         },
         curriculums: [
             {
                 content_title: null,
-                main_content_files: null,
+                main_content_files: [],
                 content_description: null,
-                extra_resource_files: null
+                extra_resource_files: []
             }
         ],
-        course_message: {
-            welcome_message: null,
-            congratulations_message: null,
-        },
         students_learn: [
             { students_learn: null }
         ],
         class_requirement: [
             { class_requirement: null }
         ],
-        target_students: [
+        target_student: [
             { target_student: null }
-        ]
+        ],
+        course_message: {
+            welcome_message: null,
+            congratulations_message: null,
+        }
     }
 }
 
