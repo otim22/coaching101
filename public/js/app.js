@@ -2216,16 +2216,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      blockRemoval: true,
-      blockaddition: false
+      blockRemoval: true
     };
   },
   methods: {
     uploadMainContent: function uploadMainContent(index) {
-      return this.$set(this.curriculums[0].main_content_files, index, event.target.files[0].name);
+      this.$set(this.curriculums[index].main_content_files, index, event.target.files[0].name);
     },
     uploadExtraResource: function uploadExtraResource(index) {
-      return this.$set(this.curriculums[0].extra_resource_files, index, event.target.files[0].name);
+      this.$set(this.curriculums[index].extra_resource_files, index, event.target.files[0].name);
     },
     addCurriculum: function addCurriculum() {
       this.curriculums.push({
@@ -2239,16 +2238,6 @@ __webpack_require__.r(__webpack_exports__);
       if (!this.blockRemoval) {
         this.curriculums.splice(index, 1);
       }
-    }
-  },
-  watch: {
-    'curriculums': {
-      handler: function handler(val, oldVal) {
-        if (val !== oldVal) this.blockaddition = true;
-        console.log(val, oldVal);
-      },
-      immediate: true,
-      deep: true
     }
   }
 });
