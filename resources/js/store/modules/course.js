@@ -19,27 +19,39 @@ export const state = {
             class_options: ['Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five', 'Senior six'],
             default_level: '-- Level --',
             level_options: ['Term one', 'Term two', 'Term three'],
+            done: false,
         },
         curriculums: [
             {
                 content_title: null,
                 main_content_files: [],
                 content_description: null,
-                extra_resource_files: []
-            }
+                extra_resource_files: [],
+                done: false
+            },
         ],
         students_learn: [
-            { students_learn: null }
+            {
+                students_learn: null,
+                done: false
+            },
         ],
         class_requirement: [
-            { class_requirement: null }
+            {
+                class_requirement: null,
+                done: false
+            },
         ],
         target_student: [
-            { target_student: null }
+            {
+                target_student: null,
+                done: false
+            },
         ],
         course_message: {
             welcome_message: null,
             congratulations_message: null,
+            done: false
         }
     }
 }

@@ -23,8 +23,8 @@
             <div class="col-sm-12 col-md-9 col-lg-9 fast-transition mt-2">
                 <CourseIntroduction v-if="checkedItem === 'Course introduction'" :introduction="courseItem.introduction" />
                 <CourseStructure  v-if="checkedItem === 'Course structure'" />
-                <Film v-if="checkedItem === 'Film & edit'" />
-                <Curriculum v-if="checkedItem === 'Curriculum'" :curriculums="courseItem.curriculums" />
+                <FilmCourse v-if="checkedItem === 'Film & edit'" />
+                <CourseCurriculum v-if="checkedItem === 'CourseCurriculum'" :curriculums="courseItem.curriculums" />
                 <TargetStudent v-if="checkedItem === 'Target your students'" :students_learn="courseItem.students_learn" :class_requirement="courseItem.class_requirement" :target_student="courseItem.target_student" />
                 <CourseMessage v-if="checkedItem === 'Course messages'" :course_message="courseItem.course_message" />
             </div>
@@ -35,8 +35,8 @@
 <script>
 import CourseIntroduction from './plan/CourseIntroduction'
 import CourseStructure from './plan/CourseStructure'
-import Film from './create/Film'
-import Curriculum from './create/Curriculum'
+import FilmCourse from './create/FilmCourse'
+import CourseCurriculum from './create/CourseCurriculum'
 import TargetStudent from './publish/TargetStudent'
 import CourseMessage from './publish/CourseMessage'
 
@@ -45,8 +45,8 @@ export default {
     components: {
         TargetStudent,
         CourseStructure,
-        Film,
-        Curriculum,
+        FilmCourse,
+        CourseCurriculum,
         CourseIntroduction,
         CourseMessage
     },
@@ -61,7 +61,7 @@ export default {
                 },
                 {
                     title: 'Create your content',
-                    body: ['Film & edit', 'Curriculum'],
+                    body: ['Film & edit', 'CourseCurriculum'],
                 },
                 {
                     title: 'Your audience',

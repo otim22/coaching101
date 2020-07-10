@@ -16,7 +16,12 @@
                 <div class="form-group">
                     <label for="welcomeMessage">Welcome Message</label>
                     <div class="input-group">
-                        <textarea class="form-control" id="welcomeMessage" v-model="course_message.welcome_message" name="welcomeMessage" rows="3"></textarea>
+                        <textarea class="form-control" id="welcomeMessage"
+                                            v-model="course_message.welcome_message"
+                                            name="welcomeMessage"
+                                            placeholder="Example: You are welcome to the course"
+                                            rows="3">
+                        </textarea>
                         <div class="input-group-append">
                             <span class="input-group-text">1000</span>
                         </div>
@@ -25,7 +30,12 @@
                 <div class="form-group">
                     <label for="congratulationsMessage">Congratulations Message</label>
                     <div class="input-group">
-                        <textarea class="form-control" id="congratulationsMessage" v-model="course_message.congratulations_message" name="congratulationsMessage" rows="3"></textarea>
+                        <textarea class="form-control" id="congratulationsMessage"
+                                        v-model="course_message.congratulations_message"
+                                        name="congratulationsMessage"
+                                        placeholder="Example: Congragulations for completing the course"
+                                        rows="3">
+                        </textarea>
                         <div class="input-group-append">
                             <span class="input-group-text">1000</span>
                         </div>

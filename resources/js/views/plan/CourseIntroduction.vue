@@ -115,9 +115,7 @@
 export default {
     name: "course-introduction",
     props: {
-        introduction: {
-            type: Object
-        }
-    }
+        introduction: Object
+    },
 }
 </script>

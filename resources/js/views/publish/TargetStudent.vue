@@ -8,11 +8,12 @@
             <div class="cols-sm-12 col-md-12 col-lg-12">
                 <div class="form-group">
                     <label for="students_learn">What will students learn in your class?</label>
-                    <input v-for="elem in students_learn" :key="elem.key" type="email"
+                    <input v-for="elem in students_learn" :key="elem.key" type="text"
                                 ref="students_learn"
                                 class="form-control form-control-sm mb-2"
                                 :id="elem.key"
                                 v-model="elem.students_learn"
+                                placeholder="Example: English, Origin of man"
                                 name="students_learn">
                 </div>
             </div>
@@ -33,10 +34,11 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="form-group">
                     <label for="class_requirement">Are there any class requirements or prerequisites?</label>
-                    <input v-for="elem in class_requirement" :key="elem.key" type="email"
+                    <input v-for="elem in class_requirement" :key="elem.key" type="text"
                                 ref="class_requirement"
                                 class="form-control form-control-sm mb-2"
                                 :id="elem.key"
+                                placeholder="Example: Should know basic literacy"
                                 v-model="elem.class_requirement"
                                 name="class_requirement">
                 </div>
@@ -58,10 +60,11 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="form-group">
                     <label for="target_students">Who are your target students?</label>
-                    <input v-for="elem in target_student" :key="elem.key" type="email"
+                    <input v-for="elem in target_student" :key="elem.key" type="text"
                                 ref="target_students"
                                 class="form-control form-control-sm mb-2"
                                 :id="elem.key"
+                                placeholder="Example: Senior two students"
                                 v-model="elem.target_student"
                                 name="target_students">
                 </div>
@@ -86,15 +89,9 @@
 export default {
     name: "target-student",
     props: {
-        students_learn: {
-            type: Array
-        },
-        class_requirement: {
-            type: Array
-        },
-        target_student: {
-            type: Array
-        }
+        students_learn: Array,
+        class_requirement:  Array,
+        target_student: Array
     },
     methods: {
         addStudentsLearnInput() {

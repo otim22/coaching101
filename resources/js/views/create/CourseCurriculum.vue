@@ -107,11 +107,9 @@
 
 <script>
 export default {
-    name: "curriculum",
+    name: "course-curriculum",
     props: {
-        curriculums: {
-            type: Array
-        }
+        curriculums: Array
     },
     data() {
         return {

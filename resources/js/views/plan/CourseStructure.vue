@@ -9,7 +9,7 @@
             </div>
             <div class="row bg-gray p-3">
                 <div class="col-sm-12 col-md-8 col-lg-8 pb-3">
-                    <p class="main-text mb-2 mt-2 mb-3">You have a class to teach. Let's plan it.</p>
+                    <p class="main-text mb-2 mt-2 mb-3">You have a course to teach. Let's plan it.</p>
                     <p>Planning your class carefully will create a clear learning path for students and help you once you film. Think down to the details of each lecture including the topics you’ll teach, estimated video length, practical activities to include, and how you’ll create introductions and summaries.</p>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4  pb-3 text-center">

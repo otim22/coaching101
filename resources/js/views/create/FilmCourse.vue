@@ -8,7 +8,7 @@
         </div>
         <div class="row bg-gray p-3">
             <div class="col-sm-12 col-md-8 col-lg-8 pb-3">
-                <p class="main-text mb-2 mt-2 mb-3">You’re ready to share your knowledge.</p>
+                <p class="main-text mb-2 mt-2 mb-3">When ready to share your knowledge.</p>
                 <p>This is your moment! If you’ve structured your course and used our guides, you're well prepared for the actual shoot. Pace yourself, take your time to make it just right, and fine-tune when you edit.</p>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4  pb-3 text-center">
@@ -126,7 +126,7 @@
 
 <script>
 export default {
-    name: "film",
+    name: "film-course",
 }
 </script>
 
