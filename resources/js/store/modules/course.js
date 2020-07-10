@@ -2,6 +2,7 @@ import courseService from '../../services/courseService.js'
 
 export const namespaced = true
 
+// State
 export const state = {
     courses: [],
     courseItem: {
@@ -28,25 +29,25 @@ export const state = {
                 content_description: null,
                 extra_resource_files: [],
                 done: false
-            },
+            }
         ],
         students_learn: [
             {
                 students_learn: null,
                 done: false
-            },
+            }
         ],
         class_requirement: [
             {
                 class_requirement: null,
                 done: false
-            },
+            }
         ],
         target_student: [
             {
                 target_student: null,
                 done: false
-            },
+            }
         ],
         course_message: {
             welcome_message: null,
@@ -79,14 +80,14 @@ export const actions = {
                         type: 'success',
                         message: 'Your course has been created!'
                     }
-                    dispatch('notification/add', notification, { root: true })
+                    dispatch('app-notification/add', notification, { root: true })
                 })
                 .catch(error => {
                     const notification = {
                         type: 'error',
                         message: 'There was a problem creating your course: ' + error.message
                     }
-                    dispatch('notification/add', notification, { root: true })
+                    dispatch('app-notification/add', notification, { root: true })
                     throw error
                 })
     }

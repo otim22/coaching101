@@ -12,7 +12,7 @@
                                         :id="elem"
                                         :value="elem"
                                         v-model="selected"
-                                        @change="pickSelected($event)">
+                                        @change="handleCheckSelection($event)">
                                         {{ elem }}
                                 </label>
                         </div>
@@ -21,12 +21,23 @@
                 </form>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9 fast-transition mt-2">
-                <CourseIntroduction v-if="checkedItem === 'Course introduction'" :introduction="courseItem.introduction" />
+                <CourseIntroduction v-if="checkedItem === 'Course introduction'"
+                                                        :introduction="courseItem.introduction"/>
+
                 <CourseStructure  v-if="checkedItem === 'Course structure'" />
+
                 <FilmCourse v-if="checkedItem === 'Film & edit'" />
-                <CourseCurriculum v-if="checkedItem === 'CourseCurriculum'" :curriculums="courseItem.curriculums" />
-                <TargetStudent v-if="checkedItem === 'Target your students'" :students_learn="courseItem.students_learn" :class_requirement="courseItem.class_requirement" :target_student="courseItem.target_student" />
-                <CourseMessage v-if="checkedItem === 'Course messages'" :course_message="courseItem.course_message" />
+
+                <CourseCurriculum v-if="checkedItem === 'Course curriculum'"
+                                                        :curriculums="courseItem.curriculums" />
+
+                <TargetStudent v-if="checkedItem === 'Target your students'"
+                                                :students_learn="courseItem.students_learn"
+                                                :class_requirement="courseItem.class_requirement"
+                                                :target_student="courseItem.target_student" />
+
+                <CourseMessage v-if="checkedItem === 'Course messages'"
+                                                    :course_message="courseItem.course_message" />
             </div>
         </div>
     </div>
@@ -61,7 +72,7 @@ export default {
                 },
                 {
                     title: 'Create your content',
-                    body: ['Film & edit', 'CourseCurriculum'],
+                    body: ['Film & edit', 'Course curriculum'],
                 },
                 {
                     title: 'Your audience',
@@ -83,16 +94,16 @@ export default {
     },
     methods: {
         createCourse() {
-            this.submit = true;
+            this.submit = true
             this.$store.dispatch('course/createCourse', this.courseItem)
                 .then(() => {
-                    this.submit = false;
+                    this.submit = false
                 })
                 .catch(error => {
                     this.submit = false
                 })
         },
-        pickSelected($event) {
+        handleCheckSelection($event) {
             this.checkedItem = $event.target.defaultValue
         }
     }

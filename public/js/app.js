@@ -2029,6 +2029,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2054,7 +2065,7 @@ __webpack_require__.r(__webpack_exports__);
         body: ['Course introduction', 'Course structure']
       }, {
         title: 'Create your content',
-        body: ['Film & edit', 'CourseCurriculum']
+        body: ['Film & edit', 'Course curriculum']
       }, {
         title: 'Your audience',
         body: ['Target your students', 'Course messages']
@@ -2083,7 +2094,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.submit = false;
       });
     },
-    pickSelected: function pickSelected($event) {
+    handleCheckSelection: function handleCheckSelection($event) {
       this.checkedItem = $event.target.defaultValue;
     }
   }
@@ -2236,6 +2247,14 @@ __webpack_require__.r(__webpack_exports__);
       if (!this.blockRemoval) {
         this.curriculums.splice(index, 1);
       }
+    }
+  },
+  watch: {
+    'curriculums': {
+      handler: function handler() {
+        this.blockRemoval = this.curriculums.length <= 1;
+      },
+      deep: true
     }
   }
 });
@@ -7379,7 +7398,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.notification-container[data-v-8b8937c6] {\n    position: fixed;\n    bottom: 0;\n    right: 0;\n    padding-right: 40px;\n}\n", ""]);
+exports.push([module.i, "\n.notification-container[data-v-8b8937c6] {\n    position: fixed;\n    bottom: 0;\n    right: 0;\n    padding-right: 40px;\n    color: #3490dc;\n}\n", ""]);
 
 // exports
 
@@ -39421,7 +39440,7 @@ var render = function() {
                                     }
                                   },
                                   function($event) {
-                                    return _vm.pickSelected($event)
+                                    return _vm.handleCheckSelection($event)
                                   }
                                 ]
                               }
@@ -39476,7 +39495,7 @@ var render = function() {
           _vm._v(" "),
           _vm.checkedItem === "Film & edit" ? _c("FilmCourse") : _vm._e(),
           _vm._v(" "),
-          _vm.checkedItem === "CourseCurriculum"
+          _vm.checkedItem === "Course curriculum"
             ? _c("CourseCurriculum", {
                 attrs: { curriculums: _vm.courseItem.curriculums }
               })
@@ -55335,7 +55354,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
-var namespaced = true;
+var namespaced = true; // State
+
 var state = {
   courses: [],
   courseItem: {
@@ -55400,7 +55420,7 @@ var actions = {
         type: 'success',
         message: 'Your course has been created!'
       };
-      dispatch('notification/add', notification, {
+      dispatch('app-notification/add', notification, {
         root: true
       });
     })["catch"](function (error) {
@@ -55408,7 +55428,7 @@ var actions = {
         type: 'error',
         message: 'There was a problem creating your course: ' + error.message
       };
-      dispatch('notification/add', notification, {
+      dispatch('app-notification/add', notification, {
         root: true
       });
       throw error;

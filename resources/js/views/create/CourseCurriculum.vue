@@ -136,6 +136,14 @@ export default {
                 this.curriculums.splice(index, 1)
             }
         }
+    },
+    watch: {
+        'curriculums': {
+            handler() {
+                this.blockRemoval = this.curriculums.length <= 1
+            },
+            deep: true
+        }
     }
 }
 </script>
