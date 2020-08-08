@@ -23,3 +23,10 @@
         text-decoration: none;
     }
 }
+
+.footer-line hr {
+    margin: 15px 0;
+    height: 1.2px;
+    border: none;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, $color-body));
+}

@@ -80,14 +80,14 @@ export const actions = {
                         type: 'success',
                         message: 'Your course has been created!'
                     }
-                    dispatch('app-notification/add', notification, { root: true })
+                    dispatch('notification/add', notification, { root: true })
                 })
                 .catch(error => {
                     const notification = {
                         type: 'error',
                         message: 'There was a problem creating your course: ' + error.message
                     }
-                    dispatch('app-notification/add', notification, { root: true })
+                    dispatch('notification/add', notification, { root: true })
                     throw error
                 })
     }

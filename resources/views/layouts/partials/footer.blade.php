@@ -3,7 +3,7 @@
         <div class="row mt-5 d-flex justify-content-between">
             <div>
                 <div class="col-sm-12 col-md-3 col-lg-3">
-                    <h4>Coaching101</h4>
+                    <h4 class="uppercase">Coaching101</h4>
                     <ul class="list-unstyled">
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
@@ -13,10 +13,10 @@
             </div>
             <div>
                 <div class="col-sm-12 col-md-3 col-lg-3">
-                    <h4 >Resources</h4>
+                    <h4>Resources</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#">Start teaching</a></li>
-                        <li><a href="#">Start coaching</a></li>
+                        <li><a href="#">Teacher</a></li>
+                        <li><a href="#">Student</a></li>
                         <li><a href="#">Affiliate</a></li>
                     </ul>
                 </div>
@@ -36,15 +36,17 @@
                 <div class="col-sm-12 col-md-3 col-lg-3">
                     <h4>Social</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#">facebook</a></li>
-                        <li><a href="#">twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
                         <li><a href="#">LinkedIn</a></li>
                         <li><a href="#">Medium</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <hr>
+        <div class="footer-line">
+            <hr />
+        </div>
         <div class="row">
             <div class="col-12 text-center">
                 <p class="copyright">

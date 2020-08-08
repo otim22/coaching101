@@ -55420,7 +55420,7 @@ var actions = {
         type: 'success',
         message: 'Your course has been created!'
       };
-      dispatch('app-notification/add', notification, {
+      dispatch('notification/add', notification, {
         root: true
       });
     })["catch"](function (error) {
@@ -55428,7 +55428,7 @@ var actions = {
         type: 'error',
         message: 'There was a problem creating your course: ' + error.message
       };
-      dispatch('app-notification/add', notification, {
+      dispatch('notification/add', notification, {
         root: true
       });
       throw error;

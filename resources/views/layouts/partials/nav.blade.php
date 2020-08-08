@@ -300,10 +300,10 @@
 
             <ul class="navbar-nav ml-auto nav nav-pills">
                     <li class="nav-item {{ Helper::set_active(['student']) }} mt-1">
-                        <a class="nav-link" href="{{ url('/student') }}">Start Coaching</a>
+                        <a class="nav-link" href="{{ url('/student') }}">Student</a>
                     </li>
                     <li class="nav-item {{ Helper::set_active(['teacher']) }} mt-1">
-                        <a class="nav-link" href="{{ url('/teacher') }}">Start Teaching</a>
+                        <a class="nav-link" href="{{ url('/teacher') }}">Teacher</a>
                     </li>
                     @guest
                     <li class="nav-item {{ Helper::set_active(['login']) }} mt-1">
@@ -344,8 +344,8 @@
                                 {{ __('Logout') }}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('teacher') }}">Start teaching</a>
-                            <a class="dropdown-item" href="{{ route('student') }}">Start coaching</a>
+                            <a class="dropdown-item" href="{{ route('teacher') }}">Teacher</a>
+                            <a class="dropdown-item" href="{{ route('student') }}">Student</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

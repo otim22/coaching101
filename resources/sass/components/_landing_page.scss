@@ -2,3 +2,13 @@
     padding-top: 50px;
     padding-bottom: 5px;
 }
+
+.bg-image {
+    background-image: url(~/images/studies.jpg);
+    background-color: $color-dark;
+    opacity: 0.85;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
