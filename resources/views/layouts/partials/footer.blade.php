@@ -1,8 +1,7 @@
 <footer class="bg-dark text-white pt-4">
     <div class="container">
-        <div class="row mt-5 d-flex justify-content-between">
-            <div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+        <div class="row mt-5">
+                <div class="col-sm-6 col-md-6 col-lg-3">
                     <h4 class="uppercase">Coaching101</h4>
                     <ul class="list-unstyled">
                         <li><a href="#">About</a></li>
@@ -10,9 +9,7 @@
                         <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
-            </div>
-            <div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-6 col-md-6 col-lg-3">
                     <h4>Resources</h4>
                     <ul class="list-unstyled">
                         <li><a href="#">Teacher</a></li>
@@ -20,30 +17,26 @@
                         <li><a href="#">Affiliate</a></li>
                     </ul>
                 </div>
-            </div>
-            <div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+
+                <div class="col-sm-6 col-md-6 col-lg-3">
                     <h4 class="wraps-text">Useful Links</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#">Careers</a></li>
                         <li><a href="#">Privacy</a></li>
                         <li><a href="#">Terms</a></li>
                         <li><a href="#">Support</a></li>
                     </ul>
                 </div>
-            </div>
-            <div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+
+                <div class="col-sm-6 col-md-6 col-lg-3">
                     <h4>Social</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Medium</a></li>
-                    </ul>
+                    <div>
+                        <a target="_blank" href="https://twitter.com/otim16"><i class="fa fa-lg fa-twitter"></i></a>
+                        <a target="_blank" href="https://medium.com/@otimfredrick"><i class="fa fa-lg fa-medium"></i></a>
+                        <a target="_blank" href="https://linkedin.com/in/otim-fredrick-29730a86"><i class="fa fa-lg fa-linkedin"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/fredrickot"><i class="fa fa-lg fa-facebook"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
         <div class="footer-line">
             <hr />
         </div>

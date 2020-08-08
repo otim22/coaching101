@@ -1,6 +1,9 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+//  Fontawesome
+@import "node_modules/font-awesome/scss/font-awesome";
+
 // Variables
 @import 'global/variables';
 @import 'global/mixins';
@@ -12,6 +15,7 @@
 @import 'components/search';
 @import 'components/landing_page';
 @import 'components/footer';
+@import 'components/register';
 
 // Components
 @import 'layouts/bg-colors';

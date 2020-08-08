@@ -307,7 +307,7 @@
                     </li>
                     @guest
                     <li class="nav-item {{ Helper::set_active(['login']) }} mt-1">
-                        <a class="nav-link" href="{{ route('login') }}">Log In</a>
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item {{ Helper::set_active(['register']) }} mt-1">
