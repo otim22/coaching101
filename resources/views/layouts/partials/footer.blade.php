@@ -12,8 +12,8 @@
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <h4>Resources</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#">Teacher</a></li>
-                        <li><a href="#">Student</a></li>
+                        <li><a href="{{ route('teach') }}">Teach</a></li>
+                        <li><a href="{{ route('learn') }}">Learn</a></li>
                         <li><a href="#">Affiliate</a></li>
                     </ul>
                 </div>

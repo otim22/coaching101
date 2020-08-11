@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Course;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -25,10 +25,9 @@ class TeacherController extends Controller
      */
     public function store(Request $request, Course $course)
     {
-        // dd($request);
         $introduction = $request->get('introduction');
         $curriculums = $request->get('curriculums');
-        $students_will_learn = $request->get('students_learn');
+        $students_learn = $request->get('students_learn');
         $class_requirements = $request->get('class_requirement');
         $target_students = $request->get('target_student');
         $course_message= $request->get('course_message');
@@ -40,41 +39,23 @@ class TeacherController extends Controller
         $default_class = $introduction['default_class'];
         $default_level = $introduction['default_level'];
 
-        if(count($curriculums) > 0) {
-            for($i = 0; $i < count($curriculums); $i++) {
-                $content_title = $curriculums[$i]['content_title'];
-                $main_content_files = $curriculums[$i]['main_content_files'];
-                $extra_resource_files = $curriculums[$i]['extra_resource_files'];
-                $content_description = $curriculums[$i]['content_description'];
+        $options = [];
 
-                saveToDatabase($field);
-            }
-        }
-
-        if (count($students_will_learn) > 0) {
-            for($i = 0; $i < count($students_will_learn); $i++) {
-                $students_learn = $students_will_learn[$i]['students_learn'];
-                $course->students_learn = $students_learn;
-
-                saveToDatabase($field);
+        if (count($students_learn) > 0) {
+            for($i = 0; $i < count($students_learn); $i++) {
+                $options['students_learn'][] = $students_learn[$i]['students_learn'];
             }
         }
 
         if(count($class_requirements) > 0) {
             for($i = 0; $i < count($class_requirements); $i++) {
-                $class_requirement = $class_requirements[$i]['class_requirement'];
-                $course->class_requirement = $class_requirement;
-
-                saveToDatabase($field);
+                $options['class_requirement'][] = $class_requirements[$i]['class_requirement'];
             }
         }
 
         if (count($target_students) > 0) {
             for($i = 0; $i < count($target_students); $i++) {
-                $target_student = $target_students[$i]['target_student'];
-                $course->target_student = $target_student;
-
-                saveToDatabase($field);
+                $options['target_student'][] = $target_students[$i]['target_student'];
             }
         }
 
@@ -87,13 +68,39 @@ class TeacherController extends Controller
         $course->default_subject = $default_subject;
         $course->default_class = $default_class;
         $course->default_level = $default_level;
-        $course->content_title = $content_title;
-        $course->main_content_files = $main_content_file;
-        $course->content_description = $content_description;
-        $course->extra_resource_files = $extra_resource_file;
         $course->welcome_message = $welcome_message;
         $course->congratulations_message = $congratulations_message;
+        $course->options = $options;
 
         $course->save();
+
+        $sections = $this->collectSections($curriculums);
+
+        // dd($sections);
+
+        $course->sections()->createMany($sections);
+    }
+
+    protected function collectSections($curriculums)
+    {
+        $sections = [];
+
+        if(count($curriculums) > 0) {
+            for($i = 0; $i < count($curriculums); $i++) {
+                $content_title = $curriculums[$i]['content_title'];
+                // $main_content_files = $curriculums[$i]['main_content_files'];
+                // $extra_resource_files = $curriculums[$i]['extra_resource_files'];
+                $content_description = $curriculums[$i]['content_description'];
+
+                array_push($sections, [
+                    'content_title' => $content_title,
+                    // 'main_content_files' =>$main_content_files,
+                    // 'extra_resource_files' => $extra_resource_files,
+                    'content_description' => $content_description
+                ]);
+            }
+        }
+
+        return $sections;
     }
 }

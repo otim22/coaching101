@@ -3394,6 +3394,10 @@ select {
   color: #9b9b9b !important;
 }
 
+.color-home {
+  color: #647f9e !important;
+}
+
 /* backgrounds */
 
 .bg-white {

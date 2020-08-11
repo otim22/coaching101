@@ -2,7 +2,7 @@
     <div class="container">
         @if (Route::has('login'))
         <a class="navbar-brand logo-font" href="{{ url('/') }}"><span class="logo-font">Coaching101</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -300,10 +300,10 @@
 
             <ul class="navbar-nav ml-auto nav nav-pills">
                     <li class="nav-item {{ Helper::set_active(['student']) }} mt-1">
-                        <a class="nav-link" href="{{ url('/student') }}">Student</a>
+                        <a class="nav-link" href="{{ url('/learn') }}">Learn</a>
                     </li>
                     <li class="nav-item {{ Helper::set_active(['teacher']) }} mt-1">
-                        <a class="nav-link" href="{{ url('/teacher') }}">Teacher</a>
+                        <a class="nav-link" href="{{ url('/teach') }}">Teach</a>
                     </li>
                     @guest
                     <li class="nav-item {{ Helper::set_active(['login']) }} mt-1">
@@ -344,8 +344,8 @@
                                 {{ __('Logout') }}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('teacher') }}">Teacher</a>
-                            <a class="dropdown-item" href="{{ route('student') }}">Student</a>
+                            <a class="dropdown-item" href="{{ route('teach') }}">Teach</a>
+                            <a class="dropdown-item" href="{{ route('learn') }}">Learn</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

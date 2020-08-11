@@ -6,7 +6,7 @@
     <div class="mt-5">
         <div class="container">
             <h1 class="display-3">Hello, world!</h1>
-            <h4>This is a template for a simple marketing or informational website. <br />
+            <h4 class="color-body bg-gray p-3">This is a template for a simple marketing or informational website. <br />
                 It includes a large callout called a jumbotron and three supporting pieces of content. <br />
                 Use it as a starting point to create something more unique.</h4>
             <p><a class="btn btn-primary btn-lg mt-5" href="#" role="button">Get started &raquo;</a></p>
@@ -722,16 +722,16 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-5 col-lg-5 text-center">
-                <h3>Get coaching from top teachers</h3>
-                <p>Find top teachers from around the best schools teaching millions of fellow students on Coaching101. Get inspired to learn, grow and share with the world.</p>
-                <button type="button" class="btn btn-primary" name="button">Start coaching</button>
+                <h3>Get courses from top teachers</h3>
+                <p>Find top teachers from around the best teaching millions of fellow students on Coaching101. Get inspired to learn, grow and share with the world.</p>
+                <button type="button" class="btn btn-primary" name="button">Start learning</button>
             </div>
             <div class="col-md-2 col-lg-2">
                 <div class="header-divider"></div>
             </div>
             <div class="col-sm-12 col-md-5 col-lg-5 text-center coach">
                 <h3>Become a teacher</h3>
-                <p>Top teachers from best schools teaching millions of students on Coaching101. We provide the platform and tools so you can skill the students.</p>
+                <p>Top teachers from best teaching millions of students on Coaching101. We provide the platform and tools so you can skill the students.</p>
                 <button type="button" class="btn btn-primary" name="button">Start teaching</button>
             </div>
         </div>

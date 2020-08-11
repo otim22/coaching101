@@ -74,9 +74,11 @@
                         <div class="input-group mb-3">
                             <div class="custom-file">
                                 <input type="file"
+                                            id="extraManyFiles"
                                             class="custom-file-input"
                                             aria-describedby="extra_resource_files"
                                             @change="uploadExtraResource(index)"
+                                            multiple
                                             tabindex="-1">
                                 <label class="custom-file-label" for="select-file">
                                     {{ curriculum.extra_resource_files.length > 0 ? curriculum.extra_resource_files[index] : 'No file added'  }}
@@ -114,6 +116,7 @@ export default {
     data() {
         return {
             blockRemoval: true,
+            extraManyFiles: null
         }
     },
     methods: {
@@ -125,7 +128,6 @@ export default {
         },
         addCurriculum () {
             this.curriculums.push({
-                content_title: null,
                 main_content_files: [],
                 content_description: null,
                 extra_resource_files: []

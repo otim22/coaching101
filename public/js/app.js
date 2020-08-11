@@ -2218,6 +2218,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "course-curriculum",
   props: {
@@ -2225,7 +2227,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      blockRemoval: true
+      blockRemoval: true,
+      extraManyFiles: null
     };
   },
   methods: {
@@ -2237,7 +2240,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     addCurriculum: function addCurriculum() {
       this.curriculums.push({
-        content_title: null,
         main_content_files: [],
         content_description: null,
         extra_resource_files: []
@@ -39740,7 +39742,9 @@ var render = function() {
                       staticClass: "custom-file-input",
                       attrs: {
                         type: "file",
+                        id: "extraManyFiles",
                         "aria-describedby": "extra_resource_files",
+                        multiple: "",
                         tabindex: "-1"
                       },
                       on: {
