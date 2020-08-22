@@ -99,7 +99,7 @@
 
                             <div class="form-group  row mt-3 ml-3 mr-3 text-center">
                                 <div class="col-md-12">
-                                    <label class="col-form-label"> <span class="mr-2">{{ __('Already have an account?') }} </span><a href="{{ url('/login') }}">Sign In</a></label>
+                                    <label class="col-form-label"> <span class="mr-2">{{ __('Already have an account?') }} </span><a href="{{ url('/login') }}">Login here!</a></label>
                                 </div>
                               </div>
                         </form>

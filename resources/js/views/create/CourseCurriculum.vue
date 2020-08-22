@@ -19,7 +19,7 @@
                 <div class="card card-body">
                     <div class="form-group">
                         <div class="float-right">
-                            <button class class="btn btn-secondary btn-sm" @click="removeCurriculum(index)">
+                            <button class="btn btn-secondary btn-sm" @click="removeCurriculum(index)">
                                 <span class="mr-1">
                                     <svg class="bi bi-trash" width="1.3em" height="1.3em" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -55,7 +55,7 @@
                                             @change="uploadMainContent(index)"
                                             tabindex="-1">
                                 <label class="custom-file-label" for="contentFiles">
-                                    {{ curriculum.main_content_files.length > 0 ? curriculum.main_content_files[index] : 'No file added'  }}
+                                    {{ curriculum.main_content_files != null ? curriculum.main_content_files : 'No file added'  }}
                                 </label>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                                             multiple
                                             tabindex="-1">
                                 <label class="custom-file-label" for="select-file">
-                                    {{ curriculum.extra_resource_files.length > 0 ? curriculum.extra_resource_files[index] : 'No file added'  }}
+                                    {{ curriculum.extra_resource_files != null ? curriculum.extra_resource_files : 'No file added'  }}
                                 </label>
                             </div>
                             <small id="emailHelp" class="form-text text-muted">
@@ -121,16 +121,17 @@ export default {
     },
     methods: {
         uploadMainContent(index) {
-            this.$set(this.curriculums[index].main_content_files, index, event.target.files[0].name);
+            this.$set(this.curriculums[index], 'main_content_files', event.target.files[0].name);
         },
         uploadExtraResource(index) {
-            this.$set(this.curriculums[index].extra_resource_files, index, event.target.files[0].name);
+            this.$set(this.curriculums[index], 'extra_resource_files', event.target.files[0].name);
         },
         addCurriculum () {
             this.curriculums.push({
-                main_content_files: [],
+                content_title: null,
+                main_content_files: null,
                 content_description: null,
-                extra_resource_files: []
+                extra_resource_files: null
             });
         },
         removeCurriculum(index) {

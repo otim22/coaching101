@@ -25,9 +25,9 @@ export const state = {
         curriculums: [
             {
                 content_title: null,
-                main_content_files: [],
+                main_content_files: null,
                 content_description: null,
-                extra_resource_files: [],
+                extra_resource_files: null,
                 done: false
             }
         ],

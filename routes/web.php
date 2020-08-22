@@ -20,8 +20,7 @@ Route::get('/', function () {
 Route::get('/category', 'CategoryController@create')->name('category');
 Route::get('/teach', 'TeacherController@create')->name('teach');
 Route::post('/courses', 'TeacherController@store');
-Route::get('/learn', 'StudentController@create')->name('learn');
-Route::get('/video', 'VideoController@create')->name('video');
+Route::get('/learn', 'StudentController@index')->name('learn');
 Route::get('/edit-profile', 'UserController@create')->name('edit-profile');
 Route::get('/edit-account', 'AccountController@create')->name('edit-account');
 Route::get('/edit-credit-card', 'PaymentController@create')->name('edit-credit-card');

@@ -96,12 +96,12 @@ export default {
         createCourse() {
             this.submit = true
             this.$store.dispatch('course/createCourse', this.courseItem)
-                .then(() => {
-                    this.submit = false
-                })
-                .catch(error => {
-                    this.submit = false
-                })
+                                .then(() => {
+                                    this.submit = false
+                                })
+                                .catch(error => {
+                                    this.submit = false
+                                })
         },
         handleCheckSelection($event) {
             this.checkedItem = $event.target.defaultValue

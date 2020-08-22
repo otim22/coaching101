@@ -76,8 +76,6 @@ class TeacherController extends Controller
 
         $sections = $this->collectSections($curriculums);
 
-        // dd($sections);
-
         $course->sections()->createMany($sections);
     }
 
@@ -88,14 +86,14 @@ class TeacherController extends Controller
         if(count($curriculums) > 0) {
             for($i = 0; $i < count($curriculums); $i++) {
                 $content_title = $curriculums[$i]['content_title'];
-                // $main_content_files = $curriculums[$i]['main_content_files'];
-                // $extra_resource_files = $curriculums[$i]['extra_resource_files'];
+                $main_content_files = $curriculums[$i]['main_content_files'];
+                $extra_resource_files = $curriculums[$i]['extra_resource_files'];
                 $content_description = $curriculums[$i]['content_description'];
 
                 array_push($sections, [
                     'content_title' => $content_title,
-                    // 'main_content_files' =>$main_content_files,
-                    // 'extra_resource_files' => $extra_resource_files,
+                    'main_content_files' =>$main_content_files,
+                    'extra_resource_files' => $extra_resource_files,
                     'content_description' => $content_description
                 ]);
             }

@@ -334,19 +334,19 @@
                                     {{ Auth::user()->email }}</p>
                                 </div>
                              </a>
+                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('edit-account') }}">Account</a>
                             <a class="dropdown-item" href="{{ route('edit-credit-card') }}">Payment methods</a>
+                            <a class="dropdown-item" href="{{ route('support') }}">Need help</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('support') }}">Help</a>
+                            <a class="dropdown-item" href="{{ route('teach') }}">Start teaching</a>
+                            <a class="dropdown-item" href="{{ route('learn') }}">Start learning</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('teach') }}">Teach</a>
-                            <a class="dropdown-item" href="{{ route('learn') }}">Learn</a>
-
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

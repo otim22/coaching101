@@ -2233,16 +2233,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     uploadMainContent: function uploadMainContent(index) {
-      this.$set(this.curriculums[index].main_content_files, index, event.target.files[0].name);
+      this.$set(this.curriculums[index], 'main_content_files', event.target.files[0].name);
     },
     uploadExtraResource: function uploadExtraResource(index) {
-      this.$set(this.curriculums[index].extra_resource_files, index, event.target.files[0].name);
+      this.$set(this.curriculums[index], 'extra_resource_files', event.target.files[0].name);
     },
     addCurriculum: function addCurriculum() {
       this.curriculums.push({
-        main_content_files: [],
+        content_title: null,
+        main_content_files: null,
         content_description: null,
-        extra_resource_files: []
+        extra_resource_files: null
       });
     },
     removeCurriculum: function removeCurriculum(index) {
@@ -39564,7 +39565,6 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-secondary btn-sm",
-                      attrs: { class: "btn btn-secondary btn-sm" },
                       on: {
                         click: function($event) {
                           return _vm.removeCurriculum(index)
@@ -39681,8 +39681,8 @@ var render = function() {
                         _vm._v(
                           "\n                                " +
                             _vm._s(
-                              curriculum.main_content_files.length > 0
-                                ? curriculum.main_content_files[index]
+                              curriculum.main_content_files != null
+                                ? curriculum.main_content_files
                                 : "No file added"
                             ) +
                             "\n                            "
@@ -39764,8 +39764,8 @@ var render = function() {
                         _vm._v(
                           "\n                                " +
                             _vm._s(
-                              curriculum.extra_resource_files.length > 0
-                                ? curriculum.extra_resource_files[index]
+                              curriculum.extra_resource_files != null
+                                ? curriculum.extra_resource_files
                                 : "No file added"
                             ) +
                             "\n                            "
@@ -55377,9 +55377,9 @@ var state = {
     },
     curriculums: [{
       content_title: null,
-      main_content_files: [],
+      main_content_files: null,
       content_description: null,
-      extra_resource_files: [],
+      extra_resource_files: null,
       done: false
     }],
     students_learn: [{
