@@ -73,3 +73,39 @@
 .initial-text h5 {
     margin-top: 10px;
 }
+
+@include xl-screens {
+    #cartId1 {
+        display: none;
+    }
+}
+
+@include lg-screens {
+    #cartId1 {
+        display: none;
+    }
+}
+
+@include md-screens {
+    #cartId1  {
+        display: none;
+    }
+}
+
+@include sm-screens {
+    #cartId2  {
+        display: none;
+    }
+}
+
+@include xs-screens {
+    #cartId2  {
+        display: none;
+    }
+}
+
+@include xs-sm-screens {
+    #cartId2  {
+        display: none;
+    }
+}

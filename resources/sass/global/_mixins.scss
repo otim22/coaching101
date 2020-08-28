@@ -1,9 +1,18 @@
+// Extra Large Screens
+@mixin xl-screens {
+    @media only screen and (min-width: 1200px) {
+        @content;
+    }
+}
+
+
 // Large Screens
 @mixin lg-screens {
     @media only screen and (min-width: 992px) and (max-width: 1200px) {
         @content;
     }
 }
+
 // Medium Screens
 @mixin md-screens {
     @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -24,7 +33,7 @@
 }
 // Extra Small and Small Screens
 @mixin xs-sm-screens {
-    @media only screen and (min-width: 320px) and (max-width: 767px) {
+    @media only screen and (max-width: 320px) {
         @content;
     }
 }

@@ -10,14 +10,18 @@
 }
 
 @include md-screens {
+    .top-search  {
+        visibility: hidden !important;
+    }
+
     .top-search input[type="text"] {
       width: 5px;
       display: block;
     }
 }
 
-@include md-screens {
-    .top-search  {
-      visibility: hidden !important;
+@include sm-screens {
+    .top-search input[type="text"] {
+      width: 495px;
     }
 }
