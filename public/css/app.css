@@ -3323,8 +3323,7 @@ select {
 .bg-image {
   width: 100%;
   height: 85vh;
-  background-image: url(/images/studies.jpg);
-  background-color: #282828;
+  background-image: url(/images/studies.jpg), linear-gradient(to top, #67809f, #2e3131);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -3474,6 +3473,10 @@ select {
   z-index: 1;
 }
 
+.bg-course {
+  background-color: #000000;
+}
+
 .bg-overlay:before {
   content: "";
   position: absolute;
@@ -3581,6 +3584,26 @@ select {
   .coach {
     margin-top: 35px;
   }
+}
+
+.section-one {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.section-two {
+  padding: 25px;
+}
+
+.add-shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.make-me-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 /*!

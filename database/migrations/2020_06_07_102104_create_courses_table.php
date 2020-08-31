@@ -24,6 +24,7 @@ class CreateCoursesTable extends Migration
             $table->json('options')->nullable();
             $table->string('welcome_message');
             $table->string('congratulations_message');
+            $table->string('slug');
             $table->timestamps();
         });
     }

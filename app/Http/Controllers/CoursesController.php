@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Course;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
+    public function index()
+    {
+        $courses = Course::all()->take(2);
+
+        return view('app.courses.index', compact('courses'));
+    }
+
+    public function show(Course $course)
+    {
+        return view('app.courses.show', compact('course'));
+    }
+
     public function store()
     {
         $data = request()->validate([

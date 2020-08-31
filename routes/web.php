@@ -19,8 +19,11 @@ Route::get('/', function () {
 
 Route::get('/category', 'CategoryController@create')->name('category');
 Route::get('/teach', 'TeacherController@create')->name('teach');
-Route::post('/courses', 'TeacherController@store');
-Route::get('/learn', 'StudentController@index')->name('learn');
+Route::post('/lectures', 'TeacherController@store');
+Route::get('/courses', 'CoursesController@index')->name('courses');
+Route::get('/courses/{course}', 'CoursesController@show')->name('courses.show');
+Route::get('/business', 'BusinessController@index')->name('business');
+Route::get('/my-courses', 'MyCoursesController@index')->name('my-courses');
 Route::get('/edit-profile', 'UserController@create')->name('edit-profile');
 Route::get('/edit-account', 'AccountController@create')->name('edit-account');
 Route::get('/edit-credit-card', 'PaymentController@create')->name('edit-credit-card');

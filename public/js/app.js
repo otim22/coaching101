@@ -55293,10 +55293,10 @@ var apiClient = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
 });
 /* harmony default export */ __webpack_exports__["default"] = ({
   postCourse: function postCourse(course) {
-    return apiClient.post('/courses', course);
+    return apiClient.post('/lectures', course);
   },
   getCourse: function getCourse(id) {
-    return apiClient.get('/courses/' + id);
+    return apiClient.get('/lectures/' + id);
   }
 });
 
