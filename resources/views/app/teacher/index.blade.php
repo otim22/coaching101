@@ -81,7 +81,7 @@
                     <h1>Your process flow</h1>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4">
-                    <h3>1) Plan your course</h3>
+                    <h3>1) Plan your subject</h3>
                     <h5>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content.</h5>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4">

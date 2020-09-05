@@ -11,10 +11,10 @@ class Section extends Model
     ];
 
     /**
-     * Get the course that owns the section.
+     * Get the subject that owns the section.
      */
-    public function course()
+    public function subject()
     {
-        return $this->belongsTo('App\Models\Course');
+        return $this->belongsTo('App\Models\Subject');
     }
 }

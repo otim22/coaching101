@@ -2,19 +2,19 @@
     <div class="container p-4">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-                <h2>Curriculum</h2>
+                <h3>Subject outline</h3>
                 <hr />
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <p>
-                    Start putting together your course by creating sections, lectures and practice (quizzes, coding exercises and assignments).
-                    If you’re intending to offer your course for free, the total length of video content must be less than 2 hours.
+                    Start putting together your subject by creating sections, lectures and practice (quizzes, coding exercises and assignments).
+                    If you’re intending to offer your subject for free, the total length of video content must be less than 2 hours.
                 </p>
             </div>
         </div>
-        <div v-for="(curriculum, index) in curriculums" :key="index" class="row">
+        <div v-for="(curriculum, index) in outlines" :key="index" class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
                 <div class="card card-body">
                     <div class="form-group">
@@ -26,7 +26,7 @@
                                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                     </svg>
                                 </span>
-                                Remove section
+                                Remove topic
                             </button>
                         </div>
                     </div>
@@ -44,9 +44,6 @@
                     <div class="form-group">
                         <label for="title">Content files</label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Upload</span>
-                            </div>
                             <div class="custom-file">
                                 <input type="file"
                                             class="custom-file-input"
@@ -92,16 +89,21 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
-                <button v-if="index + 1 === curriculums.length" @click="addCurriculum">
-                    <span class="mr-1">
-                        <svg class="bi bi-plus-circle" width="1.4em" height="1.4em" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
-                            <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
-                            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        </svg>
-                    </span>
-                    Add section
-                </button>
+                <div class="d-flex justify-content-end">
+                    <button v-if="index + 1 === outlines.length"
+                                    @click="addCurriculum"
+                                    disabled>
+                        <span class="mr-1 ">
+                            <svg class="bi bi-plus-circle" width="1.4em" height="1.4em" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            </svg>
+                        </span>
+                        Add topic
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm ml-5 pl-4 pr-4" name="button">Save</button>
+                </div>
             </div>
         </div>
     </div>
@@ -109,9 +111,9 @@
 
 <script>
 export default {
-    name: "course-curriculum",
+    name: "subject-outline",
     props: {
-        curriculums: Array
+        outlines: Array
     },
     data() {
         return {
@@ -121,13 +123,13 @@ export default {
     },
     methods: {
         uploadMainContent(index) {
-            this.$set(this.curriculums[index], 'main_content_files', event.target.files[0].name);
+            this.$set(this.outlines[index], 'main_content_files', event.target.files[0].name);
         },
         uploadExtraResource(index) {
-            this.$set(this.curriculums[index], 'extra_resource_files', event.target.files[0].name);
+            this.$set(this.outlines[index], 'extra_resource_files', event.target.files[0].name);
         },
         addCurriculum () {
-            this.curriculums.push({
+            this.outlines.push({
                 content_title: null,
                 main_content_files: null,
                 content_description: null,
@@ -136,14 +138,14 @@ export default {
         },
         removeCurriculum(index) {
             if (!this.blockRemoval) {
-                this.curriculums.splice(index, 1)
+                this.outlines.splice(index, 1)
             }
         }
     },
     watch: {
-        'curriculums': {
+        'outlines': {
             handler() {
-                this.blockRemoval = this.curriculums.length <= 1
+                this.blockRemoval = this.outlines.length <= 1
             },
             deep: true
         }

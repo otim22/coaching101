@@ -31,7 +31,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h5>1,000 online courses</h5>
+                    <h5>1,000 online subjects</h5>
                     <p>Discover varied topics</p>
                 </div>
             </div>
@@ -87,11 +87,11 @@
                         <div class="row mt-4">
                             @foreach($category as $cat)
                                 <div class="col-sm-6 col-md-6 col-lg-3">
-                                    <a href="{{ route('courses.show', $cat['slug']) }}">
+                                    <a href="{{ route('subjects.show', $cat['slug']) }}">
                                         <div class="card mb-4 shadow-sm">
                                              <svg class="bd-placeholder-img card-img-top" width="100%" height="150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="35%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                                              <div class="card-body">
-                                                 <p>{{ $cat['course_title'] }}</p>
+                                                 <p>{{ $cat['subject_title'] }}</p>
                                                  <svg class="bi bi-star-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                                                  </svg>
@@ -124,13 +124,13 @@
             <div class="col-sm-12 col-md-12 col-lg-12 mb-2">
                 <h2>Mosted viewed </h2>
             </div>
-            @foreach($mostViewedCourses as $mostViewedCourse)
+            @foreach($mostViewedSubjects as $mostViewedSubject)
             <div class="col-sm-6 col-md-6 col-lg-3">
-                <a href="{{ route('courses.show', $mostViewedCourse->slug) }}">
+                <a href="{{ route('subjects.show', $mostViewedSubject->slug) }}">
                     <div class="card mb-4 shadow-sm">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="35%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                         <div class="card-body">
-                            <p>{{ $mostViewedCourse->course_title }}</p>
+                            <p>{{ $mostViewedSubject->subject_title }}</p>
                             <svg class="bi bi-star-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                             </svg>
@@ -192,7 +192,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-5 col-lg-5 text-center">
-                <h3>Get courses from top teachers</h3>
+                <h3>Get subjects from top teachers</h3>
                 <p>Find top teachers from around the best teaching millions of fellow students on Coaching101. Get inspired to learn, grow and share with the world.</p>
                 <button type="button" class="btn btn-primary" name="button">Start learning</button>
             </div>

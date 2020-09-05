@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -14,7 +14,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('app.teacher.course.create');
+        return view('app.teacher.subject.create');
     }
 
     /**
@@ -23,18 +23,27 @@ class TeacherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Course $course)
+    public function store(Request $request, Subject $subject)
     {
+        // $request->validate([
+        //     'introduction' => 'required',
+        //     'curriculums' => 'required',
+        //     'students_learn' => 'required',
+        //     'class_requirement' => 'required',
+        //     'target_student' => 'required',
+        //     'subject_message' => 'required',
+        // ]);
+
         $introduction = $request->get('introduction');
         $curriculums = $request->get('curriculums');
         $students_learn = $request->get('students_learn');
         $class_requirements = $request->get('class_requirement');
         $target_students = $request->get('target_student');
-        $course_message= $request->get('course_message');
+        $subject_message= $request->get('subject_message');
 
-        $course_title = $introduction['course_title'];
-        $course_subtitle = $introduction['course_subtitle'];
-        $course_description = $introduction['course_description'];
+        $subject_title = $introduction['subject_title'];
+        $subject_subtitle = $introduction['subject_subtitle'];
+        $subject_description = $introduction['subject_description'];
         $default_subject = $introduction['default_subject'];
         $default_class = $introduction['default_class'];
         $default_level = $introduction['default_level'];
@@ -59,24 +68,24 @@ class TeacherController extends Controller
             }
         }
 
-        $welcome_message = $course_message['welcome_message'];
-        $congratulations_message = $course_message['congratulations_message'];
+        $welcome_message = $subject_message['welcome_message'];
+        $congratulations_message = $subject_message['congratulations_message'];
 
-        $course->course_title = $course_title;
-        $course->course_subtitle = $course_subtitle;
-        $course->course_description = $course_description;
-        $course->default_subject = $default_subject;
-        $course->default_class = $default_class;
-        $course->default_level = $default_level;
-        $course->welcome_message = $welcome_message;
-        $course->congratulations_message = $congratulations_message;
-        $course->options = $options;
+        $subject->subject_title = $subject_title;
+        $subject->subject_subtitle = $subject_subtitle;
+        $subject->subject_description = $subject_description;
+        $subject->default_subject = $default_subject;
+        $subject->default_class = $default_class;
+        $subject->default_level = $default_level;
+        $subject->welcome_message = $welcome_message;
+        $subject->congratulations_message = $congratulations_message;
+        $subject->options = $options;
 
-        $course->save();
+        $subject->save();
 
         $sections = $this->collectSections($curriculums);
 
-        $course->sections()->createMany($sections);
+        $subject->sections()->createMany($sections);
     }
 
     protected function collectSections($curriculums)

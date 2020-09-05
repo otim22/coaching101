@@ -15,7 +15,7 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('subject_id');
             $table->string('content_title');
             $table->string('main_content_files')->nullable();
             $table->string('content_description');

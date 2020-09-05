@@ -1,14 +1,14 @@
 import { Request } from '../test-util';
-import courseService from '../../../../services/courseService';
+import subjectService from '../../../../services/subjectService';
 
-describe('courseService', () => {
+describe('subjectService', () => {
 
-    it('posts a course', () => {
+    it('posts a subject', () => {
         // const request = new Request();
         // const client = new Client('https://coaching101.app', request);
-        // const course = {};
-        // client.post(course, null, () => {});
+        // const subject = {};
+        // client.post(subject, null, () => {});
         console.log('request.url');
-        // expect(request.url).toEqual('https://coaching101.app/courses');
+        // expect(request.url).toEqual('https://coaching101.app/subjects');
     });
 });

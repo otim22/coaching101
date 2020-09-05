@@ -1,22 +1,22 @@
 import { mount } from '@vue/test-utils'
 import axios from 'axios';
-import * as course from '../../../store/modules/course.js'
+import * as subject from '../../../store/modules/subject.js'
 
-describe('course/getters', () => {
+describe('subject/getters', () => {
     it('should mount without crashing', () => {
-        const wrapper = mount(course)
+        const wrapper = mount(subject)
         expect(wrapper).toMatchSnapshot()
     })
 
-    it('it returns courses', () => {
+    it('it returns subjects', () => {
         const state = {
-            courses: [{
+            subjects: [{
                 introduction: {
-                    course_title: 'Course title',
-                    course_subtitle: 'Course subtitle',
-                    course_description: 'Course description',
+                    subject_title: 'Subject title',
+                    subject_subtitle: 'Subject subtitle',
+                    subject_description: 'Subject description',
                 },
-                curriculums: [
+                outlines: [
                     {
                         content_title: 'Content title',
                         main_content_files: [],
@@ -41,7 +41,7 @@ describe('course/getters', () => {
                         done: false
                     }
                 ],
-                course_message: [
+                subject_message: [
                     {
                         welcome_message: 'Welcome message',
                         congratulations_message: 'Congratulations message',
@@ -51,18 +51,18 @@ describe('course/getters', () => {
             }]
         }
 
-        expect(course.getters.courses(state)).toBe(state.courses)
+        expect(subject.getters.subjects(state)).toBe(state.subjects)
     })
 })
 
-describe('course/mutations', () => {
-    test('addCourse adds a new course', () => {
+describe('subject/mutations', () => {
+    test('addSubject adds a new subject', () => {
         const state = {
-            courses: []
+            subjects: []
         }
-        const courseItem = [{
+        const subjectItem = [{
             introduction: {
-                course_title: 'Course title',
+                subject_title: 'Subject title',
                 class_options: [
                     "Senior one",
                     "Senior two",
@@ -71,9 +71,9 @@ describe('course/mutations', () => {
                     "Senior five",
                     "Senior six",
                ],
-               course_description: "course_description",
-               course_subtitle: "course_subtitle",
-               course_title: "course_title",
+               subject_description: "subject_description",
+               subject_subtitle: "subject_subtitle",
+               subject_title: "subject_title",
                default_class: "-- Class --",
                default_level: "-- Level --",
                default_subject: "-- Subject --",
@@ -104,10 +104,10 @@ describe('course/mutations', () => {
                     "Divinity",
                     "History",
                ],
-                course_subtitle: "course_subtitle",
-                course_description: "course_description",
+                subject_subtitle: "subject_subtitle",
+                subject_description: "subject_description",
             },
-            curriculums: [
+            outlines: [
                 {
                     content_title: "content_title",
                     content_description: "content_description",
@@ -134,7 +134,7 @@ describe('course/mutations', () => {
                     done: false
                 }
             ],
-            course_message: [
+            subject_message: [
                 {
                     welcome_message: "welcome_message",
                     congratulations_message: "congratulations_message",
@@ -142,19 +142,19 @@ describe('course/mutations', () => {
                 }
             ]
         }]
-        course.mutations.addCourse(state, courseItem[0])
-        expect([...state.courses]).toMatchObject(courseItem)
+        subject.mutations.addSubject(state, subjectItem[0])
+        expect([...state.subjects]).toMatchObject(subjectItem)
     })
 })
 
 /* To be continued*/
-describe('course/actions', () => {
-    test('createCourse commits addCourse mutation', () => {
+describe('subject/actions', () => {
+    test('createSubject commits addSubject mutation', () => {
         jest.mock('axios');
         const commit = jest.fn()
-        const courseItem = [{
+        const subjectItem = [{
             introduction: {
-                course_title: 'Course title',
+                subject_title: 'Subject title',
                 class_options: [
                     "Senior one",
                     "Senior two",
@@ -163,9 +163,9 @@ describe('course/actions', () => {
                     "Senior five",
                     "Senior six",
                ],
-               course_description: "course_description",
-               course_subtitle: "course_subtitle",
-               course_title: "course_title",
+               subject_description: "subject_description",
+               subject_subtitle: "subject_subtitle",
+               subject_title: "subject_title",
                default_class: "-- Class --",
                default_level: "-- Level --",
                default_subject: "-- Subject --",
@@ -196,10 +196,10 @@ describe('course/actions', () => {
                     "Divinity",
                     "History",
                ],
-                course_subtitle: "course_subtitle",
-                course_description: "course_description",
+                subject_subtitle: "subject_subtitle",
+                subject_description: "subject_description",
             },
-            curriculums: [
+            outlines: [
                 {
                     content_title: "content_title",
                     content_description: "content_description",
@@ -226,7 +226,7 @@ describe('course/actions', () => {
                     done: false
                 }
             ],
-            course_message: [
+            subject_message: [
                 {
                     welcome_message: "welcome_message",
                     congratulations_message: "congratulations_message",
@@ -235,10 +235,10 @@ describe('course/actions', () => {
             ]
         }]
 
-        axios.post('/courses', courseItem)
+        axios.post('/subjects', subjectItem)
             .then(data => {
-                course.actions.createCourse({ commit }, courseItem)
-                expect(commit).toHaveBeenCalledWith('addCourse', 1)
+                subject.actions.createSubject({ commit }, subjectItem)
+                expect(commit).toHaveBeenCalledWith('addSubject', 1)
             })
     })
 })

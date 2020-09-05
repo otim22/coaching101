@@ -2,100 +2,101 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 mt-5">
-                <form id="course-form" @keyup.enter="createCourse" enctype="multipart/form-data">
+                <form id="subject-form" @keyup.enter="createCourse" enctype="multipart/form-data">
                     <div class="mb-4" v-for="(creation, index) in creations">
                         <h5 class="side-font mb-3">{{ creation.title }}</h5>
                         <div class="form-check hover-me mb-2" v-for="elem in creation.body" :key="elem.key">
                             <label class="hover-me form-check-label" :for="elem">
-                            <input class="form-check-input"
-                                        type="checkbox"
-                                        :id="elem"
-                                        :value="elem"
-                                        v-model="selected"
-                                        @change="handleCheckSelection($event)">
+                                <input class="form-check-input"
+                                            type="checkbox"
+                                            :id="elem"
+                                            :value="elem"
+                                            v-model="selected"
+                                            @change="handleCheckSelection($event)">
                                         {{ elem }}
-                                </label>
+                            </label>
                         </div>
                     </div>
-                    <button @click.prevent="createCourse" type="submit" class="btn btn-primary mt-5">Submit for review</button>
+                    <a href="/subjects" class="btn btn-secondary mt-5">View subject</a>
+                    <!-- <button @click.prevent="createCourse" type="submit" class="btn btn-secondary mt-5">View subject</button> -->
                 </form>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9 fast-transition mt-2">
-                <CourseIntroduction v-if="checkedItem === 'Course introduction'"
-                                                        :introduction="courseItem.introduction"/>
+                <SubjectIntroduction v-if="checkedItem === 'Subject introduction'"
+                                                        :introduction="subjectItem.introduction"/>
 
-                <CourseStructure  v-if="checkedItem === 'Course structure'" />
+                <SubjectStructure  v-if="checkedItem === 'Subject structure'" />
 
-                <FilmCourse v-if="checkedItem === 'Film & edit'" />
+                <FilmSubject v-if="checkedItem === 'Film & edit'" />
 
-                <CourseCurriculum v-if="checkedItem === 'Course curriculum'"
-                                                        :curriculums="courseItem.curriculums" />
+                <SubjectOutline v-if="checkedItem === 'Subject outline'"
+                                                        :outlines="subjectItem.outlines" />
 
                 <TargetStudent v-if="checkedItem === 'Target your students'"
-                                                :students_learn="courseItem.students_learn"
-                                                :class_requirement="courseItem.class_requirement"
-                                                :target_student="courseItem.target_student" />
+                                                :students_learn="subjectItem.students_learn"
+                                                :class_requirement="subjectItem.class_requirement"
+                                                :target_student="subjectItem.target_student" />
 
-                <CourseMessage v-if="checkedItem === 'Course messages'"
-                                                    :course_message="courseItem.course_message" />
+                <SubjectMessage v-if="checkedItem === 'Subject messages'"
+                                                    :subject_message="subjectItem.subject_message" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import CourseIntroduction from './plan/CourseIntroduction'
-import CourseStructure from './plan/CourseStructure'
-import FilmCourse from './create/FilmCourse'
-import CourseCurriculum from './create/CourseCurriculum'
+import SubjectIntroduction from './plan/SubjectIntroduction'
+import SubjectStructure from './plan/SubjectStructure'
+import FilmSubject from './create/FilmSubject'
+import SubjectOutline from './create/SubjectOutline'
 import TargetStudent from './publish/TargetStudent'
-import CourseMessage from './publish/CourseMessage'
+import SubjectMessage from './publish/SubjectMessage'
 
 export default {
     name: 'class-creation',
     components: {
         TargetStudent,
-        CourseStructure,
-        FilmCourse,
-        CourseCurriculum,
-        CourseIntroduction,
-        CourseMessage
+        SubjectStructure,
+        FilmSubject,
+        SubjectOutline,
+        SubjectIntroduction,
+        SubjectMessage
     },
     data() {
         return {
             selected: [],
-            checkedItem: 'Course introduction',
+            checkedItem: 'Subject introduction',
             creations: [
                 {
-                    title: 'Plan your course',
-                    body: ['Course introduction', 'Course structure'],
+                    title: 'Plan your subject',
+                    body: ['Subject introduction', 'Subject structure'],
                 },
                 {
                     title: 'Create your content',
-                    body: ['Film & edit', 'Course curriculum'],
+                    body: ['Film & edit', 'Subject outline'],
                 },
                 {
                     title: 'Your audience',
-                    body: ['Target your students', 'Course messages'],
+                    body: ['Target your students', 'Subject messages'],
                 },
             ],
             submit: false
         };
     },
     computed: {
-        courseItem: {
+        subjectItem: {
             get() {
-                return this.$store.state.course.courseItem
+                return this.$store.state.subject.subjectItem
             },
             set(value) {
-                this.courseItem = value
+                this.subjectItem = value
             }
         }
     },
     methods: {
-        createCourse() {
+        createSubject() {
             this.submit = true
-            this.$store.dispatch('course/createCourse', this.courseItem)
+            this.$store.dispatch('subject/createSubject', this.subjectItem)
                                 .then(() => {
                                     this.submit = false
                                 })

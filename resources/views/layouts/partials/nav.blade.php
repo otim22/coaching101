@@ -295,7 +295,7 @@
 
             <form action="" class="form-inline top-search">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for course...">
+                    <input type="text" class="form-control" placeholder="Search for subject...">
                     <div class="input-group-append">
                         <button class="btn btn-secondary" type="button">
                             <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -309,7 +309,7 @@
 
             <ul class="navbar-nav ml-auto nav nav-pills">
                 <li class="nav-item {{ Helper::set_active(['business']) }} mt-1">
-                    <a class="nav-link" href="{{ url('/courses') }}">Business</a>
+                    <a class="nav-link" href="{{ url('/subjects') }}">Business</a>
                 </li>
                 <li class="nav-item {{ Helper::set_active(['teacher']) }} mt-1">
                     <a class="nav-link" href="{{ url('/teach') }}">Teach</a>
@@ -317,7 +317,7 @@
 
                 @auth
                 <li class="nav-item {{ Helper::set_active(['my-courses']) }} mt-1">
-                    <a class="nav-link" href="{{ url('/my-courses') }}">My courses</a>
+                    <a class="nav-link" href="{{ url('/my-subjects') }}">My subjects</a>
                 </li>
                 @endauth
 

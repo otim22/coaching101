@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
-class CoursesController extends Controller
+class SubjectsController extends Controller
 {
     public function index()
     {
-        $courses = Course::all()->take(2);
+        $subjects = Subject::all()->take(2);
 
-        return view('app.courses.index', compact('courses'));
+        return view('app.subjects.index', compact('subjects'));
     }
 
-    public function show(Course $course)
+    public function show(Subject $subject)
     {
-        return view('app.courses.show', compact('course'));
+        return view('app.subjects.show', compact('subject'));
     }
 
     public function store()
     {
         $data = request()->validate([
-            'course_title' => 'required',
-            'course_subtitle' => 'required',
-            'course_description' => 'required',
+            'subject_title' => 'required',
+            'subject_subtitle' => 'required',
+            'subject_description' => 'required',
             'subject' => 'required',
             'class' => 'required',
             'level' => 'required',
@@ -39,6 +39,6 @@ class CoursesController extends Controller
             'congratulations_message' => 'required'
         ]);
 
-        Course::create($data);
+        Subject::create($data);
     }
 }

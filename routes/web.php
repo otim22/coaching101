@@ -2,16 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,10 +10,10 @@ Route::get('/', function () {
 Route::get('/category', 'CategoryController@create')->name('category');
 Route::get('/teach', 'TeacherController@create')->name('teach');
 Route::post('/lectures', 'TeacherController@store');
-Route::get('/courses', 'CoursesController@index')->name('courses');
-Route::get('/courses/{course}', 'CoursesController@show')->name('courses.show');
+Route::get('/subjects', 'SubjectsController@index')->name('subjects');
+Route::get('/subjects/{subject}', 'SubjectsController@show')->name('subjects.show');
 Route::get('/business', 'BusinessController@index')->name('business');
-Route::get('/my-courses', 'MyCoursesController@index')->name('my-courses');
+Route::get('/my-subjects', 'MySubjectsController@index')->name('my-subjects');
 Route::get('/edit-profile', 'UserController@create')->name('edit-profile');
 Route::get('/edit-account', 'AccountController@create')->name('edit-account');
 Route::get('/edit-credit-card', 'PaymentController@create')->name('edit-credit-card');
@@ -36,7 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
-    Route::resource('subjects','SubjectController');
+    // Route::resource('subjects','SubjectsController');
 });
 
 Auth::routes();

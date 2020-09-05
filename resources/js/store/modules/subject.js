@@ -1,15 +1,15 @@
-import courseService from '../../services/courseService.js'
+import subjectService from '../../services/subjectService.js'
 
 export const namespaced = true
 
 // State
 export const state = {
-    courses: [],
-    courseItem: {
+    subjects: [],
+    subjectItem: {
         introduction: {
-            course_title: null,
-            course_subtitle: null,
-            course_description: null,
+            subject_title: null,
+            subject_subtitle: null,
+            subject_description: null,
             default_subject: '-- Subject --',
             subject_options: [
                 'Mathematics', 'Science', 'English', 'Chemistry','Biology', 'Swahili', 'French', 'Agriculture',
@@ -22,7 +22,7 @@ export const state = {
             level_options: ['Term one', 'Term two', 'Term three'],
             done: false,
         },
-        curriculums: [
+        outlines: [
             {
                 content_title: null,
                 main_content_files: null,
@@ -49,7 +49,7 @@ export const state = {
                 done: false
             }
         ],
-        course_message: {
+        subject_message: {
             welcome_message: null,
             congratulations_message: null,
             done: false
@@ -59,33 +59,33 @@ export const state = {
 
 // Mutations
 export const mutations = {
-    addCourse(state, course) {
-        state.courses = [...state.courses, course]
+    addSubject(state, subject) {
+        state.subjects = [...state.subjects, subject]
     },
-    removeCourse(state, course) {
-        state.courses.splice(state.courses.indexOf(course), 1)
+    getSubject(state, subject) {
+        state.subject = subject
     },
-    getCourse(state, course) {
-        state.course = course
+    removeSubject(state, subject) {
+        state.subjects.splice(state.subjects.indexOf(subject), 1)
     }
 }
 
 // Actions
 export const actions = {
-    createCourse({ commit, dispatch }, course) {
-        return courseService.postCourse(course)
+    createSubject({ commit, dispatch }, subject) {
+        return subjectService.postSubject(subject)
                 .then((res) => {
-                    commit('addCourse', res.data)
+                    commit('addSubject', res.data)
                     const notification = {
                         type: 'success',
-                        message: 'Your course has been created!'
+                        message: 'Your subject has been created!'
                     }
                     dispatch('notification/add', notification, { root: true })
                 })
                 .catch(error => {
                     const notification = {
                         type: 'error',
-                        message: 'There was a problem creating your course: ' + error.message
+                        message: 'There was a problem creating your subject: ' + error.message
                     }
                     dispatch('notification/add', notification, { root: true })
                     throw error
@@ -95,8 +95,8 @@ export const actions = {
 
 // Getters
 export const getters = {
-    courses: state => state.courses,
-    getCourseById: state => id => {
-        return state.courses.find(course => course.id === id)
+    subjects: state => state.subjects,
+    getSubjectById: state => id => {
+        return state.subjects.find(subject => subject.id === id)
     }
 }

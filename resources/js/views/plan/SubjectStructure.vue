@@ -3,13 +3,13 @@
         <div class="container p-4">
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-                    <h2>Course Structure</h2>
+                    <h3>Subject Structure</h3>
                     <hr />
                 </div>
             </div>
             <div class="row bg-gray p-3">
                 <div class="col-sm-12 col-md-8 col-lg-8 pb-3">
-                    <p class="main-text mb-2 mt-2 mb-3">You have a course to teach. Let's plan it.</p>
+                    <p class="main-text mb-2 mt-2 mb-3">You have a subject to teach. Let's plan it.</p>
                     <p>Planning your class carefully will create a clear learning path for students and help you once you film. Think down to the details of each lecture including the topics you’ll teach, estimated video length, practical activities to include, and how you’ll create introductions and summaries.</p>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4  pb-3 text-center">
@@ -19,7 +19,7 @@
                         </svg>
                     </div>
                     <h5>Our library of resources</h5>
-                    <p>Tips and guides to structuring a course students love</p>
+                    <p>Tips and guides to structuring a subject students love</p>
                     <a href="#" type="button" class="btn btn-secondary btn-sm" name="button">Learn more</a>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                                     <svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
                                     </svg>
-                                    Your course has at least five lectures.
+                                    Your subject has at least five lectures.
                                 </li>
                                 <li>
                                     <svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +85,7 @@
                                     <svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
                                     </svg>
-                                    You course is composed of valuable educational content.
+                                    You subject is composed of valuable educational content.
                                 </li>
                             </ul>
                         </div>
@@ -121,7 +121,7 @@
 
 <script>
 export default {
-    name: "course-structure",
+    name: "subject-structure",
 }
 </script>
 

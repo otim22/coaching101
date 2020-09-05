@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-one bg-course text-white">
+<section class="section-one bg-subject text-white">
     <div class="container">
         <div class="row mt-2">
             <div class="col-12">

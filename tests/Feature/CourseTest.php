@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Course;
+use App\Model\Subject;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Http\UploadedFile;
@@ -10,47 +10,47 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
-class CourseTest extends TestCase
+class SubjectTest extends TestCase
 {
     use WithFaker, RefreshDatabase;
 
     /** @test */
-    public function a_course_can_be_added()
+    public function a_subject_can_be_added()
     {
         $this->post('/api/courses', $this->data());
 
-        $course = Course::first();
+        $subject = Subject::first();
 
-        $this->assertCount(1, Course::all());
-        $this->assertEquals('Course title', $course->course_title);
-        $this->assertEquals('Course subtitle', $course->course_subtitle);
-        $this->assertEquals('Course description', $course->course_description);
-        $this->assertEquals('Mathematics', $course->subject);
-        $this->assertEquals('Senior two', $course->class);
-        $this->assertEquals('Term one', $course->level);
-        $this->assertEquals('Content title', $course->content_title);
-        $this->assertEquals('51c18abf-c37f-3288-b5a9-c15466e763b0.gitignore', $course->content_file);
-        $this->assertEquals('Content description', $course->content_description);
-        $this->assertEquals('51c18abf-c37f-3288-b5a9-c15466e763b0.gitignore', $course->resource_attachment);
-        $this->assertEquals('Student learn', $course->students_learn);
-        $this->assertEquals('Should have studied literacy', $course->class_requirement);
-        $this->assertEquals('Secondary students', $course->target_student);
-        $this->assertEquals('Welcome to my course', $course->welcome_message);
-        $this->assertEquals('You are ready for exams', $course->congratulations_message);
+        $this->assertCount(1, Subject::all());
+        $this->assertEquals('Subject title', $subject->subject_title);
+        $this->assertEquals('Subject subtitle', $subject->subject_subtitle);
+        $this->assertEquals('Subject description', $subject->subject_description);
+        $this->assertEquals('Mathematics', $subject->subject);
+        $this->assertEquals('Senior two', $subject->class);
+        $this->assertEquals('Term one', $subject->level);
+        $this->assertEquals('Content title', $subject->content_title);
+        $this->assertEquals('51c18abf-c37f-3288-b5a9-c15466e763b0.gitignore', $subject->content_file);
+        $this->assertEquals('Content description', $subject->content_description);
+        $this->assertEquals('51c18abf-c37f-3288-b5a9-c15466e763b0.gitignore', $subject->resource_attachment);
+        $this->assertEquals('Student learn', $subject->students_learn);
+        $this->assertEquals('Should have studied literacy', $subject->class_requirement);
+        $this->assertEquals('Secondary students', $subject->target_student);
+        $this->assertEquals('Welcome to my subject', $subject->welcome_message);
+        $this->assertEquals('You are ready for exams', $subject->congratulations_message);
     }
 
     /** @test */
     public function fields_are_required()
     {
         collect([
-            'course_title', 'course_subtitle', 'course_description', 'subject', 'class', 'level',
+            'subject_title', 'subject_subtitle', 'subject_description', 'subject', 'class', 'level',
             'content_title', 'content_file', 'content_description','resource_attachment', 'students_learn',
             'class_requirement', 'target_student', 'welcome_message', 'congratulations_message'
         ])->each(function($field) {
             $response = $this->post('/api/courses', array_merge($this->data(), [$field => '']));
 
             $response->assertSessionHasErrors($field);
-            $this->assertCount(0, Course::all());
+            $this->assertCount(0, Subject::all());
         });
     }
 
@@ -61,7 +61,7 @@ class CourseTest extends TestCase
             'resource_attachment' => $fake_resource_attachment = $this->faker->file($sourceDir='storage/app/public', $targetDir='storage/app/public/', false)
         ]));
 
-        $this->assertEquals($fake_resource_attachment, Course::first()->resource_attachment);
+        $this->assertEquals($fake_resource_attachment, Subject::first()->resource_attachment);
 
         Storage::disk('public')->assertExists($fake_resource_attachment);
     }
@@ -69,9 +69,9 @@ class CourseTest extends TestCase
     private function data()
     {
         return [
-            'course_title' => 'Course title',
-            'course_subtitle' => 'Course subtitle',
-            'course_description' => 'Course description',
+            'subject_title' => 'Subject title',
+            'subject_subtitle' => 'Subject subtitle',
+            'subject_description' => 'Subject description',
             'subject' => 'Mathematics',
             'class' => 'Senior two',
             'level' => 'Term one',
@@ -82,7 +82,7 @@ class CourseTest extends TestCase
             'students_learn' => 'Student learn',
             'class_requirement' => 'Should have studied literacy',
             'target_student' => 'Secondary students',
-            'welcome_message' => 'Welcome to my course',
+            'welcome_message' => 'Welcome to my subject',
             'congratulations_message' => 'You are ready for exams'
         ];
     }

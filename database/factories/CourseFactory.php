@@ -2,16 +2,16 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Course;
+use App\Models\Subject;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
-$factory->define(Course::class, function (Faker $faker) {
+$factory->define(Subject::class, function (Faker $faker) {
 
     return [
-        'course_title' => $faker->sentence(),
-        'course_subtitle' => $faker->text,
-        'course_description' => $faker->paragraph(),
+        'subject_title' => $faker->sentence(),
+        'subject_subtitle' => $faker->text,
+        'subject_description' => $faker->paragraph(),
         'subject' => $faker->randomElement(['Mathematics' ,'Science', 'English', 'History']),
         'class' => $faker->randomElement(['Senior one' ,'Senior two', 'Senior three', 'Senior four']),
         'level' => $faker->randomElement(['Term one' ,'Term two', 'Term three']),

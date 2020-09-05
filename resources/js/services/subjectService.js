@@ -11,10 +11,10 @@ const apiClient = axios.create({
 })
 
 export default {
-    postCourse(course) {
-        return apiClient.post('/lectures', course)
+    postSubject(subject) {
+        return apiClient.post('/lectures', subject)
     },
-    getCourse(id) {
+    getSubject(id) {
         return apiClient.get('/lectures/' + id)
     }
 }

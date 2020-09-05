@@ -1,7 +1,7 @@
 <?php
 
-use App\User;
-use App\Course;
+use App\Models\User;
+use App\Models\Subject;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UserSeeder::class);
         factory(User::class, 30)->create();
-        factory(Course::class, 50)->create();
+        factory(Subject::class, 50)->create();
     }
 }

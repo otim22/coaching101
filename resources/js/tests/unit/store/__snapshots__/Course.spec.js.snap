@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Course.js should mount without crashing 1`] = `
+exports[`Subject.js should mount without crashing 1`] = `
 VueWrapper {
   "_emitted": Object {},
   "_emittedByOrder": Array [],
@@ -8,7 +8,7 @@ VueWrapper {
 }
 `;
 
-exports[`course/getters should mount without crashing 1`] = `
+exports[`subject/getters should mount without crashing 1`] = `
 VueWrapper {
   "_emitted": Object {},
   "_emittedByOrder": Array [],

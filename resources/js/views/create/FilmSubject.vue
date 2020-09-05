@@ -2,14 +2,14 @@
     <div class="container p-4">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-                <h2>Film & edit</h2>
+                <h3>Film & edit</h3>
                 <hr />
             </div>
         </div>
         <div class="row bg-gray p-3">
             <div class="col-sm-12 col-md-8 col-lg-8 pb-3">
                 <p class="main-text mb-2 mt-2 mb-3">When ready to share your knowledge.</p>
-                <p>This is your moment! If you’ve structured your course and used our guides, you're well prepared for the actual shoot. Pace yourself, take your time to make it just right, and fine-tune when you edit.</p>
+                <p>This is your moment! If you’ve structured your subject and used our guides, you're well prepared for the actual shoot. Pace yourself, take your time to make it just right, and fine-tune when you edit.</p>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4  pb-3 text-center">
                 <div class="mt-3 mb-2">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="mb-4">
                         <h6 class="text-bold">Build rapport.</h6>
-                        <p>Students want to know who’s teaching them. Even for a course that is mostly screencasts, film yourself for your introduction. Or go the extra mile and film yourself introducing each section!</p>
+                        <p>Students want to know who’s teaching them. Even for a subject that is mostly screencasts, film yourself for your introduction. Or go the extra mile and film yourself introducing each section!</p>
                     </div>
                     <div class="mb-4">
                         <h6 class="text-bold">Being on camera takes practice.</h6>
@@ -126,7 +126,7 @@
 
 <script>
 export default {
-    name: "film-course",
+    name: "film-subject",
 }
 </script>
 
