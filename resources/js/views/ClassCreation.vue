@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 mt-5">
-                <form id="subject-form" @keyup.enter="createCourse" enctype="multipart/form-data">
+                <!-- <form id="subject-form" @keyup.enter="createCourse" enctype="multipart/form-data"> -->
                     <div class="mb-4" v-for="(creation, index) in creations">
                         <h5 class="side-font mb-3">{{ creation.title }}</h5>
                         <div class="form-check hover-me mb-2" v-for="elem in creation.body" :key="elem.key">
@@ -18,12 +18,10 @@
                         </div>
                     </div>
                     <a href="/subjects" class="btn btn-secondary mt-5">View subject</a>
-                    <!-- <button @click.prevent="createCourse" type="submit" class="btn btn-secondary mt-5">View subject</button> -->
-                </form>
+                <!-- </form> -->
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9 fast-transition mt-2">
-                <SubjectIntroduction v-if="checkedItem === 'Subject introduction'"
-                                                        :introduction="subjectItem.introduction"/>
+                <SubjectIntroduction v-if="checkedItem === 'Subject introduction'" />
 
                 <SubjectStructure  v-if="checkedItem === 'Subject structure'" />
 

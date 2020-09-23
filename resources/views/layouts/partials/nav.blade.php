@@ -21,7 +21,7 @@
                         <svg class="bi bi-grid-3x3-gap-fill mr-1" width="1.3em" height="1.3em" viewBox="1 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1V2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1V2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V2zM1 7a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1V7zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1V7zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V7zM1 12a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1v-2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1v-2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2z"/>
                         </svg>
-                        Categories
+                        Library
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <ul class="dropdown-submenu">
@@ -293,7 +293,7 @@
                 </li>
             </ul>
 
-            <form action="" class="form-inline top-search">
+            <!-- <form action="" class="form-inline top-search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for subject...">
                     <div class="input-group-append">
@@ -305,15 +305,31 @@
                         </button>
                     </div>
                 </div>
-            </form>
+            </form> -->
 
             <ul class="navbar-nav ml-auto nav nav-pills">
-                <li class="nav-item {{ Helper::set_active(['business']) }} mt-1">
+                <!-- <li class="nav-item {{ Helper::set_active(['business']) }} mt-1">
                     <a class="nav-link" href="{{ url('/subjects') }}">Business</a>
-                </li>
-                <li class="nav-item {{ Helper::set_active(['teacher']) }} mt-1">
+                </li> -->
+
+                <ul class="navbar-nav mt-1">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Business
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <ul>
+                                <a class="dropdown-item" href="{{ url('/subjects') }}">Subjects</a>
+                                <a class="dropdown-item" href="{{ url('/teach') }}">Teach</a>
+                                <a class="dropdown-item" href="#">Enroll student</a>
+                                <a class="dropdown-item" href="#">Enroll school</a>
+                            </ul>
+                    </li>
+                </ul>
+
+                <!-- <li class="nav-item {{ Helper::set_active(['teacher']) }} mt-1">
                     <a class="nav-link" href="{{ url('/teach') }}">Teach</a>
-                </li>
+                </li> -->
 
                 @auth
                 <li class="nav-item {{ Helper::set_active(['my-courses']) }} mt-1">

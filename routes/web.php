@@ -19,6 +19,8 @@ Route::get('/edit-account', 'AccountController@create')->name('edit-account');
 Route::get('/edit-credit-card', 'PaymentController@create')->name('edit-credit-card');
 Route::get('/support', 'SupportController@create')->name('support');
 
+Route::post('/introduction_submission', 'SubjectIntroductionController@store');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -28,7 +30,3 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users','UserController');
     // Route::resource('subjects','SubjectsController');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
