@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/category', 'CategoryController@create')->name('category');
+Route::get('/library', 'LibraryController@create');
 Route::get('/teach', 'TeacherController@create')->name('teach');
 Route::post('/lectures', 'TeacherController@store');
 Route::get('/subjects', 'SubjectsController@index')->name('subjects');

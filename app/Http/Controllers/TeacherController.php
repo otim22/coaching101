@@ -25,15 +25,6 @@ class TeacherController extends Controller
      */
     public function store(Request $request, Subject $subject)
     {
-        // $request->validate([
-        //     'introduction' => 'required',
-        //     'curriculums' => 'required',
-        //     'students_learn' => 'required',
-        //     'class_requirement' => 'required',
-        //     'target_student' => 'required',
-        //     'subject_message' => 'required',
-        // ]);
-
         $introduction = $request->get('introduction');
         $curriculums = $request->get('curriculums');
         $students_learn = $request->get('students_learn');
