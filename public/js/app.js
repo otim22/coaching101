@@ -2039,8 +2039,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -39374,129 +39372,109 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12 col-md-3 col-lg-3 mt-5" }, [
-        _c(
-          "form",
-          {
-            attrs: { id: "subject-form", enctype: "multipart/form-data" },
-            on: {
-              keyup: function($event) {
-                if (
-                  !$event.type.indexOf("key") &&
-                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                ) {
-                  return null
-                }
-                return _vm.createCourse($event)
-              }
-            }
-          },
-          [
-            _vm._l(_vm.creations, function(creation, index) {
-              return _c(
-                "div",
-                { staticClass: "mb-4" },
-                [
-                  _c("h5", { staticClass: "side-font mb-3" }, [
-                    _vm._v(_vm._s(creation.title))
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(creation.body, function(elem) {
-                    return _c(
-                      "div",
-                      {
-                        key: elem.key,
-                        staticClass: "form-check hover-me mb-2"
-                      },
-                      [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "hover-me form-check-label",
-                            attrs: { for: elem }
-                          },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.selected,
-                                  expression: "selected"
-                                }
-                              ],
-                              staticClass: "form-check-input",
-                              attrs: { type: "checkbox", id: elem },
-                              domProps: {
-                                value: elem,
-                                checked: Array.isArray(_vm.selected)
-                                  ? _vm._i(_vm.selected, elem) > -1
-                                  : _vm.selected
-                              },
-                              on: {
-                                change: [
-                                  function($event) {
-                                    var $$a = _vm.selected,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = elem,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          (_vm.selected = $$a.concat([$$v]))
-                                      } else {
-                                        $$i > -1 &&
-                                          (_vm.selected = $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1)))
-                                      }
-                                    } else {
-                                      _vm.selected = $$c
-                                    }
-                                  },
-                                  function($event) {
-                                    return _vm.handleCheckSelection($event)
-                                  }
-                                ]
+      _c(
+        "div",
+        { staticClass: "col-sm-12 col-md-3 col-lg-3 mt-5" },
+        [
+          _vm._l(_vm.creations, function(creation, index) {
+            return _c(
+              "div",
+              { staticClass: "mb-4" },
+              [
+                _c("h5", { staticClass: "side-font mb-3" }, [
+                  _vm._v(_vm._s(creation.title))
+                ]),
+                _vm._v(" "),
+                _vm._l(creation.body, function(elem) {
+                  return _c(
+                    "div",
+                    { key: elem.key, staticClass: "form-check hover-me mb-2" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "hover-me form-check-label",
+                          attrs: { for: elem }
+                        },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.selected,
+                                expression: "selected"
                               }
-                            }),
-                            _vm._v(
-                              "\n                                    " +
-                                _vm._s(elem) +
-                                "\n                        "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  })
-                ],
-                2
-              )
-            }),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-secondary mt-5",
-                attrs: { href: "/subjects" }
-              },
-              [_vm._v("View subject")]
+                            ],
+                            staticClass: "form-check-input",
+                            attrs: { type: "checkbox", id: elem },
+                            domProps: {
+                              value: elem,
+                              checked: Array.isArray(_vm.selected)
+                                ? _vm._i(_vm.selected, elem) > -1
+                                : _vm.selected
+                            },
+                            on: {
+                              change: [
+                                function($event) {
+                                  var $$a = _vm.selected,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = elem,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.selected = $$a.concat([$$v]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.selected = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.selected = $$c
+                                  }
+                                },
+                                function($event) {
+                                  return _vm.handleCheckSelection($event)
+                                }
+                              ]
+                            }
+                          }),
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(elem) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
             )
-          ],
-          2
-        )
-      ]),
+          }),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-secondary mt-5",
+              attrs: { href: "/subjects" }
+            },
+            [_vm._v("View subject")]
+          )
+        ],
+        2
+      ),
       _vm._v(" "),
       _c(
         "div",
         { staticClass: "col-sm-12 col-md-9 col-lg-9 fast-transition mt-2" },
         [
           _vm.checkedItem === "Subject introduction"
-            ? _c("SubjectIntroduction", {
-                attrs: { introduction: _vm.subjectItem.introduction }
-              })
+            ? _c("SubjectIntroduction")
             : _vm._e(),
           _vm._v(" "),
           _vm.checkedItem === "Subject structure"

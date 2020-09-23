@@ -3517,7 +3517,7 @@ select {
 .fast-transition {
   position: relative;
   /* For positioning the pseudo-element */
-  background-color: #e6e6e6;
+  background-color: #d6d6d6;
   padding: 15px;
   border-radius: 8px;
 }
@@ -3624,6 +3624,15 @@ select {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.main-text {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.text-bold {
+  font-weight: bold;
 }
 
 /*!
