@@ -1,4 +1,4 @@
-<div class="fast-transition">
+<div class="fast-transition mt-2 mb-3">
     <div class="row m-2 pt-2">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <h3>Subject Structure</h3><hr />

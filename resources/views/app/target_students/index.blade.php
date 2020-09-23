@@ -1,5 +1,5 @@
-<div class="fast-transition">
-    <div class="row m-2">
+<div class="fast-transition mt-2 mb-3">
+    <div class="row m-2 pt-2">
         <div class="cols-sm-12 col-md-12 col-lg-12">
             <h3>Target your students</h3> <hr />
             <p class="lead mb-4 mt-4">The descriptions you write here will help students decide if your class is the one for them.</p>
@@ -72,9 +72,7 @@
             </button>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
-            <button class="btn btn-primary btn-block btn-sm">
-                Save
-            </button>
+            <button class="btn btn-primary btn-block"> Save </button>
         </div>
     </div>
 </div>

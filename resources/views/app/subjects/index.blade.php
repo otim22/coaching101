@@ -27,6 +27,9 @@
                 <a class="nav-link" id="v-pills-target-students-tab" data-toggle="pill" href="#v-pills-target-students" role="tab" aria-controls="v-pills-target-students" aria-selected="false">Target your students</a>
                 <a class="nav-link" id="v-pills-subject-messages-tab" data-toggle="pill" href="#v-pills-subject-messages" role="tab" aria-controls="v-pills-subject-messages" aria-selected="false">Subject messages</a>
             </div>
+            <div class="mt-5">
+                <a type="button" name="button" class="btn btn-outline-secondary">View Subject</a>
+            </div>
           </div>
           <div class="col-9">
             <div class="tab-content" id="v-pills-tabContent">

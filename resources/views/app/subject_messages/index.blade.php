@@ -1,5 +1,5 @@
-<div class="fast-transition">
-    <div class="row m-2">
+<div class="fast-transition mt-2 mb-3">
+    <div class="row m-2 pt-2">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <h3>Subject messages</h3>
             <hr />
@@ -34,9 +34,7 @@
             </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
-            <button class="btn btn-primary btn-block">
-                Save
-            </button>
+            <button class="btn btn-primary btn-block"> Save </button>
         </div>
     </div>
 </div>
