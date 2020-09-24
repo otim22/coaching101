@@ -57,7 +57,7 @@
 
                 <div class="form-group">
                     <label for="cover_image">Cover Image</label>
-                    <input type="file" name="cover_image" class="form-control-file" id="cover_image" required>
+                    <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" required>
                     @error('cover_image')
                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                     @enderror

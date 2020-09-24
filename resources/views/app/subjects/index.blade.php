@@ -18,7 +18,7 @@
           <div class="col-3">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <h5>Plan Your Subject</h5>
-                <a class="nav-link active" id="v-pills-subject-intro-tab" data-toggle="pill" href="#v-pills-subject-intro" role="tab" aria-controls="v-pills-subject-intro" aria-selected="true">Subject introduction</a>
+                <a class="nav-link" id="v-pills-subject-intro-tab" data-toggle="pill" href="#v-pills-subject-intro" role="tab" aria-controls="v-pills-subject-intro" aria-selected="true">Subject introduction</a>
                 <a class="nav-link" id="v-pills-subject-structure-tab" data-toggle="pill" href="#v-pills-subject-structure" role="tab" aria-controls="v-pills-subject-structure" aria-selected="false">Subject structure</a>
                 <h5 class="mt-3">Create Your Content</h5>
                 <a class="nav-link" id="v-pills-film-edit-tab" data-toggle="pill" href="#v-pills-film-edit" role="tab" aria-controls="v-pills-film-edit" aria-selected="false">Film & edit</a>

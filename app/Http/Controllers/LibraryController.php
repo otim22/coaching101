@@ -13,7 +13,7 @@ class LibraryController extends Controller
      */
     public function index()
     {
-        //
+        return view('app.category.index');
     }
 
     /**

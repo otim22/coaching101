@@ -20,6 +20,8 @@ Route::get('/edit-credit-card', 'PaymentController@create')->name('edit-credit-c
 Route::get('/support', 'SupportController@create')->name('support');
 
 Route::post('/introduction_submission', 'SubjectIntroductionController@store');
+Route::post('/message_submission', 'SubjectMessageController@store');
+Route::post('/target_student_submission', 'TargetStudentController@store');
 
 Auth::routes();
 
