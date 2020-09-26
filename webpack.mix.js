@@ -11,6 +11,19 @@ const mix = require('laravel-mix');
  |
  */
 
+ const domain = 'coaching101.app';
+ const homedir = require('os').homedir();
+
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .copy('node_modules/font-awesome/fonts', 'public/fonts');
+
+mix.browserSync({
+    proxy: 'https://' + domain,
+    host: domain,
+    open: 'external',
+    https: {
+        key: homedir + '/.config/valet/Certificates/' + domain + '.key',
+        cert: homedir + '/.config/valet/Certificates/' + domain + '.crt',
+    },
+})

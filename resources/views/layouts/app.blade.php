@@ -9,6 +9,8 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <title>@yield('title') {{ config('app.name') }}</title>
+
+        @stack('scripts')
       </head>
 <body>
     <div id="app">
