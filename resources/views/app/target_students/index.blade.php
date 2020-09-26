@@ -14,14 +14,18 @@
                         <div class="students_learn_input">
                             <input type="text"
                                         id="students_learn"
-                                        class="form-control form-control-sm mb-2"
+                                        value="{{old('student_learn.0')}}"
+                                        class="form-control form-control-sm mb-2 @error('student_learn.0') is-invalid @enderror"
                                         placeholder="Example: English, Origin of man"
-                                        name="students_learn[]">
+                                        name="student_learn[]">
                         </div>
                         <div class="hidden" id="hidden_student_learn">
                             <p class="delete_student_learn">x</p>
                         </div>
                     </div>
+                    @error('student_learn.0')
+                        <div class="alert alert-danger p-2 mt-2">{{ $errors->first('student_learn.0') }}</div>
+                    @enderror
                 </div>
             </div>
 
@@ -45,7 +49,8 @@
                         <div class="class_requirement_input">
                             <input type="text"
                                         id="class_requirement"
-                                        class="form-control form-control-sm mb-2"
+                                        value="{{old('class_requirement.0')}}"
+                                        class="form-control form-control-sm mb-2  @error('class_requirement.0') is-invalid @enderror"
                                         placeholder="Example: Should know basic literacy"
                                         name="class_requirement[]">
                         </div>
@@ -53,6 +58,9 @@
                             <p class="delete_class_requirement">x</p>
                         </div>
                     </div>
+                    @error('class_requirement.0')
+                        <div class="alert alert-danger p-2 mt-2">{{ $errors->first('class_requirement.0') }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
@@ -75,14 +83,17 @@
                         <div class="target_students_input">
                             <input type="text"
                                         id="target_students"
-                                        class="form-control form-control-sm mb-2"
+                                        class="form-control form-control-sm mb-2 @error('target_student.0') is-invalid @enderror"
                                         placeholder="Example: Senior two students"
-                                        name="target_students[]">
+                                        name="target_student[]">
                         </div>
                         <div class="hidden" id="hidden_target_students">
                             <p class="delete_target_students">x</p>
                         </div>
                     </div>
+                    @error('target_student.0')
+                        <div class="alert alert-danger p-2 mt-2">{{ $errors->first('target_student.0') }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
@@ -98,7 +109,7 @@
                 </p>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
-                <button class="btn btn-primary btn-block"> Save </button>
+                <button class="btn btn-primary btn-block" type="submit"> Save </button>
             </div>
         </div>
     </form>

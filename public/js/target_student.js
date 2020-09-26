@@ -92,7 +92,7 @@ $(function () {
     // Clone the hidden element and shows it
     $('.btn_target_students').click(function() {
         let all_items = document.querySelector('#hidden_target_students');
-
+        
         if(startValue < maxField) {
             startValue++;
             all_items.classList.remove('hidden');
