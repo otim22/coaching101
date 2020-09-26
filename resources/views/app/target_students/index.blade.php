@@ -1,4 +1,4 @@
-<div class="fast-transition mt-2 mb-3">
+<div class="fast-transition mb-3">
     <div class="row m-2 pt-2">
         <div class="cols-sm-12 col-md-12 col-lg-12">
             <h3>Target your students</h3> <hr />
