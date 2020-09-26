@@ -3635,15 +3635,15 @@ select {
   font-weight: bold;
 }
 
-.student_learn-section,
-.requirement_section,
-.student_section {
+.student_learn_section,
+.class_requirement_section,
+.target_students_section {
   display: flex;
 }
 
 .students_learn_input,
-.class_requirement_input_one,
-.target_students_input_one {
+.class_requirement_input,
+.target_students_input {
   flex-grow: 1;
 }
 
@@ -3655,9 +3655,9 @@ select {
   display: block;
 }
 
-.delete-student_learn,
-.delete-requirement,
-.delete-students {
+.delete_student_learn,
+.delete_class_requirement,
+.delete_target_students {
   color: white;
   background-color: #e74c3c;
   text-align: center;
