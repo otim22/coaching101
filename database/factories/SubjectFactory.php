@@ -2,13 +2,12 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\SubjectIntroduction;
+use App\Models\Subject;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
-$factory->define(SubjectIntroduction::class, function (Faker $faker) {
+$factory->define(Subject::class, function (Faker $faker) {
     return [
-        'subjects_id' => $faker->unique()->numberBetween(1, 50),
         'title' => $faker->sentence(),
         'subtitle' => $faker->text,
         'description' => $faker->paragraph()

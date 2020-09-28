@@ -12,7 +12,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class SubjectIntroduction extends Model implements HasMedia
+class Subject extends Model implements HasMedia
 {
     use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia;
 
