@@ -16,9 +16,9 @@ class CreateTargetStudentsTable extends Migration
         Schema::create('target_students', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('subjects_id')->nullable();
-            $table->string('student_learn');
-            $table->string('class_requirement');
-            $table->string('target_student');
+            $table->json('student_learn');
+            $table->json('class_requirement');
+            $table->json('target_student');
             $table->timestamps();
         });
     }

@@ -15,13 +15,18 @@ class SubjectMessageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'welcome_message' => 'required|string',
-            'congragulation_message' => 'required|string'
-        ]);
+        $this->validateRequest($request)
 
         SubjectMessage::create($request->all());
 
         return back();
+    }
+
+    protected function validateRequest($request)
+    {
+        return $request->validate([
+            'welcome_message' => 'required|string',
+            'congragulation_message' => 'required|string'
+        ]);
     }
 }
