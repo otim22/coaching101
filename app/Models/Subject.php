@@ -2,64 +2,75 @@
 
 namespace App\Models;
 
+use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
+use Spatie\Image\Manipulations;
 use Spatie\Sluggable\SlugOptions;
+use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Subject extends Model
+class SubjectIntroduction extends Model implements HasMedia
 {
-    use HasSlug;
+    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia;
 
-    protected $fillable = [
-        'subject_title', 'subject_subtitle', 'subject_description', 'subject', 'class', 'level',
-        'welcome_message', 'congratulations_message', 'slug'
-    ];
+    protected $fillable = ['title', 'subtitle', 'description'];
+    protected $with = ['media'];
 
-    protected $casts = [
-        'options' => 'array',
-    ];
-
-    /** Get the options for generating the slug. */
+    /**
+     * Get the options for generating the slug.
+     */
     public function getSlugOptions() : SlugOptions
     {
-        return SlugOptions::create()->generateSlugsFrom('subject_title')
-                                                                ->saveSlugsTo('slug')
-                                                                ->allowDuplicateSlugs()
-                                                                ->slugsShouldBeNoLongerThan(50)
-                                                                ->usingSeparator('_');
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->allowDuplicateSlugs()
+            ->slugsShouldBeNoLongerThan(50)
+            ->usingSeparator('_');
     }
 
-    /** Get the route key for the model. */
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
     public function getRouteKeyName()
     {
         return 'slug';
     }
 
+    public function registerMediaCollections() : void
+    {
+        $this->addMediaCollection('default')->singleFile();
+    }
+
     /**
-     * Get the sections for the subject.
-    */
-    public function sections()
+     * @param Media|null $media
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     */
+    public function registerMediaConversions(Media $media = null) : void
     {
-        return $this->hasMany('App\Models\Section');
+        $this->addMediaConversion('cover_image')
+                ->fit(Manipulations::FIT_CONTAIN, 800, 600)
+                ->nonQueued();
+
+        $this->addMediaConversion('thumb')
+                ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
+                ->nonQueued();
     }
 
-    protected function option($key, $default = null)
+    /** Return the SubjectIntroduction's thumbnail */
+    public function thumbnail()
     {
-        return data_get($this->options, $key, $default);
+        return $this->belongsTo(Media::class);
     }
 
-    public function getStudentLearnAttribute()
+    /** return true if the SubjectIntroduction has a thumbnail */
+    public function hasThumbnail(): bool
     {
-        return $this->option('student_learn', []);
-    }
-
-    public function getClassRequirementAttribute()
-    {
-        return $this->option('class_requirement', []);
-    }
-
-    public function getTargetStudentAttribute()
-    {
-        return $this->option('target_student', []);
+        return filled($this->thumbnail_id);
     }
 }

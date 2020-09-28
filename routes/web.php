@@ -19,9 +19,10 @@ Route::get('/edit-account', 'AccountController@create')->name('edit-account');
 Route::get('/edit-credit-card', 'PaymentController@create')->name('edit-credit-card');
 Route::get('/support', 'SupportController@create')->name('support');
 
-Route::post('/introduction_submission', 'SubjectIntroductionController@store');
+Route::post('/subject_submission', 'SubjectController@store');
 Route::post('/message_submission', 'SubjectMessageController@store');
 Route::post('/target_student_submission', 'TargetStudentController@store');
+Route::post('/subject_outline_submission', 'SubjectOutlineController@store');
 
 Auth::routes();
 
@@ -30,5 +31,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
-    // Route::resource('subjects','SubjectsController');
 });

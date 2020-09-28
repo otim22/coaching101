@@ -6,7 +6,7 @@
     </div>
     <div class="row m-2 pb-2">
         <div class="col-sm-12 col-md-12 col-lg-12">
-            <form action="{{ url('introduction_submission') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('subject_submission') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="title">Subject title</label>
