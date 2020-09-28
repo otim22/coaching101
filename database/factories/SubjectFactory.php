@@ -8,8 +8,10 @@ use Illuminate\Support\Str;
 
 $factory->define(Subject::class, function (Faker $faker) {
     return [
-        'title' => $faker->sentence(),
+        'title' => $faker->sentence,
+        'subtitle' => $faker->slug,
         'subtitle' => $faker->text,
-        'description' => $faker->paragraph()
+        'description' => $faker->paragraph,
+        'category' => $faker->word
     ];
 });

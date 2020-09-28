@@ -11,6 +11,7 @@
         <title>@yield('title') {{ config('app.name') }}</title>
 
         @stack('scripts')
+        @stack('outline')
       </head>
 <body>
     <div id="app">

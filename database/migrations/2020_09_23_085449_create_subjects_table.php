@@ -19,6 +19,7 @@ class CreateSubjectsTable extends Migration
             $table->string('slug');
             $table->string('subtitle')->nullable();
             $table->text('description');
+            $table->string('category');
             $table->timestamps();
         });
     }

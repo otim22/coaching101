@@ -17,9 +17,9 @@ class CreateSubjectOutlinesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('subjects_id')->nullable();
             $table->string('content_title');
-            $table->string('content_file');
+            $table->string('content_file_path');
             $table->string('content_description');
-            $table->string('resource_attachment');
+            $table->string('resource_attachment_path');
             $table->timestamps();
         });
     }

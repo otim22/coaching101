@@ -26,22 +26,22 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // View::composer(['welcome'], function ($view) {
-        //     $categories = Subject::get()->groupBy('default_subject')->take(7)->toArray();
-        //
-        //     $view->withCategories($categories);
-        // });
+        View::composer(['welcome'], function ($view) {
+            $categories = Subject::get()->groupBy('category')->take(10)->toArray();
 
-        // View::composer(['welcome', 'home'], function ($view) {
-        //     $mostViewedSubjects = Subject::get()->take(4);
-        //
-        //     $view->withMostViewedSubjects($mostViewedSubjects);
-        // });
+            $view->withCategories($categories);
+        });
 
-        // View::composer(['welcome', 'home'], function ($view) {
-        //     $topCategories = Subject::get()->pluck('default_subject')->unique()->take(12);
-        //
-        //     $view->withTopCategories($topCategories);
-        // });
+        View::composer(['welcome', 'home'], function ($view) {
+            $mostViewedSubjects = Subject::get()->take(4);
+
+            $view->withMostViewedSubjects($mostViewedSubjects);
+        });
+
+        View::composer(['welcome', 'home'], function ($view) {
+            $topCategories = Subject::get()->pluck('category')->unique()->take(12);
+
+            $view->withTopCategories($topCategories);
+        });
     }
 }

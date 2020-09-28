@@ -17,6 +17,6 @@ class SubjectController extends Controller
             $subjectIntroduction->addMediaFromRequest('cover_image')->toMediaCollection('default');
         }
 
-        return back();
+        return redirect()->back();
     }
 }

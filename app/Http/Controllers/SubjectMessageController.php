@@ -19,7 +19,7 @@ class SubjectMessageController extends Controller
 
         SubjectMessage::create($request->all());
 
-        return back();
+        return redirect()->back();
     }
 
     protected function validateRequest($request)

@@ -29,7 +29,7 @@ class TargetStudentController extends Controller
 
         $targetStudent->save();
 
-        return back();
+        return redirect()->back();
     }
 
     protected function validateRequest($request)
