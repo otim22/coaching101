@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             SubjectIntroductionTableSeeder::class,
             SubjectMessageTableSeeder::class,
+            TargetStudentTableSeeder::class,
         ]);
     }
 }

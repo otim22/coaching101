@@ -17,7 +17,7 @@
                                         value="{{old('student_learn.0')}}"
                                         class="form-control form-control-sm mb-2 @error('student_learn.0') is-invalid @enderror"
                                         placeholder="Example: English, Origin of man"
-                                        name="student_learn[]">
+                                        name="student_learn[]" required>
                         </div>
                         <div class="hidden" id="hidden_student_learn">
                             <p class="delete_student_learn">x</p>
@@ -52,7 +52,7 @@
                                         value="{{old('class_requirement.0')}}"
                                         class="form-control form-control-sm mb-2  @error('class_requirement.0') is-invalid @enderror"
                                         placeholder="Example: Should know basic literacy"
-                                        name="class_requirement[]">
+                                        name="class_requirement[]" required>
                         </div>
                         <div class="hidden" id="hidden_class_requirement">
                             <p class="delete_class_requirement">x</p>
@@ -85,7 +85,7 @@
                                         id="target_students"
                                         class="form-control form-control-sm mb-2 @error('target_student.0') is-invalid @enderror"
                                         placeholder="Example: Senior two students"
-                                        name="target_student[]">
+                                        name="target_student[]" required>
                         </div>
                         <div class="hidden" id="hidden_target_students">
                             <p class="delete_target_students">x</p>

@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\SubjectMessage;
+use App\Models\TargetStudent;
 use Illuminate\Database\Seeder;
 
-class SubjectMessageTableSeeder extends Seeder
+class TargetStudentTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class SubjectMessageTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(SubjectMessage::class, 50)->create();
+        factory(TargetStudent::class, 50)->create();
     }
 }
