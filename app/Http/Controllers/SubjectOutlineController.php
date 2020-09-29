@@ -23,14 +23,19 @@ class SubjectOutlineController extends Controller
             $subject_outline->content_file_path = '/storage/' . $filePath;
         }
 
-        if ($request->file('resource_attachment_path')) {
-            $fileName = time() . '_' . $request->resource_attachment_path->getClientOriginalName();
-            $filePath = $request->file('resource_attachment_path')->storeAs('uploads', $fileName, 'public');
+        $resources_files = $request->file('resource_attachment_path');
+        $resources_files_all = [];
 
-            $subject_outline->resource_attachment_path = '/storage/' . $filePath;
+        if ($resources_files) {
+            foreach ($resources_files as $resources_file) {
+                $fileName = time() . '_' . $resources_file->getClientOriginalName();
+                $filePath = $resources_file->storeAs('uploads', $fileName, 'public');
+
+                $resources_files_all[] = '/storage/' . $filePath;
+            }
         }
 
-        dd($subject_outline);
+        $subject_outline->resource_attachment_path = $resources_files_all;
 
         $subject_outline->save();
 
@@ -41,9 +46,9 @@ class SubjectOutlineController extends Controller
     {
         return $request->validate([
             'content_title' => 'required|string',
-            'content_file_path' => 'required|mimes:mp4,mp3,pdf,mov,ogg,qt,webm|max:20000',
+            'content_file_path' => 'required|mimes:mp4,mp3,mov,ogg,qt,webm|max:20000',
             'content_description' => 'required|string',
-            'resource_attachment_path' => 'nullable|mimes:doc,pdf,docx,zip,mp4,mp3|max:8000'
+            'resource_attachment_path.*' => 'nullable|mimes:doc,pdf,docx,zip|max:8000'
         ]);
     }
 }

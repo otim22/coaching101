@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     @error('student_learn.0')
-                        <div class="alert alert-danger p-2 mt-2">{{ $errors->first('student_learn.0') }}</div>
+                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     @error('class_requirement.0')
-                        <div class="alert alert-danger p-2 mt-2">{{ $errors->first('class_requirement.0') }}</div>
+                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     @error('target_student.0')
-                        <div class="alert alert-danger p-2 mt-2">{{ $errors->first('target_student.0') }}</div>
+                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                     @enderror
                 </div>
             </div>

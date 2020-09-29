@@ -3670,6 +3670,19 @@ select {
   cursor: pointer;
 }
 
+.btn-upload {
+  padding: 10px 10px 0px 20px;
+  height: 35px;
+}
+
+.entry {
+  display: flex;
+}
+
+.resource_attachment_input {
+  flex-grow: 1;
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TargetStudent;
 use Illuminate\Http\Request;
+use App\Models\TargetStudent;
+use App\Http\Requests\TargetStudentRequest;
 
 class TargetStudentController extends Controller
 {
@@ -13,10 +14,8 @@ class TargetStudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TargetStudentRequest $request)
     {
-        $this->validateRequest($request);
-
         $student_learn = $request->get('student_learn');
         $class_requirement = $request->get('class_requirement');
         $target_student = $request->get('target_student');
@@ -30,14 +29,5 @@ class TargetStudentController extends Controller
         $targetStudent->save();
 
         return redirect()->back();
-    }
-
-    protected function validateRequest($request)
-    {
-        return $request->validate([
-            'student_learn.*' => 'required_unless:type_of_content,is_information',
-            'class_requirement.*' => 'required_unless:type_of_content,is_information',
-            'target_student.*' => 'required_unless:type_of_content,is_information'
-        ]);
     }
 }

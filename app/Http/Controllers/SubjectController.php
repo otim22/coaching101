@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Subject;
 use Illuminate\Http\Request;
-use App\Requests\SubjectIntroductionRequest;
+use App\Http\Requests\SubjectRequest;
 
 class SubjectController extends Controller
 {
-    public function store(SubjectIntroductionRequest $request)
+    public function store(SubjectRequest $request)
     {
         $subjectIntroduction = new Subject($request->except(['cover_image']));
         $subjectIntroduction->save();

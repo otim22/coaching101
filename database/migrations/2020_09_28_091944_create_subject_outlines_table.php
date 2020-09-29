@@ -19,7 +19,7 @@ class CreateSubjectOutlinesTable extends Migration
             $table->string('content_title');
             $table->string('content_file_path');
             $table->string('content_description');
-            $table->string('resource_attachment_path');
+            $table->json('resource_attachment_path')->nullable();
             $table->timestamps();
         });
     }
