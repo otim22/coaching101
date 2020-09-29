@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="1.970060">
+    <testsuite name="Unit" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="1.970060">
+      <testsuite name="Tests\Unit\SubjectIntroductionTest" file="/Users/fredrickotim/Dev/php/laravel/coaching101/tests/Unit/Subject/SubjectIntroductionTest.php" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="1.970060">
+        <testcase name="can_create_subject_introduction" class="Tests\Unit\SubjectIntroductionTest" classname="Tests.Unit.SubjectIntroductionTest" file="/Users/fredrickotim/Dev/php/laravel/coaching101/tests/Unit/Subject/SubjectIntroductionTest.php" line="12" assertions="0" time="1.970060">
+          <error type="Error">Tests\Unit\SubjectIntroductionTest::can_create_subject_introduction
+Error: Class 'App\Models\SubjectIntroduction' not found
+
+/Users/fredrickotim/Dev/php/laravel/coaching101/tests/Unit/Subject/SubjectIntroductionTest.php:14</error>
+        </testcase>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
