@@ -23,17 +23,11 @@ class SubjectOutlineRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
+        return [
             'content_title' => 'required|string',
             'content_file_path' => 'required|mimes:mp4,mp3,mov,ogg,qt,webm|max:20000',
             'content_description' => 'required|string',
+            'resource_attachment_path.*' => 'nullable|mimes:doc,pdf,docx,zip|max:8000'
         ];
-        
-        $resources_attachments = count($this->input->files('resource_attachment_path'));
-        foreach(range(0, $resources_attachments) as $index) {
-            $rules['resource_attachment_path.' . $index] = 'nullable|mimes:doc,pdf,docx,zip|max:8000';
-        }
-
-        return $rules;
     }
 }

@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SubjectOutline;
+use App\Http\Requests\SubjectOutlineRequest;
 
 class SubjectOutlineController extends Controller
 {
-    public function store(Request $request)
+    public function store(SubjectOutlineRequest $request)
     {
-        $this->validateRequest($request);
-
         $subject_outline = new SubjectOutline;
 
         $subject_outline->content_title = $request->content_title;
@@ -40,15 +39,5 @@ class SubjectOutlineController extends Controller
         $subject_outline->save();
 
         return redirect()->back();
-    }
-
-    protected function validateRequest($request)
-    {
-        return $request->validate([
-            'content_title' => 'required|string',
-            'content_file_path' => 'required|mimes:mp4,mp3,mov,ogg,qt,webm|max:20000',
-            'content_description' => 'required|string',
-            'resource_attachment_path.*' => 'nullable|mimes:doc,pdf,docx,zip|max:8000'
-        ]);
     }
 }
