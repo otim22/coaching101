@@ -8,8 +8,9 @@ use App\Http\Requests\SubjectOutlineRequest;
 
 class SubjectOutlineController extends Controller
 {
-    public function store(SubjectOutlineRequest $request)
+    public function store(Request $request)
     {
+        dd($request);
         $subject_outline = new SubjectOutline;
 
         $subject_outline->content_title = $request->content_title;
