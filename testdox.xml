@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<tests>
-  <test className="Tests\Unit\SubjectIntroductionTest" methodName="can_create_subject_introduction" prettifiedClassName="Subject Introduction (Tests\Unit\SubjectIntroduction)" prettifiedMethodName="Can create subject introduction" status="4" time="1.970059975" size="-1" groups="default" exceptionMessage="Class 'App\Models\SubjectIntroduction' not found">
-    <group name="default"/>
-  </test>
-</tests>
