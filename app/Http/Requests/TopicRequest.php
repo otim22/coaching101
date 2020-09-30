@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SubjectRequest extends FormRequest
+class TopicRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,10 @@ class SubjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
-            'subtitle' => 'nullable|string',
-            'description' => 'required|string',
-            'category' => 'required|string',
-            'cover_image' => 'required|image|mimes:jpg,jpeg,png|max:5520'
+            'content_title' => 'required|string',
+            'content_file_path' => 'required|mimes:mp4,mp3,mov,ogg,qt,webm|max:20000',
+            'content_description' => 'required|string',
+            'resource_attachment_path.*' => 'nullable|mimes:doc,pdf,docx,zip|max:8000'
         ];
     }
 }

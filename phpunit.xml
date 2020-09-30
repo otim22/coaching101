@@ -32,5 +32,6 @@
         <server name="SESSION_DRIVER" value="array"/>
         <server name="TELESCOPE_ENABLED" value="false"/>
         <server name="ACTIVITY_LOGGER_ENABLED" value="false"/>
+        <server name="FILESYSTEM_DRIVER" value="images"/>
     </php>
 </phpunit>

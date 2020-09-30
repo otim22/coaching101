@@ -16,7 +16,7 @@ class Subject extends Model implements HasMedia
 {
     use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia;
 
-    protected $fillable = ['title', 'subtitle', 'description'];
+    protected $fillable = ['title', 'subtitle', 'description', 'category'];
     protected $with = ['media'];
 
     /**
@@ -45,6 +45,7 @@ class Subject extends Model implements HasMedia
     public function registerMediaCollections() : void
     {
         $this->addMediaCollection('default')->singleFile();
+        $this->addMediaCollection('images');
     }
 
     /**
@@ -72,5 +73,10 @@ class Subject extends Model implements HasMedia
     public function hasThumbnail(): bool
     {
         return filled($this->thumbnail_id);
+    }
+
+    public function topics()
+    {
+        return $this->hasMany('App\Models\Topic');
     }
 }

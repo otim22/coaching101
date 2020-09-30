@@ -320,7 +320,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <ul>
                                 <a class="dropdown-item" href="{{ url('/subjects') }}">Subjects</a>
-                                <a class="dropdown-item" href="{{ url('/teach') }}">Teach</a>
+                                <a class="dropdown-item" href="{{ url('/subjects') }}">Teach</a>
                                 <a class="dropdown-item" href="#">Enroll student</a>
                                 <a class="dropdown-item" href="#">Enroll school</a>
                             </ul>
@@ -402,10 +402,5 @@
             </ul>
         </div>
         @endif
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <notification-container />
-            </div>
-        </div>
     </div>
 </nav>

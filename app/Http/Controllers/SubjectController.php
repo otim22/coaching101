@@ -8,15 +8,28 @@ use App\Http\Requests\SubjectRequest;
 
 class SubjectController extends Controller
 {
-    public function store(SubjectRequest $request)
+    public function index()
     {
-        $subjectIntroduction = new Subject($request->except(['cover_image']));
-        $subjectIntroduction->save();
+        $subjects = Subject::all()->take(2);
+
+        return view('app.subject.introduction.index', compact('subjects'));
+    }
+
+    public function show(Subject $subject)
+    {
+        return view('app.subjects.show', compact('subject'));
+    }
+
+    public function store(Request $request)
+    {
+        $subject = new Subject($request->except(['cover_image']));
+
+        $subject->save();
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
-            $subjectIntroduction->addMediaFromRequest('cover_image')->toMediaCollection('default');
+            $subject->addMediaFromRequest('cover_image')->toMediaCollection('default');
         }
 
-        return redirect()->back();
+        return redirect('/audiences');
     }
 }
