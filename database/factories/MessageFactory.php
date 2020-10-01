@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Message::class, function (Faker $faker) {
     return [
-        'subjects_id' => $faker->numberBetween(1, 50),
+        'subject_id' => factory('App\Models\Subject')->create()->id,
         'welcome_message' => $faker->text,
         'congragulation_message' => $faker->text
     ];

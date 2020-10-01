@@ -15,7 +15,7 @@ class CreateAudiencesTable extends Migration
     {
         Schema::create('audiences', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('subjects_id')->nullable();
+            $table->foreignId('subject_id')->nullable();
             $table->json('student_learn');
             $table->json('class_requirement');
             $table->json('target_student');

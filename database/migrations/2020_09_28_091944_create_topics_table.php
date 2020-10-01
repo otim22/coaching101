@@ -15,7 +15,7 @@ class CreateTopicsTable extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('subjects_id')->nullable();
+            $table->foreignId('subject_id')->nullable();
             $table->string('content_title');
             $table->string('content_file_path');
             $table->string('content_description');
