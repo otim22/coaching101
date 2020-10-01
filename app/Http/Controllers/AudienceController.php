@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Audience;
+use App\Models\Subject;
 use App\Http\Requests\AudienceRequest;
 
 class AudienceController extends Controller
@@ -13,18 +14,22 @@ class AudienceController extends Controller
         return view('app.subject.audience.index');
     }
 
+    public function create(Subject $subject)
+    {
+        return view('app.subject.audience.create', compact('subject'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AudienceRequest $request)
+    public function store(AudienceRequest $request, Subject $subject)
     {
         $student_learn = $request->get('student_learn');
         $class_requirement = $request->get('class_requirement');
         $target_student = $request->get('target_student');
-
 
         $audience = new Audience;
 
@@ -32,8 +37,8 @@ class AudienceController extends Controller
         $audience->class_requirement = $class_requirement;
         $audience->target_student = $target_student;
 
-        $audience->save();
+        $subject->addAudience($audience);
 
-        return redirect('/messages');
+        return redirect()->route('messages', $subject);
     }
 }

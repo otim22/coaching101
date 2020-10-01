@@ -14,6 +14,6 @@ class AudienceTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Audience::class, 50)->create();
+        factory(Audience::class, 20)->create();
     }
 }

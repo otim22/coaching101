@@ -10,17 +10,22 @@ class SubjectController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::all()->take(2);
+        $subjects = Subject::all()->sortByDesc('updated_at');
 
-        return view('app.subject.introduction.index', compact('subjects'));
+        return view('app.subject.index', compact('subjects'));
+    }
+
+    public function create()
+    {
+        return view('app.subject.create');
     }
 
     public function show(Subject $subject)
     {
-        return view('app.subjects.show', compact('subject'));
+        return view('app.subject.show', compact('subject'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Subject $subject)
     {
         $subject = new Subject($request->except(['cover_image']));
 
@@ -30,6 +35,6 @@ class SubjectController extends Controller
             $subject->addMediaFromRequest('cover_image')->toMediaCollection('default');
         }
 
-        return redirect('/audiences');
+        return redirect()->route('audiences', $subject);
     }
 }

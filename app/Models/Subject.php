@@ -75,14 +75,24 @@ class Subject extends Model implements HasMedia
         return filled($this->thumbnail_id);
     }
 
+    public function audience()
+    {
+        return $this->hasOne('App\Models\Audience');
+    }
+
+    public function addAudience($audience)
+    {
+        return $this->audience()->save($audience);
+    }
+
     public function message()
     {
         return $this->hasOne('App\Models\Message');
     }
 
-    public function audience()
+    public function addMessage($message)
     {
-        return $this->hasOne('App\Models\Audience');
+        return $this->message()->save($message);
     }
 
     public function topics()

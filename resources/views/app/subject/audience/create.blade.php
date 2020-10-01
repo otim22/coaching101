@@ -6,8 +6,9 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-8 offset-2">
-                <form action="{{ route('audiences') }}" method="POST">
+                <form action="{{ route('audiences', $subject) }}" method="POST">
                     @csrf
+                    
                     <div class="fast-transition mb-3">
                         <div class="row m-2 pt-2">
                             <div class="cols-sm-12 col-md-12 col-lg-12">

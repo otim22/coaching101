@@ -13,6 +13,7 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\AudienceController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,15 +27,20 @@ Route::get('/business', [BusinessController::class, 'index'])->name('business');
 Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/edit-account', [AccountController::class, 'create'])->name('edit-account');
-Route::get('/edit-credit-card', [PaymentController::class, 'create'])->name('edit-credit-card');
-Route::get('/support', [SupportController::class, 'create'])->name('support');
 
-Route::get('/subjects', [SubjectController::class, 'index']);
-Route::post('/subjects', [SubjectController::class, 'store']);
-Route::get('/audiences', [AudienceController::class, 'index']);
-Route::post('/audiences', [AudienceController::class, 'store']);
-Route::get('/messages', [MessageController::class, 'index']);
-Route::post('/messages', [MessageController::class, 'store']);
+Route::get('/all-subjects', [SubjectController::class, 'index'])->name('all-subjects');
+Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
+Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects');
+Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
+
+Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);
+Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'create']);
+Route::post('/subjects/{subject}/audiences', [AudienceController::class, 'store'])->name('audiences');
+
+Route::get('/subjects/{subject}/messages', [MessageController::class, 'index']);
+Route::get('/subjects/{subject}/messages', [MessageController::class, 'create']);
+Route::post('/subjects/{subject}/messages', [MessageController::class, 'store'])->name('messages');
+
 Route::post('/topics', [TopicController::class, 'store']);
 
 Auth::routes();
