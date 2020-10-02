@@ -32,7 +32,9 @@ class SubjectController extends Controller
         $subject->save();
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
-            $subject->addMediaFromRequest('cover_image')->toMediaCollection('default');
+            $subject->addMediaFromRequest('cover_image')
+                            ->preservingOriginal()
+                            ->toMediaCollection('default');
         }
 
         return redirect()->route('audiences', $subject);

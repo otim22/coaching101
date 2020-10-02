@@ -72,7 +72,8 @@
                                                                 class="form-control-file @error('resource_attachment_path.0') is-invalid @enderror"
                                                                 id="resource_attachment_path"
                                                                 name="resource_attachment_path[]"
-                                                                value="{{ old('resource_attachment_path[]') }}">
+                                                                value="{{ old('resource_attachment_path[]') }}"
+                                                                multiple>
                                                 </div>
                                                 <div>
                                                     <p class="btn btn-upload btn-success  btn-sm btn-add pr-3" type="button">

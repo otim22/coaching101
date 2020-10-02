@@ -10,7 +10,7 @@
                 <p>Subtitle {{ $subject->subtitle }} </p>
                 <p>Description {{ $subject->description }} </p>
                 <p>Image </p>
-                <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="w-50">
+                <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="w-100">
 
                 <ul>
                     @foreach($subject->audience['student_learn'] as $student_learn)
@@ -32,6 +32,17 @@
 
                 <p>Welcome {{ $subject->message['welcome_message'] }} </p>
                 <p>Kudos {{ $subject->message['congragulation_message'] }} </p>
+
+                <h4>Topics</h4>
+                @foreach($subject->topics as $topic)
+                    <p>{{ $topic->content_title }}</p>
+                    <p>{{ $topic->content_description }}</p>
+                    <video id="my-video" class="video-js" controls preload="auto" width="600" height="400" data-setup="{}">
+                        <source src="{{ asset($topic->getFirstMediaUrl('content_file')) }}" type='video/mp4'>
+                    </video>
+                    <p><a href="{{ asset($topic->getFirstMediaUrl('resource_attachment')) }}">{{ $topic->getMedia('resource_attachment')[0]->name }}</a></p>
+                @endforeach
+
                 <a href="{{ route('topics', $subject) }}">Create Topic</a><br />
                 <a href="{{ route('all-subjects') }}">All Subjects</a>
             </div>

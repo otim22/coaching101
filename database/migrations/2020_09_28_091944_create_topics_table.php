@@ -17,9 +17,7 @@ class CreateTopicsTable extends Migration
             $table->id();
             $table->foreignId('subject_id')->nullable();
             $table->string('content_title');
-            $table->string('content_file_path');
             $table->string('content_description');
-            $table->json('resource_attachment_path')->nullable();
             $table->timestamps();
         });
     }

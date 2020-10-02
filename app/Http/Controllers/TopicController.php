@@ -20,33 +20,26 @@ class TopicController extends Controller
     }
 
 
-    public function store(Request $request, Subject $subject)
+    public function store(TopicRequest $request, Subject $subject)
     {
         $topic = new Topic;
 
         $topic->content_title = $request->content_title;
         $topic->content_description = $request->content_description;
 
-        if ($request->file('content_file_path')) {
-            $fileName = time() . '_' . $request->content_file_path->getClientOriginalName();
-            $filePath = $request->file('content_file_path')->storeAs('uploads', $fileName, 'public');
-
-            $topic->content_file_path = '/storage/' . $filePath;
+        if($request->hasFile('content_file_path') && $request->file('content_file_path')->isValid()) {
+            $topic->addMediaFromRequest('content_file_path')
+                        ->preservingOriginal()
+                        ->toMediaCollection('content_file');
         }
 
-        $resources_files = $request->file('resource_attachment_path');
-        $resources_files_all = [];
-
-        if ($resources_files) {
-            foreach ($resources_files as $resources_file) {
-                $fileName = time() . '_' . $resources_file->getClientOriginalName();
-                $filePath = $resources_file->storeAs('uploads', $fileName, 'public');
-
-                $resources_files_all[] = '/storage/' . $filePath;
+        if ($request->hasFile('resource_attachment_path')) {
+            foreach ($request->file('resource_attachment_path') as $resource_file) {
+                $topic->addMedia($resource_file)
+                            ->preservingOriginal()
+                            ->toMediaCollection('resource_attachment');
             }
         }
-
-        $topic->resource_attachment_path = $resources_files_all;
 
         $subject->topics()->save($topic);
 

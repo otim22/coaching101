@@ -44,35 +44,16 @@ class Subject extends Model implements HasMedia
 
     public function registerMediaCollections() : void
     {
-        $this->addMediaCollection('default')->singleFile();
-        $this->addMediaCollection('images');
-    }
+        $this->addMediaCollection('default')
+                ->registerMediaConversions(function (Media $media) {
+                        $this->addMediaConversion('default')
+                                ->fit(Manipulations::FIT_CONTAIN, 800, 600)
+                                ->nonQueued();
 
-    /**
-     * @param Media|null $media
-     * @throws \Spatie\Image\Exceptions\InvalidManipulation
-     */
-    public function registerMediaConversions(Media $media = null) : void
-    {
-        $this->addMediaConversion('cover_image')
-                ->fit(Manipulations::FIT_CONTAIN, 800, 600)
-                ->nonQueued();
-
-        $this->addMediaConversion('thumb')
-                ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
-                ->nonQueued();
-    }
-
-    /** Return the SubjectIntroduction's thumbnail */
-    public function thumbnail()
-    {
-        return $this->belongsTo(Media::class);
-    }
-
-    /** return true if the SubjectIntroduction has a thumbnail */
-    public function hasThumbnail(): bool
-    {
-        return filled($this->thumbnail_id);
+                        $this->addMediaConversion('thumb')
+                                ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
+                                ->nonQueued();
+                });
     }
 
     public function audience()
