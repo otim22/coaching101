@@ -1,3 +1,10 @@
+.fast-transition-light {
+    position: relative; /* For positioning the pseudo-element */
+    background-color: $color-gray;
+    padding: 20px;
+    border-radius: 8px;
+}
+
 .fast-transition {
     position: relative; /* For positioning the pseudo-element */
     background-color: $color-gray-2;

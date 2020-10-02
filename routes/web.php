@@ -14,6 +14,9 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\AudienceController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ToolController;
+use App\Http\Controllers\PerformanceController;
+use App\Http\Controllers\ResourceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,7 +31,7 @@ Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-sub
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/edit-account', [AccountController::class, 'create'])->name('edit-account');
 
-Route::get('/all-subjects', [SubjectController::class, 'index'])->name('all-subjects');
+Route::get('/teacher', [SubjectController::class, 'index'])->name('teacher');
 Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
 Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects');
 Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
@@ -44,6 +47,11 @@ Route::post('/subjects/{subject}/messages', [MessageController::class, 'store'])
 Route::get('/subjects/{subject}/topics', [TopicController::class, 'index'])->name('topics.index');
 Route::get('/subjects/{subject}/topics', [TopicController::class, 'create'])->name('topics.create');
 Route::post('/subjects/{subject}/topics', [TopicController::class, 'store'])->name('topics');
+
+Route::get('/teacher/subjets_', [TopicController::class, 'index'])->name('subjets_');
+Route::get('/performances', [PerformanceController::class, 'index'])->name('performances');
+Route::get('/resources', [ResourceController::class, 'index'])->name('resources');
+Route::get('/tools', [ToolController::class, 'index'])->name('tools');
 
 Auth::routes();
 

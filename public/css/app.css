@@ -3514,6 +3514,14 @@ select {
   background-attachment: fixed;
 }
 
+.fast-transition-light {
+  position: relative;
+  /* For positioning the pseudo-element */
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
 .fast-transition {
   position: relative;
   /* For positioning the pseudo-element */
