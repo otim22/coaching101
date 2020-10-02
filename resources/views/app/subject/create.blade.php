@@ -26,7 +26,8 @@
                                                     aria-label="Your subject title"
                                                     aria-describedby="title"
                                                     name="title"
-                                                    value="{{ old('title') }}" required>
+                                                    value="{{ old('title') }}"
+                                                    required>
                                     </div>
                                     @error('title')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -42,7 +43,8 @@
                                                     placeholder="Write your sub title"
                                                     aria-label="Write your sub title"
                                                     aria-describedby="subtitle"
-                                                    name="subtitle">
+                                                    name="subtitle"
+                                                    value="{{ old('subtitle') }}">
                                         @error('subtitle')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
@@ -51,7 +53,7 @@
 
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Description of the subject" name="description" rows="3" required></textarea>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Description of the subject" name="description" value="{{ old('description') }}" rows="3" required></textarea>
                                     @error('description')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror

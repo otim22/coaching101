@@ -32,6 +32,7 @@
 
                 <p>Welcome {{ $subject->message['welcome_message'] }} </p>
                 <p>Kudos {{ $subject->message['congragulation_message'] }} </p>
+                <a href="{{ route('topics', $subject) }}">Create Topic</a><br />
                 <a href="{{ route('all-subjects') }}">All Subjects</a>
             </div>
         </div>

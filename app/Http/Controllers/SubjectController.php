@@ -25,7 +25,7 @@ class SubjectController extends Controller
         return view('app.subject.show', compact('subject'));
     }
 
-    public function store(Request $request, Subject $subject)
+    public function store(SubjectRequest $request, Subject $subject)
     {
         $subject = new Subject($request->except(['cover_image']));
 

@@ -4,20 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Topic;
+use App\Models\Subject;
 use App\Http\Requests\TopicRequest;
 
 class TopicController extends Controller
 {
+    public function index()
+    {
+        return view('app.subject.topics.index');
+    }
+
+    public function create(Subject $subject)
+    {
+        return view('app.subject.topics.create', compact('subject'));
+    }
+
+
     public function store(Request $request, Subject $subject)
     {
-        $subject->content_title = $request->content_title;
-        $subject->content_description = $request->content_description;
+        $topic = new Topic;
+
+        $topic->content_title = $request->content_title;
+        $topic->content_description = $request->content_description;
 
         if ($request->file('content_file_path')) {
             $fileName = time() . '_' . $request->content_file_path->getClientOriginalName();
             $filePath = $request->file('content_file_path')->storeAs('uploads', $fileName, 'public');
 
-            $subject->content_file_path = '/storage/' . $filePath;
+            $topic->content_file_path = '/storage/' . $filePath;
         }
 
         $resources_files = $request->file('resource_attachment_path');
@@ -32,10 +46,10 @@ class TopicController extends Controller
             }
         }
 
-        $subject->resource_attachment_path = $resources_files_all;
+        $topic->resource_attachment_path = $resources_files_all;
 
-        $subject->subject()->create();
+        $subject->topics()->save($topic);
 
-        return redirect()->back();
+        return redirect()->route('subjects.show', $subject);
     }
 }

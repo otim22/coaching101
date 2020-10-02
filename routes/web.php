@@ -41,7 +41,9 @@ Route::get('/subjects/{subject}/messages', [MessageController::class, 'index']);
 Route::get('/subjects/{subject}/messages', [MessageController::class, 'create']);
 Route::post('/subjects/{subject}/messages', [MessageController::class, 'store'])->name('messages');
 
-Route::post('/topics', [TopicController::class, 'store']);
+Route::get('/subjects/{subject}/topics', [TopicController::class, 'index'])->name('topics.index');
+Route::get('/subjects/{subject}/topics', [TopicController::class, 'create'])->name('topics.create');
+Route::post('/subjects/{subject}/topics', [TopicController::class, 'store'])->name('topics');
 
 Auth::routes();
 
