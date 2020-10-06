@@ -8,6 +8,6 @@ class MySubjectsController extends Controller
 {
     public function index()
     {
-        return view('app.my_subjects.index');
+        return view('pages.my_subjects.index');
     }
 }

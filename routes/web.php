@@ -31,7 +31,7 @@ Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-sub
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/edit-account', [AccountController::class, 'create'])->name('edit-account');
 
-Route::get('/teacher', [SubjectController::class, 'index'])->name('teacher');
+Route::get('/teacher/{subjects}', [SubjectController::class, 'index']);
 Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
 Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects');
 Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
@@ -48,10 +48,10 @@ Route::get('/subjects/{subject}/topics', [TopicController::class, 'index'])->nam
 Route::get('/subjects/{subject}/topics', [TopicController::class, 'create'])->name('topics.create');
 Route::post('/subjects/{subject}/topics', [TopicController::class, 'store'])->name('topics');
 
-Route::get('/teacher/subjets_', [TopicController::class, 'index'])->name('subjets_');
-Route::get('/performances', [PerformanceController::class, 'index'])->name('performances');
-Route::get('/resources', [ResourceController::class, 'index'])->name('resources');
-Route::get('/tools', [ToolController::class, 'index'])->name('tools');
+Route::get('/teacher/subjects', [TopicController::class, 'index'])->name('teacher.subjects');
+Route::get('/teacher/performances', [PerformanceController::class, 'index'])->name('teacher.performances');
+Route::get('/teacher/resources', [ResourceController::class, 'index'])->name('teacher.resources');
+Route::get('/teacher/tools', [ToolController::class, 'index'])->name('teacher.tools');
 
 Auth::routes();
 

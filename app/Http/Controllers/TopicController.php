@@ -11,12 +11,12 @@ class TopicController extends Controller
 {
     public function index()
     {
-        return view('app.subject.topics.index');
+        return view('pages.subject.topics.index');
     }
 
     public function create(Subject $subject)
     {
-        return view('app.subject.topics.create', compact('subject'));
+        return view('pages.subject.topics.create', compact('subject'));
     }
 
 

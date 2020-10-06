@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         $roles = Role::pluck('name', 'name')->all();
 
-        return view('app.profile.index', compact('roles'));
+        return view('pages.profile.index', compact('roles'));
     }
 
     /**

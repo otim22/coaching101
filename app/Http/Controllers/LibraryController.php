@@ -13,7 +13,7 @@ class LibraryController extends Controller
      */
     public function index()
     {
-        return view('app.category.index');
+        return view('pages.category.index');
     }
 
     /**
@@ -23,6 +23,6 @@ class LibraryController extends Controller
      */
     public function create()
     {
-        return view('app.category.index');
+        return view('pages.category.index');
     }
 }

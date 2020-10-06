@@ -13,6 +13,6 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        return view('app.business.index');
+        return view('pages.business.index');
     }
 }

@@ -14,7 +14,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('app.teacher.subject.create');
+        return view('pages.teacher.subject.create');
     }
 
     /**

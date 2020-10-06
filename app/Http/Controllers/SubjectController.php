@@ -8,21 +8,21 @@ use App\Http\Requests\SubjectRequest;
 
 class SubjectController extends Controller
 {
-    public function index()
+    public function index(Subject $subject)
     {
         $subjects = Subject::orderBy('id', 'desc')->paginate(10);
 
-        return view('app.subject.index', compact('subjects'));
+        return view('pages.subject.index', compact('subjects'));
     }
 
     public function create()
     {
-        return view('app.subject.create');
+        return view('pages.subject.create');
     }
 
     public function show(Subject $subject)
     {
-        return view('app.subject.show', compact('subject'));
+        return view('pages.subject.show', compact('subject'));
     }
 
     public function store(SubjectRequest $request, Subject $subject)

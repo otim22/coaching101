@@ -8,6 +8,6 @@ class ToolController extends Controller
 {
     public function index()
     {
-        return view('app.tools.index');
+        return view('pages.tools.index');
     }
 }

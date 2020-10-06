@@ -11,12 +11,12 @@ class MessageController extends Controller
 {
     public function index()
     {
-        return view('app.subject.messages.index');
+        return view('pages.subject.messages.index');
     }
 
     public function create(Subject $subject)
     {
-        return view('app.subject.messages.index', compact('subject'));
+        return view('pages.subject.messages.index', compact('subject'));
     }
 
     /**

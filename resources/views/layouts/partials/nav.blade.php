@@ -327,10 +327,6 @@
                     </li>
                 </ul>
 
-                <!-- <li class="nav-item {{ Helper::set_active(['teacher']) }} mt-1">
-                    <a class="nav-link" href="{{ url('/teach') }}">Teach</a>
-                </li> -->
-
                 @auth
                 <li class="nav-item {{ Helper::set_active(['my-courses']) }} mt-1">
                     <a class="nav-link" href="{{ url('/my-subjects') }}">My subjects</a>
