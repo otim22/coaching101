@@ -1,3 +1,4 @@
+
 <div class="fast-transition p-4">
     <h4 class="mb-3">Subjects</h4>
     @foreach($subjects as $subject)

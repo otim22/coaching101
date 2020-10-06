@@ -45,7 +45,15 @@
                 </ul>
             </div>
             <div class="col-lg-9">
-                @include('pages.subject.partials.teacher_subjects')
+                @if(request()->path() === "teacher/subjects")
+                    @include('pages.subject.partials.teacher_subjects')
+                @elseif(request()->path() === "teacher/performances")
+                    @include('pages.subject.partials.performances')
+                @elseif(request()->path() === "teacher/tools")
+                    @include('pages.subject.partials.tools')
+                @elseif(request()->path() === "teacher/resources")
+                    @include('pages.subject.partials.resources')
+                @endif
             </div>
         </div>
     </div>
