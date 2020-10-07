@@ -2,15 +2,15 @@
 
 @section('content')
 
-<section class="section-two mt-5">
+<section>
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-8 offset-2">
                 <form action="{{ route('audiences', $subject) }}" method="POST">
                     @csrf
-                    
+
                     <div class="fast-transition mb-3">
-                        <div class="row m-2 pt-2">
+                        <div class="row m-2">
                             <div class="cols-sm-12 col-md-12 col-lg-12">
                                 <h3>Target your students</h3> <hr />
                                 <p class="lead mb-4 mt-4">The descriptions you write here will help students decide if your class is the one for them.</p>
@@ -131,14 +131,7 @@
                     </div>
                 </form>
 
-                @push('scripts')
-                    <script src="{{ asset('js/audience.js')}}" type="text/javascript"></script>
-                @endpush
-
-                @prepend('scripts')
-                    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
-                    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-                @endprepend
+                @include('pages.subject.audience.partials.js_files')
             </div>
         </div>
     </div>
