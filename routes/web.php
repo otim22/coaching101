@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/subjects/{subject}/messages', [MessageController::class, 'create']);
     Route::post('/subjects/{subject}/messages', [MessageController::class, 'store'])->name('messages');
     Route::get('/subjects/{subject}/messages/edit', [MessageController::class, 'edit'])->name('messages.edit');
+    Route::patch('/subjects/{subject}/messages/update', [MessageController::class, 'update'])->name('messages.update');
 
     Route::get('/subjects/{subject}/topics', [TopicController::class, 'index'])->name('topics.index');
     Route::get('/subjects/{subject}/topics', [TopicController::class, 'create'])->name('topics.create');

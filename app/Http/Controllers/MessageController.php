@@ -41,4 +41,20 @@ class MessageController extends Controller
 
         return redirect()->route('subjects.show', $subject);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(MessageRequest $request, Subject $subject, Message $message)
+    {
+        $message->welcome_message = $request->welcome_message;
+        $message->congragulation_message = $request->congragulation_message;
+
+        $subject->updateMessage($message);
+
+        return redirect()->route('subjects.show', $subject)->with('success', 'Messages updated successfully');;
+    }
 }

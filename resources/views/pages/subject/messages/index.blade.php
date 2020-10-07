@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-8 offset-2">
-                <form action="{{ route('messages', $subject) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('messages', $subject) }}" method="POST">
                     @csrf
 
                     <div class="fast-transition mb-3">

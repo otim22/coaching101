@@ -76,6 +76,11 @@ class Subject extends Model implements HasMedia
         return $this->message()->save($message);
     }
 
+    public function updateMessage($message)
+    {
+        return $this->message()->update($message->toArray());
+    }
+
     public function topics()
     {
         return $this->hasMany('App\Models\Topic');

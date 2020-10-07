@@ -153,7 +153,7 @@
                             </a>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Save</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Update</button>
                         </div>
                     </div>
                 </form>

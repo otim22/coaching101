@@ -21,9 +21,9 @@
                                     <div class="input-group">
                                         <textarea class="form-control @error('welcome_message') is-invalid @enderror"
                                                             name="welcome_message"
-                                                            value="{{ old('welcome_message') }}"
                                                             placeholder="Example: You are welcome to the subject"
-                                                            rows="3" required>
+                                                            rows="3"
+                                                            required>{{ old('welcome_message') }}
                                         </textarea>
                                     </div>
                                     @error('welcome_message')
@@ -36,9 +36,9 @@
                                     <div class="input-group">
                                         <textarea class="form-control @error('congragulation_message') is-invalid @enderror"
                                                             name="congragulation_message"
-                                                            value="{{ old('congragulation_message') }}"
                                                             placeholder="Example: Congragulations for completing the subject"
-                                                            rows="3" required>
+                                                            rows="3"
+                                                            required>{{ old('congragulation_message') }}
                                         </textarea>
                                     </div>
                                     @error('congragulation_message')

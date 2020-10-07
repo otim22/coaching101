@@ -6,7 +6,59 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-8 offset-2">
-                <p>Message edit</p>
+                <form action="{{ route('messages.update', $subject) }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+
+                    <div class="fast-transition mb-3">
+                        <div class="row m-2">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h3>Subject messages</h3> <hr />
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="welcome_message">Welcome Message</label>
+                                    <div class="input-group">
+                                        <textarea class="form-control @error('welcome_message') is-invalid @enderror"
+                                                            name="welcome_message"
+                                                            rows="3"
+                                                            required>{{ old('welcome_message', $subject->message['welcome_message']) }}
+                                        </textarea>
+                                    </div>
+                                    @error('welcome_message')
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="congragulation_message">Congratulations Message</label>
+                                    <div class="input-group">
+                                        <textarea class="form-control @error('congragulation_message') is-invalid @enderror"
+                                                            name="congragulation_message"
+                                                            rows="3"
+                                                            required>{{ old('welcome_message', $subject->message['congragulation_message']) }}
+                                        </textarea>
+                                    </div>
+                                    @error('congragulation_message')
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
+                        <div>
+                            <a href="{{ route('subjects.show', $subject) }}" class="btn btn-secondary btn-block pl-5 pr-5">
+                                Back
+                            </a>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Update</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
