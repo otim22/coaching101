@@ -3695,6 +3695,7 @@ select {
   border-radius: 5px !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+  overflow: hidden;
 }
 
 .card:hover {
@@ -3703,6 +3704,10 @@ select {
 
 .bold {
   font-weight: bold;
+}
+
+img.rounded-corners {
+  border-radius: 10px;
 }
 
 /*!

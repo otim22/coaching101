@@ -19,6 +19,11 @@ class MessageController extends Controller
         return view('pages.subject.messages.index', compact('subject'));
     }
 
+    public function edit(Subject $subject)
+    {
+        return view('pages.subject.messages.edit', compact('subject'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

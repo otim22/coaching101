@@ -19,6 +19,11 @@ class AudienceController extends Controller
         return view('pages.subject.audience.create', compact('subject'));
     }
 
+    public function edit(Subject $subject)
+    {
+        return view('pages.subject.audience.edit', compact('subject'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

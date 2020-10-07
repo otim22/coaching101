@@ -19,6 +19,10 @@ class TopicController extends Controller
         return view('pages.subject.topics.create', compact('subject'));
     }
 
+    public function show(Subject $subject, Topic $topic)
+    {
+        return view('pages.subject.topics.show', compact(['subject', 'topic']));
+    }
 
     public function store(TopicRequest $request, Subject $subject)
     {
@@ -44,5 +48,10 @@ class TopicController extends Controller
         $subject->topics()->save($topic);
 
         return redirect()->route('subjects.show', $subject);
+    }
+
+    public function edit(Subject $subject)
+    {
+        return view('pages.subject.topics.edit', compact('subject'));
     }
 }

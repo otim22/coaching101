@@ -25,6 +25,11 @@ class SubjectController extends Controller
         return view('pages.subject.show', compact('subject'));
     }
 
+    public function edit(Subject $subject)
+    {
+        return view('pages.subject.edit', compact('subject'));
+    }
+
     public function store(SubjectRequest $request, Subject $subject)
     {
         $subject = new Subject($request->except(['cover_image']));
@@ -38,5 +43,26 @@ class SubjectController extends Controller
         }
 
         return redirect()->route('audiences', $subject);
+    }
+
+    public function update(Request $request, Subject $subject)
+    {
+        $request->validate([
+            'title' => 'required|string',
+            'subtitle' => 'nullable|string',
+            'description' => 'required|string',
+            'category' => 'required|string',
+            'cover_image' => 'image|mimes:jpg,jpeg,png|max:5520'
+        ]);
+
+        $subject->fill($request->except(['cover_image']))->save();
+
+        if ($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+            $subject->addMediaFromRequest('cover_image')
+                            ->preservingOriginal()
+                            ->toMediaCollection('default');
+        }
+
+        return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');
     }
 }
