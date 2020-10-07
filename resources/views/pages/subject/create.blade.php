@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-two mt-5">
+<section>
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-8 offset-2">
@@ -16,7 +16,7 @@
                             </div>
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="form-group">
+                                <div class="form-group mt-3">
                                     <label for="title">Subject title</label>
                                     <div class="input-group">
                                         <input type="text"

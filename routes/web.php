@@ -37,7 +37,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/teacher/{subjects}', [SubjectController::class, 'index'])->name('teacher.subjects');
-    Route::get('/subjects/create', [SubjectController::class, 'create'])->name('subjects.create');
+    Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
     Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects');
     Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
     Route::get('/subjects/{subject}/edit', [SubjectController::class, 'edit'])->name('subjects.edit');
