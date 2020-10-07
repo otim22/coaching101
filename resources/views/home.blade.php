@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary" name="button">Start teaching</button>
+                    <a href="{{ url('login') }}" class="btn btn-primary" name="button">Start teaching</a>
                 </div>
             </div>
         </div>

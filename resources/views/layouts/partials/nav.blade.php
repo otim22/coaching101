@@ -308,28 +308,22 @@
             </form> -->
 
             <ul class="navbar-nav ml-auto nav nav-pills">
-                <!-- <li class="nav-item {{ Helper::set_active(['business']) }} mt-1">
-                    <a class="nav-link" href="{{ url('/subjects') }}">Business</a>
-                </li> -->
-
                 <ul class="navbar-nav mt-1">
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Business
+                            For Business
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <ul>
-                                <a class="dropdown-item" href="{{ url('/subjects') }}">Subjects</a>
-                                <a class="dropdown-item" href="{{ url('/subjects') }}">Teach</a>
-                                <a class="dropdown-item" href="#">Enroll student</a>
+                                <a class="dropdown-item" href="{{ url('/subjects') }}">Teach here</a>
                                 <a class="dropdown-item" href="#">Enroll school</a>
                             </ul>
                     </li>
                 </ul>
 
                 @auth
-                <li class="nav-item {{ Helper::set_active(['my-courses']) }} mt-1">
-                    <a class="nav-link" href="{{ url('/my-subjects') }}">My subjects</a>
+                <li class="nav-item {{ Helper::set_active(['subjects']) }} mt-1">
+                    <a class="nav-link" href="{{ route('teacher.subjects') }}">My subjects</a>
                 </li>
                 @endauth
 
@@ -360,7 +354,7 @@
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item d-flex" href="{{ route('edit-profile') }}">
-                            <div class="mr-2 mt-1">
+                            <div class="mr-2">
                                 <div class="rounded-initials text-center">
                                     <span class="initial-text"><h5>{{ Helper::generate_initials(Auth::user()->name) }}</h5></span>
                                 </div>
@@ -373,14 +367,14 @@
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item" href="{{ route('edit-account') }}">My courses</a>
-                        <a class="dropdown-item" href="{{ route('edit-account') }}">My cart</a>
+                        <a class="dropdown-item" href="{{ route('accounts') }}">My courses</a>
+                        <a class="dropdown-item" href="{{ route('accounts') }}">My cart</a>
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item" href="{{ route('edit-account') }}">Account settings</a>
-                        <a class="dropdown-item" href="{{ route('edit-credit-card') }}">Payment methods</a>
-                        <a class="dropdown-item" href="{{ route('edit-credit-card') }}">Edit profile</a>
+                        <a class="dropdown-item" href="{{ route('accounts') }}">Account settings</a>
+                        <a class="dropdown-item" href="{{ route('accounts') }}">Payment methods</a>
+                        <a class="dropdown-item" href="{{ route('accounts') }}">Edit profile</a>
 
                         <div class="dropdown-divider"></div>
 

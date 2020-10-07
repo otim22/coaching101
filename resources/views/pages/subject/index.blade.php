@@ -2,10 +2,10 @@
 
 @section('content')
 
-<section class="section-two mt-5">
+<section>
     <div class="container">
         <div class="row mt-5">
-            <div class="col-lg-3 col-md-2 col-sm-2">
+            <div class="col-lg-3 fast-transition col-md-12 col-sm-12">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('teacher.subjects') }}">
@@ -44,9 +44,9 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-9 pl-5">
                 @if(request()->path() === "teacher/subjects")
-                    @include('pages.subject.partials.teacher_subjects')
+                    @include('pages.subject.partials.subjects')
                 @elseif(request()->path() === "teacher/performances")
                     @include('pages.subject.partials.performances')
                 @elseif(request()->path() === "teacher/tools")

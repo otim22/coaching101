@@ -159,7 +159,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                 <h3>Start learning from the best teachers</h3>
                 <p>Ace your examinations</p>
-                <button type="button" class="btn btn-primary" name="button">Get started</button>
+                <a href="{{ url('login') }}" class="btn btn-primary" name="button">Get started</a>
             </div>
         </div>
     </div>
@@ -194,7 +194,7 @@
             <div class="col-sm-12 col-md-5 col-lg-5 text-center">
                 <h3>Get subjects from top teachers</h3>
                 <p>Find top teachers from around the best teaching millions of fellow students on Coaching101. Get inspired to learn, grow and share with the world.</p>
-                <button type="button" class="btn btn-primary" name="button">Start learning</button>
+                <a href="{{ url('login') }}" class="btn btn-primary" name="button">Start learning</a>
             </div>
             <div class="col-md-2 col-lg-2">
                 <div class="header-divider"></div>
@@ -202,7 +202,7 @@
             <div class="col-sm-12 col-md-5 col-lg-5 text-center coach">
                 <h3>Become a teacher</h3>
                 <p>Top teachers from best teaching millions of students on Coaching101. We provide the platform and tools so you can skill the students.</p>
-                <button type="button" class="btn btn-primary" name="button">Start teaching</button>
+                <a href="{{ url('login') }}" class="btn btn-primary" name="button">Start teaching</a>
             </div>
         </div>
     </div>

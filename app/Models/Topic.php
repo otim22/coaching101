@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\PresentsTopic;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Topic extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia, PresentsTopic;
 
     protected $fillable = [
         'content_title', 'content_description'

@@ -4,12 +4,12 @@ namespace App\Traits;
 
 trait PresentsMedia
 {
-    public function getFeaturedImageAttribute()
+    public function getCoverImageAttribute()
     {
-        return $this->getFirstMediaImage('cover_image');
+        return $this->getFirstMediaImage('default');
     }
 
-    public function getFeaturedImageThumbAttribute()
+    public function getCoverImageThumbAttribute()
     {
         return $this->getFirstMediaImage('thumb');
     }

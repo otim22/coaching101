@@ -29,35 +29,35 @@ Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('sub
 Route::get('/business', [BusinessController::class, 'index'])->name('business');
 Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
-Route::get('/edit-account', [AccountController::class, 'create'])->name('edit-account');
-
-Route::get('/teacher/{subjects}', [SubjectController::class, 'index']);
-Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
-Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects');
-Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
-
-Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);
-Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'create']);
-Route::post('/subjects/{subject}/audiences', [AudienceController::class, 'store'])->name('audiences');
-
-Route::get('/subjects/{subject}/messages', [MessageController::class, 'index']);
-Route::get('/subjects/{subject}/messages', [MessageController::class, 'create']);
-Route::post('/subjects/{subject}/messages', [MessageController::class, 'store'])->name('messages');
-
-Route::get('/subjects/{subject}/topics', [TopicController::class, 'index'])->name('topics.index');
-Route::get('/subjects/{subject}/topics', [TopicController::class, 'create'])->name('topics.create');
-Route::post('/subjects/{subject}/topics', [TopicController::class, 'store'])->name('topics');
-
-Route::get('/teacher/subjects', [TopicController::class, 'index'])->name('teacher.subjects');
-Route::get('/teacher/performances', [PerformanceController::class, 'index'])->name('teacher.performances');
-Route::get('/teacher/resources', [ResourceController::class, 'index'])->name('teacher.resources');
-Route::get('/teacher/tools', [ToolController::class, 'index'])->name('teacher.tools');
+Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function() {
+    Route::get('/teacher/{subjects}', [SubjectController::class, 'index'])->name('teacher.subjects');
+    Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
+    Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects');
+    Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
+
+    Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);
+    Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'create']);
+    Route::post('/subjects/{subject}/audiences', [AudienceController::class, 'store'])->name('audiences');
+
+    Route::get('/subjects/{subject}/messages', [MessageController::class, 'index']);
+    Route::get('/subjects/{subject}/messages', [MessageController::class, 'create']);
+    Route::post('/subjects/{subject}/messages', [MessageController::class, 'store'])->name('messages');
+
+    Route::get('/subjects/{subject}/topics', [TopicController::class, 'index'])->name('topics.index');
+    Route::get('/subjects/{subject}/topics', [TopicController::class, 'create'])->name('topics.create');
+    Route::post('/subjects/{subject}/topics', [TopicController::class, 'store'])->name('topics');
+
+    Route::get('/teacher/subjects', [TopicController::class, 'index'])->name('teacher.subjects');
+    Route::get('/teacher/performances', [PerformanceController::class, 'index'])->name('teacher.performances');
+    Route::get('/teacher/resources', [ResourceController::class, 'index'])->name('teacher.resources');
+    Route::get('/teacher/tools', [ToolController::class, 'index'])->name('teacher.tools');
+
     Route::resource('roles', 'RoleController');
     Route::resource('users', 'UserController');
 });
