@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Traits\PresentsTopic;
+use Spatie\Sluggable\HasSlug;
 use Spatie\Image\Manipulations;
+use Spatie\Sluggable\SlugOptions;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -12,11 +14,34 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Topic extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, PresentsTopic;
+    use HasFactory, InteractsWithMedia, PresentsTopic, HasSlug;
 
     protected $fillable = [
-        'content_title', 'content_description'
+        'title', 'description'
     ];
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->allowDuplicateSlugs()
+            ->slugsShouldBeNoLongerThan(50)
+            ->usingSeparator('_');
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function registerMediaCollections() : void
     {

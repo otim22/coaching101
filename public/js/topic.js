@@ -48,7 +48,7 @@ $(function () {
         event.preventDefault();
 
         let controlForm = $('.clone');
-        document.querySelector('.subject_outline_form').reset();
+        document.querySelector('.topic_form').reset();
         $('.card').clone().appendTo('.clone');
 
 

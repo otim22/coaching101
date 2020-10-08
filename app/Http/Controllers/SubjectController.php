@@ -65,4 +65,15 @@ class SubjectController extends Controller
 
         return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');
     }
+
+    public function destroy(Subject $subject)
+    {
+        try {
+            $subject->delete();
+
+            return redirect()->route('teacher.subjects')->with('success', 'Subject deleted successfully');
+        } catch (\Exception $e) {
+            return redirect()->route('teacher.subjects')->with('error', 'Failed to deleted subject');
+        }
+    }
 }

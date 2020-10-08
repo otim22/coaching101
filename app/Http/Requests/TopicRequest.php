@@ -24,9 +24,9 @@ class TopicRequest extends FormRequest
     public function rules()
     {
         return [
-            'content_title' => 'required|string',
+            'title' => 'required|string',
             'content_file_path' => 'required|mimes:mp4,mp3,mov,ogg|max:100000',
-            'content_description' => 'required|string',
+            'description' => 'required|string',
             'resource_attachment_path.*' => 'nullable|mimes:doc,pdf,docx,zip|max:8000'
         ];
     }

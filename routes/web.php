@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
     Route::get('/subjects/{subject}/edit', [SubjectController::class, 'edit'])->name('subjects.edit');
     Route::patch('/subjects/{subject}/update', [SubjectController::class, 'update'])->name('subjects.update');
+    Route::delete('/subjects/{subject}/destroy', [SubjectController::class, 'destroy'])->name('subjects.destroy');
 
     Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);
     Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'create']);
@@ -60,6 +61,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/subjects/{subject}/topics/{topic}', [TopicController::class, 'show'])->name('topics.show');
     Route::post('/subjects/{subject}/topics', [TopicController::class, 'store'])->name('topics');
     Route::get('/subjects/{subject}/topics/{topic}/edit', [TopicController::class, 'edit'])->name('topics.edit');
+    Route::patch('/subjects/{subject}/topics/{topic}/update', [TopicController::class, 'update'])->name('topics.update');
 
     Route::get('/teacher/subjects', [TopicController::class, 'index'])->name('teacher.subjects');
     Route::get('/teacher/performances', [PerformanceController::class, 'index'])->name('teacher.performances');
