@@ -67,6 +67,11 @@ class Subject extends Model implements HasMedia
         return $this->audience()->save($audience);
     }
 
+    public function updateAudience($audience)
+    {
+        return $this->audience()->update($audience->toArray());
+    }
+
     public function message()
     {
         return $this->hasOne('App\Models\Message');
@@ -76,6 +81,7 @@ class Subject extends Model implements HasMedia
     {
         return $this->message()->save($message);
     }
+
 
     public function updateMessage($message)
     {

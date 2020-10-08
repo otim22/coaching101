@@ -20,15 +20,28 @@
                             <div class="cols-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_student_learn">
                                     <label for="students_learn" class="bold">What will students learn in your class?</label>
-
+                                    <p class="mt-3">Current objectives</p>
+                                    @forelse($subject->audience->student_learn as $student_learn)
+                                    <p>
+                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                                        </svg>
+                                        {{ $student_learn }}
+                                    </p>
+                                    @empty
+                                    <p>Nothing to learn</p>
+                                    @endforelse
+                                    <small class="form-text text-muted">
+                                        <p class="red_color"><strong>Note:</strong> Adding new information will override all current objectives. Be sure you include current ones you don't want to loose.</p>
+                                    </small>
                                     <div class="input-group student_learn_section">
                                         <div class="students_learn_input">
                                             <input type="text"
                                                         id="students_learn"
-                                                        value="{{ old('student_learn.*') }}"
+                                                        value="{{ old('student_learn.0') }}"
                                                         class="form-control form-control-sm mb-2 @error('student_learn.0') is-invalid @enderror"
                                                         placeholder="Example: English, Origin of man"
-                                                        name="student_learn[]" required>
+                                                        name="student_learn[]">
                                         </div>
                                         <div class="hidden" id="hidden_student_learn">
                                             <p class="delete_student_learn">x</p>
@@ -51,18 +64,25 @@
                                     </span>
                                     Add answer
                                 </p>
-                                @forelse($subject->audience->student_learn as $student_learn)
-                                <p>
-                                    {{ $student_learn }}
-                                </p>
-                                @empty
-                                <p>Nothing to learn</p>
-                                @endforelse
                             </div>
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_class_requirement">
                                     <label for="class_requirement" class="bold">Are there any class requirements or prerequisites?</label>
+                                    <p class="mt-3">Current class requirements</p>
+                                    @forelse($subject->audience->class_requirement as $class_requirement)
+                                    <p>
+                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                                        </svg>
+                                        {{ $class_requirement }}
+                                    </p>
+                                    @empty
+                                    <p>Nothing to requirements</p>
+                                    @endforelse
+                                    <small class="form-text text-muted">
+                                        <p class="red_color"><strong>Note:</strong> Adding new information will override all current class requirements. Be sure you include current ones you don't want to loose.</p>
+                                    </small>
                                     <div class="input-group class_requirement_section">
                                         <div class="class_requirement_input">
                                             <input type="text"
@@ -70,7 +90,7 @@
                                                         value="{{old('class_requirement.0')}}"
                                                         class="form-control form-control-sm mb-2  @error('class_requirement.0') is-invalid @enderror"
                                                         placeholder="Example: Should know basic literacy"
-                                                        name="class_requirement[]" required>
+                                                        name="class_requirement[]">
                                         </div>
                                         <div class="hidden" id="hidden_class_requirement">
                                             <p class="delete_class_requirement">x</p>
@@ -93,31 +113,39 @@
                                     </span>
                                     Add answer
                                 </p>
-
-                                @forelse($subject->audience->class_requirement as $class_requirement)
-                                <p>
-                                    {{ $class_requirement }}
-                                </p>
-                                @empty
-                                <p>Nothing to requirements</p>
-                                @endforelse
                             </div>
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_target_students">
                                     <label for="target_students" class="bold">Who are your target students?</label>
+                                    <p class="mt-3">Current target students</p>
+                                    @forelse($subject->audience->target_student as $target_student)
+                                    <p>
+                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                                        </svg>
+                                        {{ $target_student }}
+                                    </p>
+                                    @empty
+                                    <p>Nothing to targeted students</p>
+                                    @endforelse
+                                    <small class="form-text text-muted">
+                                        <p class="red_color"><strong>Note:</strong> Adding new information will override all current target students. Be sure you include current ones you don't want to loose.</p>
+                                    </small>
                                     <div class="input-group target_students_section">
                                         <div class="target_students_input">
                                             <input type="text"
                                                         id="target_students"
+                                                        value="{{old('target_student.0')}}"
                                                         class="form-control form-control-sm mb-2 @error('target_student.0') is-invalid @enderror"
                                                         placeholder="Example: Senior two students"
-                                                        name="target_student[]" required>
+                                                        name="target_student[]">
                                         </div>
                                         <div class="hidden" id="hidden_target_students">
                                             <p class="delete_target_students">x</p>
                                         </div>
                                     </div>
+
                                     @error('target_student.0')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
@@ -136,19 +164,13 @@
                                     Add answer
                                 </p>
 
-                                @forelse($subject->audience->target_student as $target_student)
-                                <p>
-                                    {{ $target_student }}
-                                </p>
-                                @empty
-                                <p>Nothing to targeted students</p>
-                                @endforelse
+
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
                         <div>
-                            <a href="{{ route('subjects.show', $subject) }}" class="btn btn-secondary btn-block pl-5 pr-5">
+                            <a href="{{ route('subjects.show', $subject) }}" class="btn btn-secondary btn-block">
                                 <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
                                     <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>

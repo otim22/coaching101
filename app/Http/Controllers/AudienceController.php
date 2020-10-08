@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Audience;
 use App\Models\Subject;
+use Illuminate\Support\Arr;
+use App\Models\Audience;
+use Illuminate\Http\Request;
 use App\Http\Requests\AudienceRequest;
 
 class AudienceController extends Controller
@@ -55,15 +56,15 @@ class AudienceController extends Controller
      */
     public function update(AudienceRequest $request, Audience $audience, Subject $subject)
     {
-        $student_learn = $request->get('student_learn');
-        $class_requirement = $request->get('class_requirement');
-        $target_student = $request->get('target_student');
+        $student_learn = $request->input('student_learn');
+        $class_requirement = $request->input('class_requirement');
+        $target_student = $request->input('target_student');
 
-        $audience->student_learn = $student_learn;
-        $audience->class_requirement = $class_requirement;
-        $audience->target_student = $target_student;
+        if(array_filter($student_learn)) $audience->student_learn = $student_learn;
+        if(array_filter($class_requirement)) $audience->class_requirement = $class_requirement;
+        if(array_filter($target_student)) $audience->target_student = $target_student;
 
-        $subject->addAudience($audience);
+        $subject->updateAudience($audience);
 
         return redirect()->route('subjects.show', $subject)->with('success', 'Audience updated successfully');
     }
