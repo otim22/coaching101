@@ -2,12 +2,14 @@
 
 @section('content')
 
-<section>
+<section class="auth-background">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                <div class="card auth-card">
+                    <div class="card-header pt-3">
+                        <h5 class="bold">{{ __('Verify Your Email Address') }}</h5>
+                    </div>
 
                     <div class="card-body">
                         @if (session('resent'))

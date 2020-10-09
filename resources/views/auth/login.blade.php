@@ -2,14 +2,14 @@
 
 @section('content')
 
-<section>
+<section class="auth-background">
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-7">
-                <div class="card">
+                <div class="card auth-card">
                     <div class="card-header" id="grayBg">
-                        <div class="ml-4 mr-4 p-1 pt-2">
-                            <h5>{{ __('Login to your account') }}</h5>
+                        <div class="pt-3 mb-3 text-center">
+                            <h5 class="bold">{{ __('Login to your account') }}</h5>
                         </div>
                     </div>
 
@@ -68,7 +68,7 @@
                             <div class="form-group row mb-0 ml-3 mr-3">
                                 <div class="col-md-12 text-center">
                                     @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link" href="{{ route('password.request') }}" style="text-decoration: none">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                     @endif
@@ -77,7 +77,10 @@
 
                             <div class="form-group  row ml-3 mr-3 text-center">
                                 <div class="col-md-12">
-                                    <label class="col-form-label"> <span class="mr-2">{{ __('Don\'t have an account?') }} </span><a href="{{ url('/register') }}">Register here!</a></label>
+                                    <label class="col-form-label">
+                                        <span class="mr-2">{{ __('Don\'t have an account?') }} </span>
+                                        <a href="{{ url('/register') }}" style="text-decoration: none">Register here!</a>
+                                    </label>
                                 </div>
                               </div>
                         </form>

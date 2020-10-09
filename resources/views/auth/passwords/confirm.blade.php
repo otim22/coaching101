@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<section>
+<section class="auth-background">
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Confirm Password') }}</div>
+                <div class="card auth-card">
+                    <div class="card-header pt-3">
+                        <h5 class="bold">{{ __('Confirm Password') }}</h5>
+                    </div>
 
                     <div class="card-body">
                         {{ __('Please confirm your password before continuing.') }}

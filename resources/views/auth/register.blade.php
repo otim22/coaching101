@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<section>
+<section class="auth-background">
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-7 pt-4">
-                <div class="card">
+                <div class="card auth-card">
                     <div class="card-header" id="grayBg">
-                        <div class="ml-4 mr-4 p-1 pt-2">
-                            <h5>{{ __('Register and Enjoy learning') }}</h5>
+                        <div class="pt-3 mb-3 text-center">
+                            <h5 class="bold">{{ __('Register and Enjoy learning') }}</h5>
+                            <p class="text-muted">Create your account. It's free and only takes a minute.</p>
                         </div>
                     </div>
 
@@ -85,7 +86,8 @@
                                 <input class="mr-2" type="checkbox" name="agreement" id="agreement" {{ old('agreement') ? 'checked' : '' }}>
 
                                 <label class="form-check-label" for="agreement">
-                                    {{ __('I Agree To The Terms and Conditions') }}
+                                    {{ __('I accept the Terms of Use & Privacy Policy.') }}
+                                    <!-- I accept the <a href="#" style="text-decoration: none">Terms of Use</a> & <a href="#" style="text-decoration: none">Privacy Policy</a> -->
                                 </label>
                               </div>
 
@@ -99,7 +101,10 @@
 
                             <div class="form-group  row mt-3 ml-3 mr-3 text-center">
                                 <div class="col-md-12">
-                                    <label class="col-form-label"> <span class="mr-2">{{ __('Already have an account?') }} </span><a href="{{ url('/login') }}">Login here!</a></label>
+                                    <label class="col-form-label">
+                                        <span class="mr-2">{{ __('Already have an account?') }} </span>
+                                        <a href="{{ url('/login') }}" style="text-decoration: none">Login here!</a>
+                                    </label>
                                 </div>
                               </div>
                         </form>
