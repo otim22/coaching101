@@ -10,6 +10,7 @@
     background-color: $color-gray-2;
     padding: 15px;
     border-radius: 8px;
+    min-height: 600px;
 }
 
 .fast-transition::before {
@@ -63,6 +64,9 @@ a.disabled {
 }
 
 @include md-screens {
+    .fast-transition {
+        min-height: 5px;
+    }
     .upper-padding {
         padding-top: 40px;
     }

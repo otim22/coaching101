@@ -3536,6 +3536,7 @@ select {
   background-color: #d6d6d6;
   padding: 15px;
   border-radius: 8px;
+  min-height: 600px;
 }
 
 .fast-transition::before {
@@ -3587,6 +3588,10 @@ a.disabled {
 }
 
 @media only screen and (max-width: 991px) {
+  .fast-transition {
+    min-height: 5px;
+  }
+
   .upper-padding {
     padding-top: 40px;
   }
