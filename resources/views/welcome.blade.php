@@ -75,7 +75,7 @@
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     @foreach($categories as $key => $category)
-                        <a class="nav-item nav-link {{ $key === array_key_first($categories) ? 'active' : '' }}" id="nav-{{$key}}-tab" data-toggle="tab" href="#nav-{{$key}}" role="tab" aria-controls="nav-{{$key}}" aria-selected="true">
+                        <a class="nav-item nav-link {{ $key === $categories->keys()->first() ? 'active' : '' }}" id="nav-{{$key}}-tab" data-toggle="tab" href="#nav-{{$key}}" role="tab" aria-controls="nav-{{$key}}" aria-selected="true">
                             <h5>{{ $key }}</h5>
                         </a>
                     @endforeach
@@ -83,15 +83,15 @@
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 @foreach($categories as $key => $category)
-                <div class="tab-pane fade show {{ $key === array_key_first($categories) ? 'active' : '' }}" id="nav-{{$key}}" role="tabpanel" aria-labelledby="nav-{{$key}}-tab">
+                <div class="tab-pane fade show {{ $key === $categories->keys()->first() ? 'active' : '' }}" id="nav-{{$key}}" role="tabpanel" aria-labelledby="nav-{{$key}}-tab">
                         <div class="row mt-4">
                             @foreach($category as $cat)
                                 <div class="col-sm-6 col-md-6 col-lg-3">
-                                    <a href="{{ route('subjects.show', $cat['slug']) }}">
+                                    <a href="{{ route('subjects.show', $cat->slug) }}">
                                         <div class="card mb-4 shadow-sm">
-                                             <svg class="bd-placeholder-img card-img-top" width="100%" height="150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="35%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                                            <img src="{{ $cat->image_thumb}}" alt="image thumb" height="160">
                                              <div class="card-body">
-                                                 <p>{{ $cat['title'] }}</p>
+                                                 <p>{{ $cat->very_short_title }}</p>
                                                  <svg class="bi bi-star-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                                                  </svg>

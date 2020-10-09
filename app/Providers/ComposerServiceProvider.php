@@ -27,7 +27,8 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(['welcome'], function ($view) {
-            $categories = Subject::get()->groupBy('category')->take(10)->toArray();
+            $categories = Subject::orderBy('created_at', 'desc')->get()->groupBy('category')->take(10);
+            // dd($categories);
 
             $view->withCategories($categories);
         });

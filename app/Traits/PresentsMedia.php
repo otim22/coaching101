@@ -9,7 +9,7 @@ trait PresentsMedia
         return $this->getFirstMediaImage('default');
     }
 
-    public function getCoverImageThumbAttribute()
+    public function getImageThumbAttribute()
     {
         return $this->getFirstMediaImage('thumb');
     }

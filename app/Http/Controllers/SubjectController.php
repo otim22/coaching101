@@ -57,10 +57,13 @@ class SubjectController extends Controller
 
         $subject->fill($request->except(['cover_image']))->save();
 
-        if ($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+        $subject->media()->delete($subject);
+
+        if($subject->hasMedia('cover_image')) {
+            $subject->updateMedia($request->hasFile('cover_image'), 'default'); 
+        } else {
             $subject->addMediaFromRequest('cover_image')
-                            ->preservingOriginal()
-                            ->toMediaCollection('default');
+                        ->toMediaCollection('default');
         }
 
         return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');
