@@ -2,9 +2,21 @@
 
 @section('content')
 
-<section>
+<section class="section-bread bg-gray-4">
     <div class="container">
-        <div class="row mt-5">
+        <nav aria-label="breadcrumb bg-gray">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('teacher.subjects') }}">Subjects</a></li>
+                <li class="breadcrumb-item active" aria-current="page">New Subject</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section class="section-two">
+    <div class="container">
+        <div class="row mt-5 mb-4">
             <div class="col-lg-8 offset-2">
                 <form action="{{ route('subjects') }}" method="POST" enctype="multipart/form-data">
                     @csrf

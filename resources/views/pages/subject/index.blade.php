@@ -2,9 +2,20 @@
 
 @section('content')
 
-<section>
+<section class="section-bread bg-gray-4">
     <div class="container">
-        <div class="row mt-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Subjects</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section class="section-two">
+    <div class="container">
+        <div class="row mt-5 mb-4">
             <div class="col-lg-3 fast-transition col-md-12 col-sm-12">
                 <ul class="nav flex-column">
                     <li class="nav-item">

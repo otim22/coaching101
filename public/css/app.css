@@ -3456,6 +3456,10 @@ select {
   background-color: #d6d6d6 !important;
 }
 
+.bg-gray-4 {
+  background-color: #515152 !important;
+}
+
 .bg-dark {
   background-color: #282828 !important;
 }
@@ -3555,6 +3559,11 @@ select {
 
 .section-two {
   padding: 25px;
+}
+
+.section-bread {
+  margin-top: 12px;
+  padding-bottom: 40px;
 }
 
 .add-shadow {
