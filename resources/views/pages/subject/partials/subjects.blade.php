@@ -41,7 +41,7 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            Do you really want to delete this subject? This process cannot be undone.
+                            Do you really want to delete this subject? This process will also delete all topics related to the subject and cannot be undone.
                           </div>
                           <div class="modal-footer d-flex justify-content-between">
                             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>

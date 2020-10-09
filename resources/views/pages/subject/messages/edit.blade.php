@@ -2,9 +2,22 @@
 
 @section('content')
 
-<section class="section-two mt-5">
+<section class="section-bread bg-gray-4">
     <div class="container">
-        <div class="row mt-5">
+        <nav aria-label="breadcrumb bg-gray">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('teacher.subjects') }}">Subjects</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}">{{ $subject->short_title }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Message</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section class="section-two">
+    <div class="container">
+        <div class="row mt-5 mb-5">
             <div class="col-lg-8 offset-2">
                 <form action="{{ route('messages.update', $subject) }}" method="POST">
                     @csrf
@@ -18,7 +31,7 @@
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="welcome_message">Welcome Message</label>
+                                    <label for="welcome_message" class="bold">Welcome Message</label>
                                     <div class="input-group">
                                         <textarea class="form-control @error('welcome_message') is-invalid @enderror"
                                                             name="welcome_message"
@@ -32,7 +45,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="congragulation_message">Congratulations Message</label>
+                                    <label for="congragulation_message" class="bold">Congratulations Message</label>
                                     <div class="input-group">
                                         <textarea class="form-control @error('congragulation_message') is-invalid @enderror"
                                                             name="congragulation_message"

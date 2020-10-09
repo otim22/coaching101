@@ -15,7 +15,7 @@
 
 <section class="section-two">
     <div class="container">
-        <div class="row mt-5 mb-4">
+        <div class="row mt-5 mb-5">
             <div class="col-lg-3 fast-transition col-md-12 col-sm-12">
                 <ul class="nav flex-column">
                     <li class="nav-item">

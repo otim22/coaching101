@@ -3577,6 +3577,11 @@ select {
   z-index: 1;
 }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
 .header-divider {
   border-left: 1px solid #d6d6d6;
   width: 1px;

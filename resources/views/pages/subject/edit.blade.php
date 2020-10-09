@@ -16,7 +16,7 @@
 
 <section class="section-two">
     <div class="container">
-        <div class="row mt-5 mb-4">
+        <div class="row mt-5 mb-5">
             <div class="col-lg-8 offset-2">
                 <form action="{{ route('subjects.update', $subject) }}" method="POST" enctype="multipart/form-data">
                     @csrf
