@@ -16,18 +16,18 @@
 
 <section class="section-two">
     <div class="container">
-        <div class="row mt-5 mb-5">
-            <div class="col-lg-8 offset-2">
+        <div class="row justify-content-center mt-5 mb-5">
+            <div class="col-lg-8  col-md-12 col-sm-12">
                 <form action="{{ route('subjects.update', $subject) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
 
                     <div class="fast-transition mb-3">
                         <div class="row m-2 pb-2">
-                            <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
                                 <h3>Subject introduction</h3> <hr />
                             </div>
-                            <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group mb-4 mt-3">
                                     <label for="title" class="bold">Subject title</label>
                                     <div class="input-group">

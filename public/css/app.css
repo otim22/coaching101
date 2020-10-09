@@ -3166,7 +3166,7 @@ select {
   background-color: transparent;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 575px) {
+@media only screen and (max-width: 575px) {
   .wrapper-boxed {
     padding: 0 10px 10px 10px;
   }
@@ -3261,25 +3261,25 @@ select {
   }
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
+@media only screen and (max-width: 1200px) {
   #cartId1 {
     display: none;
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (max-width: 991px) {
   #cartId1 {
     display: none;
   }
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   #cartId2 {
     display: none;
   }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 575px) {
+@media only screen and (max-width: 575px) {
   #cartId2 {
     display: none;
   }
@@ -3296,13 +3296,13 @@ select {
   display: block;
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
+@media only screen and (max-width: 1200px) {
   .top-search input[type=text] {
     width: 200px;
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (max-width: 991px) {
   .top-search {
     visibility: hidden !important;
   }
@@ -3313,7 +3313,7 @@ select {
   }
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   .top-search input[type=text] {
     width: 495px;
   }
@@ -3582,6 +3582,20 @@ a.disabled {
   cursor: default;
 }
 
+.adds-padding {
+  padding-left: 50px !important;
+}
+
+@media only screen and (max-width: 991px) {
+  .upper-padding {
+    padding-top: 40px;
+  }
+
+  .adds-padding {
+    padding-left: 1px !important;
+  }
+}
+
 .header-divider {
   border-left: 1px solid #d6d6d6;
   width: 1px;
@@ -3590,19 +3604,19 @@ a.disabled {
   right: 90px;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (max-width: 991px) {
   .header-divider {
     right: 60px;
   }
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   .header-divider {
     border-left: 1px #d6d6d6;
   }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 575px) {
+@media only screen and (max-width: 575px) {
   .header-divider {
     border-left: 1px #d6d6d6;
   }
@@ -3614,13 +3628,13 @@ a.disabled {
   }
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   .coach {
     margin-top: 35px;
   }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 575px) {
+@media only screen and (max-width: 575px) {
   .coach {
     margin-top: 35px;
   }

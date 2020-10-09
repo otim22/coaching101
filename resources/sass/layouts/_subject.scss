@@ -57,3 +57,17 @@ a.disabled {
   pointer-events: none;
   cursor: default;
 }
+
+.adds-padding {
+    padding-left: 50px !important;
+}
+
+@include md-screens {
+    .upper-padding {
+        padding-top: 40px;
+    }
+
+    .adds-padding {
+        padding-left: 1px !important;
+    }
+}

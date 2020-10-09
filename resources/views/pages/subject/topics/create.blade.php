@@ -17,8 +17,8 @@
 
 <section class="section-two">
     <div class="container">
-        <div class="row mt-5 mb-5">
-            <div class="col-lg-8 offset-2">
+        <div class="row justify-content-center mt-5 mb-5">
+            <div class="col-lg-8 col-md-12 col-sm-12">
                 <div class="fast-transition mb-3">
                     <div class="row m-2 pt-2">
                         <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between">
@@ -51,9 +51,6 @@
                                 <div class="card card-body mb-5">
                                     <div class="form-group mt-2 pl-3 pr-3 mb-4 mt-4">
                                         <label for="title">Topic title</label>
-                                        <small class="form-text text-muted">
-                                            <strong>Note:</strong>  Resource should be a video and the file size is less than 500 MB.
-                                        </small>
                                         <input type="text"
                                                     class="form-control @error('title') is-invalid @enderror"
                                                     id="title"
@@ -68,6 +65,9 @@
                                     </div>
                                     <div class="form-group mt-2 pl-3 pr-3 mb-4">
                                         <label for="content_file_path">Content File</label>
+                                        <small class="form-text text-muted mb-2">
+                                            <strong>Note:</strong>  Resource should be a video and the file size is less than 500 MB.
+                                        </small>
                                         <div class="custom-file">
                                               <input type="file"
                                                             class="custom-file-input  @error('content_file_path') is-invalid @enderror"
@@ -89,6 +89,9 @@
                                     </div>
                                     <div class="form-group mt-2 pl-3 pr-3">
                                         <label for="resource_attachment_path">Resource Attachments</label>
+                                        <small class="form-text mb-2 text-muted">
+                                            <strong>Note:</strong>  A resource is a document that can be used to help students in the class. This file is going to be more like an extra class. Make sure everything the file size is less than 100 MB.
+                                        </small>
                                         <div class="controls">
                                             <div class="entry input-group">
                                                 <div class="resource_attachment_input">
@@ -112,9 +115,6 @@
                                         @error('resource_attachment_path.0')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
-                                        <small class="form-text text-muted">
-                                            <strong>Note:</strong>  A resource is a document that can be used to help students in the class. This file is going to be more like an extra class. Make sure everything the file size is less than 100 MB.
-                                        </small>
                                     </div>
 
                                 </div>

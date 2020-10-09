@@ -16,7 +16,7 @@
 <section class="section-two">
     <div class="container">
         <div class="row mt-5 mb-5">
-            <div class="col-lg-3 fast-transition col-md-12 col-sm-12">
+            <div class="col-lg-3 col-md-12 col-sm-12 fast-transition">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('teacher.subjects') }}">
@@ -64,7 +64,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-9 pl-5">
+            <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
                 @if(request()->path() === "teacher/subjects")
                     @include('pages.subject.partials.subjects')
                 @elseif(request()->path() === "teacher/performances")

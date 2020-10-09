@@ -3,12 +3,12 @@
     @forelse($subjects as $subject)
         <div class="card mb-4" style="max-height: 120px;">
             <div class="row no-gutters">
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-12 col-sm-12">
                     <a href="{{ route('subjects.show', $subject) }}" style="text-decoration: none">
                         <img src="{{ $subject->cover_image_thumb }}" class="card-img" alt="subject image" height="118px">
                     </a>
                 </div>
-                <div class="col-md-9">
+                <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
                     <div class="card-body">
                         <h5 class="card-title">  {{ $subject->short_title }}</h5>
                         <p class="card-text">

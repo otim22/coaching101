@@ -82,7 +82,7 @@
                     @endforelse
                 </ul>
             </div>
-            <div class="col-lg-9 col-md-12 col-sm-12 pl-5">
+            <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
                 <h4 class="bold mb-4">{{ $subject->title }}</h4>
                 <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="rounded-corners w-100">
                 <div class="mt-2 mb-4">

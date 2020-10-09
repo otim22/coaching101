@@ -17,8 +17,8 @@
 
 <section class="section-two">
     <div class="container">
-        <div class="row mt-5 mb-5">
-            <div class="col-lg-8 offset-2">
+        <div class="row justify-content-center mt-5 mb-5">
+            <div class="col-lg-8">
                 <form action="{{ route('messages.update', $subject) }}" method="POST">
                     @csrf
                     @method('PATCH')
