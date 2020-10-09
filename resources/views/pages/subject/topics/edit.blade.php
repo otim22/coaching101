@@ -1,9 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="section-two mt-5">
+
+<section class="section-bread bg-gray-4">
     <div class="container">
-        <div class="row mt-5">
+        <nav aria-label="breadcrumb bg-gray">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('teacher.subjects') }}">Subjects</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}">{{ $subject->short_title }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $topic->short_title }}</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section class="section-two">
+    <div class="container">
+        <div class="row mt-5 mb-5">
             <div class="col-lg-8 offset-2">
                 <div class="fast-transition mb-3">
                     <div class="row m-2 pt-2">
