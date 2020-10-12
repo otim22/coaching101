@@ -315,7 +315,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <ul>
-                                <a class="dropdown-item" href="{{ url('/subjects') }}">Teach here</a>
+                                <a class="dropdown-item" href="{{ route('subjects') }}">Teach here</a>
                                 <a class="dropdown-item" href="#">Enroll school</a>
                             </ul>
                     </li>

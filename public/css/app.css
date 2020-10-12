@@ -3456,6 +3456,10 @@ select {
   background-color: #d6d6d6 !important;
 }
 
+.bg-gray-3 {
+  background-color: #e6e6e6 !important;
+}
+
 .bg-gray-4 {
   background-color: #515152 !important;
 }
@@ -3534,13 +3538,21 @@ select {
   border-radius: 8px;
 }
 
-.fast-transition {
+.fast-transition-2 {
   position: relative;
   /* For positioning the pseudo-element */
   background-color: #d6d6d6;
   padding: 15px;
   border-radius: 8px;
   min-height: 600px;
+}
+
+.fast-transition {
+  position: relative;
+  /* For positioning the pseudo-element */
+  background-color: #d6d6d6;
+  padding: 15px;
+  border-radius: 8px;
 }
 
 .fast-transition::before {
@@ -3596,6 +3608,7 @@ a.disabled {
     display: none;
   }
 
+  .fast-transition-2,
   .fast-transition {
     min-height: 5px;
   }

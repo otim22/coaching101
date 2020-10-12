@@ -28,7 +28,6 @@ class ComposerServiceProvider extends ServiceProvider
     {
         View::composer(['welcome'], function ($view) {
             $categories = Subject::orderBy('created_at', 'desc')->get()->groupBy('category')->take(10);
-            // dd($categories);
 
             $view->withCategories($categories);
         });

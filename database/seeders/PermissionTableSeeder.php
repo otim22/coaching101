@@ -1,7 +1,11 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class PermissionTableSeeder extends Seeder
 {
@@ -17,12 +21,12 @@ class PermissionTableSeeder extends Seeder
 
         // create permissions
         $permissions = [
-            'view-class',
-            'create-class',
-            'edit-class',
-            'delete-class',
-            'publish-class',
-            'unpublish-class',
+            'view-subject',
+            'create-subject',
+            'edit-subject',
+            'delete-subject',
+            'publish-subject',
+            'unpublish-subject',
         ];
 
         foreach ($permissions as $permission) {
@@ -31,24 +35,50 @@ class PermissionTableSeeder extends Seeder
 
         // create roles and assign existing permissions
         $studentRole = Role::create(['name' => 'student']);
-        $studentRole->givePermissionTo('view-class');
+        $studentRole->givePermissionTo('view-subject');
 
         $teacherRole = Role::create(['name' => 'teacher']);
-        $teacherRole->givePermissionTo('view-class');
-        $teacherRole->givePermissionTo('create-class');
-        $teacherRole->givePermissionTo('edit-class');
-        $teacherRole->givePermissionTo('delete-class');
+        $teacherRole->givePermissionTo('view-subject');
+        $teacherRole->givePermissionTo('create-subject');
+        $teacherRole->givePermissionTo('edit-subject');
+        $teacherRole->givePermissionTo('delete-subject');
 
         $adminRole = Role::create(['name' => 'admin']);
-        $adminRole->givePermissionTo('publish-class');
-        $adminRole->givePermissionTo('unpublish-class');
+        $adminRole->givePermissionTo('publish-subject');
+        $adminRole->givePermissionTo('unpublish-subject');
 
-        // create a demo user
-        $user = Factory(App\User::class)->create([
+        $superRole = Role::create(['name' => 'super-admin']);
+
+        // create a student user
+        $user = Factory(\App\Models\User::class)->create([
+            'name' => 'Otim student',
+            'email' => 'student@gmail.com',
+            'password' => bcrypt('password'),
+        ]);
+        $user->assignRole($studentRole);
+
+        // create a teacher user
+        $user = Factory(\App\Models\User::class)->create([
+            'name' => 'Otim teacher',
+            'email' => 'teacher@gmail.com',
+            'password' => bcrypt('password'),
+        ]);
+        $user->assignRole($teacherRole);
+
+        // create a admin user
+        $user = Factory(\App\Models\User::class)->create([
             'name' => 'Otim admin',
             'email' => 'admin@gmail.com',
-            'password' => bcrypt('12qwaszx'),
+            'password' => bcrypt('password'),
         ]);
         $user->assignRole($adminRole);
+
+        // create a super admin user
+        $user = Factory(\App\Models\User::class)->create([
+            'name' => 'Otim deere',
+            'email' => 'super@gmail.com',
+            'password' => bcrypt('password'),
+        ]);
+        $user->assignRole($superRole);
     }
 }

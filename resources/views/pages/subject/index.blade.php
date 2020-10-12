@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-lg-3 col-md-12 col-sm-12">
-                <div class="fast-transition pt-4 pb-4">
+                <div class="fast-transition-2 pt-4 pb-4">
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="{{ route('manage.subjects') }}">

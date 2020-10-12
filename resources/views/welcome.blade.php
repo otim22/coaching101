@@ -87,7 +87,7 @@
                         <div class="row mt-4">
                             @foreach($category as $cat)
                                 <div class="col-sm-6 col-md-6 col-lg-3">
-                                    <a href="{{ route('subjects.show', $cat->slug) }}">
+                                    <a href="{{ route('subject.show', $cat->slug) }}">
                                         <div class="card mb-4 shadow-sm">
                                             <img src="{{ $cat->image_thumb}}" alt="image thumb" height="160">
                                              <div class="card-body">

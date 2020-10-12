@@ -5,12 +5,19 @@
     border-radius: 8px;
 }
 
-.fast-transition {
+.fast-transition-2 {
     position: relative; /* For positioning the pseudo-element */
     background-color: $color-gray-2;
     padding: 15px;
     border-radius: 8px;
     min-height: 600px;
+}
+
+.fast-transition {
+    position: relative; /* For positioning the pseudo-element */
+    background-color: $color-gray-2;
+    padding: 15px;
+    border-radius: 8px;
 }
 
 .fast-transition::before {
@@ -67,7 +74,7 @@ a.disabled {
     .card-text {
         display: none;
     }
-    .fast-transition {
+    .fast-transition-2, .fast-transition {
         min-height: 5px;
     }
     .upper-padding {

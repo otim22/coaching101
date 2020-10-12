@@ -60,7 +60,7 @@ class SubjectController extends Controller
         $subject->media()->delete($subject);
 
         if($subject->hasMedia('cover_image')) {
-            $subject->updateMedia($request->hasFile('cover_image'), 'default'); 
+            $subject->updateMedia($request->hasFile('cover_image'), 'default');
         } else {
             $subject->addMediaFromRequest('cover_image')
                         ->toMediaCollection('default');
