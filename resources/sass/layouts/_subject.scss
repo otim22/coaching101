@@ -64,6 +64,9 @@ a.disabled {
 }
 
 @include md-screens {
+    .card-text {
+        display: none;
+    }
     .fast-transition {
         min-height: 5px;
     }

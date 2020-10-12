@@ -3464,6 +3464,10 @@ select {
   background-color: #282828 !important;
 }
 
+.bg-dark-2 {
+  background-color: #070708 !important;
+}
+
 .bg-heading {
   background-color: #1d2e54 !important;
 }
@@ -3588,6 +3592,10 @@ a.disabled {
 }
 
 @media only screen and (max-width: 991px) {
+  .card-text {
+    display: none;
+  }
+
   .fast-transition {
     min-height: 5px;
   }

@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb bg-gray">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}" class="disabled">Home</a></li>
-                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('teacher.subjects') }}" class="disabled">Subjects</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}" class="disabled">Subjects</a></li>
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}">{{ $subject->short_title }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Message</li>
             </ol>

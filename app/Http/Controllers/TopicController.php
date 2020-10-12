@@ -9,11 +9,6 @@ use App\Http\Requests\TopicRequest;
 
 class TopicController extends Controller
 {
-    public function index()
-    {
-        return view('pages.subject.topics.index');
-    }
-
     public function create(Subject $subject)
     {
         return view('pages.subject.topics.create', compact('subject'));

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-heading increased-font py-2">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-2 increased-font py-2">
     <div class="container">
         @if (Route::has('login'))
         <a class="navbar-brand" href="{{ url('/') }}"><span class="logo-font">Coaching101</span></a>
@@ -323,7 +323,7 @@
 
                 @auth
                 <li class="nav-item {{ Helper::set_active(['subjects']) }} mt-1">
-                    <a class="nav-link" href="{{ route('teacher.subjects') }}">My subjects</a>
+                    <a class="nav-link" href="{{ route('manage.subjects') }}">My subjects</a>
                 </li>
                 @endauth
 
