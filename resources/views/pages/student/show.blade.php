@@ -42,36 +42,42 @@
                   <div class="card">
                       @forelse($subject->topics as $key => $topic)
                       <div class="card-header" id="{{ $topic->id }}">
-                        <h2 class="mb-0">
-                          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
-                                Topic {{ $key+1 }}: {{ $topic->title }}
-                          </button>
-                        </h2>
+                          <p class="mb-0">
+                            <button  id="id{{ $topic->id }}" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            Topic {{ $key+1 }}: {{ $topic->title }}
+                                        </div>
+                                        <div>
+                                            <span class="icon">
+                                                <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </button>
+                            </p>
                       </div>
 
                       <div id="collapse{{ $topic->id }}" class="collapse {{ $topic->id === 1 ? 'show' : '' }}" aria-labelledby="{{ $topic->id }}" data-parent="#accordionExample">
                         <div class="card-body">
-                            <ul>
                                 @forelse($topic->getMedia('content_file') as $topicMedia)
-                                <li>
-                                    <svg width="1.3em" height="1.3em" viewBox="0 0 16 20" class="bi bi-file-play-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM6 5.883v4.234a.5.5 0 0 0 .757.429l3.528-2.117a.5.5 0 0 0 0-.858L6.757 5.454a.5.5 0 0 0-.757.43z"/>
-                                    </svg>
-                                    <a href="{{ route('subject.play_video', [$subject, $topic]) }}" style="text-decoration: none">{{ $topicMedia->name }}</a>
-                                </li>
+                                <p class="remove_bottom_margin">
+                                    <a href="{{ route('subject.play_video', [$subject, $topic]) }}" style="text-decoration: none">
+                                        <i class="fa fa-play-circle"></i>{{ $key+1 }}. {{ $topicMedia->name }}
+                                    </a>
+                                </p>
                                 @empty
                                 <p>No available attachments.</p>
                                 @endforelse
-                            </ul>
-                            <ul>
+
                                 @forelse($topic->getMedia('resource_attachment') as $topicMedia)
-                                <li>
-                                    <svg width="1.4em" height="1.4em" viewBox="0 0 16 22" class="bi bi-file-earmark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
-                                        <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
-                                    </svg>
-                                    <a target="_blank" href="{{ $topicMedia->getUrl() }}" style="text-decoration: none">{{ $topicMedia->name }}</a>
-                                </li>
+                                <p  class="remove_bottom_margin">
+                                    <a target="_blank" href="{{ $topicMedia->getUrl() }}" style="text-decoration: none">
+                                        <i class="fa fa-file"></i>{{ $topicMedia->name }}
+                                    </a>
+                                </p>
                                 @empty
                                 <p>No available attachments.</p>
                                 @endforelse
