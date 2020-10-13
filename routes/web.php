@@ -32,13 +32,15 @@ Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-sub
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
 Route::get('/subject/{subject}', [StudentController::class, 'show'])->name('subject.show');
+Route::get('/subject/{subject}', [StudentController::class, 'show'])->name('subject.show');
+Route::get('/subject/{subject}/topics/{topic}', [StudentController::class, 'play_video'])->name('subject.play_video');
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function() {
-    
+
     Route::prefix('teacher')
             ->group(function() {
                 Route::get('/manage/subjects', [SubjectController::class, 'index'])->name('manage.subjects');

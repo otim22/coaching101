@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="form-group mt-2 pl-3 pr-3 mb-4">
                                         <label for="description">Content Description</label>
-                                        <textarea type="text" id="description" rows="3" class="form-control @error('description') is-invalid @enderror" placeholder="Include a description. What students will be able to do after completing the class." name="description" value="{{ old('description') }}"></textarea>
+                                        <textarea type="text" id="description" rows="3" class="form-control @error('description') is-invalid @enderror" placeholder="Include a description. What students will be able to do after completing the class." name="description">{{ old('description') }}</textarea>
                                         @error('description')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror

@@ -87,16 +87,18 @@
             <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
                 <h4 class="bold mb-4">{{ $subject->title }}</h4>
                 <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="rounded-corners w-100">
-                <div class="mt-2 mb-4">
+                <div class="mt-2 mb-4 mt-4">
                     <i> {{ $subject->subtitle }} </i>
                 </div>
-                <h5 class="bold">Subject description</h5>
-                <p> {{ $subject->description }} </p>
+                <div class="mb-5">
+                    <h5 class="bold">Subject description</h5>
+                    <p> {{ $subject->description }} </p>
+                </div>
 
-                <ul class="mb-4">
+                <ul class="mb-5">
                     <h5 class="bold">What students will learn</h5>
                     @forelse($subject->audience['student_learn'] as $student_learn)
-                    <li>
+                    <li class="mb-2">
                         <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
                         </svg>
@@ -107,10 +109,10 @@
                     @endforelse
                 </ul>
 
-                <ul class="mb-4">
+                <ul class="mb-5">
                     <h5 class="bold">The subject requirements for students</h5>
                     @forelse($subject->audience['class_requirement'] as $class_requirement)
-                    <li>
+                    <li class="mb-2">
                         <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
                         </svg>
@@ -121,10 +123,10 @@
                     @endforelse
                 </ul>
 
-                <ul class="mb-4">
+                <ul class="mb-5">
                     <h5 class="bold">Your target students</h5>
                     @forelse($subject->audience['target_student'] as $target_student)
-                    <li>
+                    <li class="mb-2">
                         <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
                         </svg>
@@ -136,10 +138,10 @@
                 </ul>
 
                 <h5 class="bold">Welcome message</h5>
-                <p class="mb-4"> {{ $subject->message['welcome_message'] }} </p>
+                <p class="mb-5"> {{ $subject->message['welcome_message'] }} </p>
 
                 <h5 class="bold">Congragulation message</h5>
-                <p class="mb-4"> {{ $subject->message['congragulation_message'] }} </p>
+                <p class="mb-5"> {{ $subject->message['congragulation_message'] }} </p>
 
                 <h5 class="bold mb-4">Subject Topics</h5>
                 @forelse($subject->topics as $key => $topic)
@@ -147,7 +149,7 @@
                     <div class="card mb-4" style="max-height: 120px;">
                         <div class="row no-gutters">
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <video id="my-video" class="video-js" controls preload="auto"  height="119px" data-setup="{}">
+                                <video controls preload="auto"  height="119" width="212" data-setup="{}" controlslist="nodownload">
                                     <source src="{{ asset($topic->getFirstMediaUrl('content_file')) }}" type='video/mp4'>
                                 </video>
                             </div>

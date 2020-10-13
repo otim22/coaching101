@@ -16,9 +16,8 @@ class Topic extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia, PresentsTopic, HasSlug;
 
-    protected $fillable = [
-        'title', 'description'
-    ];
+    protected $fillable = [ 'title', 'description'];
+    protected $with = ['media'];
 
     /**
      * Get the options for generating the slug.
