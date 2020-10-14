@@ -62,10 +62,10 @@
 
                       <div id="collapse{{ $topic->id }}" class="collapse {{ $topic->id === 1 ? 'show' : '' }}" aria-labelledby="{{ $topic->id }}" data-parent="#accordionExample">
                         <div class="card-body">
-                                @forelse($topic->getMedia('content_file') as $topicMedia)
-                                <p class="remove_bottom_margin">
+                                @forelse($topic->getMedia('content_file') as $key => $topicMedia)
+                                <p class="remove_bottom_margin mb-3 mt-1">
                                     <a href="{{ route('subject.play_video', [$subject, $topic]) }}" style="text-decoration: none">
-                                        <i class="fa fa-play-circle"></i>{{ $key+1 }}. {{ $topicMedia->name }}
+                                        <i class="fa subject-icon fa-play-circle"></i>{{ $key+1 }}. {{ $topicMedia->name }}
                                     </a>
                                 </p>
                                 @empty
@@ -73,9 +73,9 @@
                                 @endforelse
 
                                 @forelse($topic->getMedia('resource_attachment') as $topicMedia)
-                                <p  class="remove_bottom_margin">
+                                <p  class="remove_bottom_margin mb-3">
                                     <a target="_blank" href="{{ $topicMedia->getUrl() }}" style="text-decoration: none">
-                                        <i class="fa fa-file"></i>{{ $topicMedia->name }}
+                                        <i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}
                                     </a>
                                 </p>
                                 @empty

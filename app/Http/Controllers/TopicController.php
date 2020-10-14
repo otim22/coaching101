@@ -31,10 +31,12 @@ class TopicController extends Controller
         $topic->title = $request->title;
         $topic->description = $request->description;
 
-        if($request->hasFile('content_file_path') && $request->file('content_file_path')->isValid()) {
-            $topic->addMediaFromRequest('content_file_path')
-                        ->preservingOriginal()
-                        ->toMediaCollection('content_file');
+        if($request->hasFile('content_file_path')) {
+            foreach ($request->file('content_file_path') as $content_file) {
+                $topic->addMedia($content_file)
+                            ->preservingOriginal()
+                            ->toMediaCollection('content_file');
+            }
         }
 
         if ($request->hasFile('resource_attachment_path')) {
@@ -54,7 +56,7 @@ class TopicController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'content_file_path' => 'nullable|mimes:mp4,mp3,mov,ogg|max:100000',
+            'content_file_path.*' => 'nullable|mimes:mp4,mp3,mov,ogg|max:100000',
             'description' => 'required|string',
             'resource_attachment_path.*' => 'nullable|mimes:doc,pdf,docx,zip|max:8000'
         ]);
@@ -62,10 +64,12 @@ class TopicController extends Controller
         $topic->title = $request->title;
         $topic->description = $request->description;
 
-        if($request->hasFile('content_file_path') && $request->file('content_file_path')->isValid()) {
-            $topic->addMediaFromRequest('content_file_path')
-                        ->preservingOriginal()
-                        ->toMediaCollection('content_file');
+        if($request->hasFile('content_file_path')) {
+            foreach ($request->file('content_file_path') as $content_file) {
+                $topic->addMedia($content_file)
+                            ->preservingOriginal()
+                            ->toMediaCollection('content_file');
+            }
         }
 
         if ($request->hasFile('resource_attachment_path')) {

@@ -3173,7 +3173,11 @@ select {
 }
 
 .red_color {
-  color: red;
+  color: #e3342f;
+}
+
+.green_color {
+  color: #4e8749;
 }
 
 .side-font {
@@ -3741,12 +3745,52 @@ a.disabled {
   height: 35px;
 }
 
-.entry {
+.content-entry,
+.resource-entry {
   display: flex;
 }
 
-.resource_attachment_input {
+.resource_attachment_input,
+.content_file_input {
   flex-grow: 1;
+}
+
+.subject-icon.fa {
+  padding: 0px;
+  margin: 0px;
+}
+
+.subject-avail-icon.fa {
+  padding: 0px;
+  margin: 0px;
+  width: 0px;
+}
+
+.content-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  background-color: #e6e6e6;
+}
+
+.diff-content-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  background-color: #ffffff;
+}
+
+.diff-content-card:hover,
+.content-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.description {
+  margin: 20px 0px 0px 30px;
 }
 
 .card {

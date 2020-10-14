@@ -18,11 +18,11 @@
 <section class="section-two">
     <div class="container">
         <div class="row justify-content-center mt-5 mb-5">
-            <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="col-lg-10 col-md-12 col-sm-12">
                 <div class="fast-transition mb-3">
                     <div class="row m-2 pt-2">
                         <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between">
-                            <h3>Topic</h3>
+                            <h3>{{ $topic->medium_short_title }}</h3>
                             <h5>
                                 <a href="{{ route('subjects.show', $subject) }}" style="text-decoration: none">
                                 <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -68,29 +68,50 @@
                                     <div class="form-group mt-2 pl-3 pr-3 mb-4">
                                         <div class="mb-4">
                                             <p class="bold">Current content file</p>
-                                            <video id="my-video" class="video-js rounded-corners w-100" controls preload="auto" data-setup="{}">
-                                                <source src="{{ asset($topic->getFirstMediaUrl('content_file')) }}" type='video/mp4'>
-                                            </video>
+                                            @forelse($topic->getMedia('content_file') as $contentFile)
+                                            <div class="content-card mb-4" style="max-height: 120px;">
+                                                <div>
+                                                    <video controls preload="auto" class="rounded-corners photo" height="120" width="212" data-setup="{}" controlslist="nodownload">
+                                                        <source src="{{ asset($contentFile->getUrl()) }}" type='video/mp4'>
+                                                    </video>
+                                                </div>
+                                                <div class="description">
+                                                        <p>{{$contentFile->name }}</p>
+                                                </div>
+                                            </div>
+                                            @empty
+                                            <p>No available videos yet.</p>
+                                            @endforelse
                                         </div>
-                                        <label class="bold" for="content_file_path">Content file</label>
+                                        <label class="bold" for="content_file_path">To change content file</label>
                                         <small class="form-text text-muted">
-                                            <p class="red_color"><strong>Note:</strong>  Choosing a file below will replace the current content file above and the file size should be less than 500 MB.</p>
+                                            <p class="red_color"><strong>Note:</strong>  Choosing a file(s) below will replace the current content file above and each file size should be less than 500 MB.</p>
                                         </small>
-                                        <div class="custom-file">
-                                              <input type="file"
-                                                            class="custom-file-input  @error('content_file_path') is-invalid @enderror"
-                                                            id="content_file_path"
-                                                            name="content_file_path">
-                                              <label class="custom-file-label" for="content_file_path">Choose file</label>
+                                        <div class="content-controls mb-3">
+                                            <div class="content-entry input-group">
+                                                <div class="content_file_input">
+                                                    <input type="file"
+                                                                class="form-control-file @error('content_file_path.0') is-invalid @enderror"
+                                                                id="content_file_path"
+                                                                name="content_file_path[]"
+                                                                value="{{ old('content_file_path[]') }}"
+                                                                multiple>
+                                                </div>
+                                                <div>
+                                                    <p type="button" class="btn btn-upload btn-content_file float-right">
+                                                        <i class="fa subject-icon fa-plus-circle"></i>Add more
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        @error('content_file_path')
+                                        @error('content_file_path.0')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="form-group mt-2 pl-3 pr-3">
+                                    <div class="form-group pl-3 pr-3">
                                         <label class="bold" for="description">Content description</label>
                                         <textarea type="text" id="description"
-                                                            rows="3"
+                                                            rows="5"
                                                             class="form-control @error('description') is-invalid @enderror"
                                                             name="description">{{ $topic->title }}
                                         </textarea>
@@ -114,12 +135,12 @@
                                                 @endforelse
                                             </ul>
                                         </div>
-                                        <label class="bold" for="resource_attachment_path">Resource attachments</label>
+                                        <label class="bold" for="resource_attachment_path">To change resource attachments</label>
                                         <small class="form-text text-muted mb-3">
-                                            <p class="red_color"><strong>Note:</strong> Choosing a file below will replace the current resource attachments above and the file(s) size should be less than 100 MB.</p>
+                                            <p class="red_color"><strong>Note:</strong> Choosing a file(s) below will replace the current resource attachments above and each file size should be less than 100 MB.</p>
                                         </small>
-                                        <div class="controls">
-                                            <div class="entry input-group">
+                                        <div class="resource-controls">
+                                            <div class="resource-entry input-group">
                                                 <div class="resource_attachment_input">
                                                     <input type="file"
                                                                 class="form-control-file @error('resource_attachment_path.0') is-invalid @enderror"
@@ -129,11 +150,8 @@
                                                                 multiple>
                                                 </div>
                                                 <div>
-                                                    <p class="btn btn-upload btn-success  btn-sm btn-add pr-3" type="button">
-                                                        <svg width="1.8em" height="1.8em" viewBox="0 0 16 20" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                        </svg>
-                                                        Add
+                                                    <p type="button" class="btn btn-upload btn-resource_attachment pr-3">
+                                                        <i class="fa fa-plus-circle"></i>Add more
                                                     </p>
                                                 </div>
                                             </div>

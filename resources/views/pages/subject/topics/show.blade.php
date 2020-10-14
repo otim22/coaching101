@@ -15,25 +15,34 @@
     </div>
 </section>
 
-
 <section class="section-two">
     <div class="container">
         <div class="row justify-content-center mt-5 mb-5">
-            <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="col-lg-10 col-md-10 col-sm-12">
                 <div class="mb-3">
                     <h4 class="bold">{{ $topic->title }}</h4>
                 </div>
-                <video id="my-video" class="video-js rounded-corners w-100" controls preload="auto" data-setup="{}">
-                    <source src="{{ asset($topic->getFirstMediaUrl('content_file')) }}" type='video/mp4'>
-                </video>
-
-                <div class="mt-4">
+                @forelse($topic->getMedia('content_file') as $contentFile)
+                <div class="content-card mb-4" style="max-height: 120px;">
+                    <div>
+                        <video controls preload="auto" class="rounded-corners photo" height="120" width="212" data-setup="{}" controlslist="nodownload">
+                            <source src="{{ asset($contentFile->getUrl()) }}" type='video/mp4'>
+                        </video>
+                    </div>
+                    <div class="description">
+                            <p>{{$contentFile->name }}</p>
+                    </div>
+                </div>
+                @empty
+                <p>No available videos yet.</p>
+                @endforelse
+                <div class="mt-5">
                     <h5 class="bold">Topic description</h5>
                     <p>{{ $topic->description }}</p>
                 </div>
 
-                <div class="mt-4">
-                    <h5 class="bold">Extra file attachments</h5>
+                <div class="mt-5">
+                    <h5 class="bold">Extra attachments</h5>
                     <ul>
                         @forelse($topic->getMedia('resource_attachment') as $topicMedia)
                             <li>

@@ -18,7 +18,7 @@
 <section class="section-two">
     <div class="container">
         <div class="row justify-content-center mt-5 mb-5">
-            <div class="col-lg-8">
+            <div class="col-lg-10 col-md-10 col-sm-12">
                 <form action="{{ route('audiences.update', $subject) }}" method="POST">
                     @csrf
                     @method('PATCH')

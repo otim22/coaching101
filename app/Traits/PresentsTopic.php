@@ -8,7 +8,12 @@ trait PresentsTopic
 {
     public function getShortTitleAttribute()
     {
-        return Str::limit($this->title, 20);
+        return Str::limit($this->title, 15);
+    }
+
+    public function getMediumShortTitleAttribute()
+    {
+        return Str::limit($this->title, 25);
     }
 
     public function getSnippetAttribute()
