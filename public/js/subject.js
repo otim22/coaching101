@@ -1,23 +1,23 @@
-$(function() {
-    $('.expandible').each(function() {
-        var items = $(this),
-                item = items.slice(0, 3),
-                isExpanded = items.hasClass('expanded');
-                item[isExpanded ? 'show' : 'hide']();
-        if(item.length > 0) {
-                items
-                    .append($('<div class="showmore"><p class="expand">' + (isExpanded ? 'Show Less' : 'Show More') + '</p></div>')
-                    .click(function(event) {
-                        var isExpanded = items.hasClass('expanded');
-                        event.preventDefault();
-
-                        $(this).html(isExpanded ? 'Show More' : 'Show Less');
-                        items.toggleClass('expanded');
-                        item.toggle();
-                    }));
-            }
-    })
-})
+// $(function() {
+//     $('.expandible').each(function() {
+//         var items = $(this),
+//                 item = items.slice(0, 3),
+//                 isExpanded = items.hasClass('expanded');
+//                 item[isExpanded ? 'show' : 'hide']();
+//         if(item.length > 0) {
+//                 items
+//                     .append($('<div class="showmore"><p class="expand">' + (isExpanded ? 'Show Less' : 'Show More') + '</p></div>')
+//                     .click(function(event) {
+//                         var isExpanded = items.hasClass('expanded');
+//                         event.preventDefault();
+//
+//                         $(this).html(isExpanded ? 'Show More' : 'Show Less');
+//                         items.toggleClass('expanded');
+//                         item.toggle();
+//                     }));
+//             }
+//     })
+// })
 
 // const Utils = {
 //
