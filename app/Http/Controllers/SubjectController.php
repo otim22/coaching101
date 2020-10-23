@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Topic;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use App\Http\Requests\SubjectRequest;
@@ -69,6 +70,19 @@ class SubjectController extends Controller
         return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');
     }
 
+    public function getSubjects(Subject $subject)
+    {
+        return view('pages.student.index', compact('subject'));
+    }
+
+    public function showSubject(Subject $subject, Topic $topic)
+    {
+        $previous = Topic::where('id', '<', $topic->id)->orderBy('id', 'desc')->first();
+        $next = Topic::where('id', '>', $topic->id)->orderBy('id')->first();
+
+        return view('pages.student.show', compact(['subject', 'topic', 'previous', 'next']));
+    }
+
     public function destroy(Subject $subject)
     {
         try {
@@ -78,5 +92,27 @@ class SubjectController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('teacher.subjects')->with('error', 'Failed to deleted subject');
         }
+    }
+
+    public function next($topic)
+    {
+        $previous = null;
+
+        if(!empty($previous) && $previous->id == $topic->id) {
+            return Topic::where('id', '>', $topic->id)->orderBy('id')->first();
+        }
+
+        return null;
+    }
+
+    public function previous($topic)
+    {
+        $previous = null;
+
+        if(!empty($previous) && $previous->id == $topic->id) {
+            return Topic::where('id', '<', $topic->id)->orderBy('id', 'desc')->first();
+        }
+
+        return null;
     }
 }

@@ -2,51 +2,90 @@
 
 @section('content')
 
-<section class="section-one bg-subject text-white">
-    <div class="container">
-        <div class="row mt-2">
-            <div class="col-12">
-                    <h3>{{ $subject->title }}</h3>
-                    <h5>{{ $subject->subtitle }}</h5>
-                    <h6>100 Students</h6>
-                    <h6>Created by Otim Fredrick</h6><br />
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section-two">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-8">
-                <div class="border mr-4 p-4 rounded bg-gray-3 mb-5">
-                    <h4>What you will learn</h4>
-                    <ul>
-                        @forelse($subject->audience['student_learn'] as $student_learn)
-                        <li>
-                            <svg width="1.8em" height="1.8em" viewBox="0 0 16 19" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                            </svg>
-                                {{ $student_learn }}
-                         </li>
-                        @empty
-                        <p>Get ready to learn a lot of things.</p>
-                        @endforelse
-                    </ul>
+<section>
+    <div class="container-fluid">
+        <div class="row justify-content-center  pl-5 pr-5">
+            <div class="col-sm-12 col-md-12 col-lg-8 mb-4">
+                <video id="topic_video_player"
+                            class="video-js vjs-fluid vjs-big-play-centered">
+                    <source src="{{ asset($topic->getFirstMediaUrl('content_file')) }}" type='video/mp4'>
+                    <p class="vjs-no-js">
+                        To view this video please enable JavaScript, and consider upgrading to a
+                        web browser that
+                        <a href="https://videojs.com/html5-video-support/" target="_blank">
+                            supports HTML5 video
+                        </a>
+                    </p>
+                </video>
+                <div class="d-flex justify-content-between mt-4">
+                    <div>
+                        @if($previous)
+                            <a href="{{ route('subject.showSubject', [$subject, $previous]) }}" type="button" class="" name="button" style="text-decoration: none">Previous</a>
+                        @else
+                            <a href="#" type="button" class="disabled" name="button" style="text-decoration: none">Previous Lession</a>
+                        @endif
+                    </div>
+                    <div>
+                        <a href="{{ route('subject.showSubject', [$subject, $next]) }}" type="button" class="" name="button" style="text-decoration: none">Next Lession</a>
+                    </div>
                 </div>
 
-                <div class="accordion mr-4 mb-5" id="accordionExample">
-                    <div class="mb-4">
-                        <h4>Subject Content</h4>
+                <ol class="vjs-playlist"></ol>
+
+                <div class="mt-5">
+                    <nav>
+                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-link active bold" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-controls="nav-description" aria-selected="true">Description</a>
+                        <a class="nav-link bold" id="nav-resource-tab" data-toggle="tab" href="#nav-resource" role="tab" aria-controls="nav-resource" aria-selected="false">Extra resources</a>
+                        <a class="nav-link bold" id="nav-rate-tab" data-toggle="tab" href="#nav-rate" role="tab" aria-controls="nav-rate" aria-selected="false">Rate teacher!</a>
+                      </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+                            <div class="mt-3">
+                                <p>{{ $topic->description }}</p>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-resource" role="tabpanel" aria-labelledby="nav-resource-tab">
+                            <div class="mt-3">
+                                <ul>
+                                    @forelse($topic->getMedia('resource_attachment') as $topicMedia)
+                                    <li class="mb-3">
+                                        <a target="_blank" href="{{ $topicMedia->getUrl() }}" style="text-decoration: none">
+                                            <p><i class="fa subject-icon fa-file "></i> {{ $topicMedia->name }}</p>
+                                        </a>
+                                    </li>
+                                    @empty
+                                    <p>No available attachments.</p>
+                                    @endforelse
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-rate" role="tabpanel" aria-labelledby="nav-rate-tab">
+                            <div class="mt-3">
+                                Rate us!!
+                            </div>
+                        </div>
                     </div>
-                  <div class="card">
-                      @forelse($subject->topics as $key => $topic)
-                      <div class="card-header" id="{{ $topic->id }}">
-                          <p class="mb-0">
-                            <button  id="id{{ $topic->id }}" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <aside>
+                    <div class="accordion make-me-sticky mr-4 mb-5" id="accordionExample">
+                        <div class="mb-3">
+                            <h5 class="bold">Subject content</h5>
+                        </div>
+                        <div class="card">
+                            @forelse($subject->topics as $key => $topic)
+                            <div class="card-header" id="{{ $topic->id }}">
+                                <button  id="id{{ $topic->id }}" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            Topic {{ $key+1 }}: {{ $topic->title }}
+                                            {{ $key + 1 }}: {{ $topic->title }}
                                         </div>
                                         <div>
                                             <span class="icon">
@@ -57,123 +96,49 @@
                                         </div>
                                     </div>
                                 </button>
-                            </p>
-                      </div>
+                            </div>
 
-                      <div id="collapse{{ $topic->id }}" class="collapse {{ $topic->id === 1 ? 'show' : '' }}" aria-labelledby="{{ $topic->id }}" data-parent="#accordionExample">
-                        <div class="card-body">
-                                @forelse($topic->getMedia('content_file') as $key => $topicMedia)
-                                <p class="remove_bottom_margin mb-3 mt-1">
-                                    <a href="{{ route('subject.play_video', [$subject, $topic]) }}" style="text-decoration: none">
-                                        <i class="fa subject-icon fa-play-circle"></i>{{ $key+1 }}. {{ $topicMedia->name }}
-                                    </a>
-                                </p>
-                                @empty
-                                <p>No available attachments.</p>
-                                @endforelse
+                            <div id="collapse{{ $topic->id }}" class="collapse {{ $topic->id === 1 ? 'show' : '' }}" aria-labelledby="{{ $topic->id }}" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    @forelse($topic->getMedia('content_file') as $topicMedia)
+                                        <p class="remove_bottom_margin mb-3">
+                                            <a href="{{ route('subject.showSubject', [$subject, $topic]) }}" style="text-decoration: none">
+                                                <i class="fa subject-icon fa-play-circle"></i>{{ $key+1 }}. {{ $topicMedia->name }}
+                                            </a>
+                                        </p>
+                                    @empty
+                                        <p>No available attachments.</p>
+                                    @endforelse
 
-                                @forelse($topic->getMedia('resource_attachment') as $topicMedia)
-                                <p  class="remove_bottom_margin mb-3">
-                                    <a target="_blank" href="{{ $topicMedia->getUrl() }}" style="text-decoration: none">
-                                        <i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}
-                                    </a>
-                                </p>
-                                @empty
-                                <p>No available attachments.</p>
-                                @endforelse
-                            </ul>
+                                    @forelse($topic->getMedia('resource_attachment') as $topicMedia)
+                                        <p class="remove_bottom_margin mb-3">
+                                            <a target="_blank" href="{{ $topicMedia->getUrl() }}" style="text-decoration: none">
+                                                <i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}
+                                            </a>
+                                        </p>
+                                    @empty
+                                        <p>No available attachments.</p>
+                                    @endforelse
+                              </div>
+                            </div>
+                            @empty
+                            <p>No topics available yet!</p>
+                            @endforelse
                         </div>
-                      </div>
-                    @empty
-                    <p>No topics available yet!</p>
-                    @endforelse
-                  </div>
-                </div>
-
-                <div class=" mr-4 mb-5">
-                    <h4>Requirements</h4>
-                    <ul>
-                        @forelse($subject->audience['class_requirement']  as $class_requirement)
-                        <li>
-                            <svg width="2em" height="2em" viewBox="0 0 18 18" class="bi bi-dot" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-                            </svg>
-                            {{ $class_requirement }}
-                        </li>
-                        @empty
-                        <p>No subject requirements indicated.</p>
-                        @endforelse
-                    </ul>
-                </div>
-
-                <div  class=" mr-4 mb-5">
-                    <h4>Description</h4>
-                    <p>{{ $subject->description }}</p>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
-                <aside class="p-3 p-4 border rounded bg-white add-shadow">
-                    <div class="make-me-sticky">
-                        <div class="mb-3">
-                            <a class="btn btn-danger btn-block" href="#">Go to subject</a>
-                        </div>
-                        <h5>This subject includes:</h5>
-                        <ul>
-                            <li>
-                                <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                                    <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
-                                </svg>
-                                3 hours on-demand video
-                            </li>
-                            <li>
-                                <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                                    <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
-                                </svg>
-                                2 articles
-                            </li>
-                            <li>
-                                <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                                    <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
-                                </svg>
-                                5 downloadable resources
-                            </li>
-                            <li>
-                                <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                                    <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
-                                </svg>
-                                Access on mobile and TV
-                            </li>
-                        </ul>
                     </div>
                 </aside>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-12 mb-3">
-                <h4> More subjects by Otim fredrick</h4>
-            </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
-                <div class="mb-3">
-                    <img src="https://fakeimg.pl/440x240" alt="faker image">
-                </div>
-                <h5>Subject title</h5>
-                <h6>Subject description</h6>
-            </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
-                <div class="mb-3">
-                    <img src="https://fakeimg.pl/440x240" alt="faker image">
-                </div>
-                <h5>Subject title</h5>
-                <h6>Subject description</h6>
-            </div>
-        </div>
     </div>
 </section>
+
+@push('scripts')
+    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+
+    <script src="https://vjs.zencdn.net/7.8.4/video.js"  type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-playlist@4.3.1/dist/videojs-playlist.min.js"  type="text/javascript"></script>
+    <script src="{{ asset('js/video_player.js')}}" type="text/javascript"></script>
+@endpush
 
 @endsection

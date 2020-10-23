@@ -31,9 +31,8 @@ Route::get('/business', [BusinessController::class, 'index'])->name('business');
 Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
-Route::get('/subject/{subject}', [StudentController::class, 'show'])->name('subject.show');
-Route::get('/subject/{subject}', [StudentController::class, 'show'])->name('subject.show');
-Route::get('/subject/{subject}/topics/{topic}', [StudentController::class, 'play_video'])->name('subject.play_video');
+Route::get('/subjects/{subject}', [SubjectController::class, 'getSubjects'])->name('subjects.getSubjects');
+Route::get('/subjects/{subject}/topics/{topic}', [SubjectController::class, 'showSubject'])->name('subject.showSubject');
 
 Auth::routes();
 
