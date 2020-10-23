@@ -72,7 +72,15 @@ class SubjectController extends Controller
 
     public function getSubjects(Subject $subject)
     {
-        return view('pages.student.index', compact('subject'));
+        $resourceCount = 0;
+
+        foreach ($subject->topics as $topic) {
+            if($topic->getMedia('resource_attachment')) {
+                $resourceCount += count($topic->getMedia('resource_attachment'));
+            }
+        }
+
+        return view('pages.student.index', compact(['subject', 'resourceCount']));
     }
 
     public function showSubject(Subject $subject, Topic $topic)
@@ -92,27 +100,5 @@ class SubjectController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('teacher.subjects')->with('error', 'Failed to deleted subject');
         }
-    }
-
-    public function next($topic)
-    {
-        $previous = null;
-
-        if(!empty($previous) && $previous->id == $topic->id) {
-            return Topic::where('id', '>', $topic->id)->orderBy('id')->first();
-        }
-
-        return null;
-    }
-
-    public function previous($topic)
-    {
-        $previous = null;
-
-        if(!empty($previous) && $previous->id == $topic->id) {
-            return Topic::where('id', '<', $topic->id)->orderBy('id', 'desc')->first();
-        }
-
-        return null;
     }
 }

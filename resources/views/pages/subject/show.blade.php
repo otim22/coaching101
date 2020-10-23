@@ -145,25 +145,34 @@
 
                 <h5 class="bold mb-4">Subject Topics</h5>
                 @forelse($subject->topics as $key => $topic)
-                <a href="{{ route('topics.show', [$subject, $topic]) }}" style="text-decoration: none">
-                    <div class="content-card mb-4" style="max-height: 120px;">
-                        <div>
-                            <video controls preload="auto"  height="119" width="212" data-setup="{}" controlslist="nodownload">
-                                <source src="{{ asset($topic->getFirstMediaUrl('content_file')) }}" type='video/mp4'>
-                            </video>
-                        </div>
-                        <div class="description">
-                            <p>{{ $key+1 }} - {{ $topic->snippet }}</p>
-                            <p>View details</p>
-                        </div>
-                    </div>
-                </a>
+                <div class="expandible expanded">
+                    <a href="{{ route('topics.show', [$subject, $topic]) }}" style="text-decoration: none">
+                        <div class="content-card mb-4" style="max-height: 120px;">
+                            <div>
+                                <video controls preload="auto"  height="119" width="212" data-setup="{}" controlslist="nodownload">
+                                    <source src="{{ asset($topic->getFirstMediaUrl('content_file')) }}" type='video/mp4'>
+                                    </video>
+                                </div>
+                                <div class="description">
+                                    <p>{{ $key+1 }} - {{ $topic->snippet }}</p>
+                                    <p>View details</p>
+                                </div>
+                            </div>
+                        </a>
+                </div>
                 @empty
                 <p>No available topics yet.</p>
                 @endforelse
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+
+        <script src="{{ asset('js/subject.js')}}" type="text/javascript"></script>
+    @endpush
 </section>
 
 @endsection

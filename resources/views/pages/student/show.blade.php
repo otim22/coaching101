@@ -7,6 +7,7 @@
         <div class="row justify-content-center  pl-5 pr-5">
             <div class="col-sm-12 col-md-12 col-lg-8 mb-4">
                 <video id="topic_video_player"
+                            poster="{{ $topic->getFirstMediaUrl('thumb') }}"
                             class="video-js vjs-fluid vjs-big-play-centered">
                     <source src="{{ asset($topic->getFirstMediaUrl('content_file')) }}" type='video/mp4'>
                     <p class="vjs-no-js">
@@ -85,7 +86,7 @@
                                 <button  id="id{{ $topic->id }}" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            {{ $key + 1 }}: {{ $topic->title }}
+                                            {{ $key + 1 }} - {{ $topic->title }}
                                         </div>
                                         <div>
                                             <span class="icon">
@@ -103,7 +104,7 @@
                                     @forelse($topic->getMedia('content_file') as $topicMedia)
                                         <p class="remove_bottom_margin mb-3">
                                             <a href="{{ route('subject.showSubject', [$subject, $topic]) }}" style="text-decoration: none">
-                                                <i class="fa subject-icon fa-play-circle"></i>{{ $key+1 }}. {{ $topicMedia->name }}
+                                                <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
                                             </a>
                                         </p>
                                     @empty

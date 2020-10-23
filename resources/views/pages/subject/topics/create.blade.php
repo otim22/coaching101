@@ -68,25 +68,16 @@
                                         <small class="form-text text-muted mb-3">
                                             <strong>Note:</strong>  Resource should be a video and the file size is less than 500 MB.
                                         </small>
-                                        <div class="content-controls mb-3">
-                                            <div class="content-entry input-group">
-                                                <div class="content_file_input">
-                                                    <input type="file"
-                                                                class="form-control-file @error('content_file_path.0') is-invalid @enderror"
-                                                                id="content_file_path"
-                                                                name="content_file_path[]"
-                                                                value="{{ old('content_file_path[]') }}"
-                                                                multiple>
-                                                </div>
-                                                <div>
-                                                    <p type="button" class="btn btn-upload btn-content_file float-right">
-                                                        <i class="fa subject-icon fa-plus-circle"></i>Add more
-                                                    </p>
-                                                </div>
-                                            </div>
+                                        <div class="custom-file">
+                                            <input type="file"
+                                                        class="custom-file-input  @error('content_file_path') is-invalid @enderror"
+                                                        id="content_file_path"
+                                                        name="content_file_path"
+                                                        value="{{ old('content_file_path') }}">
+                                            <label class="custom-file-label" for="content_file_path">Choose file</label>
                                         </div>
 
-                                        @error('content_file_path.0')
+                                        @error('content_file_path')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
                                     </div>

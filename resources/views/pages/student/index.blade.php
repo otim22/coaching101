@@ -46,7 +46,7 @@
                             <button  id="id{{ $topic->id }}" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            Topic {{ $key+1 }}: {{ $topic->title }}
+                                            {{ $key+1 }} - {{ $topic->title }}
                                         </div>
                                         <div>
                                             <span class="icon">
@@ -63,9 +63,9 @@
                       <div id="collapse{{ $topic->id }}" class="collapse {{ $topic->id === 1 ? 'show' : '' }}" aria-labelledby="{{ $topic->id }}" data-parent="#accordionExample">
                         <div class="card-body">
                                 @forelse($topic->getMedia('content_file') as $key => $topicMedia)
-                                <p class="remove_bottom_margin mb-3 mt-1">
+                                <p class="mt-1">
                                     <a href="{{ route('subject.showSubject', [$subject, $topic]) }}" style="text-decoration: none">
-                                        <i class="fa subject-icon fa-play-circle"></i>{{ $key+1 }}. {{ $topicMedia->name }}
+                                        <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
                                     </a>
                                 </p>
                                 @empty
@@ -73,7 +73,7 @@
                                 @endforelse
 
                                 @forelse($topic->getMedia('resource_attachment') as $topicMedia)
-                                <p  class="remove_bottom_margin mb-3">
+                                <p>
                                     <a target="_blank" href="{{ $topicMedia->getUrl() }}" style="text-decoration: none">
                                         <i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}
                                     </a>
@@ -132,14 +132,7 @@
                                     <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                                     <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
                                 </svg>
-                                2 articles
-                            </li>
-                            <li>
-                                <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                                    <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
-                                </svg>
-                                5 downloadable resources
+                                {{ $resourceCount }} downloadable resources
                             </li>
                             <li>
                                 <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

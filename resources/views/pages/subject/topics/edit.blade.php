@@ -87,24 +87,14 @@
                                         <small class="form-text text-muted">
                                             <p class="red_color"><strong>Note:</strong>  Choosing a file(s) below will replace the current content file above and each file size should be less than 500 MB.</p>
                                         </small>
-                                        <div class="content-controls mb-3">
-                                            <div class="content-entry input-group">
-                                                <div class="content_file_input">
-                                                    <input type="file"
-                                                                class="form-control-file @error('content_file_path.0') is-invalid @enderror"
-                                                                id="content_file_path"
-                                                                name="content_file_path[]"
-                                                                value="{{ old('content_file_path[]') }}"
-                                                                multiple>
-                                                </div>
-                                                <div>
-                                                    <p type="button" class="btn btn-upload btn-content_file float-right">
-                                                        <i class="fa subject-icon fa-plus-circle"></i>Add more
-                                                    </p>
-                                                </div>
-                                            </div>
+                                        <div class="mb-3">
+                                            <input type="file"
+                                                        class="form-control-file @error('content_file_path') is-invalid @enderror"
+                                                        id="content_file_path"
+                                                        name="content_file_path"
+                                                        value="{{ old('content_file_path') }}">
                                         </div>
-                                        @error('content_file_path.0')
+                                        @error('content_file_path')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
                                     </div>

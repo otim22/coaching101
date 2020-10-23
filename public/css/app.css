@@ -3837,11 +3837,6 @@ img.rounded-corners {
   transform: rotate(0deg);
 }
 
-.remove_bottom_margin {
-  margin-top: -0.5rem !important;
-  margin-bottom: -0.5rem !important;
-}
-
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
