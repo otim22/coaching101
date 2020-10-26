@@ -18,7 +18,7 @@
 <section class="section-two">
     <div class="container">
         <div class="row justify-content-center mt-5 mb-5">
-            <div class="col-lg-10 col-md-10 col-sm-12">
+            <div class="col-lg-8 col-md-10 col-sm-12">
                 <div class="mb-3">
                     <h4 class="bold">{{ $topic->title }}</h4>
                 </div>

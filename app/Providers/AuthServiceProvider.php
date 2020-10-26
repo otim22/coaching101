@@ -31,5 +31,26 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             }
         });
+
+        /* define a admin user role */
+        Gate::define('admin', function($user) {
+            if ($user->hasRole('admin')) {
+                return true;
+            }
+        });
+
+        /* define a teacher user role */
+        Gate::define('teacher', function($user) {
+            if ($user->hasRole('teacher')) {
+                return true;
+            }
+        });
+
+        /* define a student role */
+        Gate::define('student', function($user) {
+            if ($user->hasRole('student')) {
+                return true;
+            }
+        });
     }
 }

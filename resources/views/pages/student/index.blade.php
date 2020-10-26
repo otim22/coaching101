@@ -9,7 +9,7 @@
                     <h3>{{ $subject->title }}</h3>
                     <h5>{{ $subject->subtitle }}</h5>
                     <h6>100 Students</h6>
-                    <h6>Created by Otim Fredrick</h6><br />
+                    <h6>Created by {{ $subject->creator->name }}</h6><br />
             </div>
         </div>
     </div>
@@ -85,7 +85,9 @@
                         </div>
                       </div>
                     @empty
-                    <p>No topics available yet!</p>
+                    <div class="p-3">
+                        <p>No topics available yet!</p>
+                    </div>
                     @endforelse
                   </div>
                 </div>
@@ -149,7 +151,7 @@
 
         <div class="row">
             <div class="col-12 mb-3">
-                <h4> More subjects by Otim fredrick</h4>
+                <h4> More subjects by {{ $subject->creator->name }}</h4>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="mb-3">

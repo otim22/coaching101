@@ -123,7 +123,9 @@
                               </div>
                             </div>
                             @empty
-                            <p>No topics available yet!</p>
+                            <div class="p-3">
+                                <p>No topics available yet!</p>
+                            </div>
                             @endforelse
                         </div>
                     </div>

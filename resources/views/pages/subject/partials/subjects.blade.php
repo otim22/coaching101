@@ -48,8 +48,12 @@
             </div>
         </div>
     @empty
-    <p>No available subjects</p>
+    <div>
+        <hr />
+        <p>No available subjects</p>
+    </div>
     @endforelse
+
     <div class="mt-5">
         {!! $subjects->links() !!}
     </div>

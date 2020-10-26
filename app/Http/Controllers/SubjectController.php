@@ -11,7 +11,7 @@ class SubjectController extends Controller
 {
     public function index(Subject $subject)
     {
-        $subjects = Subject::orderBy('id', 'desc')->paginate(10);
+        $subjects = Subject::orderBy('id', 'desc')->where('user_id', auth()->id())->paginate(10);
 
         return view('pages.subject.index', compact('subjects'));
     }
@@ -26,14 +26,15 @@ class SubjectController extends Controller
         return view('pages.subject.show', compact('subject'));
     }
 
-    public function edit(Subject $subject)
-    {
-        return view('pages.subject.edit', compact('subject'));
-    }
-
     public function store(SubjectRequest $request, Subject $subject)
     {
         $subject = new Subject($request->except(['cover_image']));
+
+        $subject->title     = $request->input('title');
+        $subject->subtitle      = $request->input('subtitle');
+        $subject->description = $request->input('description');
+        $subject->category = $request->input('category');
+        $subject->user_id = auth()->user()->id;
 
         $subject->save();
 
@@ -46,8 +47,18 @@ class SubjectController extends Controller
         return redirect()->route('audiences', $subject);
     }
 
+    public function edit(Subject $subject)
+    {
+        $this->authorize('update', $subject);
+
+        return view('pages.subject.edit', compact('subject'));
+    }
+
+
     public function update(Request $request, Subject $subject)
     {
+        $this->authorize('update', $subject);
+
         $request->validate([
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
@@ -93,6 +104,8 @@ class SubjectController extends Controller
 
     public function destroy(Subject $subject)
     {
+        $this->authorize('delete', $subject);
+
         try {
             $subject->delete();
 

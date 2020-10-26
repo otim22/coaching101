@@ -1,27 +1,44 @@
 .top-search input[type="text"] {
-  width: 350px;
+  width: 400px;
   display: block;
+  padding-left: 20px;
+  border-radius: 19px;
+  overflow: hidden;
+}
+
+#top-search-button {
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
+
+.top-search-svg svg {
+    width: 25px;
+    height: 25px;
 }
 
 @include lg-screens {
     .top-search input[type="text"] {
-      width: 200px;
+      width: 250px;
     }
 }
 
 @include md-screens {
-    .top-search  {
-        visibility: hidden !important;
-    }
-
     .top-search input[type="text"] {
-      width: 5px;
+      width: 150px;
       display: block;
     }
 }
 
 @include sm-screens {
+    .space-bottom {
+        margin-bottom: 10px;
+    }
     .top-search input[type="text"] {
       width: 495px;
+    }
+}
+@include xs-screens {
+    .top-search input[type="text"] {
+      width: 400px;
     }
 }

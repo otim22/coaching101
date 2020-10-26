@@ -96,6 +96,6 @@ class Subject extends Model implements HasMedia
     /** Return the subject's creator */
     public function creator()
     {
-        return $this->belongsTo('App\Models\User', 'created_by');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

@@ -19,6 +19,7 @@ class PermissionTableSeeder extends Seeder
     {
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
+        app()['cache']->forget('spatie.permission.cache');
 
         // create permissions
         $permissions = [

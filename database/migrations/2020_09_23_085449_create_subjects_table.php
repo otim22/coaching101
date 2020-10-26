@@ -20,6 +20,7 @@ class CreateSubjectsTable extends Migration
             $table->string('subtitle')->nullable();
             $table->text('description');
             $table->string('category');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

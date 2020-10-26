@@ -17,7 +17,7 @@
         "laravel/legacy-factories": "^1.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
-        "laravelcollective/html": "^6.1",
+        "laravelcollective/html": "^6.2",
         "nagy/laravel-rating": "^1.4",
         "spatie/laravel-collection-macros": "^7.0",
         "spatie/laravel-medialibrary": "^8.0.0",

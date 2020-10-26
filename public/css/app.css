@@ -3296,30 +3296,49 @@ select {
 }
 
 .top-search input[type=text] {
-  width: 350px;
+  width: 400px;
   display: block;
+  padding-left: 20px;
+  border-radius: 19px;
+  overflow: hidden;
+}
+
+#top-search-button {
+  border-top-right-radius: 19px;
+  border-bottom-right-radius: 19px;
+}
+
+.top-search-svg svg {
+  width: 25px;
+  height: 25px;
 }
 
 @media only screen and (max-width: 1200px) {
   .top-search input[type=text] {
-    width: 200px;
+    width: 250px;
   }
 }
 
 @media only screen and (max-width: 991px) {
-  .top-search {
-    visibility: hidden !important;
-  }
-
   .top-search input[type=text] {
-    width: 5px;
+    width: 150px;
     display: block;
   }
 }
 
 @media only screen and (max-width: 767px) {
+  .space-bottom {
+    margin-bottom: 10px;
+  }
+
   .top-search input[type=text] {
     width: 495px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .top-search input[type=text] {
+    width: 400px;
   }
 }
 

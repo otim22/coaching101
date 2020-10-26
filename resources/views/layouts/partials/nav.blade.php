@@ -1,21 +1,13 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-2 increased-font py-2">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-2 increased-font py-3">
     <div class="container">
         @if (Route::has('login'))
         <a class="navbar-brand" href="{{ url('/') }}"><span class="logo-font">Coaching101</span></a>
-        <div id="cartId1">
-            <a class="nav-link" href="#">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-                </svg>
-            </a>
-        </div>
-
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto d-none d-lg-block">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <svg class="bi bi-grid-3x3-gap-fill mr-1" width="1.3em" height="1.3em" viewBox="1 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -293,29 +285,33 @@
                 </li>
             </ul>
 
-            <!-- <form action="" class="form-inline top-search">
-                <div class="input-group">
+            <form action="" class="form-inline top-search">
+                <div class="input-group space-bottom">
                     <input type="text" class="form-control" placeholder="Search for subject...">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button">
-                            <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <button class="btn btn-secondary" type="button" id="top-search-button">
+                            <svg class="bi bi-search top-search-svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
                                 <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
                             </svg>
                         </button>
                     </div>
                 </div>
-            </form> -->
+            </form>
 
             <ul class="navbar-nav ml-auto nav nav-pills">
-                <li class="nav-item {{ Helper::set_active(['subjects']) }} mt-1">
-                    <a class="nav-link" href="{{ route('subjects') }}">Teach Here</a>
+                <li class="nav-item {{ Helper::set_active(['subjects']) }}  d-none d-lg-block mt-1">
+                    <a class="nav-link" href="{{ route('manage.subjects') }}">Teach Here</a>
                 </li>
 
                 @auth
                 <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">
-                    <a class="nav-link" href="{{ route('manage.subjects') }}">My subjects</a>
+                    <a class="nav-link" href="#">Student</a>
                 </li>
+
+                <!-- <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">
+                    <a class="nav-link" href="{{ route('manage.subjects') }}">My subjects</a>
+                </li> -->
                 @endauth
 
                 <li id="cartId2" class="nav-item {{ Helper::set_active(['cart']) }} mt-1">
@@ -327,12 +323,12 @@
                 </li>
 
                 @guest
-                <li class="nav-item {{ Helper::set_active(['login']) }} mt-1 mr-2">
-                    <a class="btn btn-outline-primary btn-sm nav-link pl-3 pr-3 bold" href="{{ route('login') }}">Login</a>
+                <li class="nav-item {{ Helper::set_active(['login']) }} mt-1 mr-2 space-bottom">
+                    <a class="btn btn-primary btn-sm nav-link bold" href="{{ route('login') }}">Login</a>
                 </li>
                 @if (Route::has('register'))
-                    <li class="nav-item {{ Helper::set_active(['register']) }} mt-1">
-                        <a class="btn btn-outline-secondary btn-sm nav-link pl-2 pr-2 bold" href="{{ route('register') }}">Register</a>
+                    <li class="nav-item {{ Helper::set_active(['register']) }} mt-1 mr-2">
+                        <a class="btn btn-outline-secondary btn-sm nav-link bold" href="{{ route('register') }}">Register</a>
                     </li>
                 @endif
                 @else
