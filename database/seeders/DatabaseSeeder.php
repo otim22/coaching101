@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             SubjectTableSeeder::class,
             MessageTableSeeder::class,
             AudienceTableSeeder::class,
+            PermissionTableSeeder::class,
         ]);
     }
 }

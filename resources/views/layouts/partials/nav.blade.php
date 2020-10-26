@@ -308,21 +308,12 @@
             </form> -->
 
             <ul class="navbar-nav ml-auto nav nav-pills">
-                <ul class="navbar-nav mt-1">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            For Business
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <ul>
-                                <a class="dropdown-item" href="{{ route('subjects') }}">Teach here</a>
-                                <a class="dropdown-item" href="#">Enroll school</a>
-                            </ul>
-                    </li>
-                </ul>
+                <li class="nav-item {{ Helper::set_active(['subjects']) }} mt-1">
+                    <a class="nav-link" href="{{ route('subjects') }}">Teach Here</a>
+                </li>
 
                 @auth
-                <li class="nav-item {{ Helper::set_active(['subjects']) }} mt-1">
+                <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">
                     <a class="nav-link" href="{{ route('manage.subjects') }}">My subjects</a>
                 </li>
                 @endauth
@@ -337,11 +328,11 @@
 
                 @guest
                 <li class="nav-item {{ Helper::set_active(['login']) }} mt-1 mr-2">
-                    <a class="btn btn-outline-primary btn-sm nav-link pl-3 pr-3" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn-outline-primary btn-sm nav-link pl-3 pr-3 bold" href="{{ route('login') }}">Login</a>
                 </li>
                 @if (Route::has('register'))
                     <li class="nav-item {{ Helper::set_active(['register']) }} mt-1">
-                        <a class="btn btn-outline-secondary btn-sm nav-link pl-2 pr-2" href="{{ route('register') }}">Register</a>
+                        <a class="btn btn-outline-secondary btn-sm nav-link pl-2 pr-2 bold" href="{{ route('register') }}">Register</a>
                     </li>
                 @endif
                 @else

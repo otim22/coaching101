@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="auth-background">
+<section>
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-7 pt-4">

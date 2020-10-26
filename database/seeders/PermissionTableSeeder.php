@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -50,7 +51,7 @@ class PermissionTableSeeder extends Seeder
         $superRole = Role::create(['name' => 'super-admin']);
 
         // create a student user
-        $user = Factory(\App\Models\User::class)->create([
+        $user = Factory(User::class)->create([
             'name' => 'Otim student',
             'email' => 'student@gmail.com',
             'password' => bcrypt('password'),
@@ -58,15 +59,15 @@ class PermissionTableSeeder extends Seeder
         $user->assignRole($studentRole);
 
         // create a teacher user
-        $user = Factory(\App\Models\User::class)->create([
+        $user = Factory(User::class)->create([
             'name' => 'Otim teacher',
             'email' => 'teacher@gmail.com',
             'password' => bcrypt('password'),
         ]);
         $user->assignRole($teacherRole);
 
-        // create a admin user
-        $user = Factory(\App\Models\User::class)->create([
+        // create an admin user
+        $user = Factory(User::class)->create([
             'name' => 'Otim admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
@@ -74,7 +75,7 @@ class PermissionTableSeeder extends Seeder
         $user->assignRole($adminRole);
 
         // create a super admin user
-        $user = Factory(\App\Models\User::class)->create([
+        $user = Factory(User::class)->create([
             'name' => 'Otim deere',
             'email' => 'super@gmail.com',
             'password' => bcrypt('password'),
