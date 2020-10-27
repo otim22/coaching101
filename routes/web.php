@@ -43,6 +43,9 @@ Route::middleware('auth')->group(function() {
 
     Route::prefix('teacher')
             ->group(function() {
+                Route::get('/start', [SubjectController::class, 'start'])->name('subjects.start');
+                Route::get('/teacherIndex', [SubjectController::class, 'teacherIndex'])->name('subjects.teacherIndex');
+                Route::post('/start', [SubjectController::class, 'storeStart'])->name('subjects.storeStart');
                 Route::get('/manage/subjects', [SubjectController::class, 'index'])->name('manage.subjects')->middleware('teacher');
                 Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
                 Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects');

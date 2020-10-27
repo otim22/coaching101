@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Topic;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class SubjectController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('teacher');
+       $this->middleware('teacher')->except('teaching');
     }
 
     public function index(Subject $subject)
@@ -84,6 +85,24 @@ class SubjectController extends Controller
         }
 
         return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');
+    }
+
+    public function teacherIndex()
+    {
+        return view('teacher.pages.index');
+    }
+    public function start()
+    {
+        return view('teacher.pages.start.index');
+    }
+
+    public function storeStart(Request $request)
+    {
+        $user = Auth::user();
+        $user->role = $request->role;
+        $user->save();
+
+        return redirect()->route('manage.subjects');
     }
 
     public function getSubjects(Subject $subject)

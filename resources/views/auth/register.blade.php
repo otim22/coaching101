@@ -4,7 +4,7 @@
 <section>
     <div class="container">
         <div class="row justify-content-center mt-5">
-            <div class="col-md-6 pt-4">
+            <div class="col-lg-6 col-md-8 col-sm-12 pt-4">
                 <div class="card auth-card">
                     <div class="card-header" id="grayBg">
                         <div class="pt-3 mb-3 text-center">
@@ -25,7 +25,7 @@
                             @csrf
 
                             <div class="form-group row ml-3 mr-3">
-                                <label for="name" class="col-md-4 col-form-label">{{ __('Full Names') }}</label>
+                                <label for="name" class="pl-3 col-form-label">{{ __('Full Names') }}</label>
 
                                 <div class="col-md-12">
                                     <input id="name" type="text"
@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="form-group row ml-3 mr-3">
-                                <label for="email" class="col-md-4 col-form-label">{{ __('E-Mail Address') }}</label>
+                                <label for="email" class="pl-3 col-form-label">{{ __('E-Mail Address') }}</label>
 
                                 <div class="col-md-12">
                                     <input id="email" type="email"
@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="form-group row ml-3 mr-3">
-                                <label for="password" class="col-md-4 col-form-label">{{ __('Password') }}</label>
+                                <label for="password" class="pl-3 col-form-label">{{ __('Password') }}</label>
 
                                 <div class="col-md-12">
                                     <input id="password" type="password"
@@ -78,7 +78,7 @@
                             </div>
 
                             <div class="form-group row ml-3 mr-3">
-                                <label for="password-confirm" class="col-md-4 col-form-label">{{ __('Confirm Password') }}</label>
+                                <label for="password-confirm" class="pl-3 col-form-label">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-12">
                                     <input id="password-confirm" type="password"
@@ -93,7 +93,7 @@
                                 <input class="mr-2" type="checkbox" name="agreement" id="agreement" {{ old('agreement') ? 'checked' : '' }}>
 
                                 <label class="form-check-label" for="agreement">
-                                    {{ __('I accept the Terms of Use & Privacy Policy.') }}
+                                    {{ __('I accept Terms of Use & Privacy Policy.') }}
                                     <!-- I accept the <a href="#" style="text-decoration: none">Terms of Use</a> & <a href="#" style="text-decoration: none">Privacy Policy</a> -->
                                 </label>
                               </div>

@@ -5,7 +5,7 @@
 <section>
     <div class="container">
         <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
+            <div class="col-lg-6 col-md-8 col-sm-12">
                 <div class="card auth-card">
                     <div class="card-header" id="grayBg">
                         <div class="pt-3 mb-3 text-center">
@@ -25,7 +25,7 @@
                             @csrf
 
                             <div class="form-group row ml-3 mr-3">
-                                <label for="email" class="col-md-4 col-form-label">{{ __('E-Mail Address') }}</label>
+                                <label for="email" class="pl-3 col-form-label">{{ __('E-Mail Address') }}</label>
 
                                 <div class="col-md-12">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="form-group row ml-3 mr-3">
-                                <label for="password" class="col-md-4 col-form-label">{{ __('Password') }}</label>
+                                <label for="password" class="pl-3 col-form-label">{{ __('Password') }}</label>
 
                                 <div class="col-md-12">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
