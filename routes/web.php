@@ -18,6 +18,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\AudienceController;
 use App\Http\Controllers\PerformanceController;
+use App\Http\Controllers\Admin\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,7 +43,7 @@ Route::middleware('auth')->group(function() {
 
     Route::prefix('teacher')
             ->group(function() {
-                Route::get('/manage/subjects', [SubjectController::class, 'index'])->name('manage.subjects');
+                Route::get('/manage/subjects', [SubjectController::class, 'index'])->name('manage.subjects')->middleware('teacher');
                 Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
                 Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects');
                 Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
@@ -73,4 +74,6 @@ Route::middleware('auth')->group(function() {
                 Route::get('/manage/resources', [ResourceController::class, 'index'])->name('manage.resources');
                 Route::get('/manage/tools', [ToolController::class, 'index'])->name('manage.tools');
     });
+
+    Route::get('admin/dashboard', [AdminController::class, 'index'])->middleware('admin');
 });

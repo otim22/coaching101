@@ -15,7 +15,7 @@
                 </h4>
             </div>
             <div class="col-12">
-                <p><a class="btn btn-primary btn-lg mt-5" href="#" role="button">Get started &raquo;</a></p>
+                <p><a class="btn btn-primary btn-lg mt-5" href="{{ route('home') }}" role="button">Start Learning &raquo;</a></p>
             </div>
         </div>
     </div>

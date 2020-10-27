@@ -9,11 +9,16 @@ use App\Http\Requests\SubjectRequest;
 
 class SubjectController extends Controller
 {
+    public function __construct()
+    {
+       $this->middleware('teacher');
+    }
+
     public function index(Subject $subject)
     {
         $subjects = Subject::orderBy('id', 'desc')->where('user_id', auth()->id())->paginate(10);
 
-        return view('pages.subject.index', compact('subjects'));
+        return view('teacher.pages.subject.index', compact('subjects'));
     }
 
     public function create()
