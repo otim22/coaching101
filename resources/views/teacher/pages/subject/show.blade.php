@@ -153,7 +153,7 @@
                                 </video>
                             </div>
                             <div class="description">
-                                <p>{{ $key+1 }} - {{ $topic->snippet }}</p>
+                                <p>{{ $key+1 }} - {{ $topic->medium_snippet }}</p>
                                 <p>View details</p>
                             </div>
                         </div>

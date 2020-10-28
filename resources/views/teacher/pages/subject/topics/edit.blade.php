@@ -8,8 +8,8 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Subjects</a></li>
-                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}">{{ $subject->short_title }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $topic->short_title }}</li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}">{{ $subject->extra_very_short_title }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $topic->extra_very_short_title }}</li>
             </ol>
         </nav>
     </div>
@@ -22,7 +22,7 @@
                 <div class="fast-transition mb-3">
                     <div class="row m-2 pt-2">
                         <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between">
-                            <h3>{{ $topic->medium_short_title }}</h3>
+                            <h3>{{ $topic->extra_very_short_title }}</h3>
                             <h5>
                                 <a href="{{ route('subjects.show', $subject) }}" style="text-decoration: none">
                                 <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

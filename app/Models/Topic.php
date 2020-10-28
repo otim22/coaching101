@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Traits\PresentsTopic;
+use App\Traits\PresentsText;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Image\Manipulations;
 use Spatie\Sluggable\SlugOptions;
@@ -14,7 +14,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Topic extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, PresentsTopic, HasSlug;
+    use HasFactory, InteractsWithMedia, PresentsText, HasSlug;
 
     protected $fillable = [ 'title', 'description'];
     protected $with = ['media'];

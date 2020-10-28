@@ -8,8 +8,8 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Subjects</a></li>
-                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}">{{ $subject->short_title }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $topic->short_title }}</li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}">{{ $subject->extra_very_short_title }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $topic->extra_very_short_title }}</li>
             </ol>
         </nav>
     </div>

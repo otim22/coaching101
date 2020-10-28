@@ -18,7 +18,6 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\AudienceController;
 use App\Http\Controllers\PerformanceController;
-use App\Http\Controllers\Admin\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -78,5 +77,8 @@ Route::middleware('auth')->group(function() {
                 Route::get('/manage/tools', [ToolController::class, 'index'])->name('manage.tools');
     });
 
-    Route::get('admin/dashboard', [AdminController::class, 'index'])->middleware('admin');
+    Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function() {
+        Route::get('/dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index']);
+        Route::resource('sliders', '\App\Http\Controllers\Admin\SliderController');
+    });
 });

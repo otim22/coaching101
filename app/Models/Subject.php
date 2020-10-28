@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Traits\PresentsMedia;
-use App\Traits\PresentsSubject;
+use App\Traits\PresentsText;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Image\Manipulations;
 use Spatie\Sluggable\SlugOptions;
@@ -15,7 +15,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Subject extends Model implements HasMedia
 {
-    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsSubject;
+    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText;
 
     protected $fillable = ['title', 'subtitle', 'description', 'category'];
     protected $with = ['media'];

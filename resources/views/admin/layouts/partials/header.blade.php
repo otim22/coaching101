@@ -8,7 +8,7 @@
                 <button class="btn btn-link text-white pl-0" type="button" data-toggle="sidebar">
                     <i class="material-icons align-middle md-36">short_text</i>
                 </button>
-                <div class="page-title m-0">Financial</div>
+                <div class="page-title m-0">Home</div>
 
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav ml-auto align-items-center">
@@ -20,30 +20,6 @@
                                     </div>
                                     <input type="text" class="form-control" name="search" placeholder="Search app..">
                                 </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown nav-language d-flex align-items-center">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                EN
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right ">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="account.html" class="dropdown-item active">
-                                            <img src="http://flags.fmcdn.net/data/flags/w1160/us.png" style="width: 25px; vertical-align: middle" alt="English"> English
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="account.html" class="dropdown-item">
-                                            <img src="http://flags.fmcdn.net/data/flags/w1160/fr.png" style="width: 25px; vertical-align: middle" alt="French"> French
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="account.html" class="dropdown-item">
-                                            <img src="http://flags.fmcdn.net/data/flags/w1160/de.png" style="width: 25px; vertical-align: middle" alt="English"> German
-                                        </a>
-                                    </li>
-                                </ul>
                             </div>
                         </li>
                         <li class="nav-item dropdown notifications d-flex align-self-center align-items-center" id="navbarNotifications">

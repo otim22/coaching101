@@ -87,6 +87,8 @@ class SubjectController extends Controller
         return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');
     }
 
+
+    // TODO:  Refactor this code {Create a new Controller}
     public function teacherIndex()
     {
         return view('teacher.pages.index');
@@ -125,7 +127,7 @@ class SubjectController extends Controller
 
         return view('pages.student.show', compact(['subject', 'topic', 'previous', 'next']));
     }
-
+    // To here.
     public function destroy(Subject $subject)
     {
         $this->authorize('delete', $subject);

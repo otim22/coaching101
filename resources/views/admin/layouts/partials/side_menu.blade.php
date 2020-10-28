@@ -5,9 +5,9 @@
             <nav class="drawer  drawer--dark">
                 <div class="drawer-spacer">
                     <div class="media align-items-center">
-                        <a href="index.html" class="drawer-brand-circle mr-2">OTF</a>
+                        <a href="index.html" class="drawer-brand-circle mr-2">A</a>
                         <div class="media-body">
-                            <a href="index.html" class="h5 m-0 text-link">Admin - panel</a>
+                            <a href="index.html" class="h5 m-0 text-link">Coaching101</a>
                         </div>
                     </div>
                 </div>
@@ -18,40 +18,27 @@
                 <!-- DASHBOARDS MENU -->
                 <ul class="drawer-menu" id="dasboardMenu" data-children=".drawer-submenu">
                     <li class="drawer-menu-item active ">
-                        <a href="index.html">
+                        <a href="{{ url('/admin/dashboard') }}">
                             <i class="material-icons">poll</i>
-                            <span class="drawer-menu-text"> Financial</span>
+                            <span class="drawer-menu-text"> Home</span>
                         </a>
                     </li>
                     <li class="drawer-menu-item">
-                        <a href="projects.html">
-                            <i class="material-icons">dns</i>
-                            <span class="drawer-menu-text"> Projects/Tickets</span>
-                            <span class="badge badge-pill badge-success ml-1">4</span>
+                        <a href="{{ url('/admin/sliders') }}">
+                            <i class="material-icons">slideshow</i>
+                            <span class="drawer-menu-text"> Slider</span>
                         </a>
                     </li>
                     <li class="drawer-menu-item ">
                         <a href="retail.html">
-                            <i class="material-icons">store</i>
-                            <span class="drawer-menu-text"> E-Commerce</span>
+                            <i class="material-icons">view_day</i>
+                            <span class="drawer-menu-text">Nav items</span>
                         </a>
                     </li>
                     <li class="drawer-menu-item ">
                         <a href="real-estate-grid.html">
                             <i class="material-icons">business</i>
                             <span class="drawer-menu-text"> Real Estate</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item ">
-                        <a href="profile.html">
-                            <i class="material-icons">pages</i>
-                            <span class="drawer-menu-text"> Social</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item ">
-                        <a href="analytics.html">
-                            <i class="material-icons">pie_chart</i>
-                            <span class="drawer-menu-text"> Analytics</span>
                         </a>
                     </li>
                 </ul>
@@ -102,111 +89,8 @@
                             <span class="drawer-menu-text"> Tables</span>
                         </a>
                     </li>
-                    <li class="drawer-menu-item  ">
-                        <a href="ui-notifications.html">
-                            <i class="material-icons">notifications</i>
-                            <span class="drawer-menu-text"> Notifications</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item  ">
-                        <a href="charts.html">
-                            <i class="material-icons">equalizer</i>
-                            <span class="drawer-menu-text"> Charts</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item  ">
-                        <a href="events-calendar.html">
-                            <i class="material-icons">event_available</i>
-                            <span class="drawer-menu-text"> Calendar</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item  ">
-                        <a href="maps.html">
-                            <i class="material-icons">pin_drop</i>
-                            <span class="drawer-menu-text"> Maps</span>
-                        </a>
-                    </li>
                 </ul>
 
-
-                <!-- HEADING -->
-                <div class="py-2 drawer-heading">
-                    Pages
-                </div>
-
-                <!-- PAGES MENU -->
-                <ul class="drawer-menu" id="pagesMenu" data-children=".drawer-submenu">
-                    <li class="drawer-menu-item">
-                        <a href="user-list.html">
-                            <i class="material-icons">list</i>
-                            <span class="drawer-menu-text">User List</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item">
-                        <a href="search.html">
-                            <i class="material-icons">search</i>
-                            <span class="drawer-menu-text">Search</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item">
-                        <a href="gallery.html">
-                            <i class="material-icons">grid_on</i>
-                            <span class="drawer-menu-text">Gallery</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item">
-                        <a href="account.html">
-                            <i class="material-icons">edit</i>
-                            <span class="drawer-menu-text">Edit Account</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item">
-                        <a href="login.html">
-                            <i class="material-icons">lock</i>
-                            <span class="drawer-menu-text">Login</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item">
-                        <a href="signup.html">
-                            <i class="material-icons">account_circle</i>
-                            <span class="drawer-menu-text">Sign Up</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item">
-                        <a href="forgot-password.html">
-                            <i class="material-icons">help</i>
-                            <span class="drawer-menu-text">Forgot Password</span>
-                        </a>
-                    </li>
-
-                    <li class="drawer-menu-item drawer-submenu">
-                        <a data-toggle="collapse" data-parent="#pagesMenu" href="#" data-target="#errorsMenu" aria-controls="errorsMenu" aria-expanded="false" class="collapsed">
-                            <i class="material-icons">error</i>
-                            <span class="drawer-menu-text"> Error</span>
-                        </a>
-                        <ul class="collapse " id="errorsMenu">
-                            <li class="drawer-menu-item "><a href="error-403.html">Error 403</a></li>
-                            <li class="drawer-menu-item "><a href="error-404.html">Error 404</a></li>
-                            <li class="drawer-menu-item "><a href="error-500.html">Error 500</a></li>
-                            <li class="drawer-menu-item "><a href="error-503.html">Error 503</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="drawer-menu-item drawer-submenu">
-                        <a data-toggle="collapse" data-parent="#pagesMenu" href="#" data-target="#extrasMenu" aria-controls="extrasMenu" aria-expanded="false" class="collapsed">
-                            <i class="material-icons">more</i>
-                            <span class="drawer-menu-text"> Extra</span>
-                        </a>
-                        <ul class="collapse " id="extrasMenu">
-                            <li class="drawer-menu-item "><a href="shopping-cart.html">Shopping cart</a></li>
-                            <li class="drawer-menu-item "><a href="product.html">Product</a></li>
-                            <li class="drawer-menu-item "><a href="property.html">Property</a></li>
-                            <li class="drawer-menu-item "><a href="project.html">Project</a></li>
-                            <li class="drawer-menu-item "><a href="project-tasks.html">Project tasks</a></li>
-                            <li class="drawer-menu-item "><a href="coming-soon.html">Coming soon</a></li>
-                            <li class="drawer-menu-item "><a href="maintenance.html">Maintenance</a></li>
-                        </ul>
-                    </li>
                 </ul>
 
             </nav>

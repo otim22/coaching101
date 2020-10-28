@@ -4,8 +4,13 @@ namespace App\Traits;
 
 use Illuminate\Support\Str;
 
-trait PresentsSubject
+trait PresentsText
 {
+    public function getExtraVeryShortTitleAttribute()
+    {
+        return Str::limit($this->title, 15);
+    }
+
     public function getVeryShortTitleAttribute()
     {
         return Str::limit($this->title, 23);
@@ -14,6 +19,11 @@ trait PresentsSubject
     public function getShortTitleAttribute()
     {
         return Str::limit($this->title, 45);
+    }
+
+    public function getMediumSnippetAttribute()
+    {
+        return Str::limit($this->title, 50);
     }
 
     public function getSnippetAttribute()

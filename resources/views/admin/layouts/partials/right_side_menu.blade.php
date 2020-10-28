@@ -11,16 +11,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="drawer-spacer bg-body-bg">
-                    <div class="d-flex justify-content-between mb-2">
-                        <p class="h6 text-gray m-0"><i class="material-icons align-middle md-18 text-primary">monetization_on</i> Balance</p>
-                        <span>$21,011</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p class="h6 text-gray m-0"><i class="material-icons align-middle md-18 text-primary">shopping_cart</i> Sales</p>
-                        <span>142</span>
-                    </div>
-                </div>
                 <!-- MENU -->
                 <ul class="drawer-menu" id="userMenu" data-children=".drawer-submenu">
                     <li class="drawer-menu-item">

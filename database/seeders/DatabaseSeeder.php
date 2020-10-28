@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             MessageTableSeeder::class,
             AudienceTableSeeder::class,
             PermissionTableSeeder::class,
+            SliderTableSeeder::class,
+            // NavItemTableSeeder::class,
         ]);
     }
 }
