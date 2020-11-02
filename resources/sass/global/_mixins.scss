@@ -1,6 +1,20 @@
-// Extra Large Screens
+// Extra XXLarge Screens
+@mixin xxl-screens {
+    @media only screen and (min-width: 1300px) {
+        @content;
+    }
+}
+
+// Extra XLarge Screens
 @mixin xl-screens {
-    @media only screen and (min-width: 1200px) {
+    @media only screen and (max-width: 1300px) {
+        @content;
+    }
+}
+
+// XLarge Screens
+@mixin xlg-screens {
+    @media only screen and (max-width: 1250px) {
         @content;
     }
 }
@@ -12,9 +26,37 @@
     }
 }
 
+// SLarge Screens
+@mixin slg-screens {
+    @media only screen and (max-width: 1150px) {
+        @content;
+    }
+}
+
+// SLarge Screens
+@mixin sslg-screens {
+    @media only screen and (max-width: 1050px) {
+        @content;
+    }
+}
+
 // Medium Screens
 @mixin md-screens {
     @media only screen and (max-width: 991px) {
+        @content;
+    }
+}
+
+// MMedium Screens
+@mixin mmd-screens {
+    @media only screen and (max-width: 900px) {
+        @content;
+    }
+}
+
+// sMedium Screens
+@mixin smd-screens {
+    @media only screen and (max-width: 800px) {
         @content;
     }
 }
@@ -26,12 +68,27 @@
     }
 }
 
+// Small Screens
+@mixin ssm-screens {
+    @media only screen and (max-width: 700px) {
+        @content;
+    }
+}
+
+// Extra Small Screens
+@mixin lxs-screens {
+    @media only screen and (max-width: 652px) {
+        @content;
+    }
+}
+
 // Extra Small Screens
 @mixin xs-screens {
     @media only screen and (max-width: 575px) {
         @content;
     }
 }
+
 
 // Extra Small and Small Screens
 @mixin xs-sm-screens {

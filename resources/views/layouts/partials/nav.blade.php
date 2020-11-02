@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-2 increased-font py-3">
-    <div class="container">
+    <div class="container-fluid ml-4 mr-4">
         <a class="navbar-brand" href="{{ url('/') }}"><span class="logo-font">Coaching101</span></a>
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -300,25 +300,25 @@
 
             <ul class="navbar-nav ml-auto nav nav-pills">
                 @guest
-                    <li class="nav-item {{ Helper::set_active(['subjects.teacherIndex']) }}  d-none d-lg-block mt-1">
+                    <li class="nav-item {{ Helper::set_active(['subjects.teacherIndex']) }} mt-1">
                         <a class="nav-link" href="{{ route('subjects.teacherIndex') }}">Teach Here</a>
                     </li>
                 @endguest
 
                 @auth()
                     @if(auth()->user()->role == 1)
-                        <li class="nav-item {{ Helper::set_active(['subjects.start']) }}  d-none d-lg-block mt-1">
+                        <li class="nav-item {{ Helper::set_active(['subjects.start']) }} mt-1">
                             <a class="nav-link" href="{{ route('subjects.start') }}">Teach Here</a>
                         </li>
-                        <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">
+                        <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
                             <a class="nav-link" href="{{ route('manage.subjects') }}">My subjects</a>
                         </li>
-                    @elseif(auth()->user()->role == 2)
+                    @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
                         <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">
                             <a class="nav-link" href="{{ route('manage.subjects') }}">Teacher</a>
                         </li>
 
-                        <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">
+                        <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
                             <a class="nav-link" href="{{ route('manage.subjects') }}">My subjects</a>
                         </li>
                     @endif
@@ -334,11 +334,11 @@
 
                 @guest
                 <li class="nav-item {{ Helper::set_active(['login']) }} mt-1 mr-2 space-bottom">
-                    <a class="btn btn-primary btn-sm nav-link bold" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn-primary btn-sm nav-link bold" id="round-button" href="{{ route('login') }}">Login</a>
                 </li>
                 @if (Route::has('register'))
                     <li class="nav-item {{ Helper::set_active(['register']) }} mt-1 mr-2">
-                        <a class="btn btn-outline-secondary btn-sm nav-link bold" href="{{ route('register') }}">Register</a>
+                        <a class="btn btn-outline-secondary btn-sm nav-link bold" id="round-button" href="{{ route('register') }}">Register</a>
                     </li>
                 @endif
                 @else

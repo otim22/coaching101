@@ -80,5 +80,6 @@ Route::middleware('auth')->group(function() {
     Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function() {
         Route::get('/dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index']);
         Route::resource('sliders', '\App\Http\Controllers\Admin\SliderController');
+        Route::resource('navitems', '\App\Http\Controllers\Admin\NavItemController');
     });
 });

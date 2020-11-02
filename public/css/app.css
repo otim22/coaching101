@@ -3259,7 +3259,7 @@ select {
   margin-top: 10px;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (max-width: 1300px) {
   #cartId1 {
     display: none;
   }
@@ -3296,7 +3296,7 @@ select {
 }
 
 .top-search input[type=text] {
-  width: 400px;
+  width: 410px;
   display: block;
   padding-left: 20px;
   border-radius: 19px;
@@ -3313,16 +3313,57 @@ select {
   height: 25px;
 }
 
+@media only screen and (min-width: 1300px) {
+  .top-search input[type=text] {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .top-search input[type=text] {
+    width: 450px;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .top-search input[type=text] {
+    width: 400px;
+  }
+}
+
 @media only screen and (max-width: 1200px) {
+  .top-search input[type=text] {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 1150px) {
   .top-search input[type=text] {
     width: 250px;
   }
 }
 
+@media only screen and (max-width: 1050px) {
+  .top-search input[type=text] {
+    width: 200px;
+  }
+}
+
 @media only screen and (max-width: 991px) {
   .top-search input[type=text] {
-    width: 150px;
-    display: block;
+    width: 180px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .top-search input[type=text] {
+    width: 120px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .top-search input[type=text] {
+    width: 90px;
   }
 }
 
@@ -3332,13 +3373,25 @@ select {
   }
 
   .top-search input[type=text] {
-    width: 495px;
+    width: 530px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .top-search input[type=text] {
+    width: 480px;
+  }
+}
+
+@media only screen and (max-width: 652px) {
+  .top-search input[type=text] {
+    width: 400px;
   }
 }
 
 @media only screen and (max-width: 575px) {
   .top-search input[type=text] {
-    width: 400px;
+    width: 330px;
   }
 }
 
@@ -3429,6 +3482,25 @@ select {
 .fa-medium {
   background: #18592b;
   color: white;
+}
+
+#round-button {
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  white-space: nowrap;
+}
+
+#round-button-2 {
+  border-radius: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  white-space: nowrap;
+}
+
+#round-input {
+  border-radius: 22px;
+  padding-left: 20px;
 }
 
 /*-------------------------
@@ -3693,6 +3765,19 @@ a.disabled {
   .coach {
     margin-top: 35px;
   }
+}
+
+/* The slow way */
+
+.card.make-it-slow {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Transition to a bigger shadow on hover */
+
+.make-it-slow:hover {
+  box-shadow: 0 7px 17px rgba(0, 0, 0, 0.3);
 }
 
 .section-one {

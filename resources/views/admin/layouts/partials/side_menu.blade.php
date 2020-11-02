@@ -30,7 +30,7 @@
                         </a>
                     </li>
                     <li class="drawer-menu-item ">
-                        <a href="retail.html">
+                        <a href="{{ url('admin/navitems') }}">
                             <i class="material-icons">view_day</i>
                             <span class="drawer-menu-text">Nav items</span>
                         </a>

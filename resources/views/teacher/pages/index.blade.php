@@ -16,7 +16,7 @@
     <div id="app">
 
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-2 increased-font py-3">
-            <div class="container">
+            <div class="container-fluid ml-4 mr-4">
                 <a class="navbar-brand" href="{{ url('/') }}"><span class="logo-font">Coaching101</span></a>
                 <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

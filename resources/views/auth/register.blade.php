@@ -27,8 +27,8 @@
                             <div class="form-group row ml-3 mr-3">
                                 <label for="name" class="pl-3 col-form-label">{{ __('Full Names') }}</label>
 
-                                <div class="col-md-12">
-                                    <input id="name" type="text"
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <input id="round-input" type="text"
                                                                         class="form-control @error('name') is-invalid @enderror"
                                                                         name="name" value="{{ old('name') }}"
                                                                         required autocomplete="name" autofocus
@@ -45,8 +45,8 @@
                             <div class="form-group row ml-3 mr-3">
                                 <label for="email" class="pl-3 col-form-label">{{ __('E-Mail Address') }}</label>
 
-                                <div class="col-md-12">
-                                    <input id="email" type="email"
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <input id="round-input" type="email"
                                                                         class="form-control @error('email') is-invalid @enderror"
                                                                         name="email" value="{{ old('email') }}"
                                                                         required autocomplete="email"
@@ -63,8 +63,8 @@
                             <div class="form-group row ml-3 mr-3">
                                 <label for="password" class="pl-3 col-form-label">{{ __('Password') }}</label>
 
-                                <div class="col-md-12">
-                                    <input id="password" type="password"
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <input id="round-input" type="password"
                                                                                 class="form-control @error('password') is-invalid @enderror"
                                                                                 name="password" required autocomplete="new-password"
                                                                                 placeholder="Password">
@@ -80,8 +80,8 @@
                             <div class="form-group row ml-3 mr-3">
                                 <label for="password-confirm" class="pl-3 col-form-label">{{ __('Confirm Password') }}</label>
 
-                                <div class="col-md-12">
-                                    <input id="password-confirm" type="password"
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <input id="round-input" type="password"
                                                                                                 class="form-control"
                                                                                                 name="password_confirmation"
                                                                                                 required autocomplete="new-password"
@@ -99,15 +99,15 @@
                               </div>
 
                             <div class="form-group row ml-3 mr-3">
-                                <div class="col-md-12 mt-3">
-                                    <button type="submit" class="btn btn-primary btn-block">
+                                <div class="col-lg-12 col-md-12 col-sm-12 mt-4">
+                                    <button id="round-button-2" type="submit" class="btn btn-primary btn-block">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
                             </div>
 
                             <div class="form-group  row mt-3 ml-3 mr-3 text-center">
-                                <div class="col-md-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
                                     <label class="col-form-label">
                                         <span class="mr-2">{{ __('Already have an account?') }} </span>
                                         <a href="{{ url('/login') }}" style="text-decoration: none">Login here!</a>

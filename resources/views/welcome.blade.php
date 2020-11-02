@@ -15,7 +15,7 @@
                 </h4>
             </div>
             <div class="col-12">
-                <p><a class="btn btn-primary btn-lg mt-5" href="{{ route('home') }}" role="button">Start Learning &raquo;</a></p>
+                <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('home') }}" role="button">Start Learning &raquo;</a></p>
             </div>
         </div>
     </div>
@@ -165,7 +165,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                 <h3>Start learning from the best teachers</h3>
                 <p>Ace your examinations</p>
-                <a href="{{ url('login') }}" class="btn btn-primary" name="button">Get started</a>
+                <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Get started</a>
             </div>
         </div>
     </div>
@@ -181,8 +181,8 @@
         <div class="row">
             @foreach($topCategories as $topCategory)
             <div class="col-sm-6 col-md-4 col-lg-2 mt-3">
-                <a href="#">
-                    <div class="card">
+                <a href="#" style="text-decoration: none">
+                    <div class="card make-it-slow">
                         <div class="text-center pt-3">
                             <p class="increased-font">{{ $topCategory }}</p>
                         </div>
@@ -200,7 +200,7 @@
             <div class="col-sm-12 col-md-5 col-lg-5 text-center">
                 <h3>Get subjects from top teachers</h3>
                 <p>Find top teachers from around the best teaching millions of fellow students on Coaching101. Get inspired to learn, grow and share with the world.</p>
-                <a href="{{ url('login') }}" class="btn btn-primary" name="button">Start learning</a>
+                <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Start learning</a>
             </div>
             <div class="col-md-2 col-lg-2">
                 <div class="header-divider"></div>
@@ -208,7 +208,7 @@
             <div class="col-sm-12 col-md-5 col-lg-5 text-center coach">
                 <h3>Become a teacher</h3>
                 <p>Top teachers from best teaching millions of students on Coaching101. We provide the platform and tools so you can skill the students.</p>
-                <a href="{{ url('login') }}" class="btn btn-primary" name="button">Start teaching</a>
+                <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Start teaching</a>
             </div>
         </div>
     </div>

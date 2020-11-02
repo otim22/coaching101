@@ -27,8 +27,8 @@
                             <div class="form-group row ml-3 mr-3">
                                 <label for="email" class="pl-3 col-form-label">{{ __('E-Mail Address') }}</label>
 
-                                <div class="col-md-12">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <input id="round-input" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -41,8 +41,8 @@
                             <div class="form-group row ml-3 mr-3">
                                 <label for="password" class="pl-3 col-form-label">{{ __('Password') }}</label>
 
-                                <div class="col-md-12">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <input id="round-input" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-md-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-check">
                                         <input class="mr-2 ml-2" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -66,7 +66,7 @@
 
                             <div class="form-group row ml-3 mr-3">
                                 <div class="col-md-12 mt-3">
-                                    <button type="submit" class="btn btn-primary btn-block">
+                                    <button id="round-button-2" type="submit" class="btn btn-primary btn-block">
                                         {{ __('Login') }}
                                     </button>
                                 </div>
