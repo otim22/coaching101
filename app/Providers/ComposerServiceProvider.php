@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Carbon\Carbon;
 use App\Models\Subject;
+use App\Models\Menu;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -42,6 +43,12 @@ class ComposerServiceProvider extends ServiceProvider
             $topCategories = Subject::get()->pluck('category')->unique()->take(12);
 
             $view->withTopCategories($topCategories);
+        });
+
+        View::composer(['welcome', 'home'], function ($view) {
+            $navItems = Menu::whereNull('parent_id')->with('allChildren')->get();
+
+            $view->withNavItems($navItems);
         });
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Slider;
 use Illuminate\Database\Seeder;
 
 class SliderTableSeeder extends Seeder

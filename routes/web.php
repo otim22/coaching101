@@ -80,6 +80,11 @@ Route::middleware('auth')->group(function() {
     Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function() {
         Route::get('/dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index']);
         Route::resource('sliders', '\App\Http\Controllers\Admin\SliderController');
-        Route::resource('navitems', '\App\Http\Controllers\Admin\NavItemController');
+        Route::get('menus', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');
+        Route::get('menus/create', [\App\Http\Controllers\Admin\MenuController::class, 'create'])->name('menus.create');
+        Route::get('menus/{menu}', [\App\Http\Controllers\Admin\MenuController::class, 'show'])->name('menus.show');
+        Route::get('menus/{menu}/edit', [\App\Http\Controllers\Admin\MenuController::class, 'edit'])->name('menus.edit');
+        Route::patch('menus/{menu}/update', [\App\Http\Controllers\Admin\MenuController::class, 'update'])->name('menus.update');
+        Route::delete('menus/{menu}/destroy', [\App\Http\Controllers\Admin\MenuController::class, 'destroy'])->name('menus.destroy');
     });
 });

@@ -30,44 +30,28 @@
                         </a>
                     </li>
                     <li class="drawer-menu-item ">
-                        <a href="{{ url('admin/navitems') }}">
+                        <a href="{{ url('admin/menus') }}">
                             <i class="material-icons">view_day</i>
-                            <span class="drawer-menu-text">Nav items</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item ">
-                        <a href="real-estate-grid.html">
-                            <i class="material-icons">business</i>
-                            <span class="drawer-menu-text"> Real Estate</span>
+                            <span class="drawer-menu-text">Menu</span>
                         </a>
                     </li>
                 </ul>
 
                 <!-- HEADING -->
                 <div class="py-2 drawer-heading">
-                    Components
+                    Manage
                 </div>
 
-                <!-- COMPONENTS MENU -->
+                <!-- MANAGEMENT MENU -->
                 <ul class="drawer-menu" id="componentsMenu" data-children=".drawer-submenu">
-                    <li class="drawer-menu-item drawer-submenu">
-                        <a data-toggle="collapse" data-parent="#componentsMenu" href="#" data-target="#uiComponentsMenu" aria-controls="uiComponentsMenu" aria-expanded="false" class="collapsed">
-                            <i class="material-icons">library_books</i>
-                            <span class="drawer-menu-text"> UI Components</span>
+                    <li class="drawer-menu-item  ">
+                        <a href="ui-tables.html">
+                            <i class="material-icons">people_outline</i>
+                            <span class="drawer-menu-text"> Users</span>
                         </a>
-                        <ul class="collapse " id="uiComponentsMenu">
-                            <li class="drawer-menu-item "><a href="ui-buttons.html">Buttons</a></li>
-                            <li class="drawer-menu-item "><a href="ui-colors.html">Colors</a></li>
-                            <li class="drawer-menu-item "><a href="ui-grid.html">Grid</a></li>
-                            <li class="drawer-menu-item "><a href="ui-icons.html">Icons</a></li>
-                            <li class="drawer-menu-item "><a href="ui-typography.html">Typography</a></li>
-                            <li class="drawer-menu-item "><a href="ui-drag-drop.html">Drag &amp; Drop</a></li>
-                            <li class="drawer-menu-item "><a href="ui-loaders.html">Loaders</a></li>
-                        </ul>
                     </li>
 
-
-                    <li class="drawer-menu-item drawer-submenu">
+                    <!-- <li class="drawer-menu-item drawer-submenu">
                         <a data-toggle="collapse" data-parent="#componentsMenu" href="#" data-target="#formsMenu" aria-controls="formsMenu" aria-expanded="false" class="collapsed">
                             <i class="material-icons">text_format</i>
                             <span class="drawer-menu-text"> Forms</span>
@@ -82,13 +66,7 @@
                             <li class="drawer-menu-item "><a href="text-editor.html">Text Editor</a></li>
                             <li class="drawer-menu-item "><a href="datepicker.html">Datepicker</a></li>
                         </ul>
-                    </li>
-                    <li class="drawer-menu-item  ">
-                        <a href="ui-tables.html">
-                            <i class="material-icons">tab</i>
-                            <span class="drawer-menu-text"> Tables</span>
-                        </a>
-                    </li>
+                    </li> -->
                 </ul>
 
                 </ul>

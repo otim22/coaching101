@@ -15,269 +15,282 @@
                         Library
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <ul class="dropdown-submenu">
-                            <a class="dropdown-item" href="#">Sciences</a>
-                            <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior one</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior two</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior three</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior four</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior five</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior six</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="dropdown-submenu">
-                            <a class="dropdown-item" href="#">Mathematics</a>
-                            <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior one</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior two</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior three</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior four</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior five</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior six</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="dropdown-submenu">
-                            <a class="dropdown-item" href="#">Languages</a>
-                            <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior one</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior two</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior three</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior four</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior five</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior six</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="dropdown-submenu">
-                            <a class="dropdown-item" href="#">Social Sciences</a>
-                            <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior one</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior two</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior three</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior four</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior five</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior six</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="dropdown-submenu">
-                            <a class="dropdown-item" href="#">Vocational Subjects</a>
-                            <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior one</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior two</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior three</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior four</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior five</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
-                                <ul class="dropdown-submenu">
-                                    <a class="dropdown-item" href="#">Senior six</a>
-                                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Term one</a>
-                                        <a class="dropdown-item" href="#">Term two</a>
-                                        <a class="dropdown-item" href="#">Term three</a>
-                                    </li>
-                                </ul>
+                        
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg class="bi bi-grid-3x3-gap-fill mr-1" width="1.3em" height="1.3em" viewBox="1 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1V2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1V2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V2zM1 7a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1V7zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1V7zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V7zM1 12a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1v-2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1v-2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2z"/>
+                                    </svg>
+                                    Library
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <ul class="dropdown-submenu">
+                                        <a class="dropdown-item" href="#">Sciences</a>
+                                        <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior one</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior two</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior three</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior four</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior five</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior six</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul class="dropdown-submenu">
+                                        <a class="dropdown-item" href="#">Mathematics</a>
+                                        <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior one</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior two</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior three</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior four</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior five</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior six</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul class="dropdown-submenu">
+                                        <a class="dropdown-item" href="#">Languages</a>
+                                        <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior one</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior two</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior three</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior four</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior five</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior six</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul class="dropdown-submenu">
+                                        <a class="dropdown-item" href="#">Social Sciences</a>
+                                        <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior one</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior two</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior three</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior four</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior five</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior six</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul class="dropdown-submenu">
+                                        <a class="dropdown-item" href="#">Vocational Subjects</a>
+                                        <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior one</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior two</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior three</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior four</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior five</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="dropdown-submenu">
+                                                <a class="dropdown-item" href="#">Senior six</a>
+                                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#">Term one</a>
+                                                    <a class="dropdown-item" href="#">Term two</a>
+                                                    <a class="dropdown-item" href="#">Term three</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -380,7 +393,7 @@
                                          document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form" class="bold" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
                     </div>

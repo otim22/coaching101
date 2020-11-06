@@ -14,7 +14,7 @@
                         {{ __('Back') }}
                     </a>
                 </div>
-                <form action="{{ route('admin.sliders.update', $slider) }}" method="post"
+                <form action="{{ route('admin.sliders.update', $slider) }}" method="POST"
                             enctype="multipart/form-data">
                     @csrf
                     @method('patch')
