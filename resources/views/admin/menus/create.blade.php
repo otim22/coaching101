@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.navitems.store') }}" method="POST">
+                        <form action="{{ route('admin.menus.store') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="title">Title</label>

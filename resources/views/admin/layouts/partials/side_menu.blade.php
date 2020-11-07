@@ -7,7 +7,7 @@
                     <div class="media align-items-center">
                         <a href="index.html" class="drawer-brand-circle mr-2">A</a>
                         <div class="media-body">
-                            <a href="index.html" class="h5 m-0 text-link">Coaching101</a>
+                            <a href="{{ url('/admin/dashboard') }}" class="h5 m-0 text-link">Coaching101</a>
                         </div>
                     </div>
                 </div>
@@ -45,28 +45,11 @@
                 <!-- MANAGEMENT MENU -->
                 <ul class="drawer-menu" id="componentsMenu" data-children=".drawer-submenu">
                     <li class="drawer-menu-item  ">
-                        <a href="ui-tables.html">
+                        <a href="{{ url('/admin/users') }}">
                             <i class="material-icons">people_outline</i>
                             <span class="drawer-menu-text"> Users</span>
                         </a>
                     </li>
-
-                    <!-- <li class="drawer-menu-item drawer-submenu">
-                        <a data-toggle="collapse" data-parent="#componentsMenu" href="#" data-target="#formsMenu" aria-controls="formsMenu" aria-expanded="false" class="collapsed">
-                            <i class="material-icons">text_format</i>
-                            <span class="drawer-menu-text"> Forms</span>
-                        </a>
-                        <ul class="collapse " id="formsMenu">
-                            <li class="drawer-menu-item "><a href="form-controls.html">Form Controls</a></li>
-                            <li class="drawer-menu-item "><a href="checkboxes-radios.html">Checkboxes &amp; Radios</a></li>
-                            <li class="drawer-menu-item "><a href="switches-toggles.html">Switches &amp; Toggles</a></li>
-                            <li class="drawer-menu-item "><a href="form-layout.html">Layout Variations</a></li>
-                            <li class="drawer-menu-item "><a href="validation.html">Validation</a></li>
-                            <li class="drawer-menu-item "><a href="custom-forms.html">Custom Forms</a></li>
-                            <li class="drawer-menu-item "><a href="text-editor.html">Text Editor</a></li>
-                            <li class="drawer-menu-item "><a href="datepicker.html">Datepicker</a></li>
-                        </ul>
-                    </li> -->
                 </ul>
 
                 </ul>

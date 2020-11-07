@@ -8,6 +8,6 @@ use Illuminate\Support\Str;
 
 $factory->define(Menu::class, function (Faker $faker) {
     return [
-        'title' => $faker->word,
+        'title' => $faker->title,
     ];
 });

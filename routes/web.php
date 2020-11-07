@@ -81,6 +81,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index']);
         Route::resource('sliders', '\App\Http\Controllers\Admin\SliderController');
         Route::get('menus', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');
+        Route::post('menus', [\App\Http\Controllers\Admin\MenuController::class, 'store'])->name('menus.store');
         Route::get('menus/create', [\App\Http\Controllers\Admin\MenuController::class, 'create'])->name('menus.create');
         Route::get('menus/{menu}', [\App\Http\Controllers\Admin\MenuController::class, 'show'])->name('menus.show');
         Route::get('menus/{menu}/edit', [\App\Http\Controllers\Admin\MenuController::class, 'edit'])->name('menus.edit');

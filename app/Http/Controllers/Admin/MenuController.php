@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Year;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,10 +15,9 @@ class MenuController extends Controller
      */
     public function index()
     {
-        // $navItems = Menu::get();
-        $menus = Menu::whereNull('parent_id')->get();
+        $menus = Menu::whereNull('parent_id')->paginate(3);
         $allMenus = Menu::pluck('title', 'id')->all();
-        // dd($navItems);
+
         return view('admin.menus.index', compact('menus','allMenus'));
     }
 
@@ -93,7 +91,7 @@ class MenuController extends Controller
             'parent_id' => 'nullable|exists:nav_items,id',
         ]);
 
-        $Menu->fill($request->all())->save();
+        $menu->fill($request->all())->save();
 
         return redirect()->route('admin.menus.index')->with('success', 'Item updated successfully');
     }
