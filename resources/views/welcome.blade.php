@@ -9,10 +9,9 @@
                 <h1 class="display-3  mt-5">Learn today</h1>
             </div>
             <div class="col-12">
-                <h4 class="pt-3 pm-3">
-                    At your own convenience, <br />
-                    From seasoned teachers around.
-                </h4>
+                <h4 class="pt-3 pm-3 bold">At your own convenient time, </h4>
+                <h4 class="pt-2 pm-3 bold">Start learning from our seasoned teachers </h4>
+                <h4 class="pt-2 pm-3 bold">With proven experience at their fields.</h4>
             </div>
             <div class="col-12">
                 <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('home') }}" role="button">Start Learning &raquo;</a></p>
@@ -21,7 +20,7 @@
     </div>
 </section>
 
-<section class="bg-gray-2  background-style two">
+<section class="bg-gray-2 background-style two">
     <div class="container">
         <div class="row mb-5">
             <div class="col-sm-12 col-md-4 col-lg-4 d-flex">
@@ -64,11 +63,11 @@
     </div>
 </section>
 
-<section class="three bg-white">
+<section class="three bg-gray">
     <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-12 mb-5">
-            <h3> Learn at your own pace anytime</h3>
+            <h3 class="bold"> Learn at your own pace anytime</h3>
         </div>
 
         <div class="col-sm-12 col-md-12 col-12">
@@ -124,11 +123,11 @@
     </div>
 </section>
 
-<section class="bg-gray-2 four">
+<section class="bg-white">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-2">
-                <h2>Mosted viewed </h2>
+                <h3 class="bold">Mosted viewed </h3>
             </div>
             @foreach($mostViewedSubjects as $mostViewedSubject)
             <div class="col-sm-6 col-md-6 col-lg-3">
@@ -159,8 +158,8 @@
     </div>
 </section>
 
-<section class="bg-white">
-    <div class="bg-gray pt-4 pb-4">
+<section class="bg-white" >
+    <div class="bg-green pt-4 pb-4">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 student-text">
@@ -176,21 +175,19 @@
     </div>
 </section>
 
-<section class="bg-gray-2 six">
+<section class="bg-white">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <h2>Top categories</h2>
+                <h3 class="bold">Top categories</h3>
             </div>
         </div>
         <div class="row">
             @foreach($topCategories as $topCategory)
             <div class="col-sm-6 col-md-4 col-lg-2 mt-3">
                 <a href="#" style="text-decoration: none">
-                    <div class="card make-it-slow">
-                        <div class="text-center pt-3">
-                            <p class="increased-font">{{ $topCategory }}</p>
-                        </div>
+                    <div class="top-card make-it-slow">
+                        <p class="increased-font">{{ $topCategory }}</p>
                     </div>
                 </a>
             </div>
@@ -200,7 +197,7 @@
 </section>
 
 <section class="bg-white">
-    <div class="bg-gray pt-4 pb-4">
+    <div class="pt-4 pb-4" style="background-color: #A9C8DA;">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -217,4 +214,163 @@
     </div>
     </div>
 </section>
+
+<section class="bg-white">
+    <div class="container ">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h3 class="bold mb-3">Our popular teachers</h3>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="top_teacher">
+                    <div>
+                        <img src="{{ asset('images/st_2.jpg') }}" alt="Avatar" class="teacher-avatar mt-3 mb-3">
+                    </div>
+                    <div class="mt-3">
+                        <span class="bold">Chris Fox.</span>
+                        <p>John Doe saved us.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="top_teacher">
+                    <div>
+                        <img src="{{ asset('images/st_2.jpg') }}" alt="Avatar" class="teacher-avatar mt-3 mb-3">
+                    </div>
+                    <div class="mt-3">
+                        <span class="bold">Chris Fox.</span>
+                        <p>John Doe saved us.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="top_teacher">
+                    <div>
+                        <img src="{{ asset('images/st_2.jpg') }}" alt="Avatar" class="teacher-avatar mt-3 mb-3">
+                    </div>
+                    <div class="mt-3">
+                        <span class="bold">Chris Fox.</span>
+                        <p>John Doe saved us.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="top_teacher">
+                    <div>
+                        <img src="{{ asset('images/st_2.jpg') }}" alt="Avatar" class="teacher-avatar mt-3 mb-3">
+                    </div>
+                    <div class="mt-3">
+                        <span class="bold">Chris Fox.</span>
+                        <p>John Doe saved us.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-md-9 col-sm-12">
+                <h3 class="bold">Frequently Asked Questions</h3>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-12 mt-4 mb-5">
+                <div class="accordion" id="accordionExample">
+                  <div class="card mb-3">
+                    <div class="card-header" id="headingOne">
+                      <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none">
+                          Where do I take this course?
+                        </button>
+                      </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                      <div class="card-body">
+                        The course is completely online so you can partake whenever and wherever you would like (as long as you have internet access).
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-3">
+                    <div class="card-header" id="headingTwo">
+                      <h2 class="mb-0">
+                        <button  class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none">
+                            Where is Coaching101 located?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                      <div class="card-body">
+                        Coaching101 has an office located in Kampala, Uganda.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-3">
+                    <div class="card-header" id="headingThree">
+                      <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="text-decoration: none">
+                          When does it begin?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                      <div class="card-body">
+                        Whenever you like! You will be given lifetime access to the material and can take at a pace that is right for you!
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-3">
+                    <div class="card-header" id="headingFour">
+                      <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="text-decoration: none">
+                          How long does it take?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                      <div class="card-body">
+                        The course is designed so you can take at a speed that is best for you. Most students will do it over 3-4 weeks and others will complete in a few days.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-3">
+                    <div class="card-header" id="headingFive">
+                      <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="text-decoration: none">
+                          Do you have a refund policy?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                      <div class="card-body">
+                        Yes, if you are having issues accessing your course we will give you a full refund up to 48 hours after purchase.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="card-header" id="headingSix">
+                      <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="text-decoration: none">
+                          How do I sign up and pay?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                      <div class="card-body">
+                        Please follow the links under the courses to complete your payment.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection

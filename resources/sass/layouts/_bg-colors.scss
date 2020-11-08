@@ -62,6 +62,10 @@
     background-color: $color-dark-2 !important;
 }
 
+.bg-blue-2 {
+    background-color: $blue-2 !important;
+}
+
 .bg-heading {
     background-color: $color-heading !important;
 }
@@ -118,4 +122,8 @@
 
 .bg-parallax {
     background-attachment: fixed;
+}
+
+.bg-green {
+    background-color: $green-2;
 }

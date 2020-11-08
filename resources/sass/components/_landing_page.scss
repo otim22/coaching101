@@ -6,14 +6,10 @@
 .bg-image {
     width: 100%;
     height: 85vh;
-    background-image:
-        url(~/images/studies.jpg),
-        linear-gradient(
-            to top,
-            rgba(103, 128, 159, 1),
-            rgba(46, 49, 49, 1));
+    background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(~/images/st_2.jpg);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    opacity: 1;
 }
