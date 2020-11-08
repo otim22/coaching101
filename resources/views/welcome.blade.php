@@ -281,7 +281,18 @@
                     <div class="card-header" id="headingOne">
                       <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none">
-                          Where do I take this course?
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    Where do I take this course?
+                                </div>
+                                <div>
+                                    <span class="icon">
+                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
                         </button>
                       </h2>
                     </div>
@@ -297,7 +308,18 @@
                     <div class="card-header" id="headingTwo">
                       <h2 class="mb-0">
                         <button  class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none">
-                            Where is Coaching101 located?
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    Where is Coaching101 located?
+                                </div>
+                                <div>
+                                    <span class="icon">
+                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
                         </button>
                       </h2>
                     </div>
@@ -312,7 +334,18 @@
                     <div class="card-header" id="headingThree">
                       <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="text-decoration: none">
-                          When does it begin?
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    When does it begin?
+                                </div>
+                                <div>
+                                    <span class="icon">
+                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
                         </button>
                       </h2>
                     </div>
@@ -327,7 +360,19 @@
                     <div class="card-header" id="headingFour">
                       <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="text-decoration: none">
-                          How long does it take?
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    How long does it take?
+                                </div>
+                                <div>
+                                    <span class="icon">
+                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+
                         </button>
                       </h2>
                     </div>
@@ -342,7 +387,18 @@
                     <div class="card-header" id="headingFive">
                       <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="text-decoration: none">
-                          Do you have a refund policy?
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    Do you have a refund policy?
+                                </div>
+                                <div>
+                                    <span class="icon">
+                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
                         </button>
                       </h2>
                     </div>
@@ -357,7 +413,18 @@
                     <div class="card-header" id="headingSix">
                       <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="text-decoration: none">
-                          How do I sign up and pay?
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    How do I sign up and pay?
+                                </div>
+                                <div>
+                                    <span class="icon">
+                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
                         </button>
                       </h2>
                     </div>
