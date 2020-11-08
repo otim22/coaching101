@@ -8,3 +8,42 @@
 .make-it-slow:hover {
   box-shadow: 0 7px 17px rgba(0,0,0,0.3);
 }
+
+.student-image {
+    border-radius: 8px;
+    max-width: 100%;
+    float: right;
+}
+
+.teacher-image {
+    border-radius: 8px;
+    max-width: 100%;
+}
+
+div > .teacher-image,
+div > .student-image {
+    position: absolute;
+    left: 20px;
+    top: -60px;
+    height: 330px;
+    width: 85%;
+}
+
+@include sslg-screens {
+    div > .teacher-image,
+    div > .student-image {
+        position: unset;
+        left: unset;
+        top: unset;
+        height: unset;
+        width: unset;
+    }
+}
+
+@include sm-screens  {
+    div > .teacher-image,
+    div > .student-image,
+    .student-text {
+        margin-bottom: 25px;
+    }
+}

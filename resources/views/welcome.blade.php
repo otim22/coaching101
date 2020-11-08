@@ -64,7 +64,7 @@
     </div>
 </section>
 
-<section class="three">
+<section class="three bg-white">
     <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-12 mb-5">
@@ -159,15 +159,20 @@
     </div>
 </section>
 
-<section class="five">
+<section class="bg-white">
+    <div class="bg-gray pt-4 pb-4">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                <h3>Start learning from the best teachers</h3>
-                <p>Ace your examinations</p>
+            <div class="col-lg-6 col-md-6 col-sm-12 student-text">
+                <h3 class="bold">Start learning today</h3>
+                <p class="mb-4 sub-text">Tap from the experience of our hand picked best teachers around and ace that examination you have all been waiting to do.</p>
                 <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Get started</a>
             </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <img src="{{ asset('images/student.jpg') }}" alt="image thumb" class="student-image">
+            </div>
         </div>
+    </div>
     </div>
 </section>
 
@@ -194,23 +199,22 @@
     </div>
 </section>
 
-<section class="seven">
+<section class="bg-white">
+    <div class="bg-gray pt-4 pb-4">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-5 col-lg-5 text-center">
-                <h3>Get subjects from top teachers</h3>
-                <p>Find top teachers from around the best teaching millions of fellow students on Coaching101. Get inspired to learn, grow and share with the world.</p>
-                <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Start learning</a>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <img src="{{ asset('images/teacher.jpg') }}" alt="image thumb" class="teacher-image">
             </div>
-            <div class="col-md-2 col-lg-2">
-                <div class="header-divider"></div>
-            </div>
-            <div class="col-sm-12 col-md-5 col-lg-5 text-center coach">
-                <h3>Become a teacher</h3>
-                <p>Top teachers from best teaching millions of students on Coaching101. We provide the platform and tools so you can skill the students.</p>
-                <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Start teaching</a>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="mb-2">
+                    <h3 class="bold">Become a teacher</h3>
+                    <p class="mb-4 sub-text">Top teachers from the best, teaching millions of students. We provide the platform and tools so you can skill the students.</p>
+                    <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Start teaching</a>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 @endsection
