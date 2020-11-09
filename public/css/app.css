@@ -3192,6 +3192,39 @@ select {
   font-size: 20px;
 }
 
+.title-font {
+  color: #515152;
+}
+
+.author-font {
+  color: #515152;
+}
+
+.title-font:hover,
+.author-font:hover {
+  color: #9b9b9b;
+}
+
+.rating {
+  color: #2E4749;
+}
+
+.rating:hover {
+  color: #4F7A7D;
+}
+
+.student-head-font {
+  color: #e6e6e6;
+}
+
+.student-font {
+  color: #d6d6d6;
+}
+
+.learn-today_title {
+  font-weight: 600 !important;
+}
+
 .increased-font {
   font-size: 18px;
   font-weight: bold;
@@ -3300,7 +3333,8 @@ select {
 }
 
 .top-search input[type=text] {
-  width: 410px;
+  width: 100%;
+  min-width: 150px;
   display: block;
   padding-left: 20px;
   border-radius: 19px;
@@ -3377,25 +3411,25 @@ select {
   }
 
   .top-search input[type=text] {
-    width: 530px;
+    width: 625px;
   }
 }
 
 @media only screen and (max-width: 700px) {
   .top-search input[type=text] {
-    width: 480px;
+    width: 565px;
   }
 }
 
 @media only screen and (max-width: 652px) {
   .top-search input[type=text] {
-    width: 400px;
+    width: 500px;
   }
 }
 
 @media only screen and (max-width: 575px) {
   .top-search input[type=text] {
-    width: 330px;
+    width: 270px;
   }
 }
 
@@ -3407,12 +3441,13 @@ select {
 .bg-image {
   width: 100%;
   height: 85vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(/images/st_2.jpg);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)), url(/images/st_2.jpg);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 1;
+  filter: alpha(opacity=100);
 }
 
 .list-unstyled a {
@@ -3566,7 +3601,7 @@ select {
 }
 
 .bg-blue-2 {
-  background-color: #D4E4ED !important;
+  background-color: #A9C8DA !important;
 }
 
 .bg-heading {
@@ -3735,17 +3770,6 @@ a.disabled {
   right: 90px;
 }
 
-.section-hr {
-  padding: 2px;
-}
-
-.divider-line hr {
-  margin: 15px 0;
-  height: 1.2px;
-  border: none;
-  background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, #d6d6d6));
-}
-
 .footer-line hr {
   margin: 15px 0;
   height: 1.2px;
@@ -3796,9 +3820,7 @@ a.disabled {
 }
 
 .top-card {
-  position: relative;
   background-color: #f0f0f0;
-  padding-left: 15px;
   padding-top: 8px;
   padding-bottom: 1px;
   border-radius: 8px;
@@ -3815,23 +3837,23 @@ a.disabled {
   box-shadow: 0 7px 17px rgba(0, 0, 0, 0.3);
 }
 
-.student-image {
+div > .teacher-image {
   border-radius: 8px;
   max-width: 100%;
-  float: right;
+  margin-right: 50px;
+  position: absolute;
+  top: -78px;
+  height: 360px;
+  width: 85%;
 }
 
-.teacher-image {
-  border-radius: 8px;
-  max-width: 100%;
-}
-
-div > .teacher-image,
 div > .student-image {
   position: absolute;
-  left: 20px;
-  top: -60px;
-  height: 330px;
+  border-radius: 8px;
+  max-width: 100%;
+  right: 0;
+  top: -78px;
+  height: 360px;
   width: 85%;
 }
 
@@ -3844,7 +3866,7 @@ div > .student-image {
   border-radius: 5px;
   padding-left: 20px;
   margin: 5px 0;
-  box-shadow: 0 7px 17px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease-in-out;
   background-color: #d6d6d6;
 }
@@ -3853,8 +3875,6 @@ div > .student-image {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
-
-/* Clear floats after top_teachers */
 
 .top_teacher::after {
   content: "";
@@ -3879,6 +3899,17 @@ div > .student-image {
     top: unset;
     height: unset;
     width: unset;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .top_teacher {
+    justify-content: unset;
+    margin-bottom: 20px;
+  }
+
+  .teacher-avatar {
+    margin-right: 20px;
   }
 }
 
@@ -4039,6 +4070,25 @@ img.rounded-corners {
 
 .auth-background {
   background: url("/images/auth_image.jpg") no-repeat fixed center;
+}
+
+@media only screen and (max-width: 991px) {
+  .register-button {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .guest-techer {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .guest-techer,
+  .register-button {
+    display: block;
+  }
 }
 
 .icon {

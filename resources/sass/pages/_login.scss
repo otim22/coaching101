@@ -12,3 +12,22 @@
 .auth-background {
     background: url('/images/auth_image.jpg') no-repeat fixed center;
 }
+
+@include md-screens {
+    .register-button {
+        display: none;
+    }
+}
+
+@include smd-screens {
+    .guest-techer {
+        display: none;
+    }
+}
+
+@include sm-screens {
+    .guest-techer,
+    .register-button {
+        display: block;
+    }
+}

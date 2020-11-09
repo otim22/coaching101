@@ -45,7 +45,7 @@ class ComposerServiceProvider extends ServiceProvider
             $view->withTopCategories($topCategories);
         });
 
-        View::composer(['welcome', 'home', 'teacher.pages'], function ($view) {
+        View::composer(['*'], function ($view) {
             $menus = Menu::whereNull('parent_id')->with('allChildren')->get();
 
             $view->withMenus($menus);

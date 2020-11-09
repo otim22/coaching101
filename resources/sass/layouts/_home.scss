@@ -1,39 +1,37 @@
 .top-card {
-    position: relative;
     background-color: $color-gray;
-    padding-left: 15px;
     padding-top: 8px;
     padding-bottom: 1px;
     border-radius: 8px;
 }
 
 .top-card.make-it-slow {
-  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.3s ease-in-out;
 }
 
 /* Transition to a bigger shadow on hover */
 .make-it-slow:hover {
-  box-shadow: 0 7px 17px rgba(0,0,0,0.3);
+  box-shadow: 0 7px 17px rgba(0, 0, 0, 0.3);
 }
 
-.student-image {
+div > .teacher-image {
     border-radius: 8px;
     max-width: 100%;
-    float: right;
+    margin-right: 50px;
+    position: absolute;
+    top: -78px;
+    height: 360px;
+    width: 85%;
 }
 
-.teacher-image {
-    border-radius: 8px;
-    max-width: 100%;
-}
-
-div > .teacher-image,
 div > .student-image {
     position: absolute;
-    left: 20px;
-    top: -60px;
-    height: 330px;
+    border-radius: 8px;
+    max-width: 100%;
+    right: 0;
+    top: -78px;
+    height: 360px;
     width: 85%;
 }
 
@@ -45,16 +43,17 @@ div > .student-image {
     border-radius: 5px;
     padding-left: 20px;
     margin: 5px 0;
-    box-shadow: 0 7px 17px rgba(0,0,0,0.3);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease-in-out;
     background-color: $color-gray-2;
 }
 
 .top_teacher:hover {
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     cursor: pointer;
 }
-/* Clear floats after top_teachers */
+
+
 .top_teacher::after {
   content: "";
   clear: both;
@@ -77,6 +76,16 @@ div > .student-image {
         top: unset;
         height: unset;
         width: unset;
+    }
+}
+
+@include md-screens {
+    .top_teacher {
+        justify-content: unset;
+        margin-bottom: 20px;
+    }
+    .teacher-avatar {
+        margin-right: 20px;
     }
 }
 
