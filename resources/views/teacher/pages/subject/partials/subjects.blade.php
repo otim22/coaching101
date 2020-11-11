@@ -26,7 +26,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="staticBackdropLabel">Are you sure?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button id="round-button-2" type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -34,13 +34,13 @@
                             Do you really want to delete this subject? This process will delete the subject with all the topics inclusive and cannot be undone.
                         </div>
                         <div class="modal-footer d-flex justify-content-between">
-                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                            <button id="round-button-2" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
                             {!! Form::open(['route' => ['subjects.destroy', $subject],
                                     'method' => 'delete',
                                     'data-confirmation-text' => __('Are you sure to delete :name?', ['title' => $subject->title])
                                 ])
                             !!}
-                            <button type="submit" href="{{ route('subjects.destroy', $subject) }}" class="btn btn-primary btn-sm">Understood</button>
+                            <button id="round-button-2" type="submit" href="{{ route('subjects.destroy', $subject) }}" class="btn btn-primary btn-sm">Understood</button>
                             {!! Form::close() !!}
                         </div>
                     </div>

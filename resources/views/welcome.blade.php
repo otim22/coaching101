@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="bg-image text-white one">
+<section class="bg-image text-white">
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
@@ -18,7 +18,7 @@
     </div>
 </section>
 
-<section class="bg-gray-2 background-style two">
+<section class="bg-gray-2 background-style">
     <div class="container">
         <div class="row mb-5">
             <div class="col-sm-12 col-md-4 col-lg-4 d-flex">
@@ -61,14 +61,14 @@
     </div>
 </section>
 
-<section class="three bg-gray">
+<section class="bg-gray">
     <div class="container">
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-12 mb-5">
-            <h3 class="bold"> Learn at your own pace anytime</h3>
-        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-12 mb-5">
+                <h3 class="bold"> Learn at your own pace anytime</h3>
+            </div>
 
-        <div class="col-sm-12 col-md-12 col-12">
+            <div class="col-sm-12 col-md-12 col-12">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     @foreach($categories as $key => $category)
@@ -119,6 +119,7 @@
                 </div>
                 @endforeach
             </div>
+        </div>
         </div>
     </div>
 </section>

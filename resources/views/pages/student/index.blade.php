@@ -6,10 +6,10 @@
     <div class="container">
         <div class="row mt-2">
             <div class="col-12">
-                    <h3>{{ $subject->title }}</h3>
+                    <h5 class="bold">{{ $subject->title }}</h5>
                     <h5>{{ $subject->subtitle }}</h5>
-                    <h6>100 Students</h6>
-                    <h6>Created by {{ $subject->creator->name }}</h6><br />
+                    <p>100 Enrolled Students</p>
+                    <p>Created by {{ $subject->creator->name }}</p>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="border mr-4 p-4 rounded bg-gray-3 mb-5">
-                    <h4>What you will learn</h4>
+                    <h4 class="bold">What you will learn</h4>
                     <ul>
                         @forelse($subject->audience['student_learn'] as $student_learn)
                         <li>
@@ -37,7 +37,7 @@
 
                 <div class="accordion mr-4 mb-5" id="accordionExample">
                     <div class="mb-4">
-                        <h4>Subject Content</h4>
+                        <h4 class="bold">Subject Content</h4>
                     </div>
                   <div class="card">
                       @forelse($subject->topics as $key => $topic)
@@ -74,7 +74,7 @@
 
                                 @forelse($topic->getMedia('resource_attachment') as $topicMedia)
                                 <p>
-                                    <a target="_blank" href="{{ $topicMedia->getUrl() }}" style="text-decoration: none">
+                                    <a target="_blank" href="{{ $topicMedia->name }}" style="text-decoration: none">
                                         <i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}
                                     </a>
                                 </p>
@@ -93,7 +93,7 @@
                 </div>
 
                 <div class=" mr-4 mb-5">
-                    <h4>Requirements</h4>
+                    <h4 class="bold">Requirements</h4>
                     <ul>
                         @forelse($subject->audience['class_requirement']  as $class_requirement)
                         <li>
@@ -109,7 +109,7 @@
                 </div>
 
                 <div  class=" mr-4 mb-5">
-                    <h4>Description</h4>
+                    <h4 class="bold">Description</h4>
                     <p>{{ $subject->description }}</p>
                 </div>
             </div>
@@ -117,10 +117,12 @@
             <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
                 <aside class="p-3 p-4 border rounded bg-white add-shadow">
                     <div class="make-me-sticky">
-                        <div class="mb-3">
-                            <a class="btn btn-danger btn-block" href="#">Go to subject</a>
+                        <div class="mb-4">
+                            <a id="round-button-2" class="btn btn-danger btn-block mb-2" href="#">Add to cart</a>
+                            <a id="round-button-2" class="btn btn-outline-primary btn-block" href="{{ route('checkout.index') }}">Buy now</a>
                         </div>
-                        <h5>This subject includes:</h5>
+                        </div>
+                        <h5 class="bold">This subject includes:</h5>
                         <ul>
                             <li>
                                 <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -148,25 +150,26 @@
                 </aside>
             </div>
         </div>
+    </div>
+</section>
 
+<section class="bg-gray-2">
+    <div class="container">
         <div class="row">
-            <div class="col-12 mb-3">
-                <h4> More subjects by {{ $subject->creator->name }}</h4>
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                <h4 class="bold"> More subjects by {{ $subject->creator->name }}</h4>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
+            @foreach($subjects as $subject)
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <a href="{{ route('subjects.show', $subject) }}" style="text-decoration: none">
                 <div class="mb-3">
-                    <img src="https://fakeimg.pl/440x240" alt="faker image">
+                    <img src="{{ asset($subject->image_thumb) }}" alt="{{ $subject->very_short_title }}">
                 </div>
-                <h5>Subject title</h5>
-                <h6>Subject description</h6>
+                <h5> {{ $subject->very_short_title }}</h5>
+                <p>{{ $subject->creator->name }}</p>
+                </a>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
-                <div class="mb-3">
-                    <img src="https://fakeimg.pl/440x240" alt="faker image">
-                </div>
-                <h5>Subject title</h5>
-                <h6>Subject description</h6>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

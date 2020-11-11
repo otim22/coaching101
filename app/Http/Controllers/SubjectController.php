@@ -17,7 +17,7 @@ class SubjectController extends Controller
 
     public function index(Subject $subject)
     {
-        $subjects = Subject::orderBy('id', 'desc')->where('user_id', auth()->id())->paginate(10);
+        $subjects = Subject::orderBy('id', 'desc')->where('user_id', Auth::id())->paginate(10);
 
         return view('teacher.pages.subject.index', compact('subjects'));
     }
@@ -109,6 +109,7 @@ class SubjectController extends Controller
 
     public function getSubjects(Subject $subject)
     {
+        $subjects = Subject::orderBy('id', 'desc')->where('user_id', Auth::id())->get()->take(3);
         $resourceCount = 0;
 
         foreach ($subject->topics as $topic) {
@@ -117,7 +118,7 @@ class SubjectController extends Controller
             }
         }
 
-        return view('pages.student.index', compact(['subject', 'resourceCount']));
+        return view('pages.student.index', compact(['subjects', 'subject', 'resourceCount']));
     }
 
     public function showSubject(Subject $subject, Topic $topic)

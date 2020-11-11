@@ -40,6 +40,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function() {
 
+    Route::get('/checkout', [\App\Http\Controllers\Admin\CheckoutController::class, 'index'])->name('checkout.index');
+
     Route::prefix('teacher')
             ->group(function() {
                 Route::get('/start', [SubjectController::class, 'start'])->name('subjects.start');

@@ -77,7 +77,7 @@
                         <hr>
                         @forelse($subject->topics as $key => $topic)
                         <li class="nav-item">
-                            <a  class="nav-link" href="{{ route('topics.show', [$subject, $topic]) }}" style="text-decoration: none;">{{ $key+1 }} - {{ $topic->short_title }}</a></li>
+                            <a  class="nav-link" href="{{ route('topics.show', [$subject, $topic]) }}" style="text-decoration: none;">{{ $key+1 }} - {{ $topic->extra_very_short_title }}</a></li>
                         @empty
                         <li>No available Topics yet!</li>
                         @endforelse
@@ -86,7 +86,7 @@
             </div>
             <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
                 <h4 class="bold mb-4">{{ $subject->title }}</h4>
-                <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="rounded-corners w-100">
+                <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="rounded-corners w-100" alt="{{ $subject->title }}">
                 <div class="mt-2 mb-4 mt-4">
                     <i> {{ $subject->subtitle }} </i>
                 </div>
@@ -153,7 +153,7 @@
                                 </video>
                             </div>
                             <div class="description">
-                                <p>{{ $key+1 }} - {{ $topic->medium_snippet }}</p>
+                                <p>{{ $key+1 }} - {{ $topic->short_title }}</p>
                                 <p>View details</p>
                             </div>
                         </div>
