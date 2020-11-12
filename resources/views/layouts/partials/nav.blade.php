@@ -53,15 +53,14 @@
 
             <ul class="navbar-nav ml-auto nav nav-pills">
                 @guest
-                    <li class="nav-item {{ Helper::set_active(['subjects.teacherIndex']) }} mt-1 guest-techer">
-                        <a class="nav-link" href="{{ route('subjects.teacherIndex') }}">Teach Here</a>
+                        <a class="nav-link" href="{{ route('subjects.onBoard') }}">Teach Here</a>
                     </li>
                 @endguest
 
                 @auth()
                     @if(auth()->user()->role == 1)
-                        <li class="nav-item {{ Helper::set_active(['subjects.start']) }} mt-1">
-                            <a class="nav-link" href="{{ route('subjects.start') }}">Teach Here</a>
+                        <li class="nav-item {{ Helper::set_active(['subjects.starter']) }} mt-1">
+                            <a class="nav-link" href="{{ route('subjects.starter') }}">Teach Here</a>
                         </li>
                         <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
                             <a class="nav-link" href="{{ route('manage.subjects') }}">My subjects</a>

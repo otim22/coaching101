@@ -16,9 +16,8 @@ class MenuController extends Controller
     public function index()
     {
         $menus = Menu::whereNull('parent_id')->paginate(3);
-        $allMenus = Menu::pluck('title', 'id')->all();
 
-        return view('admin.menus.index', compact('menus','allMenus'));
+        return view('admin.menus.index', compact(['menus']));
     }
 
     /**

@@ -64,7 +64,7 @@
                         <div class="card-body">
                                 @forelse($topic->getMedia('content_file') as $key => $topicMedia)
                                 <p class="mt-1">
-                                    <a href="{{ route('subject.showSubject', [$subject, $topic]) }}" style="text-decoration: none">
+                                    <a href="{{ route('subjects.show', [$subject, $topic]) }}" style="text-decoration: none">
                                         <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
                                     </a>
                                 </p>

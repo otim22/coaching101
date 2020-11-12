@@ -87,18 +87,17 @@ class SubjectController extends Controller
         return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');
     }
 
-
-    // TODO:  Refactor this code {Create a new Controller}
-    public function teacherIndex()
+    public function onBoard()
     {
         return view('teacher.pages.index');
     }
-    public function start()
+    
+    public function starter()
     {
         return view('teacher.pages.start.index');
     }
 
-    public function storeStart(Request $request)
+    public function captureRole(Request $request)
     {
         $user = Auth::user();
         $user->role = $request->role;
@@ -107,28 +106,6 @@ class SubjectController extends Controller
         return redirect()->route('manage.subjects');
     }
 
-    public function getSubjects(Subject $subject)
-    {
-        $subjects = Subject::orderBy('id', 'desc')->where('user_id', Auth::id())->get()->take(3);
-        $resourceCount = 0;
-
-        foreach ($subject->topics as $topic) {
-            if($topic->getMedia('resource_attachment')) {
-                $resourceCount += count($topic->getMedia('resource_attachment'));
-            }
-        }
-
-        return view('pages.student.index', compact(['subjects', 'subject', 'resourceCount']));
-    }
-
-    public function showSubject(Subject $subject, Topic $topic)
-    {
-        $previous = Topic::where('id', '<', $topic->id)->orderBy('id', 'desc')->first();
-        $next = Topic::where('id', '>', $topic->id)->orderBy('id')->first();
-
-        return view('pages.student.show', compact(['subject', 'topic', 'previous', 'next']));
-    }
-    // To here.
     public function destroy(Subject $subject)
     {
         $this->authorize('delete', $subject);

@@ -38,7 +38,7 @@
                     <div class="col-lg-8 col-md-10 col-sm-12">
                         <h4 class="bold">So, you wanna share your knowledge?</h4>
                         <p class="pb-3">Our classes are majorly video based that give students edge skills to excellence in life. Whether you are exeperienced or not, we will work together to give great value to students.</p>
-                        <form action="{{ route('subjects.storeStart') }}" method="POST">
+                        <form action="{{ route('subjects.captureRole') }}" method="POST">
                             @csrf
                             <div class="mb-5">
                                 <h5 class="pb-3">What kind of teaching have you done before?</h5>

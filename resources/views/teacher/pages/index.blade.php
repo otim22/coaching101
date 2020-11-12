@@ -69,15 +69,15 @@
 
                         <ul class="navbar-nav ml-auto nav nav-pills">
                             @guest
-                                <li class="nav-item {{ Helper::set_active(['subjects.start']) }}  d-none d-lg-block mt-1">
-                                    <a class="nav-link" href="{{ route('subjects.start') }}">Teach Here</a>
+                                <li class="nav-item {{ Helper::set_active(['subjects.starter']) }}  d-none d-lg-block mt-1">
+                                    <a class="nav-link" href="{{ route('subjects.starter') }}">Teach Here</a>
                                 </li>
                             @endguest
 
                             @auth()
                                 @if(auth()->user()->role == 1)
-                                    <li class="nav-item {{ Helper::set_active(['subjects.start']) }}  d-none d-lg-block mt-1">
-                                        <a class="nav-link" href="{{ route('subjects.start') }}">Teach Here</a>
+                                    <li class="nav-item {{ Helper::set_active(['subjects.starter']) }}  d-none d-lg-block mt-1">
+                                        <a class="nav-link" href="{{ route('subjects.starter') }}">Teach Here</a>
                                     </li>
                                     <li class="nav-item mt-1">
                                         <a class="nav-link" href="{#">My subjects</a>
@@ -168,7 +168,7 @@
                         <h4 class="pt-3 pm-3 bold student-font">It includes a large callout called a jumbotron and three supporting pieces of content.</h4>
                         <p>
                             @if(Auth::user()->role == 1)
-                                <a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('subjects.start') }}" role="button">Become a teacher &raquo;</a>
+                                <a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('subjects.starter') }}" role="button">Become a teacher &raquo;</a>
                             @elseif(Auth::user()->role == 2)
                                 <a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Become a teacher &raquo;</a>
                             @endif

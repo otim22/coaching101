@@ -18,6 +18,10 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\AudienceController;
 use App\Http\Controllers\PerformanceController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\CheckoutController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,8 +35,8 @@ Route::get('/business', [BusinessController::class, 'index'])->name('business');
 Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
-Route::get('/subjects/{subject}', [SubjectController::class, 'getSubjects'])->name('subjects.getSubjects');
-Route::get('/subjects/{subject}/topics/{topic}', [SubjectController::class, 'showSubject'])->name('subject.showSubject');
+Route::get('/subjects/{subject}', [StudentController::class, 'index'])->name('subjects.index');
+Route::get('/subjects/{subject}/topics/{topic}', [StudentController::class, 'show'])->name('subjects.show');
 
 Auth::routes();
 
@@ -40,13 +44,13 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function() {
 
-    Route::get('/checkout', [\App\Http\Controllers\Admin\CheckoutController::class, 'index'])->name('checkout.index');
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 
     Route::prefix('teacher')
             ->group(function() {
-                Route::get('/start', [SubjectController::class, 'start'])->name('subjects.start');
-                Route::get('/teacherIndex', [SubjectController::class, 'teacherIndex'])->name('subjects.teacherIndex');
-                Route::post('/start', [SubjectController::class, 'storeStart'])->name('subjects.storeStart');
+                Route::get('/starter', [SubjectController::class, 'starter'])->name('subjects.starter');
+                Route::get('/onBoard', [SubjectController::class, 'onBoard'])->name('subjects.onBoard');
+                Route::post('/captureRole', [SubjectController::class, 'captureRole'])->name('subjects.captureRole');
                 Route::get('/manage/subjects', [SubjectController::class, 'index'])->name('manage.subjects')->middleware('teacher');
                 Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
                 Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects');
@@ -80,14 +84,14 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function() {
-        Route::get('/dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index']);
-        Route::resource('sliders', '\App\Http\Controllers\Admin\SliderController');
-        Route::get('menus', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');
-        Route::post('menus', [\App\Http\Controllers\Admin\MenuController::class, 'store'])->name('menus.store');
-        Route::get('menus/create', [\App\Http\Controllers\Admin\MenuController::class, 'create'])->name('menus.create');
-        Route::get('menus/{menu}', [\App\Http\Controllers\Admin\MenuController::class, 'show'])->name('menus.show');
-        Route::get('menus/{menu}/edit', [\App\Http\Controllers\Admin\MenuController::class, 'edit'])->name('menus.edit');
-        Route::patch('menus/{menu}/update', [\App\Http\Controllers\Admin\MenuController::class, 'update'])->name('menus.update');
-        Route::delete('menus/{menu}/destroy', [\App\Http\Controllers\Admin\MenuController::class, 'destroy'])->name('menus.destroy');
+        Route::get('/dashboard', [AdminController::class, 'index']);
+        Route::resource('sliders', 'SliderController');
+        Route::get('menus', [MenuController::class, 'index'])->name('menus.index');
+        Route::post('menus', [MenuController::class, 'store'])->name('menus.store');
+        Route::get('menus/create', [MenuController::class, 'create'])->name('menus.create');
+        Route::get('menus/{menu}', [MenuController::class, 'show'])->name('menus.show');
+        Route::get('menus/{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
+        Route::patch('menus/{menu}/update', [MenuController::class, 'update'])->name('menus.update');
+        Route::delete('menus/{menu}/destroy', [MenuController::class, 'destroy'])->name('menus.destroy');
     });
 });

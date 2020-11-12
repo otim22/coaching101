@@ -21,13 +21,13 @@
                 <div class="d-flex justify-content-between mt-4">
                     <div>
                         @if($previous)
-                            <a href="{{ route('subject.showSubject', [$subject, $previous]) }}" type="button" class="" name="button" style="text-decoration: none">Previous</a>
+                            <a href="{{ route('subjects.show', [$subject, $previous]) }}" type="button" class="" name="button" style="text-decoration: none">Previous</a>
                         @else
                             <a href="#" type="button" class="disabled" name="button" style="text-decoration: none">Previous Lession</a>
                         @endif
                     </div>
                     <div>
-                        <a href="{{ route('subject.showSubject', [$subject, $next]) }}" type="button" class="" name="button" style="text-decoration: none">Next Lession</a>
+                        <a href="{{ route('subjects.show', [$subject, $next]) }}" type="button" class="" name="button" style="text-decoration: none">Next Lession</a>
                     </div>
                 </div>
 
@@ -103,7 +103,7 @@
                                 <div class="card-body">
                                     @forelse($topic->getMedia('content_file') as $topicMedia)
                                         <p class="remove_bottom_margin mb-3">
-                                            <a href="{{ route('subject.showSubject', [$subject, $topic]) }}" style="text-decoration: none">
+                                            <a href="{{ route('subjects.show', [$subject, $topic]) }}" style="text-decoration: none">
                                                 <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
                                             </a>
                                         </p>

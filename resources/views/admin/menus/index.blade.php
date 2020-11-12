@@ -30,9 +30,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="mt-4">
-                    {{ $menus->links() }}
-                </div>
             </div>
         </div>
     </div>
