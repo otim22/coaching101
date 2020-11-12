@@ -16,18 +16,19 @@
 
 .author-font {
     color: $color-gray-4;
+    font-size: 15px;
 }
 
 .title-font:hover, .author-font:hover {
-    color: $color-body;
+    color: $color-black;
 }
 
 .rating {
-    color: $color-dark-1;
+    color: $orange;
 }
 
 .rating:hover {
-    color: #4F7A7D;
+    color: $orange-2;
 }
 
 .teacher-icon {

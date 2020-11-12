@@ -3198,19 +3198,20 @@ select {
 
 .author-font {
   color: #515152;
+  font-size: 15px;
 }
 
 .title-font:hover,
 .author-font:hover {
-  color: #9b9b9b;
+  color: #000000;
 }
 
 .rating {
-  color: #3F574D;
+  color: #f6993f;
 }
 
 .rating:hover {
-  color: #4F7A7D;
+  color: #e85d04;
 }
 
 .teacher-icon {
@@ -3905,6 +3906,19 @@ div > .student-image {
   margin-right: 10px;
   width: 60px;
   height: 60px;
+}
+
+.card-body_custom {
+  padding: 1rem !important;
+}
+
+.love-circle {
+  border: 1px #3490dc solid;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  padding-top: 3px;
 }
 
 @media only screen and (max-width: 1050px) {
