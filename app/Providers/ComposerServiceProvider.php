@@ -42,8 +42,8 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['welcome', 'home'], function ($view) {
-            $teachers = User::with('subjects')->get()->where('role', '2')->take(8);
-            
+            $teachers = User::with('subjects')->get()->where('role', '2')->take(9);
+
             $view->withTeachers($teachers);
         });
 
