@@ -4,6 +4,7 @@
 
 use App\Models\User;
 use App\Models\Subject;
+use App\Models\Category;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -13,7 +14,7 @@ $factory->define(Subject::class, function (Faker $faker) {
         'slug' => $faker->slug,
         'subtitle' => $faker->text,
         'description' => $faker->paragraph,
-        'category' => $faker->word,
+        'category_id' => Category::all()->random()->id,
         'user_id' => User::all()->random()->id,
     ];
 });

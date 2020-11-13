@@ -18,6 +18,7 @@
         <title>@yield('title') {{ config('app.name') }}</title>
 
         @stack('scripts')
+        @livewireStyles
       </head>
 <body>
     <div id="app">
@@ -29,6 +30,7 @@
         @include('layouts.partials.footer')
 
     </div>
+    @livewireScripts
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

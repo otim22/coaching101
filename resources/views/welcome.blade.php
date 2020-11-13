@@ -89,15 +89,16 @@
                 <div class="tab-pane fade show {{ $key === $categories->keys()->first() ? 'active' : '' }}" id="nav-{{$key}}" role="tabpanel" aria-labelledby="nav-{{$key}}-tab">
                         <div class="row mt-4">
                             @foreach($category as $cat)
-                                <div class="col-sm-6 col-md-6 col-lg-3">
+                                @foreach($cat->subjects as $subject)
+                                <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
                                     <div class="card">
-                                        <a href="{{ route('subjects.index', $cat->slug) }}" style="text-decoration: none">
-                                            <img src="{{ $cat->image_thumb}}" alt="{{ $cat->very_short_title }}" width="100%" height="130">
+                                        <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
+                                            <img src="{{ $subject->image_thumb}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
                                         </a>
                                         <div class="card-body card-body_custom">
-                                            <a href="{{ route('subjects.index', $cat->slug) }}" style="text-decoration: none" class="title-font">
-                                                <span class="bold">{{ $cat->very_short_title }}</span><br />
-                                                <span class="author-font">{{$cat->creator->name }}</span>
+                                            <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
+                                                <span class="bold">{{ $subject->very_short_title }}</span><br />
+                                                <span class="author-font">{{$subject->creator->name }}</span>
                                                 <div class="rating">
                                                     <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -128,6 +129,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             @endforeach
                         </div>
                 </div>
@@ -207,24 +209,7 @@
 </section>
 
 <section class="bg-white">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <h3 class="bold">Top categories</h3>
-            </div>
-        </div>
-        <div class="row">
-            @foreach($topCategories as $topCategory)
-            <div class="col-sm-6 col-md-4 col-lg-2 mt-3">
-                <a href="#" style="text-decoration: none">
-                    <div class="top-card make-it-slow text-center">
-                        <p class="bold">{{ $topCategory }}</p>
-                    </div>
-                </a>
-            </div>
-            @endforeach
-        </div>
-    </div>
+    @include('partials.categories')
 </section>
 
 <section class="bg-white">
@@ -252,50 +237,19 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h3 class="bold mb-3">Our popular teachers</h3>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="top_teacher">
-                    <div>
-                        <img src="{{ asset('images/st_2.jpg') }}" alt="Avatar" class="teacher-avatar mt-3 mb-3">
-                    </div>
-                    <div class="mt-3">
-                        <span class="bold">Chris Fox.</span>
-                        <p>John Doe saved us.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="top_teacher">
-                    <div>
-                        <img src="{{ asset('images/st_2.jpg') }}" alt="Avatar" class="teacher-avatar mt-3 mb-3">
-                    </div>
-                    <div class="mt-3">
-                        <span class="bold">Chris Fox.</span>
-                        <p>John Doe saved us.</p>
+            @foreach($teachers as $teacher)
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="top_teacher mb-3">
+                        <div>
+                            <img src="{{ asset('images/st_2.jpg') }}" alt="Avatar" class="teacher-avatar mt-3 mb-3">
+                        </div>
+                        <div class="mt-3">
+                            <span class="bold">{{ $teacher->name }}</span>
+                            <p>John Doe saved us.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="top_teacher">
-                    <div>
-                        <img src="{{ asset('images/st_2.jpg') }}" alt="Avatar" class="teacher-avatar mt-3 mb-3">
-                    </div>
-                    <div class="mt-3">
-                        <span class="bold">Chris Fox.</span>
-                        <p>John Doe saved us.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="top_teacher">
-                    <div>
-                        <img src="{{ asset('images/st_2.jpg') }}" alt="Avatar" class="teacher-avatar mt-3 mb-3">
-                    </div>
-                    <div class="mt-3">
-                        <span class="bold">Chris Fox.</span>
-                        <p>John Doe saved us.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

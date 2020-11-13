@@ -5,11 +5,11 @@
 <section class="section-one bg-subject text-white">
     <div class="container">
         <div class="row mt-2">
-            <div class="col-12">
-                    <h5 class="bold">{{ $subject->title }}</h5>
-                    <h5>{{ $subject->subtitle }}</h5>
-                    <p>100 Enrolled Students</p>
-                    <p>Created by {{ $subject->creator->name }}</p>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h5 class="bold">{{ $subject->title }}</h5>
+                <h5>{{ $subject->subtitle }}</h5>
+                <p>100 Enrolled Students</p>
+                <p>Created by {{ $subject->creator->name }}</p>
             </div>
         </div>
     </div>

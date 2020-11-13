@@ -40,7 +40,7 @@ class SubjectController extends Controller
         $subject->subtitle      = $request->input('subtitle');
         $subject->description = $request->input('description');
         $subject->category = $request->input('category');
-        $subject->user_id = auth()->user()->id;
+        $subject->user_id = Auth::user()->id;
 
         $subject->save();
 
@@ -91,7 +91,7 @@ class SubjectController extends Controller
     {
         return view('teacher.pages.index');
     }
-    
+
     public function starter()
     {
         return view('teacher.pages.start.index');

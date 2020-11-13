@@ -18,6 +18,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\AudienceController;
 use App\Http\Controllers\PerformanceController;
+use App\Http\Controllers\TopCategoryController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SliderController;
@@ -37,6 +39,7 @@ Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profi
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
 Route::get('/subjects/{subject}', [StudentController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject}/topics/{topic}', [StudentController::class, 'show'])->name('subjects.show');
+Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
 
 Auth::routes();
 
@@ -86,6 +89,15 @@ Route::middleware('auth')->group(function() {
     Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function() {
         Route::get('/dashboard', [AdminController::class, 'index']);
         Route::resource('sliders', 'SliderController');
+
+        Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+        Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
+        Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
+        Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+        Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+        Route::patch('categories/{category}/update', [CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('categories/{category}/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
         Route::get('menus', [MenuController::class, 'index'])->name('menus.index');
         Route::post('menus', [MenuController::class, 'store'])->name('menus.store');
         Route::get('menus/create', [MenuController::class, 'create'])->name('menus.create');

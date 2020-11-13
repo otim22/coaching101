@@ -170,7 +170,7 @@
                             @if(Auth::user()->role == 1)
                                 <a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('subjects.starter') }}" role="button">Become a teacher &raquo;</a>
                             @elseif(Auth::user()->role == 2)
-                                <a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Become a teacher &raquo;</a>
+                                <a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Manage subjects &raquo;</a>
                             @endif
                         </p>
                     </div>
@@ -244,7 +244,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4 text-center">
                             <span>
-                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-calendar2-week mb-3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-calendar2-week mb-3" fill="#3490dc" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
                                     <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
                                 </svg>
@@ -254,7 +254,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4 text-center">
                             <span>
-                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-camera-video mb-3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-camera-video mb-3" fill="#3490dc" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175l3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z"/>
                                 </svg>
                             </span>
@@ -263,7 +263,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4 text-center">
                             <span>
-                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-people mb-3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-people mb-3" fill="#3490dc" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
                                 </svg>
                             </span>
@@ -280,7 +280,7 @@
                         <div class="col-12 text-center">
                             <h3 class="bold">Become a techer today.</h3>
                             <h5 class="mb-4 mt-3">This is a template for a simple marketing or informational website.</h5>
-                            <a id="round-button-2" type="button" href="{{ route('manage.subjects') }}"class="btn btn-primary" name="button">Get started</a>
+                            <a id="round-button-2" type="button" href="{{ route('manage.subjects') }}"class="btn btn-primary" name="button">Get started &raquo;</a>
                         </div>
                     </div>
                 </div>

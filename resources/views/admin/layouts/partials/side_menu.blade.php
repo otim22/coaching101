@@ -23,16 +23,32 @@
                             <span class="drawer-menu-text"> Home</span>
                         </a>
                     </li>
+                    <li class="drawer-menu-item ">
+                        <a href="{{ url('admin/menus') }}">
+                            <i class="material-icons">view_day</i>
+                            <span class="drawer-menu-text">Menu</span>
+                        </a>
+                    </li>
                     <li class="drawer-menu-item">
                         <a href="{{ url('/admin/sliders') }}">
                             <i class="material-icons">slideshow</i>
                             <span class="drawer-menu-text"> Slider</span>
                         </a>
                     </li>
-                    <li class="drawer-menu-item ">
-                        <a href="{{ url('admin/menus') }}">
-                            <i class="material-icons">view_day</i>
-                            <span class="drawer-menu-text">Menu</span>
+
+                </ul>
+
+                <!-- HEADING -->
+                <div class="py-2 drawer-heading">
+                    Subjects
+                </div>
+
+                <!-- MANAGEMENT MENU -->
+                <ul class="drawer-menu" id="componentsMenu" data-children=".drawer-submenu">
+                    <li class="drawer-menu-item">
+                        <a href="{{ url('/admin/categories') }}">
+                            <i class="material-icons">apps</i>
+                            <span class="drawer-menu-text">Categories</span>
                         </a>
                     </li>
                 </ul>

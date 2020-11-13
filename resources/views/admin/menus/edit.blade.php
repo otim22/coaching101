@@ -13,7 +13,7 @@
                                 <h2>{{ $menu->name }}</h2>
                             </div>
                             <div>
-                                <a type="button" href="{{ url()->previous() }}" class="btn btn-secondary pt-1" name="button">Back</a>
+                                <a type="button" href="{{ route('admin.menus.index') }}" class="btn btn-secondary pt-1" name="button">Back</a>
                             </div>
                         </div>
                     </div>

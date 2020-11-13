@@ -32,7 +32,7 @@ class PermissionTableSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-             Permission::create(['name' => $permission]);
+            Permission::create(['name' => $permission]);
         }
 
         // create roles and assign existing permissions
@@ -56,31 +56,31 @@ class PermissionTableSeeder extends Seeder
             'name' => 'Otim student',
             'email' => 'student@gmail.com',
             'password' => bcrypt('password'),
+            'role' => $studentRole
         ]);
-        $user->assignRole($studentRole);
 
         // create a teacher user
         $user = Factory(User::class)->create([
             'name' => 'Otim teacher',
             'email' => 'teacher@gmail.com',
             'password' => bcrypt('password'),
+            'role' => $teacherRole
         ]);
-        $user->assignRole($teacherRole);
 
         // create an admin user
         $user = Factory(User::class)->create([
             'name' => 'Otim admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
+            'role' => $adminRole
         ]);
-        $user->assignRole($adminRole);
 
         // create a super admin user
         $user = Factory(User::class)->create([
             'name' => 'Otim deere',
             'email' => 'super@gmail.com',
             'password' => bcrypt('password'),
+            'role' => $superRole
         ]);
-        $user->assignRole($superRole);
     }
 }

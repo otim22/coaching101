@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
-class UserTableSeeder extends Seeder
+class CategoryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,6 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 20)->create(['role' => 2]);
-        factory(User::class, 20)->create();
+        factory(Category::class, 20)->create();
     }
 }
