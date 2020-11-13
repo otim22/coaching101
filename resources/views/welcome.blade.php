@@ -187,7 +187,7 @@
                 </div>
             </div>
             @endforeach
-        </div> <!-- /container -->
+        </div> 
     </div>
 </section>
 

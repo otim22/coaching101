@@ -10,6 +10,8 @@ class TopCategoryController extends Controller
 {
     public function index(Category $category)
     {
-        return view('pages.category.index', compact('category'));
+        $subjects = Subject::where('category_id', $category->id)->get();
+
+        return view('pages.category.index', compact(['subjects', 'category']));
     }
 }

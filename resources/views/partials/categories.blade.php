@@ -5,11 +5,11 @@
         </div>
     </div>
     <div class="row">
-        @foreach($topCategories as $topCategory)
+        @foreach($topCategories as $category)
         <div class="col-sm-6 col-md-4 col-lg-2 mt-3">
-            <a href="{{ route('categories.index', $topCategory) }}" style="text-decoration: none">
+            <a href="{{ route('categories.index', $category->slug) }}" style="text-decoration: none">
                 <div class="top-card make-it-slow text-center">
-                    <p class="bold">{{ $topCategory->name }}</p>
+                    <p class="bold">{{ $category->name }}</p>
                 </div>
             </a>
         </div>
