@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LibraryController;
-use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\MySubjectsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
@@ -30,8 +29,6 @@ Route::get('/', function () {
 });
 
 Route::get('/library', [LibraryController::class, 'create']);
-Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
-Route::get('/business', [BusinessController::class, 'index'])->name('business');
 Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');

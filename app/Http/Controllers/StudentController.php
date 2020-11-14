@@ -20,7 +20,7 @@ class StudentController extends Controller
             }
         }
 
-        return view('pages.student.index', compact(['subjects', 'subject', 'resourceCount']));
+        return view('pages.subject_display.index', compact(['subjects', 'subject', 'resourceCount']));
     }
 
     public function show(Subject $subject, Topic $topic)
@@ -28,6 +28,6 @@ class StudentController extends Controller
         $previous = Topic::where('id', '<', $topic->id)->orderBy('id', 'desc')->first();
         $next = Topic::where('id', '>', $topic->id)->orderBy('id')->first();
 
-        return view('pages.student.show', compact(['subject', 'topic', 'previous', 'next']));
+        return view('pages.subject_display.show', compact(['subject', 'topic', 'previous', 'next']));
     }
 }
