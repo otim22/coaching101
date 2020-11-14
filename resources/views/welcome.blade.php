@@ -11,7 +11,17 @@
                     <h4 class="pt-3 pm-3 bold student-font">At your own convenient time, </h4>
                     <h4 class="pt-2 pm-3 bold student-font">Learn from our verified seasoned teachers </h4>
                     <h4 class="pt-2 pm-3 bold student-font">With proven experience in their fields.</h4>
-                    <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('home') }}" role="button">Get Started &raquo;</a></p>
+                    @guest
+                        <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get Started &raquo;</a></p>
+                    @endguest
+
+                    @if(auth()->user()->role == 1)
+                        <p><a id="round-button-2" class="btn btn-primary btn-lg get-started_student mt-5" href="#learn-now" role="button">Get Started &raquo;</a></p>
+                    @endif
+
+                    @if(auth()->user()->role == 2)
+                        <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get Started &raquo;</a></p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -61,7 +71,7 @@
     </div>
 </section>
 
-<section class="bg-gray">
+<section class="bg-gray" id="learn-now">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-12 mb-5">
@@ -430,5 +440,10 @@
         </div>
     </div>
 </section>
+
+@push('scripts')
+    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/home.js')}}" type="text/javascript"></script>
+@endpush
 
 @endsection
