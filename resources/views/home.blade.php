@@ -80,7 +80,17 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12">
-                <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Start teaching</a>
+                @guest
+                    <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Start teaching</a>
+                @endguest
+
+                @if(auth()->user()->role == 1)
+                    <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-primary" name="button">Start teaching</a>
+                @endif
+
+                @if(auth()->user()->role == 2)
+                    <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">My Subjects</a>
+                @endif
             </div>
         </div>
     </div>

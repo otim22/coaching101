@@ -12,6 +12,6 @@ class TopCategoryController extends Controller
     {
         $subjects = Subject::where('category_id', $category->id)->get();
 
-        return view('pages.category.index', compact(['subjects', 'category']));
+        return view('pages.subject_category.index', compact(['subjects', 'category']));
     }
 }

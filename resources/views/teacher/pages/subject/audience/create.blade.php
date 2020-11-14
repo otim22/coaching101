@@ -144,7 +144,7 @@
                     </div>
                 </form>
 
-                @include('pages.subject.audience.partials.js_files')
+                @include('pages.manage_subject.audience.partials.js_files')
             </div>
         </div>
     </div>

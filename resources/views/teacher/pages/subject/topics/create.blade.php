@@ -124,7 +124,7 @@
                     </div>
                 </div>
 
-                @include('pages.subject.topics.partials.js_files')
+                @include('pages.manage_subject.topics.partials.js_files')
 
             </div>
         </div>

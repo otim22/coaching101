@@ -11,17 +11,17 @@ class MessageController extends Controller
 {
     public function index()
     {
-        return view('pages.subject.messages.index');
+        return view('pages.manage_subject.messages.index');
     }
 
     public function create(Subject $subject)
     {
-        return view('pages.subject.messages.index', compact('subject'));
+        return view('pages.manage_subject.messages.index', compact('subject'));
     }
 
     public function edit(Subject $subject)
     {
-        return view('pages.subject.messages.edit', compact('subject'));
+        return view('pages.manage_subject.messages.edit', compact('subject'));
     }
 
     /**

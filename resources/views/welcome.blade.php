@@ -187,7 +187,7 @@
                 </div>
             </div>
             @endforeach
-        </div> 
+        </div>
     </div>
 </section>
 
@@ -239,19 +239,21 @@
             </div>
             @foreach($teachers as $teacher)
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="card mb-3" style="max-width: 400px;">
-                        <div class="row no-gutters">
-                            <div class="col-4">
-                                <img src="{{ asset('images/st_2.jpg') }}" class="card-img" width="100%" height="100%" alt="...">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body" style="padding: 0.7rem 0rem 0rem 1rem;">
-                                    <span class="bold">{{ $teacher->name }}</span>
-                                    <p>Mathematics</p>
+                    <a href="{{ route('teachers.index', $teacher->slug) }}" style="text-decoration:none;">
+                        <div class="card mb-3" style="max-width: 400px;">
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <img src="{{ asset('images/st_2.jpg') }}" class="card-img" width="100%" height="100%" alt="{{ $teacher->name }}">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body" style="padding: 0.7rem 0rem 0rem 1rem;">
+                                        <span class="bold">{{ $teacher->name }}</span>
+                                        <p>Mathematics</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>

@@ -30,8 +30,6 @@ Route::get('/', function () {
 });
 
 Route::get('/library', [LibraryController::class, 'create']);
-Route::get('/teach', [TeacherController::class, 'create'])->name('teach');
-Route::post('/lectures', [TeacherController::class, 'store']);
 Route::get('/subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
 Route::get('/business', [BusinessController::class, 'index'])->name('business');
 Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
@@ -40,6 +38,7 @@ Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
 Route::get('/subjects/{subject}', [StudentController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject}/topics/{topic}', [StudentController::class, 'show'])->name('subjects.show');
 Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
+Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('teachers.index');
 
 Auth::routes();
 

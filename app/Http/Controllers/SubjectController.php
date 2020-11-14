@@ -19,17 +19,17 @@ class SubjectController extends Controller
     {
         $subjects = Subject::orderBy('id', 'desc')->where('user_id', Auth::id())->paginate(10);
 
-        return view('teacher.pages.subject.index', compact('subjects'));
+        return view('teacher.pages.manage_subject.index', compact('subjects'));
     }
 
     public function create()
     {
-        return view('pages.subject.create');
+        return view('pages.manage_subject.create');
     }
 
     public function show(Subject $subject)
     {
-        return view('pages.subject.show', compact('subject'));
+        return view('pages.manage_subject.show', compact('subject'));
     }
 
     public function store(SubjectRequest $request, Subject $subject)
@@ -57,7 +57,7 @@ class SubjectController extends Controller
     {
         $this->authorize('update', $subject);
 
-        return view('pages.subject.edit', compact('subject'));
+        return view('pages.manage_subject.edit', compact('subject'));
     }
 
 

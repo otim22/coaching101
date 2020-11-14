@@ -12,17 +12,17 @@ class AudienceController extends Controller
 {
     public function index()
     {
-        return view('pages.subject.audience.index');
+        return view('pages.manage_subject.audience.index');
     }
 
     public function create(Subject $subject)
     {
-        return view('pages.subject.audience.create', compact('subject'));
+        return view('pages.manage_subject.audience.create', compact('subject'));
     }
 
     public function edit(Subject $subject)
     {
-        return view('pages.subject.audience.edit', compact('subject'));
+        return view('pages.manage_subject.audience.edit', compact('subject'));
     }
 
     /**

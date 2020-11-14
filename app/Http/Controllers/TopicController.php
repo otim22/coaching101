@@ -11,17 +11,17 @@ class TopicController extends Controller
 {
     public function create(Subject $subject)
     {
-        return view('pages.subject.topics.create', compact('subject'));
+        return view('pages.manage_subject.topics.create', compact('subject'));
     }
 
     public function show(Subject $subject, Topic $topic)
     {
-        return view('pages.subject.topics.show', compact(['subject', 'topic']));
+        return view('pages.manage_subject.topics.show', compact(['subject', 'topic']));
     }
 
     public function edit(Subject $subject, Topic $topic)
     {
-        return view('pages.subject.topics.edit', compact(['subject', 'topic']));
+        return view('pages.manage_subject.topics.edit', compact(['subject', 'topic']));
     }
 
     public function store(TopicRequest $request, Subject $subject)
