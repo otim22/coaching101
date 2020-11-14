@@ -208,7 +208,13 @@
             <div class="col-lg-6 col-md-6 col-sm-12 student-text">
                 <h3 class="bold student-head-font">Start learning today</h3>
                 <p class="mb-4 sub-text student-font">Tap from the experience of our hand picked best teachers around and ace that examination you have all been waiting to do.</p>
-                <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Get started</a>
+                @guest
+                    <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
+                @endguest
+
+                @if(auth()->user()->role == 1)
+                    <a id="round-button-2" href="#learn-now" class="btn btn-primary" name="button">Get started &raquo;</a>
+                @endif
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <img src="{{ asset('images/student.jpg') }}" alt="image thumb" class="student-image">
@@ -233,7 +239,17 @@
                 <div class="mb-2">
                     <h3 class="bold">Become a teacher</h3>
                     <p class="mb-4 sub-text">Top teachers from the best, teaching millions of students. We provide the platform and tools so you can skill the students.</p>
-                    <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Start teaching</a>
+                    @guest
+                        <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
+                    @endguest
+
+                    @if(auth()->user()->role == 1)
+                        <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
+                    @endif
+
+                    @if(auth()->user()->role == 2)
+                        <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
+                    @endif
                 </div>
             </div>
         </div>

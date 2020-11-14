@@ -3,8 +3,3 @@
     width: 100%;
     height: 100%;
 }
-
-a[id="teacher-classses" ]:target ~ #section-teacher_course div.teacher-classses_panel {
-    -webkit-transform: translateY( 0px);
-    transform: translateY( 0px );
-}
