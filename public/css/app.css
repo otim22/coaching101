@@ -4137,6 +4137,39 @@ img.rounded-corners {
   height: 100%;
 }
 
+.card-custom {
+  border: 1px #f0f0f0 solid;
+  border-radius: 8px;
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.text-set {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.custom-badge {
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: inline-table;
+}
+
+#cartCount {
+  font-size: 14px;
+  background: #e3342f;
+  color: #ffffff;
+  padding: 0 8px;
+  vertical-align: top;
+  margin-left: -10px;
+}
+
+.custom-badge__content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

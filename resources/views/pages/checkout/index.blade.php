@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
 <section class="mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-8">
+            <div class="col-lg-8 col-md-12 col-sm-12">
                 <h5 class="bold">Checkout</h5>
                 <p>Use Credit Card</p>
                 <div class="border mr-4 p-4 rounded bg-gray-3 mb-5">
@@ -63,7 +64,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
+            <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
                 <aside class="p-3 p-4 border rounded bg-white add-shadow">
                     <div class="make-me-sticky">
                         <h5 class="bold">Summary</h5>

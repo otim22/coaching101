@@ -22,7 +22,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\CheckoutController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,7 +44,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function() {
 
-    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
     Route::prefix('teacher')
             ->group(function() {
