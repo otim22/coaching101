@@ -3301,6 +3301,22 @@ select {
   margin-top: 10px;
 }
 
+.circle {
+  display: inline-table;
+  vertical-align: middle;
+  width: 36px;
+  height: 36px;
+  background-color: #515152;
+  color: #ffffff;
+  border-radius: 50%;
+}
+
+.circle__content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
 @media only screen and (max-width: 1300px) {
   #cartId1 {
     display: none;
@@ -4150,8 +4166,8 @@ img.rounded-corners {
 
 .custom-badge {
   border-radius: 50%;
-  width: 26px;
-  height: 26px;
+  width: 25px;
+  height: 25px;
   display: inline-table;
 }
 

@@ -74,6 +74,23 @@
     margin-top: 10px;
 }
 
+.circle {
+    display: inline-table;
+    vertical-align: middle;
+    width: 36px;
+    height: 36px;
+
+    background-color: $color-gray-4;
+    color: $color-white;
+    border-radius: 50%;
+}
+
+.circle__content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
 @include xl-screens {
     #cartId1 {
         display: none;

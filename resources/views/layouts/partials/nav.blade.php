@@ -93,16 +93,16 @@
                 @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <div class="rounded-initials text-center">
-                            <span class="initial-text"><h5>{{ Helper::generate_initials(Auth::user()->name) }}</h5></span>
+                        <div class="circle text-center">
+                            <span class="circle__content">{{ Helper::generate_initials(Auth::user()->name) }}</span>
                         </div>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item d-flex" href="{{ route('edit-profile') }}">
-                            <div class="mr-2">
-                                <div class="rounded-initials text-center">
-                                    <span class="initial-text"><h5>{{ Helper::generate_initials(Auth::user()->name) }}</h5></span>
+                            <div class="mr-2 pt-2">
+                                <div class="circle">
+                                    <span class="circle__content">{{ Helper::generate_initials(Auth::user()->name) }}</span>
                                 </div>
                             </div>
                             <div class="mr-1">
