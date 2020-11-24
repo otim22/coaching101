@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray">
+<section class="section-bread bg-gray-3">
     <div class="container">
         <div class="row mt-4">
             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -19,7 +19,7 @@
                         <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
                     </ol>
                 </nav>
-                <h4 class="bold">Shopping Cart</h4>
+                <h4 class="bold gray_color">Shopping Cart</h4>
             </div>
         </div>
     </div>
@@ -27,23 +27,7 @@
 
 <section class="bg-white">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-8">
-                @livewire('cart')
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
-                <aside class="p-3 p-4 border rounded bg-white add-shadow">
-                    <div class="make-me-sticky">
-                        <h5>Total:</h5>
-                        <h3 class="bold"> UGX 500,000/-</h3>
-                        <hr />
-                        <div class="mt-4">
-                            <a id="round-button-2" wire:click="checkout()" class="btn btn-danger btn-block mb-2" href="{{ route('checkout.index') }}">Checkout</a>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </div>
+        @livewire('cart')
     </div>
 </section>
 @endsection

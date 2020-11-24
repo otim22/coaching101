@@ -15,13 +15,15 @@
                         <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get Started &raquo;</a></p>
                     @endguest
 
-                    @if(auth()->user()->role == 1)
-                        <p><a id="round-button-2" class="btn btn-primary btn-lg get-started_student mt-5" href="#learn-now" role="button">Get Started &raquo;</a></p>
-                    @endif
+                    @auth
+                        @if(Auth::user()->role == 1)
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg get-started_student mt-5" href="#learn-now" role="button">Get Started &raquo;</a></p>
+                        @endif
 
-                    @if(auth()->user()->role == 2)
-                        <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get Started &raquo;</a></p>
-                    @endif
+                        @if(Auth::user()->role == 2)
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get Started &raquo;</a></p>
+                        @endif
+                    @endauth
                 </div>
             </div>
         </div>
@@ -200,9 +202,11 @@
                     <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
                 @endguest
 
-                @if(auth()->user()->role == 1)
-                    <a id="round-button-2" href="#learn-now" class="btn btn-primary" name="button">Get started &raquo;</a>
-                @endif
+                @auth
+                    @if(Auth::user()->role == 1)
+                        <a id="round-button-2" href="#learn-now" class="btn btn-primary" name="button">Get started &raquo;</a>
+                    @endif
+                @endauth
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <img src="{{ asset('images/student.jpg') }}" alt="image thumb" class="student-image">
@@ -231,13 +235,15 @@
                         <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
                     @endguest
 
-                    @if(auth()->user()->role == 1)
-                        <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
-                    @endif
+                    @auth
+                        @if(Auth::user()->role == 1)
+                            <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
+                        @endif
 
-                    @if(auth()->user()->role == 2)
-                        <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
-                    @endif
+                        @if(Auth::user()->role == 2)
+                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
+                        @endif
+                    @endauth
                 </div>
             </div>
         </div>

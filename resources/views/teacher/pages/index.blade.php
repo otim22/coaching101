@@ -70,14 +70,14 @@
                         <ul class="navbar-nav ml-auto nav nav-pills">
                             @guest
                                 <li class="nav-item {{ Helper::set_active(['subjects.starter']) }}  d-none d-lg-block mt-1">
-                                    <a class="nav-link" href="{{ route('subjects.starter') }}">Teach Here</a>
+                                    <a class="nav-link" href="{{ route('subjects.starter') }}">Teach</a>
                                 </li>
                             @endguest
 
                             @auth()
                                 @if(auth()->user()->role == 1)
                                     <li class="nav-item {{ Helper::set_active(['subjects.starter']) }}  d-none d-lg-block mt-1">
-                                        <a class="nav-link" href="{{ route('subjects.starter') }}">Teach Here</a>
+                                        <a class="nav-link" href="{{ route('subjects.starter') }}">Teach</a>
                                     </li>
                                     <li class="nav-item mt-1">
                                         <a class="nav-link" href="{#">My subjects</a>

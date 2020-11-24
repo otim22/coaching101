@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class NavCart extends Component
 {
-    public $cartTotal = 0;
+    public $cartItemTotal = 0;
 
     protected $listeners = [
         'subjectAdded' => 'updateCartTotal',
@@ -21,7 +21,7 @@ class NavCart extends Component
     {
         $cartFacade = new CartFacade;
 
-        $this->cartTotal = count($cartFacade->get()['subjects']);
+        $this->cartItemTotal = count($cartFacade->get()['subjects']);
     }
 
     public function render()
@@ -33,6 +33,6 @@ class NavCart extends Component
     {
         $cartFacade = new CartFacade;
 
-        $this->cartTotal = count($cartFacade->get()['subjects']);
+        $this->cartItemTotal = count($cartFacade->get()['subjects']);
     }
 }

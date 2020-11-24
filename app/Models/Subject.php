@@ -106,4 +106,9 @@ class Subject extends Model implements HasMedia
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    public function wishlists()
+    {
+        return $this->hasMany('App\Models\Subject');
+    }
 }

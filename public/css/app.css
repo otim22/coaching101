@@ -3180,6 +3180,10 @@ select {
   color: #4e8749;
 }
 
+.gray_color {
+  color: #515152;
+}
+
 .side-font {
   font-weight: bold;
 }

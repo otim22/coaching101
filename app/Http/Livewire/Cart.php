@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Cart extends Component
 {
-    public $cartTotal = 0;
+    public $cartItemTotal = 0;
     public $cartItems = [];
 
     protected $listeners = [
@@ -22,7 +22,7 @@ class Cart extends Component
     {
         $cartFacade = new CartFacade;
 
-        $this->cartTotal = count($cartFacade->get()['subjects']);
+        $this->cartItemTotal = count($cartFacade->get()['subjects']);
 
         $this->cartItems = $cartFacade->get()['subjects'];
     }
@@ -36,7 +36,7 @@ class Cart extends Component
     {
         $cartFacade = new CartFacade;
 
-        $this->cartTotal = count($cartFacade->get()['subjects']);
+        $this->cartItemTotal = count($cartFacade->get()['subjects']);
 
         $this->cartItems = $cartFacade->get()['subjects'];
     }
