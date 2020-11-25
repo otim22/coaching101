@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
@@ -37,6 +38,9 @@ Route::get('/subjects/{subject}', [StudentController::class, 'index'])->name('su
 Route::get('/subjects/{subject}/topics/{topic}', [StudentController::class, 'show'])->name('subjects.show');
 Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
 Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('teachers.index');
+Route::get('/wishlists', [WishlistController::class, 'index']);
+Route::post('/wishlists', [WishlistController::class, 'store']);
+Route::delete('/wishlists/{wishlist}', [WishlistController::class, 'destroy']);
 
 Auth::routes();
 

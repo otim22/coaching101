@@ -182,7 +182,7 @@
                         <div class="mt-2 d-flex justify-content-between">
                             @livewire('add-to-cart', [$subject], key($subject->id))
                             @livewire('add-to-wish-list', [$subject], key($subject->id))
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -203,9 +203,7 @@
                 @endguest
 
                 @auth
-                    @if(Auth::user()->role == 1)
-                        <a id="round-button-2" href="#learn-now" class="btn btn-primary" name="button">Get started &raquo;</a>
-                    @endif
+                    <a id="round-button-2" href="#learn-now" class="btn btn-primary" name="button">Get started &raquo;</a>
                 @endauth
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -293,7 +291,7 @@
                       <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none">
                             <div class="d-flex justify-content-between">
-                                <div>
+                                <div class="bold">
                                     Where do I take this course?
                                 </div>
                                 <div>
@@ -320,7 +318,7 @@
                       <h2 class="mb-0">
                         <button  class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none">
                             <div class="d-flex justify-content-between">
-                                <div>
+                                <div class="bold">
                                     Where is Coaching101 located?
                                 </div>
                                 <div>
@@ -346,7 +344,7 @@
                       <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="text-decoration: none">
                             <div class="d-flex justify-content-between">
-                                <div>
+                                <div class="bold">
                                     When does it begin?
                                 </div>
                                 <div>
@@ -372,7 +370,7 @@
                       <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="text-decoration: none">
                             <div class="d-flex justify-content-between">
-                                <div>
+                                <div class="bold">
                                     How long does it take?
                                 </div>
                                 <div>
@@ -399,7 +397,7 @@
                       <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="text-decoration: none">
                             <div class="d-flex justify-content-between">
-                                <div>
+                                <div class="bold">
                                     Do you have a refund policy?
                                 </div>
                                 <div>
@@ -425,7 +423,7 @@
                       <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="text-decoration: none">
                             <div class="d-flex justify-content-between">
-                                <div>
+                                <div class="bold">
                                     How do I sign up and pay?
                                 </div>
                                 <div>

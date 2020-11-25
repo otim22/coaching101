@@ -2,20 +2,24 @@
 
 namespace App\Http\Livewire;
 
+use Auth;
 use App\Facades\Cart as CartFacade;
 use Illuminate\View\View;
 use App\Models\Subject;
+use App\Models\Wishlist;
 use Livewire\Component;
 
 class Cart extends Component
 {
     public $cartItemTotal = 0;
     public $cartItems = [];
+    public $wishlistItems = [];
 
     protected $listeners = [
         'goToCart' => 'getSubjects',
         'subjectRemoved' => 'updateCartTotal',
-        'clearCart' => 'updateCartTotal'
+        'clearCart' => 'updateCartTotal',
+        'wishlistSubjectRemoved' => 'updateWishlist'
     ];
 
     public function mount(): void
@@ -25,6 +29,8 @@ class Cart extends Component
         $this->cartItemTotal = count($cartFacade->get()['subjects']);
 
         $this->cartItems = $cartFacade->get()['subjects'];
+
+        $this->wishlistItems = Wishlist::where('user_id', Auth::user()->id)->get();
     }
 
     public function render()
@@ -68,5 +74,19 @@ class Cart extends Component
         $this->emit('clearCart');
 
         $this->cart = $cartFacade->get();
+    }
+
+    public function wishlistSubjectRemoved(): void
+    {
+        dd('Listening');
+        $this->wishlistItems = Wishlist::where('user_id', Auth::user()->id)->get();
+    }
+
+    public function removeFromWishlist($id): void
+    {
+        $wishlist = Wishlist::findOrFail($id);
+        $wishlist->delete();
+
+        $this->emit('updateWishlist');
     }
 }
