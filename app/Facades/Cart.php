@@ -15,14 +15,20 @@ class Cart
     public function add(Subject $subject): void
     {
         $cart = $this->get();
-        array_push($cart['subjects'], $subject);
-        $this->set($cart);
+
+        if(!array_key_exists($subject->id, $cart['subjects'])) {
+            $cart['subjects'][$subject->id] = $subject;
+
+            $this->set($cart);
+        }
     }
 
     public function remove(int $subjectId): void
     {
         $cart = $this->get();
+
         array_splice($cart['subjects'], array_search($subjectId, array_column($cart['subjects'], 'id')), 1);
+
         $this->set($cart);
     }
 

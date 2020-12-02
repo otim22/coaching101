@@ -3932,13 +3932,8 @@ div > .student-image {
   padding: 1rem !important;
 }
 
-.love-circle {
-  border: 1px #3490dc solid;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  text-align: center;
-  padding-top: 3px;
+.love-circle:hover {
+  fill: #e3342f;
 }
 
 @media only screen and (max-width: 1050px) {

@@ -12,8 +12,8 @@ class NavCart extends Component
     public $cartItemTotal = 0;
 
     protected $listeners = [
-        'subjectAdded' => 'updateCartTotal',
-        'subjectRemoved' => 'updateCartTotal',
+        'itemAdded' => 'updateCartTotal',
+        'itemRemoved' => 'updateCartTotal',
         'clearCart' => 'updateCartTotal'
     ];
 

@@ -19,7 +19,7 @@ class SubjectController extends Controller
     {
         $subjects = Subject::orderBy('id', 'desc')->where('user_id', Auth::id())->paginate(10);
 
-        return view('teacher.pages.manage_subject.index', compact('subjects'));
+        return view('pages.manage_subject.index', compact('subjects'));
     }
 
     public function create()

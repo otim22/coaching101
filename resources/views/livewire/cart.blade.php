@@ -17,11 +17,11 @@
                         </a>
                     </div>
                     <div class="order-2">
-                        <span class="red_color bold text-set">100, 000/-</span>
+                        <span class="red_color bold text-set">{{ $subject['price'] }}/-</span>
                     </div>
                     <div class="d-flex pr-3 align-items-start flex-column">
                         <a type="button" wire:click="removeFromCart({{ $subject['id'] }})"><small>Remove</small></a>
-                        <small type="button" class="text-set">Add to Wishlist</small>
+                        <a type="button" wire:click="addToWishlist({{ $subject['id'] }})"><small class="text-set">Add to Wishlist</small></a>
                     </div>
                 </div>
             </div>
@@ -46,11 +46,11 @@
                         </a>
                     </div>
                     <div class="order-2">
-                        <span class="red_color bold text-set">100, 000/-</span>
+                        <span class="red_color bold text-set">{{ $wishlistItem->subject->price }}/-</span>
                     </div>
                     <div class="d-flex pr-3 align-items-start flex-column">
                         <a type="button" wire:click="removeFromWishlist({{ $wishlistItem->id }})"><small>Remove</small></a>
-                        <small type="button" class="text-set">Add to Cart</small>
+                        <a type="button" wire:click="addToCart({{ $wishlistItem->subject->id }})"><small type="button" class="text-set">Add to Cart</small></a>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
         <aside class="p-3 p-4 border rounded add-shadow">
             <div class="make-me-sticky">
                 <h5>Total:</h5>
-                <h4 class="bold"> UGX 500,000/-</h4>
+                <h4 class="bold"> {{ $sum }}/-</h4>
                 <hr />
                 <div class="mt-4">
                     <a id="round-button-2" wire:click="checkout()" class="btn btn-danger btn-block mb-2" href="{{ route('checkout.index') }}">Checkout</a>
