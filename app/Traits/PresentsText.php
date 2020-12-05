@@ -13,7 +13,7 @@ trait PresentsText
 
     public function getVeryShortTitleAttribute()
     {
-        return Str::limit($this->title, 23);
+        return Str::limit($this->title, 20);
     }
 
     public function getShortTitleAttribute()

@@ -109,7 +109,7 @@ class Cart extends Component
 
         foreach ($this->cartItems as $cartItem) {
             if (($cartItem->id === $subjectId)) {
-                return redirect()->back()->with('flash_messaged', 'This subject is already in your cart!');
+                return redirect()->back()->with('messaged', 'This subject is already in your cart!');
             }
         }
 
