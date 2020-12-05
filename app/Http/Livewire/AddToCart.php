@@ -34,5 +34,6 @@ class AddToCart extends Component
         $cartFacade->add(Subject::where('id', $subjectId)->first());
 
         $this->emit('itemAdded');
+        $this->emit('cartSumUpdate');
     }
 }

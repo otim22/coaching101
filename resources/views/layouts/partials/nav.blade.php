@@ -78,7 +78,7 @@
                 @endauth
 
                 <li id="cartId2" class="nav-item {{ Helper::set_active(['cart']) }} mt-1">
-                    @livewire('nav-cart')
+                    <livewire:nav-cart />
                 </li>
 
                 @guest

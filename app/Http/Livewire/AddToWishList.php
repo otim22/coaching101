@@ -22,7 +22,7 @@ class AddToWishList extends Component
 
     public function addToWishlist(int $subjectId)
     {
-        if(Auth::user()) {
+        if(Auth::check()) {
             $status = Wishlist::where('user_id', Auth::id())
                                                 ->where('subject_id', $subjectId)
                                                 ->first();

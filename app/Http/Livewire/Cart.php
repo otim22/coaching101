@@ -18,20 +18,29 @@ class Cart extends Component
 
     protected $listeners = [
         'goToCart' => 'getItems',
-        'itemRemoved' => 'getItems',
-        'cartTotalUpdate' => 'updateCartTotal',
         'itemAdded' => "getItems",
+        'itemRemoved' => 'getItems',
         'clearCart' => 'getItems',
+        'itemTotalUpdate' => 'updateItemTotal',
+        'cartSumUpdate' => 'calculateCartSum',
+        'cartDeduction' => 'calculateCartDeduction',
+        'itemRemovedFromCart' => 'removeItemFromCart',
         'updateWishlist' => 'wishlistItemUpdate',
         'itemRemovedFromWishlist' => 'deleteFromWishlist'
     ];
 
-    public function mount(): void
+    public function mount()
     {
         $cartFacade = new CartFacade;
         $this->cartItemTotal = count($cartFacade->get()['subjects']);
         $this->cartItems = $cartFacade->get()['subjects'];
-        $this->sum = $this->calculateCartSum();
+
+        $this->wishlistItems = Wishlist::where('user_id', Auth::id())->get();
+
+        foreach ($this->cartItems as $cartItem) {
+            $this->sum = $this->sum + $cartItem->price;
+        }
+        return $this->sum;
     }
 
     public function render()
@@ -39,22 +48,27 @@ class Cart extends Component
         return view('livewire.cart');
     }
 
-    public function updateCartTotal(): void
+    public function updateItemTotal(): void
     {
         $cartFacade = new CartFacade;
         $this->cartItemTotal = count($cartFacade->get()['subjects']);
         $this->cartItems = $cartFacade->get()['subjects'];
     }
 
-    public function calculateCartSum()
+    public function calculateCartSum($subjectId)
     {
-        $cartFacade = new CartFacade;
-        $this->cartItemTotal = count($cartFacade->get()['subjects']);
-        $this->cartItems = $cartFacade->get()['subjects'];
+        $subject = Subject::findOrFail($subjectId);
 
-        foreach ($this->cartItems as $cartItem) {
-            $this->sum += $cartItem->price;
-        }
+        $this->sum += $subject->price;
+
+        return $this->sum;
+    }
+
+    public function calculateCartDeduction($subjectId)
+    {
+        $subject = Subject::findOrFail($subjectId);
+
+        $this->sum -= $subject->price;
 
         return $this->sum;
     }
@@ -65,13 +79,14 @@ class Cart extends Component
         $cartFacade->remove($subjectId);
         $this->cart = $cartFacade->get();
         $this->emit('itemRemoved');
+        $this->emit('cartDeduction', $subjectId);
     }
 
-    public function getItems()
+    public function getItems(): void
     {
         $cartFacade = new CartFacade;
         $this->cartItems = $cartFacade->get()['subjects'];
-        $this->emit('cartTotalUpdate');
+        $this->emit('itemTotalUpdate');
     }
 
     public function checkout(): void
@@ -101,13 +116,23 @@ class Cart extends Component
         $cartFacade->add(Subject::where('id', $subjectId)->first());
 
         $this->emit('itemAdded');
-        $this->emit('updateWishlist');
+        $this->emit('cartSumUpdate', $subjectId);
         $this->emit('itemRemovedFromWishlist', $subjectId);
+    }
+
+    public function removeItemFromCart($subjectId): void
+    {
+        $cartFacade = new CartFacade;
+
+        $cartFacade->remove($subjectId);
+
+        $this->emit('itemRemoved');
+        $this->emit('updateWishlist');
     }
 
     public function addToWishlist(int $subjectId)
     {
-        if(Auth::user()) {
+        if(Auth::check()) {
             $status = Wishlist::where('user_id', Auth::id())
                                                 ->where('subject_id', $subjectId)
                                                 ->first();
@@ -121,10 +146,11 @@ class Cart extends Component
                 ]);
 
                 $this->emit('updateWishlist');
-                $this->removeFromCart($subjectId);
+                $this->emit('cartDeduction', $subjectId);
+                $this->emit('itemRemovedFromCart', $subjectId);
            }
         } else {
-            redirect('/login');
+            return redirect('/login');
         }
     }
 

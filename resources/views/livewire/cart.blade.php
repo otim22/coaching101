@@ -61,7 +61,7 @@
         <aside class="p-3 p-4 border rounded add-shadow">
             <div class="make-me-sticky">
                 <h5>Total:</h5>
-                <h4 class="bold"> {{ $sum }}/-</h4>
+                <h4 class="bold"> UGX {{ $sum }}/-</h4>
                 <hr />
                 <div class="mt-4">
                     <a id="round-button-2" wire:click="checkout()" class="btn btn-danger btn-block mb-2" href="{{ route('checkout.index') }}">Checkout</a>

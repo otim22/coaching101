@@ -27,7 +27,7 @@
 
 <section class="bg-white">
     <div class="container">
-        @livewire('cart')
+        <livewire:cart />
     </div>
 </section>
 @endsection

@@ -13,7 +13,6 @@
         <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <script src="https://widget.northeurope.cloudapp.azure.com:9443/v0.1.0/mobile-money-widget-mtn.js"></script>
 
         <title>@yield('title') {{ config('app.name') }}</title>
 

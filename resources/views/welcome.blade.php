@@ -129,8 +129,8 @@
                                                 <span class="bold">UGX 50,000</span>
                                             </a>
                                             <div class="mt-2 d-flex justify-content-between">
-                                                @livewire('add-to-cart', [$subject], key($subject->id))
-                                                @livewire('add-to-wish-list', [$subject], key($subject->id))
+                                                <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
+                                                <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
                                             </div>
                                         </div>
                                     </div>
@@ -180,8 +180,8 @@
                             <span class="bold">UGX 50,000</span>
                         </a>
                         <div class="mt-2 d-flex justify-content-between">
-                            @livewire('add-to-cart', [$subject], key($subject->id))
-                            @livewire('add-to-wish-list', [$subject], key($subject->id))
+                            <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
+                            <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
                         </div>
                     </div>
                 </div>
