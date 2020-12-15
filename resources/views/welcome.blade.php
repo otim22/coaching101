@@ -76,7 +76,7 @@
 <section class="bg-gray" id="learn-now">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-12 mb-5">
+            <div class="col-sm-12 col-md-12 col-12 mb-4">
                 <h3 class="bold"> Learn at your own pace anytime</h3>
             </div>
 
@@ -149,7 +149,7 @@
 <section class="bg-white">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-2">
+            <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
                 <h3 class="bold">Mosted viewed </h3>
             </div>
             @foreach($mostViewedSubjects as $subject)
@@ -252,8 +252,8 @@
 <section class="bg-white">
     <div class="container ">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <h3 class="bold mb-3">Our popular teachers</h3>
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                <h3 class="bold">Our popular teachers</h3>
             </div>
             @foreach($teachers as $teacher)
                 <div class="col-lg-4 col-md-6 col-sm-6">

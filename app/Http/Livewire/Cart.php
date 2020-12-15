@@ -91,10 +91,21 @@ class Cart extends Component
 
     public function checkout(): void
     {
-        $cartFacade = new CartFacade;
-        $cartFacade->clear();
-        $this->emit('clearCart');
-        $this->cart = $cartFacade->get();
+        if(Auth::check()) {
+            $user = Auth::user();
+
+            // WIP
+            $payment_token = 'Ref-' . 'tx-'. time() . '-' . $user->id;
+            $currency = "UGX";
+            $userEmail = $user->email;
+            $userName= $user->name;
+            $cartSum = $this->sum;
+
+            $cartFacade = new CartFacade;
+            $cartFacade->clear();
+            $this->emit('clearCart');
+            $this->cart = $cartFacade->get();
+        }
     }
 
     public function wishlistItemUpdate(): void
