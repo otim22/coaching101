@@ -6,7 +6,14 @@
     <div class="container">
         <nav aria-label="breadcrumb bg-gray">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item">
+                    <a href="{{ url('/') }}">
+                        <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-house-fill pb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg>
+                    </a>
+                </li>
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Subjects</a></li>
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}">{{ $subject->short_title }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Audience</li>
@@ -26,14 +33,14 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2">
                             <div class="cols-sm-12 col-md-12 col-lg-12">
-                                <h3>Target your students</h3> <hr />
+                                <h3 class="bold">Target your students</h3> <hr />
                                 <p class="lead mb-4 mt-4">The descriptions you write here will help students decide if your class is the one for them.</p>
                             </div>
 
                             <div class="cols-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_student_learn">
                                     <label for="students_learn" class="bold">What will students learn in your class?</label>
-                                    <p class="mt-3">Current objectives</p>
+                                    <p class="mt-3">Current class objectives</p>
                                     @forelse($subject->audience->student_learn as $student_learn)
                                     <p>
                                         <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +52,7 @@
                                     <p>Nothing to learn</p>
                                     @endforelse
                                     <small class="form-text text-muted">
-                                        <p class="red_color"><strong>Note:</strong> Adding new information will override all current objectives. Be sure you include current ones you don't want to loose.</p>
+                                        <p class="red_color"><strong>*</strong> Adding new information will override all current class objectives. Be sure you include current ones you don't want to loose.</p>
                                     </small>
                                     <div class="input-group student_learn_section">
                                         <div class="students_learn_input">
@@ -94,7 +101,7 @@
                                     <p>Nothing to requirements</p>
                                     @endforelse
                                     <small class="form-text text-muted">
-                                        <p class="red_color"><strong>Note:</strong> Adding new information will override all current class requirements. Be sure you include current ones you don't want to loose.</p>
+                                        <p class="red_color"><strong>*</strong> Adding new information will override all current class requirements. Be sure you include current ones you don't want to loose.</p>
                                     </small>
                                     <div class="input-group class_requirement_section">
                                         <div class="class_requirement_input">
@@ -143,7 +150,7 @@
                                     <p>Nothing to targeted students</p>
                                     @endforelse
                                     <small class="form-text text-muted">
-                                        <p class="red_color"><strong>Note:</strong> Adding new information will override all current target students. Be sure you include current ones you don't want to loose.</p>
+                                        <p class="red_color"><strong>*</strong> Adding new information will override all current target students. Be sure you include current ones you don't want to loose.</p>
                                     </small>
                                     <div class="input-group target_students_section">
                                         <div class="target_students_input">

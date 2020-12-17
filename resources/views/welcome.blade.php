@@ -40,7 +40,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h5>1,000 online subjects</h5>
+                    <h5>1,000+ online classes</h5>
                     <p>Discover varied topics</p>
                 </div>
             </div>
@@ -126,7 +126,7 @@
                                                     </svg>
                                                     <span class="title-font">(1000)</span>
                                                 </div>
-                                                <span class="bold">UGX 50,000</span>
+                                                <span class="bold">{{ number_format($subject->price) }}</span>
                                             </a>
                                             <div class="mt-2 d-flex justify-content-between">
                                                 <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
@@ -177,7 +177,7 @@
                                 </svg>
                                 <span class="title-font">(1000)</span>
                             </div>
-                            <span class="bold">UGX 50,000</span>
+                            <span class="bold">{{ number_format($subject->price) }}</span>
                         </a>
                         <div class="mt-2 d-flex justify-content-between">
                             <livewire:add-to-cart :subject="$subject" :key="$subject->id" />

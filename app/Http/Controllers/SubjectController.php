@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\Topic;
 use App\Models\Subject;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\SubjectRequest;
 
@@ -24,7 +25,9 @@ class SubjectController extends Controller
 
     public function create()
     {
-        return view('pages.manage_subject.create');
+        $categories = Category::get();
+
+        return view('pages.manage_subject.create', compact('categories'));
     }
 
     public function show(Subject $subject)
@@ -35,11 +38,10 @@ class SubjectController extends Controller
     public function store(SubjectRequest $request, Subject $subject)
     {
         $subject = new Subject($request->except(['cover_image']));
-
         $subject->title     = $request->input('title');
         $subject->subtitle      = $request->input('subtitle');
         $subject->description = $request->input('description');
-        $subject->category = $request->input('category');
+        $subject->category_id = $request->input('category_id');
         $subject->user_id = Auth::user()->id;
 
         $subject->save();
@@ -55,16 +57,15 @@ class SubjectController extends Controller
 
     public function edit(Subject $subject)
     {
-        $this->authorize('update', $subject);
+        $categories = Category::get();
+        $category = Category::find($subject->category_id);
 
-        return view('pages.manage_subject.edit', compact('subject'));
+        return view('pages.manage_subject.edit', compact(['subject', 'categories', 'category']));
     }
 
 
     public function update(Request $request, Subject $subject)
     {
-        $this->authorize('update', $subject);
-
         $request->validate([
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
@@ -108,14 +109,12 @@ class SubjectController extends Controller
 
     public function destroy(Subject $subject)
     {
-        $this->authorize('delete', $subject);
-
         try {
             $subject->delete();
 
-            return redirect()->route('teacher.subjects')->with('success', 'Subject deleted successfully');
+            return redirect()->route('manage.subjects')->with('success', 'Subject deleted successfully');
         } catch (\Exception $e) {
-            return redirect()->route('teacher.subjects')->with('error', 'Failed to deleted subject');
+            return redirect()->route('manage.subjects')->with('error', 'Failed to deleted subject');
         }
     }
 }

@@ -27,7 +27,8 @@ class SubjectRequest extends FormRequest
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
             'description' => 'required|string',
-            'category' => 'required|string',
+            'category_id' => 'required|string',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'cover_image' => 'required|image|mimes:jpg,jpeg,png|max:5520'
         ];
     }

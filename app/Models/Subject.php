@@ -17,7 +17,7 @@ class Subject extends Model implements HasMedia
 {
     use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText;
 
-    protected $fillable = ['title', 'subtitle', 'description', 'category'];
+    protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id'];
     protected $with = ['media'];
 
     /**
