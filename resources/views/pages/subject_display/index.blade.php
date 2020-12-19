@@ -40,10 +40,10 @@
                         <h4 class="bold">Subject Content</h4>
                     </div>
                   <div class="card">
-                      @forelse($subject->topics as $key => $topic)
-                      <div class="card-header" id="{{ $topic->id }}">
-                          <p class="mb-0">
-                            <button  id="id{{ $topic->id }}" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
+                        @forelse($subject->topics as $key => $topic)
+                        <div class="card-header" id="{{ $topic->id }}">
+                            <p class="mb-0">
+                                <button  id="id{{ $topic->id }}" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
                                     <div class="d-flex justify-content-between">
                                         <div>
                                             {{ $key+1 }} - {{ $topic->title }}
@@ -58,13 +58,13 @@
                                     </div>
                                 </button>
                             </p>
-                      </div>
+                        </div>
 
                       <div id="collapse{{ $topic->id }}" class="collapse {{ $topic->id === 1 ? 'show' : '' }}" aria-labelledby="{{ $topic->id }}" data-parent="#accordionExample">
                         <div class="card-body">
                                 @forelse($topic->getMedia('content_file') as $key => $topicMedia)
                                 <p class="mt-1">
-                                    <a href="{{ route('subjects.show', [$subject, $topic]) }}" style="text-decoration: none">
+                                    <a href="{{ route('student.show', [$subject, $topic]) }}" style="text-decoration: none">
                                         <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
                                     </a>
                                 </p>
@@ -117,9 +117,12 @@
             <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
                 <aside class="p-3 p-4 border rounded bg-white add-shadow">
                     <div class="make-me-sticky">
-                        <div class="mb-4">
-                            <a id="round-button-2" class="btn btn-danger btn-block mb-2" href="#">Add to cart</a>
-                            <a id="round-button-2" class="btn btn-outline-primary btn-block" href="{{ route('checkout.index') }}">Buy now</a>
+                        <div class="mb-4 d-flex ">
+                            <!-- <a id="round-button-2" class="btn btn-danger btn-block mb-2" href="#">Add to cart</a> -->
+                            <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
+                            <div>
+                                <a id="round-button-2" class="btn btn-outline-primary btn-sm ml-3" href="{{ route('checkout.index') }}">Buy now</a>
+                            </div>
                         </div>
                         </div>
                         <h5 class="bold">This subject includes:</h5>
@@ -156,7 +159,7 @@
 <section class="bg-gray-2">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
                 <h4 class="bold"> More subjects by {{ $subject->creator->name }}</h4>
             </div>
             @foreach($subjects as $subject)

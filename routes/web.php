@@ -35,7 +35,7 @@ Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-sub
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
 Route::get('/subjects/{subject}', [StudentController::class, 'index'])->name('subjects.index');
-Route::get('/subjects/{subject}/topics/{topic}', [StudentController::class, 'show'])->name('subjects.show');
+Route::get('/subjects/{subject}/topics/{topic}', [StudentController::class, 'show'])->name('student.show');
 Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
 Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('teachers.index');
 
