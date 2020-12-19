@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center  pl-5 pr-5 mt-4">
             <div class="col-sm-12 col-md-12 col-lg-8 mb-4 ">
-                <livewire:video-player :subject="$subject" :topic="$topic" :next="$next" :previous="$previous" :key="$topic->id" />
+                <livewire:video-player :topic="$topic" :key="$topic->id" />
                 <div class="d-flex justify-content-between mt-4">
                     <div>
                         @if (isset($previous))
