@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Traits\PresentsMedia;
 use App\Traits\PresentsText;
+use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Image\Manipulations;
 use Spatie\Sluggable\SlugOptions;

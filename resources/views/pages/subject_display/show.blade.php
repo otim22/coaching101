@@ -24,7 +24,7 @@
                       <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <a class="nav-link active bold" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-controls="nav-description" aria-selected="true">Description</a>
                         <a class="nav-link bold" id="nav-resource-tab" data-toggle="tab" href="#nav-resource" role="tab" aria-controls="nav-resource" aria-selected="false">Extra resources</a>
-                        <a class="nav-link bold" id="nav-rate-tab" data-toggle="tab" href="#nav-rate" role="tab" aria-controls="nav-rate" aria-selected="false">Rate teacher!</a>
+                        <a class="nav-link bold" id="nav-rate-tab" data-toggle="tab" href="#nav-rate" role="tab" aria-controls="nav-rate" aria-selected="false">Rate teacher</a>
                       </div>
                     </nav>
 
@@ -53,7 +53,7 @@
 
                         <div class="tab-pane fade" id="nav-rate" role="tabpanel" aria-labelledby="nav-rate-tab">
                             <div class="mt-3">
-                                Rate us!!
+                                <livewire:rate-teacher :subject="$subject" :key="$subject->id" />
                             </div>
                         </div>
                     </div>

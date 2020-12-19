@@ -3,15 +3,16 @@
 namespace App\Models;
 
 use Spatie\Sluggable\HasSlug;
+use willvincent\Rateable\Rateable;
 use Spatie\Sluggable\SlugOptions;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles, HasSlug;
+    use Notifiable, HasRoles, HasSlug, Rateable;
 
     /**
      * The attributes that are mass assignable.
