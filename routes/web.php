@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\RatingController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,6 +37,7 @@ Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profi
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
 Route::get('/subjects/{subject}', [StudentController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject}/topics/{topic}', [StudentController::class, 'show'])->name('student.show');
+Route::post('/rating', [RatingController::class, 'store'])->name('rating.store');
 Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
 Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('teachers.index');
 

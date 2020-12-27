@@ -79,15 +79,18 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label for="title" class="bold">Category</label>
+                                    <label for="category_id" class="bold">Category</label>
                                     <div class="input-group mb-3">
-                                        <select class="custom-select" name="category_id" id="inputGroupSelect01">
+                                        <select class="custom-select" name="category_id">
                                             <option selected>Choose...</option>
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
+                                    @error('category_id')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group mb-4">

@@ -23,8 +23,7 @@
         "spatie/laravel-collection-macros": "^7.0",
         "spatie/laravel-medialibrary": "^8.0.0",
         "spatie/laravel-permission": "^3.17",
-        "spatie/laravel-sluggable": "^2.2",
-        "willvincent/laravel-rateable": "^2.3"
+        "spatie/laravel-sluggable": "^2.2"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

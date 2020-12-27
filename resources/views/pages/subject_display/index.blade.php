@@ -118,7 +118,6 @@
                 <aside class="p-3 p-4 border rounded bg-white add-shadow">
                     <div class="make-me-sticky">
                         <div class="mb-4 d-flex ">
-                            <!-- <a id="round-button-2" class="btn btn-danger btn-block mb-2" href="#">Add to cart</a> -->
                             <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
                             <div>
                                 <a id="round-button-2" class="btn btn-outline-primary btn-sm ml-3" href="{{ route('checkout.index') }}">Buy now</a>
@@ -132,7 +131,7 @@
                                     <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                                     <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
                                 </svg>
-                                3 hours on-demand video
+                                Hours of on demand videos
                             </li>
                             <li>
                                 <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Topic;
+use App\Models\Ratings;
 use App\Models\Subject;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class SubjectController extends Controller
     public function store(SubjectRequest $request, Subject $subject)
     {
         $subject = new Subject($request->except(['cover_image']));
+
         $subject->title     = $request->input('title');
         $subject->subtitle      = $request->input('subtitle');
         $subject->description = $request->input('description');

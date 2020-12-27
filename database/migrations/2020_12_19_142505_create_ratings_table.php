@@ -12,22 +12,22 @@ class CreateRatingsTable extends Migration
     public function up()
     {
         Schema::create('ratings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->id();
             $table->integer('rating');
-            $table->morphs('rateable');
-            $table->bigInteger('user_id')->unsigned();
-            $table->index('rateable_id');
-            $table->index('rateable_type');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('comment');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('subject_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
     public function down()
     {
-        Schema::drop('ratings');
+        Schema::dropIfExists('ratings');
     }
 }

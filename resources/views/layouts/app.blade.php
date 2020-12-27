@@ -11,7 +11,7 @@
 
         <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
         <script src="{{ asset('vendor/js/videojs/videojs-ie8.min.js') }}"></script>
-        
+
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <title>@yield('title') {{ config('app.name') }}</title>

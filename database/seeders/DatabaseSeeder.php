@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             AudienceTableSeeder::class,
             // SliderTableSeeder::class,
             MenuTableSeeder::class,
+            RatingTableSeeder::class,
         ]);
     }
 }
