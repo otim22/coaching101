@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Spatie\Sluggable\HasSlug;
-use willvincent\Rateable\Rateable;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
@@ -12,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles, HasSlug, Rateable;
+    use Notifiable, HasRoles, HasSlug;
 
     /**
      * The attributes that are mass assignable.

@@ -4,6 +4,8 @@
 
 @section('content')
 
+@include('Simditor::assets')
+
 <section>
     <div class="container">
         <div class="row justify-content-center">
@@ -32,10 +34,8 @@
                         @enderror
                     </div>
                     <div class="form-group mt-4">
-                        <label for="description">
-                            <h4>Description</h4>
-                        </label>
-                        <textarea type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3">{{ old('description', $slider->description) }}</textarea>
+                        <label for="description"><h4>Description</h4></label>
+                        <textarea id="summernote" name="description" class="form-control @error('description') is-invalid @enderror"  >{{ old('description', $slider->description) }}</textarea>
                         @error('description')
                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                         @enderror
@@ -85,4 +85,9 @@
         </div>
     </div>
 </section>
+
+@push('scripts')
+    <script type="text/javascript" src="{{ asset('admin/vendor/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admin/js/slider_editor.js') }}"></script>
+@endpush
 @endsection

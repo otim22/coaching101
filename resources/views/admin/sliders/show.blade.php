@@ -31,20 +31,24 @@
 
             <div class="card-body card-block">
                 <div class="mb-4">
-                    <h3> Title</h3>
+                    <h4> Title</h4>
                     <p class="increased-font">{{ $slider->title }}</p>
                 </div>
                 <div class="mb-4">
-                    <h3> Slider Image</h3>
+                    <h4> Slider Image</h4>
                     <img src="{{ asset($slider->getFirstMediaUrl()) }}" class="w-50"><br>
                 </div>
                 <div class="mb-4">
-                    <h3> Description</h3>
+                    <h4> Description</h4>
                     <p class="increased-font">{!! $slider->description !!}</p>
                 </div>
                 <div class="mb-4">
-                    <h3>Button</h3>
-                    <p class="increased-font"><a href="{{ url($slider->button_link) }}">{{ $slider->button_text }}</a></p>
+                    <h4>Button Text</h4>
+                    <p class="increased-font">{{ $slider->button_text }}</p>
+                </div>
+                <div class="mb-4">
+                    <h4>Button Link</h4>
+                    <p class="increased-font">{{ $slider->button_link }}</p>
                 </div>
             </div>
         </div>

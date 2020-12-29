@@ -12,12 +12,12 @@
                             <h4 class="card-title mt-1 increased-font"><strong>All</strong>  available sliders</h4>
                         </div>
                         <div>
-                            @if(count($sliders) < 3)
+                            @if(count($sliders) === 0)
                             <a type="button" class="btn btn-secondary float-right" href="{{ route('admin.sliders.create') }}">
                                 Add Slider
                             </a>
                             @else
-                            <p class="card-title float-right" style="color:red;">Max Sliders is 3, Edit or Delete existing Sliders for changes.</p>
+                            <p class="card-title float-right" style="color: gray;">Max Slider is 1</p>
                             @endif
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                                                 </a>
                                             </td>
                                             <td class="pt-3">
-                                                <p>{{ $slider->snippet }}</p>
+                                                <p>{!! $slider->description_snippet !!}</p>
                                             </td>
                                             <td class="d-flex">
                                                 <a href="{{ route('admin.sliders.edit', $slider) }}" class="btn btn-outline-primary float-left mr-2">{{ __('Edit') }} </a>

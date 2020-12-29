@@ -4,9 +4,10 @@ namespace App\Providers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Slider;
+use App\Models\Menu;
 use App\Models\Subject;
 use App\Models\Category;
-use App\Models\Menu;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -53,10 +54,17 @@ class ComposerServiceProvider extends ServiceProvider
             $view->withTopCategories($topCategories);
         });
 
+        View::composer(['welcome'], function ($view) {
+            $sliders = Slider::get()->first();
+
+            $view->withSliders($sliders);
+        });
+
         View::composer(['*'], function ($view) {
             $menus = Menu::whereNull('parent_id')->with('allChildren')->get();
 
             $view->withMenus($menus);
         });
+
     }
 }

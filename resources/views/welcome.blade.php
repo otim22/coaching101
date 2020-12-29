@@ -2,15 +2,13 @@
 
 @section('content')
 
-<section class="bg-image text-white">
+<section class="bg-image text-white" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 85vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
                 <div class="learn-today">
-                    <h1 class="display-3 learn-today_title">Learn today</h1>
-                    <h4 class="pt-3 pm-3 bold student-font">At your own convenient time, </h4>
-                    <h4 class="pt-2 pm-3 bold student-font">Learn from our verified seasoned teachers </h4>
-                    <h4 class="pt-2 pm-3 bold student-font">With proven experience in their fields.</h4>
+                    <h1 class="display-3 learn-today_title">{{ $sliders->title }}</h1>
+                    <h4 class="pt-3 pm-3 bold student-font">{!! $sliders->description !!}</h4>
                     @guest
                         <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get Started &raquo;</a></p>
                     @endguest
@@ -22,6 +20,9 @@
 
                         @if(Auth::user()->role == 2)
                             <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get Started &raquo;</a></p>
+                        @endif
+                        @if(Auth::user()->role == 3)
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get Started &raquo;</a></p>
                         @endif
                     @endauth
                 </div>

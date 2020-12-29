@@ -26,6 +26,11 @@ trait PresentsText
         return Str::limit($this->title, 50);
     }
 
+    public function getDescriptionSnippetAttribute()
+    {
+        return Str::limit($this->description, 70);
+    }
+
     public function getSnippetAttribute()
     {
         return Str::limit($this->title, 100);
