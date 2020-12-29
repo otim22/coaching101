@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\Models\Topic;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -11,7 +10,7 @@ class StudentController extends Controller
 {
     public function index(Subject $subject)
     {
-        $subjects = Subject::orderBy('id', 'desc')->where('user_id', Auth::id())->get()->take(3);
+        $subjects = Subject::orderBy('id', 'desc')->where('user_id', $subject->user_id)->get()->take(3);
         $resourceCount = 0;
 
         foreach ($subject->topics as $topic) {

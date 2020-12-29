@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-8">
         @if($cartItemTotal === 0)
-            <h5 class="mb-3">No Subject in your cart</h5>
+            <h5 class="mb-3 bold">No Subject in your cart</h5>
         @elseif($cartItemTotal === 1)
-            <h5 class="mb-3">{{ $cartItemTotal }}  Subject in your cart</h5>
+            <h5 class="mb-3 bold">{{ $cartItemTotal }}  Subject in your cart</h5>
         @elseif($cartItemTotal > 1)
-            <h5 class="mb-3">{{ $cartItemTotal }} Subjects in your cart</h5>
+            <h5 class="mb-3 bold">{{ $cartItemTotal }} Subjects in your cart</h5>
         @endif
 
         @forelse($cartItems as $subject)
@@ -33,11 +33,12 @@
                 </a>
             </div>
         @endforelse
+
         <div class="pt-3">
             <div class="mb-3">
-                <h5>Recently wishlisted</h5>
+                <h5 class="bold">Recently wishlisted</h5>
             </div>
-            @foreach($wishlistItems as $wishlistItem)
+            @forelse($wishlistItems as $wishlistItem)
             <div class="card-custom p-3 mb-3">
                 <div class="d-flex justify-content-between">
                     <div class="flex-grow-1">
@@ -54,9 +55,14 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+                <div class="text-center mt-5 mb-5">
+                    <p>No item(s) in wishlist</p>
+                </div>
+            @endforelse
         </div>
     </div>
+
     <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
         <aside class="p-3 p-4 border rounded add-shadow">
             <div class="make-me-sticky">
@@ -64,8 +70,7 @@
                 <h4 class="bold"> UGX {{ number_format($sum) }}/-</h4>
                 <hr />
                 <div class="mt-4">
-                    <a id="round-button-2" wire:click="checkout()" class="btn btn-danger btn-block mb-2 text-white">Checkout</a>
-                    <!-- <a id="round-button-2" wire:click="checkout()" class="btn btn-danger btn-block mb-2" href="{{ route('checkout.index') }}">Checkout</a> -->
+                    <a id="round-button-2" type="submit" wire:click="checkout()" class="btn btn-danger btn-block mb-2 text-white">Checkout</a>
                 </div>
             </div>
         </aside>

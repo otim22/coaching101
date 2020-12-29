@@ -30,13 +30,13 @@
 
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
-                            <div class="mt-3">
+                            <div class="mt-4">
                                 <p>{{ $topic->description }}</p>
                             </div>
                         </div>
 
                         <div class="tab-pane fade" id="nav-resource" role="tabpanel" aria-labelledby="nav-resource-tab">
-                            <div class="mt-3">
+                            <div class="mt-4">
                                 <ul>
                                     @forelse($topic->getMedia('resource_attachment') as $topicMedia)
                                     <li class="mb-3">
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="nav-rate" role="tabpanel" aria-labelledby="nav-rate-tab">
-                            <div class="mt-3">
+                            <div class="mt-4">
                                 <livewire:rate-teacher :subject="$subject" :key="$subject->id" />
                             </div>
                         </div>

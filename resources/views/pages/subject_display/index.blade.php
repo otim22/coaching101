@@ -7,9 +7,9 @@
         <div class="row mt-2">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h5 class="bold">{{ $subject->title }}</h5>
-                <h5>{{ $subject->subtitle }}</h5>
-                <p>100 Enrolled Students</p>
-                <p>Created by {{ $subject->creator->name }}</p>
+                <h6>{{ $subject->subtitle }}</h6>
+                <p>100 Enrolled Students <br />
+                Created by {{ $subject->creator->name }}</p>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="border mr-4 p-4 rounded bg-gray-3 mb-5">
-                    <h4 class="bold">What you will learn</h4>
+                    <h5 class="bold">What you will learn</h5>
                     <ul>
                         @forelse($subject->audience['student_learn'] as $student_learn)
                         <li>
@@ -37,7 +37,7 @@
 
                 <div class="accordion mr-4 mb-5" id="accordionExample">
                     <div class="mb-4">
-                        <h4 class="bold">Subject Content</h4>
+                        <h5 class="bold">Subject Content</h5>
                     </div>
                   <div class="card">
                         @forelse($subject->topics as $key => $topic)
@@ -64,9 +64,9 @@
                         <div class="card-body">
                                 @forelse($topic->getMedia('content_file') as $key => $topicMedia)
                                 <p class="mt-1">
-                                    <a href="{{ route('student.show', [$subject, $topic]) }}" style="text-decoration: none">
+                                    <!-- <a href="{{ route('student.show', [$subject, $topic]) }}" style="text-decoration: none"> -->
                                         <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
-                                    </a>
+                                    <!-- </a> -->
                                 </p>
                                 @empty
                                 <p>No available attachments.</p>
@@ -74,9 +74,9 @@
 
                                 @forelse($topic->getMedia('resource_attachment') as $topicMedia)
                                 <p>
-                                    <a target="_blank" href="{{ $topicMedia->name }}" style="text-decoration: none">
+                                    <!-- <a target="_blank" href="{{ $topicMedia->name }}" style="text-decoration: none"> -->
                                         <i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}
-                                    </a>
+                                    <!-- </a> -->
                                 </p>
                                 @empty
                                 <p>No available attachments.</p>
@@ -93,7 +93,7 @@
                 </div>
 
                 <div class=" mr-4 mb-5">
-                    <h4 class="bold">Requirements</h4>
+                    <h5 class="bold">Requirements</h5>
                     <ul>
                         @forelse($subject->audience['class_requirement']  as $class_requirement)
                         <li>
@@ -109,7 +109,7 @@
                 </div>
 
                 <div  class=" mr-4 mb-5">
-                    <h4 class="bold">Description</h4>
+                    <h5 class="bold">Description</h5>
                     <p>{{ $subject->description }}</p>
                 </div>
             </div>
@@ -159,7 +159,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                <h4 class="bold"> More subjects by {{ $subject->creator->name }}</h4>
+                <h5 class="bold"> More subjects by {{ $subject->creator->name }}</h5>
             </div>
             @foreach($subjects as $subject)
             <div class="col-lg-4 col-md-4 col-sm-12">

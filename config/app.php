@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Coaching101'),
 
+    'rave_key' => env('SECRET_KEY'),
+    
     /*
     |--------------------------------------------------------------------------
     | Application Environment
