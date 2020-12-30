@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
+use App\Models\Faq;
 use App\Models\User;
 use App\Models\Slider;
 use App\Models\Menu;
@@ -72,6 +73,12 @@ class ComposerServiceProvider extends ServiceProvider
             $teacherImage = TeacherImage::latest()->first();
 
             $view->withTeacherImage($teacherImage);
+        });
+
+        View::composer(['welcome'], function ($view) {
+            $faqs = Faq::get();
+
+            $view->withFaqs($faqs);
         });
 
         View::composer(['*'], function ($view) {

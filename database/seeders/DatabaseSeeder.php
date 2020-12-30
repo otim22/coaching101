@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             RatingTableSeeder::class,
             StudentImageTableSeeder::class,
             TeacherImageTableSeeder::class,
+            FaqTableSeeder::class,
         ]);
     }
 }

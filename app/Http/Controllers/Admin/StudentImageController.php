@@ -39,9 +39,9 @@ class StudentImageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' =>  ['required', 'string'],
+            'title' =>  'required', 'string',
             'description' => 'required','string',
-            'button_text' => ['string'],
+            'button_text' => 'string',
             'student_image' => 'required|image|mimes:jpg,jpeg,png|max:5520',
         ]);
 

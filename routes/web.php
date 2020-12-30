@@ -19,6 +19,7 @@ use App\Http\Controllers\AudienceController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\TopCategoryController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SliderController;
@@ -97,6 +98,7 @@ Route::middleware('auth')->group(function() {
         Route::resource('sliders', 'SliderController');
         Route::resource('studentImages', 'StudentImageController');
         Route::resource('teacherImages', 'TeacherImageController');
+        Route::resource('faqs', 'FaqController');
 
         Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
         Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');

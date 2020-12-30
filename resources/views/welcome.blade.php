@@ -291,163 +291,34 @@
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 mt-4 mb-5">
                 <div class="accordion" id="accordionExample">
-                  <div class="card mb-3">
-                    <div class="card-header" id="headingOne">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    Where do I take this course?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </button>
-                      </h2>
-                    </div>
-
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                      <div class="card-body">
-                        The course is completely online so you can partake whenever and wherever you would like (as long as you have internet access).
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-header" id="headingTwo">
-                      <h2 class="mb-0">
-                        <button  class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    Where is Coaching101 located?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Coaching101 has an office located in Kampala, Uganda.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-header" id="headingThree">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    When does it begin?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Whenever you like! You will be given lifetime access to the material and can take at a pace that is right for you!
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-header" id="headingFour">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    How long does it take?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
-                                </div>
+                    @foreach($faqs as $faq)
+                        <div class="card mb-3">
+                            <div class="card-header" id="heading{{$faq->id}}">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{$faq->id}}" aria-expanded="true" aria-controls="collapse{{$faq->id}}" style="text-decoration: none">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="bold">
+                                                {{ $faq->title }}
+                                            </div>
+                                            <div>
+                                                <span class="icon">
+                                                    <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </h2>
                             </div>
 
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                      <div class="card-body">
-                        The course is designed so you can take at a speed that is best for you. Most students will do it over 3-4 weeks and others will complete in a few days.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-header" id="headingFive">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    Do you have a refund policy?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
+                            <div id="collapse{{$faq->id}}" class="collapse {{ $faq->id === 1 ? 'show' : '' }}" aria-labelledby="heading{{$faq->id}}" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {{ $faq->description }}
                                 </div>
                             </div>
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Yes, if you are having issues accessing your course we will give you a full refund up to 48 hours after purchase.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card">
-                    <div class="card-header" id="headingSix">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    How do I sign up and pay?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Please follow the links under the courses to complete your payment.
-                      </div>
-                    </div>
-                  </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

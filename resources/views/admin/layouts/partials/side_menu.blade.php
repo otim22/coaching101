@@ -47,7 +47,12 @@
                             <span class="drawer-menu-text"> Student Image</span>
                         </a>
                     </li>
-
+                    <li class="drawer-menu-item">
+                        <a href="{{ url('/admin/faqs') }}">
+                            <i class="material-icons">live_help</i>
+                            <span class="drawer-menu-text"> Faq</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <!-- HEADING -->
