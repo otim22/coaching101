@@ -35,6 +35,18 @@
                             <span class="drawer-menu-text"> Slider</span>
                         </a>
                     </li>
+                    <li class="drawer-menu-item">
+                        <a href="{{ url('/admin/teacherImages') }}">
+                            <i class="material-icons">sentiment_neutral</i>
+                            <span class="drawer-menu-text"> Teacher Image</span>
+                        </a>
+                    </li>
+                    <li class="drawer-menu-item">
+                        <a href="{{ url('/admin/studentImages') }}">
+                            <i class="material-icons">sentiment_satisfied</i>
+                            <span class="drawer-menu-text"> Student Image</span>
+                        </a>
+                    </li>
 
                 </ul>
 

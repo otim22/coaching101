@@ -8,6 +8,8 @@ use App\Models\Slider;
 use App\Models\Menu;
 use App\Models\Subject;
 use App\Models\Category;
+use App\Models\StudentImage;
+use App\Models\TeacherImage;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -55,9 +57,21 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['welcome'], function ($view) {
-            $sliders = Slider::get()->first();
+            $sliders = Slider::latest()->first();
 
             $view->withSliders($sliders);
+        });
+
+        View::composer(['welcome'], function ($view) {
+            $studentImage = StudentImage::latest()->first();
+
+            $view->withStudentImage($studentImage);
+        });
+
+        View::composer(['welcome'], function ($view) {
+            $teacherImage = TeacherImage::latest()->first();
+
+            $view->withTeacherImage($teacherImage);
         });
 
         View::composer(['*'], function ($view) {
