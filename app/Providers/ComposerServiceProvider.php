@@ -34,7 +34,10 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(['welcome'], function ($view) {
-            $categories = Category::with('subjects')->orderBy('created_at', 'desc')->get()->groupBy('name')->take(10);
+            $categories = Category::with('subjects')->get()->map(function($query) {
+                $query->setRelation('subjects', $query->subjects->take(8));
+                return $query;
+            })->groupBy('name')->take(8);
 
             $view->withCategories($categories);
         });
@@ -86,6 +89,5 @@ class ComposerServiceProvider extends ServiceProvider
 
             $view->withMenus($menus);
         });
-
     }
 }

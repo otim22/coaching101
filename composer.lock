@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5179ec78b48d1508ebf09d17246ce30",
+    "content-hash": "d840c09c6922fbfebde0b38bd21ae5ff",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -916,46 +916,6 @@
                 "url"
             ],
             "time": "2020-09-30T07:37:11+00:00"
-        },
-        {
-            "name": "hongyukeji/laravel-simditor",
-            "version": "v1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hongyukeji/laravel-simditor.git",
-                "reference": "4d822379d73876b5aedee2fc40dfb696cef1d84e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hongyukeji/laravel-simditor/zipball/4d822379d73876b5aedee2fc40dfb696cef1d84e",
-                "reference": "4d822379d73876b5aedee2fc40dfb696cef1d84e",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Hongyukeji\\LaravelSimditor\\SimditorServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Hongyukeji\\LaravelSimditor\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "shadow",
-                    "email": "admin@hongyuvip.com"
-                }
-            ],
-            "description": "laravel simditor editor",
-            "time": "2019-09-19T09:35:55+00:00"
         },
         {
             "name": "intervention/image",
@@ -6233,6 +6193,46 @@
                 "test"
             ],
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "hongyukeji/laravel-simditor",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hongyukeji/laravel-simditor.git",
+                "reference": "4d822379d73876b5aedee2fc40dfb696cef1d84e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hongyukeji/laravel-simditor/zipball/4d822379d73876b5aedee2fc40dfb696cef1d84e",
+                "reference": "4d822379d73876b5aedee2fc40dfb696cef1d84e",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Hongyukeji\\LaravelSimditor\\SimditorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hongyukeji\\LaravelSimditor\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "shadow",
+                    "email": "admin@hongyuvip.com"
+                }
+            ],
+            "description": "laravel simditor editor",
+            "time": "2019-09-19T09:35:55+00:00"
         },
         {
             "name": "mockery/mockery",

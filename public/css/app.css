@@ -3920,9 +3920,9 @@ a.disabled {
 
 .footer-line hr {
   margin: 15px 0;
-  height: 1.2px;
+  height: 1px;
   border: none;
-  background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, #9b9b9b));
+  background: #9b9b9b;
 }
 
 @media only screen and (max-width: 991px) {

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Slider;
-use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
 class SliderTableSeeder extends Seeder
@@ -22,7 +21,6 @@ class SliderTableSeeder extends Seeder
             'button_link' => '/home'
         ]);
 
-        $faker = Faker::create();
         $imageUrl = 'http://via.placeholder.com/800x650';
 
         $slider->addMediaFromUrl($imageUrl)->toMediaCollection('default');

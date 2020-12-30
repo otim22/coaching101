@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Faker\Factory as Faker;
 use App\Models\StudentImage;
 use Illuminate\Database\Seeder;
 
@@ -21,7 +20,6 @@ class StudentImageTableSeeder extends Seeder
             'button_text' => 'Get started'
         ]);
 
-        $faker = Faker::create();
         $imageUrl = 'http://via.placeholder.com/800x650';
 
         $studentImage->addMediaFromUrl($imageUrl)->toMediaCollection('default');
