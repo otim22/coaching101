@@ -6,7 +6,7 @@ use App\Models\Topic;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class SubjectDisplayController extends Controller
 {
     public function index(Subject $subject)
     {
@@ -22,7 +22,7 @@ class StudentController extends Controller
         return view('pages.subject_display.index', compact(['subjects', 'subject', 'resourceCount']));
     }
 
-    public function show(Subject $subject, Topic $topic)
+    public function show(Subject $subject = null, Topic $topic = null)
     {
         $previous = Topic::where('id', '<', $topic->id)->orderBy('id', 'desc')->first();
         $next = Topic::where('id', '>', $topic->id)->orderBy('id')->first();

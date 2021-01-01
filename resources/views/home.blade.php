@@ -37,7 +37,7 @@
                                     </svg>
                                     <span class="title-font">(1000)</span>
                                 </div>
-                                <span class="bold">{{ number_format($subject->price) }}</span>
+                                <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
                             </a>
                             <div class="mt-2 d-flex justify-content-between">
                                 <livewire:add-to-cart :subject="$subject" :key="$subject->id" />

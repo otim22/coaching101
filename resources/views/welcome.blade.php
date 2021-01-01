@@ -127,7 +127,7 @@
                                                         </svg>
                                                         <span class="title-font">(1000)</span>
                                                     </div>
-                                                    <span class="bold">{{ number_format($subject->price) }}</span>
+                                                    <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
                                                 </a>
                                                 <div class="mt-2 d-flex justify-content-between">
                                                     <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
@@ -178,7 +178,7 @@
                                 </svg>
                                 <span class="title-font">(1000)</span>
                             </div>
-                            <span class="bold">{{ number_format($subject->price) }}</span>
+                            <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
                         </a>
                         <div class="mt-2 d-flex justify-content-between">
                             <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
@@ -263,7 +263,7 @@
             @foreach($teachers as $teacher)
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <a href="{{ route('teachers.index', $teacher->slug) }}" style="text-decoration:none;">
-                        <div class="card mb-3" style="max-width: 370px;">
+                        <div class="card mb-3" style="max-width: 340px;">
                             <div class="row no-gutters">
                                 <div class="col-4">
                                     <img src="{{ asset($teacher->getFirstMediaUrl('avatars', 'thumb')) }}" class="card-img" width="100%" height="100%" alt="{{ $teacher->name }}">
