@@ -1,0 +1,73 @@
+// Category limit
+.limit-category-items .category-items #unique-category:nth-of-type(n + 5) { display: none; }
+.limit-category-items #category-show-all:checked ~ .category-items #unique-category { display: list-item; }
+.limit-category-items #category-show-all ~ label[for='category-show-all'] { display: none; }
+.limit-category-items #category-show-all:checked ~ .category-text-hide { display: inline-block; }
+.limit-category-items #category-show-all:not(:checked) ~ .category-text-show { display: inline-block; }
+
+/* OPTIONAL */
+/* Style label as button below items */
+.limit-category-items {
+    position: relative;
+    padding-bottom: 2em;
+    width: 10em;
+    font-family: sans-serif;
+}
+.limit-category-items #category-show-all { display: none; }
+.limit-category-items label[for='category-show-all'] {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    bottom: 0;
+    font-size: 0.75em;
+    text-align: center;
+    line-height: 1em;
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #444;
+}
+.limit-category-items label[for='category-show-all']:hover { border: 1px solid #aaa; }
+.limit-category-items label[for='category-show-all']:active {
+    border: 1px solid #222;
+    background-color: #222;
+    color: #fff;
+}
+
+// Level limit
+.limit-level-items .level-items #unique-level:nth-of-type(n + 5) { display: none; }
+.limit-level-items #level-show-all:checked ~ .level-items #unique-level { display: list-item; }
+.limit-level-items #level-show-all ~ label[for='level-show-all'] { display: none; }
+.limit-level-items #level-show-all:checked ~ .level-text-hide { display: inline-block; }
+.limit-level-items #level-show-all:not(:checked) ~ .level-text-show { display: inline-block; }
+
+/* OPTIONAL */
+/* Style label as button below items */
+.limit-level-items {
+    position: relative;
+    padding-bottom: 2em;
+    width: 10em;
+    font-family: sans-serif;
+}
+.limit-level-items #level-show-all { display: none; }
+.limit-level-items label[for='level-show-all'] {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    bottom: 0;
+    font-size: 0.75em;
+    text-align: center;
+    line-height: 1em;
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #444;
+}
+.limit-level-items label[for='level-show-all']:hover { border: 1px solid #aaa; }
+.limit-level-items label[for='level-show-all']:active {
+    border: 1px solid #222;
+    background-color: #222;
+    color: #fff;
+}

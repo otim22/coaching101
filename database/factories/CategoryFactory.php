@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Category::class, function (Faker $faker) {
     return [
-        'name' => $faker->word,
+        'name' => $faker->unique()->word,
         'slug' => $faker->slug
     ];
 });

@@ -19,7 +19,7 @@
                         <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
                     </ol>
                 </nav>
-                <h4 class="bold gray_color">Shopping Cart</h4>
+                <h5 class="bold gray_color">Shopping Cart</h5>
             </div>
         </div>
     </div>

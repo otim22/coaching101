@@ -6,7 +6,14 @@
     <div class="container">
         <nav aria-label="breadcrumb bg-gray">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item">
+                    <a href="{{ url('/') }}">
+                        <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-house-fill pb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg>
+                    </a>
+                </li>
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Subjects</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $subject->short_title }}</li>
             </ol>
@@ -87,8 +94,8 @@
             <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
                 <h4 class="bold mb-4">{{ $subject->title }}</h4>
                 <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="rounded-corners w-100" alt="{{ $subject->title }}">
-                <div class="mt-2 mb-4 mt-4">
-                    <i> {{ $subject->subtitle }} </i>
+                <div class="mt-3 mb-4">
+                    <p> {{ $subject->subtitle }} </p>
                 </div>
                 <div class="mb-5">
                     <h5 class="bold">Subject description</h5>

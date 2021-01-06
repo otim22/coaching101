@@ -2,22 +2,24 @@
 
 namespace App\Models;
 
-use App\Traits\PresentsMedia;
 use App\Traits\PresentsText;
+use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Image\Manipulations;
 use Spatie\Sluggable\SlugOptions;
+use Spatie\Searchable\Searchable;
 use Spatie\MediaLibrary\HasMedia;
+use Spatie\Searchable\SearchResult;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Subject extends Model implements HasMedia
+class Subject extends Model implements HasMedia, Searchable
 {
     use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText;
 
-    protected $fillable = ['title', 'subtitle', 'description', 'category'];
+    protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id'];
     protected $with = ['media'];
 
     /**
@@ -111,4 +113,17 @@ class Subject extends Model implements HasMedia
     {
         return $this->hasMany('App\Models\Subject');
     }
+
+    public function getSearchResult(): SearchResult
+     {
+        $url = route('student.show', $this->slug);
+
+         return new SearchResult(
+            $this,
+            $this->title,
+            $this->subtitle,
+            $this->description,
+            $url
+         );
+     }
 }

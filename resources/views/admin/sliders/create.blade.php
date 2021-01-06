@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="description">Description</label>
-                        <textarea type="text" name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="3">{{ old('description') }}</textarea>
+                        <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="summernote"></textarea>
                         @error('description')
                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                         @enderror
@@ -67,5 +67,12 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+
+        <script type="text/javascript" src="{{ asset('admin/js/slider_editor.js') }}"></script>
+    @endpush
 </section>
+
 @endsection

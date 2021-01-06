@@ -14,7 +14,17 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 20)->create(['role' => 2]);
-        factory(User::class, 20)->create();
+        $students = factory(User::class, 20)->create(['role' => 1]);
+
+        $imageUrl = 'http://via.placeholder.com/55x45';
+
+        foreach($students as $student) {
+            $student->addMediaFromUrl($imageUrl)->toMediaCollection('avatars');
+        }
+
+        $teachers = factory(User::class, 20)->create(['role' => 2]);
+        foreach($teachers as $teacher) {
+            $teacher->addMediaFromUrl($imageUrl)->toMediaCollection('avatars');
+        }
     }
 }

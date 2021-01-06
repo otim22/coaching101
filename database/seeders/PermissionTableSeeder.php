@@ -52,35 +52,45 @@ class PermissionTableSeeder extends Seeder
         $superRole = Role::create(['name' => 'super-admin']);
 
         // create a student user
-        $user = Factory(User::class)->create([
+        $student= Factory(User::class)->create([
             'name' => 'Otim student',
             'email' => 'student@gmail.com',
             'password' => bcrypt('password'),
             'role' => $studentRole
         ]);
 
+        $imageUrl = 'http://via.placeholder.com/55x45';
+
+        $student->addMediaFromUrl($imageUrl)->toMediaCollection('avatars');
+
         // create a teacher user
-        $user = Factory(User::class)->create([
+        $teacher = Factory(User::class)->create([
             'name' => 'Otim teacher',
             'email' => 'teacher@gmail.com',
             'password' => bcrypt('password'),
             'role' => $teacherRole
         ]);
 
+        $teacher->addMediaFromUrl($imageUrl)->toMediaCollection('avatars');
+
         // create an admin user
-        $user = Factory(User::class)->create([
+        $admin = Factory(User::class)->create([
             'name' => 'Otim admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
             'role' => $adminRole
         ]);
 
+        $admin->addMediaFromUrl($imageUrl)->toMediaCollection('avatars');
+
         // create a super admin user
-        $user = Factory(User::class)->create([
+        $super = Factory(User::class)->create([
             'name' => 'Otim deere',
             'email' => 'super@gmail.com',
             'password' => bcrypt('password'),
             'role' => $superRole
         ]);
+
+        $super->addMediaFromUrl($imageUrl)->toMediaCollection('avatars');
     }
 }

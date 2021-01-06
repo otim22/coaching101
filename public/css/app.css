@@ -3466,7 +3466,6 @@ select {
 .bg-image {
   width: 100%;
   height: 85vh;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)), url(/images/st_1.jpg);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -3571,6 +3570,238 @@ select {
 #round-input {
   border-radius: 22px;
   padding-left: 20px;
+}
+
+.rate-container {
+  position: relative;
+  width: 100%;
+  background: #111;
+  padding: 20px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.rate-container .star-widget input {
+  display: none;
+}
+
+.star-widget label {
+  font-size: 38px;
+  color: #444;
+  padding: 5px;
+  float: right;
+  transition: all 0.2s ease;
+}
+
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label {
+  color: #fd4;
+}
+
+input:checked ~ label {
+  color: #fd4;
+}
+
+input#rate-5:checked ~ label {
+  color: #fe7;
+  text-shadow: 0 0 20px #952;
+}
+
+#rate-1:checked ~ header:before {
+  content: "I hate it \1F620";
+}
+
+#rate-2:checked ~ header:before {
+  content: "I don't like it \1F612";
+}
+
+#rate-3:checked ~ header:before {
+  content: "It is awesome \1F604";
+}
+
+#rate-4:checked ~ header:before {
+  content: "I like it \1F60E";
+}
+
+#rate-5:checked ~ header:before {
+  content: "I love it \1F60D";
+}
+
+.rate-container form {
+  display: none;
+}
+
+input:checked ~ form {
+  display: block;
+}
+
+form header {
+  width: 100%;
+  font-size: 25px;
+  color: #fe7;
+  font-weight: 500;
+  margin: 5px 0 20px 0;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+form .textarea {
+  height: 100px;
+  width: 250px;
+  overflow: hidden;
+}
+
+form .textarea textarea {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #eee;
+  border: 1px solid #333;
+  background: #222;
+  padding: 10px;
+  font-size: 17px;
+  resize: none;
+}
+
+form .btn button {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #444;
+  outline: none;
+  background: #222;
+  color: #999;
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.error-message {
+  color: #fa382a;
+}
+
+.limit-category-items .category-items #unique-category:nth-of-type(n + 5) {
+  display: none;
+}
+
+.limit-category-items #category-show-all:checked ~ .category-items #unique-category {
+  display: list-item;
+}
+
+.limit-category-items #category-show-all ~ label[for=category-show-all] {
+  display: none;
+}
+
+.limit-category-items #category-show-all:checked ~ .category-text-hide {
+  display: inline-block;
+}
+
+.limit-category-items #category-show-all:not(:checked) ~ .category-text-show {
+  display: inline-block;
+}
+
+/* OPTIONAL */
+
+/* Style label as button below items */
+
+.limit-category-items {
+  position: relative;
+  padding-bottom: 2em;
+  width: 10em;
+  font-family: sans-serif;
+}
+
+.limit-category-items #category-show-all {
+  display: none;
+}
+
+.limit-category-items label[for=category-show-all] {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  bottom: 0;
+  font-size: 0.75em;
+  text-align: center;
+  line-height: 1em;
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #444;
+}
+
+.limit-category-items label[for=category-show-all]:hover {
+  border: 1px solid #aaa;
+}
+
+.limit-category-items label[for=category-show-all]:active {
+  border: 1px solid #222;
+  background-color: #222;
+  color: #fff;
+}
+
+.limit-level-items .level-items #unique-level:nth-of-type(n + 5) {
+  display: none;
+}
+
+.limit-level-items #level-show-all:checked ~ .level-items #unique-level {
+  display: list-item;
+}
+
+.limit-level-items #level-show-all ~ label[for=level-show-all] {
+  display: none;
+}
+
+.limit-level-items #level-show-all:checked ~ .level-text-hide {
+  display: inline-block;
+}
+
+.limit-level-items #level-show-all:not(:checked) ~ .level-text-show {
+  display: inline-block;
+}
+
+/* OPTIONAL */
+
+/* Style label as button below items */
+
+.limit-level-items {
+  position: relative;
+  padding-bottom: 2em;
+  width: 10em;
+  font-family: sans-serif;
+}
+
+.limit-level-items #level-show-all {
+  display: none;
+}
+
+.limit-level-items label[for=level-show-all] {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  bottom: 0;
+  font-size: 0.75em;
+  text-align: center;
+  line-height: 1em;
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #444;
+}
+
+.limit-level-items label[for=level-show-all]:hover {
+  border: 1px solid #aaa;
+}
+
+.limit-level-items label[for=level-show-all]:active {
+  border: 1px solid #222;
+  background-color: #222;
+  color: #fff;
 }
 
 /*-------------------------
@@ -3809,9 +4040,9 @@ a.disabled {
 
 .footer-line hr {
   margin: 15px 0;
-  height: 1.2px;
+  height: 1px;
   border: none;
-  background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, #9b9b9b));
+  background: #9b9b9b;
 }
 
 @media only screen and (max-width: 991px) {
@@ -3879,7 +4110,7 @@ div > .teacher-image {
   max-width: 100%;
   margin-right: 50px;
   position: absolute;
-  top: -78px;
+  top: -73px;
   height: 360px;
   width: 85%;
 }

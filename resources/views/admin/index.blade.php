@@ -94,15 +94,6 @@
                     <ul class="list-group list-group-flush">
 
                         <li class="list-group-item d-flex flex-row">
-                            <img src="{{ asset('admin/images/avatars/person-1.jpg') }}" alt="" class="rounded-circle mr-2" width="30" height="30">
-                            <div class="media-body">
-                                <span class="">Has earned</span>
-                                <strong>$1,742.00</strong>
-                                <div><small class="text-muted">5 minutes ago</small></div>
-                            </div>
-                        </li>
-
-                        <li class="list-group-item d-flex flex-row">
                             <img src="{{ asset('admin/images/avatars/person-2.jpg') }}" alt="" class="rounded-circle mr-2" width="30" height="30">
                             <div class="media-body">
                                 <span class="">Has earned</span>

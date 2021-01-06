@@ -13,18 +13,23 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\ToolController;
 use App\Http\Controllers\TopicController;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectDisplayController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\AudienceController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\TopCategoryController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\StudentImageController;
+use App\Http\Controllers\Admin\TeacherImageController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\RatingController;
+use App\Http\Controllers\SearchController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,8 +39,10 @@ Route::get('/library', [LibraryController::class, 'create']);
 Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
-Route::get('/subjects/{subject}', [StudentController::class, 'index'])->name('subjects.index');
-Route::get('/subjects/{subject}/topics/{topic}', [StudentController::class, 'show'])->name('subjects.show');
+Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
+Route::get('/subjects/{subject?}/{topics?}/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show');
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::post('/rating', [RatingController::class, 'store'])->name('rating.store');
 Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
 Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('teachers.index');
 
@@ -91,6 +98,9 @@ Route::middleware('auth')->group(function() {
     Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function() {
         Route::get('/dashboard', [AdminController::class, 'index']);
         Route::resource('sliders', 'SliderController');
+        Route::resource('studentImages', 'StudentImageController');
+        Route::resource('teacherImages', 'TeacherImageController');
+        Route::resource('faqs', 'FaqController');
 
         Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
         Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');

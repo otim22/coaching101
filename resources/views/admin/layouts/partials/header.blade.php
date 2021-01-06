@@ -118,39 +118,6 @@
                                     </div>
                                     <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">
-                                                <div class="media align-items-center">
-                                                    <a href="profile.html">
-                                                        <img src="assets/images/avatars/person-1.jpg" class="img-fluid rounded-circle mr-2" width="35" alt="">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <div class="w-100">I started that project we talked...</div>
-                                                        <div class="w-100 text-muted">4 secs ago</div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="media align-items-center">
-                                                    <a href="profile.html">
-                                                        <img src="assets/images/avatars/person-11.jpg" class="img-fluid rounded-circle mr-2" width="35" alt="">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <div class="w-100">Can we arrange a meeting?...</div>
-                                                        <div class="w-100 text-muted">25 mins ago</div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="media align-items-center">
-                                                    <a href="profile.html">
-                                                        <img src="assets/images/avatars/person-12.jpg" class="img-fluid rounded-circle mr-2" width="35" alt="">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <div class="w-100">We need to fix some bugs...</div>
-                                                        <div class="w-100 text-muted">7 hrs ago</div>
-                                                    </div>
-                                                </div>
-                                            </li>
                                             <li class="list-group-item text-right">
                                                 <a href="#">
                                                     <span class="align-middle">View All</span>

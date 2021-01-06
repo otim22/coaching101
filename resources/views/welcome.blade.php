@@ -2,15 +2,13 @@
 
 @section('content')
 
-<section class="bg-image text-white">
+<section class="bg-image text-white" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 85vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
                 <div class="learn-today">
-                    <h1 class="display-3 learn-today_title">Learn today</h1>
-                    <h4 class="pt-3 pm-3 bold student-font">At your own convenient time, </h4>
-                    <h4 class="pt-2 pm-3 bold student-font">Learn from our verified seasoned teachers </h4>
-                    <h4 class="pt-2 pm-3 bold student-font">With proven experience in their fields.</h4>
+                    <h1 class="display-3 learn-today_title">{{ $sliders->title }}</h1>
+                    <h4 class="pt-3 pm-3 bold student-font">{!! $sliders->description !!}</h4>
                     @guest
                         <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get Started &raquo;</a></p>
                     @endguest
@@ -22,6 +20,9 @@
 
                         @if(Auth::user()->role == 2)
                             <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get Started &raquo;</a></p>
+                        @endif
+                        @if(Auth::user()->role == 3)
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get Started &raquo;</a></p>
                         @endif
                     @endauth
                 </div>
@@ -40,7 +41,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h5>1,000 online subjects</h5>
+                    <h5>1,000+ online classes</h5>
                     <p>Discover varied topics</p>
                 </div>
             </div>
@@ -102,39 +103,39 @@
                         <div class="row mt-4">
                             @foreach($category as $cat)
                                 @foreach($cat->subjects as $subject)
-                                <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
-                                    <div class="card">
-                                        <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                                            <img src="{{ $subject->image_thumb}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
-                                        </a>
-                                        <div class="card-body card-body_custom">
-                                            <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
-                                                <span class="bold">{{ $subject->very_short_title }}</span><br />
-                                                <span class="author-font">{{$subject->creator->name }}</span>
-                                                <div class="rating">
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <svg class="bi bi-star-half" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" d="M5.354 5.119L7.538.792A.516.516 0 018 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0116 6.32a.55.55 0 01-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.519.519 0 01-.146.05c-.341.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 01-.171-.403.59.59 0 01.084-.302.513.513 0 01.37-.245l4.898-.696zM8 12.027c.08 0 .16.018.232.056l3.686 1.894-.694-3.957a.564.564 0 01.163-.505l2.906-2.77-4.052-.576a.525.525 0 01-.393-.288L8.002 2.223 8 2.226v9.8z" clip-rule="evenodd"/>
-                                                    </svg>
-                                                    <span class="title-font">(1000)</span>
-                                                </div>
-                                                <span class="bold">UGX 50,000</span>
+                                    <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
+                                        <div class="card">
+                                            <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
+                                                <img src="{{ $subject->image_thumb}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
                                             </a>
-                                            <div class="mt-2 d-flex justify-content-between">
-                                                <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
-                                                <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                                            <div class="card-body card-body_custom">
+                                                <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
+                                                    <span class="bold">{{ $subject->very_short_title }}</span><br />
+                                                    <span class="author-font">{{$subject->creator->name }}</span>
+                                                    <div class="rating">
+                                                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                                        </svg>
+                                                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                                        </svg>
+                                                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                                        </svg>
+                                                        <svg class="bi bi-star-half" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" d="M5.354 5.119L7.538.792A.516.516 0 018 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0116 6.32a.55.55 0 01-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.519.519 0 01-.146.05c-.341.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 01-.171-.403.59.59 0 01.084-.302.513.513 0 01.37-.245l4.898-.696zM8 12.027c.08 0 .16.018.232.056l3.686 1.894-.694-3.957a.564.564 0 01.163-.505l2.906-2.77-4.052-.576a.525.525 0 01-.393-.288L8.002 2.223 8 2.226v9.8z" clip-rule="evenodd"/>
+                                                        </svg>
+                                                        <span class="title-font">(1000)</span>
+                                                    </div>
+                                                    <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+                                                </a>
+                                                <div class="mt-2 d-flex justify-content-between">
+                                                    <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
+                                                    <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             @endforeach
                         </div>
@@ -177,7 +178,7 @@
                                 </svg>
                                 <span class="title-font">(1000)</span>
                             </div>
-                            <span class="bold">UGX 50,000</span>
+                            <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
                         </a>
                         <div class="mt-2 d-flex justify-content-between">
                             <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
@@ -196,18 +197,18 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 student-text">
-                <h3 class="bold student-head-font">Start learning today</h3>
-                <p class="mb-4 sub-text student-font">Tap from the experience of our hand picked best teachers around and ace that examination you have all been waiting to do.</p>
+                <h3 class="bold student-head-font">{{ $studentImage->title }}</h3>
+                <p class="mb-4 sub-text student-font">{{ $studentImage->description }}</p>
                 @guest
-                    <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
+                    <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">{{ $studentImage->button_text }} &raquo;</a>
                 @endguest
 
                 @auth
-                    <a id="round-button-2" href="#learn-now" class="btn btn-primary" name="button">Get started &raquo;</a>
+                    <a id="round-button-2" href="#learn-now" class="btn btn-primary" name="button">{{ $studentImage->button_text }} &raquo;</a>
                 @endauth
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <img src="{{ asset('images/student.jpg') }}" alt="image thumb" class="student-image">
+                <img src="{{ asset($studentImage->getFirstMediaUrl()) }}" alt="image thumb" class="student-image">
             </div>
         </div>
     </div>
@@ -223,23 +224,27 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <img src="{{ asset('images/teacher.jpg') }}" alt="image thumb" class="teacher-image">
+                <img src="{{ asset($teacherImage->getFirstMediaUrl()) }}" alt="teacher thumb" class="teacher-image">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="mb-2">
-                    <h3 class="bold">Become a teacher</h3>
-                    <p class="mb-4 sub-text">Top teachers from the best, teaching millions of students. We provide the platform and tools so you can skill the students.</p>
+                    <h3 class="bold">{{ $teacherImage->title }}</h3>
+                    <p class="mb-4 sub-text">{{ $teacherImage->description }}</p>
                     @guest
-                        <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
+                        <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
                     @endguest
 
                     @auth
                         @if(Auth::user()->role == 1)
-                            <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
+                            <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
                         @endif
 
                         @if(Auth::user()->role == 2)
-                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">Get started &raquo;</a>
+                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
+                        @endif
+
+                        @if(Auth::user()->role == 3)
+                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
                         @endif
                     @endauth
                 </div>
@@ -258,13 +263,13 @@
             @foreach($teachers as $teacher)
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <a href="{{ route('teachers.index', $teacher->slug) }}" style="text-decoration:none;">
-                        <div class="card mb-3" style="max-width: 400px;">
+                        <div class="card mb-3" style="max-width: 340px;">
                             <div class="row no-gutters">
                                 <div class="col-4">
-                                    <img src="{{ asset('images/st_2.jpg') }}" class="card-img" width="100%" height="100%" alt="{{ $teacher->name }}">
+                                    <img src="{{ asset($teacher->getFirstMediaUrl('avatars', 'thumb')) }}" class="card-img" width="100%" height="100%" alt="{{ $teacher->name }}">
                                 </div>
                                 <div class="col-8">
-                                    <div class="card-body" style="padding: 0.7rem 0rem 0rem 1rem;">
+                                    <div class="card-body" style="padding: 0.5rem 0rem 0rem 1rem;">
                                         <span class="bold">{{ $teacher->name }}</span>
                                         <p>Mathematics</p>
                                     </div>
@@ -286,163 +291,34 @@
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 mt-4 mb-5">
                 <div class="accordion" id="accordionExample">
-                  <div class="card mb-3">
-                    <div class="card-header" id="headingOne">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    Where do I take this course?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </button>
-                      </h2>
-                    </div>
-
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                      <div class="card-body">
-                        The course is completely online so you can partake whenever and wherever you would like (as long as you have internet access).
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-header" id="headingTwo">
-                      <h2 class="mb-0">
-                        <button  class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    Where is Coaching101 located?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Coaching101 has an office located in Kampala, Uganda.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-header" id="headingThree">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    When does it begin?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Whenever you like! You will be given lifetime access to the material and can take at a pace that is right for you!
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-header" id="headingFour">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    How long does it take?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
-                                </div>
+                    @foreach($faqs as $faq)
+                        <div class="card mb-3">
+                            <div class="card-header" id="heading{{$faq->id}}">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{$faq->id}}" aria-expanded="true" aria-controls="collapse{{$faq->id}}" style="text-decoration: none">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="bold">
+                                                {{ $faq->title }}
+                                            </div>
+                                            <div>
+                                                <span class="icon">
+                                                    <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </h2>
                             </div>
 
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                      <div class="card-body">
-                        The course is designed so you can take at a speed that is best for you. Most students will do it over 3-4 weeks and others will complete in a few days.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-header" id="headingFive">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    Do you have a refund policy?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
+                            <div id="collapse{{$faq->id}}" class="collapse {{ $faq->id === 1 ? 'show' : '' }}" aria-labelledby="heading{{$faq->id}}" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {{ $faq->description }}
                                 </div>
                             </div>
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Yes, if you are having issues accessing your course we will give you a full refund up to 48 hours after purchase.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card">
-                    <div class="card-header" id="headingSix">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="text-decoration: none">
-                            <div class="d-flex justify-content-between">
-                                <div class="bold">
-                                    How do I sign up and pay?
-                                </div>
-                                <div>
-                                    <span class="icon">
-                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-                      <div class="card-body">
-                        Please follow the links under the courses to complete your payment.
-                      </div>
-                    </div>
-                  </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

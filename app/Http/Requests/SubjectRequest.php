@@ -27,8 +27,9 @@ class SubjectRequest extends FormRequest
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
             'description' => 'required|string',
-            'category' => 'required|string',
-            'cover_image' => 'required|image|mimes:jpg,jpeg,png|max:5520'
+            'category_id' => 'required|integer',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'cover_image' => 'required|image|mimes:jpg, jpeg, png|max:5520'
         ];
     }
 }

@@ -7,9 +7,9 @@
         <div class="row mt-2">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h5 class="bold">{{ $subject->title }}</h5>
-                <h5>{{ $subject->subtitle }}</h5>
-                <p>100 Enrolled Students</p>
-                <p>Created by {{ $subject->creator->name }}</p>
+                <h6>{{ $subject->subtitle }}</h6>
+                <p>100 Enrolled Students <br />
+                Created by {{ $subject->creator->name }}</p>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="border mr-4 p-4 rounded bg-gray-3 mb-5">
-                    <h4 class="bold">What you will learn</h4>
+                    <h5 class="bold">What you will learn</h5>
                     <ul>
                         @forelse($subject->audience['student_learn'] as $student_learn)
                         <li>
@@ -37,13 +37,13 @@
 
                 <div class="accordion mr-4 mb-5" id="accordionExample">
                     <div class="mb-4">
-                        <h4 class="bold">Subject Content</h4>
+                        <h5 class="bold">Subject Content</h5>
                     </div>
                   <div class="card">
-                      @forelse($subject->topics as $key => $topic)
-                      <div class="card-header" id="{{ $topic->id }}">
-                          <p class="mb-0">
-                            <button  id="id{{ $topic->id }}" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
+                        @forelse($subject->topics as $key => $topic)
+                        <div class="card-header" id="{{ $topic->id }}">
+                            <p class="mb-0">
+                                <button  id="id{{ $topic->id }}" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
                                     <div class="d-flex justify-content-between">
                                         <div>
                                             {{ $key+1 }} - {{ $topic->title }}
@@ -58,15 +58,15 @@
                                     </div>
                                 </button>
                             </p>
-                      </div>
+                        </div>
 
                       <div id="collapse{{ $topic->id }}" class="collapse {{ $topic->id === 1 ? 'show' : '' }}" aria-labelledby="{{ $topic->id }}" data-parent="#accordionExample">
                         <div class="card-body">
                                 @forelse($topic->getMedia('content_file') as $key => $topicMedia)
                                 <p class="mt-1">
-                                    <a href="{{ route('subjects.show', [$subject, $topic]) }}" style="text-decoration: none">
+                                    <!-- <a href="{{ route('student.show', [$subject, $topic]) }}" style="text-decoration: none"> -->
                                         <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
-                                    </a>
+                                    <!-- </a> -->
                                 </p>
                                 @empty
                                 <p>No available attachments.</p>
@@ -74,9 +74,9 @@
 
                                 @forelse($topic->getMedia('resource_attachment') as $topicMedia)
                                 <p>
-                                    <a target="_blank" href="{{ $topicMedia->name }}" style="text-decoration: none">
+                                    <!-- <a target="_blank" href="{{ $topicMedia->name }}" style="text-decoration: none"> -->
                                         <i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}
-                                    </a>
+                                    <!-- </a> -->
                                 </p>
                                 @empty
                                 <p>No available attachments.</p>
@@ -93,7 +93,7 @@
                 </div>
 
                 <div class=" mr-4 mb-5">
-                    <h4 class="bold">Requirements</h4>
+                    <h5 class="bold">Requirements</h5>
                     <ul>
                         @forelse($subject->audience['class_requirement']  as $class_requirement)
                         <li>
@@ -109,7 +109,7 @@
                 </div>
 
                 <div  class=" mr-4 mb-5">
-                    <h4 class="bold">Description</h4>
+                    <h5 class="bold">Description</h5>
                     <p>{{ $subject->description }}</p>
                 </div>
             </div>
@@ -117,9 +117,11 @@
             <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
                 <aside class="p-3 p-4 border rounded bg-white add-shadow">
                     <div class="make-me-sticky">
-                        <div class="mb-4">
-                            <a id="round-button-2" class="btn btn-danger btn-block mb-2" href="#">Add to cart</a>
-                            <a id="round-button-2" class="btn btn-outline-primary btn-block" href="{{ route('checkout.index') }}">Buy now</a>
+                        <div class="mb-4 d-flex ">
+                            <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
+                            <div>
+                                <a id="round-button-2" class="btn btn-outline-primary btn-sm ml-3" href="{{ route('checkout.index') }}">Buy now</a>
+                            </div>
                         </div>
                         </div>
                         <h5 class="bold">This subject includes:</h5>
@@ -129,7 +131,7 @@
                                     <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                                     <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
                                 </svg>
-                                3 hours on-demand video
+                                Hours of on demand videos
                             </li>
                             <li>
                                 <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -156,8 +158,8 @@
 <section class="bg-gray-2">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
-                <h4 class="bold"> More subjects by {{ $subject->creator->name }}</h4>
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                <h5 class="bold"> More subjects by {{ $subject->creator->name }}</h5>
             </div>
             @foreach($subjects as $subject)
             <div class="col-lg-4 col-md-4 col-sm-12">
