@@ -12,7 +12,7 @@
         "barryvdh/laravel-debugbar": "^3.5",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.2",
         "illuminate/support": "^8.6",
         "laravel/framework": "^8.0",
         "laravel/legacy-factories": "^1.0",
@@ -23,6 +23,7 @@
         "spatie/laravel-collection-macros": "^7.0",
         "spatie/laravel-medialibrary": "^8.0.0",
         "spatie/laravel-permission": "^3.17",
+        "spatie/laravel-searchable": "^1.9",
         "spatie/laravel-sluggable": "^2.2"
     },
     "require-dev": {

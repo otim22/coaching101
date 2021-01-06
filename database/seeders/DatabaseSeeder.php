@@ -20,8 +20,12 @@ class DatabaseSeeder extends Seeder
             SubjectTableSeeder::class,
             MessageTableSeeder::class,
             AudienceTableSeeder::class,
-            // SliderTableSeeder::class,
+            SliderTableSeeder::class,
             MenuTableSeeder::class,
+            RatingTableSeeder::class,
+            StudentImageTableSeeder::class,
+            TeacherImageTableSeeder::class,
+            FaqTableSeeder::class,
         ]);
     }
 }

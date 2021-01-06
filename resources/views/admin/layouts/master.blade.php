@@ -16,11 +16,15 @@
 
     <!-- App CSS -->
     <link type="text/css" href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
+    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.js" defer></script>
     <link type="text/css" href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('admin/css/app.rtl.css') }}" rel="stylesheet">
 
     <!-- Simplebar -->
     <link type="text/css" href="{{ asset('admin/vendor/simplebar.css') }}" rel="stylesheet">
+
+    @stack('scripts')
 </head>
 
 <body>

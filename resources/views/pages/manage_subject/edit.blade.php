@@ -6,7 +6,14 @@
     <div class="container">
         <nav aria-label="breadcrumb bg-gray">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item">
+                    <a href="{{ url('/') }}">
+                        <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-house-fill pb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg>
+                    </a>
+                </li>
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Subjects</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $subject->short_title }}</li>
             </ol>
@@ -25,7 +32,7 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2 pb-2">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <h3>Subject introduction</h3> <hr />
+                                <h3 class="bold">Subject introduction</h3> <hr />
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group mb-4 mt-3">
@@ -34,8 +41,6 @@
                                         <input type="text"
                                                     class="form-control @error('title') is-invalid @enderror"
                                                     id="title"
-                                                    placeholder="Your subject title"
-                                                    aria-label="Your subject title"
                                                     aria-describedby="title"
                                                     name="title"
                                                     value="{{ old('title', $subject->title) }}"
@@ -47,13 +52,11 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label for="subtitle" class="bold">Sub-title</label>
+                                    <label for="subtitle" class="bold">Sub title</label>
                                     <div class="input-group">
                                         <input type="text"
                                                     class="form-control @error('subtitle') is-invalid @enderror"
                                                     id="subtitle"
-                                                    placeholder="Write your sub title"
-                                                    aria-label="Write your sub title"
                                                     aria-describedby="subtitle"
                                                     name="subtitle"
                                                     value="{{ old('subtitle', $subject->subtitle) }}">
@@ -73,27 +76,41 @@
 
                                 <div class="form-group mb-4">
                                     <label for="title" class="bold">Category</label>
-                                    <div class="input-group">
-                                        <input type="text"
-                                                    class="form-control @error('category') is-invalid @enderror"
-                                                    id="category"
-                                                    placeholder="Eaxmple: Modern physics"
-                                                    aria-label="category"
-                                                    aria-describedby="category"
-                                                    name="category"
-                                                    value="{{ old('category', $subject->category) }}" required>
+                                    <div class="input-group mb-3">
+                                        <select class="custom-select" name="category_id" id="inputGroupSelect01">
+                                            <option selected>{{ $category->name }}</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     @error('category')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
-                                    <p class="bold">Current Image</p>
-                                    <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="mb-4 rounded-corners w-100">
-                                    <p><small style="color: red; font-weight: bold;">Choosing Another Image Replaces Current Image</small></p>
+                                <div class="form-group mb-4">
+                                    <label for="price" class="bold">Subject price</label>
+                                    <div class="input-group">
+                                        <input type="text"
+                                                    class="form-control @error('price') is-invalid @enderror"
+                                                    id="price"
+                                                    aria-describedby="price"
+                                                    name="price"
+                                                    value="{{ old('price', $subject->price) }}">
+                                    </div>
+                                    <p><small style="color: gray; font-weight: bold;">*Price should be only digits</small></p>
+                                    @error('price')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
-                                    <label for="cover_image" class="bold">Cover Image</label>
+                                <div class="form-group">
+                                    <p class="bold">Current image</p>
+                                    <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="mb-2 rounded-corners w-100">
+                                    <p><small style="color: red; font-weight: bold;">*Choosing another image replaces this current one</small></p>
+
+                                    <label for="cover_image" class="bold">Subject current image</label>
                                     <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image">
                                     @error('cover_image')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>

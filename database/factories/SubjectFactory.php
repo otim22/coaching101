@@ -14,7 +14,7 @@ $factory->define(Subject::class, function (Faker $faker) {
         'slug' => $faker->slug,
         'subtitle' => $faker->text,
         'description' => $faker->paragraph,
-        'price' => $faker->numberBetween(50, 100),
+        'price' => $faker->numberBetween(50000, 100000),
         'category_id' => Category::all()->random()->id,
         'user_id' => User::all()->random()->id,
     ];

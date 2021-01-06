@@ -4,7 +4,7 @@
         <div class="diff-content-card mb-4">
             <div>
                 <a href="{{ route('subjects.show', $subject) }}" style="text-decoration: none">
-                    <img src="{{ $subject->image_thumb }}" alt="subject image" height="140px">
+                    <img src="{{ $subject->image_thumb }}" alt="subject image" width="140" height="140">
                 </a>
             </div>
 
@@ -25,7 +25,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Are you sure?</h5>
+                            <h5 class="modal-title bold" id="staticBackdropLabel">Are you sure?</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -34,7 +34,7 @@
                             Do you really want to delete this subject? This process will delete the subject with all the topics inclusive and cannot be undone.
                         </div>
                         <div class="modal-footer d-flex justify-content-between">
-                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
                             {!! Form::open(['route' => ['subjects.destroy', $subject],
                                     'method' => 'delete',
                                     'data-confirmation-text' => __('Are you sure to delete :name?', ['title' => $subject->title])

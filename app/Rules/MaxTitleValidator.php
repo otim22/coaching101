@@ -28,7 +28,7 @@ class MaxTitleValidator implements Rule
         $words = explode(' ', $value);
         $wordCount = count($words);
 
-        return $wordCount >= 3 && $wordCount <= 8;
+        return $wordCount >= 2 && $wordCount <= 5;
     }
 
     /**

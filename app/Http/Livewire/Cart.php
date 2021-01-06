@@ -2,12 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use Config;
 use Illuminate\View\View;
 use App\Models\Subject;
 use App\Models\Wishlist;
 use Livewire\Component;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Facades\Cart as CartFacade;
+use Illuminate\Support\Facades\Http;
 
 class Cart extends Component
 {
@@ -51,6 +54,7 @@ class Cart extends Component
     public function updateItemTotal(): void
     {
         $cartFacade = new CartFacade;
+
         $this->cartItemTotal = count($cartFacade->get()['subjects']);
         $this->cartItems = $cartFacade->get()['subjects'];
     }
@@ -78,6 +82,7 @@ class Cart extends Component
         $cartFacade = new CartFacade;
         $cartFacade->remove($subjectId);
         $this->cart = $cartFacade->get();
+
         $this->emit('itemRemoved');
         $this->emit('cartDeduction', $subjectId);
     }
@@ -89,21 +94,53 @@ class Cart extends Component
         $this->emit('itemTotalUpdate');
     }
 
-    public function checkout(): void
+    public function initialize() {
+        Rave::initialize(route('callback'));
+    }
+
+    public function checkout(Request $request): void
     {
+
         if(Auth::check()) {
             $user = Auth::user();
 
             // WIP
-            $payment_token = 'Ref-' . 'tx-'. time() . '-' . $user->id;
+            $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
             $currency = "UGX";
             $userEmail = $user->email;
             $userName= $user->name;
             $cartSum = $this->sum;
+            $redirectLink = "https://coaching101.app/cart";
+
+            $response = Http::withToken(config('app.rave_key'))->post(
+                'https://api.flutterwave.com/v3/charges', [
+                "tx_ref" => $paymentToken,
+                "amount"=> $cartSum,
+                "currency"=> $currency,
+                "redirect_url" => $redirectLink,
+                "payment_options" => "card",
+                "meta" => [
+                    "consumer_id" => Auth::id()
+                ],
+                "customer" => [
+                    "email" => $userEmail,
+                    "name" => $userName
+                ],
+                "customizations" => [
+                    "title" => "OTF Payments",
+                    "description" => "Middleout isn't free. Pay the price",
+                    "logo" => "https://assets.piedpiper.com/logo.png"
+                ]
+    		]);
+
+            $response->successful();
+
+            // dd($response);
 
             $cartFacade = new CartFacade;
             $cartFacade->clear();
             $this->emit('clearCart');
+            $this->sum = 0;
             $this->cart = $cartFacade->get();
         }
     }
@@ -168,7 +205,9 @@ class Cart extends Component
     public function removeFromWishlist($subjectId): void
     {
         $wishlist = Wishlist::findOrFail($subjectId);
+
         $wishlist->delete();
+
         $this->emit('updateWishlist');
     }
 

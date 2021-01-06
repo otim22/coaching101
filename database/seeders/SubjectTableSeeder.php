@@ -15,13 +15,12 @@ class SubjectTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Subject::class, 50)->create();
+        $subjects = factory(Subject::class, 100)->create();
 
-        // $faker = Faker::create();
-        // $imageUrl = $faker->imageUrl(640,480, null, false);
-        // dd($imageUrl);
-        // foreach($subjects as $subject) {
-        //     $subject->addMediaFromUrl($imageUrl)->toMediaCollection('images');
-        // }
+        $imageUrl = 'http://via.placeholder.com/800x650';
+
+        foreach ($subjects as $subject) {
+            $subject->addMediaFromUrl($imageUrl)->toMediaCollection('default');
+        }
     }
 }
