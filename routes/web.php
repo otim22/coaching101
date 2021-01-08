@@ -36,7 +36,6 @@ Route::get('/', function () {
 });
 
 Route::get('/library', [LibraryController::class, 'create']);
-Route::get('/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
@@ -49,6 +48,7 @@ Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('te
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
 
 Route::middleware('auth')->group(function() {
 

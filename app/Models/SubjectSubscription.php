@@ -13,6 +13,6 @@ class SubjectSubscription extends Model
 
     public function subject()
     {
-        return $this->belongsTo('App\Model\Subject');
+        return $this->belongsTo('App\Models\Subject');
     }
 }
