@@ -8,7 +8,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h5 class="bold">{{ $subject->title }}</h5>
                 <h6>{{ $subject->subtitle }}</h6>
-                <p>100 Enrolled Students <br />
+                <p>{{ count($subject->subscriptions) }} Enrolled Students <br />
                 Created by {{ $subject->creator->name }}</p>
             </div>
         </div>
