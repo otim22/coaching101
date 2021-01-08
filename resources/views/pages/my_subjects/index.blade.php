@@ -4,7 +4,7 @@
 
 <section>
     <div class="container">
-        <livewire:my-subjects />
+        <livewire:my-subjects-content />
     </div>
 </section>
 
