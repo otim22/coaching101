@@ -8,7 +8,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h5 class="bold">{{ $subject->title }}</h5>
                 <h6>{{ $subject->subtitle }}</h6>
-                <p>100 Enrolled Students <br />
+                <p>{{ count($subject->subscriptions) }} Enrolled Students <br />
                 Created by {{ $subject->creator->name }}</p>
             </div>
         </div>
@@ -60,36 +60,45 @@
                             </p>
                         </div>
 
-                      <div id="collapse{{ $topic->id }}" class="collapse {{ $topic->id === 1 ? 'show' : '' }}" aria-labelledby="{{ $topic->id }}" data-parent="#accordionExample">
-                        <div class="card-body">
+                        <div id="collapse{{ $topic->id }}" class="collapse {{ $topic->id === 1 ? 'show' : '' }}" aria-labelledby="{{ $topic->id }}" data-parent="#accordionExample">
+                            <div class="card-body">
                                 @forelse($topic->getMedia('content_file') as $key => $topicMedia)
-                                <p class="mt-1">
-                                    <!-- <a href="{{ route('student.show', [$subject, $topic]) }}" style="text-decoration: none"> -->
-                                        <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
-                                    <!-- </a> -->
-                                </p>
+                                    <p class="mt-1">
+                                        @if($subject->isSubscribedTo)
+                                            <a href="{{ route('student.show', [$subject, $topic]) }}" style="text-decoration: none">
+                                                <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
+                                            </a>
+                                        @else
+                                            <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
+                                        @endif
+                                    </p>
                                 @empty
-                                <p>No available attachments.</p>
+                                    <p>No available attachments.</p>
                                 @endforelse
 
                                 @forelse($topic->getMedia('resource_attachment') as $topicMedia)
-                                <p>
-                                    <!-- <a target="_blank" href="{{ $topicMedia->name }}" style="text-decoration: none"> -->
-                                        <i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}
-                                    <!-- </a> -->
-                                </p>
+                                    @if($subject->isSubscribedTo)
+                                        <p>
+                                            <a target="_blank" href="{{ $topicMedia->name }}" style="text-decoration: none">
+                                                <i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}
+                                            </a>
+                                        </p>
+                                    @else
+                                        <p>
+                                            <i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}
+                                        </p>
+                                    @endif
                                 @empty
-                                <p>No available attachments.</p>
+                                    <p>No available attachments.</p>
                                 @endforelse
-                            </ul>
+                            </div>
                         </div>
-                      </div>
-                    @empty
-                    <div class="p-3">
-                        <p>No topics available yet!</p>
+                        @empty
+                            <div class="p-3">
+                                <p>No topics available yet!</p>
+                            </div>
+                        @endforelse
                     </div>
-                    @endforelse
-                  </div>
                 </div>
 
                 <div class=" mr-4 mb-5">
@@ -115,15 +124,8 @@
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
-                <aside class="p-3 p-4 border rounded bg-white add-shadow">
-                    <div class="make-me-sticky">
-                        <div class="mb-4 d-flex ">
-                            <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
-                            <div>
-                                <a id="round-button-2" class="btn btn-outline-primary btn-sm ml-3" href="{{ route('checkout.index') }}">Buy now</a>
-                            </div>
-                        </div>
-                        </div>
+                @if($subject->isSubscribedTo)
+                    <aside class="p-3 p-4 border rounded bg-white add-shadow">
                         <h5 class="bold">This subject includes:</h5>
                         <ul>
                             <li>
@@ -148,8 +150,44 @@
                                 Access on mobile and TV
                             </li>
                         </ul>
-                    </div>
-                </aside>
+                    </aside>
+                @else
+                    <aside class="p-3 p-4 border rounded bg-white add-shadow">
+                        <div class="make-me-sticky">
+                            <div class="mb-4 d-flex ">
+                                <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
+                                <div>
+                                    <a id="round-button-2" class="btn btn-outline-primary btn-sm ml-3" href="{{ route('checkout.index') }}">Buy now</a>
+                                </div>
+                            </div>
+                            </div>
+                            <h5 class="bold">This subject includes:</h5>
+                            <ul>
+                                <li>
+                                    <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                                        <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
+                                    </svg>
+                                    Hours of on demand videos
+                                </li>
+                                <li>
+                                    <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                                        <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
+                                    </svg>
+                                    {{ $resourceCount }} downloadable resources
+                                </li>
+                                <li>
+                                    <svg width="1.1em" height="1.1em" viewBox="0 0 16 19" class="bi bi-check2-square mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                                        <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
+                                    </svg>
+                                    Access on mobile and TV
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                @endif
             </div>
         </div>
     </div>
@@ -162,13 +200,39 @@
                 <h5 class="bold"> More subjects by {{ $subject->creator->name }}</h5>
             </div>
             @foreach($subjects as $subject)
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <a href="{{ route('subjects.show', $subject) }}" style="text-decoration: none">
-                <div class="mb-3">
-                    <img src="{{ asset($subject->image_thumb) }}" alt="{{ $subject->very_short_title }}">
-                </div>
-                <h5> {{ $subject->very_short_title }}</h5>
-                <p>{{ $subject->creator->name }}</p>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('subjects.show', $subject->slug) }}" style="text-decoration: none">
+                    <div class="card mb-4">
+                        <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
+                            <img src="{{ $subject->image_thumb}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
+                        </a>
+                        <div class="card-body card-body_custom">
+                            <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
+                                <span class="bold">{{ $subject->very_short_title }}</span><br />
+                                <span class="author-font">By {{$subject->creator->name }}</span>
+                                <div class="rating">
+                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                    </svg>
+                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                    </svg>
+                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                    </svg>
+                                    <svg class="bi bi-star-half" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M5.354 5.119L7.538.792A.516.516 0 018 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0116 6.32a.55.55 0 01-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.519.519 0 01-.146.05c-.341.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 01-.171-.403.59.59 0 01.084-.302.513.513 0 01.37-.245l4.898-.696zM8 12.027c.08 0 .16.018.232.056l3.686 1.894-.694-3.957a.564.564 0 01.163-.505l2.906-2.77-4.052-.576a.525.525 0 01-.393-.288L8.002 2.223 8 2.226v9.8z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="title-font">{{ count($subject->subscriptions) }}</span>
+                                </div>
+                                <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+                            </a>
+                            <div class="mt-2 d-flex justify-content-between">
+                                <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
+                                <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                            </div>
+                        </div>
+                    </div>
                 </a>
             </div>
             @endforeach

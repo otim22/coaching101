@@ -10,6 +10,7 @@ use Spatie\Sluggable\SlugOptions;
 use Spatie\Searchable\Searchable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Searchable\SearchResult;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,9 +20,9 @@ class Subject extends Model implements HasMedia, Searchable
 {
     use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText;
 
-    protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id'];
+    protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id', 'content_approved'];
     protected $with = ['media'];
-
+    protected $appends = ['isSubscribedTo'];
     /**
      * Get the options for generating the slug.
      */
@@ -112,6 +113,30 @@ class Subject extends Model implements HasMedia, Searchable
     public function wishlists()
     {
         return $this->hasMany('App\Models\Subject');
+    }
+
+    public function subscribe($userId = null)
+    {
+        $this->subscriptions()->create([
+            'user_id' => $userId ?: Auth::id()
+        ]);
+
+        return $this;
+    }
+
+    public function unsubscribe($userId = null)
+    {
+        $this->subscriptions()->where('user_id', $userId ?: Auth::id())->delete();
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasMany('App\Models\SubjectSubscription');
+    }
+
+    public function getIsSubscribedToAttribute()
+    {
+        return $this->subscriptions()->where('user_id', Auth::id())->exists();
     }
 
     public function getSearchResult(): SearchResult

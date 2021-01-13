@@ -15,7 +15,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::whereNull('parent_id')->paginate(3);
+        $menus = Menu::whereNull('parent_id')->get();
 
         return view('admin.menus.index', compact(['menus']));
     }
@@ -46,7 +46,7 @@ class MenuController extends Controller
         ]);
 
         $input = $request->all();
-        $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
+        $input['parent_id'] = empty($input['parent_id']) ? null : $input['parent_id'];
         Menu::create($input);
 
         return redirect()->route('admin.menus.index')->with('success', 'Menu added successfully.');

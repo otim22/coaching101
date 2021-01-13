@@ -54,7 +54,6 @@ class Cart extends Component
     public function updateItemTotal(): void
     {
         $cartFacade = new CartFacade;
-
         $this->cartItemTotal = count($cartFacade->get()['subjects']);
         $this->cartItems = $cartFacade->get()['subjects'];
     }
@@ -62,18 +61,14 @@ class Cart extends Component
     public function calculateCartSum($subjectId)
     {
         $subject = Subject::findOrFail($subjectId);
-
         $this->sum += $subject->price;
-
         return $this->sum;
     }
 
     public function calculateCartDeduction($subjectId)
     {
         $subject = Subject::findOrFail($subjectId);
-
         $this->sum -= $subject->price;
-
         return $this->sum;
     }
 
@@ -100,9 +95,11 @@ class Cart extends Component
 
     public function checkout(Request $request): void
     {
-
         if(Auth::check()) {
             $user = Auth::user();
+
+            $cartFacade = new CartFacade;
+            $this->cartItems = $cartFacade->get()['subjects'];
 
             // WIP
             $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
@@ -136,8 +133,11 @@ class Cart extends Component
             $response->successful();
 
             // dd($response);
+            //
+            foreach($this->cartItems as $item) {
+                $item->subscribe();
+            }
 
-            $cartFacade = new CartFacade;
             $cartFacade->clear();
             $this->emit('clearCart');
             $this->sum = 0;

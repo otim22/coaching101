@@ -10,7 +10,7 @@ class SubjectDisplayController extends Controller
 {
     public function index(Subject $subject)
     {
-        $subjects = Subject::orderBy('id', 'desc')->where('user_id', $subject->user_id)->get()->take(3);
+        $subjects = Subject::orderBy('id', 'desc')->where('user_id', $subject->user_id)->get()->take(4 );
         $resourceCount = 0;
 
         foreach ($subject->topics as $topic) {

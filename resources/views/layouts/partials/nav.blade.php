@@ -64,7 +64,7 @@
                             <a class="nav-link" href="{{ route('subjects.starter') }}">Teach</a>
                         </li>
                         <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
-                            <a class="nav-link" href="#">My subjects</a>
+                            <a class="nav-link" href="{{ route('my-subjects') }}">My subjects</a>
                         </li>
                     @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
                         <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">

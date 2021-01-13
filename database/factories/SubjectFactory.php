@@ -3,6 +3,8 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Models\User;
+use App\Models\Year;
+use App\Models\Term;
 use App\Models\Subject;
 use App\Models\Category;
 use Faker\Generator as Faker;
@@ -15,7 +17,10 @@ $factory->define(Subject::class, function (Faker $faker) {
         'subtitle' => $faker->text,
         'description' => $faker->paragraph,
         'price' => $faker->numberBetween(50000, 100000),
+        'content_approved' => $faker->boolean(false),
         'category_id' => Category::all()->random()->id,
+        'year_id' => Year::all()->random()->id,
+        'term_id' => Term::all()->random()->id,
         'user_id' => User::all()->random()->id,
     ];
 });
