@@ -21,8 +21,10 @@ class CreateSubjectsTable extends Migration
             $table->text('description');
             $table->float('price')->nullable();
             $table->boolean('content_approved')->default(false);
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('year_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('term_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

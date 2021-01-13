@@ -38,7 +38,7 @@ class ComposerServiceProvider extends ServiceProvider
                 $query->setRelation('subjects', $query->subjects->take(8));
                 return $query;
             })->groupBy('name')->take(8);
-
+            
             $view->withCategories($categories);
         });
 

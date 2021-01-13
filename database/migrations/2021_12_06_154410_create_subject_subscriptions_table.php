@@ -15,9 +15,9 @@ class CreateSubjectSubscriptionsTable extends Migration
     {
         Schema::create('subject_subscriptions', function (Blueprint $table) {
             $table->id();
-           $table->unsignedInteger('user_id');
-           $table->unique(['user_id', 'subject_id']);
-           $table->foreignId('subject_id')->constrained()->onDelete('cascade');
+           $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+           // $table->unique(['user_id', 'subject_id']);   #Un comment for production 
+           $table->foreignId('subject_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
            $table->timestamps();
         });
     }

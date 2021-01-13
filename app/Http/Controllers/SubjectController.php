@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Models\Year;
+use App\Models\Term;
 use App\Models\Topic;
 use App\Models\Ratings;
 use App\Models\Subject;
@@ -27,8 +29,10 @@ class SubjectController extends Controller
     public function create()
     {
         $categories = Category::get();
+        $years = Year::get();
+        $terms = Term::get();
 
-        return view('pages.manage_subject.create', compact('categories'));
+        return view('pages.manage_subject.create', compact(['categories', 'years', 'terms']));
     }
 
     public function show(Subject $subject)
@@ -44,6 +48,8 @@ class SubjectController extends Controller
         $subject->subtitle      = $request->input('subtitle');
         $subject->description = $request->input('description');
         $subject->category_id = $request->input('category_id');
+        $subject->year_id = $request->input('year_id');
+        $subject->term_id = $request->input('term_id');
         $subject->user_id = Auth::user()->id;
 
         $subject->save();
@@ -61,30 +67,35 @@ class SubjectController extends Controller
     {
         $categories = Category::get();
         $category = Category::find($subject->category_id);
+        $years = Year::get();
+        $year = Year::find($subject->year_id);
+        $terms = Term::get();
+        $term = Term::find($subject->term_id);
 
-        return view('pages.manage_subject.edit', compact(['subject', 'categories', 'category']));
+        return view('pages.manage_subject.edit', compact([
+            'subject', 'categories', 'category', 'years', 'year', 'terms', 'term'
+        ]));
     }
 
 
     public function update(Request $request, Subject $subject)
     {
+        // dd($request);
         $request->validate([
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
             'description' => 'required|string',
-            'category' => 'required|string',
-            'cover_image' => 'image|mimes:jpg,jpeg,png|max:5520'
+            'category_id' => 'required|integer',
+            'year_id' => 'required|integer',
+            'term_id' => 'required|integer',
+            'price' => 'required|string',
+            'cover_image' => 'nullable|image|mimes:jpg, jpeg, png|max:5520'
         ]);
 
         $subject->fill($request->except(['cover_image']))->save();
 
-        $subject->media()->delete($subject);
-
-        if($subject->hasMedia('cover_image')) {
-            $subject->updateMedia($request->hasFile('cover_image'), 'default');
-        } else {
-            $subject->addMediaFromRequest('cover_image')
-                        ->toMediaCollection('default');
+        if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+            $subject->addMediaFromRequest('cover_image')->toMediaCollection('default');
         }
 
         return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');

@@ -82,13 +82,43 @@
                                     <label for="category_id" class="bold">Category</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="category_id">
-                                            <option selected>Choose...</option>
+                                            <option selected>Choose category...</option>
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     @error('category_id')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="year_id" class="bold">Year</label>
+                                    <div class="input-group mb-3">
+                                        <select class="custom-select" name="year_id">
+                                            <option selected>Choose year...</option>
+                                            @foreach($years as $year)
+                                                <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('year_id')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="term_id" class="bold">Term</label>
+                                    <div class="input-group mb-3">
+                                        <select class="custom-select" name="term_id">
+                                            <option selected>Choose term...</option>
+                                            @foreach($terms as $term)
+                                                <option value="{{ $term->id }}">{{ $term->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('term_id')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
