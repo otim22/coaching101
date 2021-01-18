@@ -36,7 +36,6 @@ class Category extends Model
         return 'slug';
     }
 
-
     /**
     * Get the subjects for the category.
     */
@@ -44,4 +43,12 @@ class Category extends Model
    {
        return $this->hasMany('App\Models\Subject');
    }
+
+    /**
+   * Get the subjects belongs to year.
+   */
+    public function years()
+    {
+        return $this->belongsToMany('App\Models\Year');
+    }
 }

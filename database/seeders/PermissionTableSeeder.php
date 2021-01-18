@@ -59,7 +59,7 @@ class PermissionTableSeeder extends Seeder
             'role' => $studentRole
         ]);
 
-        $imageUrl = 'http://via.placeholder.com/55x45';
+        $imageUrl = "http://via.placeholder.com/55x45";
 
         $student->addMediaFromUrl($imageUrl)->toMediaCollection('avatars');
 

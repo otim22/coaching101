@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Year;
-use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class YearController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'desc')->get();
+        $years = Year::orderBy('created_at', 'desc')->get();
 
-        return view('admin.categories.index', compact(['categories']));
+        return view('admin.years.index', compact(['years']));
     }
 
     /**
@@ -28,9 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $years = Year::get();
-
-        return view('admin.categories.create', compact('years'));
+        return view('admin.years.create');
     }
 
     /**
@@ -45,9 +42,9 @@ class CategoryController extends Controller
             'name' => 'required|string',
         ]);
 
-        Category::create(['name' => $request->name]);
+        Year::create(['name' => $request->name]);
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category added successfully.');
+        return redirect()->route('admin.years.index')->with('success', 'Year added successfully.');
     }
 
     /**
@@ -56,9 +53,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Year $year)
     {
-        return view('admin.categories.show', compact('category'));
+        return view('admin.years.show', compact('year'));
     }
 
     /**
@@ -67,11 +64,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Year $year)
     {
-        $years = Year::get();
-
-        return view('admin.categories.edit', compact(['category', 'years']));
+        return view('admin.years.edit', compact('year'));
     }
 
     /**
@@ -81,15 +76,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Year $year)
     {
         $request->validate([
             'name' => 'required|string',
         ]);
 
-        $category->fill($request->all())->save();
+        $year->fill($request->all())->save();
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully');
+        return redirect()->route('admin.years.index')->with('success', 'Year updated successfully');
     }
 
     /**
@@ -98,12 +93,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Year $year)
     {
         try {
-            $category->delete();
+            $year->delete();
 
-            return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully');
+            return redirect()->route('admin.years.index')->with('success', 'Year deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

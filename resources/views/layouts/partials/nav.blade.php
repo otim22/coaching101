@@ -15,7 +15,6 @@
                         Browse
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
                         @foreach ($menus as $menu)
                             <ul class="dropdown-submenu">
                                 <a class="dropdown-item" href="#">{{ $menu->title }}</a>
@@ -24,8 +23,8 @@
                                         <ul class="dropdown-submenu">
                                             <a class="dropdown-item" href="#">{{ $childMenu->title }}</a>
                                             <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                @foreach ($childMenu['allChildren'] as $child)
-                                                    <a class="dropdown-item" href="#">{{ $child->title }}</a>
+                                                @foreach ($childMenu['allChildren'] as $term)
+                                                    <a class="dropdown-item" href="{{ route('terms.index', $term) }}">{{ $term->title }}</a>
                                                 @endforeach
                                             </li>
                                         </ul>

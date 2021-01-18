@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Year;
-use App\Models\Category;
+use App\Models\Term;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TermController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'desc')->get();
+        $terms = Term::orderBy('created_at', 'desc')->get();
 
-        return view('admin.categories.index', compact(['categories']));
+        return view('admin.terms.index', compact(['terms']));
     }
 
     /**
@@ -28,9 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $years = Year::get();
-
-        return view('admin.categories.create', compact('years'));
+        return view('admin.terms.create');
     }
 
     /**
@@ -45,9 +42,9 @@ class CategoryController extends Controller
             'name' => 'required|string',
         ]);
 
-        Category::create(['name' => $request->name]);
+        Term::create(['name' => $request->name]);
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category added successfully.');
+        return redirect()->route('admin.terms.index')->with('success', 'Term added successfully.');
     }
 
     /**
@@ -56,9 +53,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Term $term)
     {
-        return view('admin.categories.show', compact('category'));
+        return view('admin.terms.show', compact('term'));
     }
 
     /**
@@ -67,11 +64,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Term $term)
     {
-        $years = Year::get();
-
-        return view('admin.categories.edit', compact(['category', 'years']));
+        return view('admin.terms.edit', compact('term'));
     }
 
     /**
@@ -81,15 +76,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Term $term)
     {
         $request->validate([
             'name' => 'required|string',
         ]);
 
-        $category->fill($request->all())->save();
+        $term->fill($request->all())->save();
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully');
+        return redirect()->route('admin.terms.index')->with('success', 'Term updated successfully');
     }
 
     /**
@@ -98,12 +93,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Term $term)
     {
         try {
-            $category->delete();
+            $term->delete();
 
-            return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully');
+            return redirect()->route('admin.terms.index')->with('success', 'Term deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

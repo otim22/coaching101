@@ -68,6 +68,18 @@
                             <span class="drawer-menu-text">Categories</span>
                         </a>
                     </li>
+                    <li class="drawer-menu-item">
+                        <a href="{{ url('/admin/years') }}">
+                            <i class="material-icons">apps</i>
+                            <span class="drawer-menu-text">Years</span>
+                        </a>
+                    </li>
+                    <li class="drawer-menu-item">
+                        <a href="{{ url('/admin/terms') }}">
+                            <i class="material-icons">apps</i>
+                            <span class="drawer-menu-text">Terms</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <!-- HEADING -->

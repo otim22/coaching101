@@ -6,11 +6,11 @@
     <div class="container">
         <div class="row">
             @if($searchResults->count() === 0)
-                <div class="col-lg-12 col-md-12 col-sm-12 mb-3 mt-4">
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-4 mt-4">
                     <h4>Sorry, no results found for "{{ request('query') }}"</h4>
                 </div>
             @else
-            <div class="col-lg-12 col-md-12 col-sm-12 mb-3 mt-4">
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-4 mt-4">
                 <h4>{{ $searchResults->count() }} results for "{{ request('query') }}"</h4>
             </div>
             @endif
@@ -22,8 +22,8 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
                         <form class="" action="index.html" method="post">
-                            <h4 class="pt-3 bold">Sort by:</h4>
-                            <h5 class="pt-3 bold">Category</h5>
+                            <h5 class="pt-3 bold">Sort by:</h5>
+                            <h6 class="pt-3 bold">Category</h6>
                             <hr />
                             <div class="limit-category-items">
                                 <input type='checkbox' id='category-show-all'>
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
 
-                            <h5 class="pt-3 bold">Level</h5>
+                            <h6 class="pt-3 bold">Year</h6>
                             <hr />
                             <div class="limit-level-items">
                                 <input type='checkbox' id='level-show-all'>
@@ -75,8 +75,7 @@
                                 </div>
                             </div>
 
-
-                            <h5 class="pt-3 bold">Term</h5>
+                            <h6 class="pt-3 bold">Term</h6>
                             <hr />
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -91,7 +90,7 @@
                                 <label class="form-check-label" for="exampleCheck1">Term three</label>
                             </div>
 
-                            <h5 class="pt-3 bold">Price</h5>
+                            <h6 class="pt-3 bold">Price</h6>
                             <hr />
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">

@@ -23,6 +23,7 @@ class Subject extends Model implements HasMedia, Searchable
     protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id', 'content_approved'];
     protected $with = ['media'];
     protected $appends = ['isSubscribedTo'];
+
     /**
      * Get the options for generating the slug.
      */
