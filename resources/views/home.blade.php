@@ -161,7 +161,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="bold">Teach students online</h3>
+                        <h4 class="bold">Teach students online</h4>
                         <p>Top teachers from best schools teaching millions of students on Coaching101.</p>
                     </div>
                 </div>
