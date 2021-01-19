@@ -4416,6 +4416,16 @@ img.rounded-corners {
   text-align: center;
 }
 
+.resource-filter_input .custom-select {
+  border-radius: 30px !important;
+}
+
+.resource-filter {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  padding: 25px;
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

@@ -5,6 +5,8 @@ namespace App\Providers;
 use Carbon\Carbon;
 use App\Models\Faq;
 use App\Models\User;
+use App\Models\Year;
+use App\Models\Term;
 use App\Models\Slider;
 use App\Models\Menu;
 use App\Models\Subject;
@@ -58,6 +60,18 @@ class ComposerServiceProvider extends ServiceProvider
             $topCategories = Category::with('subjects')->get()->take(18);
 
             $view->withTopCategories($topCategories);
+        });
+
+        View::composer(['welcome', 'home', 'pages.*'], function ($view) {
+            $years = Year::get();
+
+            $view->withYears($years);
+        });
+
+        View::composer(['welcome', 'home', 'pages.*'], function ($view) {
+            $terms = Term::get();
+
+            $view->withTerms($terms);
         });
 
         View::composer(['welcome'], function ($view) {

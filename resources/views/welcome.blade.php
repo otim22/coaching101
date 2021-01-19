@@ -4,27 +4,73 @@
 
 <section class="bg-image text-white" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 85vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
-        <div class="row mt-5">
+        <div class="row mt-5 mb-4">
             <div class="col-lg-6 col-md-8 col-sm-12">
-                <div class="learn-today">
+                <div class="learn-today mb-5">
                     <h1 class="display-3 learn-today_title">{{ $sliders->title }}</h1>
-                    <h4 class="pt-3 pm-3 bold student-font">{!! $sliders->description !!}</h4>
-                    @guest
+                    <h4 class="pt-3 bold student-font">{!! $sliders->description !!}</h4>
+                    <!-- @guest
                         <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get Started &raquo;</a></p>
-                    @endguest
+                    @endguest -->
+                </div>
+            </div>
+        </div>
 
-                    @auth
-                        @if(Auth::user()->role == 1)
-                            <p><a id="round-button-2" class="btn btn-primary btn-lg get-started_student mt-5" href="#learn-now" role="button">Get Started &raquo;</a></p>
-                        @endif
+        <div class="resource-filter">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                    <h5 class="bold">Filter for your subject choice</h5>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="form-group mb-5">
+                        <div class="input-group resource-filter_input mb-3">
+                            <select class="custom-select" name="category_id">
+                                <option selected>All Subjects</option>
+                                @foreach($topCategories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('category_id')
+                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-                        @if(Auth::user()->role == 2)
-                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get Started &raquo;</a></p>
-                        @endif
-                        @if(Auth::user()->role == 3)
-                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get Started &raquo;</a></p>
-                        @endif
-                    @endauth
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="form-group mb-4">
+                        <div class="input-group resource-filter_input mb-3">
+                            <select class="custom-select" name="year_id">
+                                <option selected>All Years</option>
+                                @foreach($years as $year)
+                                    <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('year_id')
+                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="form-group mb-4">
+                        <div class="input-group resource-filter_input mb-3">
+                            <select class="custom-select" name="term_id">
+                                <option selected>All Terms</option>
+                                @foreach($terms as $term)
+                                    <option value="{{ $term->id }}">{{ $term->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('term_id')
+                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6 text-center">
+                    <a id="round-button-2" class="btn btn-primary btn-block" href="{{ route('login') }}" role="button">Submit</a>
                 </div>
             </div>
         </div>
@@ -78,7 +124,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-12 mb-4">
-                <h3 class="bold"> Learn at your own pace anytime</h3>
+                <h4 class="bold"> Learn at your own pace anytime</h4>
             </div>
 
             <div class="col-sm-12 col-md-12 col-12">
@@ -151,7 +197,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
-                <h3 class="bold">Mosted viewed </h3>
+                <h4 class="bold">Mosted viewed </h4>
             </div>
             @foreach($mostViewedSubjects as $subject)
             <div class="col-sm-6 col-md-6 col-lg-3">
@@ -197,7 +243,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 student-text">
-                <h3 class="bold student-head-font">{{ $studentImage->title }}</h3>
+                <h4 class="bold student-head-font">{{ $studentImage->title }}</h4>
                 <p class="mb-4 sub-text student-font">{{ $studentImage->description }}</p>
                 @guest
                     <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">{{ $studentImage->button_text }} &raquo;</a>
@@ -228,7 +274,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="mb-2">
-                    <h3 class="bold">{{ $teacherImage->title }}</h3>
+                    <h4 class="bold">{{ $teacherImage->title }}</h4>
                     <p class="mb-4 sub-text">{{ $teacherImage->description }}</p>
                     @guest
                         <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
@@ -258,7 +304,7 @@
     <div class="container ">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                <h3 class="bold">Our popular teachers</h3>
+                <h4 class="bold">Our popular teachers</h4>
             </div>
             @foreach($teachers as $teacher)
                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -287,7 +333,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12">
-                <h3 class="bold">Frequently Asked Questions</h3>
+                <h4 class="bold">Frequently Asked Questions</h4>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 mt-4 mb-5">
                 <div class="accordion" id="accordionExample">
