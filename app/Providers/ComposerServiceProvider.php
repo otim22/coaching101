@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
-use App\Models\Faq;
 use App\Models\User;
 use App\Models\Year;
 use App\Models\Term;
@@ -44,6 +43,12 @@ class ComposerServiceProvider extends ServiceProvider
             $view->withCategories($categories);
         });
 
+        View::composer(['welcome', 'home', 'pages.*'], function ($view) {
+            $topCategories = Category::with('subjects')->get()->take(18);
+
+            $view->withTopCategories($topCategories);
+        });
+
         View::composer(['welcome', 'home'], function ($view) {
             $mostViewedSubjects = Subject::get()->take(8);
 
@@ -57,12 +62,6 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['welcome', 'home', 'pages.*'], function ($view) {
-            $topCategories = Category::with('subjects')->get()->take(18);
-
-            $view->withTopCategories($topCategories);
-        });
-
-        View::composer(['welcome', 'home', 'pages.*'], function ($view) {
             $years = Year::get();
 
             $view->withYears($years);
@@ -72,30 +71,6 @@ class ComposerServiceProvider extends ServiceProvider
             $terms = Term::get();
 
             $view->withTerms($terms);
-        });
-
-        View::composer(['welcome'], function ($view) {
-            $sliders = Slider::latest()->first();
-
-            $view->withSliders($sliders);
-        });
-
-        View::composer(['welcome'], function ($view) {
-            $studentImage = StudentImage::latest()->first();
-
-            $view->withStudentImage($studentImage);
-        });
-
-        View::composer(['welcome'], function ($view) {
-            $teacherImage = TeacherImage::latest()->first();
-
-            $view->withTeacherImage($teacherImage);
-        });
-
-        View::composer(['welcome'], function ($view) {
-            $faqs = Faq::get();
-
-            $view->withFaqs($faqs);
         });
 
         View::composer(['*'], function ($view) {

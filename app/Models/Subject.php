@@ -9,6 +9,7 @@ use Spatie\Image\Manipulations;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Searchable\Searchable;
 use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Support\Facades\DB;
 use Spatie\Searchable\SearchResult;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
@@ -30,11 +31,11 @@ class Subject extends Model implements HasMedia, Searchable
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug')
-            ->allowDuplicateSlugs()
-            ->slugsShouldBeNoLongerThan(50)
-            ->usingSeparator('_');
+                                                ->generateSlugsFrom('title')
+                                                ->saveSlugsTo('slug')
+                                                ->allowDuplicateSlugs()
+                                                ->slugsShouldBeNoLongerThan(50)
+                                                ->usingSeparator('_');
     }
 
     /**
@@ -85,7 +86,6 @@ class Subject extends Model implements HasMedia, Searchable
     {
         return $this->message()->save($message);
     }
-
 
     public function updateMessage($message)
     {
@@ -140,16 +140,36 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->subscriptions()->where('user_id', Auth::id())->exists();
     }
 
+    /** Searching for subjects results*/
     public function getSearchResult(): SearchResult
-     {
+    {
         $url = route('student.show', $this->slug);
 
-         return new SearchResult(
+        return new SearchResult(
             $this,
             $this->title,
             $this->subtitle,
             $this->description,
             $url
-         );
-     }
+        );
+    }
+
+    public static function getSubjects($category, $year, $term)
+    {
+        $subjects = static::get();
+
+        if ($category) {
+            $subjects = static::where('category_id', $category);
+        }
+
+        if ($year) {
+            $subjects = static::where('year_id', $year);
+        }
+
+        if ($term) {
+            $subjects = static::where('term_id', $term);
+        }
+
+        return $subjects->paginate(10);
+    }
 }

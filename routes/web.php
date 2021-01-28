@@ -33,12 +33,11 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\MenuCategoryController;
+use App\Http\Controllers\WelcomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index']);
 
-Route::get('/library', [LibraryController::class, 'create']);
+
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
@@ -51,6 +50,7 @@ Route::get('/subjects/{term}', [MenuCategoryController::class, 'index'])->name('
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/get-more-subjects', [HomeController::class, 'getMoreSubjects'])->name('get-more-subjects');
 Route::get('/home/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
 
 Route::middleware('auth')->group(function() {

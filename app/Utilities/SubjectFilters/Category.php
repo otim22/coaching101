@@ -14,6 +14,6 @@ class Category extends QueryFilter implements FilterContract
         });
     }
 
-    // to get App\Post::with('categories')->filterBy(request()->all())->get();
-    // url http://some.url/search?category=some-tag
+    // to get App\Models\Subject::with('categories')->filterBy(request()->all())->get();
+    // url http://some.url/subject?category=some-tag
 }

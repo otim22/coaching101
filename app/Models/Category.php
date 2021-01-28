@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Utilities\FilterBuilder;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,11 +20,11 @@ class Category extends Model
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('name')
-            ->saveSlugsTo('slug')
-            ->allowDuplicateSlugs()
-            ->slugsShouldBeNoLongerThan(20)
-            ->usingSeparator('_');
+                                                ->generateSlugsFrom('name')
+                                                ->saveSlugsTo('slug')
+                                                ->allowDuplicateSlugs()
+                                                ->slugsShouldBeNoLongerThan(20)
+                                                ->usingSeparator('_');
     }
 
     /**
@@ -36,12 +37,20 @@ class Category extends Model
         return 'slug';
     }
 
+    public function scopeFilterBy($query, $filters)
+    {
+        $namespace = 'App\Utilities\PostFilters\Category';
+        $filter = new FilterBuilder($query, $filters, $namespace);
+
+        return $filter->apply();
+    }
+
     /**
     * Get the subjects for the category.
     */
    public function subjects()
    {
-       return $this->hasMany('App\Models\Subject');
+        return $this->hasMany('App\Models\Subject');
    }
 
     /**
