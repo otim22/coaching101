@@ -8,6 +8,7 @@ use App\Models\Subject;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
+use App\Constants\GlobalConstants;
 
 class HomeController extends Controller
 {
@@ -18,12 +19,12 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
     public function index()
     {
-        $subjects =  Subject::getSubjects('', '', '');
+        $subjects =  Subject::getSubjects(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS);
         $years =  Year::get();
         $terms =  Term::get();
         $categories = Category::get();
@@ -40,7 +41,7 @@ class HomeController extends Controller
         if ($request->ajax()) {
             $subjects = Subject::getSubjects($category, $year, $term);
 
-            return view('pages.subject_display.filtered_subjects', compact('subjects'));
+            return view('pages.subject_display.filtered_subjects', compact('subjects'))->render();
         }
     }
 }

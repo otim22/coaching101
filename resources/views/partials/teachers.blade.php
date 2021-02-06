@@ -9,7 +9,7 @@
                     <div class="card mb-3" style="max-width: 340px;">
                         <div class="row no-gutters">
                             <div class="col-4">
-                                <img src="{{ asset($teacher->getFirstMediaUrl('avatars', 'thumb')) }}" class="card-img" width="100%" height="100%" alt="{{ $teacher->name }}">
+                                <img src="{{ asset($teacher->getFirstMediaUrl('avatars', 'thumb')) }}" width="100%" height="100%" alt="{{ $teacher->name }}">
                             </div>
                             <div class="col-8">
                                 <div class="card-body" style="padding: 0.5rem 0rem 0rem 1rem;">

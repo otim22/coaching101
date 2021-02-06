@@ -36,8 +36,6 @@ use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\WelcomeController;
 
 Route::get('/', [WelcomeController::class, 'index']);
-
-
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
@@ -52,6 +50,8 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/get-more-subjects', [HomeController::class, 'getMoreSubjects'])->name('get-more-subjects');
 Route::get('/home/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
+
+Auth::routes(['verify' => true]);
 
 Route::middleware('auth')->group(function() {
 

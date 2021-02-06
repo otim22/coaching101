@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-4">
+<section class="section-bread bg-gray-2">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -18,15 +18,15 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-12 mb-4">
+            <div class="col-lg-2 col-md-3 col-sm-12 mb-4">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 pr-2">
-                        <h5 class="pt-3 bold">Sort by:</h5>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h5 class="bold">Sort by:</h5>
                         <div class="pt-3 mb-3">
                             <h6 class="bold">Subject</h6>
                             <div class="resource-filter_input">
                                 <select class="custom-select" id="category">
-                                    <option>All Subjects</option>
+                                    <option>{{ \App\Constants\GlobalConstants::ALL_SUBJECTS }}</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -38,19 +38,20 @@
                             <h6 class="pt-3 bold">Year</h6>
                             <div class="resource-filter_input">
                                 <select class="custom-select" id="year">
-                                    <option>All Years</option>
+                                    <option>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
                                     @foreach($years as $year)
-                                    <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                        <option value="{{ $year->id }}">{{ $year->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div>
+
+                        <div class="mb-3">
                             <h6 class="pt-3 bold">Term</h6>
                             <div class="resource-filter_input">
                                 <select class="custom-select" id="term">
-                                    <option>All Terms</option>
-                                    @foreach($terms as $term)
+                                    <option>{{ \App\Constants\GlobalConstants::ALL_TERMS }}</option>
+                                        @foreach($terms as $term)
                                     <option value="{{ $term->id }}">{{ $term->name }}</option>
                                     @endforeach
                                 </select>
@@ -60,8 +61,12 @@
                 </div>
             </div>
 
-            <div class="col-lg-9 col-md-9 col-sm-12">
+            <div class="col-lg-10 col-md-9 col-sm-12"  id="subject_data">
                 @include('pages.subject_display.filtered_subjects')
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
+                {{ $subjects->links() }}
             </div>
         </div>
     </div>
@@ -108,8 +113,6 @@
         </div>
     </div>
 </section>
-
-
 @endsection
 
 @push('scripts')

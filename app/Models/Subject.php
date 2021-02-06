@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Constants\GlobalConstants;
 use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
@@ -158,18 +159,18 @@ class Subject extends Model implements HasMedia, Searchable
     {
         $subjects = static::get();
 
-        if ($category) {
+        if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
             $subjects = static::where('category_id', $category);
         }
 
-        if ($year) {
+        if ($year && $year !== GlobalConstants::ALL_YEARS) {
             $subjects = static::where('year_id', $year);
         }
 
-        if ($term) {
+        if ($term && $term !== GlobalConstants::ALL_TERMS) {
             $subjects = static::where('term_id', $term);
         }
 
-        return $subjects->paginate(10);
+        return $subjects->paginate(12);
     }
 }
