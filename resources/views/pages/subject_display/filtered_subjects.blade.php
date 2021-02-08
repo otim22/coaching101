@@ -10,9 +10,6 @@
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
                             <span class="bold">{{ $subject->very_short_title }}</span><br />
                             <span class="author-font">By {{$subject->creator->name }}</span><br />
-                            <span class="author-font">cat {{$subject->category_id }}</span><br />
-                            <span class="author-font">Year {{$subject->year_id }}</span><br />
-                            <span class="author-font">Term {{$subject->term_id }}</span>
                             <div class="rating">
                                 <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -39,4 +36,8 @@
             </a>
         </div>
     @endforeach
+
+    <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-5">
+        {{ $subjects->links() }}
+    </div>
 </div>

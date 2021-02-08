@@ -159,18 +159,22 @@ class Subject extends Model implements HasMedia, Searchable
     {
         $subjects = static::get();
 
+        $items = [];
+
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
-            $subjects = static::where('category_id', $category);
+            $items['category_id'] = $category;
         }
 
         if ($year && $year !== GlobalConstants::ALL_YEARS) {
-            $subjects = static::where('year_id', $year);
+            $items['year_id'] = $year;
         }
 
         if ($term && $term !== GlobalConstants::ALL_TERMS) {
-            $subjects = static::where('term_id', $term);
+            $items['term_id'] = $term;
         }
 
-        return $subjects->paginate(12);
+        $subjects = static::where($items)->paginate(12);
+
+        return $subjects;
     }
 }

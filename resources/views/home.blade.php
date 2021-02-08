@@ -21,7 +21,7 @@
             <div class="col-lg-2 col-md-3 col-sm-12 mb-4">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <h5 class="bold">Sort by:</h5>
+                        <h5 class="bold">Filter by:</h5>
                         <div class="pt-3 mb-3">
                             <h6 class="bold">Subject</h6>
                             <div class="resource-filter_input">
@@ -63,10 +63,6 @@
 
             <div class="col-lg-10 col-md-9 col-sm-12"  id="subject_data">
                 @include('pages.subject_display.filtered_subjects')
-            </div>
-
-            <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
-                {{ $subjects->links() }}
             </div>
         </div>
     </div>

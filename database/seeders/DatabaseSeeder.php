@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             YearTableSeeder::class,
             TermTableSeeder::class,
             SubjectTableSeeder::class,
-            RatingTableSeeder::class,
+            // RatingTableSeeder::class,
             SubjectSubscriptionTableSeeder::class,
             MessageTableSeeder::class,
             AudienceTableSeeder::class,
