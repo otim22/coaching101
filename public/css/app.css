@@ -4486,6 +4486,10 @@ img.rounded-corners {
   height: 30px;
   min-width: 30px;
   cursor: pointer;
+
+.card-js .icon {
+  position: absolute !important;
+  top: 18px !important;
 }
 
 /*!
@@ -15420,4 +15424,3 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
-

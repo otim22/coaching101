@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('student.cart.index');
+        return view('student.cart.index', [ 'response' => [$request->input('response')] ]);
     }
 }

@@ -49589,9 +49589,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/fredrickotim/Dev/php/laravel/coaching101/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/fredrickotim/Dev/php/laravel/coaching101/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/fredrickotim/Dev/php/laravel/coaching101/resources/sass/admin/custom.scss */"./resources/sass/admin/custom.scss");
+__webpack_require__(/*! /usr/src/app/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /usr/src/app/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /usr/src/app/resources/sass/admin/custom.scss */"./resources/sass/admin/custom.scss");
 
 
 /***/ })
