@@ -1,5 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/admin/css/custom.css": "/admin/css/custom.css"
+    "/admin/css/custom.css": "/admin/css/custom.css",
+    "/js/card-js.js": "/js/card-js.js",
+    "/css/card-js.css": "/css/card-js.css"
 }

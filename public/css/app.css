@@ -4416,6 +4416,11 @@ img.rounded-corners {
   text-align: center;
 }
 
+.card-js .icon {
+  position: absolute !important;
+  top: 18px !important;
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
