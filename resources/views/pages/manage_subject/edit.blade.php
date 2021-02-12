@@ -32,7 +32,7 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2 pb-2">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <h3 class="bold">Subject introduction</h3> <hr />
+                                <h4 class="bold">Subject introduction</h4> <hr />
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group mb-4 mt-3">

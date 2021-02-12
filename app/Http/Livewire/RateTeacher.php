@@ -12,7 +12,6 @@ class RateTeacher extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'bootstrap';
     public $subject;
     public $user;
     public $rating;
@@ -39,7 +38,7 @@ class RateTeacher extends Component
     public function render()
     {
         return view('livewire.rate-teacher', [
-            'studentRatings' => Rating::orderBy('id', 'desc')->where('subject_id', $this->subject->id)->paginate(6)
+            // 'studentRatings' => Rating::orderBy('id', 'desc')->where('subject_id', $this->subject->id)->paginate(6)
         ]);
     }
 
@@ -50,30 +49,33 @@ class RateTeacher extends Component
 
     public function submit()
     {
-        $this->validate();
+        $this->subject->rateOnce($this->rating);
+        // dd($this->subject->ratings);
+        dd($this->subject->timesRated());
 
-        $ratedSubject = Rating::where('subject_id', $this->subject->id)
-                                                        ->where('user_id', Auth::id())->first();
+        // $this->validate();
 
-        if (isset($ratedSubject->subject_id)) {
-            $this->rating = "";
-            $this->comment = "";
+        // $ratedSubject = Rating::where('subject_id', $this->subject->id)
+                                                        // ->where('user_id', Auth::id())->first();
+        // if (isset($ratedSubject->subject_id)) {
+        //     $this->rating = "";
+        //     $this->comment = "";
+        //
+        //     return redirect()->back()->with('message', 'You have already rated!');
+        // } else {
+        //     Rating::create([
+        //         'rating' => $this->rating,
+        //         'comment' => $this->comment,
+        //         'user_id' => $this->user->id,
+        //         'subject_id' => $this->subject->id
+        //     ]);
+        //
+        //     $this->rating = "";
+        //     $this->comment = "";
+        //
+        //     session()->flash('message', 'Thanks for rating us.');
+        // }
 
-            return redirect()->back()->with('message', 'You have already rated!');
-        } else {
-            Rating::create([
-                'rating' => $this->rating,
-                'comment' => $this->comment,
-                'user_id' => $this->user->id,
-                'subject_id' => $this->subject->id
-            ]);
-
-            $this->rating = "";
-            $this->comment = "";
-
-            session()->flash('message', 'Thanks for rating us.');
-        }
-
-        $this->emit('refreshPage');
+        // $this->emit('refreshPage');
     }
 }

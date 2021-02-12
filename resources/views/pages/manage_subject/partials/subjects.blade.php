@@ -33,8 +33,8 @@
                         <div class="modal-body">
                             Do you really want to delete this subject? This process will delete the subject with all the topics inclusive and cannot be undone.
                         </div>
-                        <div class="modal-footer d-flex justify-content-between">
-                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-sm mr-4" data-dismiss="modal">Cancel</button>
                             {!! Form::open(['route' => ['subjects.destroy', $subject],
                                     'method' => 'delete',
                                     'data-confirmation-text' => __('Are you sure to delete :name?', ['title' => $subject->title])

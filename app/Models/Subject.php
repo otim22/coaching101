@@ -7,6 +7,7 @@ use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Image\Manipulations;
+use willvincent\Rateable\Rateable;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Searchable\Searchable;
 use Spatie\MediaLibrary\HasMedia;
@@ -20,7 +21,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Subject extends Model implements HasMedia, Searchable
 {
-    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText;
+    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable;
 
     protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id', 'content_approved'];
     protected $with = ['media'];
