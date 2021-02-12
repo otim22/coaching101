@@ -7,7 +7,7 @@
         <div class="row mt-5 mb-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
                 <div class="learn-today mb-5">
-                    <h1 class="display-3 learn-today_title">{{ $sliders->title }}</h1>
+                    <h1 class="display-4 learn-today_title">{{ $sliders->title }}</h1>
                     <h4 class="pt-3 bold student-font">{!! $sliders->description !!}</h4>
                     @guest
                         <p><a id="round-button-2" class="btn btn-primary mt-5" href="{{ route('login') }}" role="button">Get Started &raquo;</a></p>
