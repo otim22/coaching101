@@ -15,7 +15,6 @@
                         Browse
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
                         @foreach ($menus as $menu)
                             <ul class="dropdown-submenu">
                                 <a class="dropdown-item" href="#">{{ $menu->title }}</a>
@@ -24,8 +23,8 @@
                                         <ul class="dropdown-submenu">
                                             <a class="dropdown-item" href="#">{{ $childMenu->title }}</a>
                                             <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                @foreach ($childMenu['allChildren'] as $child)
-                                                    <a class="dropdown-item" href="#">{{ $child->title }}</a>
+                                                @foreach ($childMenu['allChildren'] as $term)
+                                                    <a class="dropdown-item" href="#">{{ $term->title }}</a>
                                                 @endforeach
                                             </li>
                                         </ul>
@@ -83,11 +82,11 @@
 
                 @guest
                 <li class="nav-item {{ Helper::set_active(['login']) }} mt-1 mr-2 space-bottom">
-                    <a class="btn btn-primary btn-sm nav-link bold" id="round-button" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn-danger btn-sm nav-link" id="round-button" href="{{ route('login') }}">Login</a>
                 </li>
                 @if (Route::has('register'))
                     <li class="nav-item {{ Helper::set_active(['register']) }} mt-1 mr-2 register-button">
-                        <a class="btn btn-outline-secondary btn-sm nav-link bold" id="round-button" href="{{ route('register') }}">Register</a>
+                        <a class="btn btn-outline-secondary btn-sm nav-link" id="round-button" href="{{ route('register') }}">Register</a>
                     </li>
                 @endif
                 @else

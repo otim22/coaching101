@@ -3,8 +3,9 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
-use App\Models\Faq;
 use App\Models\User;
+use App\Models\Year;
+use App\Models\Term;
 use App\Models\Slider;
 use App\Models\Menu;
 use App\Models\Subject;
@@ -38,8 +39,14 @@ class ComposerServiceProvider extends ServiceProvider
                 $query->setRelation('subjects', $query->subjects->take(8));
                 return $query;
             })->groupBy('name')->take(8);
-            
+
             $view->withCategories($categories);
+        });
+
+        View::composer(['welcome', 'home', 'pages.*'], function ($view) {
+            $topCategories = Category::with('subjects')->get()->take(18);
+
+            $view->withTopCategories($topCategories);
         });
 
         View::composer(['welcome', 'home'], function ($view) {
@@ -49,39 +56,21 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['welcome', 'home'], function ($view) {
-            $teachers = User::with('subjects')->get()->where('role', '2')->take(9);
+            $teachers = User::with('subjects')->get()->where('role', '2')->take(12);
 
             $view->withTeachers($teachers);
         });
 
         View::composer(['welcome', 'home', 'pages.*'], function ($view) {
-            $topCategories = Category::with('subjects')->get()->take(18);
+            $years = Year::get();
 
-            $view->withTopCategories($topCategories);
+            $view->withYears($years);
         });
 
-        View::composer(['welcome'], function ($view) {
-            $sliders = Slider::latest()->first();
+        View::composer(['welcome', 'home', 'pages.*'], function ($view) {
+            $terms = Term::get();
 
-            $view->withSliders($sliders);
-        });
-
-        View::composer(['welcome'], function ($view) {
-            $studentImage = StudentImage::latest()->first();
-
-            $view->withStudentImage($studentImage);
-        });
-
-        View::composer(['welcome'], function ($view) {
-            $teacherImage = TeacherImage::latest()->first();
-
-            $view->withTeacherImage($teacherImage);
-        });
-
-        View::composer(['welcome'], function ($view) {
-            $faqs = Faq::get();
-
-            $view->withFaqs($faqs);
+            $view->withTerms($terms);
         });
 
         View::composer(['*'], function ($view) {

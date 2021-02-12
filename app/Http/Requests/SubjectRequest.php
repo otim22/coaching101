@@ -32,4 +32,15 @@ class SubjectRequest extends FormRequest
             'cover_image' => 'required|image|mimes:jpg, jpeg, png|max:5520'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Title is required.',
+            'description.required' => 'A description is required',
+            'category_id.required' => 'Choose a subject',
+            'price.required' => 'Price is required in digits without (, .) characters',
+            'cover_image.required' => 'A cover image is required'
+        ];
+    }
 }

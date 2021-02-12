@@ -52,6 +52,12 @@ class SubjectController extends Controller
         $subject->term_id = $request->input('term_id');
         $subject->user_id = Auth::user()->id;
 
+        $category = Category::findOrFail($request->input('category_id'));
+        $category->years()->attach($request->input('year_id'));
+
+        $year = Year::findOrFail($request->input('year_id'));
+        $year->terms()->attach($request->input('term_id'));
+
         $subject->save();
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {

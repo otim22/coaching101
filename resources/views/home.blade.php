@@ -2,58 +2,83 @@
 
 @section('content')
 
+<section class="section-bread bg-gray-2">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ url('/') }}">
+                        <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-house-fill pb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-4 mt-5">
-                <div>
-                    <h4 class="bold">Your welcome to learn, {{ Auth::user()->name }}</h4>
-                </div>
-            </div>
+            <div class="col-lg-2 col-md-3 col-sm-12 mb-4">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h5 class="bold">Filter by:</h5>
+                        <div class="pt-3 mb-3">
+                            <h6 class="bold">Subject</h6>
+                            <div class="resource-filter_input">
+                                <select class="custom-select" id="category">
+                                    <option>{{ \App\Constants\GlobalConstants::ALL_SUBJECTS }}</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
-            @foreach($mostViewedSubjects as $subject)
-            <div class="col-sm-6 col-md-6 col-lg-3">
-                <a href="{{ route('subjects.show', $subject->slug) }}" style="text-decoration: none">
-                    <div class="card mb-4">
-                        <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                            <img src="{{ $subject->image_thumb}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
-                        </a>
-                        <div class="card-body card-body_custom">
-                            <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
-                                <span class="bold">{{ $subject->very_short_title }}</span><br />
-                                <span class="author-font">By {{$subject->creator->name }}</span>
-                                <div class="rating">
-                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                    </svg>
-                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                    </svg>
-                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                    </svg>
-                                    <svg class="bi bi-star-half" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M5.354 5.119L7.538.792A.516.516 0 018 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0116 6.32a.55.55 0 01-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.519.519 0 01-.146.05c-.341.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 01-.171-.403.59.59 0 01.084-.302.513.513 0 01.37-.245l4.898-.696zM8 12.027c.08 0 .16.018.232.056l3.686 1.894-.694-3.957a.564.564 0 01.163-.505l2.906-2.77-4.052-.576a.525.525 0 01-.393-.288L8.002 2.223 8 2.226v9.8z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="title-font">{{ count($subject->subscriptions) }}</span>
-                                </div>
-                                <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
-                            </a>
-                            <div class="mt-2 d-flex justify-content-between">
-                                <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
-                                <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                        <div class="mb-3">
+                            <h6 class="pt-3 bold">Year</h6>
+                            <div class="resource-filter_input">
+                                <select class="custom-select" id="year">
+                                    <option>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
+                                    @foreach($years as $year)
+                                        <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6 class="pt-3 bold">Term</h6>
+                            <div class="resource-filter_input">
+                                <select class="custom-select" id="term">
+                                    <option>{{ \App\Constants\GlobalConstants::ALL_TERMS }}</option>
+                                        @foreach($terms as $term)
+                                    <option value="{{ $term->id }}">{{ $term->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
-            @endforeach
+
+            <div class="col-lg-10 col-md-9 col-sm-12"  id="subject_data">
+                @include('pages.subject_display.filtered_subjects')
+            </div>
         </div>
     </div>
 </section>
 
 <section class="bg-white">
     @include('partials.categories')
+</section>
+
+<section class="bg-gray-3">
+    @include('partials.teachers')
 </section>
 
 <section class="seven">
@@ -68,7 +93,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="bold">Teach students online</h3>
+                        <h4 class="bold">Teach students online</h4>
                         <p>Top teachers from best schools teaching millions of students on Coaching101.</p>
                     </div>
                 </div>
@@ -90,3 +115,8 @@
     </div>
 </section>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/home.js')}}" type="text/javascript"></script>
+@endpush

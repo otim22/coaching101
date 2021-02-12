@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Year;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -27,7 +28,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        $years = Year::get();
+
+        return view('admin.categories.create', compact('years'));
     }
 
     /**
@@ -66,7 +69,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit', compact('category'));
+        $years = Year::get();
+
+        return view('admin.categories.edit', compact(['category', 'years']));
     }
 
     /**

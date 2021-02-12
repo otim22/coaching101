@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateYearTermsTable extends Migration
+class CreateCategoryYearTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateYearTermsTable extends Migration
      */
     public function up()
     {
-        Schema::create('year_terms', function (Blueprint $table) {
+        Schema::create('category_year', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('year_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('term_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateYearTermsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('year_terms');
+        Schema::dropIfExists('category_year');
     }
 }

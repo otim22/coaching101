@@ -22,7 +22,7 @@
                 <div class="fast-transition mb-3">
                     <div class="row m-2 pt-2">
                         <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between">
-                            <h3>Subject outline</h3>
+                            <h4>Subject outline</h4>
                             <h5>
                                 <a href="{{ route('subjects.show', $subject) }}" style="text-decoration: none">
                                 <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

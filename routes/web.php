@@ -19,6 +19,8 @@ use App\Http\Controllers\AudienceController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\TopCategoryController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\YearController;
+use App\Http\Controllers\Admin\TermController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MenuController;
@@ -30,30 +32,32 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\MenuCategoryController;
+use App\Http\Controllers\WelcomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/library', [LibraryController::class, 'create']);
+Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
 Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject?}/topics/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
-Route::post('/rating', [RatingController::class, 'store'])->name('rating.store');
 Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
 Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('teachers.index');
+Route::get('/subjects/{term}', [MenuCategoryController::class, 'index'])->name('terms.index');
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/get-more-subjects', [HomeController::class, 'getMoreSubjects'])->name('get-more-subjects');
 Route::get('/home/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
+
+Auth::routes(['verify' => true]);
 
 Route::middleware('auth')->group(function() {
 
     Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/rating', [RatingController::class, 'store'])->name('rating.store');
 
     Route::post( '/pay', [PaymentController::class, 'initialize'])->name('pay');
     Route::post('/rave/callback', [PaymentController::class, 'callback'])->name('callback');
@@ -101,14 +105,9 @@ Route::middleware('auth')->group(function() {
         Route::resource('studentImages', 'StudentImageController');
         Route::resource('teacherImages', 'TeacherImageController');
         Route::resource('faqs', 'FaqController');
-
-        Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
-        Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
-        Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
-        Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
-        Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
-        Route::patch('categories/{category}/update', [CategoryController::class, 'update'])->name('categories.update');
-        Route::delete('categories/{category}/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');
+        Route::resource('categories', 'CategoryController');
+        Route::resource('years', 'YearController');
+        Route::resource('terms', 'TermController');
 
         Route::get('menus', [MenuController::class, 'index'])->name('menus.index');
         Route::post('menus', [MenuController::class, 'store'])->name('menus.store');

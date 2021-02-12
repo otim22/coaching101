@@ -15,12 +15,10 @@ class SearchController extends Controller
             return back()->with('error', 'Please enter something');
         }
 
-        $categories = Category::get();
-
         $searchResults = (new Search())
                     ->registerModel(Subject::class, 'title')
-                    ->perform($request->input('query'));
+                    ->perform($request->input('query'))->paginate(12);
 
-        return view('pages.subject_display.search_results', compact(['searchResults', 'categories']));
+        return view('pages.subject_display.search_results', compact(['searchResults']));
     }
 }
