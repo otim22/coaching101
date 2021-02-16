@@ -25,11 +25,11 @@
         <div class="row">
             @if($searchResults->count() === 0)
                 <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                    <h4>Sorry, no results found for "{{ request('query') }}"</h4>
+                    <h5>Sorry, no results found for "{{ request('query') }}"</h5>
                 </div>
             @else
             <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                <h4>{{ $searchResults->count() }} results for "{{ request('query') }}"</h4>
+                <h5>{{ $searchResults->count() }} results for "{{ request('query') }}"</h5>
             </div>
             @endif
         </div>
@@ -40,7 +40,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
                         <div class="card">
                             <a href="{{ route('subjects.index', $search->searchable->slug) }}" style="text-decoration: none">
-                                <img src="{{ $search->searchable->default_image}}" alt="{{ $search->searchable->very_short_title }}" width="100%" height="130">
+                                <img src="{{ $search->searchable->cover_image}}" alt="{{ $search->searchable->very_short_title }}" width="100%" height="130">
                             </a>
                             <div class="card-body card-body_custom">
                                 <a href="{{ route('subjects.index', $search->searchable->slug) }}" style="text-decoration: none" class="title-font">

@@ -106,7 +106,7 @@
                             <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
                                 <div class="card">
                                     <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                                        <img src="{{ $subject->default_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
+                                        <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
                                     </a>
                                     <div class="card-body card-body_custom">
                                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
@@ -170,7 +170,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="card mb-4">
                     <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                        <img src="{{ $subject->default_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
+                        <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
                     </a>
                     <div class="card-body card-body_custom">
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
@@ -233,7 +233,7 @@
                 @endauth
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <img src="{{ asset($studentImage->default_image) }}" alt="image thumb" class="student-image">
+                <img src="{{ asset($studentImage->cover_image) }}" alt="image thumb" class="student-image">
             </div>
         </div>
     </div>
@@ -249,7 +249,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
-            <img src="{{ asset($teacherImage->default_image) }}" alt="teacher thumb" class="teacher-image">
+            <img src="{{ asset($teacherImage->cover_image) }}" alt="teacher thumb" class="teacher-image">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="mb-2">
