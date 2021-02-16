@@ -55,7 +55,7 @@ class ComposerServiceProvider extends ServiceProvider
             $view->withMostViewedSubjects($mostViewedSubjects);
         });
 
-        View::composer(['welcome', 'home'], function ($view) {
+        View::composer(['welcome', 'home', 'pages.*'], function ($view) {
             $teachers = User::with('subjects')->get()->where('role', '2')->take(12);
 
             $view->withTeachers($teachers);

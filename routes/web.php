@@ -5,8 +5,6 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\MySubjectsController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AccountController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SubjectController;
@@ -30,14 +28,19 @@ use App\Http\Controllers\Admin\TeacherImageController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\Admin\BooksController;
+use App\Http\Controllers\Admin\NotesController;
+use App\Http\Controllers\Admin\PastPapersController;
 
 Route::get('/', [WelcomeController::class, 'index']);
-Route::get('/edit-profile', [UserController::class, 'create'])->name('edit-profile');
-Route::get('/accounts', [AccountController::class, 'create'])->name('accounts');
+Route::get('/books', [\App\Http\Controllers\BooksController::class, 'index'])->name('books');
+Route::get('/notes', [\App\Http\Controllers\NotesController::class, 'index'])->name('notes');
+Route::get('/pastpapers', [\App\Http\Controllers\PastPapersController::class, 'index'])->name('pastpapers');
+Route::get('/account-setting', [UserController::class, 'account'])->name('account-setting');
+Route::patch('/account-update', [UserController::class, 'accountUpdate'])->name('account-update');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject?}/topics/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
@@ -57,10 +60,6 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::post('/rating', [RatingController::class, 'store'])->name('rating.store');
-
-    Route::post( '/pay', [PaymentController::class, 'initialize'])->name('pay');
-    Route::post('/rave/callback', [PaymentController::class, 'callback'])->name('callback');
 
     Route::prefix('teacher')
             ->group(function() {
@@ -116,5 +115,9 @@ Route::middleware('auth')->group(function() {
         Route::get('menus/{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
         Route::patch('menus/{menu}/update', [MenuController::class, 'update'])->name('menus.update');
         Route::delete('menus/{menu}/destroy', [MenuController::class, 'destroy'])->name('menus.destroy');
+
+        Route::resource('books', 'BooksController');
+        Route::resource('notes', 'NotesController');
+        Route::resource('pastpapers', 'PastPapersController');
     });
 });

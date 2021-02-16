@@ -102,7 +102,6 @@
 
                                 <label class="form-check-label" for="agreement">
                                     {{ __('I accept Terms of Use & Privacy Policy.') }}
-                                    <!-- I accept the <a href="#" style="text-decoration: none">Terms of Use</a> & <a href="#" style="text-decoration: none">Privacy Policy</a> -->
                                 </label>
                               </div>
 

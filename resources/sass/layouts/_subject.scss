@@ -5,6 +5,14 @@
     border-radius: 8px;
 }
 
+.fast-transition-white {
+    position: relative; /* For positioning the pseudo-element */
+    background-color: $color-white;
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 500px;
+}
+
 .fast-transition-2 {
     position: relative; /* For positioning the pseudo-element */
     background-color: $color-gray-2;

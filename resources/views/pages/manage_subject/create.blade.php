@@ -129,7 +129,7 @@
                                         <input type="text"
                                                     class="form-control @error('price') is-invalid @enderror"
                                                     id="price"
-                                                    placeholder="Enter subject price"
+                                                    placeholder="Example price: 20000"
                                                     aria-label="Enter subject price"
                                                     aria-describedby="price"
                                                     name="price"

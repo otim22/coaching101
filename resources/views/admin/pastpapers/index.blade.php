@@ -9,22 +9,22 @@
                 <div class="card admin-shadow">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
+                            <div><h4>PastPapers</h4></div>
                             <div>
-                                <h4>Subjects</h4>
-                            </div>
-                            <div>
-                                <a type="button" href="{{ route('admin.categories.create') }}" class="btn btn-primary pt-1" name="button">Create Subject</a>
+                                <a type="button" href="{{ route('admin.pastpapers.create') }}" class="btn btn-primary pt-1" name="button">Upload PastPapers</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        @foreach($categories as $category)
+                        @forelse($pastpapers as $pastpaper)
                             <h5 class="mb-2">
-                                <a href="{{ route('admin.categories.show', $category) }}" style="text-decoration: none;">
-                                    <i class="material-icons material-icons_custom">navigate_next</i>{{ Str::ucfirst($category->name) }}
+                                <a href="{{ route('admin.pastpapers.show', $pastpaper) }}" style="text-decoration: none;">
+                                    {{ Str::ucfirst($pastpaper->title) }}
                                 </a>
                             </h5>
-                        @endforeach
+                        @empty
+                            <p class="mb-2">No available pastpapers</p>
+                        @endforelse
                     </div>
                 </div>
             </div>

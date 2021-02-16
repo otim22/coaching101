@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\User;
-use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
+use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -29,11 +30,23 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function account()
     {
-        $roles = Role::pluck('name', 'name')->all();
+        $user = User::with('media')->where('id', Auth::id())->firstOrFail();
 
-        return view('pages.profile.index', compact('roles'));
+        return view('pages.profile.index', compact('user'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function accountUpdate()
+    {
+        $user = User::with('media')->where('id', Auth::id())->firstOrFail();
+
+        return view('pages.profile.index', compact('user'));
     }
 
     /**
@@ -109,7 +122,7 @@ class UserController extends Controller
         if(!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
         } else {
-            $input = array_except($input,array('password'));
+            $input = array_except($input, array('password'));
         }
 
         $user = User::find($id);
