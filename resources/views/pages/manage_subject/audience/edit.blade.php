@@ -33,8 +33,8 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2">
                             <div class="cols-sm-12 col-md-12 col-lg-12">
-                                <h4 class="bold">Target your students</h4> <hr />
-                                <p class="lead mb-4 mt-4">The descriptions you write here will help students decide if your class is the one for them.</p>
+                                <h5 class="bold">Target your students</h5> <hr />
+                                <p class="mb-4 mt-4">The descriptions you write here will help students decide if your class is the one for them.</p>
                             </div>
 
                             <div class="cols-sm-12 col-md-12 col-lg-12">
@@ -183,8 +183,6 @@
                                     </span>
                                     Add answer
                                 </p>
-
-
                             </div>
                         </div>
                     </div>
@@ -203,7 +201,6 @@
                         </div>
                     </div>
                 </form>
-
                 @include('pages.manage_subject.audience.partials.js_files')
             </div>
         </div>

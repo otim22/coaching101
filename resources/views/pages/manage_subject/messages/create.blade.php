@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb bg-gray">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{ url('/') }}">
+                    <a href="{{ url('/') }}" class="disabled">
                         <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-house-fill pb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                             <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
@@ -14,7 +14,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}" class="disabled">Subjects</a></li>
-                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}">{{ $subject->short_title }}</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}" class="disabled">{{ $subject->short_title }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Message</li>
             </ol>
         </nav>
@@ -31,7 +31,7 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2">
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <h4 class="bold">Subject messages</h4> <hr />
+                                <h5 class="bold">Subject messages</h5> <hr />
                             </div>
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -69,9 +69,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
-                        <div>
-                            <h5>Step 3 of 3</h5>
-                        </div>
+                        <div><h6 class="bold">Step 3 of 3</h6></div>
                         <div>
                             <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Save</button>
                         </div>

@@ -33,7 +33,7 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2">
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <h4 class="bold">Subject messages</h4> <hr />
+                                <h5 class="bold">Subject messages</h5> <hr />
                             </div>
 
                             <div class="col-sm-12 col-md-12 col-lg-12">

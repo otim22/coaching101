@@ -31,7 +31,7 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2 pb-2">
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <h4 class="bold">Subject introduction</h4> <hr />
+                                <h5 class="bold">Subject introduction</h5> <hr />
                             </div>
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -135,7 +135,7 @@
                                                     name="price"
                                                     value="{{ old('price') }}">
                                     </div>
-                                    <p><small style="color: gray; font-weight: bold;">*Price should be only digits</small></p>
+                                    <p><small style="color: red; font-weight: bold;">*Price should be only digits</small></p>
                                     @error('price')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
@@ -153,9 +153,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
-                        <div>
-                            <h5>Step 1 of 3</h5>
-                        </div>
+                        <div><h6 class="bold">Step 1 of 3</h6></div>
                         <div>
                             <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Save</button>
                         </div>

@@ -32,7 +32,7 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2">
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <h4 class="bold">Subject messages</h4> <hr />
+                                <h5 class="bold">Subject messages</h5> <hr />
                             </div>
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -70,9 +70,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
-                        <div>
-                            <h5>Step 3 of 3</h5>
-                        </div>
+                        <div><h6 class="bold">Step 3 of 3</h6></div>
                         <div>
                             <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Save</button>
                         </div>

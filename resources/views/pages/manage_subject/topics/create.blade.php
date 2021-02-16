@@ -6,7 +6,14 @@
     <div class="container">
         <nav aria-label="breadcrumb bg-gray">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item">
+                    <a href="{{ url('/') }}" class="disabled">
+                        <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-house-fill pb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg>
+                    </a>
+                </li>
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Subjects</a></li>
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}">{{ $subject->short_title }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">New Topic</li>
@@ -22,7 +29,7 @@
                 <div class="fast-transition mb-3">
                     <div class="row m-2 pt-2">
                         <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between">
-                            <h4>Subject outline</h4>
+                            <h5 class="bold">Subject outline</h5>
                             <h5>
                                 <a href="{{ route('subjects.show', $subject) }}" style="text-decoration: none">
                                 <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +38,7 @@
                                 </svg>
                                 Back
                             </a>
-                            </h5>
+                        </h5>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <hr />
@@ -65,8 +72,8 @@
                                     </div>
                                     <div class="form-group mt-2 pl-3 pr-3">
                                         <label for="content_file_path">Content File</label>
-                                        <small class="form-text text-muted mb-3">
-                                            <strong>Note:</strong>  Resource should be a video and the file size is less than 500 MB.
+                                        <small class="form-text mb-3" style="color: red;">
+                                            <strong>Note:</strong>  Resource should be a video and of file size less than 500 MB.
                                         </small>
                                         <div class="custom-file">
                                             <input type="file"
@@ -90,8 +97,8 @@
                                     </div>
                                     <div class="form-group mt-2 pl-3 pr-3">
                                         <label for="resource_attachment_path">Resource Attachments</label>
-                                        <small class="form-text mb-3 text-muted">
-                                            <strong>Note:</strong>  A resource is a document that can be used to help students in the class. This file is going to be more like an extra class. Make sure everything the file size is less than 100 MB.
+                                        <small class="form-text mb-3 " style="color: red;">
+                                            <strong>Note:</strong>  This is a document that can be used to help students while in class. And it's more like an extra resource. Make sure the file size is less than 100 MB.
                                         </small>
                                         <div class="resource-controls">
                                             <div class="resource-entry input-group">
