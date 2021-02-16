@@ -39,7 +39,7 @@
                     </div>
                     <div class="card-body">
                         <h4>{{ $book->title }}</h4>
-                        <p>{{ $book->category->name }}, {{ $book->year->name }} of {{ $book->term->name }}. </p>
+                        <p>{{ $book->category->name }} {{ $book->year->name }}, {{ $book->term->name }}. </p>
                         <p>UGX {{ number_format($book->price) }}/- </p>
                         <div class="text-center">
                             <img src="{{ asset($book->default_image) }}" class="w-50 mb-2">

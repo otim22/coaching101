@@ -83,7 +83,7 @@
                                 <p><small style="color: red; font-weight: bold;">*Choosing another file replaces this current one</small></p>
 
                                 <label for="book" class="bold">Upload Book</label>
-                                <input type="file" name="book" class="form-control-file @error('book') is-invalid @enderror" id="book" required>
+                                <input type="file" name="book" class="form-control-file @error('book') is-invalid @enderror" id="book">
                                 @error('book')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror

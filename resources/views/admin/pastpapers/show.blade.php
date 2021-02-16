@@ -10,17 +10,17 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <a type="button" href="{{ route('admin.books.index') }}" class="btn btn-secondary" name="button">Back</a>
+                                <a type="button" href="{{ route('admin.pastpapers.index') }}" class="btn btn-secondary" name="button">Back</a>
                             </div>
                             <div>
                                 <li class="nav-item dropdown d-flex align-items-center">
-                                    <a href="{{ route('admin.books.edit', $book) }}" class="nav-link dropdown-toggle btn btn-primary" data-toggle="dropdown" aria-expanded="false">
+                                    <a href="{{ route('admin.pastpapers.edit', $pastpaper) }}" class="nav-link dropdown-toggle btn btn-primary" data-toggle="dropdown" aria-expanded="false">
                                         Action
                                     </a>
                                     <div class="dropdown-menu">
                                         <ul class="list-unstyled">
                                             <li>
-                                                <a href="{{ route('admin.books.edit', $book) }}" class="dropdown-item">
+                                                <a href="{{ route('admin.pastpapers.edit', $pastpaper) }}" class="dropdown-item">
                                                     Edit
                                                 </a>
                                             </li>
@@ -38,18 +38,18 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h4>{{ $book->title }}</h4>
-                        <p>{{ $book->category->name }}, {{ $book->year->name }} of {{ $book->term->name }}. </p>
-                        <p>UGX {{ number_format($book->price) }}/- </p>
+                        <h4>{{ $pastpaper->title }}</h4>
+                        <p>{{ $pastpaper->category->name }} {{ $pastpaper->year->name }}, {{ $pastpaper->term->name }}. </p>
+                        <p>UGX {{ number_format($pastpaper->price) }}/- </p>
                         <div class="text-center">
-                            <img src="{{ asset($book->default_image) }}" class="w-50 mb-2">
-                            <!-- <img src="{{ asset($book->getFirstMediaUrl()) }}" class="w-30 mb-2"> -->
+                            <img src="{{ asset($pastpaper->default_image) }}" class="w-50 mb-2">
+                            <!-- <img src="{{ asset($pastpaper->getFirstMediaUrl()) }}" class="w-30 mb-2"> -->
                         </div>
-                        <button class="btn btn-secondary btn-sm float-right" href="{{ $book->getFirstMediaUrl() }}" target="_blank">
-                            Download book here
+                        <button class="btn btn-secondary btn-sm float-right" href="{{ $pastpaper->getFirstMediaUrl() }}" target="_blank">
+                            Download pastpaper here
                         </button>
                     </div>
-                    <form action="{{ route('admin.books.destroy', $book) }}" class="hidden" id="delete-book-item" method="POST">
+                    <form action="{{ route('admin.pastpapers.destroy', $pastpaper) }}" class="hidden" id="delete-book-item" method="POST">
                         @csrf
                         @method('delete')
                     </form>

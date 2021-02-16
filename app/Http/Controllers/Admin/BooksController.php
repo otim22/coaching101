@@ -8,6 +8,7 @@ use App\Models\Term;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BookRequest;
 
 class BooksController extends Controller
 {
@@ -33,17 +34,9 @@ class BooksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Book $book)
+    public function store(BookRequest $request, Book $book)
     {
         $book = new Book($request->except(['book']));
-        $request->validate([
-            'title' => 'required|string',
-            'price' => 'required',
-            'category_id' => 'required|integer',
-            'year_id' => 'required|integer',
-            'term_id' => 'required|integer',
-            'user_id' => 'integer|nullable'
-        ]);
 
         $book->save();
 
@@ -84,20 +77,9 @@ class BooksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(BookRequest $request, Book $book)
     {
-        $book = new Book($request->except(['book']));
-
-        $newBook = $request->validate([
-            'title' => 'required|string',
-            'price' => 'required',
-            'category_id' => 'required|integer',
-            'year_id' => 'required|integer',
-            'term_id' => 'required|integer',
-            'user_id' => 'integer|nullable'
-        ]);
-
-        Book::create($newBook);
+        $book->fill($request->except(['book']))->save();
 
         if($request->hasFile('book') && $request->file('book')->isValid()) {
             $book->addMediaFromRequest('book')

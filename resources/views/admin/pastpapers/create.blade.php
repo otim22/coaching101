@@ -9,15 +9,15 @@
                 <div class="card admin-shadow">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <div><h2>Book</h2></div>
+                            <div><h2>Past paper</h2></div>
                             <div>
-                                <a type="button" href="{{ route('admin.books.index') }}" class="btn btn-secondary pt-1" name="button">Back</a>
+                                <a type="button" href="{{ route('admin.pastpapers.index') }}" class="btn btn-secondary pt-1" name="button">Back</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('admin.books.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.pastpapers.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group mb-4">
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="title">Book title</label>
+                                <label for="title">Pastpaper title</label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" placeholder="Example: Introduction to modern physics">
                                 @error('title')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -74,15 +74,15 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="book" class="bold">Upload Book</label>
-                                <input type="file" name="book" class="form-control-file @error('book') is-invalid @enderror" id="book" required>
-                                @error('book')
+                                <label for="pastpaper" class="bold">Upload Pastpaper</label>
+                                <input type="file" name="pastpaper" class="form-control-file @error('pastpaper') is-invalid @enderror" id="pastpaper" required>
+                                @error('pastpaper')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="price" class="bold">Book price</label>
+                                <label for="price" class="bold">Pastpaper price</label>
                                 <div class="input-group">
                                     <input type="text"
                                                 class="form-control @error('price') is-invalid @enderror"

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Topic;
@@ -10,6 +9,7 @@ use App\Models\Ratings;
 use App\Models\Subject;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SubjectRequest;
 
 class SubjectController extends Controller
@@ -86,7 +86,6 @@ class SubjectController extends Controller
 
     public function update(Request $request, Subject $subject)
     {
-        // dd($request);
         $request->validate([
             'title' => 'required|string',
             'subtitle' => 'nullable|string',

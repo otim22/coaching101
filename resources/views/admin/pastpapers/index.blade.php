@@ -9,9 +9,9 @@
                 <div class="card admin-shadow">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <div><h4>PastPapers</h4></div>
+                            <div><h4>Past papers</h4></div>
                             <div>
-                                <a type="button" href="{{ route('admin.pastpapers.create') }}" class="btn btn-primary pt-1" name="button">Upload PastPapers</a>
+                                <a type="button" href="{{ route('admin.pastpapers.create') }}" class="btn btn-primary pt-1" name="button">Upload Pastpaper</a>
                             </div>
                         </div>
                     </div>
