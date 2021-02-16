@@ -14,7 +14,7 @@ class PastPapersController extends Controller
 {
     public function index()
     {
-        $pastpapers = PastPaper::paginate(12);
+        $pastpapers = PastPaper::paginate(20);
 
         return view('admin.pastpapers.index', compact('pastpapers'));
     }

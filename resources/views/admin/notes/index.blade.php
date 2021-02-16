@@ -9,27 +9,27 @@
                 <div class="card admin-shadow">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <div><h4>Past papers</h4></div>
+                            <div><h4>Notes</h4></div>
                             <div>
-                                <a type="button" href="{{ route('admin.pastpapers.create') }}" class="btn btn-primary pt-1" name="button">Upload Pastpaper</a>
+                                <a type="button" href="{{ route('admin.notes.create') }}" class="btn btn-primary pt-1" name="button">Upload Note</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        @forelse($pastpapers as $pastpaper)
+                        @forelse($notes as $note)
                             <h5 class="mb-2">
-                                <a href="{{ route('admin.pastpapers.show', $pastpaper) }}" style="text-decoration: none;">
-                                    {{ Str::ucfirst($pastpaper->title) }}
+                                <a href="{{ route('admin.notes.show', $note) }}" style="text-decoration: none;">
+                                    {{ Str::ucfirst($note->title) }}
                                 </a>
                             </h5>
                         @empty
-                            <p class="mb-2">No available pastpapers</p>
+                            <p class="mb-2">No available notes</p>
                         @endforelse
                     </div>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center">
-                {{ $pastpapers->links() }}
+                {{ $notes->links() }}
             </div>
         </div>
     </div>

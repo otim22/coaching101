@@ -7,7 +7,6 @@ use App\Models\Term;
 use App\Models\Subject;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Livewire\WithPagination;
 use App\Constants\GlobalConstants;
 
 class HomeController extends Controller

@@ -15,7 +15,6 @@ class WelcomeController extends Controller
     public function index()
     {
         $subjects =  Subject::get();
-        // $subjects =  Subject::getSubjects();
         $sliders = Slider::latest()->first();
         $studentImage = StudentImage::latest()->first();
         $teacherImage = TeacherImage::latest()->first();
