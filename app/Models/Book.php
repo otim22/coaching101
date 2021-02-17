@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Image\Manipulations;
@@ -14,7 +15,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Book extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, HasSlug, PresentsMedia;
+    use HasFactory, InteractsWithMedia, HasSlug, PresentsMedia, PresentsText;
 
     protected $fillable = ['title', 'price', 'category_id', 'year_id', 'term_id', 'user_id'];
     protected $with = ['media'];
@@ -44,9 +45,9 @@ class Book extends Model implements HasMedia
 
     public function registerMediaCollections() : void
     {
-        $this->addMediaCollection('default')
+        $this->addMediaCollection('cover_image')
                 ->registerMediaConversions(function (Media $media) {
-                        $this->addMediaConversion('default')
+                        $this->addMediaConversion('cover_image')
                                 ->fit(Manipulations::FIT_CONTAIN, 800, 600)
                                 ->nonQueued();
 
@@ -54,6 +55,8 @@ class Book extends Model implements HasMedia
                                 ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
                                 ->nonQueued();
                 });
+
+            $this->addMediaCollection('book');
     }
 
     /**
@@ -78,5 +81,11 @@ class Book extends Model implements HasMedia
     public function term()
     {
         return $this->belongsTo('App\Models\Term', 'term_id');
+    }
+
+    /** Return the subject's creator */
+    public function creator()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

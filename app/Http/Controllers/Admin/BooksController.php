@@ -36,12 +36,16 @@ class BooksController extends Controller
      */
     public function store(BookRequest $request, Book $book)
     {
-        $book = new Book($request->except(['book']));
+        $book = new Book($request->except(['book', 'cover_image']));
 
         $book->save();
 
+        if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+            $book->addMediaFromRequest('cover_image')->toMediaCollection('cover_image');
+        }
+
         if($request->hasFile('book') && $request->file('book')->isValid()) {
-            $book->addMediaFromRequest('book')->toMediaCollection('default');
+            $book->addMediaFromRequest('book')->toMediaCollection('book');
         }
 
         return redirect()->route('admin.books.index')->with('success', 'Book added successfully.');
@@ -66,9 +70,8 @@ class BooksController extends Controller
         $category = Category::where('id', $book->category_id)->firstOrFail();
         $year = Year::where('id', $book->year_id)->firstOrFail();
         $term = Term::where('id', $book->term_id)->firstOrFail();
-        $pdfs = $book->getMedia();
 
-        return view('admin.books.edit', compact(['book', 'years', 'terms', 'categories', 'category', 'year', 'term', 'pdfs']));
+        return view('admin.books.edit', compact(['book', 'years', 'terms', 'categories', 'category', 'year', 'term']));
     }
 
     /**
@@ -79,12 +82,14 @@ class BooksController extends Controller
      */
     public function update(BookRequest $request, Book $book)
     {
-        $book->fill($request->except(['book']))->save();
+        $book->fill($request->except(['book', 'cover_image']))->save();
+
+        if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+            $book->addMediaFromRequest('cover_image')->toMediaCollection('cover_image');
+        }
 
         if($request->hasFile('book') && $request->file('book')->isValid()) {
-            $book->addMediaFromRequest('book')
-                            ->preservingOriginal()
-                            ->toMediaCollection('default');
+            $book->addMediaFromRequest('book')->toMediaCollection('book');
         }
 
         return redirect()->route('admin.books.index')->with('success', 'Book added successfully.');

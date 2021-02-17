@@ -40,7 +40,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
                         <div class="card">
                             <a href="{{ route('subjects.index', $search->searchable->slug) }}" style="text-decoration: none">
-                                <img src="{{ $search->searchable->cover_image}}" alt="{{ $search->searchable->very_short_title }}" width="100%" height="130">
+                                <img src="{{ $search->searchable->cover_image}}" alt="{{ $search->searchable->very_short_title }}" width="100%" height="150">
                             </a>
                             <div class="card-body card-body_custom">
                                 <a href="{{ route('subjects.index', $search->searchable->slug) }}" style="text-decoration: none" class="title-font">
@@ -73,7 +73,12 @@
                                             <span class="title-font ml-3">({{ count($search->searchable->subscriptions) }})</span><br />
                                         </div>
                                     @endif
-                                    <span class="bold">UGX {{ number_format($search->searchable->price) }}/-</span>
+
+                                    @if($search->searchable->price !== null)
+                                        <span class="bold">UGX {{ number_format($search->searchable->price) }}/-</span>
+                                    @else
+                                        <span class="bold">Free</span>
+                                    @endif
                                 </a>
                                 <div class="mt-2 d-flex justify-content-between">
                                     <livewire:add-to-cart :subject="$search->searchable" :key="$search->searchable->id" />

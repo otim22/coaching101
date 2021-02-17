@@ -75,12 +75,24 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <p class="bold">Current book</p>
+                                <p class="bold">Current cover image</p>
                                 <div class="text-center">
-                                    <img src="{{ asset($book->default_image) }}" class="w-50 mb-2">
-                                    <!-- <img src="{{ asset($book->getFirstMediaUrl()) }}" class="w-30 mb-2"> -->
+                                    <img src="{{ asset($book->getFirstMediaUrl('cover_image')) }}" class="w-50 mb-2">
                                 </div>
                                 <p><small style="color: red; font-weight: bold;">*Choosing another file replaces this current one</small></p>
+                                <label for="cover_image" class="bold">Upload Book</label>
+                                <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image">
+                                @error('cover_image')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <p class="bold">Current book</p>
+                                <!-- <div class="text-center"> -->
+                                    <embed src="{{ $book->getFirstMediaUrl('book') }}" type="application/pdf" width="50%" height="50%">
+                                <!-- </div> -->
+                                <p class="mt-2"><small style="color: red; font-weight: bold;">*Choosing another file replaces this current one</small></p>
 
                                 <label for="book" class="bold">Upload Book</label>
                                 <input type="file" name="book" class="form-control-file @error('book') is-invalid @enderror" id="book">

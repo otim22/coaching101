@@ -67,7 +67,43 @@
             </div>
 
             <div class="col-lg-10 col-md-9 col-sm-12"  id="subject_data">
-                Books
+                <div class="row">
+                    @forelse($books as $book)
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                        <div class="mb-3">
+                            <p>{{ $book->title }}</p>
+                            <div class="card">
+                                <a href="#" style="text-decoration: none">
+                                    <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="" width="100%" height="150">
+                                </a>
+                                <div class="card-body card-body_custom">
+                                    <a href="#" style="text-decoration: none" class="title-font">
+                                        <span class="bold">{{ $book->short_title }}</span><br />
+                                        @if($book->creator !== null)
+                                            <span class="author-font">By {{ $book->creator->name }}</span><br />
+                                        @else
+                                            <span class="author-font">By Coaching101</span><br />
+                                        @endif
+
+                                        @if($book->price !== null)
+                                            <span class="bold">UGX {{ number_format($book->price) }}/-</span>
+                                        @else
+                                            <span class="bold">Free</span>
+                                        @endif
+                                    </a>
+                                    <div class="mt-2">
+                                        <livewire:buy-book :book="$book" :key="$book->id" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
+                        <p>No books available</p>
+                    </div>
+                    @endforelse
+                </div>
             </div>
         </div>
     </div>
@@ -75,10 +111,6 @@
 
 <section class="bg-white">
     @include('partials.categories')
-</section>
-
-<section class="bg-gray-3">
-    @include('partials.teachers')
 </section>
 
 <section class="seven">

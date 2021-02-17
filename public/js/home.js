@@ -20,11 +20,8 @@ $(document).ready(function() {
 });
 
 function getMoreSubjects(page) {
-    // Filter by category
     var selectedCategory = $("#category option:selected").val();
-    // Filter by year
     var selectedYear = $("#year option:selected").val();
-    // Filter by term
     var selectedTerm = $("#term option:selected").val();
 
     $.ajax({

@@ -65,10 +65,18 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-4">
                                 <label for="title">Book title</label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" placeholder="Example: Introduction to modern physics">
                                 @error('title')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label for="cover_image" class="bold">Cover image</label>
+                                <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" required>
+                                @error('cover_image')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -93,7 +101,7 @@
                                                 name="price"
                                                 value="{{ old('price') }}">
                                 </div>
-                                <p><small style="color: gray; font-weight: bold;">*Price should be only digits</small></p>
+                                <p class="mt-2"><small style="color: red; font-weight: bold;">*Price should be only digits</small></p>
                                 @error('price')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror

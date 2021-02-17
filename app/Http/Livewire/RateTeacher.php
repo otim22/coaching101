@@ -15,18 +15,15 @@ class RateTeacher extends Component
     public $subject;
     public $user;
     public $rating;
-    public $comment;
     public $user_id;
     public $subject_id;
 
     protected $rules = [
-        'rating' => 'required|integer',
-        'comment' => 'required|string'
+        'rating' => 'required|integer'
     ];
 
     protected $listeners = [
-        'refreshPage' => 'updateRatings',
-        'loadMore' => 'moreRatings'
+        'refreshPage' => 'updateRatings'
     ];
 
     public function mount($subject)
@@ -37,45 +34,20 @@ class RateTeacher extends Component
 
     public function render()
     {
-        return view('livewire.rate-teacher', [
-            // 'studentRatings' => Rating::orderBy('id', 'desc')->where('subject_id', $this->subject->id)->paginate(6)
-        ]);
+        return view('livewire.rate-teacher');
     }
 
     public function updateRatings()
     {
-        $this->studentRatings = Rating::orderBy('id', 'desc')->where('subject_id', $this->subject->id)->paginate(6);
+        $this->rating = '';
     }
 
     public function submit()
     {
         $this->subject->rateOnce($this->rating);
-        // dd($this->subject->ratings);
-        dd($this->subject->timesRated());
 
-        // $this->validate();
+        session()->flash('message', 'Thanks for rating us.');
 
-        // $ratedSubject = Rating::where('subject_id', $this->subject->id)
-                                                        // ->where('user_id', Auth::id())->first();
-        // if (isset($ratedSubject->subject_id)) {
-        //     $this->rating = "";
-        //     $this->comment = "";
-        //
-        //     return redirect()->back()->with('message', 'You have already rated!');
-        // } else {
-        //     Rating::create([
-        //         'rating' => $this->rating,
-        //         'comment' => $this->comment,
-        //         'user_id' => $this->user->id,
-        //         'subject_id' => $this->subject->id
-        //     ]);
-        //
-        //     $this->rating = "";
-        //     $this->comment = "";
-        //
-        //     session()->flash('message', 'Thanks for rating us.');
-        // }
-
-        // $this->emit('refreshPage');
+        $this->emit('refreshPage');
     }
 }

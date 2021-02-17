@@ -23,7 +23,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="card mb-4">
                     <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                        <img src="{{ $subject->default_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
+                        <img src="{{ $subject->default_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
                     </a>
                     <div class="card-body card-body_custom">
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">

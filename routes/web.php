@@ -108,13 +108,7 @@ Route::middleware('auth')->group(function() {
         Route::resource('years', 'YearController');
         Route::resource('terms', 'TermController');
 
-        Route::get('menus', [MenuController::class, 'index'])->name('menus.index');
-        Route::post('menus', [MenuController::class, 'store'])->name('menus.store');
-        Route::get('menus/create', [MenuController::class, 'create'])->name('menus.create');
-        Route::get('menus/{menu}', [MenuController::class, 'show'])->name('menus.show');
-        Route::get('menus/{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
-        Route::patch('menus/{menu}/update', [MenuController::class, 'update'])->name('menus.update');
-        Route::delete('menus/{menu}/destroy', [MenuController::class, 'destroy'])->name('menus.destroy');
+        Route::resource('menus', 'MenuController');
 
         Route::resource('books', 'BooksController');
         Route::resource('notes', 'NotesController');

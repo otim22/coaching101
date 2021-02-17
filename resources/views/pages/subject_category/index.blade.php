@@ -30,7 +30,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="card mb-4">
                     <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                        <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
+                        <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
                     </a>
                     <div class="card-body card-body_custom">
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
@@ -63,7 +63,12 @@
                                     <span class="title-font ml-3">({{ count($subject->subscriptions) }})</span><br />
                                 </div>
                             @endif
-                            <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+
+                            @if($subject->price !== null)
+                                <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+                            @else
+                                <span class="bold">Free</span>
+                            @endif
                         </a>
                         <div class="mt-2 d-flex justify-content-between">
                             <livewire:add-to-cart :subject="$subject" :key="$subject->id" />

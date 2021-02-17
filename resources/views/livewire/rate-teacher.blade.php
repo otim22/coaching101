@@ -13,19 +13,13 @@
             <div class="rate-container">
                 <div class="star-widget">
                     <div>
-                        @for($i = 0; $i <= 4; $i++)
+                        @for($i = 5; $i >= 0; $i--)
                             <input type="radio" wire:model="rating" id="rate-{{$i}}" value="{{$i}}">
                             <label for="rate-{{$i}}" class="fa fa-star"></label>
                         @endfor
                         <header></header>
                     </div>
                     @error('rating') <span class="error error-message">{{ $message }}</span> @enderror
-
-                    <!-- <div class="textarea pt-3 pb-2">
-                        <textarea wire:model="comment" cols="30" placeholder="Describe your experience.."></textarea>
-                    </div> -->
-                    <!-- @error('comment') <span class="error error-message">{{ $message }}</span> @enderror -->
-
                     <div class="pt-4 pb-3">
                         <button  type="submit" id="round-button-2" class="btn btn-secondary btn-block rate-button">Submit</button>
                     </div>

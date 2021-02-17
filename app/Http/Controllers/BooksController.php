@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Year;
+use App\Models\Book;
 use App\Models\Term;
 use App\Models\Subject;
 use App\Models\Category;
@@ -17,7 +18,8 @@ class BooksController extends Controller
         $years =  Year::get();
         $terms =  Term::get();
         $categories = Category::get();
+        $books = Book::get();
 
-        return view('pages.books.index', compact(['subjects', 'categories', 'years', 'terms']));
+        return view('pages.books.index', compact(['subjects', 'categories', 'years', 'terms', 'books']));
     }
 }

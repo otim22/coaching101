@@ -9,7 +9,7 @@
             </div>
 
             <div class="description">
-                <h5>  {{ $subject->short_title }}</h5>
+                <h5>  {{ ucfirst($subject->short_title) }}</h5>
                 <div>
                     <a href="{{ route('subjects.show', $subject) }}" style="text-decoration: none">
                         Edit / Manage your subject

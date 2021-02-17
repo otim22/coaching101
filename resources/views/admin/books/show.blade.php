@@ -38,17 +38,15 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h4>{{ $book->title }}</h4>
+                        <h4 class="mb-3">{{ $book->title }}</h4>
+                        <img src="{{ asset($book->getFirstMediaUrl('cover_image')) }}" class="w-50 mb-3">
                         <p>{{ $book->category->name }} {{ $book->year->name }}, {{ $book->term->name }}. </p>
-                        <p>UGX {{ number_format($book->price) }}/- </p>
-                        <div class="text-center">
-                            <img src="{{ asset($book->default_image) }}" class="w-50 mb-2">
-                            <!-- <img src="{{ asset($book->getFirstMediaUrl()) }}" class="w-30 mb-2"> -->
-                        </div>
-                        <button class="btn btn-secondary btn-sm float-right" href="{{ $book->getFirstMediaUrl() }}" target="_blank">
-                            Download book here
-                        </button>
+                        <p>UGX {{ number_format($book->price) }}/-</p>
+                        <a class="btn btn-secondary btn-sm" href="{{ $book->getFirstMediaUrl('book') }}" target="_blank">
+                            Download book
+                        </a>
                     </div>
+
                     <form action="{{ route('admin.books.destroy', $book) }}" class="hidden" id="delete-book-item" method="POST">
                         @csrf
                         @method('delete')
@@ -58,4 +56,5 @@
         </div>
     </div>
 </section>
+
 @endsection
