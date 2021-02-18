@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Constants\GlobalConstants;
 use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
@@ -14,6 +13,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Support\Facades\DB;
 use Spatie\Searchable\SearchResult;
 use Illuminate\Support\Facades\Auth;
+use App\Constants\GlobalConstants;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -120,7 +120,7 @@ class Subject extends Model implements HasMedia, Searchable
 
     public function subscribe($userId = null)
     {
-        $this->subscriptions()->create([
+        $this->subscription()->create([
             'user_id' => $userId ?: Auth::id()
         ]);
 
@@ -129,17 +129,25 @@ class Subject extends Model implements HasMedia, Searchable
 
     public function unsubscribe($userId = null)
     {
-        $this->subscriptions()->where('user_id', $userId ?: Auth::id())->delete();
+        $this->subscription()->where('user_id', $userId ?: Auth::id())->delete();
     }
 
-    public function subscriptions()
+    /**
+     * Get the subject's subscription.
+     */
+    public function subscription()
     {
-        return $this->hasMany('App\Models\SubjectSubscription');
+        return $this->morphOne(Subscription::class, 'subscriptionable');
     }
 
     public function getIsSubscribedToAttribute()
     {
-        return $this->subscriptions()->where('user_id', Auth::id())->exists();
+        return $this->subscription()->where('user_id', Auth::id())->exists();
+    }
+
+    public function getSubscriptionCount()
+    {
+        return $this->subscription()->count();
     }
 
     /** Searching for subjects results*/

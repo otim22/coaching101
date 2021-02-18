@@ -80,8 +80,19 @@ class BooksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(BookRequest $request, Book $book)
+    public function update(Request $request, Book $book)
     {
+        $request->validate([
+            'title' => 'required|string',
+            'price' => 'nullable',
+            'category_id' => 'required|integer',
+            'year_id' => 'required|integer',
+            'term_id' => 'required|integer',
+            'book' => 'nullable|pdf|max:1000',
+            'cover_image' => 'nullable|image|mimes:jpg, jpeg, png|max:5520',
+            'user_id' => 'integer|nullable'
+        ]);
+
         $book->fill($request->except(['book', 'cover_image']))->save();
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {

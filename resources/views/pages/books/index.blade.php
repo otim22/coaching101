@@ -30,7 +30,7 @@
                         <div class="pt-3 mb-3">
                             <h6 class="bold">Subject</h6>
                             <div class="resource-filter_input">
-                                <select class="custom-select" id="category">
+                                <select class="custom-select" id="book_category">
                                     <option>{{ \App\Constants\GlobalConstants::ALL_SUBJECTS }}</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -40,9 +40,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <h6 class="pt-3 bold">Year</h6>
+                            <h6 class="pt-3 bold">Class</h6>
                             <div class="resource-filter_input">
-                                <select class="custom-select" id="year">
+                                <select class="custom-select" id="book_year">
                                     <option>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
                                     @foreach($years as $year)
                                         <option value="{{ $year->id }}">{{ $year->name }}</option>
@@ -54,7 +54,7 @@
                         <div class="mb-3">
                             <h6 class="pt-3 bold">Term</h6>
                             <div class="resource-filter_input">
-                                <select class="custom-select" id="term">
+                                <select class="custom-select" id="book_term">
                                     <option>{{ \App\Constants\GlobalConstants::ALL_TERMS }}</option>
                                         @foreach($terms as $term)
                                     <option value="{{ $term->id }}">{{ $term->name }}</option>
@@ -66,44 +66,8 @@
                 </div>
             </div>
 
-            <div class="col-lg-10 col-md-9 col-sm-12"  id="subject_data">
-                <div class="row">
-                    @forelse($books as $book)
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
-                        <div class="mb-3">
-                            <p>{{ $book->title }}</p>
-                            <div class="card">
-                                <a href="#" style="text-decoration: none">
-                                    <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="" width="100%" height="150">
-                                </a>
-                                <div class="card-body card-body_custom">
-                                    <a href="#" style="text-decoration: none" class="title-font">
-                                        <span class="bold">{{ $book->short_title }}</span><br />
-                                        @if($book->creator !== null)
-                                            <span class="author-font">By {{ $book->creator->name }}</span><br />
-                                        @else
-                                            <span class="author-font">By Coaching101</span><br />
-                                        @endif
-
-                                        @if($book->price !== null)
-                                            <span class="bold">UGX {{ number_format($book->price) }}/-</span>
-                                        @else
-                                            <span class="bold">Free</span>
-                                        @endif
-                                    </a>
-                                    <div class="mt-2">
-                                        <livewire:buy-book :book="$book" :key="$book->id" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @empty
-                    <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
-                        <p>No books available</p>
-                    </div>
-                    @endforelse
-                </div>
+            <div class="col-lg-10 col-md-9 col-sm-12"  id="book_data">
+                @include('pages.books.partials.filtered_books')
             </div>
         </div>
     </div>
@@ -146,4 +110,10 @@
         </div>
     </div>
 </section>
+
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/books.js')}}" type="text/javascript"></script>
+@endpush

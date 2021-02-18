@@ -14,7 +14,10 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Home</li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('books') }}" style="text-decoration:none;">Books</a>
+                </li>
+                <li class="breadcrumb-item" aria-current="page">{{ $book->slug }}</li>
             </ol>
         </nav>
     </div>
@@ -23,51 +26,15 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 col-md-3 col-sm-12 mb-4">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <h5 class="bold">Filter by:</h5>
-                        <div class="pt-3 mb-3">
-                            <h6 class="bold">Subject</h6>
-                            <div class="resource-filter_input">
-                                <select class="custom-select" id="category">
-                                    <option>{{ \App\Constants\GlobalConstants::ALL_SUBJECTS }}</option>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <h6 class="pt-3 bold">Class</h6>
-                            <div class="resource-filter_input">
-                                <select class="custom-select" id="year">
-                                    <option>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
-                                    @foreach($years as $year)
-                                        <option value="{{ $year->id }}">{{ $year->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <h6 class="pt-3 bold">Term</h6>
-                            <div class="resource-filter_input">
-                                <select class="custom-select" id="term">
-                                    <option>{{ \App\Constants\GlobalConstants::ALL_TERMS }}</option>
-                                        @foreach($terms as $term)
-                                    <option value="{{ $term->id }}">{{ $term->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                <embed src="{{ $book->getFirstMediaUrl('book') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
             </div>
-
-            <div class="col-lg-10 col-md-9 col-sm-12"  id="subject_data">
-                @include('pages.subject_display.filtered_subjects')
+            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                <a href="{{ $book->getFirstMediaUrl('book') }}" id="round-button-2"
+                                name="button"
+                                class="btn btn-secondary btn-sm mt-5" target="_blank">
+                                Download book
+                </a>
             </div>
         </div>
     </div>
@@ -75,10 +42,6 @@
 
 <section class="bg-white">
     @include('partials.categories')
-</section>
-
-<section class="bg-gray-3">
-    @include('partials.teachers')
 </section>
 
 <section class="seven">
@@ -114,9 +77,5 @@
         </div>
     </div>
 </section>
-@endsection
 
-@push('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/home.js')}}" type="text/javascript"></script>
-@endpush
+@endsection

@@ -5,14 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SubjectSubscription extends Model
+class Subscription extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function subject()
+    /**
+     * Get the parent subscriptionable model (subject or book).
+     */
+    public function subscriptionable()
     {
-        return $this->belongsTo('App\Models\Subject');
+        return $this->morphTo();
     }
 }

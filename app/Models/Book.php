@@ -8,6 +8,8 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Image\Manipulations;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\MediaLibrary\HasMedia;
+use App\Constants\GlobalConstants;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,6 +21,7 @@ class Book extends Model implements HasMedia
 
     protected $fillable = ['title', 'price', 'category_id', 'year_id', 'term_id', 'user_id'];
     protected $with = ['media'];
+    protected $appends = ['isSubscribedTo'];
 
     /**
      * Get the options for generating the slug.
@@ -87,5 +90,60 @@ class Book extends Model implements HasMedia
     public function creator()
     {
         return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    /**
+     * Get the book's subscription.
+     */
+    public function subscription()
+    {
+        return $this->morphOne(Subscription::class, 'subscriptionable');
+    }
+
+    public function subscribe($userId = null)
+    {
+        $this->subscription()->create([
+            'user_id' => $userId ?: Auth::id()
+        ]);
+
+        return $this;
+    }
+
+    public function unsubscribe($userId = null)
+    {
+        $this->subscription()->where('user_id', $userId ?: Auth::id())->delete();
+    }
+
+    public function getIsSubscribedToAttribute()
+    {
+        return $this->subscription()->where('user_id', Auth::id())->exists();
+    }
+
+    public function getSubscriptionCount()
+    {
+        return $this->subscription()->count();
+    }
+
+    public static function getBooks($category, $year, $term)
+    {
+        $books = static::get();
+
+        $items = [];
+
+        if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
+            $items['category_id'] = $category;
+        }
+
+        if ($year && $year !== GlobalConstants::ALL_YEARS) {
+            $items['year_id'] = $year;
+        }
+
+        if ($term && $term !== GlobalConstants::ALL_TERMS) {
+            $items['term_id'] = $term;
+        }
+
+        $books = static::where($items)->paginate(12);
+
+        return $books;
     }
 }

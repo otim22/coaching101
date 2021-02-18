@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\SubjectSubscription;
+use App\Models\Subscription;
 use Illuminate\Support\Facades\Auth;
 
 class MySubjectsController extends Controller

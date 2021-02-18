@@ -31,7 +31,7 @@ class HomeController extends Controller
         return view('home', compact(['subjects', 'categories', 'years', 'terms']));
     }
 
-    public function getMoreSubjects(request $request)
+    public function getMoreSubjects(Request $request)
     {
         $category= $request->category;
         $year= $request->year;

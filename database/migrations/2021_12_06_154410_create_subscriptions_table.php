@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubjectSubscriptionsTable extends Migration
+class CreateSubscriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSubjectSubscriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subject_subscriptions', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
+           $table->integer('subscriptionable_id');
+           $table->string('subscriptionable_type');
            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-           // $table->unique(['user_id', 'subject_id']);   #Un comment for production 
-           $table->foreignId('subject_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
            $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateSubjectSubscriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subject_subscriptions');
+        Schema::dropIfExists('subscriptions');
     }
 }

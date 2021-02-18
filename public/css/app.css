@@ -3184,6 +3184,10 @@ select {
   color: #515152;
 }
 
+.paid_color {
+  color: #677ea3;
+}
+
 .side-font {
   font-weight: bold;
 }
