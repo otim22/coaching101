@@ -43,6 +43,8 @@ Route::get('/books', [Books::class, 'index'])->name('books');
 Route::get('/books/{book}', [Books::class, 'show'])->name('books.show');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
 Route::get('/notes', [Notes::class, 'index'])->name('notes');
+Route::get('/notes/{note}', [Notes::class, 'show'])->name('notes.show');
+Route::get('/get-more-notes', [Notes::class, 'getMoreNotes'])->name('get-more-notes');
 Route::get('/pastpapers', [PastPapers::class, 'index'])->name('pastpapers');
 Route::get('/pastpapers/{pastpaper}', [PastPapers::class, 'show'])->name('pastpapers.show');
 Route::get('/get-more-pastpapers', [PastPapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');

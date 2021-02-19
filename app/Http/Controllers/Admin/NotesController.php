@@ -41,7 +41,7 @@ class NotesController extends Controller
         $note->save();
 
         if($request->hasFile('note') && $request->file('note')->isValid()) {
-            $note->addMediaFromRequest('note')->toMediaCollection('default');
+            $note->addMediaFromRequest('note')->toMediaCollection('note');
         }
 
         return redirect()->route('admin.notes.index')->with('success', 'Notes added successfully.');
@@ -82,9 +82,7 @@ class NotesController extends Controller
         $note->fill($request->except(['note']))->save();
 
         if($request->hasFile('note') && $request->file('note')->isValid()) {
-            $note->addMediaFromRequest('note')
-                            ->preservingOriginal()
-                            ->toMediaCollection('default');
+            $note->addMediaFromRequest('note')->toMediaCollection('note');
         }
 
         return redirect()->route('admin.notes.index')->with('success', 'Note added successfully.');

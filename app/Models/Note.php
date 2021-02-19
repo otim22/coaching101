@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-use App\Traits\PresentsMedia;
+use App\Traits\PresentsText;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Image\Manipulations;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\MediaLibrary\HasMedia;
+use App\Constants\GlobalConstants;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,11 +16,11 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Note extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, HasSlug, PresentsMedia;
+    use HasFactory, InteractsWithMedia, HasSlug, PresentsText;
 
     protected $fillable = ['title', 'price', 'category_id', 'year_id', 'term_id', 'user_id'];
     protected $with = ['media'];
-    
+
     /**
      * Get the options for generating the slug.
      */
@@ -44,20 +46,11 @@ class Note extends Model implements HasMedia
 
     public function registerMediaCollections() : void
     {
-        $this->addMediaCollection('default')
-                ->registerMediaConversions(function (Media $media) {
-                        $this->addMediaConversion('default')
-                                ->fit(Manipulations::FIT_CONTAIN, 800, 600)
-                                ->nonQueued();
-
-                        $this->addMediaConversion('thumb')
-                                ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
-                                ->nonQueued();
-                });
+        $this->addMediaCollection('note');
     }
 
     /**
-     * Get the category that owns the book.
+     * Get the category that owns the note.
      */
     public function category()
     {
@@ -65,7 +58,7 @@ class Note extends Model implements HasMedia
     }
 
     /**
-     * Get the year that owns the book.
+     * Get the year that owns the note.
      */
     public function year()
     {
@@ -73,10 +66,71 @@ class Note extends Model implements HasMedia
     }
 
     /**
-     * Get the term that owns the book.
+     * Get the term that owns the note.
      */
     public function term()
     {
         return $this->belongsTo('App\Models\Term', 'term_id');
+    }
+
+    /** Return the subject's creator */
+    public function creator()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    /**
+     * Get the note's subscription.
+     */
+    public function subscription()
+    {
+        return $this->morphOne(Subscription::class, 'subscriptionable');
+    }
+
+    public function subscribe($userId = null)
+    {
+        $this->subscription()->create([
+            'user_id' => $userId ?: Auth::id()
+        ]);
+
+        return $this;
+    }
+
+    public function unsubscribe($userId = null)
+    {
+        $this->subscription()->where('user_id', $userId ?: Auth::id())->delete();
+    }
+
+    public function getIsSubscribedToAttribute()
+    {
+        return $this->subscription()->where('user_id', Auth::id())->exists();
+    }
+
+    public function getSubscriptionCount()
+    {
+        return $this->subscription()->count();
+    }
+
+    public static function getNotes($category, $year, $term)
+    {
+        $notes = static::get();
+
+        $items = [];
+
+        if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
+            $items['category_id'] = $category;
+        }
+
+        if ($year && $year !== GlobalConstants::ALL_YEARS) {
+            $items['year_id'] = $year;
+        }
+
+        if ($term && $term !== GlobalConstants::ALL_TERMS) {
+            $items['term_id'] = $term;
+        }
+
+        $notes = static::where($items)->paginate(12);
+
+        return $notes;
     }
 }

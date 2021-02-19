@@ -40,12 +40,13 @@
                     <div class="card-body">
                         <h4>{{ $note->title }}</h4>
                         <p>{{ $note->category->name }} {{ $note->year->name }}, {{ $note->term->name }}. </p>
-                        <p>UGX {{ number_format($note->price) }}/- </p>
-                        <div class="text-center">
-                            <img src="{{ asset($note->default_image) }}" class="w-50 mb-2">
-                            <!-- <img src="{{ asset($note->getFirstMediaUrl()) }}" class="w-30 mb-2"> -->
-                        </div>
-                        <button class="btn btn-secondary btn-sm float-right" href="{{ $note->getFirstMediaUrl() }}" target="_blank">
+                        <p style="color: #3864ab; font-weight: bold;">{{ $note->getFirstMedia('note')->file_name }}</p>
+                        @if($note->price)
+                            <span>UGX {{ number_format($note->price) }}/-</span>
+                        @else
+                            <span style="font-weight: bold;">Free</span>
+                        @endif
+                        <button class="btn btn-secondary btn-sm float-right mt-3" href="{{ $note->getFirstMediaUrl() }}" target="_blank">
                             Download notes here
                         </button>
                     </div>

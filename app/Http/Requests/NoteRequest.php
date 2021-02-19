@@ -25,7 +25,7 @@ class NoteRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'price' => 'required',
+            'price' => 'nullable',
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',

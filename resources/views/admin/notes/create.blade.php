@@ -74,9 +74,9 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="pastpaper" class="bold">Upload Notes</label>
-                                <input type="file" name="pastpaper" class="form-control-file @error('pastpaper') is-invalid @enderror" id="pastpaper" required>
-                                @error('pastpaper')
+                                <label for="note" class="bold">Upload Notes</label>
+                                <input type="file" name="note" class="form-control-file @error('note') is-invalid @enderror" id="note" required>
+                                @error('note')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>

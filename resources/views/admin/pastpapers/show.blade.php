@@ -40,12 +40,13 @@
                     <div class="card-body">
                         <h4>{{ $pastpaper->title }}</h4>
                         <p>{{ $pastpaper->category->name }} {{ $pastpaper->year->name }}, {{ $pastpaper->term->name }}. </p>
-                        <p>UGX {{ number_format($pastpaper->price) }}/- </p>
-                        <div class="text-center">
-                            <img src="{{ asset($pastpaper->default_image) }}" class="w-50 mb-2">
-                            <!-- <img src="{{ asset($pastpaper->getFirstMediaUrl()) }}" class="w-30 mb-2"> -->
-                        </div>
-                        <button class="btn btn-secondary btn-sm float-right" href="{{ $pastpaper->getFirstMediaUrl() }}" target="_blank">
+                        <p style="color: #3864ab; font-weight: bold;">{{ $pastpaper->getFirstMedia('pastpaper')->file_name }}</p>
+                        @if($pastpaper->price)
+                            <span>UGX {{ number_format($pastpaper->price) }}/-</span>
+                        @else
+                            <span style="font-weight: bold;">Free</span>
+                        @endif
+                        <button class="btn btn-secondary btn-sm float-right mt-3" href="{{ $pastpaper->getFirstMediaUrl() }}" target="_blank">
                             Download pastpaper here
                         </button>
                     </div>

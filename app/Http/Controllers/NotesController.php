@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Year;
+use App\Models\Note;
 use App\Models\Term;
 use App\Models\Subject;
 use App\Models\Category;
@@ -13,11 +14,29 @@ class NotesController extends Controller
 {
     public function index()
     {
-        $subjects =  Subject::getSubjects(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS);
+        $notes =  Note::getNotes(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS);
         $years =  Year::get();
         $terms =  Term::get();
         $categories = Category::get();
 
-        return view('pages.notes.index', compact(['subjects', 'categories', 'years', 'terms']));
+        return view('pages.notes.index', compact(['notes', 'categories', 'years', 'terms']));
+    }
+
+    public function show(Note $note)
+    {
+        return view('pages.notes.show', compact('note'));
+    }
+
+    public function getMoreNotes(Request $request)
+    {
+        $category = $request->notes_category;
+        $year = $request->notes_year;
+        $term = $request->notes_term;
+
+        if ($request->ajax()) {
+            $notes = Note::getNotes($category, $year, $term);
+
+            return view('pages.notes.partials.filtered_notes', compact('notes'));
+        }
     }
 }

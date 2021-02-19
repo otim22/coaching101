@@ -76,13 +76,10 @@
 
                             <div class="form-group mb-4">
                                 <p class="bold">Current note</p>
-                                <div class="text-center">
-                                    <img src="{{ asset($note->default_image) }}" class="w-50 mb-2">
-                                    <!-- <img src="{{ asset($note->getFirstMediaUrl()) }}" class="w-30 mb-2"> -->
-                                </div>
+                                <p style="color: #3864ab; font-weight: bold;">{{ $note->getFirstMedia('note')->file_name }}</p>
                                 <p><small style="color: red; font-weight: bold;">*Choosing another file replaces this current one</small></p>
 
-                                <label for="note" class="bold">Upload Pastpaper</label>
+                                <label for="note" class="bold">Upload Notes</label>
                                 <input type="file" name="note" class="form-control-file @error('note') is-invalid @enderror" id="note">
                                 @error('note')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
