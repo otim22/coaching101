@@ -9,7 +9,7 @@
                 <div class="card admin-shadow">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <div><h2>PastPaper</h2></div>
+                            <div><h2>Past paper</h2></div>
                             <div>
                                 <a type="button" href="{{ route('admin.pastpapers.index') }}" class="btn btn-secondary pt-1" name="button">Back</a>
                             </div>
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="title">Pastpaper title</label>
+                                <label for="title">Past paper title</label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{ old('title', $pastpaper->title) }}">
                                 @error('title')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -75,11 +75,11 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <p class="bold">Current pastpaper</p>
+                                <p class="bold">Current Past paper</p>
                                 <p style="color: #3864ab; font-weight: bold;">{{ $pastpaper->getFirstMedia('pastpaper')->file_name }}</p>
                                 <p><small style="color: red; font-weight: bold;">*Choosing another file replaces this current one</small></p>
 
-                                <label for="pastpaper" class="bold">Upload Pastpaper</label>
+                                <label for="pastpaper" class="bold">Upload Past paper</label>
                                 <input type="file" name="pastpaper" class="form-control-file @error('pastpaper') is-invalid @enderror" id="pastpaper">
                                 @error('pastpaper')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -87,7 +87,7 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="price" class="bold">Pastpaper price</label>
+                                <label for="price" class="bold">Past paper price</label>
                                 <div class="input-group mb-2">
                                     <input type="text"
                                                 class="form-control @error('price') is-invalid @enderror"
