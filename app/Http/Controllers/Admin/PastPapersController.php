@@ -41,7 +41,7 @@ class PastPapersController extends Controller
         $pastpaper->save();
 
         if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
-            $pastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('default');
+            $pastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('pastpaper');
         }
 
         return redirect()->route('admin.pastpapers.index')->with('success', 'Pastpaper added successfully.');
@@ -82,9 +82,7 @@ class PastPapersController extends Controller
         $pastpaper->fill($request->except(['pastpaper']))->save();
 
         if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
-            $pastpaper->addMediaFromRequest('pastpaper')
-                            ->preservingOriginal()
-                            ->toMediaCollection('default');
+            $pastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('pastpaper');
         }
 
         return redirect()->route('admin.pastpapers.index')->with('success', 'Pastpaper added successfully.');

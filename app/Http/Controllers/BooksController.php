@@ -28,9 +28,9 @@ class BooksController extends Controller
 
     public function getMoreBooks(Request $request)
     {
-        $category= $request->book_category;
-        $year= $request->book_year;
-        $term= $request->book_term;
+        $category = $request->book_category;
+        $year = $request->book_year;
+        $term = $request->book_term;
 
         if ($request->ajax()) {
             $books = Book::getBooks($category, $year, $term);

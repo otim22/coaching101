@@ -25,7 +25,7 @@
                                 @endif
 
                                 @if($book->price)
-                                    UGX {{ number_format($book->price) }}/- <span class="author-font">(Bought)</span>
+                                    UGX {{ number_format($book->price) }}/- <span class="author-font">(Paid)</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif
@@ -50,7 +50,7 @@
                             @if($book->creator)
                                 <span class="author-font">By {{ $book->creator->name }}</span><br />
                             @else
-                                <span class="author-font">By Coaching101</span><br />
+                                <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                             @endif
 
                             @if($book->price)
@@ -68,7 +68,7 @@
         </div>
     @empty
         <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-5">
-            <p>No books available</p>
+            <p>The book(s) you are looking for was not found. </p>
         </div>
     @endforelse
         <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">

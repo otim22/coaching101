@@ -2,41 +2,40 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Book;
 use Livewire\Component;
-use Illuminate\Http\Request;
+use App\Models\PastPaper;
 use Illuminate\Support\Facades\Auth;
 
-class BuyBook extends Component
+class BuyPastpaper extends Component
 {
-    public $book = [];
+    public $pastpaper = [];
 
-    public function mount($book)
+    public function mount($pastpaper)
     {
-        $this->book = $book;
+        $this->pastpaper = $pastpaper;
     }
 
     public function render()
     {
-        return view('livewire.buy-book');
+        return view('livewire.buy-pastpaper');
     }
 
-    public function checkout($bookId): void
+    public function checkout($pastpaperId): void
     {
         if(Auth::check()) {
             $user = Auth::user();
-            $bookToBuy = Book::where('id', $bookId)->firstOrFail();
+            $pastpaperToBuy = PastPaper::where('id', $pastpaperId)->firstOrFail();
             // $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
             // $currency = "UGX";
             // $userEmail = $user->email;
             // $userName= $user->name;
-            // $bookPrice = $bookToBuy->price;
+            // $pastpaperPrice = $pastpaperToBuy->price;
             // $redirectLink = "https://coaching101.app/cart";
             //
             // $response = Http::withToken(config('app.rave_key'))->post(
             //     'https://api.flutterwave.com/v3/charges', [
             //     "tx_ref" => $paymentToken,
-            //     "amount"=> $bookPrice,
+            //     "amount"=> $pastpaperPrice,
             //     "currency"=> $currency,
             //     "redirect_url" => $redirectLink,
             //     "payment_options" => "card",
@@ -54,7 +53,7 @@ class BuyBook extends Component
             //     ]
     		// ]);
 
-            $bookToBuy->subscribe();
+            $pastpaperToBuy->subscribe();
         }
     }
 }

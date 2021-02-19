@@ -14,7 +14,10 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Past papers</li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('pastpapers') }}" style="text-decoration:none;">Past papers</a>
+                </li>
+                <li class="breadcrumb-item" aria-current="page">{{ $pastpaper->slug }}</li>
             </ol>
         </nav>
     </div>
@@ -23,51 +26,15 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 col-md-3 col-sm-12 mb-4">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <h5 class="bold">Filter by:</h5>
-                        <div class="pt-3 mb-3">
-                            <h6 class="bold">Subject</h6>
-                            <div class="resource-filter_input">
-                                <select class="custom-select" id="pastpaper_category">
-                                    <option>{{ \App\Constants\GlobalConstants::ALL_SUBJECTS }}</option>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <h6 class="pt-3 bold">Class</h6>
-                            <div class="resource-filter_input">
-                                <select class="custom-select" id="pastpaper_year">
-                                    <option>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
-                                    @foreach($years as $year)
-                                        <option value="{{ $year->id }}">{{ $year->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <h6 class="pt-3 bold">Term</h6>
-                            <div class="resource-filter_input">
-                                <select class="custom-select" id="pastpaper_term">
-                                    <option>{{ \App\Constants\GlobalConstants::ALL_TERMS }}</option>
-                                        @foreach($terms as $term)
-                                    <option value="{{ $term->id }}">{{ $term->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                <embed src="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
             </div>
-
-            <div class="col-lg-10 col-md-9 col-sm-12" id="pastpaper_data">
-                @include('pages.pastpapers.partials.filtered_pastpapers')
+            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                <a href="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" id="round-button-2"
+                                name="button"
+                                class="btn btn-secondary btn-sm mt-5" target="_blank">
+                                Download pastpapers
+                </a>
             </div>
         </div>
     </div>
@@ -112,8 +79,3 @@
 </section>
 
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/pastpapers.js')}}" type="text/javascript"></script>
-@endpush

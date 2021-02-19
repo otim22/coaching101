@@ -76,10 +76,7 @@
 
                             <div class="form-group mb-4">
                                 <p class="bold">Current pastpaper</p>
-                                <div class="text-center">
-                                    <img src="{{ asset($pastpaper->default_image) }}" class="w-50 mb-2">
-                                    <!-- <img src="{{ asset($pastpaper->getFirstMediaUrl()) }}" class="w-30 mb-2"> -->
-                                </div>
+                                <p style="color: #3864ab; font-weight: bold;">{{ $pastpaper->getFirstMedia('pastpaper')->file_name }}</p>
                                 <p><small style="color: red; font-weight: bold;">*Choosing another file replaces this current one</small></p>
 
                                 <label for="pastpaper" class="bold">Upload Pastpaper</label>

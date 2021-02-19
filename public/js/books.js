@@ -6,15 +6,7 @@ $(document).ready(function() {
         getMoreBooks(page);
     });
 
-    $('#book_category').on('change', function() {
-        getMoreBooks();
-    });
-
-    $('#book_year').on('change', function() {
-        getMoreBooks();
-    });
-
-    $('#book_term').on('change', function() {
+    $('#book_category, #book_year, #book_term').on('change', function() {
         getMoreBooks();
     });
 });

@@ -6,15 +6,7 @@ $(document).ready(function() {
         getMoreSubjects(page);
     });
 
-    $('#category').on('change', function() {
-        getMoreSubjects();
-    });
-
-    $('#year').on('change', function() {
-        getMoreSubjects();
-    });
-
-    $('#term').on('change', function() {
+    $('#category, #year, #term').on('change', function() {
         getMoreSubjects();
     });
 });

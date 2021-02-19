@@ -44,6 +44,8 @@ Route::get('/books/{book}', [Books::class, 'show'])->name('books.show');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
 Route::get('/notes', [Notes::class, 'index'])->name('notes');
 Route::get('/pastpapers', [PastPapers::class, 'index'])->name('pastpapers');
+Route::get('/pastpapers/{pastpaper}', [PastPapers::class, 'show'])->name('pastpapers.show');
+Route::get('/get-more-pastpapers', [PastPapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
 Route::get('/account-setting', [UserController::class, 'account'])->name('account-setting');
 Route::patch('/account-update', [UserController::class, 'accountUpdate'])->name('account-update');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
