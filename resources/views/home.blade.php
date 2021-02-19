@@ -67,7 +67,7 @@
             </div>
 
             <div class="col-lg-10 col-md-9 col-sm-12"  id="subject_data">
-                @include('pages.subject_display.filtered_subjects')
+                @include('student.subject_display.filtered_subjects')
             </div>
         </div>
     </div>

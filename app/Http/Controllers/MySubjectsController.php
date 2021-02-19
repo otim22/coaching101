@@ -10,6 +10,6 @@ class MySubjectsController extends Controller
 {
     public function index()
     {
-        return view('pages.my_subjects.index');
+        return view('student.my_subjects.index');
     }
 }

@@ -14,7 +14,7 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Books</li>
+                <li class="breadcrumb-item active" aria-current="page">Notes</li>
             </ol>
         </nav>
     </div>
@@ -30,7 +30,7 @@
                         <div class="pt-3 mb-3">
                             <h6 class="bold">Subject</h6>
                             <div class="resource-filter_input">
-                                <select class="custom-select" id="book_category">
+                                <select class="custom-select" id="notes_category">
                                     <option>{{ \App\Constants\GlobalConstants::ALL_SUBJECTS }}</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -42,7 +42,7 @@
                         <div class="mb-3">
                             <h6 class="pt-3 bold">Class</h6>
                             <div class="resource-filter_input">
-                                <select class="custom-select" id="book_year">
+                                <select class="custom-select" id="notes_year">
                                     <option>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
                                     @foreach($years as $year)
                                         <option value="{{ $year->id }}">{{ $year->name }}</option>
@@ -54,7 +54,7 @@
                         <div class="mb-3">
                             <h6 class="pt-3 bold">Term</h6>
                             <div class="resource-filter_input">
-                                <select class="custom-select" id="book_term">
+                                <select class="custom-select" id="notes_term">
                                     <option>{{ \App\Constants\GlobalConstants::ALL_TERMS }}</option>
                                         @foreach($terms as $term)
                                     <option value="{{ $term->id }}">{{ $term->name }}</option>
@@ -66,8 +66,8 @@
                 </div>
             </div>
 
-            <div class="col-lg-10 col-md-9 col-sm-12"  id="book_data">
-                @include('pages.books.partials.filtered_books')
+            <div class="col-lg-10 col-md-9 col-sm-12" id="notes_data">
+                @include('student.notes.partials.filtered_notes')
             </div>
         </div>
     </div>
@@ -104,7 +104,11 @@
                 @endif
 
                 @if(auth()->user()->role == 2)
-                    <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">My Subjects</a>
+                    <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">My subjects</a>
+                @endif
+
+                @if(auth()->user()->role == 3)
+                    <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">Manage subjects</a>
                 @endif
             </div>
         </div>
@@ -115,5 +119,5 @@
 
 @push('scripts')
     <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/books.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
 @endpush

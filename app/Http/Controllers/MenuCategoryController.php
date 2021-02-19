@@ -16,7 +16,7 @@ class MenuCategoryController extends Controller
     public function index(Year $year)
     {
         $year = Category::where('year_id', $year->id)->get();
-        
-        return view('pages.subjects_in_menu.index', compact(['year']));
+
+        return view('student.subjects_in_menu.index', compact(['year']));
     }
 }

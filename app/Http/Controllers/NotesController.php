@@ -19,12 +19,12 @@ class NotesController extends Controller
         $terms =  Term::get();
         $categories = Category::get();
 
-        return view('pages.notes.index', compact(['notes', 'categories', 'years', 'terms']));
+        return view('student.notes.index', compact(['notes', 'categories', 'years', 'terms']));
     }
 
     public function show(Note $note)
     {
-        return view('pages.notes.show', compact('note'));
+        return view('student.notes.show', compact('note'));
     }
 
     public function getMoreNotes(Request $request)
@@ -36,7 +36,7 @@ class NotesController extends Controller
         if ($request->ajax()) {
             $notes = Note::getNotes($category, $year, $term);
 
-            return view('pages.notes.partials.filtered_notes', compact('notes'));
+            return view('student.notes.partials.filtered_notes', compact('notes'));
         }
     }
 }

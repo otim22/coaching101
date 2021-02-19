@@ -14,7 +14,7 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Past papers</li>
+                <li class="breadcrumb-item active" aria-current="page">Books</li>
             </ol>
         </nav>
     </div>
@@ -30,7 +30,7 @@
                         <div class="pt-3 mb-3">
                             <h6 class="bold">Subject</h6>
                             <div class="resource-filter_input">
-                                <select class="custom-select" id="pastpaper_category">
+                                <select class="custom-select" id="book_category">
                                     <option>{{ \App\Constants\GlobalConstants::ALL_SUBJECTS }}</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -42,7 +42,7 @@
                         <div class="mb-3">
                             <h6 class="pt-3 bold">Class</h6>
                             <div class="resource-filter_input">
-                                <select class="custom-select" id="pastpaper_year">
+                                <select class="custom-select" id="book_year">
                                     <option>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
                                     @foreach($years as $year)
                                         <option value="{{ $year->id }}">{{ $year->name }}</option>
@@ -54,7 +54,7 @@
                         <div class="mb-3">
                             <h6 class="pt-3 bold">Term</h6>
                             <div class="resource-filter_input">
-                                <select class="custom-select" id="pastpaper_term">
+                                <select class="custom-select" id="book_term">
                                     <option>{{ \App\Constants\GlobalConstants::ALL_TERMS }}</option>
                                         @foreach($terms as $term)
                                     <option value="{{ $term->id }}">{{ $term->name }}</option>
@@ -66,8 +66,8 @@
                 </div>
             </div>
 
-            <div class="col-lg-10 col-md-9 col-sm-12" id="pastpaper_data">
-                @include('pages.pastpapers.partials.filtered_pastpapers')
+            <div class="col-lg-10 col-md-9 col-sm-12"  id="book_data">
+                @include('student.books.partials.filtered_books')
             </div>
         </div>
     </div>
@@ -115,5 +115,5 @@
 
 @push('scripts')
     <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/pastpapers.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/books.js')}}" type="text/javascript"></script>
 @endpush

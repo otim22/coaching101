@@ -40,7 +40,7 @@ class HomeController extends Controller
         if ($request->ajax()) {
             $subjects = Subject::getSubjects($category, $year, $term);
 
-            return view('pages.subject_display.filtered_subjects', compact('subjects'));
+            return view('student.subject_display.filtered_subjects', compact('subjects'));
         }
     }
 }

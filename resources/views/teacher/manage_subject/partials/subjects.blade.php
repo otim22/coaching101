@@ -15,13 +15,13 @@
                         Edit / Manage your subject
                     </a>
                 </div>
-                <p type="button" class="red_color bold mt-2"data-toggle="modal" data-target="#staticBackdrop">
+                <p type="button" class="red_color bold mt-2" data-toggle="modal" data-target="#staticBackdrop{{ $subject->id }}">
                     <i class="fa subject-avail-icon fa-trash mr-4"></i> Delete
                 </p>
             </div>
 
             <!-- Confirm Deletion Modal -->
-            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop{{ $subject->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -35,12 +35,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary btn-sm mr-4" data-dismiss="modal">Cancel</button>
-                            {!! Form::open(['route' => ['subjects.destroy', $subject],
-                                    'method' => 'delete',
-                                    'data-confirmation-text' => __('Are you sure to delete :name?', ['title' => $subject->title])
-                                ])
-                            !!}
-                            <button type="submit" href="{{ route('subjects.destroy', $subject) }}" class="btn btn-primary btn-sm">Understood</button>
+                            {!! Form::open(['route' => ['subjects.destroy', $subject], 'method' => 'delete']) !!}
+                                <button type="submit" class="btn btn-primary btn-sm">Understood</button>
                             {!! Form::close() !!}
                         </div>
                     </div>

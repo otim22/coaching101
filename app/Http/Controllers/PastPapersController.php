@@ -19,12 +19,12 @@ class PastPapersController extends Controller
         $terms =  Term::get();
         $categories = Category::get();
 
-        return view('pages.pastpapers.index', compact(['pastpapers', 'categories', 'years', 'terms']));
+        return view('student.pastpapers.index', compact(['pastpapers', 'categories', 'years', 'terms']));
     }
 
     public function show(PastPaper $pastpaper)
     {
-        return view('pages.pastpapers.show', compact('pastpaper'));
+        return view('student.pastpapers.show', compact('pastpaper'));
     }
 
     public function getMorePastpapers(Request $request)
@@ -36,7 +36,7 @@ class PastPapersController extends Controller
         if ($request->ajax()) {
             $pastpapers = PastPaper::getPastpapers($category, $year, $term);
 
-            return view('pages.pastpapers.partials.filtered_pastpapers', compact('pastpapers'));
+            return view('student.pastpapers.partials.filtered_pastpapers', compact('pastpapers'));
         }
     }
 }

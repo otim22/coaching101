@@ -23,7 +23,7 @@ class SubjectController extends Controller
     {
         $subjects = Subject::orderBy('id', 'desc')->where('user_id', Auth::id())->paginate(10);
 
-        return view('pages.manage_subject.index', compact('subjects'));
+        return view('teacher.manage_subject.index', compact('subjects'));
     }
 
     public function create()
@@ -32,12 +32,12 @@ class SubjectController extends Controller
         $years = Year::get();
         $terms = Term::get();
 
-        return view('pages.manage_subject.create', compact(['categories', 'years', 'terms']));
+        return view('teacher.manage_subject.create', compact(['categories', 'years', 'terms']));
     }
 
     public function show(Subject $subject)
     {
-        return view('pages.manage_subject.show', compact('subject'));
+        return view('teacher.manage_subject.show', compact('subject'));
     }
 
     public function store(SubjectRequest $request, Subject $subject)
@@ -78,7 +78,7 @@ class SubjectController extends Controller
         $terms = Term::get();
         $term = Term::find($subject->term_id);
 
-        return view('pages.manage_subject.edit', compact([
+        return view('teacher.manage_subject.edit', compact([
             'subject', 'categories', 'category', 'years', 'year', 'terms', 'term'
         ]));
     }
@@ -108,12 +108,12 @@ class SubjectController extends Controller
 
     public function onBoard()
     {
-        return view('teacher.pages.index');
+        return view('teacher.student.index');
     }
 
     public function starter()
     {
-        return view('teacher.pages.start.index');
+        return view('teacher.student.start.index');
     }
 
     public function captureRole(Request $request)

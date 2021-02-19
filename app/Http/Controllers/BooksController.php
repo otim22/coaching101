@@ -18,12 +18,12 @@ class BooksController extends Controller
         $terms =  Term::get();
         $categories = Category::get();
 
-        return view('pages.books.index', compact(['categories', 'years', 'terms', 'books']));
+        return view('student.books.index', compact(['categories', 'years', 'terms', 'books']));
     }
 
     public function show(Book $book)
     {
-        return view('pages.books.show', compact('book'));
+        return view('student.books.show', compact('book'));
     }
 
     public function getMoreBooks(Request $request)
@@ -35,7 +35,7 @@ class BooksController extends Controller
         if ($request->ajax()) {
             $books = Book::getBooks($category, $year, $term);
 
-            return view('pages.books.partials.filtered_books', compact('books'));
+            return view('student.books.partials.filtered_books', compact('books'));
         }
     }
 }

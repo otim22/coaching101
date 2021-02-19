@@ -34,7 +34,7 @@ class UserController extends Controller
     {
         $user = User::with('media')->where('id', Auth::id())->firstOrFail();
 
-        return view('pages.profile.index', compact('user'));
+        return view('student.profile.index', compact('user'));
     }
 
     /**
@@ -46,7 +46,7 @@ class UserController extends Controller
     {
         $user = User::with('media')->where('id', Auth::id())->firstOrFail();
 
-        return view('pages.profile.index', compact('user'));
+        return view('student.profile.index', compact('user'));
     }
 
     /**
