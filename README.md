@@ -13,7 +13,11 @@ This repo is a WIP and some functionalities are complete — PRs and issues welc
 Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/8.X/installation#installation)
 
 
+<<<<<<< HEAD
+Alternative installation is possible with local dependencies relying on [Valet](#valet).
+=======
 Alternative installation is possible with local dependencies relying on [Valet](#valet). 
+>>>>>>> 354a6029e2258930cbb2d70bef7f7de896a7cc6f
 
 Clone the repository
 
@@ -114,7 +118,7 @@ The app gets served and accessed at [http://localhost:8000](http://localhost:800
 - [laravel-cors](https://github.com/barryvdh/laravel-cors) - For handling Cross-Origin Resource Sharing (CORS)
 - [livewire](https://laravel-livewire.com) - For building reactive, dynamic interfaces using Laravel Blade as our templating language
 - [bootstrap](https://getbootstrap.com) - CSS Framework which the application uses, And most of its dependencies such jQuery, popper, bootstrap-icons, font-awesome, videojs-playlist
-- And a few other laravel packages. ([spatie/laravel-collection-macros](https://github.com/spatie/laravel-collection-macros), [spatie/laravel-medialibrary]((https://spatie.be/docs/laravel-medialibrary), [spatie/laravel-permission](https://spatie.be/docs/laravel-permission), [spatie/laravel-query-builder](https://github.com/spatie/laravel-query-builder), [spatie/laravel-searchable](https://github.com/spatie/laravel-searchable), [spatie/laravel-sluggable](https://github.com/spatie/laravel-sluggable), [willvincent/laravel-rateable](https://github.com/willvincent/laravel-rateable), [laravelcollective/html](https://laravelcollective.com/docs/6.x/html), [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
+- And a few other laravel packages. [spatie/laravel-collection-macros](https://github.com/spatie/laravel-collection-macros), [spatie/laravel-medialibrary](https://spatie.be/docs/laravel-medialibrary), [spatie/laravel-permission](https://spatie.be/docs/laravel-permission), [spatie/laravel-query-builder](https://github.com/spatie/laravel-query-builder), [spatie/laravel-searchable](https://github.com/spatie/laravel-searchable), [spatie/laravel-sluggable](https://github.com/spatie/laravel-sluggable), [willvincent/laravel-rateable](https://github.com/willvincent/laravel-rateable), [laravelcollective/html](https://laravelcollective.com/docs/6.x/html), [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
 
 ## Environment variables
 
