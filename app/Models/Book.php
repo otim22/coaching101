@@ -59,7 +59,20 @@ class Book extends Model implements HasMedia
                                 ->nonQueued();
                 });
 
-            $this->addMediaCollection('book');
+        $this->addMediaCollection('book');
+
+        $this->addMediaCollection('teacher_cover_image')
+                ->registerMediaConversions(function (Media $media) {
+                        $this->addMediaConversion('teacher_cover_image')
+                                ->fit(Manipulations::FIT_CONTAIN, 800, 600)
+                                ->nonQueued();
+
+                        $this->addMediaConversion('teacher_thumb')
+                                ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
+                                ->nonQueued();
+                });
+
+        $this->addMediaCollection('teacher_book');
     }
 
     /**

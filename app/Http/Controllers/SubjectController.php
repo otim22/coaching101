@@ -50,7 +50,7 @@ class SubjectController extends Controller
         $subject->category_id = $request->input('category_id');
         $subject->year_id = $request->input('year_id');
         $subject->term_id = $request->input('term_id');
-        $subject->user_id = Auth::user()->id;
+        $subject->user_id = Auth::id();
 
         $category = Category::findOrFail($request->input('category_id'));
         $category->years()->attach($request->input('year_id'));

@@ -33,6 +33,7 @@ use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Admin\BooksController;
 use App\Http\Controllers\BooksController as Books;
+use App\Http\Controllers\TeacherBookController;
 use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\NotesController as Notes;
 use App\Http\Controllers\Admin\PastPapersController;
@@ -82,6 +83,8 @@ Route::middleware('auth')->group(function() {
                 Route::get('/subjects/{subject}/edit', [SubjectController::class, 'edit'])->name('subjects.edit');
                 Route::patch('/subjects/{subject}/update', [SubjectController::class, 'update'])->name('subjects.update');
                 Route::delete('/subjects/{subject}/destroy', [SubjectController::class, 'destroy'])->name('subjects.destroy');
+
+                Route::resource('/books', 'TeacherBookController');
 
                 Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);
                 Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'create']);

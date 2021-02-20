@@ -29,7 +29,7 @@ class BookRequest extends FormRequest
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
-            'book' => 'required|pdf|max:1000',
+            'book' => 'required|mimes:pdf|max:5520',
             'cover_image' => 'required|image|mimes:jpg, jpeg, png|max:5520',
             'user_id' => 'integer|nullable'
         ];

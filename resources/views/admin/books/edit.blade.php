@@ -76,9 +76,7 @@
 
                             <div class="form-group mb-4">
                                 <p class="bold">Current cover image</p>
-                                <div class="text-center">
-                                    <img src="{{ asset($book->getFirstMediaUrl('cover_image')) }}" class="w-50 mb-2">
-                                </div>
+                                <img src="{{ asset($book->getFirstMediaUrl('cover_image')) }}" class="w-50 mb-2">
                                 <p><small style="color: red; font-weight: bold;">*Choosing another file replaces this current one</small></p>
                                 <label for="cover_image" class="bold">Upload Book</label>
                                 <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image">
@@ -89,9 +87,7 @@
 
                             <div class="form-group mb-4">
                                 <p class="bold">Current book</p>
-                                <!-- <div class="text-center"> -->
-                                    <embed src="{{ $book->getFirstMediaUrl('book') }}" type="application/pdf" width="50%" height="50%">
-                                <!-- </div> -->
+                                <embed src="{{ $book->getFirstMediaUrl('book') }}" type="application/pdf" width="50%" height="50%">
                                 <p class="mt-2"><small style="color: red; font-weight: bold;">*Choosing another file replaces this current one</small></p>
 
                                 <label for="book" class="bold">Upload Book</label>
@@ -119,7 +115,7 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary float-right">Submit</button>
+                            <button type="submit" class="btn btn-primary float-right">Save</button>
                         </form>
                     </div>
                 </div>
