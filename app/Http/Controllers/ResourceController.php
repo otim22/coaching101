@@ -8,6 +8,6 @@ class ResourceController extends Controller
 {
     public function index()
     {
-        return view('pages.resources.index');
+        return view('student.resources.index');
     }
 }

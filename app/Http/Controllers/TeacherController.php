@@ -17,6 +17,6 @@ class TeacherController extends Controller
     {
         $subjects = Subject::where('user_id', $teacher->id)->get();
 
-        return view('pages.teacher_courses.index', compact(['subjects', 'teacher']));
+        return view('teacher.teacher_subjects.index', compact(['subjects', 'teacher']));
     }
 }

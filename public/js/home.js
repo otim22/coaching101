@@ -6,25 +6,14 @@ $(document).ready(function() {
         getMoreSubjects(page);
     });
 
-    $('#category').on('change', function() {
-        getMoreSubjects();
-    });
-
-    $('#year').on('change', function() {
-        getMoreSubjects();
-    });
-
-    $('#term').on('change', function() {
+    $('#category, #year, #term').on('change', function() {
         getMoreSubjects();
     });
 });
 
 function getMoreSubjects(page) {
-    // Filter by category
     var selectedCategory = $("#category option:selected").val();
-    // Filter by year
     var selectedYear = $("#year option:selected").val();
-    // Filter by term
     var selectedTerm = $("#term option:selected").val();
 
     $.ajax({

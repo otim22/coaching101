@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-2 increased-font py-3">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-3 increased-font py-3">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}"><span class="logo-font">Coaching101</span></a>
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,23 +15,10 @@
                         Browse
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @foreach ($menus as $menu)
-                            <ul class="dropdown-submenu">
-                                <a class="dropdown-item" href="#">{{ $menu->title }}</a>
-                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    @foreach ($menu->allChildren as $childMenu)
-                                        <ul class="dropdown-submenu">
-                                            <a class="dropdown-item" href="#">{{ $childMenu->title }}</a>
-                                            <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                @foreach ($childMenu['allChildren'] as $term)
-                                                    <a class="dropdown-item" href="#">{{ $term->title }}</a>
-                                                @endforeach
-                                            </li>
-                                        </ul>
-                                    @endforeach
-                                </li>
-                            </ul>
-                        @endforeach
+                        <a class="dropdown-item" href="{{ route('home') }}">Videos</a>
+                        <a class="dropdown-item" href="{{ route('student.books.index') }}">Books</a>
+                        <a class="dropdown-item" href="{{ route('student.notes.index') }}">Notes</a>
+                        <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past papers</a>
                     </div>
                 </li>
             </ul>
@@ -98,7 +85,7 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item d-flex" href="{{ route('edit-profile') }}">
+                        <a class="dropdown-item d-flex" href="{{ route('account-setting') }}">
                             <div class="mr-2 pt-2">
                                 <div class="circle">
                                     <span class="circle__content">{{ Helper::generate_initials(Auth::user()->name) }}</span>
@@ -112,14 +99,9 @@
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item" href="{{ route('accounts') }}">My courses</a>
-                        <a class="dropdown-item" href="{{ route('accounts') }}">My cart</a>
-
-                        <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="{{ route('accounts') }}">Account settings</a>
-                        <a class="dropdown-item" href="{{ route('accounts') }}">Payment methods</a>
-                        <a class="dropdown-item" href="{{ route('accounts') }}">Edit profile</a>
+                        <a class="dropdown-item" href="{{ route('my-subjects') }}">My courses</a>
+                        <a class="dropdown-item" href="{{ url('cart') }}">My cart</a>
+                        <a class="dropdown-item" href="{{ route('account-setting') }}">Account settings</a>
 
                         <div class="dropdown-divider"></div>
 

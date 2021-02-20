@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             TermTableSeeder::class,
             SubjectTableSeeder::class,
             // RatingTableSeeder::class,
-            SubjectSubscriptionTableSeeder::class,
+            // SubjectSubscriptionTableSeeder::class,
             MessageTableSeeder::class,
             AudienceTableSeeder::class,
             StudentImageTableSeeder::class,

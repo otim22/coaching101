@@ -12,8 +12,8 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <h5>Resources</h5>
                 <ul class="list-unstyled">
-                    <li><a href="{{ url('/teach') }}">Teach</a></li>
-                    <li><a href="{{ url('/business') }}">Learn</a></li>
+                    <li><a href="#">Teach</a></li>
+                    <li><a href="#">Learn</a></li>
                     <li><a href="#">Affiliate</a></li>
                 </ul>
             </div>

@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <h6 class="pt-3 bold">Year</h6>
+                            <h6 class="pt-3 bold">Class</h6>
                             <div class="resource-filter_input">
                                 <select class="custom-select" id="year">
                                     <option>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
@@ -67,7 +67,7 @@
             </div>
 
             <div class="col-lg-10 col-md-9 col-sm-12"  id="subject_data">
-                @include('pages.subject_display.filtered_subjects')
+                @include('student.subject_display.filtered_subjects')
             </div>
         </div>
     </div>

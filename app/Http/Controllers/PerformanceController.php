@@ -8,6 +8,6 @@ class PerformanceController extends Controller
 {
     public function index()
     {
-        return view('pages.performance.index');
+        return view('student.performance.index');
     }
 }

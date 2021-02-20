@@ -106,7 +106,7 @@
                             <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
                                 <div class="card">
                                     <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                                        <img src="{{ $subject->default_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
+                                        <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
                                     </a>
                                     <div class="card-body card-body_custom">
                                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
@@ -117,7 +117,7 @@
                                                     @for($i = 0; $i <= $subject->averageRating; $i++)
                                                         <label for="rate-{{$i}}" class="fa fa-star"></label>
                                                     @endfor
-                                                    <span class="title-font ml-3">({{ count($subject->subscriptions) }})</span><br />
+                                                    <span class="author-font ml-2">({{ $subject->getSubscriptionCount() }}) students</span><br />
                                                 </div>
                                             @else
                                                 <div class="rating">
@@ -136,11 +136,15 @@
                                                     <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                                                     </svg>
-                                                    <span class="title-font ml-3">({{ count($subject->subscriptions) }})</span><br />
+                                                    <span class="author-font ml-2">({{ $subject->getSubscriptionCount() }}) students</span><br />
                                                 </div>
                                             @endif
 
-                                            <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+                                            @if($subject->price)
+                                                <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+                                            @else
+                                                <span class="bold paid_color">Free</span>
+                                            @endif
                                         </a>
                                         <div class="mt-2 d-flex justify-content-between">
                                             <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
@@ -170,7 +174,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="card mb-4">
                     <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                        <img src="{{ $subject->default_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
+                        <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
                     </a>
                     <div class="card-body card-body_custom">
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
@@ -181,7 +185,9 @@
                                     @for($i = 0; $i <= $subject->averageRating; $i++)
                                         <label for="rate-{{$i}}" class="fa fa-star"></label>
                                     @endfor
-                                    <span class="title-font ml-3">({{ count($subject->subscriptions) }})</span><br />
+                                    @if($subject->isSubscribedTo)
+                                        <span class="author-font ml-2">({{ $subject->getSubscriptionCount() }}) students</span><br />
+                                    @endif
                                 </div>
                             @else
                                 <div class="rating">
@@ -200,10 +206,17 @@
                                     <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                                     </svg>
-                                    <span class="title-font ml-3">({{ count($subject->subscriptions) }})</span><br />
+                                    @if($subject->isSubscribedTo)
+                                        <span class="author-font ml-2">({{ $subject->getSubscriptionCount() }}) students</span><br />
+                                    @endif
                                 </div>
                             @endif
-                            <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+
+                            @if($subject->price)
+                                <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+                            @else
+                                <span class="bold">Free</span>
+                            @endif
                         </a>
                         <div class="mt-2 d-flex justify-content-between">
                             <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
@@ -233,7 +246,7 @@
                 @endauth
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <img src="{{ asset($studentImage->default_image) }}" alt="image thumb" class="student-image">
+                <img src="{{ asset($studentImage->cover_image) }}" alt="image thumb" class="student-image">
             </div>
         </div>
     </div>
@@ -249,7 +262,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
-            <img src="{{ asset($teacherImage->default_image) }}" alt="teacher thumb" class="teacher-image">
+            <img src="{{ asset($teacherImage->cover_image) }}" alt="teacher thumb" class="teacher-image">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="mb-2">

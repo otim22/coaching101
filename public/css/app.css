@@ -3177,11 +3177,19 @@ select {
 }
 
 .green_color {
-  color: #4e8749;
+  color: #38c172;
 }
 
 .gray_color {
   color: #515152;
+}
+
+.light_gray_color {
+  color: #9b9b9b;
+}
+
+.paid_color {
+  color: #3490dc;
 }
 
 .side-font {
@@ -3878,6 +3886,10 @@ form .btn button {
   background-color: #13242D !important;
 }
 
+.bg-dark-3 {
+  background-color: #153242 !important;
+}
+
 .bg-blue-2 {
   background-color: #A9C8DA !important;
 }
@@ -3950,6 +3962,15 @@ form .btn button {
   background-color: #f0f0f0;
   padding: 20px;
   border-radius: 8px;
+}
+
+.fast-transition-white {
+  position: relative;
+  /* For positioning the pseudo-element */
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  min-height: 500px;
 }
 
 .fast-transition-2 {

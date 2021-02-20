@@ -43,7 +43,7 @@ class ComposerServiceProvider extends ServiceProvider
             $view->withCategories($categories);
         });
 
-        View::composer(['welcome', 'home', 'pages.*'], function ($view) {
+        View::composer(['welcome', 'home', 'teacher.*', 'student.*'], function ($view) {
             $topCategories = Category::with('subjects')->get()->take(18);
 
             $view->withTopCategories($topCategories);
@@ -55,19 +55,19 @@ class ComposerServiceProvider extends ServiceProvider
             $view->withMostViewedSubjects($mostViewedSubjects);
         });
 
-        View::composer(['welcome', 'home'], function ($view) {
+        View::composer(['welcome', 'home', 'student.*'], function ($view) {
             $teachers = User::with('subjects')->get()->where('role', '2')->take(12);
 
             $view->withTeachers($teachers);
         });
 
-        View::composer(['welcome', 'home', 'pages.*'], function ($view) {
+        View::composer(['welcome', 'home', 'student.*'], function ($view) {
             $years = Year::get();
 
             $view->withYears($years);
         });
 
-        View::composer(['welcome', 'home', 'pages.*'], function ($view) {
+        View::composer(['welcome', 'home', 'student.*'], function ($view) {
             $terms = Term::get();
 
             $view->withTerms($terms);

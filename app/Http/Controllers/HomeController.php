@@ -7,7 +7,6 @@ use App\Models\Term;
 use App\Models\Subject;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Livewire\WithPagination;
 use App\Constants\GlobalConstants;
 
 class HomeController extends Controller
@@ -32,7 +31,7 @@ class HomeController extends Controller
         return view('home', compact(['subjects', 'categories', 'years', 'terms']));
     }
 
-    public function getMoreSubjects(request $request)
+    public function getMoreSubjects(Request $request)
     {
         $category= $request->category;
         $year= $request->year;
@@ -41,7 +40,7 @@ class HomeController extends Controller
         if ($request->ajax()) {
             $subjects = Subject::getSubjects($category, $year, $term);
 
-            return view('pages.subject_display.filtered_subjects', compact('subjects'));
+            return view('student.subject_display.filtered_subjects', compact('subjects'));
         }
     }
 }

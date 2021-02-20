@@ -10,10 +10,10 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <h4>Categories</h4>
+                                <h4>Subjects</h4>
                             </div>
                             <div>
-                                <a type="button" href="{{ route('admin.categories.create') }}" class="btn btn-primary pt-1" name="button">Create Category</a>
+                                <a type="button" href="{{ route('admin.categories.create') }}" class="btn btn-primary pt-1" name="button">Create Subject</a>
                             </div>
                         </div>
                     </div>

@@ -1,10 +1,15 @@
 .red_color {
-    color: #e3342f;
+    color: $red;
 }
 .green_color {
-    color: #4e8749;
+    color: $green;
 }
-
 .gray_color {
     color: $color-gray-4;
+}
+.light_gray_color {
+    color: $color-body;
+}
+.paid_color {
+    color: $blue;
 }
