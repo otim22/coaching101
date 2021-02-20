@@ -17,7 +17,7 @@
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('student.books.index') }}" style="text-decoration:none;">Books</a>
                 </li>
-                <li class="breadcrumb-item" aria-current="page">{{ $book->slug }}</li>
+                <li class="breadcrumb-item" aria-current="page">{{ ucfirst($book->short_title) }}</li>
             </ol>
         </nav>
     </div>

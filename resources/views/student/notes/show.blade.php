@@ -15,9 +15,9 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('notes') }}" style="text-decoration:none;">Notes</a>
+                    <a href="{{ route('student.notes.index') }}" style="text-decoration:none;">Notes</a>
                 </li>
-                <li class="breadcrumb-item" aria-current="page">{{ $note->slug }}</li>
+                <li class="breadcrumb-item" aria-current="page">{{ ucfirst($note->short_title) }}</li>
             </ol>
         </nav>
     </div>
@@ -27,14 +27,26 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                <embed src="{{ $note->getFirstMediaUrl('note') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
+                @if($note->creator)
+                    <embed src="{{ $note->getFirstMediaUrl('teacher_note') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
+                @else
+                    <embed src="{{ $note->getFirstMediaUrl('note') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
+                @endif
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                <a href="{{ $note->getFirstMediaUrl('note') }}" id="round-button-2"
-                                name="button"
-                                class="btn btn-secondary btn-sm mt-5" target="_blank">
-                                Download notes
-                </a>
+                @if($note->creator)
+                    <a href="{{ $note->getFirstMediaUrl('teacher_note') }}" id="round-button-2"
+                                    name="button"
+                                    class="btn btn-secondary btn-sm mt-5" target="_blank">
+                                    Download notes
+                    </a>
+                @else
+                    <a href="{{ $note->getFirstMediaUrl('note') }}" id="round-button-2"
+                                    name="button"
+                                    class="btn btn-secondary btn-sm mt-5" target="_blank">
+                                    Download notes
+                    </a>
+                @endif
             </div>
         </div>
     </div>
