@@ -48,6 +48,8 @@ class PastPaper extends Model implements HasMedia
     public function registerMediaCollections() : void
     {
         $this->addMediaCollection('pastpaper');
+
+        $this->addMediaCollection('teacher_pastpaper');
     }
 
     /**
