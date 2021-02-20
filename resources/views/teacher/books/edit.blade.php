@@ -100,7 +100,7 @@
                         <div class="form-group mb-4">
                             <p class="bold">Current cover image</p>
                             <img src="{{ asset($book->getFirstMediaUrl('teacher_cover_image')) }}" class="w-50 mb-2">
-                            <p><small style="color: red; font-weight: bold;">*Choosing another file replaces this current one</small></p>
+                            <p><small class="red_color">*Choosing another file replaces this current one.</small></p>
                             <label for="cover_image" class="bold">Upload Book</label>
                             <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image">
                             @error('cover_image')
@@ -111,17 +111,18 @@
                         <div class="form-group mb-4">
                             <p class="bold">Current book</p>
                             <embed src="{{ $book->getFirstMediaUrl('teacher_book') }}" type="application/pdf" width="50%" height="50%">
-                            <p class="mt-2"><small style="color: red; font-weight: bold;">*Choosing another file replaces this current one</small></p>
+                            <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
 
                             <label for="book" class="bold">Upload Book</label>
                             <input type="file" name="book" class="form-control-file @error('book') is-invalid @enderror" id="book">
+                            <p><small class="light_gray_color">*Book should be a pdf file</small></p>
                             @error('book')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="price" class="bold">Book price</label>
+                            <label for="price" class="bold">Book price <span class="light_gray_color">(*Optional)</span></label>
                             <div class="input-group mb-2">
                                 <input type="text"
                                             class="form-control @error('price') is-invalid @enderror"
@@ -132,7 +133,7 @@
                                             name="price"
                                             value="{{ old('price', $book->price) }}">
                             </div>
-                            <p><small style="color: red; font-weight: bold;">*Price should be only digits</small></p>
+                            <p><small class="red_color">*Price should be only digits</small></p>
                             @error('price')
                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror

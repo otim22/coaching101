@@ -20,7 +20,7 @@ class Note extends Model implements HasMedia
 
     protected $fillable = ['title', 'price', 'category_id', 'year_id', 'term_id', 'user_id'];
     protected $with = ['media'];
-
+    protected $appends = ['isSubscribedTo'];
     /**
      * Get the options for generating the slug.
      */
@@ -47,6 +47,8 @@ class Note extends Model implements HasMedia
     public function registerMediaCollections() : void
     {
         $this->addMediaCollection('note');
+
+        $this->addMediaCollection('teacher_note');
     }
 
     /**

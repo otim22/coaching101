@@ -17,7 +17,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{ route('home') }}">Videos</a>
                         <a class="dropdown-item" href="{{ route('student.books.index') }}">Books</a>
-                        <a class="dropdown-item" href="{{ route('notes') }}">Notes</a>
+                        <a class="dropdown-item" href="{{ route('student.notes.index') }}">Notes</a>
                         <a class="dropdown-item" href="{{ route('pastpapers') }}">Past papers</a>
                     </div>
                 </li>
