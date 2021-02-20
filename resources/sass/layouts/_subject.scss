@@ -1,0 +1,99 @@
+.fast-transition-light {
+    position: relative; /* For positioning the pseudo-element */
+    background-color: $color-gray;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.fast-transition-white {
+    position: relative; /* For positioning the pseudo-element */
+    background-color: $color-white;
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 500px;
+}
+
+.fast-transition-2 {
+    position: relative; /* For positioning the pseudo-element */
+    background-color: $color-gray-2;
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 600px;
+}
+
+.fast-transition {
+    position: relative; /* For positioning the pseudo-element */
+    background-color: $color-gray-2;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.fast-transition::before {
+    /* Position the pseudo-element. */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    /* Create the box shadow at expanded size. */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
+
+    /* Hidden by default. */
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+.section-one {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.section-two {
+    padding: 25px;
+}
+
+.section-student {
+    padding: 10px;
+}
+
+.section-bread {
+    margin-top: 12px;
+    padding-bottom: 40px;
+}
+
+.add-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.make-me-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.adds-padding {
+    padding-left: 50px !important;
+}
+
+@include md-screens {
+    .card-text {
+        display: none;
+    }
+    .fast-transition-2, .fast-transition {
+        min-height: 5px;
+    }
+    .upper-padding {
+        padding-top: 40px;
+    }
+
+    .adds-padding {
+        padding-left: 10px !important;
+    }
+}

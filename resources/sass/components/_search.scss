@@ -1,0 +1,99 @@
+.top-search input[type="text"] {
+    width: 100%;
+    min-width: 150px;
+    display: block;
+    padding-left: 20px;
+    border-radius: 19px;
+    overflow: hidden;
+}
+
+#top-search-button {
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
+
+.top-search-svg svg {
+    width: 25px;
+    height: 25px;
+}
+
+@include xxl-screens {
+    .top-search input[type="text"] {
+        width: 500px;
+    }
+}
+
+@include xl-screens {
+    .top-search input[type="text"] {
+        width: 450px;
+    }
+}
+
+@include xlg-screens {
+    .top-search input[type="text"] {
+        width: 400px;
+    }
+}
+
+@include lg-screens {
+    .top-search input[type="text"] {
+        width: 350px;
+    }
+}
+
+@include slg-screens {
+    .top-search input[type="text"] {
+      width: 250px;
+    }
+}
+
+@include sslg-screens {
+    .top-search input[type="text"] {
+      width: 200px;
+    }
+}
+
+@include md-screens {
+    .top-search input[type="text"] {
+        width: 180px;
+    }
+}
+
+@include mmd-screens {
+    .top-search input[type="text"] {
+        width: 120px;
+    }
+}
+
+@include smd-screens {
+    .top-search input[type="text"] {
+        width: 90px;
+    }
+}
+
+@include sm-screens {
+    .space-bottom {
+        margin-bottom: 10px;
+    }
+    .top-search input[type="text"] {
+        width: 625px;
+    }
+}
+
+@include ssm-screens {
+    .top-search input[type="text"] {
+        width: 565px;
+    }
+}
+
+@include lxs-screens {
+    .top-search input[type="text"] {
+        width: 500px;
+    }
+}
+
+@include xs-screens {
+    .top-search input[type="text"] {
+        width: 270px;
+    }
+}

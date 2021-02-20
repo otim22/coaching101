@@ -1,0 +1,38 @@
+.header-divider {
+    border-left: 1px solid $color-gray-2;
+   width: 1px;
+   height: 140px;
+   position: absolute;
+   right: 90px;
+}
+
+.footer-line hr {
+    margin: 15px 0;
+    height: 1px;
+    border: none;
+    background: $color-body;
+}
+
+@include md-screens {
+    .header-divider {
+        right: 60px;
+    }
+}
+
+@include sm-screens {
+    .header-divider {
+        border-left: 1px $color-gray-2;
+    }
+}
+
+@include xs-screens {
+    .header-divider {
+        border-left: 1px $color-gray-2;
+    }
+}
+
+@include xs-sm-screens {
+    .header-divider {
+        border-left: 1px $color-gray-2;
+    }
+}

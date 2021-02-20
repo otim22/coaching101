@@ -1,1 +1,45 @@
-//
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+//  Fontawesome
+@import "node_modules/font-awesome/scss/font-awesome";
+
+// Variables
+@import 'global/variables';
+@import 'global/mixins';
+@import 'global/global';
+@import 'global/colors';
+
+// Components
+@import 'components/fonts';
+@import 'components/nav';
+@import 'components/search';
+@import 'components/landing_page';
+@import 'components/footer';
+@import 'components/register';
+@import 'components/button';
+@import 'components/input';
+@import 'components/rating';
+@import 'components/limit_items';
+
+// Components
+@import 'layouts/bg-colors';
+@import 'layouts/subject';
+@import 'layouts/dividers';
+@import 'layouts/sub';
+@import 'layouts/home';
+
+// Pages
+@import 'pages/profile';
+@import 'pages/subject_structure';
+@import 'pages/audience';
+@import 'pages/subject_outline';
+@import 'pages/subjects_list';
+@import 'pages/login';
+@import 'pages/play_video';
+@import 'pages/teacher';
+@import 'pages/cart';
+@import 'pages/welcome';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';

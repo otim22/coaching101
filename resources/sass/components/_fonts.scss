@@ -1,0 +1,48 @@
+.side-font {
+    font-weight: bold;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.sub-text {
+    font-size: 20px;
+}
+
+.title-font {
+    color: $color-gray-4;
+}
+
+.author-font {
+    color: $color-gray-4;
+    font-size: 15px;
+}
+
+.title-font:hover, .author-font:hover {
+    color: $color-black;
+}
+
+.rating {
+    color: $orange;
+}
+
+.rating:hover {
+    color: $orange-2;
+}
+
+.teacher-icon {
+    color: #3B544E;
+}
+
+.student-head-font {
+    color: $color-gray-3;
+}
+
+.student-font {
+    color: $color-gray-2;
+}
+
+.learn-today_title {
+    font-weight: 600 !important;
+}

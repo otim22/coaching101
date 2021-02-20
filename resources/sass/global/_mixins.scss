@@ -1,0 +1,147 @@
+// Extra XXLarge Screens
+@mixin xxl-screens {
+    @media only screen and (min-width: 1300px) {
+        @content;
+    }
+}
+
+// Extra XLarge Screens
+@mixin xl-screens {
+    @media only screen and (max-width: 1300px) {
+        @content;
+    }
+}
+
+// XLarge Screens
+@mixin xlg-screens {
+    @media only screen and (max-width: 1250px) {
+        @content;
+    }
+}
+
+// Large Screens
+@mixin lg-screens {
+    @media only screen and (max-width: 1200px) {
+        @content;
+    }
+}
+
+// SLarge Screens
+@mixin slg-screens {
+    @media only screen and (max-width: 1150px) {
+        @content;
+    }
+}
+
+// SLarge Screens
+@mixin sslg-screens {
+    @media only screen and (max-width: 1050px) {
+        @content;
+    }
+}
+
+// Medium Screens
+@mixin md-screens {
+    @media only screen and (max-width: 991px) {
+        @content;
+    }
+}
+
+// MMedium Screens
+@mixin mmd-screens {
+    @media only screen and (max-width: 900px) {
+        @content;
+    }
+}
+
+// sMedium Screens
+@mixin smd-screens {
+    @media only screen and (max-width: 800px) {
+        @content;
+    }
+}
+
+// Small Screens
+@mixin sm-screens {
+    @media only screen and (max-width: 767px) {
+        @content;
+    }
+}
+
+// Small Screens
+@mixin ssm-screens {
+    @media only screen and (max-width: 700px) {
+        @content;
+    }
+}
+
+// Extra Small Screens
+@mixin lxs-screens {
+    @media only screen and (max-width: 652px) {
+        @content;
+    }
+}
+
+// Extra Small Screens
+@mixin xs-screens {
+    @media only screen and (max-width: 575px) {
+        @content;
+    }
+}
+
+
+// Extra Small and Small Screens
+@mixin xs-sm-screens {
+    @media only screen and (max-width: 320px) {
+        @content;
+    }
+}
+
+// Animation Mixin
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};
+}
+
+// Css3 Transitions Mixin
+@mixin transition($x...){
+    transition: $x;
+    -webkit-transition: $x;
+    -moz-transition: $x;
+    -ms-transition: $x;
+    -o-transition: $x;
+}
+
+// Add prefixes before CSS3 Elements
+@mixin prefix($property, $value, $prefixes: ()) {
+    @each $prefix in $prefixes {
+        #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    #{$property}: $value;
+}
