@@ -12,12 +12,13 @@ This repo is a WIP and some functionalities are complete — PRs and issues welc
 
 Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/8.X/installation#installation)
 
+
 Alternative installation is possible with local dependencies relying on [Valet](#valet). 
 
 Clone the repository
 
     git clone https://github.com/otim22/coaching101.git
- 
+
  Switch to the repo folder
 
     cd coaching101
@@ -25,7 +26,7 @@ Clone the repository
 Install all the dependencies using composer
 
     composer install
-    
+
 And all the frontend dependencies using npm
 
     npm install
@@ -37,7 +38,7 @@ Copy the example env file and make the required configuration changes in the .en
 Generate a new application key
 
     php artisan key:generate
-    
+
 Run the database migrations (**Set the database connection in .env before migrating**)
 
     php artisan migrate
@@ -57,7 +58,7 @@ You can now access the server at http://localhost:8000
     npm install
     cp .env.example .env
     php artisan key:generate
-    
+
 **Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
 
     php artisan migrate
@@ -75,7 +76,7 @@ This step is optional but if need arises, open the DatabaseSeeder and set the pr
 Run the database seeder and you're done
 
     php artisan db:seed
- 
+
 ***Note*** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command be sure to seed again your data
 
     php artisan migrate:refresh
@@ -83,7 +84,7 @@ Run the database seeder and you're done
 Or If you want to run both refreshing and seeding acions at once then run
 
     php artisan migrate:refresh --seed
-    
+
 
 ## Docker
 
@@ -129,8 +130,7 @@ The app gets served and accessed at [http://localhost:8000](http://localhost:800
 Run the laravel development server
 
     php artisan serve
-    
- 
+
  The api can now be accessed at
 
     http://localhost:8000
