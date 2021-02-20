@@ -40,8 +40,8 @@ use App\Http\Controllers\Admin\PastPapersController;
 use App\Http\Controllers\PastPapersController as PastPapers;
 
 Route::get('/', [WelcomeController::class, 'index']);
-Route::get('/books', [Books::class, 'index'])->name('books');
-Route::get('/books/{book}', [Books::class, 'show'])->name('books.show');
+Route::get('/books', [Books::class, 'index'])->name('student.books.index');
+Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
 Route::get('/notes', [Notes::class, 'index'])->name('notes');
 Route::get('/notes/{note}', [Notes::class, 'show'])->name('notes.show');
