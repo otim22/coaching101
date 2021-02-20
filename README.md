@@ -1,4 +1,4 @@
-# Coachin101
+# Coaching101
 
 Getting in touch with a teacher of your choice and share knowledge.
 
@@ -48,6 +48,7 @@ Start the local development server
 
 You can now access the server at http://localhost:8000
 
+
 **TL;DR command list**
 
     git clone https://github.com/otim22/coaching101.git
@@ -61,6 +62,7 @@ You can now access the server at http://localhost:8000
 
     php artisan migrate
     php artisan serve
+
 
 ## Database seeding
 
@@ -82,6 +84,7 @@ Or If you want to run both refreshing and seeding acions at once then run
 
     php artisan migrate:refresh --seed
     
+
 ## Docker
 
 To install with [Docker](https://www.docker.com), run following commands:
@@ -101,6 +104,7 @@ docker-compose exec php php artisan serve --host=0.0.0.0
 
 The app gets served and accessed at [http://localhost:8000](http://localhost:8000).
 
+
 # Code overview
 
 ## Dependencies
@@ -118,6 +122,7 @@ The app gets served and accessed at [http://localhost:8000](http://localhost:800
 ***Note*** : You can quickly set the database information and other variables in this file and have the application fully working.
 
 ----------
+
 
 # Testing APP
 
