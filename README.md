@@ -6,18 +6,14 @@ This repo is a WIP and some functionalities are complete — PRs and issues welc
 
 ----------
 
-# Getting started
+## Getting started
 
-## Installation
+### Installation
 
 Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/8.X/installation#installation)
 
 
-<<<<<<< HEAD
 Alternative installation is possible with local dependencies relying on [Valet](#valet).
-=======
-Alternative installation is possible with local dependencies relying on [Valet](#valet). 
->>>>>>> 354a6029e2258930cbb2d70bef7f7de896a7cc6f
 
 Clone the repository
 
@@ -69,7 +65,7 @@ You can now access the server at http://localhost:8000
     php artisan serve
 
 
-## Database seeding
+### Database seeding
 
 **Populate the database with seed data with relationships which includes users, subjects, categories, years, terms and others. This can help you to quickly start testing the api or couple a frontend and start using it with ready content.**
 
@@ -90,7 +86,7 @@ Or If you want to run both refreshing and seeding acions at once then run
     php artisan migrate:refresh --seed
 
 
-## Docker
+### Docker
 
 To install with [Docker](https://www.docker.com), run following commands:
 
@@ -110,9 +106,9 @@ docker-compose exec php php artisan serve --host=0.0.0.0
 The app gets served and accessed at [http://localhost:8000](http://localhost:8000).
 
 
-# Code overview
+## Code overview
 
-## Dependencies
+### Dependencies
 
 - [laravel](https://laravel.com) - PHP Framework on which the application is built off
 - [laravel-cors](https://github.com/barryvdh/laravel-cors) - For handling Cross-Origin Resource Sharing (CORS)
@@ -120,7 +116,7 @@ The app gets served and accessed at [http://localhost:8000](http://localhost:800
 - [bootstrap](https://getbootstrap.com) - CSS Framework which the application uses, And most of its dependencies such jQuery, popper, bootstrap-icons, font-awesome, videojs-playlist
 - And a few other laravel packages. [spatie/laravel-collection-macros](https://github.com/spatie/laravel-collection-macros), [spatie/laravel-medialibrary](https://spatie.be/docs/laravel-medialibrary), [spatie/laravel-permission](https://spatie.be/docs/laravel-permission), [spatie/laravel-query-builder](https://github.com/spatie/laravel-query-builder), [spatie/laravel-searchable](https://github.com/spatie/laravel-searchable), [spatie/laravel-sluggable](https://github.com/spatie/laravel-sluggable), [willvincent/laravel-rateable](https://github.com/willvincent/laravel-rateable), [laravelcollective/html](https://laravelcollective.com/docs/6.x/html), [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
 
-## Environment variables
+### Environment variables
 
 - `.env` - Environment variables can be set in this file
 
@@ -129,7 +125,7 @@ The app gets served and accessed at [http://localhost:8000](http://localhost:800
 ----------
 
 
-# Testing APP
+## Testing APP
 
 Run the laravel development server
 
