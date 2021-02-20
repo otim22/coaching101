@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-body">
                         @if($pastpaper->isSubscribedTo)
-                            <a href="{{ route('pastpapers.show', $pastpaper) }}" style="text-decoration: none" class="title-font">
+                            <a href="{{ route('student.pastpapers.show', $pastpaper) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                 @if($pastpaper->creator)
                                     <span class="author-font">By {{ $pastpaper->creator->name }}</span><br />
@@ -20,7 +20,7 @@
                                 @endif
                             </a>
                         @elseif(!$pastpaper->price)
-                            <a href="{{ route('pastpapers.show', $pastpaper) }}" style="text-decoration: none" class="title-font">
+                            <a href="{{ route('student.pastpapers.show', $pastpaper) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                 @if($pastpaper->creator)
                                     <span class="author-font">By {{ $pastpaper->creator->name }}</span><br />

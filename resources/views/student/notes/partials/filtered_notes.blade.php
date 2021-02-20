@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-body">
                         @if($note->isSubscribedTo)
-                            <a href="{{ route('notes.show', $note) }}" style="text-decoration: none" class="title-font">
+                            <a href="{{ route('student.notes.show', $note) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $note->very_short_title }}</span><br />
                                 @if($note->creator)
                                     <span class="author-font">By {{ $note->creator->name }}</span><br />
@@ -20,7 +20,7 @@
                                 @endif
                             </a>
                         @elseif(!$note->price)
-                            <a href="{{ route('notes.show', $note) }}" style="text-decoration: none" class="title-font">
+                            <a href="{{ route('student.notes.show', $note) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $note->very_short_title }}</span><br />
                                 @if($note->creator)
                                     <span class="author-font">By {{ $note->creator->name }}</span><br />

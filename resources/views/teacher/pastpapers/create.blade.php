@@ -17,7 +17,7 @@
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Subjects</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Books</li>
+                <li class="breadcrumb-item active" aria-current="page">Past paper</li>
             </ol>
         </nav>
     </div>
@@ -30,7 +30,7 @@
                 <div class="card p-4">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <a id="round-button-2" href="{{ route('teacher.books') }}" class="btn btn-secondary btn-sm">
+                            <a id="round-button-2" href="{{ route('teacher.pastpapers') }}" class="btn btn-secondary btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                                 </svg>
@@ -41,7 +41,7 @@
 
                     <hr />
 
-                    <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('pastpapers.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-4">
                             <label for="year_id" class="bold">Subject</label>
@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="title">Book title</label>
+                            <label for="title">Past paper title</label>
                             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Example: Introduction to modern physics">
                             @error('title')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -97,24 +97,16 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="cover_image" class="bold">Cover image</label>
-                            <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" required>
-                            @error('cover_image')
+                            <label for="pastpaper" class="bold">Upload Past paper</label>
+                            <input type="file" name="pastpaper" class="form-control-file @error('pastpaper') is-invalid @enderror" id="pastpaper" required>
+                            <p><small class="light_gray_color">*Past paper should be a pdf file</small></p>
+                            @error('pastpaper')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="book" class="bold">Upload Book</label>
-                            <input type="file" name="book" class="form-control-file @error('book') is-invalid @enderror" id="book" required>
-                            <p><small class="light_gray_color">*Book should be a pdf file</small></p>
-                            @error('book')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="price" class="bold">Book price <span class="light_gray_color">(*Optional)</span></label>
+                            <label for="price" class="bold">Past paper price <span class="light_gray_color">(*Optional)</span></label>
                             <div class="input-group">
                                 <input type="text"
                                             class="form-control @error('price') is-invalid @enderror"

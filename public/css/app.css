@@ -3184,6 +3184,10 @@ select {
   color: #515152;
 }
 
+.light_gray_color {
+  color: #9b9b9b;
+}
+
 .paid_color {
   color: #3490dc;
 }

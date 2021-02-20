@@ -29,7 +29,8 @@ class NoteRequest extends FormRequest
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
-            'user_id' => 'integer|nullable'
+            'note' => 'required|mimes:pdf|max:5000',
+            'user_id' => 'integer|nullable',
         ];
     }
 
@@ -41,7 +42,8 @@ class NoteRequest extends FormRequest
             'category_id.required' => 'Choose a subject',
             'year_id.required' => 'Choose a year',
             'term_id.required' => 'Choose a term',
-            'user_id.nullable' => 'Should be logged in'
+            'note.required' => 'Should be a pdf file',
+            'user_id.nullable' => 'Should be logged in',
         ];
     }
 }

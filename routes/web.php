@@ -34,6 +34,8 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Admin\BooksController;
 use App\Http\Controllers\BooksController as Books;
 use App\Http\Controllers\TeacherBookController;
+use App\Http\Controllers\TeacherNoteController;
+use App\Http\Controllers\TeacherPastpaperController;
 use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\NotesController as Notes;
 use App\Http\Controllers\Admin\PastPapersController;
@@ -43,11 +45,11 @@ Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/books', [Books::class, 'index'])->name('student.books.index');
 Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
-Route::get('/notes', [Notes::class, 'index'])->name('notes');
-Route::get('/notes/{note}', [Notes::class, 'show'])->name('notes.show');
+Route::get('/notes', [Notes::class, 'index'])->name('student.notes.index');
+Route::get('/notes/{note}', [Notes::class, 'show'])->name('student.notes.show');
 Route::get('/get-more-notes', [Notes::class, 'getMoreNotes'])->name('get-more-notes');
-Route::get('/pastpapers', [PastPapers::class, 'index'])->name('pastpapers');
-Route::get('/pastpapers/{pastpaper}', [PastPapers::class, 'show'])->name('pastpapers.show');
+Route::get('/pastpapers', [PastPapers::class, 'index'])->name('student.pastpapers.index');
+Route::get('/pastpapers/{pastpaper}', [PastPapers::class, 'show'])->name('student.pastpapers.show');
 Route::get('/get-more-pastpapers', [PastPapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
 Route::get('/account-setting', [UserController::class, 'account'])->name('account-setting');
 Route::patch('/account-update', [UserController::class, 'accountUpdate'])->name('account-update');
@@ -85,6 +87,12 @@ Route::middleware('auth')->group(function() {
 
         Route::resource('/books', 'TeacherBookController')->except(['index']);
         Route::get('/books', [TeacherBookController::class, 'index'])->name('teacher.books');
+
+        Route::resource('/notes', 'TeacherNoteController')->except(['index']);
+        Route::get('/notes', [TeacherNoteController::class, 'index'])->name('teacher.notes');
+
+        Route::resource('/pastpapers', 'TeacherPastpaperController')->except(['index']);
+        Route::get('/pastpapers', [TeacherPastpaperController::class, 'index'])->name('teacher.pastpapers');
 
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'create']);

@@ -15,9 +15,9 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('pastpapers') }}" style="text-decoration:none;">Past papers</a>
+                    <a href="{{ route('student.pastpapers.index') }}" style="text-decoration:none;">Past papers</a>
                 </li>
-                <li class="breadcrumb-item" aria-current="page">{{ $pastpaper->slug }}</li>
+                <li class="breadcrumb-item" aria-current="page">{{ ucfirst($pastpaper->title) }}</li>
             </ol>
         </nav>
     </div>
@@ -27,14 +27,26 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                <embed src="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
+                @if($pastpaper->creator)
+                    <embed src="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
+                @else
+                    <embed src="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
+                @endif
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                <a href="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" id="round-button-2"
-                                name="button"
-                                class="btn btn-secondary btn-sm mt-5" target="_blank">
-                                Download pastpapers
-                </a>
+                @if($pastpaper->creator)
+                    <a href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" id="round-button-2"
+                                    name="button"
+                                    class="btn btn-secondary btn-sm mt-5" target="_blank">
+                                    Download pastpapers
+                    </a>
+                @else
+                    <a href="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" id="round-button-2"
+                                    name="button"
+                                    class="btn btn-secondary btn-sm mt-5" target="_blank">
+                                    Download pastpapers
+                    </a>
+                @endif
             </div>
         </div>
     </div>

@@ -18,10 +18,10 @@
                     <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Subjects</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ url('teacher/books') }}" style="text-decoration: none;">Books</a>
+                    <a href="{{ route('teacher.pastpapers') }}" style="text-decoration: none;">Past paper</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    {{$book->title}}
+                    {{$pastpaper->title}}
                 </li>
             </ol>
         </nav>
@@ -35,7 +35,7 @@
                 <div class="card p-4">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <a id="round-button-2" href="{{ route('teacher.books') }}" class="btn btn-secondary btn-sm">
+                            <a id="round-button-2" href="{{ route('teacher.pastpapers') }}" class="btn btn-secondary btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                                 </svg>
@@ -47,9 +47,9 @@
                                 Action
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="{{ route('books.edit', $book) }}"> Edit</a>
+                                <a class="dropdown-item" href="{{ route('pastpapers.edit', $pastpaper) }}"> Edit</a>
                                 <a class="dropdown-item" href="#"
-                                        onclick="event.preventDefault(); document.getElementById('delete-teacher-book').submit();">
+                                        onclick="event.preventDefault(); document.getElementById('delete-teacher-pastpaper').submit();">
                                     {{ __('Delete') }}
                                 </a>
                             </div>
@@ -58,20 +58,18 @@
 
                     <hr />
 
-                    <h5 class="mt-2">{{ $book->title }}</h5>
-                    <img src="{{ asset($book->getFirstMediaUrl('teacher_cover_image')) }}" class="w-100 mb-3">
-                    <p>{{ $book->category->name }} {{ $book->year->name }}, {{ $book->term->name }}. </p>
-                    @if(!$book->price)
+                    <h5 class="mt-2">{{ $pastpaper->title }}</h5>
+                    <p>{{ $pastpaper->category->name }} {{ $pastpaper->year->name }}, {{ $pastpaper->term->name }}. </p>
+                    @if(!$pastpaper->price)
                         <p>Free</p>
                     @else
-                        <p>UGX {{ number_format($book->price) }}/-</p>
+                        <p>UGX {{ number_format($pastpaper->price) }}/-</p>
                     @endif
-                    <embed src="{{ $book->getFirstMediaUrl('teacher_book') }}" type="application/pdf" width="100%" height="400">
-                    <a id="round-button-2" class="btn btn-secondary btn-sm mt-3" href="{{ $book->getFirstMediaUrl('teacher_book') }}" target="_blank">
-                        Download book
+                    <embed src="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" type="application/pdf" width="100%" height="400">
+                    <a id="round-button-2" class="btn btn-secondary btn-sm mt-3" href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" target="_blank">
+                        Download pastpaper
                     </a>
-
-                    <form action="{{ route('books.destroy', $book) }}" class="hidden" id="delete-teacher-book" method="POST">
+                    <form action="{{ route('pastpapers.destroy', $pastpaper) }}" class="hidden" id="delete-teacher-pastpaper" method="POST">
                         @csrf
                         @method('delete')
                     </form>
