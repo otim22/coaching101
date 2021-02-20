@@ -12,7 +12,8 @@ This repo is a WIP and some functionalities are complete — PRs and issues welc
 
 Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/8.X/installation#installation)
 
-Alternative installation is possible with local dependencies relying on [Valet](#valet).
+
+Alternative installation is possible with local dependencies relying on [Valet](#valet). 
 
 Clone the repository
 
@@ -129,7 +130,6 @@ The app gets served and accessed at [http://localhost:8000](http://localhost:800
 Run the laravel development server
 
     php artisan serve
-
 
  The api can now be accessed at
 
