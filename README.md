@@ -13,7 +13,11 @@ This repo is a WIP and some functionalities are complete — PRs and issues welc
 Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/8.X/installation#installation)
 
 
+<<<<<<< HEAD
 Alternative installation is possible with local dependencies relying on [Valet](#valet).
+=======
+Alternative installation is possible with local dependencies relying on [Valet](#valet). 
+>>>>>>> 354a6029e2258930cbb2d70bef7f7de896a7cc6f
 
 Clone the repository
 
