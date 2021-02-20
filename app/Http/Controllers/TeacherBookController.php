@@ -56,7 +56,7 @@ class TeacherBookController extends Controller
             $book->addMediaFromRequest('book')->toMediaCollection('teacher_book');
         }
 
-        return redirect()->route('books.index')->with('success', 'Book added successfully.');
+        return redirect()->route('teacher.books')->with('success', 'Book added successfully.');
     }
 
     public function show(Book $book)
@@ -111,7 +111,7 @@ class TeacherBookController extends Controller
             $book->addMediaFromRequest('book')->toMediaCollection('teacher_book');
         }
 
-        return redirect()->route('books.index')->with('success', 'Book added successfully.');
+        return redirect()->route('teacher.books')->with('success', 'Book added successfully.');
     }
 
     /**
@@ -125,7 +125,7 @@ class TeacherBookController extends Controller
         try {
             $book->delete();
 
-            return redirect()->route('books.index')->with('success', 'Book deleted successfully');
+            return redirect()->route('teacher.books')->with('success', 'Book deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('books') }}" style="text-decoration:none;">Books</a>
+                    <a href="{{ route('student.books.index') }}" style="text-decoration:none;">Books</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">{{ $book->slug }}</li>
             </ol>
@@ -27,14 +27,26 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                <embed src="{{ $book->getFirstMediaUrl('book') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
+                @if($book->creator)
+                    <embed src="{{ $book->getFirstMediaUrl('teacher_book') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
+                @else
+                    <embed src="{{ $book->getFirstMediaUrl('book') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
+                @endif
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                <a href="{{ $book->getFirstMediaUrl('book') }}" id="round-button-2"
-                                name="button"
-                                class="btn btn-secondary btn-sm mt-5" target="_blank">
-                                Download book
-                </a>
+                @if($book->creator)
+                    <a href="{{ $book->getFirstMediaUrl('teacher_book') }}" id="round-button-2"
+                                    name="button"
+                                    class="btn btn-secondary btn-sm mt-5" target="_blank">
+                                    Download book
+                    </a>
+                @else
+                    <a href="{{ $book->getFirstMediaUrl('book') }}" id="round-button-2"
+                                    name="button"
+                                    class="btn btn-secondary btn-sm mt-5" target="_blank">
+                                    Download book
+                    </a>
+                @endif
             </div>
         </div>
     </div>

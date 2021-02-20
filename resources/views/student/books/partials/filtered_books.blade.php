@@ -4,19 +4,31 @@
             <div class="mb-3">
                 <div class="card">
                     @if($book->isSubscribedTo)
-                        <a href="{{ route('books.show', $book) }}" style="text-decoration: none">
-                            <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="" width="100%" height="150">
+                        <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
+                            @if($book->creator)
+                                <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                            @else
+                                <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                            @endif
                         </a>
                     @elseif(!$book->price)
-                        <a href="{{ route('books.show', $book) }}" style="text-decoration: none">
-                            <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="" width="100%" height="150">
+                        <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
+                            @if($book->creator)
+                                <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                            @else
+                                <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                            @endif
                         </a>
                     @else
-                        <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="" width="100%" height="150">
+                        @if($book->creator)
+                            <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                        @else
+                            <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                        @endif
                     @endif
                     <div class="card-body card-body_custom">
                         @if($book->isSubscribedTo)
-                            <a href="{{ route('books.show', $book) }}" style="text-decoration: none" class="title-font">
+                            <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $book->very_short_title }}</span><br />
                                 @if($book->creator)
                                     <span class="author-font">By {{ $book->creator->name }}</span><br />
@@ -31,7 +43,7 @@
                                 @endif
                             </a>
                         @elseif(!$book->price)
-                            <a href="{{ route('books.show', $book) }}" style="text-decoration: none" class="title-font">
+                            <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $book->very_short_title }}</span><br />
                                 @if($book->creator)
                                     <span class="author-font">By {{ $book->creator->name }}</span><br />
