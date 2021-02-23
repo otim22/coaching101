@@ -14,7 +14,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class PastPaper extends Model implements HasMedia
+class Pastpaper extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia, HasSlug, PresentsText;
 

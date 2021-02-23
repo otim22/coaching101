@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\TeacherImageController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\WelcomeController;
@@ -38,8 +39,8 @@ use App\Http\Controllers\TeacherNoteController;
 use App\Http\Controllers\TeacherPastpaperController;
 use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\NotesController as Notes;
-use App\Http\Controllers\Admin\PastPapersController;
-use App\Http\Controllers\PastPapersController as PastPapers;
+use App\Http\Controllers\Admin\PastpaperController;
+use App\Http\Controllers\PastpaperController as PastPapers;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/books', [Books::class, 'index'])->name('student.books.index');
@@ -52,6 +53,14 @@ Route::get('/pastpapers', [PastPapers::class, 'index'])->name('student.pastpaper
 Route::get('/pastpapers/{pastpaper}', [PastPapers::class, 'show'])->name('student.pastpapers.show');
 Route::get('/get-more-pastpapers', [PastPapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
 Route::get('/account-setting', [UserController::class, 'account'])->name('account-setting');
+
+Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
+Route::patch('/users/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');
+Route::post('/users/profile/create', [ProfileController::class, 'create'])->name('users.profile.create');
+
+// Route::post('/profiles', [ProfileController::class, 'store'])->name('profiles.store');
+// Route::get('/profiles/{profile}', [ProfileController::class, 'show'])->name('profiles');
+
 Route::patch('/account-update', [UserController::class, 'accountUpdate'])->name('account-update');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject?}/topics/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show');
@@ -87,10 +96,8 @@ Route::middleware('auth')->group(function() {
 
         Route::resource('/books', 'TeacherBookController')->except(['index']);
         Route::get('/books', [TeacherBookController::class, 'index'])->name('teacher.books');
-
         Route::resource('/notes', 'TeacherNoteController')->except(['index']);
         Route::get('/notes', [TeacherNoteController::class, 'index'])->name('teacher.notes');
-
         Route::resource('/pastpapers', 'TeacherPastpaperController')->except(['index']);
         Route::get('/pastpapers', [TeacherPastpaperController::class, 'index'])->name('teacher.pastpapers');
 
@@ -131,7 +138,7 @@ Route::middleware('auth')->group(function() {
             'menus' => MenuController::class,
             'books' => BooksController::class,
             'notes' => NotesController::class,
-            'pastpapers' => PastPapersController::class,
+            'pastpapers' => PastpaperController::class,
         ]);
     });
 });

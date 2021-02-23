@@ -98,15 +98,14 @@
                          </a>
 
                         <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="{{ route('my-subjects') }}">My courses</a>
+                        <a class="dropdown-item" href="{{ route('my-subjects') }}">My subjects</a>
                         <a class="dropdown-item" href="{{ url('cart') }}">My cart</a>
-                        <a class="dropdown-item" href="{{ route('account-setting') }}">Account settings</a>
 
+                        <a class="dropdown-item" href="{{ route('users.profile') }}">Profile details</a>
                         <div class="dropdown-divider"></div>
 
                         <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
+                                onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>

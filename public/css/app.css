@@ -4409,9 +4409,9 @@ img.rounded-corners {
 }
 
 .circlar-teacher {
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
+  border-radius: 12px;
+  width: 80%;
+  height: 80%;
 }
 
 .card-custom {

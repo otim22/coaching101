@@ -5,16 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Category;
-use App\Models\PastPaper;
+use App\Models\Pastpaper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PastpaperRequest;
 
-class PastPapersController extends Controller
+class PastpaperController extends Controller
 {
     public function index()
     {
-        $pastpapers = PastPaper::paginate(20);
+        $pastpapers = Pastpaper::paginate(20);
 
         return view('admin.pastpapers.index', compact('pastpapers'));
     }
@@ -34,9 +34,9 @@ class PastPapersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PastpaperRequest $request, PastPaper $pastpaper)
+    public function store(PastpaperRequest $request, Pastpaper $pastpaper)
     {
-        $pastpaper = new PastPaper($request->except(['pastpaper']));
+        $pastpaper = new Pastpaper($request->except(['pastpaper']));
 
         $pastpaper->save();
 

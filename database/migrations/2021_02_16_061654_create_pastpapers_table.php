@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePastPapersTable extends Migration
+class CreatePastpapersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePastPapersTable extends Migration
      */
     public function up()
     {
-        Schema::create('past_papers', function (Blueprint $table) {
+        Schema::create('pastpapers', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
             $table->string('title');
@@ -33,6 +33,6 @@ class CreatePastPapersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('past_papers');
+        Schema::dropIfExists('pastpapers');
     }
 }

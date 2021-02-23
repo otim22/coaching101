@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\PastPaper;
+use App\Models\Pastpaper;
 use Illuminate\Support\Facades\Auth;
 
 class BuyPastpaper extends Component
@@ -24,7 +24,7 @@ class BuyPastpaper extends Component
     {
         if(Auth::check()) {
             $user = Auth::user();
-            $pastpaperToBuy = PastPaper::where('id', $pastpaperId)->firstOrFail();
+            $pastpaperToBuy = Pastpaper::where('id', $pastpaperId)->firstOrFail();
             // $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
             // $currency = "UGX";
             // $userEmail = $user->email;

@@ -246,7 +246,7 @@
                 @endauth
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <img src="{{ asset($studentImage->cover_image) }}" alt="image thumb" class="student-image">
+                <img src="{{ asset($studentImage->getFirstMediaUrl()) }}" alt="image thumb" class="student-image">
             </div>
         </div>
     </div>
@@ -262,7 +262,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
-            <img src="{{ asset($teacherImage->cover_image) }}" alt="teacher thumb" class="teacher-image">
+            <img src="{{ asset($teacherImage->getFirstMediaUrl()) }}" alt="teacher thumb" class="teacher-image">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="mb-2">
