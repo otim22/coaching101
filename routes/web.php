@@ -30,8 +30,10 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\MenuCategoryController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\Admin\BooksController;
 use App\Http\Controllers\BooksController as Books;
 use App\Http\Controllers\TeacherBookController;
@@ -48,16 +50,18 @@ Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
 Route::get('/notes', [Notes::class, 'index'])->name('student.notes.index');
 Route::get('/notes/{note}', [Notes::class, 'show'])->name('student.notes.show');
+
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
+Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+
 Route::get('/get-more-notes', [Notes::class, 'getMoreNotes'])->name('get-more-notes');
 Route::get('/pastpapers', [PastPapers::class, 'index'])->name('student.pastpapers.index');
 Route::get('/pastpapers/{pastpaper}', [PastPapers::class, 'show'])->name('student.pastpapers.show');
 Route::get('/get-more-pastpapers', [PastPapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
-Route::get('/account-setting', [UserController::class, 'account'])->name('account-setting');
-
 Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
-Route::patch('/users/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');
 Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');
-
+Route::patch('/users/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');
 Route::patch('/account-update', [UserController::class, 'accountUpdate'])->name('account-update');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject?}/topics/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show');

@@ -85,7 +85,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item d-flex" href="{{ route('account-setting') }}">
+                                <a class="dropdown-item d-flex" href="{{ route('users.profile') }}">
                                     <div class="mr-2 pt-2">
                                         <div class="circle">
                                             <span class="circle__content">{{ Helper::generate_initials(Auth::user()->name) }}</span>

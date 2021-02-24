@@ -26,30 +26,6 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function account()
-    {
-        $user = User::with('media')->where('id', Auth::id())->firstOrFail();
-
-        return view('student.profile.index', compact('user'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function accountUpdate()
-    {
-        $user = User::with('media')->where('id', Auth::id())->firstOrFail();
-
-        return view('student.profile.index', compact('user'));
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

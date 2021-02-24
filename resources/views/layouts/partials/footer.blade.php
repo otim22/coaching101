@@ -4,16 +4,26 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <h5 class="uppercase">Coaching101</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="{{ route('about') }}">About</a></li>
+                    <li><a href="{{ route('contacts') }}">Contact</a></li>
+                    <!-- <li><a href="#">Blog</a></li> -->
                 </ul>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <h5>Resources</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#">Teach</a></li>
-                    <li><a href="#">Learn</a></li>
+                    @guest
+                        <li><a href="{{ route('subjects.starter') }}">Teach</a></li>
+                    @endguest
+
+                    @if(Auth::user()->role == 1)
+                        <li><a href="{{ route('subjects.starter') }}">Teach</a></li>
+                    @endif
+
+                    @if(Auth::user()->role == 2)
+                        <li><a href="{{ route('manage.subjects') }}">Teach</a></li>
+                    @endif
+                    <li><a href="{{ url('/#learn-now') }}">Learn</a></li>
                     <li><a href="#">Affiliate</a></li>
                 </ul>
             </div>
@@ -23,7 +33,7 @@
                 <ul class="list-unstyled">
                     <li><a href="#">Privacy</a></li>
                     <li><a href="#">Terms</a></li>
-                    <li><a href="#">Support</a></li>
+                    <li><a href="{{ route('contacts') }}">Support</a></li>
                 </ul>
             </div>
 

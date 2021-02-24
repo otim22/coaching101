@@ -54,7 +54,7 @@
                                 </select>
                             </div>
                             @error('category_id')
-                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
@@ -69,7 +69,7 @@
                                 </select>
                             </div>
                             @error('year_id')
-                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
@@ -127,7 +127,7 @@
                             </div>
                             <p class="mt-2"><small class="red_color">*Price should be only digits</small></p>
                             @error('price')
-                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
