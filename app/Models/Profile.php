@@ -25,7 +25,7 @@ class Profile extends Model implements HasMedia
      */
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaCollection('profile')
+        $this->addMediaCollection('profile')->singleFile()
                 ->registerMediaConversions(function (Media $media) {
                         $this->addMediaConversion('profile')
                                 ->fit(Manipulations::FIT_CONTAIN, 800, 600)

@@ -110,6 +110,9 @@ class ProfileController extends Controller
         }
 
         if($request->hasFile('profile_picture') && $request->file('profile_picture')->isValid()) {
+            foreach ($profile->media as $media) {
+                $media->delete();
+            }
             $profile->addMediaFromRequest('profile_picture')->toMediaCollection('profile');
         }
 

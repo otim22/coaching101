@@ -53,11 +53,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = ['email_verified_at' => 'datetime'];
 
-    public function registerMediaCollections(): void
-    {
-        $this->addMediaConversion('thumb') ->width(60) ->height(60);
-    }
-
     public function profile()
     {
         return $this->hasOne('App\Models\Profile');
