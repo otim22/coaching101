@@ -15,7 +15,7 @@ class Profile extends Model implements HasMedia
 {
     use HasFactory, PresentsMedia, InteractsWithMedia;
 
-    protected $fillable = ['category_id', 'school', 'bio'];
+    protected $fillable = ['category_id', 'year_id', 'age', 'school', 'bio'];
     protected $with = ['media'];
     protected $appends = ['hasProfileUpdated'];
 
@@ -29,10 +29,6 @@ class Profile extends Model implements HasMedia
                 ->registerMediaConversions(function (Media $media) {
                         $this->addMediaConversion('profile')
                                 ->fit(Manipulations::FIT_CONTAIN, 800, 600)
-                                ->nonQueued();
-
-                        $this->addMediaConversion('avatar')
-                                ->setManipulations(['w' => 100, 'h' => 100, 'sharp'=> 20])
                                 ->nonQueued();
                 });
     }

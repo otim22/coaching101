@@ -17,7 +17,9 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->string('school')->nullable();
             $table->string('bio')->nullable();
+            $table->integer('age')->nullable();
             $table->foreignId('category_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('year_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

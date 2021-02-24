@@ -56,10 +56,7 @@ Route::get('/account-setting', [UserController::class, 'account'])->name('accoun
 
 Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
 Route::patch('/users/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');
-Route::post('/users/profile/create', [ProfileController::class, 'create'])->name('users.profile.create');
-
-// Route::post('/profiles', [ProfileController::class, 'store'])->name('profiles.store');
-// Route::get('/profiles/{profile}', [ProfileController::class, 'show'])->name('profiles');
+Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');
 
 Route::patch('/account-update', [UserController::class, 'accountUpdate'])->name('account-update');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');

@@ -20,13 +20,17 @@
     </div>
 </section>
 
+<div class="container">
+    @include('flash.messages')
+</div>
+
 <section>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 mb-4">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active wraps-text" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">Account security</a>
-                    <a class="nav-link wraps-text" id="profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile setting</a>
+                    <a class="nav-link wraps-text" id="settings-tab" data-toggle="pill" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Profile setting</a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12">
@@ -49,9 +53,61 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                         @if($user->profile)
-                            @if($user->role == 2)
+                            @if($user->role == 1)
+                                <form action="{{ route('users.profile.update') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('patch')
+                                        <div class="card  p-2">
+                                            <div class="card-body">
+                                                <div class="text-center mb-4">
+                                                    <img src="{{ $user->profile->getFirstMediaUrl('profile') }}" alt="{{ $user->name }}" class="rounded-circle" width="100" height="100">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="school" class="bold">Your school</label>
+                                                    <input type="text" name="school" class="form-control @error('profile') is-invalid @enderror" value="{{ $user->profile->school }}">
+                                                    @error('school')
+                                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="year_id" class="bold">Current class</label>
+                                                    <div class="input-group mb-3">
+                                                        <select class="custom-select" name="year_id">
+                                                            <option selected value="{{ $year->id }}">{{ $year->name }}</option>
+                                                            @foreach($years as $year)
+                                                                <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    @error('year_id')
+                                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="age" class="bold">Age</label>
+                                                    <input type="integer" name="age" class="form-control @error('profile') is-invalid @enderror" value="{{ $user->profile->age }}">
+                                                    @error('age')
+                                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="profile_picture" class="bold">Profile picture</label>
+                                                    <input type="file" class="form-control-file @error('profile_picture') is-invalid @enderror" name="profile_picture">
+                                                    @error('profile_picture')
+                                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+
+                                                <button id="round-button-2" type="submit" class="btn btn-primary btn-block mt-5">Update</button>
+                                            </div>
+                                        </div>
+                                </form>
+                            @elseif($user->role == 2)
                                 <form action="{{ route('users.profile.update') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('patch')
@@ -78,7 +134,7 @@
                                                 <div class="form-group">
                                                     <label for="school" class="bold">School you teach at <small>(*Optional)</small></label>
                                                     <input type="text" name="school" class="form-control @error('profile') is-invalid @enderror" id="profile" value="{{ $user->profile->school }}">
-                                                    @error('profile')
+                                                    @error('school')
                                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                     @enderror
                                                 </div>
@@ -92,21 +148,115 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="profile_picture" class="bold">Your profile picture</label>
+                                                    <label for="profile_picture" class="bold">Profile picture</label>
                                                     <input type="file" class="form-control-file @error('profile_picture') is-invalid @enderror" name="profile_picture" id="profile_picture">
                                                     @error('profile_picture')
                                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                     @enderror
                                                 </div>
 
-                                                <button id="round-button-2" type="submit" class="btn btn-primary btn-block mt-5">Save</button>
+                                                <button id="round-button-2" type="submit" class="btn btn-primary btn-block mt-5">Update</button>
                                             </div>
                                         </div>
-                                </form>
+                                    </form>
                             @endif
                         @else
-                            @if($user->role == 2)
-                                <p>Test</p>
+                            @if($user->role == 1)
+                            <form action="{{ route('users.profile.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                    <div class="card  p-2">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="school" class="bold">Your school </label>
+                                                <input type="text" name="school" class="form-control @error('school') is-invalid @enderror" required>
+                                                @error('profile')
+                                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="year_id" class="bold">Current class</label>
+                                                <div class="input-group mb-3">
+                                                    <select class="custom-select" name="year_id" required>
+                                                        <option selected>All classes</option>
+                                                        @foreach($years as $year)
+                                                            <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                @error('year_id')
+                                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="age" class="bold">Age</label>
+                                                <input type="integer" name="age" class="form-control @error('age') is-invalid @enderror" required>
+                                                @error('age')
+                                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="profile_picture" class="bold">Profile picture</label>
+                                                <input type="file" class="form-control-file @error('profile_picture') is-invalid @enderror" name="profile_picture">
+                                                @error('profile_picture')
+                                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block mt-5">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            @elseif($user->role == 2)
+                            <form action="{{ route('users.profile.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                    <div class="card  p-2">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="category_id" class="bold">Subject you teach *</label>
+                                                <div class="input-group mb-3">
+                                                    <select class="custom-select" name="category_id" required>
+                                                        <option selected>All subjects</option>
+                                                        @foreach($categories as $category)
+                                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                @error('category_id')
+                                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="school" class="bold">School you teach at <small>(*Optional)</small></label>
+                                                <input type="text" name="school" class="form-control @error('profile') is-invalid @enderror">
+                                                @error('profile')
+                                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="bio" class="bold">Your brief biography <small>(< 25 words)</small></label>
+                                                <textarea type="text" name="bio" class="form-control @error('bio') is-invalid @enderror" rows="3" required></textarea>
+                                                @error('bio')
+                                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="profile_picture" class="bold">Profile picture</label>
+                                                <input type="file" class="form-control-file @error('profile_picture') is-invalid @enderror" name="profile_picture" required>
+                                                @error('profile_picture')
+                                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block mt-5">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
                             @endif
                         @endif
                     </div>
