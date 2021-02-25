@@ -1,7 +1,7 @@
 <div class="container ">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-            <h4 class="bold">Our popular teachers</h4>
+            <h4 class="dark-blue_color bold">Our popular teachers</h4>
         </div>
         @foreach($teachers as $teacher)
             @if($teacher->profile)

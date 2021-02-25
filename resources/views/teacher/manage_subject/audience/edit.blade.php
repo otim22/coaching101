@@ -33,13 +33,13 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2">
                             <div class="cols-sm-12 col-md-12 col-lg-12">
-                                <h5 class="bold">Target your students</h5> <hr />
+                                <h5>Target your students</h5> <hr />
                                 <p class="mb-4 mt-4">The descriptions you write here will help students decide if your class is the one for them.</p>
                             </div>
 
                             <div class="cols-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_student_learn">
-                                    <label for="students_learn" class="bold">What will students learn in your class?</label>
+                                    <label for="students_learn">What will students learn in your class?</label>
                                     <p class="mt-3">Current class objectives</p>
                                     @forelse($subject->audience->student_learn as $student_learn)
                                     <p>
@@ -88,7 +88,7 @@
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_class_requirement">
-                                    <label for="class_requirement" class="bold">Are there any class requirements or prerequisites?</label>
+                                    <label for="class_requirement">Are there any class requirements or prerequisites?</label>
                                     <p class="mt-3">Current class requirements</p>
                                     @forelse($subject->audience->class_requirement as $class_requirement)
                                     <p>
@@ -137,7 +137,7 @@
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_target_students">
-                                    <label for="target_students" class="bold">Who are your target students?</label>
+                                    <label for="target_students">Who are your target students?</label>
                                     <p class="mt-3">Current target students</p>
                                     @forelse($subject->audience->target_student as $target_student)
                                     <p>

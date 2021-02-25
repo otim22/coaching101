@@ -3192,6 +3192,14 @@ select {
   color: #3490dc;
 }
 
+.dark-blue_color {
+  color: #163e73;
+}
+
+.dark-blue_color-2 {
+  color: #1d2e54;
+}
+
 .side-font {
   font-weight: bold;
 }
@@ -3236,6 +3244,10 @@ select {
 
 .student-font {
   color: #d6d6d6;
+}
+
+.student-font_color {
+  color: #8299b8;
 }
 
 .learn-today_title {
