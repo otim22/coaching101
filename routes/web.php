@@ -128,18 +128,15 @@ Route::middleware('auth')->group(function() {
 
     Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function() {
         Route::get('/dashboard', [AdminController::class, 'index']);
-        Route::resources([
-            'sliders' => SliderController::class,
-            'studentImages' => StudentImageController::class,
-            'teacherImages' => StudentImageController::class,
-            'faqs' => FaqController::class,
-            'categories' => CategoryController::class,
-            'years' => YearController::class,
-            'terms' => TermController::class,
-            'menus' => MenuController::class,
-            'books' => BooksController::class,
-            'notes' => NotesController::class,
-            'pastpapers' => PastpaperController::class,
-        ]);
+        Route::resource('sliders', 'SliderController');
+        Route::resource('studentImages', 'StudentImageController');
+        Route::resource('teacherImages', 'TeacherImageController');
+        Route::resource('faqs', 'FaqController');
+        Route::resource('categories', 'CategoryController');
+        Route::resource('years', 'YearController');
+        Route::resource('terms', 'TermController');
+        Route::resource('books', 'BooksController');
+        Route::resource('notes', 'NotesController');
+        Route::resource('pastpapers', 'PastPapersController');
     });
 });

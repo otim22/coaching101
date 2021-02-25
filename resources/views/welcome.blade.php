@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="">
+<section>
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
@@ -29,7 +29,7 @@
             </div>
             <div class="col-lg-6 col-md-4 col-sm-12">
                 <div>
-                    <img src="{{ asset('images/varsity.png') }}" alt="learning image" width="100%">
+                    <img src="{{ $sliders->getFirstMediaUrl() }}" alt="learning image" width="100%">
                 </div>
             </div>
         </div>

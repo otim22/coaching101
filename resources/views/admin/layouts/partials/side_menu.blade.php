@@ -29,12 +29,6 @@
                             <span class="drawer-menu-text"> Home UI</span>
                           </a>
                         <ul class="collapse " id="uiComponentsMenu">
-
-                            <li class="drawer-menu-item ">
-                                <a href="{{ url('admin/menus') }}">
-                                    <span class="drawer-menu-text">Menu</span>
-                                </a>
-                            </li>
                             <li class="drawer-menu-item">
                                 <a href="{{ url('/admin/sliders') }}">
                                     <span class="drawer-menu-text"> Slider</span>

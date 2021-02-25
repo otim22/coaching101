@@ -54,15 +54,12 @@ class Slider extends Model implements HasMedia
      */
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaCollection('default')
-                ->registerMediaConversions(function (Media $media) {
-                        $this->addMediaConversion('default')
-                                ->fit(Manipulations::FIT_CONTAIN, 800, 600)
-                                ->nonQueued();
+        $this->addMediaConversion('default')
+                ->fit(Manipulations::FIT_CONTAIN, 800, 600)
+                ->nonQueued();
 
-                        $this->addMediaConversion('thumb')
-                                ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
-                                ->nonQueued();
-                });
+        $this->addMediaConversion('thumb')
+                ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
+                ->nonQueued();
     }
 }
