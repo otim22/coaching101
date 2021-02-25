@@ -15,14 +15,13 @@
                     @guest
                         <li><a href="{{ route('subjects.starter') }}">Teach</a></li>
                     @endguest
-
-                    @if(Auth::user()->role == 1)
-                        <li><a href="{{ route('subjects.starter') }}">Teach</a></li>
-                    @endif
-
-                    @if(Auth::user()->role == 2)
-                        <li><a href="{{ route('manage.subjects') }}">Teach</a></li>
-                    @endif
+                    @auth
+                        @if(Auth::user()->role == 1)
+                            <li><a href="{{ route('subjects.starter') }}">Teach</a></li>
+                        @elseif(Auth::user()->role == 2)
+                            <li><a href="{{ route('manage.subjects') }}">Teach</a></li>
+                        @endif
+                    @endauth
                     <li><a href="{{ url('/#learn-now') }}">Learn</a></li>
                     <li><a href="#">Affiliate</a></li>
                 </ul>
@@ -40,10 +39,10 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <h5>Social</h5>
                 <div class="mt-3">
-                    <a target="_blank" href="https://twitter.com/otim16"><i class="fa fa-lg fa-twitter"></i></a>
-                    <a target="_blank" href="https://medium.com/@otimfredrick"><i class="fa fa-lg fa-medium"></i></a>
-                    <a target="_blank" href="https://linkedin.com/in/otim-fredrick-29730a86"><i class="fa fa-lg fa-linkedin"></i></a>
-                    <a target="_blank" href="https://www.facebook.com/fredrickot"><i class="fa fa-lg fa-facebook"></i></a>
+                    <a target="_blank" href="https://twitter.com/otim16"><i class="fa fa-sm fa-twitter"></i></a>
+                    <a target="_blank" href="https://medium.com/@otimfredrick"><i class="fa fa-sm fa-medium"></i></a>
+                    <a target="_blank" href="https://linkedin.com/in/otim-fredrick-29730a86"><i class="fa fa-sm fa-linkedin"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/fredrickot"><i class="fa fa-sm fa-facebook"></i></a>
                 </div>
             </div>
         </div>

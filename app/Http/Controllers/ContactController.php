@@ -18,6 +18,8 @@ class ContactController extends Controller
     public function store(ContactRequest $request)
     {
         try {
+            $request->validated();
+
             Mail::to(config('app.client_email'))->send(new UserContacted($request->validated()));
         } catch (\Exception $e) {
             return redirect()->route('contacts')->with('error', 'Ooops, could not send email.');

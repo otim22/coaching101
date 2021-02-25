@@ -3529,8 +3529,8 @@ select {
 }
 
 .fa {
-  padding: 14px;
-  width: 45px;
+  padding: 12px;
+  width: 42px;
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
@@ -3542,12 +3542,12 @@ select {
 }
 
 .fa-facebook {
-  background: #3B5998;
+  background: #0d3369;
   color: white;
 }
 
 .fa-twitter {
-  background: #55ACEE;
+  background: #69b9ff;
   color: white;
 }
 
@@ -3557,7 +3557,7 @@ select {
 }
 
 .fa-medium {
-  background: #18592b;
+  background: #11361b;
   color: white;
 }
 
