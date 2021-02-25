@@ -44,7 +44,7 @@
                     <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-4">
-                            <label for="year_id" class="bold">Subject</label>
+                            <label for="year_id">Subject</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="category_id">
                                     <option selected>Choose subject...</option>
@@ -54,12 +54,12 @@
                                 </select>
                             </div>
                             @error('category_id')
-                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="year_id" class="bold">Year</label>
+                            <label for="year_id">Year</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="year_id">
                                     <option selected>Choose year...</option>
@@ -69,12 +69,12 @@
                                 </select>
                             </div>
                             @error('year_id')
-                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="year_id" class="bold">Term</label>
+                            <label for="year_id">Term</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="term_id">
                                     <option selected>Choose term...</option>
@@ -90,14 +90,14 @@
 
                         <div class="form-group mb-4">
                             <label for="title">Book title</label>
-                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Example: Introduction to modern physics">
+                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Example: Introduction to modern physics" value="{{ old('title') }}">
                             @error('title')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="cover_image" class="bold">Cover image</label>
+                            <label for="cover_image">Cover image</label>
                             <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" required>
                             @error('cover_image')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -105,7 +105,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="book" class="bold">Upload Book</label>
+                            <label for="book">Upload Book</label>
                             <input type="file" name="book" class="form-control-file @error('book') is-invalid @enderror" id="book" required>
                             <p><small class="light_gray_color">*Book should be a pdf file</small></p>
                             @error('book')
@@ -114,7 +114,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="price" class="bold">Book price <span class="light_gray_color">(*Optional)</span></label>
+                            <label for="price">Book price <span class="light_gray_color">(*Optional)</span></label>
                             <div class="input-group">
                                 <input type="text"
                                             class="form-control @error('price') is-invalid @enderror"
@@ -125,9 +125,9 @@
                                             name="price"
                                             value="{{ old('price') }}">
                             </div>
-                            <p class="mt-2"><small class="red_color">*Price should be only digits</small></p>
+                            <p class="mt-2"><small class="light_gray_color">*Price should be only digits</small></p>
                             @error('price')
-                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 

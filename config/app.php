@@ -16,7 +16,7 @@ return [
     'name' => env('APP_NAME', 'Coaching101'),
 
     'rave_key' => env('SECRET_KEY'),
-    
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -125,6 +125,8 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'client_email' => env('MAIL_FROM_ADDRESS'),
+    
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

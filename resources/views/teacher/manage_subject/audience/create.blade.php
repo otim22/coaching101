@@ -32,13 +32,13 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2">
                             <div class="cols-sm-12 col-md-12 col-lg-12">
-                                <h5 class="bold">Target your students</h5> <hr />
+                                <h5>Target your students</h5> <hr />
                                 <p class="mb-4 mt-4">The descriptions you write here will help students decide if your class is the one for them.</p>
                             </div>
 
                             <div class="cols-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_student_learn">
-                                    <label for="students_learn" class="bold">What will students learn in your class?</label>
+                                    <label for="students_learn">What will students learn in your class?</label>
                                     <div class="input-group student_learn_section">
                                         <div class="students_learn_input">
                                             <input type="text"
@@ -73,7 +73,7 @@
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_class_requirement">
-                                    <label for="class_requirement" class="bold">Are there any class requirements or prerequisites?</label>
+                                    <label for="class_requirement">Are there any class requirements or prerequisites?</label>
                                     <div class="input-group class_requirement_section">
                                         <div class="class_requirement_input">
                                             <input type="text"
@@ -108,7 +108,7 @@
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_target_students">
-                                    <label for="target_students" class="bold">Who are your target students?</label>
+                                    <label for="target_students">Who are your target students?</label>
                                     <div class="input-group target_students_section">
                                         <div class="target_students_input">
                                             <input type="text"
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
-                        <div><h6 class="bold">Step 2 of 3</h6></div>
+                        <div><h5>Step 2 of 3</h5></div>
                         <div>
                             <button  id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Save</button>
                         </div>

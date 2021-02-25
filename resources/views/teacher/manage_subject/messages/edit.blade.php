@@ -33,12 +33,12 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2">
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <h5 class="bold">Subject messages</h5> <hr />
+                                <h5>Subject messages</h5> <hr />
                             </div>
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="welcome_message" class="bold">Welcome Message</label>
+                                    <label for="welcome_message">Welcome message</label>
                                     <div class="input-group">
                                         <textarea class="form-control @error('welcome_message') is-invalid @enderror"
                                                             name="welcome_message"
@@ -52,7 +52,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="congragulation_message" class="bold">Congratulations Message</label>
+                                    <label for="congragulation_message">Congratulations message</label>
                                     <div class="input-group">
                                         <textarea class="form-control @error('congragulation_message') is-invalid @enderror"
                                                             name="congragulation_message"

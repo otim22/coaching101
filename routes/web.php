@@ -28,9 +28,12 @@ use App\Http\Controllers\Admin\TeacherImageController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\MenuCategoryController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\Admin\BooksController;
 use App\Http\Controllers\BooksController as Books;
 use App\Http\Controllers\TeacherBookController;
@@ -38,8 +41,8 @@ use App\Http\Controllers\TeacherNoteController;
 use App\Http\Controllers\TeacherPastpaperController;
 use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\NotesController as Notes;
-use App\Http\Controllers\Admin\PastPapersController;
-use App\Http\Controllers\PastPapersController as PastPapers;
+use App\Http\Controllers\Admin\PastpaperController;
+use App\Http\Controllers\PastpaperController as PastPapers;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/books', [Books::class, 'index'])->name('student.books.index');
@@ -47,11 +50,18 @@ Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
 Route::get('/notes', [Notes::class, 'index'])->name('student.notes.index');
 Route::get('/notes/{note}', [Notes::class, 'show'])->name('student.notes.show');
+
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
+Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+
 Route::get('/get-more-notes', [Notes::class, 'getMoreNotes'])->name('get-more-notes');
 Route::get('/pastpapers', [PastPapers::class, 'index'])->name('student.pastpapers.index');
 Route::get('/pastpapers/{pastpaper}', [PastPapers::class, 'show'])->name('student.pastpapers.show');
 Route::get('/get-more-pastpapers', [PastPapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
-Route::get('/account-setting', [UserController::class, 'account'])->name('account-setting');
+Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
+Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');
+Route::patch('/users/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');
 Route::patch('/account-update', [UserController::class, 'accountUpdate'])->name('account-update');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject?}/topics/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show');
@@ -87,10 +97,8 @@ Route::middleware('auth')->group(function() {
 
         Route::resource('/books', 'TeacherBookController')->except(['index']);
         Route::get('/books', [TeacherBookController::class, 'index'])->name('teacher.books');
-
         Route::resource('/notes', 'TeacherNoteController')->except(['index']);
         Route::get('/notes', [TeacherNoteController::class, 'index'])->name('teacher.notes');
-
         Route::resource('/pastpapers', 'TeacherPastpaperController')->except(['index']);
         Route::get('/pastpapers', [TeacherPastpaperController::class, 'index'])->name('teacher.pastpapers');
 
@@ -120,18 +128,15 @@ Route::middleware('auth')->group(function() {
 
     Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function() {
         Route::get('/dashboard', [AdminController::class, 'index']);
-        Route::resources([
-            'sliders' => SliderController::class,
-            'studentImages' => StudentImageController::class,
-            'teacherImages' => StudentImageController::class,
-            'faqs' => FaqController::class,
-            'categories' => CategoryController::class,
-            'years' => YearController::class,
-            'terms' => TermController::class,
-            'menus' => MenuController::class,
-            'books' => BooksController::class,
-            'notes' => NotesController::class,
-            'pastpapers' => PastPapersController::class,
-        ]);
+        Route::resource('sliders', 'SliderController');
+        Route::resource('studentImages', 'StudentImageController');
+        Route::resource('teacherImages', 'TeacherImageController');
+        Route::resource('faqs', 'FaqController');
+        Route::resource('categories', 'CategoryController');
+        Route::resource('years', 'YearController');
+        Route::resource('terms', 'TermController');
+        Route::resource('books', 'BooksController');
+        Route::resource('notes', 'NotesController');
+        Route::resource('pastpapers', 'PastPapersController');
     });
 });

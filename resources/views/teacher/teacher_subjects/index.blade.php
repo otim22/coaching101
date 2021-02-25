@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="bg-gray-2 section-one" id="teacher-classses">
+<section class="bg-gray-2 section-one mt-4" id="teacher-classses">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -18,16 +18,27 @@
             </ol>
         </nav>
 
-        <div class="row pt-4 mb-4">
-            <div class="col-sm-12 col-md-7 col-lg-7 mb-2">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-7">
                 <h3 class="bold mt-5">{{ Str::ucfirst($teacher->name) }}</h3>
-                <span class="sub-text">Teaches Mathematics</span><br />
-                <span class="author-font">{{ Str::ucfirst($teacher->email) }}</span><br />
-                <a id="round-button-2" type="button" href="#section-teacher_course" class="btn btn-primary teacher-classses_button mt-4">Explore classes</a>
+                @if($teacher->profile)
+                    <p class="sub-text">
+                            {{ \App\Models\Category::where('id', $teacher->profile->category_id)->firstOrFail()->name }} teacher
+                            at {{ $teacher->profile->school }}
+                    </p>
+                    <p class="author-text">{{ $teacher->profile->bio }}</p>
+                @endif
+                <a id="round-button-2" type="button" href="#section-teacher_course" class="btn btn-primary teacher-classses_button mt-4">Explore my classes</a>
             </div>
-            <div class="col-sm-12 col-md-5 col-lg-5">
-                <img src="{{ asset('images/st_2.jpg') }}" class="circlar-teacher" alt="{{ $teacher->name }}">
-            </div>
+            @if($teacher->profile)
+                <div class="col-sm-12 col-md-12 col-lg-5 pt-4">
+                    <img src="{{ asset($teacher->profile->getFirstMediaUrl('profile')) }}" class="circlar-teacher" width="150" height="100" alt="{{ $teacher->name }}">
+                </div>
+            @else
+                <div class="col-sm-12 col-md-12 col-lg-5 pt-4">
+                    <img src="#" class="circlar-teacher" width="150" height="100" alt="{{ $teacher->name }}">
+                </div>
+            @endif
         </div>
     </div>
 </section>
@@ -39,7 +50,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="card mb-4">
                     <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                        <img src="{{ $subject->getFirstMediaUrl() }}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
+                        <img src="{{ $subject->cover_image }}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
                     </a>
                     <div class="card-body card-body_custom">
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
@@ -91,6 +102,9 @@
                 <p>Sorry, no available subjects in this category!</p>
             </div>
             @endforelse
+            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center mt-4">
+                <p>{{ $subjects->links() }}</p>
+            </div>
         </div>
     </div>
 </section>
