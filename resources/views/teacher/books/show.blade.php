@@ -33,7 +33,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-12 col-sm-12 off-set-2">
                 <div class="card p-4">
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mb-2">
                         <div>
                             <a id="round-button-2" href="{{ route('teacher.books') }}" class="btn btn-secondary btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
@@ -58,7 +58,7 @@
 
                     <hr />
 
-                    <h5 class="mt-2">{{ $book->title }}</h5>
+                    <h5 class="mt-2 mb-3">{{ $book->title }}</h5>
                     <img src="{{ asset($book->getFirstMediaUrl('teacher_cover_image')) }}" class="w-100 mb-3">
                     <p>{{ $book->category->name }} {{ $book->year->name }}, {{ $book->term->name }}. </p>
                     @if(!$book->price)
@@ -67,7 +67,7 @@
                         <p>UGX {{ number_format($book->price) }}/-</p>
                     @endif
                     <embed src="{{ $book->getFirstMediaUrl('teacher_book') }}" type="application/pdf" width="100%" height="400">
-                    <a id="round-button-2" class="btn btn-secondary btn-sm mt-3" href="{{ $book->getFirstMediaUrl('teacher_book') }}" target="_blank">
+                    <a id="round-button-2" class="btn btn-secondary btn-sm mt-5" href="{{ $book->getFirstMediaUrl('teacher_book') }}" target="_blank">
                         Download book
                     </a>
 

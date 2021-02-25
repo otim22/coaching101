@@ -45,7 +45,7 @@
                         @csrf
                         @method('patch')
                         <div class="form-group mb-4">
-                            <label for="year_id" class="bold">Subject</label>
+                            <label for="year_id">Subject</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="category_id">
                                     <option selected value="{{ $category->id }}">{{ $category->name }}</option>
@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="year_id" class="bold">Year</label>
+                            <label for="year_id">Year</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="year_id">
                                     <option selected value="{{ $year->id }}">{{ $year->name }}</option>
@@ -75,7 +75,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="year_id" class="bold">Term</label>
+                            <label for="year_id">Term</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="term_id">
                                     <option selected value="{{ $term->id }}">{{ $term->name }}</option>
@@ -98,10 +98,10 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <p class="bold">Current cover image</p>
+                            <p>Current cover image</p>
                             <img src="{{ asset($book->getFirstMediaUrl('teacher_cover_image')) }}" class="w-50 mb-2">
                             <p><small class="red_color">*Choosing another file replaces this current one.</small></p>
-                            <label for="cover_image" class="bold">Upload Book</label>
+                            <label for="cover_image">Upload Book</label>
                             <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image">
                             @error('cover_image')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -109,11 +109,11 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <p class="bold">Current book</p>
+                            <p>Current book</p>
                             <embed src="{{ $book->getFirstMediaUrl('teacher_book') }}" type="application/pdf" width="50%" height="50%">
                             <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
 
-                            <label for="book" class="bold">Upload Book</label>
+                            <label for="book">Upload Book</label>
                             <input type="file" name="book" class="form-control-file @error('book') is-invalid @enderror" id="book">
                             <p><small class="light_gray_color">*Book should be a pdf file</small></p>
                             @error('book')
@@ -122,7 +122,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="price" class="bold">Book price <span class="light_gray_color">(*Optional)</span></label>
+                            <label for="price">Book price <span class="light_gray_color">(*Optional)</span></label>
                             <div class="input-group mb-2">
                                 <input type="text"
                                             class="form-control @error('price') is-invalid @enderror"
