@@ -3243,7 +3243,7 @@ select {
 }
 
 .student-font {
-  color: #d6d6d6;
+  color: #cdcfd1;
 }
 
 .student-font_color {
@@ -3861,7 +3861,7 @@ form .btn button {
 }
 
 .bg-gray-2 {
-  background-color: #d6d6d6 !important;
+  background-color: #cdcfd1 !important;
 }
 
 .bg-gray-3 {
@@ -3939,7 +3939,7 @@ form .btn button {
 }
 
 #grayBg {
-  background-color: #d6d6d6;
+  background-color: #cdcfd1;
 }
 
 .bg-parallax {
@@ -3970,7 +3970,7 @@ form .btn button {
 .fast-transition-2 {
   position: relative;
   /* For positioning the pseudo-element */
-  background-color: #d6d6d6;
+  background-color: #cdcfd1;
   padding: 15px;
   border-radius: 8px;
   min-height: 600px;
@@ -3979,7 +3979,7 @@ form .btn button {
 .fast-transition {
   position: relative;
   /* For positioning the pseudo-element */
-  background-color: #d6d6d6;
+  background-color: #cdcfd1;
   padding: 15px;
   border-radius: 8px;
 }
@@ -4056,7 +4056,7 @@ a.disabled {
 }
 
 .header-divider {
-  border-left: 1px solid #d6d6d6;
+  border-left: 1px solid #cdcfd1;
   width: 1px;
   height: 140px;
   position: absolute;
@@ -4078,19 +4078,19 @@ a.disabled {
 
 @media only screen and (max-width: 767px) {
   .header-divider {
-    border-left: 1px #d6d6d6;
+    border-left: 1px #cdcfd1;
   }
 }
 
 @media only screen and (max-width: 575px) {
   .header-divider {
-    border-left: 1px #d6d6d6;
+    border-left: 1px #cdcfd1;
   }
 }
 
 @media only screen and (max-width: 320px) {
   .header-divider {
-    border-left: 1px #d6d6d6;
+    border-left: 1px #cdcfd1;
   }
 }
 
@@ -4161,7 +4161,7 @@ div > .student-image {
   margin: 5px 0;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease-in-out;
-  background-color: #d6d6d6;
+  background-color: #cdcfd1;
 }
 
 .top_teacher:hover {
