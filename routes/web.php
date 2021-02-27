@@ -78,14 +78,12 @@ Route::get('/home/my-subjects', [MySubjectsController::class, 'index'])->name('m
 
 Auth::routes(['verify' => true]);
 
+Route::get('/teacher/onBoard', [SubjectController::class, 'onBoard'])->name('subjects.onBoard');
 Route::middleware('auth')->group(function() {
-
     Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-
     Route::prefix('teacher')->group(function() {
         Route::get('/starter', [SubjectController::class, 'starter'])->name('subjects.starter');
-        Route::get('/onBoard', [SubjectController::class, 'onBoard'])->name('subjects.onBoard');
         Route::post('/captureRole', [SubjectController::class, 'captureRole'])->name('subjects.captureRole');
         Route::get('/manage/subjects', [SubjectController::class, 'index'])->name('manage.subjects')->middleware('teacher');
         Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
@@ -137,6 +135,6 @@ Route::middleware('auth')->group(function() {
         Route::resource('terms', 'TermController');
         Route::resource('books', 'BooksController');
         Route::resource('notes', 'NotesController');
-        Route::resource('pastpapers', 'PastPapersController');
+        Route::resource('pastpapers', 'PastpaperController');
     });
 });

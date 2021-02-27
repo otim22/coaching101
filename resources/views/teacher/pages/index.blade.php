@@ -15,8 +15,8 @@
     <body>
         <div id="app">
 
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-2 increased-font py-3">
-                <div class="container-fluid ml-4 mr-4">
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-3 increased-font py-3">
+                <div class="container-fluid">
                     <a class="navbar-brand" href="{{ url('/') }}"><span class="logo-font">Coaching101</span></a>
                     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -29,151 +29,111 @@
                                     <svg class="bi bi-grid-3x3-gap-fill mr-1" width="1.3em" height="1.3em" viewBox="1 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1 2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1V2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1V2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V2zM1 7a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1V7zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1V7zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V7zM1 12a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1v-2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1v-2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2z"/>
                                     </svg>
-                                    Library
+                                    Browse
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    @foreach ($menus as $menu)
-                                        <ul class="dropdown-submenu">
-                                            <a class="dropdown-item" href="#">{{ $menu->title }}</a>
-                                            <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                @foreach ($menu->allChildren as $childMenu)
-                                                    <ul class="dropdown-submenu">
-                                                        <a class="dropdown-item" href="#">{{ $childMenu->title }}</a>
-                                                        <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                            @foreach ($childMenu['allChildren'] as $child)
-                                                                <a class="dropdown-item" href="#">{{ $child->title }}</a>
-                                                            @endforeach
-                                                        </li>
-                                                    </ul>
-                                                @endforeach
-                                            </li>
-                                        </ul>
-                                    @endforeach
+                                    <a class="dropdown-item" href="{{ route('home') }}">Videos</a>
+                                    <a class="dropdown-item" href="{{ route('student.books.index') }}">Books</a>
+                                    <a class="dropdown-item" href="{{ route('student.notes.index') }}">Notes</a>
+                                    <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past papers</a>
                                 </div>
                             </li>
                         </ul>
 
-                        <form action="" class="form-inline top-search">
-                            <div class="input-group space-bottom">
-                                <input type="text" class="form-control" placeholder="Search for subject...">
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button" id="top-search-button">
-                                        <svg class="bi bi-search top-search-svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
-                                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-
                         <ul class="navbar-nav ml-auto nav nav-pills">
-                            @guest
-                                <li class="nav-item {{ Helper::set_active(['subjects.starter']) }}  d-none d-lg-block mt-1">
-                                    <a class="nav-link" href="{{ route('subjects.starter') }}">Teach</a>
-                                </li>
-                            @endguest
+                            <li class="nav-item {{ Helper::set_active(['subjects.starter']) }} pt-1">
+                                <a class="nav-link" href="{{ route('subjects.starter') }}">Teach</a>
+                            </li>
 
                             @auth()
                                 @if(auth()->user()->role == 1)
-                                    <li class="nav-item {{ Helper::set_active(['subjects.starter']) }}  d-none d-lg-block mt-1">
+                                    <li class="nav-item {{ Helper::set_active(['subjects.starter']) }} mt-1">
                                         <a class="nav-link" href="{{ route('subjects.starter') }}">Teach</a>
                                     </li>
-                                    <li class="nav-item mt-1">
-                                        <a class="nav-link" href="{#">My subjects</a>
+                                    <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
+                                        <a class="nav-link" href="{{ route('my-subjects') }}">My subjects</a>
                                     </li>
-                                @elseif(auth()->user()->role == 2)
+                                @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
                                     <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">
-                                        <a class="nav-link" href="{{ route('manage.subjects') }}">Teacher</a>
+                                        <a class="nav-link" href="{{ route('my-subjects') }}">Learn</a>
                                     </li>
 
-                                    <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">
-                                        <a class="nav-link" href="{{ route('manage.subjects') }}">My subjects</a>
+                                    <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
+                                        <a class="nav-link" href="{{ route('manage.subjects') }}">Teacher</a>
                                     </li>
                                 @endif
                             @endauth
 
-                            <li id="cartId2" class="nav-item {{ Helper::set_active(['cart']) }} mt-1">
-                                <a class="nav-link" href="#">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart4" fill="#fff" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-                                    </svg>
-                                </a>
-                            </li>
-
                             @guest
-                            <li class="nav-item {{ Helper::set_active(['login']) }} mt-1 mr-2 space-bottom">
-                                <a class="btn btn-primary btn-sm nav-link bold" href="{{ route('login') }}">Login</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item {{ Helper::set_active(['register']) }} mt-1 mr-2">
-                                    <a class="btn btn-outline-secondary btn-sm nav-link bold" href="{{ route('register') }}">Register</a>
+                                <li class="nav-item {{ Helper::set_active(['login']) }} mt-1 mr-2 space-bottom">
+                                    <a class="btn btn-danger btn-sm nav-link" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">Login</a>
                                 </li>
-                            @endif
-                            @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <div class="rounded-initials text-center">
-                                        <span class="initial-text"><h5>{{ Helper::generate_initials(Auth::user()->name) }}</h5></span>
-                                    </div>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item d-flex" href="{{ route('edit-profile') }}">
-                                        <div class="mr-2">
-                                            <div class="rounded-initials text-center">
-                                                <span class="initial-text"><h5>{{ Helper::generate_initials(Auth::user()->name) }}</h5></span>
+                                @if (Route::has('register'))
+                                    <li class="nav-item {{ Helper::set_active(['register']) }} mt-1 mr-2 register-button">
+                                        <a class="btn btn-outline-secondary btn-sm nav-link" id="round-button" href="{{ route('register') }}">Register</a>
+                                    </li>
+                                @endif
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <div class="circle text-center">
+                                                <span class="circle__content">{{ Helper::generate_initials(Auth::user()->name) }}</span>
                                             </div>
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item d-flex" href="{{ route('users.profile') }}">
+                                                <div class="mr-2 pt-2">
+                                                    <div class="circle">
+                                                        <span class="circle__content">{{ Helper::generate_initials(Auth::user()->name) }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mr-1">
+                                                    <p>{{ Auth::user()->name }} <br>
+                                                    {{ Auth::user()->email }}</p>
+                                                </div>
+                                             </a>
+
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ route('my-subjects') }}">My subjects</a>
+                                            <a class="dropdown-item" href="{{ url('cart') }}">My cart</a>
+
+                                            <a class="dropdown-item" href="{{ route('users.profile') }}">Profile details</a>
+                                            <div class="dropdown-divider"></div>
+
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                            <form id="logout-form" class="bold" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
                                         </div>
-                                        <div class="mr-1">
-                                            <p>{{ Auth::user()->name }} <br>
-                                            {{ Auth::user()->email }}</p>
-                                        </div>
-                                     </a>
-
-                                    <div class="dropdown-divider"></div>
-
-                                    <a class="dropdown-item" href="{{ route('accounts') }}">My courses</a>
-                                    <a class="dropdown-item" href="{{ route('accounts') }}">My cart</a>
-
-                                    <div class="dropdown-divider"></div>
-
-                                    <a class="dropdown-item" href="{{ route('accounts') }}">Account settings</a>
-                                    <a class="dropdown-item" href="{{ route('accounts') }}">Payment methods</a>
-                                    <a class="dropdown-item" href="{{ route('accounts') }}">Edit profile</a>
-
-                                    <div class="dropdown-divider"></div>
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                            @endguest
+                                    </li>
+                                @endguest
                         </ul>
                     </div>
                 </div>
             </nav>
 
-            <section class="bg-teacher-image text-white">
-                <div class="mt-5">
-                    <div class="container">
-                        <h1 class="display-3 learn-today_title">Inspire students</h1>
-                        <h4 class="pt-3 pm-3 bold student-font">This is a template for a simple marketing or informational website.</h4>
-                        <h4 class="pt-3 pm-3 bold student-font">It includes a large callout called a jumbotron and three supporting pieces of content.</h4>
-                        <p>
+            <section class="bg-teacher-image text-white mt-4">
+                <div class="container mt-5">
+                    <h1 class="display-3 learn-today_title">Inspire students</h1>
+                    <h4 class="pt-3 pm-3 bold student-font">This is a template for a simple marketing or informational website.</h4>
+                    <h4 class="pt-3 pm-3 bold student-font">It includes a large callout called a jumbotron and three supporting pieces of content.</h4>
+                    <p>
+                        @guest
+                            <a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('subjects.starter') }}" role="button">Become a teacher &raquo;</a>
+                        @endguest
+                        @auth
                             @if(Auth::user()->role == 1)
                                 <a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('subjects.starter') }}" role="button">Become a teacher &raquo;</a>
                             @elseif(Auth::user()->role == 2)
                                 <a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Manage subjects &raquo;</a>
                             @endif
-                        </p>
-                    </div>
+                        @endauth
+                    </p>
                 </div>
             </section>
 
@@ -244,7 +204,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4 text-center">
                             <span>
-                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-calendar2-week mb-3" fill="#3490dc" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-calendar2-week mb-3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
                                     <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
                                 </svg>
@@ -254,7 +214,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4 text-center">
                             <span>
-                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-camera-video mb-3" fill="#3490dc" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-camera-video mb-3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175l3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z"/>
                                 </svg>
                             </span>
@@ -263,7 +223,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4 text-center">
                             <span>
-                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-people mb-3" fill="#3490dc" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-people mb-3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
                                 </svg>
                             </span>
@@ -280,13 +240,22 @@
                         <div class="col-12 text-center">
                             <h3 class="bold">Become a techer today.</h3>
                             <h5 class="mb-4 mt-3">This is a template for a simple marketing or informational website.</h5>
-                            <a id="round-button-2" type="button" href="{{ route('manage.subjects') }}"class="btn btn-primary" name="button">Get started &raquo;</a>
+                            @guest
+                                <a id="round-button-2" class="btn btn-primary mt-5" href="{{ route('subjects.starter') }}" role="button">Become a teacher &raquo;</a>
+                            @endguest
+                            @auth
+                                @if(Auth::user()->role == 1)
+                                    <a id="round-button-2" class="btn btn-primary mt-5" href="{{ route('subjects.starter') }}" role="button">Become a teacher &raquo;</a>
+                                @elseif(Auth::user()->role == 2)
+                                    <a id="round-button-2" class="btn btn-primary mt-5" href="{{ route('manage.subjects') }}" role="button">Manage subjects &raquo;</a>
+                                @endif
+                            @endauth
                         </div>
                     </div>
                 </div>
             </section>
 
-            @include('teacher.layouts.partials.footer')
+            @include('layouts.partials.footer')
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
