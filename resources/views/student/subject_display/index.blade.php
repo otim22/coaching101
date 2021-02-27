@@ -17,7 +17,7 @@
                 <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($subject->title) }}</li>
             </ol>
         </nav>
-        <div class="row mt-2">
+        <div class="row mt-4">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h5 class="bold">{{ ucfirst($subject->title) }}</h5>
                 <h6>{{ ucfirst($subject->subtitle) }}</h6>
@@ -244,9 +244,9 @@
                 <a href="{{ route('subjects.show', $subject->slug) }}" style="text-decoration: none">
                     <div class="card mb-4">
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                            <img src="{{ $subject->default_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
+                            <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
                         </a>
-                        <div class="card-body card-body_custom">
+                        <div class="card-body">
                             <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $subject->very_short_title }}</span><br />
                                 <span class="author-font">By {{$subject->creator->name }}</span>

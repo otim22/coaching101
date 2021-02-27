@@ -18,7 +18,7 @@
                             <a href="{{ route('subjects.index', $subject->subject->slug) }}" style="text-decoration: none">
                                 <div class="card mb-4">
                                     <img src="{{ $subject->subject->image_thumb}}" alt="{{ $subject->subject->very_short_title }}" width="100%" height="150">
-                                    <div class="card-body card-body_custom">
+                                    <div class="card-body">
                                         <span class="bold">{{ $subject->subject->very_short_title }}</span><br />
                                         <span class="author-font">By {{$subject->subject->creator->name }}</span>
                                         <div class="mt-2 d-flex justify-content-between">
@@ -48,7 +48,7 @@
                         <div class="card">
                             <a href="{{ route('subjects.index', $wishlistItem->subject->slug) }}" style="text-decoration: none">
                                 <img src="{{ $wishlistItem->subject->image_thumb}}" alt="{{ $wishlistItem->subject->very_short_title }}" width="100%" height="130">
-                                <div class="card-body card-body_custom">
+                                <div class="card-body">
                                     <span class="bold">{{ $wishlistItem->subject->very_short_title }}</span><br />
                                     <span class="author-font">By {{$wishlistItem->subject->creator->name }}</span>
                                     @if($wishlistItem->subject->averageRating)

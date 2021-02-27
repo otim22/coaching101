@@ -32,7 +32,7 @@
                     <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
                         <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
                     </a>
-                    <div class="card-body card-body_custom">
+                    <div class="card-body">
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
                             <span class="bold">{{ $subject->very_short_title }}</span><br />
                             <span class="author-font">By {{$subject->creator->name }}</span>

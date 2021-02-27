@@ -26,7 +26,7 @@
                             <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
                         @endif
                     @endif
-                    <div class="card-body card-body_custom">
+                    <div class="card-body">
                         @if($book->isSubscribedTo)
                             <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $book->very_short_title }}</span><br />

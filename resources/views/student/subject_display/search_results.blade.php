@@ -42,7 +42,7 @@
                             <a href="{{ route('subjects.index', $search->searchable->slug) }}" style="text-decoration: none">
                                 <img src="{{ $search->searchable->cover_image}}" alt="{{ $search->searchable->very_short_title }}" width="100%" height="150">
                             </a>
-                            <div class="card-body card-body_custom">
+                            <div class="card-body">
                                 <a href="{{ route('subjects.index', $search->searchable->slug) }}" style="text-decoration: none" class="title-font">
                                     <span class="bold">{{ $search->searchable->very_short_title }}</span><br />
                                     <span class="author-font">{{$search->searchable->creator->name }}</span>
