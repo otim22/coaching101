@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     if (location.hash) {
         const hash = url.split("#");
-        $('#v-pills-tab a[href="#'+hash[1]+'"]').tab("show");
+        $('#pills-tab a[href="#'+hash[1]+'"]').tab("show");
         url = location.href.replace(/\/#/, "#");
         history.replaceState(null, null, url);
 

@@ -74,6 +74,10 @@
     </div>
 </section>
 
+<div class="container">
+    @include('flash.messages')
+</div>
+
 <section class="" id="learn-now">
     <div class="container">
         <div class="row">
@@ -296,7 +300,7 @@
     @include('partials.teachers')
 </section>
 
-<section class="bg-gray-3 faq">
+<section class="bg-gray-2 faq">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12">

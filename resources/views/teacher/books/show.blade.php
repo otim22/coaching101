@@ -61,15 +61,14 @@
                     <h5 class="mt-2 mb-3">{{ $book->title }}</h5>
                     <img src="{{ asset($book->getFirstMediaUrl('teacher_cover_image')) }}" class="w-100 mb-3">
                     <p>{{ $book->category->name }} {{ $book->year->name }}, {{ $book->term->name }}. </p>
+
                     @if(!$book->price)
                         <p>Free</p>
                     @else
                         <p>UGX {{ number_format($book->price) }}/-</p>
                     @endif
+
                     <embed src="{{ $book->getFirstMediaUrl('teacher_book') }}" type="application/pdf" width="100%" height="400">
-                    <a id="round-button-2" class="btn btn-secondary btn-sm mt-5" href="{{ $book->getFirstMediaUrl('teacher_book') }}" target="_blank">
-                        Download book
-                    </a>
 
                     <form action="{{ route('books.destroy', $book) }}" class="hidden" id="delete-teacher-book" method="POST">
                         @csrf

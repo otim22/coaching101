@@ -99,9 +99,7 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->hasMany('App\Models\Topic');
     }
 
-    /**
-     * Get the category that owns the subject.
-     */
+    /**  Get the category that owns the subject. */
     public function category()
     {
         return $this->belongsTo('App\Models\Category', 'category_id');
@@ -132,9 +130,7 @@ class Subject extends Model implements HasMedia, Searchable
         $this->subscription()->where('user_id', $userId ?: Auth::id())->delete();
     }
 
-    /**
-     * Get the subject's subscription.
-     */
+    /** Get the subject's subscription. */
     public function subscription()
     {
         return $this->morphOne(Subscription::class, 'subscriptionable');

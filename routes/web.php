@@ -50,11 +50,6 @@ Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
 Route::get('/notes', [Notes::class, 'index'])->name('student.notes.index');
 Route::get('/notes/{note}', [Notes::class, 'show'])->name('student.notes.show');
-
-Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
-Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
-Route::get('/about', [AboutController::class, 'index'])->name('about');
-
 Route::get('/get-more-notes', [Notes::class, 'getMoreNotes'])->name('get-more-notes');
 Route::get('/pastpapers', [PastPapers::class, 'index'])->name('student.pastpapers.index');
 Route::get('/pastpapers/{pastpaper}', [PastPapers::class, 'show'])->name('student.pastpapers.show');
@@ -63,6 +58,9 @@ Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.p
 Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');
 Route::patch('/users/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');
 Route::patch('/account-update', [UserController::class, 'accountUpdate'])->name('account-update');
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
+Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject?}/topics/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show');
 Route::get('/search', [SearchController::class, 'index'])->name('search');

@@ -237,7 +237,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                <h5 class="bold"> More subjects by {{ $subject->creator->name }}</h5>
+                <h5 class="bold"> More Subjects by {{ $subject->creator->name }}</h5>
             </div>
             @foreach($subjects as $subject)
             <div class="col-sm-6 col-md-4 col-lg-3">

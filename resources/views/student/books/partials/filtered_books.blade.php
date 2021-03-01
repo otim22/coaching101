@@ -48,7 +48,7 @@
                                 @if($book->creator)
                                     <span class="author-font">By {{ $book->creator->name }}</span><br />
                                 @else
-                                    <span class="author-font">By Coaching101</span><br />
+                                    <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($book->price)
