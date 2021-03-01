@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     if (location.hash) {
         const hash = url.split("#");
-        $('#pills-tab a[href="#'+hash[1]+'"]').tab("show");
+        $('#performanceTab a[href="#'+hash[1]+'"]').tab("show");
         url = location.href.replace(/\/#/, "#");
         history.replaceState(null, null, url);
 
@@ -12,7 +12,7 @@ $(document).ready(function() {
         }, 400);
     }
 
-    $('a[data-toggle="pill"]').on("click", function() {
+    $('a[data-toggle="tab"]').on("click", function() {
         let newUrl;
         const hash = $(this).attr("href");
 

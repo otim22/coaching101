@@ -146,6 +146,11 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->subscription()->count();
     }
 
+    public function rating()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
     /** Searching for subjects results*/
     public function getSearchResult(): SearchResult
     {
