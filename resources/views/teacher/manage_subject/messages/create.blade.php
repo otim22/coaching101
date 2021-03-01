@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="section-bread bg-gray-4">
+<section class="section-bread bg-gray-2">
     <div class="container">
         <nav aria-label="breadcrumb bg-gray">
             <ol class="breadcrumb">
