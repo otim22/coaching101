@@ -16,7 +16,7 @@
                                         <label for="rate-{{$i}}" class="fa fa-star"></label>
                                     @endfor
                                     @if($subject->isSubscribedTo)
-                                        <span class="author-font ml-2">({{ $subject->getSubscriptionCount() }}) students</span><br />
+                                        <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
                                     @endif
                                 </div>
                             @else
@@ -27,7 +27,7 @@
                                     </svg>
                                 @endfor
                                 @if($subject->isSubscribedTo)
-                                    <span class="author-font ml-2">({{ $subject->getSubscriptionCount() }}) students</span><br />
+                                    <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
                                 @endif
                             </div>
                             @endif

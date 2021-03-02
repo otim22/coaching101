@@ -109,7 +109,7 @@ class Pastpaper extends Model implements HasMedia
         return $this->subscription()->where('user_id', Auth::id())->exists();
     }
 
-    public function getSubscriptionCount()
+    public function getSubscriptionCountAttribute()
     {
         return $this->subscription()->count();
     }

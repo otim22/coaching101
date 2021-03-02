@@ -41,9 +41,9 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="revenue" role="tabpanel" aria-labelledby="revenue-tab">
-                        <div class="mt-3">
-                            <div class="row" style="display: flex; justify-content: flex-end">
-                                <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-3">
+                        <div class="mt-4">
+                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
+                                <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
                                         <select class="custom-select" id="category">
                                             <option>All time</option>
@@ -53,19 +53,19 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             @forelse($subjects as $subject)
-                            <h6 class="bold">{{ $subject->title }}</h6>
-                            <p>Total revenue: <span  class="author-font">UGX {{  number_format(($subject->price * $subject->getSubscriptionCount()), 2, ".", "") }}/- </span></p>
+                                <h6 class="bold">{{ $subject->title }}</h6>
+                                <p>Total revenue: <span  class="author-font">UGX {{  number_format(($subject->price * $subject->subscriptionCount), 2, ".", "") }}/- </span></p>
                             @empty
-                            <p>No data to display</p>
+                                <p>No data to display</p>
                             @endforelse
                         </div>
                     </div>
                     <div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
-                        <div class="mt-3">
-                            <div class="row" style="display: flex; justify-content: flex-end">
-                                <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-3">
+                        <div class="mt-4">
+                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
+                                <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
                                         <select class="custom-select" id="category">
                                             <option>All time</option>
@@ -75,19 +75,19 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             @forelse($subjects as $subject)
                             <h6 class="bold">{{ $subject->title }}</h6>
-                            <p>Enrollment : <span  class="author-font">{{ $subject->getSubscriptionCount() }} students</span></p>
+                            <p>Enrollment : <span  class="author-font">{{ $subject->subscriptionCount }} students</span></p>
                             @empty
                             <p>No data to display</p>
                             @endforelse
                         </div>
                     </div>
                     <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                        <div class="mt-3">
-                            <div class="row" style="display: flex; justify-content: flex-end">
-                                <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-3">
+                        <div class="mt-4">
+                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
+                                <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
                                         <select class="custom-select" id="category">
                                             <option>All time</option>
@@ -97,7 +97,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             @forelse($subjects as $subject)
                             <h6 class="bold">{{ $subject->title }}</h6>
                             @if($subject->averageRating())

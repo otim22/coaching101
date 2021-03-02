@@ -55,7 +55,7 @@
                                             @for($i = $search->searchable->averageRating; $i >= 1; $i--)
                                                 <label for="rate-{{$i}}" class="fa fa-star"></label>
                                             @endfor
-                                            <span class="author-font">({{ $search->searchable->getSubscriptionCount() }}) students</span>
+                                            <span class="author-font">({{ $search->searchable->subscriptionCount }}) students</span>
                                         </div>
                                     @else
                                         <div class="rating">
@@ -65,7 +65,7 @@
                                                 </svg>
                                             @endfor
                                             @if($search->searchable->isSubscribedTo)
-                                                <span class="author-font ml-2">({{ $search->searchable->getSubscriptionCount() }}) students</span><br />
+                                                <span class="author-font ml-2">({{ $search->searchable->subscriptionCount }}) students</span><br />
                                             @endif
                                         </div>
                                     @endif
