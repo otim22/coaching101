@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Subject;
 use Illuminate\Http\Request;
-use App\Models\Subscription;
 use Illuminate\Support\Facades\Auth;
 
 class PerformanceController extends Controller

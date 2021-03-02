@@ -56,7 +56,7 @@
                             </div> -->
                             @forelse($subjects as $subject)
                                 <h6 class="bold">{{ $subject->title }}</h6>
-                                <p>Total revenue: <span  class="author-font">UGX {{  number_format(($subject->price * $subject->subscriptionCount), 2, ".", "") }}/- </span></p>
+                                <p>Total revenue: <span  class="author-font">UGX {{  rtrim(rtrim(number_format(($subject->price * $subject->subscriptionCount), 2), 2), '.') }}/-</span></p>
                             @empty
                                 <p>No data to display</p>
                             @endforelse

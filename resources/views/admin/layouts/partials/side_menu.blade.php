@@ -68,6 +68,11 @@
                         <ul class="collapse " id="uiComponentsSubject">
                             <li class="drawer-menu-item  ">
                                 <a href="{{ url('/admin/books') }}">
+                                    <span class="drawer-menu-text"> Videos</span>
+                                </a>
+                            </li>
+                            <li class="drawer-menu-item  ">
+                                <a href="{{ url('/admin/books') }}">
                                     <span class="drawer-menu-text"> Books</span>
                                 </a>
                             </li>
@@ -123,12 +128,24 @@
                 </div>
 
                 <!-- MANAGEMENT MENU -->
-                <ul class="drawer-menu" id="componentsMenu" data-children=".drawer-submenu">
-                    <li class="drawer-menu-item  ">
-                        <a href="{{ url('/admin/users') }}">
+                <ul class="drawer-menu" id="componentsUsers" data-children=".drawer-submenu">
+                    <li class="drawer-menu-item drawer-submenu">
+                        <a data-toggle="collapse" data-parent="#componentsUsers" href="#" data-target="#uiComponentsUsers" aria-controls="uiComponentsUsers" aria-expanded="false" class="collapsed">
                             <i class="material-icons">people_outline</i>
                             <span class="drawer-menu-text"> Users</span>
-                        </a>
+                          </a>
+                        <ul class="collapse " id="uiComponentsUsers">
+                            <li class="drawer-menu-item">
+                                <a href="{{ url('/admin/teachers') }}">
+                                    <span class="drawer-menu-text">Teachers</span>
+                                </a>
+                            </li>
+                            <li class="drawer-menu-item">
+                                <a href="{{ url('/admin/students') }}">
+                                    <span class="drawer-menu-text">Students</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
