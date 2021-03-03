@@ -27,6 +27,8 @@ use App\Http\Controllers\Admin\StudentImageController;
 use App\Http\Controllers\Admin\TeacherImageController;
 use App\Http\Controllers\Admin\StudentController as Student;
 use App\Http\Controllers\Admin\TeacherController as Teacher;
+use App\Http\Controllers\Admin\StudentProfileController;
+use App\Http\Controllers\Admin\TeacherProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
@@ -128,7 +130,11 @@ Route::middleware('auth')->group(function() {
         Route::get('/dashboard', [AdminController::class, 'index']);
 
         Route::get('/students', [Student::class, 'index']);
+        Route::delete('/students/{student}/destroy', [Student::class, 'destroy'])->name('students.destroy');
         Route::get('/teachers', [Teacher::class, 'index']);
+        Route::delete('/teachers/{teacher}/destroy', [Teacher::class, 'destroy'])->name('teachers.destroy');
+        Route::get('/student-profiles', [StudentProfileController::class, 'index']);
+        Route::get('/teacher-profiles', [TeacherProfileController::class, 'index']);
 
         Route::resource('sliders', 'SliderController');
         Route::resource('studentImages', 'StudentImageController');

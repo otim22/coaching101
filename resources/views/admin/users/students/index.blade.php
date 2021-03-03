@@ -18,7 +18,9 @@
                                 <th scope="col"></th>
                                 <th scope="col">Names</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Action</th>
+                                @if(Auth::user()->role == 4)
+                                    <th scope="col">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -27,7 +29,19 @@
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ Str::ucfirst($student->name) }}</td>
                                 <td>{{ $student->email }}</td>
-                                <td>@mdo</td>
+                                @if(Auth::user()->role == 4)
+                                    <td>
+                                        <a class="btn btn-outline-danger"
+                                                    href="#"
+                                                    onclick="event.preventDefault(); document.getElementById('delete-student-{{ $student->id }}').submit();">
+                                                    {{ __('Delete') }}
+                                        </a>
+                                    </td>
+                                @endif
+                                <form action="{{ route('admin.students.destroy', $student) }}" class="hidden" id="delete-student-{{ $student->id }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                </form>
                             </tr>
                             @empty
                                 <p class="mb-2">No students</p>

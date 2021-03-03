@@ -147,6 +147,24 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="drawer-menu-item drawer-submenu">
+                        <a data-toggle="collapse" data-parent="#componentsProfiles" href="#" data-target="#uiComponentsProfiles" aria-controls="uiComponentsProfiles" aria-expanded="false" class="collapsed">
+                            <i class="material-icons">person_outline</i>
+                            <span class="drawer-menu-text"> Profiles</span>
+                          </a>
+                        <ul class="collapse " id="uiComponentsProfiles">
+                            <li class="drawer-menu-item">
+                                <a href="{{ url('/admin/teacher-profiles') }}">
+                                    <span class="drawer-menu-text">Teachers</span>
+                                </a>
+                            </li>
+                            <li class="drawer-menu-item">
+                                <a href="{{ url('/admin/student-profiles') }}">
+                                    <span class="drawer-menu-text">Students</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
