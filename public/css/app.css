@@ -3192,6 +3192,14 @@ select {
   color: #3490dc;
 }
 
+.dark-blue_color {
+  color: #163e73;
+}
+
+.dark-blue_color-2 {
+  color: #1d2e54;
+}
+
 .side-font {
   font-weight: bold;
 }
@@ -3235,7 +3243,11 @@ select {
 }
 
 .student-font {
-  color: #d6d6d6;
+  color: #cdcfd1;
+}
+
+.student-font_color {
+  color: #8299b8;
 }
 
 .learn-today_title {
@@ -3343,24 +3355,6 @@ select {
 
 @media only screen and (max-width: 991px) {
   #cartId1 {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  #cartId2 {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  #cartId2 {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  #cartId2 {
     display: none;
   }
 }
@@ -3484,7 +3478,7 @@ select {
 
 .bg-teacher-image {
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)), url(/images/study_13.jpg);
   background-attachment: fixed;
   background-position: center;
@@ -3529,8 +3523,8 @@ select {
 }
 
 .fa {
-  padding: 14px;
-  width: 45px;
+  padding: 12px;
+  width: 42px;
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
@@ -3542,12 +3536,12 @@ select {
 }
 
 .fa-facebook {
-  background: #3B5998;
+  background: #0d3369;
   color: white;
 }
 
 .fa-twitter {
-  background: #55ACEE;
+  background: #69b9ff;
   color: white;
 }
 
@@ -3557,7 +3551,7 @@ select {
 }
 
 .fa-medium {
-  background: #18592b;
+  background: #11361b;
   color: white;
 }
 
@@ -3606,13 +3600,10 @@ select {
 }
 
 .star-display label {
-  font-size: 15px;
+  font-size: 14px;
   color: #fd4;
-}
-
-.star-display label {
   width: 0px !important;
-  padding: 5px;
+  padding: 3px 9px 0px 0px;
 }
 
 input:not(:checked) ~ label:hover,
@@ -3867,7 +3858,7 @@ form .btn button {
 }
 
 .bg-gray-2 {
-  background-color: #d6d6d6 !important;
+  background-color: #cdcfd1 !important;
 }
 
 .bg-gray-3 {
@@ -3945,7 +3936,7 @@ form .btn button {
 }
 
 #grayBg {
-  background-color: #d6d6d6;
+  background-color: #cdcfd1;
 }
 
 .bg-parallax {
@@ -3976,7 +3967,7 @@ form .btn button {
 .fast-transition-2 {
   position: relative;
   /* For positioning the pseudo-element */
-  background-color: #d6d6d6;
+  background-color: #cdcfd1;
   padding: 15px;
   border-radius: 8px;
   min-height: 600px;
@@ -3985,7 +3976,7 @@ form .btn button {
 .fast-transition {
   position: relative;
   /* For positioning the pseudo-element */
-  background-color: #d6d6d6;
+  background-color: #cdcfd1;
   padding: 15px;
   border-radius: 8px;
 }
@@ -4062,7 +4053,7 @@ a.disabled {
 }
 
 .header-divider {
-  border-left: 1px solid #d6d6d6;
+  border-left: 1px solid #cdcfd1;
   width: 1px;
   height: 140px;
   position: absolute;
@@ -4084,19 +4075,19 @@ a.disabled {
 
 @media only screen and (max-width: 767px) {
   .header-divider {
-    border-left: 1px #d6d6d6;
+    border-left: 1px #cdcfd1;
   }
 }
 
 @media only screen and (max-width: 575px) {
   .header-divider {
-    border-left: 1px #d6d6d6;
+    border-left: 1px #cdcfd1;
   }
 }
 
 @media only screen and (max-width: 320px) {
   .header-divider {
-    border-left: 1px #d6d6d6;
+    border-left: 1px #cdcfd1;
   }
 }
 
@@ -4167,7 +4158,7 @@ div > .student-image {
   margin: 5px 0;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease-in-out;
-  background-color: #d6d6d6;
+  background-color: #cdcfd1;
 }
 
 .top_teacher:hover {
@@ -4188,10 +4179,6 @@ div > .student-image {
   margin-right: 10px;
   width: 60px;
   height: 60px;
-}
-
-.card-body_custom {
-  padding: 1rem !important;
 }
 
 .love-circle:hover {
@@ -4409,9 +4396,9 @@ img.rounded-corners {
 }
 
 .circlar-teacher {
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
+  border-radius: 12px;
+  width: 80%;
+  height: 80%;
 }
 
 .card-custom {

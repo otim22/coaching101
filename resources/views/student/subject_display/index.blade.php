@@ -17,39 +17,33 @@
                 <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($subject->title) }}</li>
             </ol>
         </nav>
-        <div class="row mt-2">
+        <div class="row mt-4">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h5 class="bold">{{ ucfirst($subject->title) }}</h5>
                 <h6>{{ ucfirst($subject->subtitle) }}</h6>
                 @if($subject->averageRating)
                     <div class="star-display">
-                        @for($i = 0; $i <= $subject->averageRating; $i++)
+                        @for($i = $subject->averageRating; $i >= 1; $i--)
                             <label for="rate-{{$i}}" class="fa fa-star"></label>
                         @endfor
-                        <span class="author-font ml-3">({{ $subject->getSubscriptionCount() }}) students</span><br />
+                        <@if($subject->isSubscribedTo)
+                            <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
+                        @endif
                     </div>
                 @else
                     <div class="rating">
-                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <span class="author-font ml-2">({{ $subject->getSubscriptionCount() }}) students</span><br />
+                        @for($i = 0; $i < 5; $i++)
+                            <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg>
+                        @endfor
+                        @if($subject->isSubscribedTo)
+                            <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
+                        @endif
                     </div>
                 @endif
                 @if(!$subject->isSubscribedTo)
-                <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+                <span class="bold">UGX {{  rtrim(rtrim(number_format($subject->price, 2), 2), '.') }}/-</span>
                 @endif
                 <p>Created by {{ $subject->creator->name }}</p>
             </div>
@@ -237,25 +231,25 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                <h5 class="bold"> More subjects by {{ $subject->creator->name }}</h5>
+                <h5 class="bold"> More Subjects by {{ $subject->creator->name }}</h5>
             </div>
             @foreach($subjects as $subject)
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <a href="{{ route('subjects.show', $subject->slug) }}" style="text-decoration: none">
                     <div class="card mb-4">
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                            <img src="{{ $subject->default_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
+                            <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="130">
                         </a>
-                        <div class="card-body card-body_custom">
+                        <div class="card-body">
                             <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $subject->very_short_title }}</span><br />
                                 <span class="author-font">By {{$subject->creator->name }}</span>
                                 @if($subject->averageRating)
                                     <div class="star-display">
-                                        @for($i = 0; $i <= $subject->averageRating; $i++)
+                                        @for($i = $subject->averageRating; $i >= 1; $i--)
                                             <label for="rate-{{$i}}" class="fa fa-star"></label>
                                         @endfor
-                                        <span class="title-font ml-3">({{ $subject->getSubscriptionCount() }}) students</span>
+                                        <span class="title-font ml-3">({{ $subject->subscriptionCount }}) students</span>
                                     </div>
                                 @else
                                 <div class="rating">
@@ -274,10 +268,10 @@
                                     <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                                     </svg>
-                                    <span class="title-font ml-3">({{ $subject->getSubscriptionCount() }}) students</span><br />
+                                    <span class="title-font ml-3">({{ $subject->subscriptionCount }}) students</span><br />
                                 </div>
                                 @endif
-                                <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+                                <span class="bold">UGX {{  rtrim(rtrim(number_format($subject->price, 2), 2), '.') }}/-</span>
                             </a>
                             <div class="mt-2 d-flex justify-content-between">
                                 <livewire:add-to-cart :subject="$subject" :key="$subject->id" />

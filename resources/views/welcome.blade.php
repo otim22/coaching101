@@ -2,27 +2,27 @@
 
 @section('content')
 
-<section class="bg-image text-white" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 85vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
+<section class="bg-image text-white mt-4" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 90vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
                 <div class="learn-today mb-5">
-                    <h1 class="display-4 learn-today_title">{{ $sliders->title }}</h1>
+                    <h1 class="display-3 learn-today_title">{{ $sliders->title }}</h1>
                     <h4 class="pt-3 bold student-font">{!! $sliders->description !!}</h4>
                     @guest
-                        <p><a id="round-button-2" class="btn btn-primary mt-5" href="{{ route('login') }}" role="button">Get Started &raquo;</a></p>
+                        <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get started &raquo;</a></p>
                     @endguest
 
                     @auth
                         @if(Auth::user()->role == 1)
-                            <p><a id="round-button-2" class="btn btn-primary get-started_student mt-5" href="#learn-now" role="button">Get Started &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg get-started_student mt-5" href="#learn-now" role="button">Get started &raquo;</a></p>
                         @endif
 
                         @if(Auth::user()->role == 2)
-                            <p><a id="round-button-2" class="btn btn-primary mt-5" href="{{ route('manage.subjects') }}" role="button">Get Started &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get started &raquo;</a></p>
                         @endif
                         @if(Auth::user()->role == 3)
-                            <p><a id="round-button-2" class="btn btn-primary mt-5" href="{{ route('login') }}" role="button">Get Started &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get started &raquo;</a></p>
                         @endif
                     @endauth
                 </div>
@@ -31,17 +31,17 @@
     </div>
 </section>
 
-<section class="bg-gray-2 background-style">
+<section class="bg-gray-3 background-style">
     <div class="container">
         <div class="row mb-5">
             <div class="col-sm-12 col-md-4 col-lg-4 d-flex">
                 <div class="mr-4">
-                    <svg class="bi bi-cloud-fill" width="3em" height="3em" viewBox="0 0 16 16" fill="gray" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M3.5 13a3.5 3.5 0 11.59-6.95 5.002 5.002 0 119.804 1.98A2.5 2.5 0 0113.5 13h-10z" clip-rule="evenodd"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="3.5em" height="3.5em" fill="gray" class="bi bi-cloud" viewBox="0 0 16 16">
+                        <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
                     </svg>
                 </div>
                 <div>
-                    <h5>1,000+ online classes</h5>
+                    <h5 class="bold">Online classes</h5>
                     <p>Discover varied topics</p>
                 </div>
             </div>
@@ -53,20 +53,20 @@
                     </svg>
                 </div>
                 <div>
-                    <h5>Expert teachers</h5>
+                    <h5 class="bold">Expert teachers</h5>
                     <p>Connect with right teachers</p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4 d-flex">
                 <div class="mr-4">
-                    <svg class="bi bi-clock-history" width="3em" height="3em" viewBox="0 0 16 16" fill=" gray" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="bi bi-clock-history" width="3em" height="3em" viewBox="0 0 16 16" fill="gray" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 008 1V0a8 8 0 01.589.022l-.074.997zm2.004.45a7.003 7.003 0 00-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 00-.439-.27l.493-.87a8.025 8.025 0 01.979.654l-.615.789a6.996 6.996 0 00-.418-.302zm1.834 1.79a6.99 6.99 0 00-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 00-.214-.468l.893-.45a7.976 7.976 0 01.45 1.088l-.95.313a7.023 7.023 0 00-.179-.483zm.53 2.507a6.991 6.991 0 00-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 01-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 01-.401.432l-.707-.707z" clip-rule="evenodd"/>
                         <path fill-rule="evenodd" d="M8 1a7 7 0 104.95 11.95l.707.707A8.001 8.001 0 118 0v1z" clip-rule="evenodd"/>
                         <path fill-rule="evenodd" d="M7.5 3a.5.5 0 01.5.5v5.21l3.248 1.856a.5.5 0 01-.496.868l-3.5-2A.5.5 0 017 9V3.5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
                     </svg>
                 </div>
                 <div>
-                    <h5>Lifetime access</h5>
+                    <h5 class="bold">Lifetime access</h5>
                     <p>Learn on your schedule</p>
                 </div>
             </div>
@@ -74,11 +74,15 @@
     </div>
 </section>
 
-<section class="bg-gray" id="learn-now">
+<div class="container">
+    @include('flash.messages')
+</div>
+
+<section class="" id="learn-now">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-12 mb-4">
-                <h4 class="bold"> Learn at your own pace anytime</h4>
+                <h4 class="bold"> At your own convience start learning</h4>
             </div>
 
             <div class="col-sm-12 col-md-12 col-12">
@@ -108,40 +112,34 @@
                                     <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
                                         <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
                                     </a>
-                                    <div class="card-body card-body_custom">
+                                    <div class="card-body">
                                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
                                             <span class="bold">{{ $subject->very_short_title }}</span><br />
                                             <span class="author-font">By {{$subject->creator->name }}</span><br />
                                             @if($subject->averageRating)
                                                 <div class="star-display">
-                                                    @for($i = 0; $i <= $subject->averageRating; $i++)
+                                                    @for($i = $subject->averageRating; $i >= 1; $i--)
                                                         <label for="rate-{{$i}}" class="fa fa-star"></label>
                                                     @endfor
-                                                    <span class="author-font ml-2">({{ $subject->getSubscriptionCount() }}) students</span><br />
+                                                    @if($subject->isSubscribedTo)
+                                                        <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
+                                                    @endif
                                                 </div>
                                             @else
                                                 <div class="rating">
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <span class="author-font ml-2">({{ $subject->getSubscriptionCount() }}) students</span><br />
+                                                    @for($i = 0; $i < 5; $i++)
+                                                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                                        </svg>
+                                                    @endfor
+                                                    @if($subject->isSubscribedTo)
+                                                        <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
+                                                    @endif
                                                 </div>
                                             @endif
 
                                             @if($subject->price)
-                                                <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+                                                <span class="bold">UGX {{  rtrim(rtrim(number_format($subject->price, 2), 2), '.') }}/-</span>
                                             @else
                                                 <span class="bold paid_color">Free</span>
                                             @endif
@@ -176,44 +174,34 @@
                     <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
                         <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
                     </a>
-                    <div class="card-body card-body_custom">
+                    <div class="card-body">
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
                             <span class="bold">{{ $subject->very_short_title }}</span><br />
                             <span class="author-font">By {{$subject->creator->name }}</span><br />
                             @if($subject->averageRating)
                                 <div class="star-display">
-                                    @for($i = 0; $i <= $subject->averageRating; $i++)
+                                    @for($i = $subject->averageRating; $i >= 1; $i--)
                                         <label for="rate-{{$i}}" class="fa fa-star"></label>
                                     @endfor
                                     @if($subject->isSubscribedTo)
-                                        <span class="author-font ml-2">({{ $subject->getSubscriptionCount() }}) students</span><br />
+                                        <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
                                     @endif
                                 </div>
                             @else
                                 <div class="rating">
-                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                    </svg>
-                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                    </svg>
-                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                    </svg>
-                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                    </svg>
-                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                    </svg>
+                                    @for($i = 0; $i < 5; $i++)
+                                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                        </svg>
+                                    @endfor
                                     @if($subject->isSubscribedTo)
-                                        <span class="author-font ml-2">({{ $subject->getSubscriptionCount() }}) students</span><br />
+                                        <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
                                     @endif
                                 </div>
                             @endif
 
                             @if($subject->price)
-                                <span class="bold">UGX {{ number_format($subject->price) }}/-</span>
+                                <span class="bold">UGX {{  rtrim(rtrim(number_format($subject->price, 2), 2), '.') }}/-</span>
                             @else
                                 <span class="bold">Free</span>
                             @endif
@@ -246,7 +234,7 @@
                 @endauth
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <img src="{{ asset($studentImage->cover_image) }}" alt="image thumb" class="student-image">
+                <img src="{{ asset($studentImage->getFirstMediaUrl()) }}" alt="image thumb" class="student-image">
             </div>
         </div>
     </div>
@@ -262,7 +250,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
-            <img src="{{ asset($teacherImage->cover_image) }}" alt="teacher thumb" class="teacher-image">
+            <img src="{{ asset($teacherImage->getFirstMediaUrl()) }}" alt="teacher thumb" class="teacher-image">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="mb-2">
@@ -296,7 +284,7 @@
     @include('partials.teachers')
 </section>
 
-<section class="bg-gray-3 faq">
+<section class="bg-gray-2 faq">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12">

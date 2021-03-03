@@ -8,10 +8,10 @@ use App\Models\Year;
 use App\Models\Term;
 use App\Models\Slider;
 use App\Models\Menu;
+use App\Models\Profile;
 use App\Models\Subject;
 use App\Models\Category;
-use App\Models\StudentImage;
-use App\Models\TeacherImage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -56,7 +56,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['welcome', 'home', 'student.*'], function ($view) {
-            $teachers = User::with('subjects')->get()->where('role', '2')->take(12);
+            $teachers = User::with('profile')->where('role', '2')->get()->take(12);
 
             $view->withTeachers($teachers);
         });
@@ -71,12 +71,6 @@ class ComposerServiceProvider extends ServiceProvider
             $terms = Term::get();
 
             $view->withTerms($terms);
-        });
-
-        View::composer(['*'], function ($view) {
-            $menus = Menu::whereNull('parent_id')->with('allChildren')->get();
-
-            $view->withMenus($menus);
         });
     }
 }

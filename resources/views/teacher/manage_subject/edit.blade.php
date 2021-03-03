@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-4">
+<section class="section-bread bg-gray-2">
     <div class="container">
         <nav aria-label="breadcrumb bg-gray">
             <ol class="breadcrumb">
@@ -32,11 +32,11 @@
                     <div class="fast-transition mb-3">
                         <div class="row m-2 pb-2">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <h4 class="bold">Subject introduction</h4> <hr />
+                                <h4>Subject introduction</h4> <hr />
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group mb-4 mt-3">
-                                    <label for="title" class="bold">Subject title</label>
+                                    <label for="title">Subject title</label>
                                     <div class="input-group">
                                         <input type="text"
                                                     class="form-control @error('title') is-invalid @enderror"
@@ -52,7 +52,7 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label for="subtitle" class="bold">Sub title</label>
+                                    <label for="subtitle">Sub title</label>
                                     <div class="input-group">
                                         <input type="text"
                                                     class="form-control @error('subtitle') is-invalid @enderror"
@@ -67,7 +67,7 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label for="description" class="bold">Description</label>
+                                    <label for="description">Description</label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Description of the subject" name="description" rows="3" required>{{ old('description', $subject->description) }}</textarea>
                                     @error('description')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label for="category_id" class="bold">Category</label>
+                                    <label for="category_id">Category</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="category_id">
                                             <option selected value="{{ $category->id }}">{{ $category->name }}</option>
@@ -90,7 +90,7 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label for="year_id" class="bold">Year</label>
+                                    <label for="year_id">Year</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="year_id">
                                             <option selected value="{{ $year->id }}">{{ $year->name }}</option>
@@ -105,7 +105,7 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label for="term_id" class="bold">Term</label>
+                                    <label for="term_id">Term</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="term_id">
                                             <option selected value="{{ $term->id }}">{{ $term->name }}</option>
@@ -120,7 +120,7 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label for="price" class="bold">Subject price</label>
+                                    <label for="price">Subject price</label>
                                     <div class="input-group">
                                         <input type="text"
                                                     class="form-control @error('price') is-invalid @enderror"
@@ -136,7 +136,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <p class="bold">Current image</p>
+                                    <p>Current image</p>
                                     <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="mb-2 rounded-corners w-100">
                                     <p><small style="color: red; font-weight: bold;">*Choosing another image replaces this current one</small></p>
 

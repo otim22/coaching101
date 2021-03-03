@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-4">
+<section class="section-bread bg-gray-2">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -44,7 +44,7 @@
                     <form action="{{ route('notes.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-4">
-                            <label for="year_id" class="bold">Subject</label>
+                            <label for="year_id">Subject</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="category_id">
                                     <option selected>Choose subject...</option>
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="year_id" class="bold">Year</label>
+                            <label for="year_id">Year</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="year_id">
                                     <option selected>Choose year...</option>
@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="year_id" class="bold">Term</label>
+                            <label for="year_id">Term</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="term_id">
                                     <option selected>Choose term...</option>
@@ -97,7 +97,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="note" class="bold">Upload Notes</label>
+                            <label for="note">Upload Notes</label>
 
                             <input type="file" name="note" class="form-control-file @error('note') is-invalid @enderror" id="note" required>
                             <p><small class="light_gray_color">*Notes should be a pdf file</small></p>
@@ -107,7 +107,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="price" class="bold">Notes price <span class="light_gray_color">(*Optional)</span></label>
+                            <label for="price">Notes price <span class="light_gray_color">(*Optional)</span></label>
                             <div class="input-group">
                                 <input type="text"
                                             class="form-control @error('price') is-invalid @enderror"
@@ -118,7 +118,7 @@
                                             name="price"
                                             value="{{ old('price') }}">
                             </div>
-                            <p class="mt-2"><small class="red_color">*Price should be only digits</small></p>
+                            <p class="mt-2"><small class="light_gray_color">*Price should be only digits</small></p>
                             @error('price')
                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror

@@ -13,7 +13,7 @@
             <div class="rate-container">
                 <div class="star-widget">
                     <div>
-                        @for($i = 5; $i >= 0; $i--)
+                        @for($i = 5; $i >= 1; $i--)
                             <input type="radio" wire:model="rating" id="rate-{{$i}}" value="{{$i}}">
                             <label for="rate-{{$i}}" class="fa fa-star"></label>
                         @endfor

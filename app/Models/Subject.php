@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
@@ -15,6 +16,7 @@ use Spatie\Searchable\SearchResult;
 use Illuminate\Support\Facades\Auth;
 use App\Constants\GlobalConstants;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -99,9 +101,7 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->hasMany('App\Models\Topic');
     }
 
-    /**
-     * Get the category that owns the subject.
-     */
+    /**  Get the category that owns the subject. */
     public function category()
     {
         return $this->belongsTo('App\Models\Category', 'category_id');
@@ -132,9 +132,7 @@ class Subject extends Model implements HasMedia, Searchable
         $this->subscription()->where('user_id', $userId ?: Auth::id())->delete();
     }
 
-    /**
-     * Get the subject's subscription.
-     */
+    /** Get the subject's subscription. */
     public function subscription()
     {
         return $this->morphOne(Subscription::class, 'subscriptionable');
@@ -145,9 +143,44 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->subscription()->where('user_id', Auth::id())->exists();
     }
 
-    public function getSubscriptionCount()
+    public function getSubscriptionCountAttribute()
     {
         return $this->subscription()->count();
+    }
+
+    public function rating()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
+    /** Scope a query to only include subjects created last week. */
+    public function scopeLastWeek(Builder $query): Builder
+    {
+        return $query->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])->latest();
+    }
+
+    /** Scope a query to only include subjects created  last month. */
+    public function scopeLastMonth(Builder $query, int $limit = 5): Builder
+    {
+        return $query->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()])
+                                    ->latest()
+                                    ->limit($limit);
+    }
+
+    // /** Scope a query to only include subjects created  last month. */
+    // public function scopeLastQuarter(Builder $query, int $limit = 5): Builder
+    // {
+    //     return $query->whereBetween('created_at', [now()->startOfMonth()->subDay(-1)->startOfMonth(), now()->startOfMonth()->subDay(-1)])
+    //                                 ->latest()
+    //                                 ->limit($limit);
+    // }
+
+    /** Scope a query to only include subjects created last year. */
+    public function scopeLastYear(Builder $query, int $limit = 5): Builder
+    {
+        return $query->whereBetween('created_at', [now()->toDateString(), now()->subYear()->toDateString()])
+                                    ->latest()
+                                    ->limit($limit);
     }
 
     /** Searching for subjects results*/

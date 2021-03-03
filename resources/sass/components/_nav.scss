@@ -108,21 +108,3 @@
         display: none;
     }
 }
-
-@include sm-screens {
-    #cartId2  {
-        display: none;
-    }
-}
-
-@include xs-screens {
-    #cartId2  {
-        display: none;
-    }
-}
-
-@include xs-sm-screens {
-    #cartId2  {
-        display: none;
-    }
-}

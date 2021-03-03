@@ -16,7 +16,7 @@ class SubjectController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('teacher')->except('teaching');
+        $this->middleware('auth')->except('onBoard');
     }
 
     public function index(Subject $subject)
@@ -108,12 +108,12 @@ class SubjectController extends Controller
 
     public function onBoard()
     {
-        return view('teacher.student.index');
+        return view('teacher.pages.index');
     }
 
     public function starter()
     {
-        return view('teacher.student.start.index');
+        return view('teacher.pages.start.index');
     }
 
     public function captureRole(Request $request)

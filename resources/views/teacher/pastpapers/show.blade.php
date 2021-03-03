@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-4">
+<section class="section-bread bg-gray-2">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -33,7 +33,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-12 col-sm-12 off-set-2">
                 <div class="card p-4">
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mb-2">
                         <div>
                             <a id="round-button-2" href="{{ route('teacher.pastpapers') }}" class="btn btn-secondary btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
@@ -65,10 +65,9 @@
                     @else
                         <p>UGX {{ number_format($pastpaper->price) }}/-</p>
                     @endif
+
                     <embed src="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" type="application/pdf" width="100%" height="400">
-                    <a id="round-button-2" class="btn btn-secondary btn-sm mt-3" href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" target="_blank">
-                        Download pastpaper
-                    </a>
+
                     <form action="{{ route('pastpapers.destroy', $pastpaper) }}" class="hidden" id="delete-teacher-pastpaper" method="POST">
                         @csrf
                         @method('delete')
