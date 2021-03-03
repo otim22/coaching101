@@ -160,10 +160,10 @@
                 @if($subject->topics)
                     @forelse($subject->topics as $key => $topic)
                         <a href="{{ route('topics.show', [$subject, $topic]) }}" style="text-decoration: none">
-                        <div class="content-card mb-4" style="max-height: 120px;">
-                            <div>
-                                <video controls preload="auto"  height="119" width="212" data-setup="{}" controlslist="nodownload">
-                                    <source src="{{ asset($topic->getFirstMediaUrl('content_file')) }}" type='video/mp4'>
+                            <div class="content-card mb-4" style="max-height: 120px;">
+                                <div>
+                                    <video controls preload="auto"  height="119" width="212" data-setup="{}" controlslist="nodownload">
+                                        <source src="{{ asset($topic->getFirstMediaUrl('content_file')) }}" type='video/mp4'>
                                     </video>
                                 </div>
                                 <div class="description">

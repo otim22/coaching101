@@ -14,9 +14,9 @@
                 <!-- MENU -->
                 <ul class="drawer-menu" id="userMenu" data-children=".drawer-submenu">
                     <li class="drawer-menu-item">
-                        <a href="account.html">
-                            <i class="material-icons">lock</i>
-                            <span class="drawer-menu-text"> Account</span>
+                        <a href="{{ url('/') }}">
+                            <i class="material-icons">view_headline</i>
+                            <span class="drawer-menu-text"> Home</span>
                         </a>
                     </li>
                     <li class="drawer-menu-item">

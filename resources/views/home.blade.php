@@ -81,11 +81,11 @@
     @include('partials.categories')
 </section>
 
-<section class="bg-gray-3">
+<section>
     @include('partials.teachers')
 </section>
 
-<section class="seven">
+<section class="bg-gray-2">
     @include('partials.teach_students_cta')
 </section>
 

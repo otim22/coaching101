@@ -29,6 +29,11 @@ use App\Http\Controllers\Admin\StudentController as Student;
 use App\Http\Controllers\Admin\TeacherController as Teacher;
 use App\Http\Controllers\Admin\StudentProfileController;
 use App\Http\Controllers\Admin\TeacherProfileController;
+use App\Http\Controllers\Admin\BooksController;
+use App\Http\Controllers\Admin\SubjectsController;
+use App\Http\Controllers\Admin\TopicsController;
+use App\Http\Controllers\Admin\NotesController;
+use App\Http\Controllers\Admin\PastpaperController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
@@ -38,14 +43,11 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\MenuCategoryController;
-use App\Http\Controllers\Admin\BooksController;
 use App\Http\Controllers\BooksController as Books;
 use App\Http\Controllers\TeacherBookController;
 use App\Http\Controllers\TeacherNoteController;
 use App\Http\Controllers\TeacherPastpaperController;
-use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\NotesController as Notes;
-use App\Http\Controllers\Admin\PastpaperController;
 use App\Http\Controllers\PastpaperController as PastPapers;
 
 Route::get('/', [WelcomeController::class, 'index']);
@@ -135,6 +137,12 @@ Route::middleware('auth')->group(function() {
         Route::delete('/teachers/{teacher}/destroy', [Teacher::class, 'destroy'])->name('teachers.destroy');
         Route::get('/student-profiles', [StudentProfileController::class, 'index']);
         Route::get('/teacher-profiles', [TeacherProfileController::class, 'index']);
+
+        Route::get('/subjects', [SubjectsController::class, 'index'])->name('subjects.index');
+        Route::get('/subjects/{subject}', [SubjectsController::class, 'show'])->name('subjects.show');
+        Route::patch('/subjects/{subject}/approve', [SubjectsController::class, 'approve'])->name('subjects.approve');
+        Route::get('/subjects/{subject}/topics/{topic}', [TopicsController::class, 'show'])->name('topics.show');
+        Route::delete('/subjects/{subject}/destroy', [SubjectsController::class, 'destroy'])->name('subjects.destroy');
 
         Route::resource('sliders', 'SliderController');
         Route::resource('studentImages', 'StudentImageController');

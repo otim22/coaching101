@@ -67,7 +67,7 @@
                           </a>
                         <ul class="collapse " id="uiComponentsSubject">
                             <li class="drawer-menu-item  ">
-                                <a href="{{ url('/admin/books') }}">
+                                <a href="{{ url('/admin/subjects') }}">
                                     <span class="drawer-menu-text"> Videos</span>
                                 </a>
                             </li>

@@ -31,7 +31,7 @@
     </div>
 </section>
 
-<section class="bg-gray-3 background-style">
+<section class="bg-gray-2 background-style">
     <div class="container">
         <div class="row mb-5">
             <div class="col-sm-12 col-md-4 col-lg-4 d-flex">
