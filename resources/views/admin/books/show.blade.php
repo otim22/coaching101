@@ -39,12 +39,26 @@
                     </div>
                     <div class="card-body">
                         <h4 class="mb-3">{{ $book->title }}</h4>
-                        <img src="{{ asset($book->getFirstMediaUrl('cover_image')) }}" class="w-50 mb-3">
+                        @if($book->creator)
+                            <img src="{{ asset($book->getFirstMediaUrl('teacher_cover_image')) }}" class="w-50 mb-3">
+                        @else
+                            <img src="{{ asset($book->getFirstMediaUrl('cover_image')) }}" class="w-50 mb-3">
+                        @endif
+
                         <p>{{ $book->category->name }} {{ $book->year->name }}, {{ $book->term->name }}. </p>
                         <p>UGX {{ number_format($book->price) }}/-</p>
-                        <a class="btn btn-secondary btn-sm" href="{{ $book->getFirstMediaUrl('book') }}" target="_blank">
-                            Download book
-                        </a>
+
+                        @if(Auth::user()->role == 4)
+                            @if($book->creator)
+                                <a class="btn btn-secondary btn-sm" href="{{ $book->getFirstMediaUrl('teacher_book') }}" target="_blank">
+                                    Download book
+                                </a>
+                            @else
+                                <a class="btn btn-secondary btn-sm" href="{{ $book->getFirstMediaUrl('book') }}" target="_blank">
+                                    Download book
+                                </a>
+                            @endif
+                        @endif
                     </div>
 
                     <form action="{{ route('admin.books.destroy', $book) }}" class="hidden" id="delete-book-item" method="POST">

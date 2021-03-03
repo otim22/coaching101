@@ -40,15 +40,30 @@
                     <div class="card-body">
                         <h4>{{ $note->title }}</h4>
                         <p>{{ $note->category->name }} {{ $note->year->name }}, {{ $note->term->name }}. </p>
-                        <p style="color: #3864ab; font-weight: bold;">{{ $note->getFirstMedia('note')->file_name }}</p>
+
+                        @if($note->creator)
+                            <p style="color: #3864ab; font-weight: bold;">{{ $note->getFirstMedia('teacher_note')->file_name }}</p>
+                        @else
+                            <p style="color: #3864ab; font-weight: bold;">{{ $note->getFirstMedia('note')->file_name }}</p>
+                        @endif
+
                         @if($note->price)
                             <span>UGX {{ number_format($note->price) }}/-</span>
                         @else
                             <span style="font-weight: bold;">Free</span>
                         @endif
-                        <button class="btn btn-secondary btn-sm float-right mt-3" href="{{ $note->getFirstMediaUrl() }}" target="_blank">
-                            Download notes here
-                        </button>
+
+                        @if(Auth::user()->role == 4)
+                            @if($note->creator)
+                                <a class="btn btn-secondary btn-sm float-right mt-3" href="{{ $note->getFirstMediaUrl('teacher_note') }}" target="_blank">
+                                    Download notes here
+                                </a>
+                            @else
+                                <a class="btn btn-secondary btn-sm float-right mt-3" href="{{ $note->getFirstMediaUrl('note') }}" target="_blank">
+                                    Download notes here
+                                </a>
+                            @endif
+                        @endif
                     </div>
                     <form action="{{ route('admin.notes.destroy', $note) }}" class="hidden" id="delete-book-item" method="POST">
                         @csrf

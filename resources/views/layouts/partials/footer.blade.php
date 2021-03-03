@@ -20,6 +20,8 @@
                             <li><a href="{{ route('subjects.starter') }}">Teach</a></li>
                         @elseif(Auth::user()->role == 2)
                             <li><a href="{{ route('manage.subjects') }}">Teach</a></li>
+                        @else
+                            <li><a href="{{ route('manage.subjects') }}">Teach</a></li>
                         @endif
                     @endauth
                     <li><a href="{{ url('/#learn-now') }}">Learn</a></li>
