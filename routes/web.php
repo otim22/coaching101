@@ -134,9 +134,9 @@ Route::middleware('auth')->group(function() {
         Route::patch('/admins/{student}/approve', [AdminController::class, 'approve'])->name('admins.approve');
         Route::delete('/admins/{user}', [AdminController::class, 'destroy'])->name('admins.destroy');
 
-        Route::get('/students', [Student::class, 'index']);
+        Route::get('/students', [Student::class, 'index'])->name('students.index');
         Route::delete('/students/{student}/destroy', [Student::class, 'destroy'])->name('students.destroy');
-        Route::get('/teachers', [Teacher::class, 'index']);
+        Route::get('/teachers', [Teacher::class, 'index'])->name('teachers.index');;
         Route::delete('/teachers/{teacher}/destroy', [Teacher::class, 'destroy'])->name('teachers.destroy');
         Route::get('/student-profiles', [StudentProfileController::class, 'index']);
         Route::get('/teacher-profiles', [TeacherProfileController::class, 'index']);

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Book;
+use App\Models\Note;
+use App\Models\Subject;
+use App\Models\PastPaper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +19,18 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.index');
+        $studentCount = User::where('role', 1)->count();
+        $teacherCount = User::where('role', 2)->count();
+        $userCount = $studentCount + $teacherCount;
+
+        $subjectCount = Subject::count();
+        $bookCount = Book::count();
+        $noteCount = Note::count();
+        $pastpaperCount = PastPaper::count();
+
+        return view('admin.index', compact([
+                    'userCount', 'studentCount', 'teacherCount', 'subjectCount', 'bookCount', 'noteCount', 'pastpaperCount'
+                ]));
     }
 
     public function adminUser()

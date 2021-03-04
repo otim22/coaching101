@@ -20,7 +20,7 @@
                     <li class="drawer-menu-item">
                         <a href="{{ url('/admin/dashboard') }}">
                             <i class="material-icons">apps</i>
-                            <span class="drawer-menu-text"> Admin dashboard</span>
+                            <span class="drawer-menu-text">Dashboard</span>
                         </a>
                     </li>
                     <li class="drawer-menu-item drawer-submenu">
