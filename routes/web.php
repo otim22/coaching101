@@ -130,6 +130,9 @@ Route::middleware('auth')->group(function() {
 
     Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function() {
         Route::get('/dashboard', [AdminController::class, 'index']);
+        Route::get('/admins', [AdminController::class, 'adminUser'])->name('admins.index');
+        Route::patch('/admins/{student}/approve', [AdminController::class, 'approve'])->name('admins.approve');
+        Route::delete('/admins/{user}', [AdminController::class, 'destroy'])->name('admins.destroy');
 
         Route::get('/students', [Student::class, 'index']);
         Route::delete('/students/{student}/destroy', [Student::class, 'destroy'])->name('students.destroy');

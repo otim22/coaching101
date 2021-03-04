@@ -29,15 +29,26 @@
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ Str::ucfirst($student->name) }}</td>
                                 <td>{{ $student->email }}</td>
-                                @if(Auth::user()->role == 4)
-                                    <td>
-                                        <a class="btn btn-outline-danger"
-                                                    href="#"
-                                                    onclick="event.preventDefault(); document.getElementById('delete-student-{{ $student->id }}').submit();">
-                                                    {{ __('Delete') }}
+                                <td class="align-middle" style="width:40px">
+                                    @if(Auth::user()->role == 4)
+                                        <a class="btn btn-white btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="material-icons md-18 align-middle">more_vert</i>
                                         </a>
-                                    </td>
-                                @endif
+
+                                        <div class="dropdown-menu">
+                                            <form action="{{ route('admin.admins.approve', $student) }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="dropdown-item"> Approve </button>
+                                            </form>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item text-danger" href="#"
+                                                onclick="event.preventDefault(); document.getElementById('delete-student-{{ $student->id }}').submit();">
+                                                <span class="align-middle">Delete</span>
+                                            </a>
+                                        </div>
+                                    @endif
+                                </td>
                                 <form action="{{ route('admin.students.destroy', $student) }}" class="hidden" id="delete-student-{{ $student->id }}" method="POST">
                                     @csrf
                                     @method('delete')

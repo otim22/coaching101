@@ -6,7 +6,7 @@
                     <div class="media align-items-center">
                         <img src="https://pbs.twimg.com/profile_images/928893978266697728/3enwe0fO_400x400.jpg" class="img-fluid rounded-circle mr-2" width="35" alt="">
                         <div class="media-body">
-                            <a href="#" class="h5 m-0">{{ Auth::user()->name }}</a>
+                            <a href="#" class="h5 m-0" style="text-decoration: none;">{{ Auth::user()->name }}</a>
                             <div>{{ Auth::user()->email }}</div>
                         </div>
                     </div>
@@ -17,12 +17,6 @@
                         <a href="{{ url('/') }}">
                             <i class="material-icons">view_headline</i>
                             <span class="drawer-menu-text"> Home</span>
-                        </a>
-                    </li>
-                    <li class="drawer-menu-item">
-                        <a href="profile.html">
-                            <i class="material-icons">account_circle</i>
-                            <span class="drawer-menu-text"> Profile</span>
                         </a>
                     </li>
                     <li class="drawer-menu-item">
