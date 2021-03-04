@@ -75,6 +75,11 @@ class Book extends Model implements HasMedia
         $this->addMediaCollection('teacher_book');
     }
 
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
     /**
      * Get the category that owns the book.
      */

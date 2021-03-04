@@ -51,6 +51,11 @@ class Note extends Model implements HasMedia
         $this->addMediaCollection('teacher_note');
     }
 
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
     /**
      * Get the category that owns the note.
      */

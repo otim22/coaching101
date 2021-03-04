@@ -16,15 +16,35 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        @forelse($books as $book)
-                            <h5 class="mb-2">
-                                <a href="{{ route('admin.books.show', $book) }}" style="text-decoration: none;">
-                                    {{ Str::ucfirst($book->title) }}
-                                </a>
-                            </h5>
-                        @empty
-                            <p class="mb-2">No available books</p>
-                        @endforelse
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Dates</th>
+                                    <th scope="col">Names</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($books as $book)
+                                <tr>
+                                    <th scope="row">{{ $book->created_at->diffForHumans() }}</th>
+                                    <td>
+                                        <a href="{{ route('admin.books.show', $book) }}" style="text-decoration: none;">{{ $book->title }}</a>
+                                    </td>
+                                    <td>
+                                        @if($book->content_approved)
+                                            <div class="badge badge-success">Approved</div>
+                                        @else
+                                            <div class="badge badge-warning">Pending</div>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @empty
+                                    <p class="mb-2">No available books</p>
+                                @endforelse
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

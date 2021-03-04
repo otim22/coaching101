@@ -143,6 +143,7 @@ Route::middleware('auth')->group(function() {
         Route::patch('/subjects/{subject}/approve', [SubjectsController::class, 'approve'])->name('subjects.approve');
         Route::get('/subjects/{subject}/topics/{topic}', [TopicsController::class, 'show'])->name('topics.show');
         Route::delete('/subjects/{subject}/destroy', [SubjectsController::class, 'destroy'])->name('subjects.destroy');
+        Route::patch('/books/{book}/approve', [BooksController::class, 'approve'])->name('books.approve');
 
         Route::resource('sliders', 'SliderController');
         Route::resource('studentImages', 'StudentImageController');

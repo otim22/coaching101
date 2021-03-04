@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
-                <h5 class="bold mb-4">{{ ucfirst($subject->title) }}</h5>
+                <h5 class="bold mb-4">{{ $subject->title }}</h5>
                 <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="rounded-corners w-100" alt="{{ $subject->title }}">
 
                 <div class="mt-3 mb-4">

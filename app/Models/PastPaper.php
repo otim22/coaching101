@@ -51,6 +51,11 @@ class Pastpaper extends Model implements HasMedia
 
         $this->addMediaCollection('teacher_pastpaper');
     }
+    
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
 
     /**
      * Get the category that owns the pastpaper.

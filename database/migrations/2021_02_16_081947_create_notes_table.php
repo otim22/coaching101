@@ -18,6 +18,7 @@ class CreateNotesTable extends Migration
             $table->string('slug');
             $table->string('title');
             $table->float('price')->nullable();
+            $table->boolean('is_approved')->default(false);
             $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('year_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('term_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

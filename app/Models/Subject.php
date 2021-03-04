@@ -25,11 +25,11 @@ class Subject extends Model implements HasMedia, Searchable
 {
     use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable;
 
-    protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id', 'content_approved'];
+    protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id', 'is_approved'];
     protected $with = ['media'];
     protected $appends = ['isSubscribedTo'];
     protected $dates = ['created_at', 'updated_at'];
-    
+
     /**
      * Get the options for generating the slug.
      */
@@ -65,6 +65,16 @@ class Subject extends Model implements HasMedia, Searchable
                                 ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
                                 ->nonQueued();
                 });
+    }
+
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getSubtitleAttribute($value)
+    {
+        return ucfirst($value);
     }
 
     public function audience()

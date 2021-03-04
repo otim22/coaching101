@@ -19,7 +19,7 @@
                         @forelse($pastpapers as $pastpaper)
                             <h5 class="mb-2">
                                 <a href="{{ route('admin.pastpapers.show', $pastpaper) }}" style="text-decoration: none;">
-                                    {{ Str::ucfirst($pastpaper->title) }}
+                                    {{ $pastpaper->title }}
                                 </a>
                             </h5>
                         @empty

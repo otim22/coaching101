@@ -24,10 +24,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($subjects as $key => $subject)
+                            @forelse($subjects as $subject)
                             <tr>
                                 <th scope="row">{{ $subject->created_at->diffForHumans() }}</th>
-                                <td><a href="{{ route('admin.subjects.show', $subject) }}" style="text-decoration: none;">{{ Str::ucfirst($subject->title) }}</a></td>
+                                <td><a href="{{ route('admin.subjects.show', $subject) }}" style="text-decoration: none;">{{ $subject->title }}</a></td>
                                 <td>
                                     @if($subject->content_approved)
                                         <div class="badge badge-success">Approved</div>

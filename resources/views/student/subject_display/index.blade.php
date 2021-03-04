@@ -14,13 +14,13 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($subject->title) }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $subject->title }}</li>
             </ol>
         </nav>
         <div class="row mt-4">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <h5 class="bold">{{ ucfirst($subject->title) }}</h5>
-                <h6>{{ ucfirst($subject->subtitle) }}</h6>
+                <h5 class="bold">{{ $subject->title }}</h5>
+                <h6>{{ $subject->subtitle }}</h6>
                 @if($subject->averageRating)
                     <div class="star-display">
                         @for($i = $subject->averageRating; $i >= 1; $i--)

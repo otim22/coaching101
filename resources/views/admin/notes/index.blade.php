@@ -19,7 +19,7 @@
                         @forelse($notes as $note)
                             <h5 class="mb-2">
                                 <a href="{{ route('admin.notes.show', $note) }}" style="text-decoration: none;">
-                                    {{ Str::ucfirst($note->title) }}
+                                    {{ $note->title }}
                                 </a>
                             </h5>
                         @empty

@@ -17,7 +17,7 @@
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('student.notes.index') }}" style="text-decoration:none;">Notes</a>
                 </li>
-                <li class="breadcrumb-item" aria-current="page">{{ ucfirst($note->title) }}</li>
+                <li class="breadcrumb-item" aria-current="page">{{ $note->title }}</li>
             </ol>
         </nav>
     </div>

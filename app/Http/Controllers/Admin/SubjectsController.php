@@ -28,8 +28,8 @@ class SubjectsController extends Controller
     {
         $approveSubject = Subject::find($subject->id);
 
-        if($approveSubject->content_approved == 0) {
-            $approveSubject->content_approved = 1;
+        if($approveSubject->is_approved == 0) {
+            $approveSubject->is_approved = 1;
             $approveSubject->save();
         } else {
             return redirect()->route('admin.subjects.index')->with('info', 'Subject already approved');
