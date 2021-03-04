@@ -16,7 +16,6 @@
                         </div>
                     </div>
                     <div class="card-body">
-
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -33,7 +32,7 @@
                                         <a href="{{ route('admin.books.show', $book) }}" style="text-decoration: none;">{{ $book->title }}</a>
                                     </td>
                                     <td>
-                                        @if($book->content_approved)
+                                        @if($book->is_approved)
                                             <div class="badge badge-success">Approved</div>
                                         @else
                                             <div class="badge badge-warning">Pending</div>

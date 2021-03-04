@@ -20,6 +20,13 @@
                                     <div class="dropdown-menu">
                                         <ul class="list-unstyled">
                                             <li>
+                                                <form action="{{route('admin.notes.approve', $note)}}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit" class="dropdown-item"> Approve </button>
+                                                </form>
+                                            </li>
+                                            <li>
                                                 <a href="{{ route('admin.notes.edit', $note) }}" class="dropdown-item">
                                                     Edit
                                                 </a>

@@ -29,7 +29,7 @@
                                 <th scope="row">{{ $subject->created_at->diffForHumans() }}</th>
                                 <td><a href="{{ route('admin.subjects.show', $subject) }}" style="text-decoration: none;">{{ $subject->title }}</a></td>
                                 <td>
-                                    @if($subject->content_approved)
+                                    @if($subject->is_approved)
                                         <div class="badge badge-success">Approved</div>
                                     @else
                                         <div class="badge badge-warning">Pending</div>

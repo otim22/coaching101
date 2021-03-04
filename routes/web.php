@@ -144,6 +144,8 @@ Route::middleware('auth')->group(function() {
         Route::get('/subjects/{subject}/topics/{topic}', [TopicsController::class, 'show'])->name('topics.show');
         Route::delete('/subjects/{subject}/destroy', [SubjectsController::class, 'destroy'])->name('subjects.destroy');
         Route::patch('/books/{book}/approve', [BooksController::class, 'approve'])->name('books.approve');
+        Route::patch('/notes/{note}/approve', [NotesController::class, 'approve'])->name('notes.approve');
+        Route::patch('/pastpapers/{pastpaper}/approve', [PastpaperController::class, 'approve'])->name('pastpapers.approve');
 
         Route::resource('sliders', 'SliderController');
         Route::resource('studentImages', 'StudentImageController');

@@ -16,15 +16,34 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        @forelse($pastpapers as $pastpaper)
-                            <h5 class="mb-2">
-                                <a href="{{ route('admin.pastpapers.show', $pastpaper) }}" style="text-decoration: none;">
-                                    {{ $pastpaper->title }}
-                                </a>
-                            </h5>
-                        @empty
-                            <p class="mb-2">No available pastpapers</p>
-                        @endforelse
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Dates</th>
+                                    <th scope="col">Names</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($pastpapers as $pastpaper)
+                                <tr>
+                                    <th scope="row">{{ $pastpaper->created_at->diffForHumans() }}</th>
+                                    <td>
+                                        <a href="{{ route('admin.pastpapers.show', $pastpaper) }}" style="text-decoration: none;">{{ $pastpaper->title }}</a>
+                                    </td>
+                                    <td>
+                                        @if($pastpaper->is_approved)
+                                            <div class="badge badge-success">Approved</div>
+                                        @else
+                                            <div class="badge badge-warning">Pending</div>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @empty
+                                    <p class="mb-2">No available pastpapers</p>
+                                @endforelse
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
