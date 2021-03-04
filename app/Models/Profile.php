@@ -15,7 +15,7 @@ class Profile extends Model implements HasMedia
 {
     use HasFactory, PresentsMedia, InteractsWithMedia;
 
-    protected $fillable = ['category_id', 'year_id', 'age', 'school', 'bio'];
+    protected $fillable = ['category_id', 'year_id', 'age', 'school', 'phone', 'bio'];
     protected $with = ['media'];
     protected $appends = ['hasProfileUpdated'];
 

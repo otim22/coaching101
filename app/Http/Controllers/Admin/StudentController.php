@@ -15,21 +15,16 @@ class StudentController extends Controller
         return view('admin.users.students.index', compact('students'));
     }
 
-    public function show(User $user)
-    {
-        return view('admin.users.students.show', compact('user'));
-    }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $student)
     {
         try {
-            $user->delete();
+            $student->delete();
 
             return redirect()->route('admin.users.students.index')->with('success', 'User deleted successfully');
         } catch (\Exception $e) {

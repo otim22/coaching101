@@ -21,7 +21,7 @@
                         @foreach($categories as $category)
                             <h5 class="mb-2">
                                 <a href="{{ route('admin.categories.show', $category) }}" style="text-decoration: none;">
-                                    <i class="material-icons material-icons_custom">navigate_next</i>{{ Str::ucfirst($category->name) }}
+                                    <i class="material-icons material-icons_custom">navigate_next</i>{{ $category->name }}
                                 </a>
                             </h5>
                         @endforeach

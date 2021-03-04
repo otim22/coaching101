@@ -26,10 +26,10 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $teacher)
     {
         try {
-            $user->delete();
+            $teacher->delete();
 
             return redirect()->route('admin.users.teachers.index')->with('success', 'User deleted successfully');
         } catch (\Exception $e) {

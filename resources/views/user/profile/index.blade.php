@@ -88,6 +88,14 @@
                                                 </div>
 
                                                 <div class="form-group">
+                                                    <label for="phone" class="bold">Telephone number</label>
+                                                    <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ $user->profile->phone }}">
+                                                    @error('phone')
+                                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group">
                                                     <label for="age" class="bold">Age</label>
                                                     <input type="integer" name="age" class="form-control @error('profile') is-invalid @enderror" value="{{ $user->profile->age }}">
                                                     @error('age')
@@ -132,9 +140,17 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="school" class="bold">School you teach at <small>(*Optional)</small></label>
-                                                    <input type="text" name="school" class="form-control @error('profile') is-invalid @enderror" id="profile" value="{{ $user->profile->school }}">
+                                                    <label for="school" class="bold">School you teach at <small>(Optional)</small></label>
+                                                    <input type="text" name="school" class="form-control @error('school') is-invalid @enderror" value="{{ $user->profile->school }}">
                                                     @error('school')
+                                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="phone" class="bold">Telephone number</label>
+                                                    <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" id="profile" value="{{ $user->profile->phone }}">
+                                                    @error('phone')
                                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                     @enderror
                                                 </div>
@@ -158,7 +174,7 @@
                                                 <button id="round-button-2" type="submit" class="btn btn-primary btn-block mt-5">Update</button>
                                             </div>
                                         </div>
-                                    </form>
+                                </form>
                             @endif
                         @else
                             @if($user->role == 1)
@@ -185,6 +201,14 @@
                                                     </select>
                                                 </div>
                                                 @error('year_id')
+                                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="phone" class="bold">Telephone number</label>
+                                                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror">
+                                                @error('phone')
                                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -230,9 +254,17 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="school" class="bold">School you teach at <small>(*Optional)</small></label>
-                                                <input type="text" name="school" class="form-control @error('profile') is-invalid @enderror">
+                                                <label for="school" class="bold">School you teach at <small> (Optional)</small></label>
+                                                <input type="text" name="school" class="form-control @error('school') is-invalid @enderror">
                                                 @error('profile')
+                                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="phone" class="bold">Telephone number<small>(Optional)</small></label>
+                                                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror">
+                                                @error('phone')
                                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                 @enderror
                                             </div>

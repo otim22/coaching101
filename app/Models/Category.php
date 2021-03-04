@@ -37,6 +37,11 @@ class Category extends Model
         return 'slug';
     }
 
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
     public function scopeFilterBy($query, $filters)
     {
         $namespace = 'App\Utilities\PostFilters\Category';

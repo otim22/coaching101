@@ -20,7 +20,7 @@
                     <li class="drawer-menu-item">
                         <a href="{{ url('/admin/dashboard') }}">
                             <i class="material-icons">apps</i>
-                            <span class="drawer-menu-text"> Admin dashboard</span>
+                            <span class="drawer-menu-text">Dashboard</span>
                         </a>
                     </li>
                     <li class="drawer-menu-item drawer-submenu">
@@ -31,17 +31,17 @@
                         <ul class="collapse " id="uiComponentsMenu">
                             <li class="drawer-menu-item">
                                 <a href="{{ url('/admin/sliders') }}">
-                                    <span class="drawer-menu-text"> Slider</span>
+                                    <span class="drawer-menu-text"> Landing picture</span>
                                 </a>
                             </li>
                             <li class="drawer-menu-item">
                                 <a href="{{ url('/admin/teacherImages') }}">
-                                    <span class="drawer-menu-text"> Teacher Image</span>
+                                    <span class="drawer-menu-text"> Teacher picture</span>
                                 </a>
                             </li>
                             <li class="drawer-menu-item">
                                 <a href="{{ url('/admin/studentImages') }}">
-                                    <span class="drawer-menu-text"> Student Image</span>
+                                    <span class="drawer-menu-text"> Student picture</span>
                                 </a>
                             </li>
                             <li class="drawer-menu-item">
@@ -67,7 +67,7 @@
                           </a>
                         <ul class="collapse " id="uiComponentsSubject">
                             <li class="drawer-menu-item  ">
-                                <a href="{{ url('/admin/books') }}">
+                                <a href="{{ url('/admin/subjects') }}">
                                     <span class="drawer-menu-text"> Videos</span>
                                 </a>
                             </li>
@@ -105,17 +105,17 @@
                         <ul class="collapse " id="uiComponentsCategory">
                             <li class="drawer-menu-item">
                                 <a href="{{ url('/admin/categories') }}">
-                                    <span class="drawer-menu-text">Subjects</span>
+                                    <span class="drawer-menu-text">Subject</span>
                                 </a>
                             </li>
                             <li class="drawer-menu-item">
                                 <a href="{{ url('/admin/years') }}">
-                                    <span class="drawer-menu-text">Years</span>
+                                    <span class="drawer-menu-text">Year</span>
                                 </a>
                             </li>
                             <li class="drawer-menu-item">
                                 <a href="{{ url('/admin/terms') }}">
-                                    <span class="drawer-menu-text">Terms</span>
+                                    <span class="drawer-menu-text">Term</span>
                                 </a>
                             </li>
                         </ul>
@@ -136,13 +136,36 @@
                           </a>
                         <ul class="collapse " id="uiComponentsUsers">
                             <li class="drawer-menu-item">
+                                <a href="{{ url('/admin/admins') }}">
+                                    <span class="drawer-menu-text">Admin</span>
+                                </a>
+                            </li>
+                            <li class="drawer-menu-item">
                                 <a href="{{ url('/admin/teachers') }}">
-                                    <span class="drawer-menu-text">Teachers</span>
+                                    <span class="drawer-menu-text">Teacher</span>
                                 </a>
                             </li>
                             <li class="drawer-menu-item">
                                 <a href="{{ url('/admin/students') }}">
-                                    <span class="drawer-menu-text">Students</span>
+                                    <span class="drawer-menu-text">Student</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="drawer-menu-item drawer-submenu">
+                        <a data-toggle="collapse" data-parent="#componentsProfiles" href="#" data-target="#uiComponentsProfiles" aria-controls="uiComponentsProfiles" aria-expanded="false" class="collapsed">
+                            <i class="material-icons">person_outline</i>
+                            <span class="drawer-menu-text"> Profiles</span>
+                          </a>
+                        <ul class="collapse " id="uiComponentsProfiles">
+                            <li class="drawer-menu-item">
+                                <a href="{{ url('/admin/teacher-profiles') }}">
+                                    <span class="drawer-menu-text">Teacher</span>
+                                </a>
+                            </li>
+                            <li class="drawer-menu-item">
+                                <a href="{{ url('/admin/student-profiles') }}">
+                                    <span class="drawer-menu-text">Student</span>
                                 </a>
                             </li>
                         </ul>

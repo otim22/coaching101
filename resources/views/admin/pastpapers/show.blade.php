@@ -20,6 +20,13 @@
                                     <div class="dropdown-menu">
                                         <ul class="list-unstyled">
                                             <li>
+                                                <form action="{{route('admin.pastpapers.approve', $pastpaper)}}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit" class="dropdown-item"> Approve </button>
+                                                </form>
+                                            </li>
+                                            <li>
                                                 <a href="{{ route('admin.pastpapers.edit', $pastpaper) }}" class="dropdown-item">
                                                     Edit
                                                 </a>
@@ -40,15 +47,30 @@
                     <div class="card-body">
                         <h4>{{ $pastpaper->title }}</h4>
                         <p>{{ $pastpaper->category->name }} {{ $pastpaper->year->name }}, {{ $pastpaper->term->name }}. </p>
-                        <p style="color: #3864ab; font-weight: bold;">{{ $pastpaper->getFirstMedia('pastpaper')->file_name }}</p>
+
+                        @if($pastpaper->creator)
+                            <p style="color: #3864ab; font-weight: bold;">{{ $pastpaper->getFirstMedia('teacher_pastpaper')->file_name }}</p>
+                        @else
+                            <p style="color: #3864ab; font-weight: bold;">{{ $pastpaper->getFirstMedia('pastpaper')->file_name }}</p>
+                        @endif
+
                         @if($pastpaper->price)
                             <span>UGX {{ number_format($pastpaper->price) }}/-</span>
                         @else
                             <span style="font-weight: bold;">Free</span>
                         @endif
-                        <button class="btn btn-secondary btn-sm float-right mt-3" href="{{ $pastpaper->getFirstMediaUrl() }}" target="_blank">
-                            Download pastpaper here
-                        </button>
+
+                        @if(Auth::user()->role == 4)
+                            @if($pastpaper->creator)
+                                <a class="btn btn-secondary btn-sm float-right mt-3" href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" target="_blank">
+                                    Download pastpaper here
+                                </a>
+                            @else
+                                <a class="btn btn-secondary btn-sm float-right mt-3" href="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" target="_blank">
+                                    Download pastpaper here
+                                </a>
+                            @endif
+                        @endif
                     </div>
                     <form action="{{ route('admin.pastpapers.destroy', $pastpaper) }}" class="hidden" id="delete-book-item" method="POST">
                         @csrf

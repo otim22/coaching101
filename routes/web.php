@@ -27,6 +27,13 @@ use App\Http\Controllers\Admin\StudentImageController;
 use App\Http\Controllers\Admin\TeacherImageController;
 use App\Http\Controllers\Admin\StudentController as Student;
 use App\Http\Controllers\Admin\TeacherController as Teacher;
+use App\Http\Controllers\Admin\StudentProfileController;
+use App\Http\Controllers\Admin\TeacherProfileController;
+use App\Http\Controllers\Admin\BooksController;
+use App\Http\Controllers\Admin\SubjectsController;
+use App\Http\Controllers\Admin\TopicsController;
+use App\Http\Controllers\Admin\NotesController;
+use App\Http\Controllers\Admin\PastpaperController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
@@ -36,14 +43,11 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\MenuCategoryController;
-use App\Http\Controllers\Admin\BooksController;
 use App\Http\Controllers\BooksController as Books;
 use App\Http\Controllers\TeacherBookController;
 use App\Http\Controllers\TeacherNoteController;
 use App\Http\Controllers\TeacherPastpaperController;
-use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\NotesController as Notes;
-use App\Http\Controllers\Admin\PastpaperController;
 use App\Http\Controllers\PastpaperController as PastPapers;
 
 Route::get('/', [WelcomeController::class, 'index']);
@@ -126,9 +130,25 @@ Route::middleware('auth')->group(function() {
 
     Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function() {
         Route::get('/dashboard', [AdminController::class, 'index']);
+        Route::get('/admins', [AdminController::class, 'adminUser'])->name('admins.index');
+        Route::patch('/admins/{student}/approve', [AdminController::class, 'approve'])->name('admins.approve');
+        Route::delete('/admins/{user}', [AdminController::class, 'destroy'])->name('admins.destroy');
 
-        Route::get('/students', [Student::class, 'index']);
-        Route::get('/teachers', [Teacher::class, 'index']);
+        Route::get('/students', [Student::class, 'index'])->name('students.index');
+        Route::delete('/students/{student}/destroy', [Student::class, 'destroy'])->name('students.destroy');
+        Route::get('/teachers', [Teacher::class, 'index'])->name('teachers.index');;
+        Route::delete('/teachers/{teacher}/destroy', [Teacher::class, 'destroy'])->name('teachers.destroy');
+        Route::get('/student-profiles', [StudentProfileController::class, 'index']);
+        Route::get('/teacher-profiles', [TeacherProfileController::class, 'index']);
+
+        Route::get('/subjects', [SubjectsController::class, 'index'])->name('subjects.index');
+        Route::get('/subjects/{subject}', [SubjectsController::class, 'show'])->name('subjects.show');
+        Route::patch('/subjects/{subject}/approve', [SubjectsController::class, 'approve'])->name('subjects.approve');
+        Route::get('/subjects/{subject}/topics/{topic}', [TopicsController::class, 'show'])->name('topics.show');
+        Route::delete('/subjects/{subject}/destroy', [SubjectsController::class, 'destroy'])->name('subjects.destroy');
+        Route::patch('/books/{book}/approve', [BooksController::class, 'approve'])->name('books.approve');
+        Route::patch('/notes/{note}/approve', [NotesController::class, 'approve'])->name('notes.approve');
+        Route::patch('/pastpapers/{pastpaper}/approve', [PastpaperController::class, 'approve'])->name('pastpapers.approve');
 
         Route::resource('sliders', 'SliderController');
         Route::resource('studentImages', 'StudentImageController');

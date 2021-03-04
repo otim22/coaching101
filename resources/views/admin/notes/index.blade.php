@@ -16,15 +16,36 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        @forelse($notes as $note)
-                            <h5 class="mb-2">
-                                <a href="{{ route('admin.notes.show', $note) }}" style="text-decoration: none;">
-                                    {{ Str::ucfirst($note->title) }}
-                                </a>
-                            </h5>
-                        @empty
-                            <p class="mb-2">No available notes</p>
-                        @endforelse
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Names</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($notes as $note)
+                                <tr>
+                                    <th scope="row">{{ $note->created_at->diffForHumans() }}</th>
+                                    <td>
+                                        <a href="{{ route('admin.notes.show', $note) }}" style="text-decoration: none;">{{ $note->title }}</a>
+                                    </td>
+                                    <td>
+                                        @if($note->is_approved)
+                                            <div class="badge badge-success">Approved</div>
+                                        @else
+                                            <div class="badge badge-warning">Pending</div>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td>No available notes</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

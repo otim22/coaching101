@@ -36,6 +36,7 @@ class ProfileController extends Controller
             $request->validate([
                 'school' => 'required|string',
                 'year_id' => 'required|integer',
+                'phone' => 'required|regex:/(0)[0-9]{9}$/',
                 'age' => 'required|integer',
                 'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png'
             ]);
@@ -45,6 +46,7 @@ class ProfileController extends Controller
             $profile->school = $request->school;
             $profile->age = $request->age;
             $profile->year_id = $request->year_id;
+            $profile->phone = $request->phone;
             $profile->user_id = Auth::id();
 
             $profile->save();
@@ -52,12 +54,14 @@ class ProfileController extends Controller
             $request->validate([
                 'school' => 'required|string',
                 'category_id' => 'required|integer',
+                'phone' => 'required|regex:/(0)[0-9]{9}$/',
                 'bio' => 'required|string',
                 'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png'
             ]);
 
             $profile = new Profile($request->except(['profile_picture']));
 
+            $profile->phone = $request->phone;
             $profile->bio = $request->bio;
             $profile->school = $request->school;
             $profile->category_id = $request->category_id;
@@ -79,6 +83,7 @@ class ProfileController extends Controller
             $request->validate([
                 'school' => 'required|string',
                 'year_id' => 'required|integer',
+                'phone' => 'required|regex:/(0)[0-9]{9}$/',
                 'age' => 'required|integer',
                 'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png'
             ]);
@@ -88,6 +93,7 @@ class ProfileController extends Controller
             $profile->school = $request->school;
             $profile->age = $request->age;
             $profile->year_id = $request->year_id;
+            $profile->phone = $request->phone;
             $profile->user_id = Auth::id();
 
             $profile->save();
@@ -95,12 +101,14 @@ class ProfileController extends Controller
             $request->validate([
                 'school' => 'required|string',
                 'category_id' => 'required|integer',
+                'phone' => 'required|regex:/(0)[0-9]{9}$/',
                 'bio' => 'required|string',
                 'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png'
             ]);
 
             $profile = Profile::where('user_id', Auth::id())->firstOrFail();
 
+            $profile->phone = $request->phone;
             $profile->bio = $request->bio;
             $profile->school = $request->school;
             $profile->category_id = $request->category_id;

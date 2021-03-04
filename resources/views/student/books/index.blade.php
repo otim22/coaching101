@@ -77,7 +77,7 @@
     @include('partials.categories')
 </section>
 
-<section class="seven">
+<section class="bg-gray-2">
     @include('partials.teach_students_cta')
 </section>
 
