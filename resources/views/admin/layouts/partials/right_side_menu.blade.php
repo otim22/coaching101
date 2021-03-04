@@ -6,7 +6,7 @@
                     <div class="media align-items-center">
                         <img src="https://pbs.twimg.com/profile_images/928893978266697728/3enwe0fO_400x400.jpg" class="img-fluid rounded-circle mr-2" width="35" alt="">
                         <div class="media-body">
-                            <a href="#" class="h5 m-0" style="text-decoration: none;">{{ Auth::user()->name }}</a>
+                            <a href="{{ route('admin.admins.index') }}" class="h5 m-0" style="text-decoration: none;">{{ Auth::user()->name }}</a>
                             <div>{{ Auth::user()->email }}</div>
                         </div>
                     </div>
@@ -14,7 +14,7 @@
                 <!-- MENU -->
                 <ul class="drawer-menu" id="userMenu" data-children=".drawer-submenu">
                     <li class="drawer-menu-item">
-                        <a href="{{ url('/') }}">
+                        <a href="{{ url('/') }}" target="_blank">
                             <i class="material-icons">view_headline</i>
                             <span class="drawer-menu-text"> Home</span>
                         </a>

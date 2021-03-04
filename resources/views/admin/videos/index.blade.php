@@ -15,7 +15,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">Dates</th>
+                                <th scope="col"></th>
                                 <th scope="col">Names</th>
                                 <th scope="col">Status</th>
                                 @if(Auth::user()->role == 4)
@@ -50,7 +50,9 @@
                                 </form>
                             </tr>
                             @empty
-                                <p class="mb-2">No subjects</p>
+                            <tr>
+                                <td>No available subjects</td>
+                            </tr>
                             @endforelse
                         </tbody>
                     </table>

@@ -32,7 +32,9 @@
                                 <td>{{ \App\Models\Category::where('id', $teacher->category_id)->firstOrFail()->name }}</td>
                             </tr>
                             @empty
-                                <p class="mb-2">No teachers</p>
+                            <tr>
+                                <td>No teachers</td>
+                            </tr>
                             @endforelse
                         </tbody>
                     </table>

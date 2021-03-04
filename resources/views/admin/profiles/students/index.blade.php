@@ -32,7 +32,9 @@
                                     <td>{{ \App\Models\Year::where('id', $student->year_id)->firstOrFail()->name }}</td>
                                 </tr>
                             @empty
-                                <p class="mb-2">No students</p>
+                            <tr>
+                                <td>No teachers</td>
+                            </tr>
                             @endforelse
                         </tbody>
                     </table>
