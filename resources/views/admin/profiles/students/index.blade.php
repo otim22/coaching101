@@ -18,6 +18,7 @@
                                 <th scope="col"></th>
                                 <th scope="col">Names</th>
                                 <th scope="col">School</th>
+                                <th scope="col">Telephone</th>
                                 <th scope="col">Age</th>
                                 <th scope="col">Year</th>
                             </tr>
@@ -28,6 +29,7 @@
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td>{{ \App\Models\User::where('id', $student->user_id)->firstOrFail()->name }}</td>
                                     <td>{{ $student->school }}</td>
+                                    <td>{{ $student->phone }}</td>
                                     <td>{{ $student->age }}</td>
                                     <td>{{ \App\Models\Year::where('id', $student->year_id)->firstOrFail()->name }}</td>
                                 </tr>

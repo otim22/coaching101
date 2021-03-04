@@ -14,6 +14,7 @@ $factory->define(Profile::class, function (Faker $faker) {
         'age' => $faker->numberBetween(10, 25),
         'category_id' => Category::all()->random()->id,
         'school' => $faker->word,
+        'phone' => $faker->e164PhoneNumber,
         'bio' => $faker->sentence(10, true),
         'user_id' => User::all()->random()->id,
     ];
