@@ -51,6 +51,11 @@ class Pastpaper extends Model implements HasMedia
 
         $this->addMediaCollection('teacher_pastpaper');
     }
+    
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
 
     /**
      * Get the category that owns the pastpaper.
@@ -109,7 +114,7 @@ class Pastpaper extends Model implements HasMedia
         return $this->subscription()->where('user_id', Auth::id())->exists();
     }
 
-    public function getSubscriptionCount()
+    public function getSubscriptionCountAttribute()
     {
         return $this->subscription()->count();
     }

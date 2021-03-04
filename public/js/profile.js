@@ -25,8 +25,4 @@ $(document).ready(function() {
         newUrl += "/";
         history.replaceState(null, null, newUrl);
     });
-
-    $('.edit-btn').on("click", function() {
-        $("#staticBackdrop").modal();
-    })
 });

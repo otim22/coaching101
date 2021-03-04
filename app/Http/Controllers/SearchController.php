@@ -16,8 +16,8 @@ class SearchController extends Controller
         }
 
         $searchResults = (new Search())
-                    ->registerModel(Subject::class, 'title')
-                    ->perform($request->input('query'))->paginate(12);
+                                            ->registerModel(Subject::class, 'title')
+                                            ->perform($request->input('query'))->paginate(12)->withQueryString();
 
         return view('student.subject_display.search_results', compact(['searchResults']));
     }

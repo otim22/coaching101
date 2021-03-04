@@ -111,7 +111,7 @@
             </div>
         </section>
 
-        @include('teacher.layouts.partials.footer')
+        @include('layouts.partials.footer')
 
     </div>
     <script src="{{ asset('js/app.js') }}"></script>

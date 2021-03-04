@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-4">
+<section class="section-bread bg-gray-2">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -17,7 +17,7 @@
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Subjects</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Notes</li>
+                <li class="breadcrumb-item active" aria-current="page">Past papers</li>
             </ol>
         </nav>
     </div>

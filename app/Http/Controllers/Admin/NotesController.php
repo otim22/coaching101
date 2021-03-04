@@ -104,4 +104,18 @@ class NotesController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
+    public function approve(Note $note)
+    {
+        $approveNote = Note::find($note->id);
+
+        if($approveNote->is_approved == 0) {
+            $approveNote->is_approved = 1;
+            $approveNote->save();
+        } else {
+            return redirect()->route('admin.notes.index')->with('info', 'Note already approved');
+        }
+
+        return redirect()->route('admin.notes.index')->with('success', 'Note approved successfully');
+    }
 }

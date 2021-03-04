@@ -8,6 +8,6 @@ class ToolController extends Controller
 {
     public function index()
     {
-        return view('student.tools.index');
+        return view('teacher.tools.index');
     }
 }

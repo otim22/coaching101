@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-4">
+<section class="section-bread bg-gray-2">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -60,15 +60,15 @@
 
                     <h5 class="mt-2">{{ $note->title }}</h5>
                     <p>{{ $note->category->name }} {{ $note->year->name }}, {{ $note->term->name }}. </p>
+
                     @if(!$note->price)
                         <p>Free</p>
                     @else
                         <p>UGX {{ number_format($note->price) }}/-</p>
                     @endif
+
                     <embed src="{{ $note->getFirstMediaUrl('teacher_note') }}" type="application/pdf" width="100%" height="400">
-                    <a id="round-button-2" class="btn btn-secondary btn-sm mt-5" href="{{ $note->getFirstMediaUrl('teacher_note') }}" target="_blank">
-                        Download note
-                    </a>
+
                     <form action="{{ route('notes.destroy', $note) }}" class="hidden" id="delete-teacher-note" method="POST">
                         @csrf
                         @method('delete')

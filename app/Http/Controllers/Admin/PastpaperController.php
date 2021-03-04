@@ -104,4 +104,18 @@ class PastpaperController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
+    public function approve(Pastpaper $pastpaper)
+    {
+        $approvePastpaper = Pastpaper::find($pastpaper->id);
+
+        if($approvePastpaper->is_approved == 0) {
+            $approvePastpaper->is_approved = 1;
+            $approvePastpaper->save();
+        } else {
+            return redirect()->route('admin.pastpapers.index')->with('info', 'Pastpaper already approved');
+        }
+
+        return redirect()->route('admin.pastpapers.index')->with('success', 'Pastpaper approved successfully');
+    }
 }

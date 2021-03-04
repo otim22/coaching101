@@ -21,7 +21,7 @@ class TermTableSeeder extends Seeder
             'name' => 'Term two'
         ]);
         factory(Term::class)->create([
-            'name' => 'Three three'
+            'name' => 'Term three'
         ]);
     }
 }

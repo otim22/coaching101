@@ -113,7 +113,7 @@
                 <h2 class="mb-4">Our office</h2>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 text-center mb-4">
-                <img src="{{ asset('images/kampala.jpg') }}" alt="office image" width="85%">
+                <img src="{{ asset('images/kampala.jpg') }}" alt="office image" class="rounded-corners" width="85%">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: auto; margin-bottom: auto; width: 8em;">
                 <div class="mb-3">
@@ -122,9 +122,9 @@
                         <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
                 </div>
-                <h5 class="gray_color">Old Butabika Road,</h5>
-                <h5 class="gray_color">2nd Floor</h5>
-                <h5 class="mb-5 gray_color">Mutungo, Kampala Uganda.</h5>
+                <h5 class="gray_color wraps-text">Old Butabika Road,</h5>
+                <h5 class="gray_color wraps-text">2nd Floor</h5>
+                <h5 class="mb-5 gray_color">Mutungo, <span class="wraps-text">Kampala Uganda.</span></h5>
             </div>
         </div>
     </div>

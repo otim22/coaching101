@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-4">
+<section class="section-bread bg-gray-2">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -65,10 +65,9 @@
                     @else
                         <p>UGX {{ number_format($pastpaper->price) }}/-</p>
                     @endif
+
                     <embed src="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" type="application/pdf" width="100%" height="400">
-                    <a id="round-button-2" class="btn btn-secondary btn-sm mt-5" href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" target="_blank">
-                        Download pastpaper
-                    </a>
+
                     <form action="{{ route('pastpapers.destroy', $pastpaper) }}" class="hidden" id="delete-teacher-pastpaper" method="POST">
                         @csrf
                         @method('delete')

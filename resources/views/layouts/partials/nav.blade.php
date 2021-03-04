@@ -22,7 +22,7 @@
                     </div>
                 </li>
             </ul>
-
+            
             <form action="{{ route('search') }}" method="GET" class="form-inline top-search">
                 <div class="input-group space-bottom">
                     <input type="text" name="query" class="form-control" placeholder="Search for subject...">
@@ -54,7 +54,7 @@
                         </li>
                     @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
                         <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">
-                            <a class="nav-link" href="{{ route('my-subjects') }}">Learn</a>
+                            <a class="nav-link" href="{{ route('my-subjects') }}">Student</a>
                         </li>
 
                         <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
@@ -69,7 +69,7 @@
 
                 @guest
                     <li class="nav-item {{ Helper::set_active(['login']) }} mt-1 mr-2 space-bottom">
-                        <a class="btn btn-danger btn-sm nav-link" id="round-button" href="{{ route('login') }}">Login</a>
+                        <a class="btn btn-danger btn-sm nav-link" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">Login</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item {{ Helper::set_active(['register']) }} mt-1 mr-2 register-button">

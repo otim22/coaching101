@@ -122,4 +122,18 @@ class BooksController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
+    public function approve(Book $book)
+    {
+        $approveBook = Book::find($book->id);
+
+        if($approveBook->is_approved == 0) {
+            $approveBook->is_approved = 1;
+            $approveBook->save();
+        } else {
+            return redirect()->route('admin.books.index')->with('info', 'Book already approved');
+        }
+
+        return redirect()->route('admin.books.index')->with('success', 'Book approved successfully');
+    }
 }
