@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
                             <span class="bold">{{ $subject->very_short_title }}</span><br />
-                            <span class="author-font">By {{$subject->creator->name }}</span><br />
+                            <span class="author-font">{{$subject->creator->name }}</span><br />
                             @if($subject->averageRating)
                                 <div class="star-display">
                                     @for($i = $subject->averageRating; $i >= 1; $i--)

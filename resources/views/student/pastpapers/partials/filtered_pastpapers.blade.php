@@ -8,9 +8,9 @@
                             <a href="{{ route('student.pastpapers.show', $pastpaper) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                 @if($pastpaper->creator)
-                                    <span class="author-font">By {{ $pastpaper->creator->name }}</span><br />
+                                    <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
                                 @else
-                                    <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($pastpaper->price)
@@ -23,9 +23,9 @@
                             <a href="{{ route('student.pastpapers.show', $pastpaper) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                 @if($pastpaper->creator)
-                                    <span class="author-font">By {{ $pastpaper->creator->name }}</span><br />
+                                    <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
                                 @else
-                                    <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($pastpaper->price)
@@ -37,9 +37,9 @@
                         @else
                             <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                             @if($pastpaper->creator)
-                                <span class="author-font">By {{ $pastpaper->creator->name }}</span><br />
+                                <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
                             @else
-                                <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                                <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                             @endif
 
                             @if($pastpaper->price)

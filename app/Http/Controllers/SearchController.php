@@ -21,7 +21,7 @@ class SearchController extends Controller
         $searchResults = (new Search())
                                 ->registerModel(Subject::class, function(ModelSearchAspect $modelSearchAspect) use ($approved) {
                                             $modelSearchAspect->addSearchableAttribute('title')
-                                                            ->addExactSearchableAttribute('subtitle')
+                                                            ->addSearchableAttribute('subtitle')
                                                             ->where('is_approved', $approved);
                                 })->search($request->input('query'))->paginate(12)->withQueryString();
 

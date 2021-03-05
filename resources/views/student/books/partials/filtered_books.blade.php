@@ -31,9 +31,9 @@
                             <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $book->very_short_title }}</span><br />
                                 @if($book->creator)
-                                    <span class="author-font">By {{ $book->creator->name }}</span><br />
+                                    <span class="author-font">{{ $book->creator->name }}</span><br />
                                 @else
-                                    <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($book->price)
@@ -46,9 +46,9 @@
                             <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $book->very_short_title }}</span><br />
                                 @if($book->creator)
-                                    <span class="author-font">By {{ $book->creator->name }}</span><br />
+                                    <span class="author-font">{{ $book->creator->name }}</span><br />
                                 @else
-                                    <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($book->price)
@@ -60,9 +60,9 @@
                         @else
                             <span class="bold">{{ $book->very_short_title }}</span><br />
                             @if($book->creator)
-                                <span class="author-font">By {{ $book->creator->name }}</span><br />
+                                <span class="author-font">{{ $book->creator->name }}</span><br />
                             @else
-                                <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                                <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                             @endif
 
                             @if($book->price)
