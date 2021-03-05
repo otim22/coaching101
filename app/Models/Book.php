@@ -146,7 +146,7 @@ class Book extends Model implements HasMedia
     {
         $books = static::get();
 
-        $items = [];
+        $items = ['is_approved' => 1];
 
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
             $items['category_id'] = $category;
