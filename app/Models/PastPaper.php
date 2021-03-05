@@ -51,7 +51,7 @@ class Pastpaper extends Model implements HasMedia
 
         $this->addMediaCollection('teacher_pastpaper');
     }
-    
+
     public function getTitleAttribute($value)
     {
         return ucfirst($value);
@@ -123,7 +123,7 @@ class Pastpaper extends Model implements HasMedia
     {
         $pastpapers = static::get();
 
-        $items = [];
+        $items = ['is_approved' => 1];
 
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
             $items['category_id'] = $category;

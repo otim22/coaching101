@@ -122,7 +122,7 @@ class Note extends Model implements HasMedia
     {
         $notes = static::get();
 
-        $items = [];
+        $items = ['is_approved' => 1];
 
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
             $items['category_id'] = $category;
