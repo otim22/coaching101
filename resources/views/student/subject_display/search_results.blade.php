@@ -20,25 +20,21 @@
     </div>
 </section>
 
-<div class="container">
-    @include('flash.messages')
-</div>
-
 <section>
     <div class="container">
         <div class="row">
-            @if($searchResults->count() === 0)
+            @if($searchResults)
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                    <h5>{{ $searchResults->count() }} results for "{{ request('query') }}"</h5>
+                </div>
+            @else
                 <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
                     <h5>Sorry, no results found for "{{ request('query') }}"</h5>
                 </div>
-            @else
-            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                <h5>{{ $searchResults->count() }} results for "{{ request('query') }}"</h5>
-            </div>
             @endif
         </div>
 
-        @if($searchResults->count())
+        @if($searchResults)
             <div class="row">
                 @foreach($searchResults as $search)
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">

@@ -178,14 +178,6 @@ class Subject extends Model implements HasMedia, Searchable
                                     ->limit($limit);
     }
 
-    // /** Scope a query to only include subjects created  last month. */
-    // public function scopeLastQuarter(Builder $query, int $limit = 5): Builder
-    // {
-    //     return $query->whereBetween('created_at', [now()->startOfMonth()->subDay(-1)->startOfMonth(), now()->startOfMonth()->subDay(-1)])
-    //                                 ->latest()
-    //                                 ->limit($limit);
-    // }
-
     /** Scope a query to only include subjects created last year. */
     public function scopeLastYear(Builder $query, int $limit = 5): Builder
     {
@@ -212,7 +204,7 @@ class Subject extends Model implements HasMedia, Searchable
     {
         $subjects = static::get();
 
-        $items = [];
+        $items = ['is_approved' => 1];
 
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
             $items['category_id'] = $category;

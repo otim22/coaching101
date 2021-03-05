@@ -15,8 +15,8 @@ class TeacherController extends Controller
      */
     public function index(User $teacher)
     {
-        $subjects = Subject::where('user_id', $teacher->id)->paginate(8);
-
+        $subjects = Subject::where(['user_id' => $teacher->id, 'is_approved' => 1])->paginate(8);
+        
         return view('teacher.teacher_subjects.index', compact(['subjects', 'teacher']));
     }
 }
