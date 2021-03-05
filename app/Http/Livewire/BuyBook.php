@@ -24,6 +24,7 @@ class BuyBook extends Component
     public function checkout($bookId): void
     {
         if(Auth::check()) {
+            // dd($bookId);
             $user = Auth::user();
             $bookToBuy = Book::where('id', $bookId)->firstOrFail();
             // $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
@@ -55,6 +56,11 @@ class BuyBook extends Component
     		// ]);
 
             $bookToBuy->subscribe();
+        } else {
+            if(!session()->has('url.intended')) {
+                session(['url.intended' => url()->previous()]);
+            }
+            redirect()->route('login');
         }
     }
 }

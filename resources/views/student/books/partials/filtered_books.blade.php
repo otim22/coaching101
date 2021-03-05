@@ -1,4 +1,4 @@
-<div class="row" id="subject_data">
+<div class="row">
     @forelse($books as $book)
         <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
             <div class="mb-3">
@@ -72,16 +72,16 @@
                             @endif
                         @endif
                         <div class="mt-2">
-                            <livewire:buy-book :book="$book" :key="$book->id" />
+                            <livewire:buy-book :book="$book" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     @empty
-        <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-5">
-            <p>The book(s) you are looking for was not found. </p>
-        </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-5">
+        <p>The book(s) you are looking for was not found. </p>
+    </div>
     @endforelse
     <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
         {{ $books->links() }}

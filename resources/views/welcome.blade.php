@@ -74,10 +74,6 @@
     </div>
 </section>
 
-<div class="container">
-    @include('flash.messages')
-</div>
-
 <section class="" id="learn-now">
     <div class="container">
         <div class="row">

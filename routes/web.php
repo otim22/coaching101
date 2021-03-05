@@ -52,7 +52,7 @@ use App\Http\Controllers\PastpaperController as PastPapers;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/books', [Books::class, 'index'])->name('student.books.index');
-Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show');
+Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show')->middleware('auth');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
 Route::get('/notes', [Notes::class, 'index'])->name('student.notes.index');
 Route::get('/notes/{note}', [Notes::class, 'show'])->name('student.notes.show');

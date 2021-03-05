@@ -49,7 +49,7 @@
                             @endif
                         @endif
                         <div class="mt-2">
-                            <livewire:buy-note :note="$note" :key="$note->id" />
+                            <livewire:buy-note :note="$note" />
                         </div>
                     </div>
                 </div>

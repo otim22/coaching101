@@ -144,8 +144,6 @@ class Book extends Model implements HasMedia
 
     public static function getBooks($category, $year, $term)
     {
-        $books = static::get();
-
         $items = ['is_approved' => 1];
 
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
@@ -160,8 +158,6 @@ class Book extends Model implements HasMedia
             $items['term_id'] = $term;
         }
 
-        $books = static::where($items)->paginate(12);
-
-        return $books;
+        return static::where($items)->paginate(12);
     }
 }

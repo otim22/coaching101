@@ -202,8 +202,6 @@ class Subject extends Model implements HasMedia, Searchable
 
     public static function getSubjects($category, $year, $term)
     {
-        $subjects = static::get();
-
         $items = ['is_approved' => 1];
 
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
@@ -218,8 +216,6 @@ class Subject extends Model implements HasMedia, Searchable
             $items['term_id'] = $term;
         }
 
-        $subjects = static::where($items)->paginate(12);
-
-        return $subjects;
+        return static::where($items)->paginate(12);
     }
 }

@@ -121,8 +121,6 @@ class Pastpaper extends Model implements HasMedia
 
     public static function getPastpapers($category, $year, $term)
     {
-        $pastpapers = static::get();
-
         $items = ['is_approved' => 1];
 
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
@@ -137,8 +135,6 @@ class Pastpaper extends Model implements HasMedia
             $items['term_id'] = $term;
         }
 
-        $pastpapers = static::where($items)->paginate(12);
-
-        return $pastpapers;
+        return static::where($items)->paginate(12);
     }
 }

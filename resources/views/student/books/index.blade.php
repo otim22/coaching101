@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-10 col-md-9 col-sm-12"  id="book_data">
+            <div class="col-lg-10 col-md-9 col-sm-12" id="book_data">
                 @include('student.books.partials.filtered_books')
             </div>
         </div>

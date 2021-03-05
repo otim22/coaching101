@@ -29,11 +29,11 @@ class PastpaperController extends Controller
 
     public function getMorePastpapers(Request $request)
     {
-        $category = $request->pastpaper_category;
-        $year = $request->pastpaper_year;
-        $term = $request->pastpaper_term;
-
         if ($request->ajax()) {
+            $category = $request->pastpaper_category;
+            $year = $request->pastpaper_year;
+            $term = $request->pastpaper_term;
+
             $pastpapers = Pastpaper::getPastpapers($category, $year, $term);
 
             return view('student.pastpapers.partials.filtered_pastpapers', compact('pastpapers'));

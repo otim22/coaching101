@@ -49,7 +49,7 @@
                             @endif
                         @endif
                         <div class="mt-2">
-                            <livewire:buy-pastpaper :pastpaper="$pastpaper" :key="$pastpaper->id" />
+                            <livewire:buy-pastpaper :pastpaper="$pastpaper" />
                         </div>
                     </div>
                 </div>
