@@ -88,7 +88,7 @@
     </div>
 </section>
 
-<section class="bg-white">
+<section class="bg-gray-2">
     @include('partials.categories')
 </section>
 

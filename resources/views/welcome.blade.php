@@ -22,7 +22,7 @@
                             <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get started &raquo;</a></p>
                         @endif
                         @if(Auth::user()->role == 3)
-                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get started &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get started &raquo;</a></p>
                         @endif
                     @endauth
                 </div>
