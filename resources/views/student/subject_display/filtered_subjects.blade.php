@@ -1,4 +1,4 @@
-<div class="row" id="subject_data">
+<div class="row">
     @forelse($subjects as $subject)
         <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
             <a href="{{ route('subjects.show', $subject->slug) }}" style="text-decoration: none">

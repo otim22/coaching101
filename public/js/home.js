@@ -26,6 +26,7 @@ function getMoreSubjects(page) {
         url: "get-more-subjects" + "?page=" + page,
         success: function(data) {
             $('#subject_data').html(data);
+            window.livewire.rescan();
         }
     });
 }
