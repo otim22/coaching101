@@ -4439,6 +4439,7 @@ img.rounded-corners {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .resource-filter_input .custom-select {
   border-radius: 30px !important;
 }
@@ -4452,6 +4453,11 @@ img.rounded-corners {
   position: absolute !important;
   top: 18px !important;
 >>>>>>> Added payment integration for cards
+=======
+.card-js .icon {
+  position: absolute !important;
+  top: 18px !important;
+>>>>>>> 547d9cc05f009f1cb51fadeefaa5a22677fdfcbe
 }
 
 /*!
