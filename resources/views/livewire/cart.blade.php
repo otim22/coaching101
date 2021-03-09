@@ -28,7 +28,7 @@
         @empty
             <div class="text-center mt-5 mb-5">
                 <p>Your cart is empty. Keep shopping to find a course!</p>
-                <a type="button" href="{{ url('/') }}" class="btn btn-danger mb-4" id="round-button-2">
+                <a type="button" href="{{ route('home') }}" class="btn btn-danger mb-4" id="round-button-2">
                     Keep shopping
                 </a>
             </div>
