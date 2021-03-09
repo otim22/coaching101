@@ -124,6 +124,7 @@ Route::middleware('auth')->group(function() {
         Route::patch('/subjects/{subject}/topics/{topic}/update', [TopicController::class, 'update'])->name('topics.update');
 
         Route::get('/manage/performances', [PerformanceController::class, 'index'])->name('manage.performances');
+        Route::get('/get-more-subjects-for-teacher-performance', [PerformanceController::class, 'getMoreSubjectsTeacherPerforamce'])->name('get-more-subjects-for-teacher-performance');
         Route::get('/manage/resources', [ResourceController::class, 'index'])->name('manage.resources');
         Route::get('/manage/tools', [ToolController::class, 'index'])->name('manage.tools');
     });

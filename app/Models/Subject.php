@@ -16,7 +16,6 @@ use Spatie\Searchable\SearchResult;
 use Illuminate\Support\Facades\Auth;
 use App\Constants\GlobalConstants;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -164,26 +163,11 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->belongsTo(Subject::class);
     }
 
-    /** Scope a query to only include subjects created last week. */
-    public function scopeLastWeek(Builder $query): Builder
+    public static function getSubjectsForTeacherPerforamce($days, int $limit = 10)
     {
-        return $query->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])->latest();
-    }
-
-    /** Scope a query to only include subjects created  last month. */
-    public function scopeLastMonth(Builder $query, int $limit = 5): Builder
-    {
-        return $query->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()])
-                                    ->latest()
-                                    ->limit($limit);
-    }
-
-    /** Scope a query to only include subjects created last year. */
-    public function scopeLastYear(Builder $query, int $limit = 5): Builder
-    {
-        return $query->whereBetween('created_at', [now()->toDateString(), now()->subYear()->toDateString()])
-                                    ->latest()
-                                    ->limit($limit);
+        return static::whereBetween('created_at', [Carbon::now()->subDays($days)->format('Y-m-d H:i:s'), Carbon::now()->format('Y-m-d H:i:s')])
+                                ->latest()
+                                ->limit($limit);
     }
 
     /** Searching for subjects results*/

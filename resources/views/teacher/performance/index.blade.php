@@ -42,18 +42,18 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="revenue" role="tabpanel" aria-labelledby="revenue-tab">
                         <div class="mt-4">
-                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
+                            <div class="row" style="display: flex; justify-content: flex-end">
                                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
-                                        <select class="custom-select" id="category">
+                                        <select class="custom-select" id="performance_filter">
                                             <option>All time</option>
-                                            <option value="">Last 30 days</option>
-                                            <option value="">Last 3 months</option>
-                                            <option value="">Last 12 months</option>
+                                            <option value="30">Last 30 days</option>
+                                            <option value="90">Last 3 months</option>
+                                            <option value="365">Last 12 months</option>
                                         </select>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             @forelse($subjects as $subject)
                                 <h6 class="bold">{{ $subject->title }}</h6>
                                 <p>Total revenue: <span  class="author-font">UGX {{  rtrim(rtrim(number_format(($subject->price * $subject->subscriptionCount), 2), 2), '.') }}/-</span></p>
@@ -64,18 +64,18 @@
                     </div>
                     <div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
                         <div class="mt-4">
-                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
+                            <div class="row" style="display: flex; justify-content: flex-end">
                                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
-                                        <select class="custom-select" id="category">
+                                        <select class="custom-select" id="performance_filter">
                                             <option>All time</option>
-                                            <option value="">Last 30 days</option>
-                                            <option value="">Last 3 months</option>
-                                            <option value="">Last 12 months</option>
+                                            <option value="30">Last 30 days</option>
+                                            <option value="90">Last 3 months</option>
+                                            <option value="365">Last 12 months</option>
                                         </select>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             @forelse($subjects as $subject)
                             <h6 class="bold">{{ $subject->title }}</h6>
                             <p>Enrollment : <span  class="author-font">{{ $subject->subscriptionCount }} students</span></p>
@@ -86,18 +86,18 @@
                     </div>
                     <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                         <div class="mt-4">
-                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
+                            <div class="row" style="display: flex; justify-content: flex-end">
                                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
-                                        <select class="custom-select" id="category">
+                                        <select class="custom-select" id="performance_filter">
                                             <option>All time</option>
-                                            <option value="">Last 30 days</option>
-                                            <option value="">Last 3 months</option>
-                                            <option value="">Last 12 months</option>
+                                            <option value="30">Last 30 days</option>
+                                            <option value="90">Last 3 months</option>
+                                            <option value="365">Last 12 months</option>
                                         </select>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             @forelse($subjects as $subject)
                             <h6 class="bold">{{ $subject->title }}</h6>
                             @if($subject->averageRating())
