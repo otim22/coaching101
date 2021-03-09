@@ -2,15 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use Config;
 use Illuminate\View\View;
 use App\Models\Subject;
 use App\Models\Wishlist;
 use Livewire\Component;
-use Illuminate\Http\Request;
+use App\Helpers\ProcessPayment as Payment;
 use Illuminate\Support\Facades\Auth;
 use App\Facades\Cart as CartFacade;
-use Illuminate\Support\Facades\Http;
 
 class Cart extends Component
 {
@@ -18,6 +16,9 @@ class Cart extends Component
     public $sum = 0;
     public $cartItems = [];
     public $wishlistItems = [];
+    public $cardNumber = null;
+
+    public $response = [];
 
     protected $listeners = [
         'goToCart' => 'getItems',
@@ -43,7 +44,15 @@ class Cart extends Component
         foreach ($this->cartItems as $cartItem) {
             $this->sum = $this->sum + $cartItem->price;
         }
+        if (count($this->response) > 0) {
+            $this->updatedPaymentInfo($this->response[0]);
+        }
         return $this->sum;
+    }
+
+    public function updatedPaymentInfo($value)
+    {
+        $this->response = $value;
     }
 
     public function render()
@@ -93,29 +102,29 @@ class Cart extends Component
         Rave::initialize(route('callback'));
     }
 
-    public function checkout(Request $request): void
+    public function checkout()
     {
         if(Auth::check()) {
             $user = Auth::user();
-
-            $cartFacade = new CartFacade;
-            $this->cartItems = $cartFacade->get()['subjects'];
-
             // WIP
             $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
-            $currency = "UGX";
+            $currency = "NGN";
             $userEmail = $user->email;
             $userName= $user->name;
             $cartSum = $this->sum;
-            $redirectLink = "https://coaching101.app/cart";
+            $redirectLink = "http://0.0.0.0:8009/cart";
 
-            $response = Http::withToken(config('app.rave_key'))->post(
-                'https://api.flutterwave.com/v3/charges', [
+            $data = [
                 "tx_ref" => $paymentToken,
-                "amount"=> $cartSum,
+                "amount"=> '1000',
                 "currency"=> $currency,
                 "redirect_url" => $redirectLink,
                 "payment_options" => "card",
+                "card_number" => $this->cardNumber,
+                "cvv" => "828",
+                "expiry_month" => "09",
+                "expiry_year" => "32",
+                "email" => $userEmail,
                 "meta" => [
                     "consumer_id" => Auth::id()
                 ],
@@ -128,21 +137,24 @@ class Cart extends Component
                     "description" => "Middleout isn't free. Pay the price",
                     "logo" => "https://assets.piedpiper.com/logo.png"
                 ]
-    		]);
+            ];
 
-            $response->successful();
-
-            // dd($response);
-            //
-            foreach($this->cartItems as $item) {
-                $item->subscribe();
-            }
-
-            $cartFacade->clear();
-            $this->emit('clearCart');
-            $this->sum = 0;
-            $this->cart = $cartFacade->get();
+            $payment = new Payment($data);
+            $this->emit('onSuccess', $payment->cardPayment());
         }
+    }
+
+    public function clearCart() {
+        $cartFacade = new CartFacade;
+        $this->cartItems = $cartFacade->get()['subjects'];
+        foreach($this->cartItems as $item) {
+            $item->subscribe();
+        }
+
+        $cartFacade->clear();
+        $this->emit('clearCart');
+        $this->sum = 0;
+        $this->cart = $cartFacade->get();
     }
 
     public function wishlistItemUpdate(): void

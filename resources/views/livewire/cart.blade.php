@@ -70,13 +70,61 @@
                 <h4 class="bold">UGX {{  rtrim(rtrim(number_format($sum, 2), 2), '.') }}/-</h4>
                 <hr />
                 <div class="mt-4">
-                    <a id="round-button-2" type="submit" wire:click="checkout()" class="btn btn-danger btn-block mb-2 text-white">Checkout</a>
+                    <a id="round-button-2" type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-block mb-2 text-white">Checkout</a>
                 </div>
             </div>
         </aside>
     </div>
-</div>
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
 
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Process Payment</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+        <div class="card-js" id="my-card" data-capture-name="true"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="process">Process</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 @push('scripts')
-    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script src="{{ asset('js/card-js.js') }}"></script>
+    <script>
+        document.addEventListener('livewire:load', function (event) {
+            $("#process").click(function(){
+                var myCard = $('#my-card');
+                var cardNumber = myCard.CardJs('cardNumber');
+                var expiryMonth = myCard.CardJs('expiryMonth');
+                var expiryYear = myCard.CardJs('expiryYear');
+                var valid = CardJs.isExpiryValid(expiryMonth, expiryYear);
+                if (valid) {
+                    console.log(CardJs.numbersOnlyString(cardNumber))
+                    console.log(valid)
+                }
+                @this.cardNumber = CardJs.numbersOnlyString(cardNumber)
+                @this.checkout()
+            });
+
+            @this.on('onSuccess', function (res) {
+                $('#myModal').modal('toggle')
+                var value = JSON.parse(res)
+                window.open(value.meta.authorization.redirect)
+            })
+            var response = @this.response
+            if (response !== null && Object.keys(response).length) {
+                @this.clearCart()
+            }
+
+        })
+    </script>
 @endpush
