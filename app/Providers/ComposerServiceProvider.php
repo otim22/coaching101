@@ -36,7 +36,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         View::composer(['welcome'], function ($view) {
             $categories = Category::with('subjects')->get()->map(function($query) {
-                $query->setRelation('subjects', $query->subjects->take(8));
+                $query->setRelation('subjects', $query->subjects->where('is_approved', 1)->take(8));
                 return $query;
             })->groupBy('name')->take(8);
 
@@ -44,13 +44,13 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['welcome', 'home', 'teacher.*', 'student.*'], function ($view) {
-            $topCategories = Category::with('subjects')->get()->take(18);
+            $topCategories = Category::get()->take(18);
 
             $view->withTopCategories($topCategories);
         });
 
         View::composer(['welcome', 'home'], function ($view) {
-            $mostViewedSubjects = Subject::get()->take(8);
+            $mostViewedSubjects = Subject::where('is_approved', 1)->get()->take(8);
 
             $view->withMostViewedSubjects($mostViewedSubjects);
         });

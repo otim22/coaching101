@@ -81,12 +81,8 @@
     @include('partials.categories')
 </section>
 
-<section>
-    @include('partials.teachers')
-</section>
-
 <section class="bg-gray-2">
-    @include('partials.teach_students_cta')
+    @include('partials.teachers')
 </section>
 
 @endsection

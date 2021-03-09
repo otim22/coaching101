@@ -25,31 +25,21 @@
                                         <img src="{{ $item->image_thumb}}" alt="{{ $item->very_short_title }}" width="100%" height="150">
                                         <div class="card-body">
                                             <span class="bold">{{ $item->very_short_title }}</span><br />
-                                            <span class="author-font">By {{$item->creator->name }}</span>
+                                            <span class="author-font">{{$item->creator->name }}</span>
                                             @if($item->averageRating)
                                                 <div class="star-display">
-                                                    @for($i = 0; $i <= $item->averageRating; $i++)
+                                                    @for($i = $item->averageRating; $i >= 1; $i--)
                                                         <label for="rate-{{$i}}" class="fa fa-star"></label>
                                                     @endfor
                                                     <span class="author-font ml-2">({{ $item->subscriptionCount }}) students</span><br />
                                                 </div>
                                             @else
                                                 <div class="rating">
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
-                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                    </svg>
+                                                    @for($i = 0; $i < 5; $i++)
+                                                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                                        </svg>
+                                                    @endfor
                                                     <span class="author-font ml-2">({{ $item->subscriptionCount }}) students</span><br />
                                                 </div>
                                             @endif
@@ -83,37 +73,27 @@
                                     <img src="{{ $wishlistItem->subject->image_thumb}}" alt="{{ $wishlistItem->subject->very_short_title }}" width="100%" height="130">
                                     <div class="card-body">
                                         <span class="bold">{{ $wishlistItem->subject->very_short_title }}</span><br />
-                                        <span class="author-font">By {{$wishlistItem->subject->creator->name }}</span>
+                                        <span class="author-font">{{$wishlistItem->subject->creator->name }}</span>
                                         @if($wishlistItem->subject->averageRating)
                                             <div class="star-display">
-                                                @for($i = 0; $i <= $wishlistItem->subject->averageRating; $i++)
+                                                @for($i = $wishlistItem->subject->averageRating; $i >= 1; $i--)
                                                     <label for="rate-{{$i}}" class="fa fa-star"></label>
                                                 @endfor
                                                 <span class="author-font">({{ $wishlistItem->subject->subscriptionCount }}) students</span>
                                             </div>
                                         @else
                                             <div class="rating">
-                                                <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                </svg>
-                                                <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                </svg>
-                                                <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                </svg>
-                                                <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                </svg>
-                                                <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                </svg>
+                                                @for($i = 0; $i < 5; $i++)
+                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                                    </svg>
+                                                @endfor
                                                 <span class="author-font ml-2">({{ $wishlistItem->subject->subscriptionCount }}) students</span><br />
                                             </div>
                                         @endif
 
                                         @if($wishlistItem->subject->price)
-                                            <span class="bold">UGX {{ number_format($wishlistItem->subject->price) }}/-</span>
+                                            <span class="bold">UGX {{  rtrim(rtrim(number_format($wishlistItem->subject->price, 2), 2), '.') }}/-</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -148,7 +128,7 @@
                                         <img src="{{ $item->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $item->very_short_title }}" width="100%" height="150">
                                         <div class="card-body">
                                             <span class="bold">{{ $item->very_short_title }}</span><br />
-                                            <span class="author-font">By {{$item->creator->name }}</span>
+                                            <span class="author-font">{{$item->creator->name }}</span>
                                             <div class="mt-2 d-flex justify-content-between">
                                                 <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
                                             </div>
@@ -179,7 +159,7 @@
                                     <div class="card mb-4">
                                         <div class="card-body">
                                             <span class="bold">{{ $item->very_short_title }}</span><br />
-                                            <span class="author-font">By {{$item->creator->name }}</span>
+                                            <span class="author-font">{{$item->creator->name }}</span>
                                             <div class="mt-2 d-flex justify-content-between">
                                                 <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
                                             </div>

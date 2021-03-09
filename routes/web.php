@@ -52,7 +52,7 @@ use App\Http\Controllers\PastpaperController as PastPapers;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/books', [Books::class, 'index'])->name('student.books.index');
-Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show');
+Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show')->middleware('auth');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
 Route::get('/notes', [Notes::class, 'index'])->name('student.notes.index');
 Route::get('/notes/{note}', [Notes::class, 'show'])->name('student.notes.show');
@@ -124,6 +124,7 @@ Route::middleware('auth')->group(function() {
         Route::patch('/subjects/{subject}/topics/{topic}/update', [TopicController::class, 'update'])->name('topics.update');
 
         Route::get('/manage/performances', [PerformanceController::class, 'index'])->name('manage.performances');
+        Route::get('/get-more-subjects-for-teacher-performance', [PerformanceController::class, 'getMoreSubjectsTeacherPerforamce'])->name('get-more-subjects-for-teacher-performance');
         Route::get('/manage/resources', [ResourceController::class, 'index'])->name('manage.resources');
         Route::get('/manage/tools', [ToolController::class, 'index'])->name('manage.tools');
     });

@@ -66,19 +66,15 @@
                 </div>
             </div>
 
-            <div class="col-lg-10 col-md-9 col-sm-12"  id="book_data">
+            <div class="col-lg-10 col-md-9 col-sm-12" id="book_data">
                 @include('student.books.partials.filtered_books')
             </div>
         </div>
     </div>
 </section>
 
-<section class="bg-white">
-    @include('partials.categories')
-</section>
-
 <section class="bg-gray-2">
-    @include('partials.teach_students_cta')
+    @include('partials.categories')
 </section>
 
 @endsection
