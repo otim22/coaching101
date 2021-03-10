@@ -150,6 +150,11 @@ class Subject extends Model implements HasMedia, Searchable
                                 ->limit($limit);
     }
 
+    public function getTotalRevenueAttribute()
+    {
+        return rtrim(rtrim(number_format(($this->price * $this->subscriptionCount), 2), 2), '.');
+    }
+
     /** Searching for subjects results*/
     public function getSearchResult(): SearchResult
     {
