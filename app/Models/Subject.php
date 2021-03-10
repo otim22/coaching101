@@ -158,6 +158,11 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->subscription()->count();
     }
 
+    public function getFormatPriceAttribute()
+    {
+        return rtrim(rtrim(number_format($this->price, 2), 2), '.');
+    }
+
     public function rating()
     {
         return $this->belongsTo(Subject::class);

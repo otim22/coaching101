@@ -47,7 +47,7 @@
                         </a>
                     </div>
                     <div class="order-2">
-                        <span class="red_color bold text-set"> {{  rtrim(rtrim(number_format($wishlistItem->subject->price, 2), 2), '.') }}/-</span>
+                        <span class="red_color bold text-set"> {{  $wishlistItem->subject->formatPrice }}/-</span>
                     </div>
                     <div class="d-flex pr-3 align-items-start flex-column">
                         <a type="button" wire:click="removeFromWishlist({{ $wishlistItem->id }})"><small>Remove</small></a>

@@ -43,7 +43,7 @@
                     </div>
                 @endif
                 @if(!$subject->isSubscribedTo)
-                <span class="bold">UGX {{  rtrim(rtrim(number_format($subject->price, 2), 2), '.') }}/-</span>
+                <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
                 @endif
                 <p>Created by {{ $subject->creator->name }}</p>
             </div>
@@ -261,7 +261,7 @@
                                     <span class="title-font ml-3">({{ $subject->subscriptionCount }}) students</span><br />
                                 </div>
                                 @endif
-                                <span class="bold">UGX {{  rtrim(rtrim(number_format($subject->price, 2), 2), '.') }}/-</span>
+                                <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
                             </a>
                             <div class="mt-2 d-flex justify-content-between">
                                 <livewire:add-to-cart :subject="$subject" :key="$subject->id" />

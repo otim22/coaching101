@@ -59,7 +59,7 @@
                                 @endif
 
                                 @if($subject->price)
-                                    <span class="bold">UGX {{  rtrim(rtrim(number_format($subject->price, 2), 2), '.') }}/-</span>
+                                    <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif
