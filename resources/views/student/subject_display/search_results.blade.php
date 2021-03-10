@@ -67,14 +67,22 @@
                                     @endif
 
                                     @if($search->searchable->price)
-                                        <span class="bold">UGX {{  $search->searchable->formatPrice }}/-</span>
+                                        @if($search->searchable->isSubscribedTo)
+                                            <span class="author-font">UGX {{  $search->searchable->formatPrice }}/- (Paid)</span></span>
+                                        @else
+                                            <span class="bold">UGX {{  $search->searchable->formatPrice }}/-</span>
+                                        @endif
                                     @else
                                         <span class="bold paid_color">Free</span>
                                     @endif
                                 </a>
                                 <div class="mt-2 d-flex justify-content-between">
-                                    <livewire:add-to-cart :subject="$search->searchable" :key="$search->searchable->id" />
-                                    <livewire:add-to-wish-list :subject="$search->searchable" :key="$search->searchable->id" />
+                                    @if($subject->isSubscribedTo)
+                                        <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                    @else
+                                        <livewire:add-to-cart :subject="$search->searchable" :key="$search->searchable->id" />
+                                        <livewire:add-to-wish-list :subject="$search->searchable" :key="$search->searchable->id" />
+                                    @endif
                                 </div>
                             </div>
                         </div>
