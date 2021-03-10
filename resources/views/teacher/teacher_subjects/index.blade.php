@@ -150,7 +150,7 @@
                                         @endif
 
                                         @if($book->price)
-                                            UGX {{ rtrim(rtrim(number_format($book->price, 2), 2), '.') }}/- <span class="author-font">(Paid)</span>
+                                            UGX {{ $book->formatPrice }}/- <span class="author-font">(Paid)</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -165,7 +165,7 @@
                                         @endif
 
                                         @if($book->price)
-                                            <span class="bold">UGX {{ rtrim(rtrim(number_format($book->price, 2), 2), '.') }}/-</span>
+                                            <span class="bold">UGX {{ $book->formatPrice }}/-</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -179,7 +179,7 @@
                                     @endif
 
                                     @if($book->price)
-                                        <span class="bold">UGX {{ rtrim(rtrim(number_format($book->price, 2), 2), '.') }}/-</span>
+                                        <span class="bold">UGX {{ $book->formatPrice }}/-</span>
                                     @else
                                         <span class="bold paid_color">Free</span>
                                     @endif
@@ -224,7 +224,7 @@
                                         @endif
 
                                         @if($note->price)
-                                            UGX {{ rtrim(rtrim(number_format($note->price, 2), 2), '.') }}/- <span class="author-font">(Paid)</span>
+                                            UGX {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -239,7 +239,7 @@
                                         @endif
 
                                         @if($note->price)
-                                            UGX {{ rtrim(rtrim(number_format($note->price, 2), 2), '.') }}/- <span class="author-font">(Paid)</span>
+                                            UGX {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -253,7 +253,7 @@
                                     @endif
 
                                     @if($note->price)
-                                        <span class="bold">UGX {{ rtrim(rtrim(number_format($note->price, 2), 2), '.') }}/-</span>
+                                        <span class="bold">UGX {{ $note->formatPrice }}/-</span>
                                     @else
                                         <span class="bold paid_color">Free</span>
                                     @endif
@@ -298,7 +298,7 @@
                                         @endif
 
                                         @if($pastpaper->price)
-                                            UGX {{ rtrim(rtrim(number_format($pastpaper->price, 2), 2), '.') }}/- <span class="author-font">(Paid)</span>
+                                            UGX {{ $pastpaper->formatPrice }}/- <span class="author-font">(Paid)</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -313,7 +313,7 @@
                                         @endif
 
                                         @if($pastpaper->price)
-                                            UGX {{ rtrim(rtrim(number_format($pastpaper->price, 2), 2), '.') }}/- <span class="author-font">(Paid)</span>
+                                            UGX {{ $pastpaper->formatPrice }}/- <span class="author-font">(Paid)</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -327,7 +327,7 @@
                                     @endif
 
                                     @if($pastpaper->price)
-                                        <span class="bold">UGX {{ rtrim(rtrim(number_format($pastpaper->price, 2), 2), '.') }}/-</span>
+                                        <span class="bold">UGX {{ $pastpaper->formatPrice }}/-</span>
                                     @else
                                         <span class="bold paid_color">Free</span>
                                     @endif

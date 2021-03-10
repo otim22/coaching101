@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\PresentsText;
 use Spatie\Sluggable\HasSlug;
+use App\Traits\PresentsSubject;
 use Spatie\Image\Manipulations;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\MediaLibrary\HasMedia;
@@ -16,7 +17,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Note extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, HasSlug, PresentsText;
+    use HasFactory, InteractsWithMedia, HasSlug, PresentsText, PresentsSubject;
 
     protected $fillable = ['title', 'price', 'category_id', 'year_id', 'term_id', 'user_id'];
     protected $with = ['media'];
@@ -26,8 +27,7 @@ class Note extends Model implements HasMedia
      */
     public function getSlugOptions() : SlugOptions
     {
-        return SlugOptions::create()
-                                                ->generateSlugsFrom('title')
+        return SlugOptions::create()->generateSlugsFrom('title')
                                                 ->saveSlugsTo('slug')
                                                 ->allowDuplicateSlugs()
                                                 ->slugsShouldBeNoLongerThan(40)
@@ -49,11 +49,6 @@ class Note extends Model implements HasMedia
         $this->addMediaCollection('note');
 
         $this->addMediaCollection('teacher_note');
-    }
-
-    public function getTitleAttribute($value)
-    {
-        return ucfirst($value);
     }
 
     /**
@@ -106,16 +101,6 @@ class Note extends Model implements HasMedia
     public function unsubscribe($userId = null)
     {
         $this->subscription()->where('user_id', $userId ?: Auth::id())->delete();
-    }
-
-    public function getIsSubscribedToAttribute()
-    {
-        return $this->subscription()->where('user_id', Auth::id())->exists();
-    }
-
-    public function getSubscriptionCountAttribute()
-    {
-        return $this->subscription()->count();
     }
 
     public static function getNotes($category, $year, $term)

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
+use App\Traits\PresentsSubject;
 use Spatie\Image\Manipulations;
 use willvincent\Rateable\Rateable;
 use Spatie\Sluggable\SlugOptions;
@@ -22,7 +23,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Subject extends Model implements HasMedia, Searchable
 {
-    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable;
+    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable, PresentsSubject;
 
     protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id', 'is_approved'];
     protected $with = ['media'];
@@ -34,8 +35,7 @@ class Subject extends Model implements HasMedia, Searchable
      */
     public function getSlugOptions() : SlugOptions
     {
-        return SlugOptions::create()
-                                                ->generateSlugsFrom('title')
+        return SlugOptions::create()->generateSlugsFrom('title')
                                                 ->saveSlugsTo('slug')
                                                 ->allowDuplicateSlugs()
                                                 ->slugsShouldBeNoLongerThan(50)
@@ -64,16 +64,6 @@ class Subject extends Model implements HasMedia, Searchable
                                 ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
                                 ->nonQueued();
                 });
-    }
-
-    public function getTitleAttribute($value)
-    {
-        return ucfirst($value);
-    }
-
-    public function getSubtitleAttribute($value)
-    {
-        return ucfirst($value);
     }
 
     public function audience()
@@ -146,21 +136,6 @@ class Subject extends Model implements HasMedia, Searchable
     public function subscription()
     {
         return $this->morphOne(Subscription::class, 'subscriptionable');
-    }
-
-    public function getIsSubscribedToAttribute()
-    {
-        return $this->subscription()->where('user_id', Auth::id())->exists();
-    }
-
-    public function getSubscriptionCountAttribute()
-    {
-        return $this->subscription()->count();
-    }
-
-    public function getFormatPriceAttribute()
-    {
-        return rtrim(rtrim(number_format($this->price, 2), 2), '.');
     }
 
     public function rating()
