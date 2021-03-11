@@ -46,7 +46,7 @@
                     </div>
                     <div class="card-body">
                         <h4>{{ $note->title }}</h4>
-                        <p>{{ $note->category->name }} {{ $note->year->name }}, {{ $note->term->name }}. </p>
+                        <p>{{ $note->year->name }} {{ $note->category->name }}, {{ $note->term->name }}. </p>
 
                         @if($note->creator)
                             <p style="color: #3864ab; font-weight: bold;">{{ $note->getFirstMedia('teacher_note')->file_name }}</p>
@@ -55,10 +55,21 @@
                         @endif
 
                         @if($note->price)
-                            <span>UGX {{ number_format($note->price) }}/-</span>
+                            <div class="mb-3">
+                                <span class="mt-3">UGX {{ number_format($note->price) }}/-</span>
+                            </div>
                         @else
-                            <span style="font-weight: bold;">Free</span>
+                            <div class="mb-3">
+                                <span class="mt-3" style="font-weight: bold;">Free</span>
+                            </div>
                         @endif
+
+                        <div class="mb-3">
+                            <h4 class="bold">Notes objectives </h4>
+                            @foreach($note->notes_objective as $note_objective)
+                            <p><i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i><span class="align-middle">{{ $note_objective }}</span></p>
+                            @endforeach
+                        </div>
 
                         @if(Auth::user()->role == 4)
                             @if($note->creator)
