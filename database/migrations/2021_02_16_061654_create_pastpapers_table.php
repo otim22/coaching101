@@ -15,8 +15,8 @@ class CreatePastpapersTable extends Migration
     {
         Schema::create('pastpapers', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
             $table->string('title');
+            $table->string('slug');
             $table->float('price')->nullable();
             $table->boolean('is_approved')->default(false);
             $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

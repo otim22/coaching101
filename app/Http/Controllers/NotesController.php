@@ -29,11 +29,11 @@ class NotesController extends Controller
 
     public function getMoreNotes(Request $request)
     {
-        $category = $request->notes_category;
-        $year = $request->notes_year;
-        $term = $request->notes_term;
-
         if ($request->ajax()) {
+            $category = $request->notes_category;
+            $year = $request->notes_year;
+            $term = $request->notes_term;
+
             $notes = Note::getNotes($category, $year, $term);
 
             return view('student.notes.partials.filtered_notes', compact('notes'));

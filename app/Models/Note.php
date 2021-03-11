@@ -120,9 +120,7 @@ class Note extends Model implements HasMedia
 
     public static function getNotes($category, $year, $term)
     {
-        $notes = static::get();
-
-        $items = [];
+        $items = ['is_approved' => 1];
 
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
             $items['category_id'] = $category;
@@ -136,8 +134,6 @@ class Note extends Model implements HasMedia
             $items['term_id'] = $term;
         }
 
-        $notes = static::where($items)->paginate(12);
-
-        return $notes;
+        return static::where($items)->paginate(12);
     }
 }

@@ -7,4 +7,5 @@ class GlobalConstants {
     const ALL_YEARS = 'All years';
     const ALL_TERMS = 'All terms';
     const ADMIN = 'Coaching101';
+    const ALL_TIME = 0;
 }

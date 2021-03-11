@@ -28,11 +28,11 @@ class BooksController extends Controller
 
     public function getMoreBooks(Request $request)
     {
-        $category = $request->book_category;
-        $year = $request->book_year;
-        $term = $request->book_term;
-
         if ($request->ajax()) {
+            $category = $request->book_category;
+            $year = $request->book_year;
+            $term = $request->book_term;
+
             $books = Book::getBooks($category, $year, $term);
 
             return view('student.books.partials.filtered_books', compact('books'));

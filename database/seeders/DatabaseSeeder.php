@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
             StudentImageTableSeeder::class,
             TeacherImageTableSeeder::class,
             FaqTableSeeder::class,
+            BookTableSeeder::class,
+            NoteTableSeeder::class,
+            PastpaperTableSeeder::class,
         ]);
     }
 }

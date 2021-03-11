@@ -73,12 +73,8 @@
     </div>
 </section>
 
-<section class="bg-white">
-    @include('partials.categories')
-</section>
-
 <section class="bg-gray-2">
-    @include('partials.teach_students_cta')
+    @include('partials.categories')
 </section>
 
 @endsection

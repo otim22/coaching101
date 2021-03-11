@@ -26,6 +26,7 @@ function getMorePastpapers(page) {
         url: "get-more-pastpapers" + "?page=" + page,
         success: function(data) {
             $('#pastpaper_data').html(data);
+            window.livewire.rescan();
         }
     });
 }

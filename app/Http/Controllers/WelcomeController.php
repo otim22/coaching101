@@ -14,7 +14,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $subjects =  Subject::get();
+        $subjects =  Subject::where('is_approved', 1)->get();
         $sliders = Slider::latest()->first();
         $studentImage = StudentImage::latest()->first();
         $teacherImage = TeacherImage::latest()->first();
@@ -28,9 +28,6 @@ class WelcomeController extends Controller
 
     public function getMoreSubjects(request $request)
     {
-        $category= $request->category_id;
-        $year= $request->year_id;
-        $term= $request->term_id;
         $sliders = Slider::latest()->first();
         $studentImage = StudentImage::latest()->first();
         $teacherImage = TeacherImage::latest()->first();
@@ -38,9 +35,13 @@ class WelcomeController extends Controller
         $filterCategories = Category::get();
 
         if ($request->ajax()) {
+            $category= $request->category_id;
+            $year= $request->year_id;
+            $term= $request->term_id;
+
             $subjects = Subject::getSubjects($category);
 
-            return view('home', compact('subjects', 'sliders', 'studentImage', 'teacherImage', 'faqs', 'filterCategories'))->render();
+            return view('home', compact(['subjects', 'sliders', 'studentImage', 'teacherImage', 'faqs', 'filterCategories']));
         }
     }
 }

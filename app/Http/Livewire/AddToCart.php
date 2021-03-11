@@ -25,8 +25,9 @@ class AddToCart extends Component
         $cartFacade = new CartFacade;
         $this->cartItems = $cartFacade->get()['subjects'];
 
+        // Checks for duplication in the cart otherwise add subject to cart
         foreach ($this->cartItems as $cartItem) {
-            if (($cartItem->id === $subjectId)) {
+            if ($cartItem->id === $subjectId) {
                 return redirect()->back()->with('flash_messaged', 'This subject is already in your cart!');
             }
         }

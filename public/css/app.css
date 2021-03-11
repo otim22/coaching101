@@ -4401,6 +4401,10 @@ img.rounded-corners {
   height: 80%;
 }
 
+.hide-me {
+  display: none;
+}
+
 .card-custom {
   border: 1px #f0f0f0 solid;
   border-radius: 8px;

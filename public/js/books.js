@@ -26,6 +26,7 @@ function getMoreBooks(page) {
         url: "get-more-books" + "?page=" + page,
         success: function(data) {
             $('#book_data').html(data);
+            window.livewire.rescan();
         }
     });
 }

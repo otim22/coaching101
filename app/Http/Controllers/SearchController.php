@@ -6,6 +6,7 @@ use App\Models\Subject;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Spatie\Searchable\Search;
+use Spatie\Searchable\ModelSearchAspect;
 
 class SearchController extends Controller
 {
@@ -15,10 +16,15 @@ class SearchController extends Controller
             return back()->with('error', 'Please enter something');
         }
 
-        $searchResults = (new Search())
-                                            ->registerModel(Subject::class, 'title')
-                                            ->perform($request->input('query'))->paginate(12)->withQueryString();
+        $approved = 1;
 
-        return view('student.subject_display.search_results', compact(['searchResults']));
+        $searchResults = (new Search())
+                                ->registerModel(Subject::class, function(ModelSearchAspect $modelSearchAspect) use ($approved) {
+                                            $modelSearchAspect->addSearchableAttribute('title')
+                                                            ->addSearchableAttribute('subtitle')
+                                                            ->where('is_approved', $approved);
+                                })->search($request->input('query'))->paginate(12)->withQueryString();
+
+        return view('student.subject_display.search_results', compact('searchResults'));
     }
 }
