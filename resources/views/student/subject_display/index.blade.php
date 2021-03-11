@@ -14,6 +14,9 @@
                         </svg>
                     </a>
                 </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $subject->title }}</li>
             </ol>
         </nav>
@@ -45,7 +48,7 @@
                 @if(!$subject->isSubscribedTo)
                     <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
                 @endif
-                <p>Created by {{ $subject->creator->name }}</p>
+                <p class="mb-4">Created by {{ $subject->creator->name }}</p>
             </div>
         </div>
     </div>
