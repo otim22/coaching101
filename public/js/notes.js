@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
     $(document).on('click', '.pagination a', function(event) {
         event.preventDefault();
 

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
   // Add smooth scrolling to all links
   $(".teacher-classses_button").on('click', function(event) {
 

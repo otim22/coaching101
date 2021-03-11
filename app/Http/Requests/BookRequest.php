@@ -23,7 +23,7 @@ class BookRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'title' => 'required|string',
             'price' => 'nullable',
             'category_id' => 'required|integer',
@@ -33,17 +33,13 @@ class BookRequest extends FormRequest
             'cover_image' => 'required|image|mimes:jpg, jpeg, png|max:5520',
             'user_id' => 'integer|nullable'
         ];
-    }
 
-    public function messages()
-    {
-        return [
-            'title.required' => 'Title is required.',
-            'price.nullable' => 'Price is required in digits without (, .) characters',
-            'category_id.required' => 'Choose a subject',
-            'year_id.required' => 'Choose a year',
-            'term_id.required' => 'Choose a term',
-            'user_id.nullable' => 'Should be logged in'
-        ];
+        $book_objective = count($this->input('book_objective'));
+
+        foreach(range(0, $book_objective) as $index) {
+            $rules[]['book_objective.' . $index] = 'required|string';
+        }
+
+        return $rules;
     }
 }

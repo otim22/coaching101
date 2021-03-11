@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(function() {
     $('#hidden-social-1').stop().hide();
     $('#hidden-social-2').stop().hide();
     $('#hidden-social-3').stop().hide();
-    
+
     $("#team-1").mouseenter(function() {
         $('#hidden-social-1').stop().show();
     });

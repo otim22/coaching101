@@ -1,0 +1,28 @@
+.book_objective_section {
+    display: flex;
+}
+
+.books_objective_input {
+    flex-grow: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+.seen {
+    display: block;
+}
+
+.delete_book_objective {
+    color: white;
+    background-color: rgb(231, 76, 60);
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 6px;
+    font-weight: 700;
+    border-radius:5px;
+    height: 30px;
+    min-width: 30px;
+    cursor: pointer;
+}

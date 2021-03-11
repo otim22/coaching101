@@ -28,10 +28,16 @@
         @if($book->isSubscribedTo)
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-10 offset-1">
-                    <h5 class="mb-4">{{ $book->title }}</h5>
+                    <h5 class="bold">{{ $book->title }}</h5>
                     @if($book->creator)
+                        <div class="mb-3">
+                            <p>By {{ $book->creator->name }}</p>
+                        </div>
                         <embed src="{{ $book->getFirstMediaUrl('teacher_book') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
                     @else
+                        <div class="mb-3">
+                            <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                        </div>
                         <embed src="{{ $book->getFirstMediaUrl('book') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
                     @endif
                 </div>
@@ -72,12 +78,31 @@
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <h5 class="bold">{{ $book->title }}</h5>
                     @if($book->creator)
-                        <span class="author-font">By {{ $book->creator->name }}</span><br />
+                    <div class="mb-4">
+                        <div class="mb-3">
+                            <p>By {{ $book->creator->name }}</p>
+                        </div>
                         <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" class="rounded-corners" width="100%" height="auto">
+                    </div>
                     @else
-                        <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                    <div class="mb-4">
+                        <div class="mb-3">
+                            <span class="author-font mb-4">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                        </div>
                         <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="auto">
+                    </div>
                     @endif
+                    <div class="mb-3 mt-4">
+                        <h5 class="bold">Book objectives </h5>
+                        @foreach($book->book_objective as $book_objective)
+                        <p>
+                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                            </svg>
+                            {{ $book_objective }}
+                        </p>
+                        @endforeach
+                    </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-8 mt-4 d-flex justify-content-between">
                     <a id="round-button-2" type="button" class="btn btn-secondary btn-sm" href="{{ route('student.books.index') }}">

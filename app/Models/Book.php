@@ -20,9 +20,11 @@ class Book extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia, HasSlug, PresentsMedia, PresentsText, PresentsSubject;
 
-    protected $fillable = ['title', 'price', 'category_id', 'year_id', 'term_id', 'user_id'];
+    protected $fillable = ['title', 'book_objective', 'price', 'category_id', 'year_id', 'term_id', 'user_id'];
     protected $with = ['media'];
     protected $appends = ['isSubscribedTo'];
+
+    protected $casts = ['book_objective' => 'array' ];
 
     /**
      * Get the options for generating the slug.
