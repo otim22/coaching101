@@ -102,18 +102,18 @@
                                 <div class="input-group book_objective_section">
                                     <div class="books_objective_input">
                                         <input type="text"
-                                        id="books_objective"
-                                        value="{{old('book_objective.0')}}"
-                                        class="form-control form-control mb-2 @error('book_objective.0') is-invalid @enderror"
-                                        placeholder="Example: Origin of languages"
-                                        name="book_objective[]" required>
+                                            id="books_objective"
+                                            value="{{old('book_objective.0')}}"
+                                            class="form-control form-control mb-2 @error('book_objective.0') is-invalid @enderror"
+                                            placeholder="Example: Origin of languages"
+                                            name="book_objective[]" required>
                                     </div>
                                     <div class="hidden" id="hidden_book_objective">
                                         <p class="delete_book_objective">x</p>
                                     </div>
                                 </div>
                                 @error('book_objective.0')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -175,7 +175,7 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/books_objective.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/books.js')}}" type="text/javascript"></script>
 @endpush
 
 @prepend('scripts')

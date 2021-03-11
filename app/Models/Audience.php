@@ -10,7 +10,6 @@ class Audience extends Model
     use HasFactory;
 
     protected $fillable = ['student_learn', 'class_requirement', 'target_student'];
-
     protected $casts = [
         'student_learn' => 'array',
         'class_requirement' => 'array',

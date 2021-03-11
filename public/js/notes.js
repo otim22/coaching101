@@ -1,3 +1,4 @@
+/** Start notes filtering **/
 $(function() {
     $(document).on('click', '.pagination a', function(event) {
         event.preventDefault();
@@ -30,3 +31,44 @@ function getMoreNotes(page) {
         }
     });
 }
+/** Start notes filtering **/
+
+/** Start note objectives **/
+$(function () {
+    let maxField = 10;
+    let startValue = 1;
+
+    $('#notes_objective').on('keyup', function() {
+        if($(this).val().length >= 8) {
+            document.querySelector('.btn_notes_objective').classList.add('seen');
+        }
+    })
+
+    // Clone the hidden element and shows it
+    $('.btn_notes_objective').click(function() {
+        let all_items = document.querySelector('#hidden_note_objective');
+
+        if(startValue < maxField) {
+            startValue++;
+            all_items.classList.remove('hidden');
+
+            $('.note_objective_section').first().clone()
+                                                            .find('input:text').val('').end()
+                                                            .appendTo('.dynamic_note_objective');
+
+            all_items.classList.add('hidden');
+        }
+
+        attach_delete();
+    });
+
+    // Attach functionality to delete buttons
+    function attach_delete() {
+        $('.delete_note_objective').off();
+        $('.delete_note_objective').click(function() {
+            $(this).closest('.note_objective_section').remove();
+            startValue--;
+        });
+    }
+});
+/** End note objectives **/

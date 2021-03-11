@@ -1,8 +1,8 @@
-.book_objective_section {
+.book_objective_section, .note_objective_section {
     display: flex;
 }
 
-.books_objective_input {
+.books_objective_input, .notes_objective_input {
     flex-grow: 1;
 }
 
@@ -14,7 +14,7 @@
     display: block;
 }
 
-.delete_book_objective {
+.delete_book_objective, .delete_note_objective {
     color: white;
     background-color: rgb(231, 76, 60);
     text-align: center;

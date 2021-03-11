@@ -16,7 +16,7 @@ $factory->define(Book::class, function (Faker $faker) {
         'slug' => $faker->slug,
         'book_objective' => $faker->sentences,
         'price' => $faker->numberBetween(1000, 10000),
-        'is_approved' => $faker->boolean(false),
+        'is_approved' => $faker->boolean(true),
         'category_id' => Category::all()->random()->id,
         'year_id' => Year::all()->random()->id,
         'term_id' => Term::all()->random()->id,

@@ -23,7 +23,7 @@ class NoteRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'title' => 'required|string',
             'price' => 'nullable',
             'category_id' => 'required|integer',
@@ -32,18 +32,13 @@ class NoteRequest extends FormRequest
             'note' => 'required|mimes:pdf|max:5000',
             'user_id' => 'integer|nullable',
         ];
-    }
 
-    public function messages()
-    {
-        return [
-            'title.required' => 'Title is required.',
-            'price.nullable' => 'Price is required in digits without (, .) characters',
-            'category_id.required' => 'Choose a subject',
-            'year_id.required' => 'Choose a year',
-            'term_id.required' => 'Choose a term',
-            'note.required' => 'Should be a pdf file',
-            'user_id.nullable' => 'Should be logged in',
-        ];
+        $notes_objective = count($this->input('notes_objective'));
+
+        foreach(range(0, $notes_objective) as $index) {
+            $rules[]['notes_objective.' . $index] = 'required|string';
+        }
+
+        return $rules;
     }
 }

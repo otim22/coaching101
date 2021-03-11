@@ -100,7 +100,7 @@
                         <div class="mb-4">
                             <div class="form-group dynamic_book_objective">
                                 <label for="books_objective">What will students learn in the book?</label>
-                                <p class="mt-3">Current book objectives</p>
+                                <p class="mt-2">Current book objectives</p>
                                 @foreach($book->book_objective as $book_objective)
                                 <p>
                                     <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -115,11 +115,11 @@
                                 <div class="input-group book_objective_section">
                                     <div class="books_objective_input">
                                         <input type="text"
-                                        id="books_objective"
-                                        value="{{old('book_objective.0')}}"
-                                        class="form-control form-control mb-2 @error('book_objective.0') is-invalid @enderror"
-                                        placeholder="Example: Origin of languages"
-                                        name="book_objective[]" required>
+                                            id="books_objective"
+                                            value="{{old('book_objective.0')}}"
+                                            class="form-control form-control mb-2 @error('book_objective.0') is-invalid @enderror"
+                                            placeholder="Example: Origin of languages"
+                                            name="book_objective[]" required>
                                     </div>
                                     <div class="hidden" id="hidden_book_objective">
                                         <p class="delete_book_objective">x</p>
@@ -195,7 +195,7 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/books_objective.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/books.js')}}" type="text/javascript"></script>
 @endpush
 
 @prepend('scripts')

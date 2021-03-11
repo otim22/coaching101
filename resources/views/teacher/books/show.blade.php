@@ -69,7 +69,7 @@
                     <p>{{ $book->year->name }} {{ $book->category->name }}, {{ $book->term->name }}. </p>
 
                     <div class="mb-3">
-                        <p class="bold">Book objective </p>
+                        <p class="bold">Book objectives </p>
                         @foreach($book->book_objective as $book_objective)
                         <p>
                             <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

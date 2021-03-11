@@ -23,7 +23,6 @@ class Book extends Model implements HasMedia
     protected $fillable = ['title', 'book_objective', 'price', 'category_id', 'year_id', 'term_id', 'user_id'];
     protected $with = ['media'];
     protected $appends = ['isSubscribedTo'];
-
     protected $casts = ['book_objective' => 'array' ];
 
     /**

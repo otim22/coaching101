@@ -40,7 +40,7 @@
                             <div class="cols-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_student_learn">
                                     <label for="students_learn">What will students learn in your class?</label>
-                                    <p class="mt-3">Current class objectives</p>
+                                    <p class="mt-2">Current class objectives</p>
                                     @forelse($subject->audience->student_learn as $student_learn)
                                     <p>
                                         <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
