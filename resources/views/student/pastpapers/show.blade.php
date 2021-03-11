@@ -17,7 +17,7 @@
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('student.pastpapers.index') }}" style="text-decoration:none;">Past papers</a>
                 </li>
-                <li class="breadcrumb-item" aria-current="page">{{ $pastpaper->title }}</li>
+                <li class="breadcrumb-item" aria-current="page">{{ $pastpaper->short_title }}</li>
             </ol>
         </nav>
     </div>
