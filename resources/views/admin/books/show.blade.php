@@ -52,8 +52,20 @@
                             <img src="{{ asset($book->getFirstMediaUrl('cover_image')) }}" class="w-50 mb-3">
                         @endif
 
-                        <p>{{ $book->category->name }} {{ $book->year->name }}, {{ $book->term->name }}. </p>
-                        <p>UGX {{ number_format($book->price) }}/-</p>
+                        @if(!$book->price)
+                            <p>Free</p>
+                        @else
+                            <p>UGX {{ number_format($book->price) }}/-</p>
+                        @endif
+
+                        <p>{{ $book->year->name }} {{ $book->category->name }}, {{ $book->term->name }}. </p>
+
+                        <div class="mb-3">
+                            <h4 class="bold">Book objectives </h4>
+                            @foreach($book->book_objective as $book_objective)
+                            <p><i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i><span class="align-middle">{{ $book_objective }}</span></p>
+                            @endforeach
+                        </div>
 
                         @if(Auth::user()->role == 4)
                             @if($book->creator)

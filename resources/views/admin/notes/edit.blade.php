@@ -74,6 +74,39 @@
                                 @enderror
                             </div>
 
+                            <div class="mb-4">
+                                <div class="form-group dynamic_note_objective">
+                                    <label for="notes_objective">What will students learn in the note?</label>
+                                    <p class="mt-2">Current note objectives</p>
+                                    @foreach($note->notes_objective as $note_objective)
+                                        <p><i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i><span class="align-middle">{{ $note_objective }}</span></p>
+                                    @endforeach
+                                    <small class="form-text text-muted">
+                                        <p class="red_color"><strong>*</strong> Adding new information will override all current note objectives. Be sure you include current ones you don't want to loose.</p>
+                                    </small>
+                                    <div class="input-group note_objective_section">
+                                        <div class="notes_objective_input">
+                                            <input type="text"
+                                                id="notes_objective"
+                                                value="{{old('notes_objective.0')}}"
+                                                class="form-control form-control mb-2 @error('notes_objective.0') is-invalid @enderror"
+                                                placeholder="Example: Origin of languages"
+                                                name="notes_objective[]">
+                                        </div>
+                                        <div class="hidden" id="hidden_note_objective">
+                                            <p class="delete_note_objective">x</p>
+                                        </div>
+                                    </div>
+                                    @error('notes_objective.0')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <p class="btn_notes_objective hidden" type="button">
+                                    <span><i class="material-icons material-icons_custommd-14 align-middle">add_circle_outline</i><span class="pl-1 align-middle">Add answer</span></span>
+                                </p>
+                            </div>
+
                             <div class="form-group mb-4">
                                 <p class="bold">Current note</p>
                                 <p style="color: #3864ab; font-weight: bold;">{{ $note->getFirstMedia('note')->file_name }}</p>
@@ -87,7 +120,7 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="price" class="bold">Pastpaper price</label>
+                                <label for="price" class="bold">Notes price</label>
                                 <div class="input-group mb-2">
                                     <input type="text"
                                                 class="form-control @error('price') is-invalid @enderror"
@@ -104,7 +137,7 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary float-right">Submit</button>
+                            <button type="submit" class="btn btn-primary float-right">Update</button>
                         </form>
                     </div>
                 </div>
@@ -114,3 +147,12 @@
 </section>
 
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
+@endpush
+
+@prepend('scripts')
+    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+@endprepend

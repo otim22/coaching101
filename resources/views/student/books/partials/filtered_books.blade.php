@@ -20,11 +20,13 @@
                             @endif
                         </a>
                     @else
-                        @if($book->creator)
-                            <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                        @else
-                            <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                        @endif
+                        <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
+                            @if($book->creator)
+                                <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                            @else
+                                <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                            @endif
+                        </a>
                     @endif
                     <div class="card-body">
                         @if($book->isSubscribedTo)
@@ -37,7 +39,7 @@
                                 @endif
 
                                 @if($book->price)
-                                    UGX {{ rtrim(rtrim(number_format($book->price, 2), 2), '.') }}/- <span class="author-font">(Paid)</span>
+                                    UGX {{ $book->formatPrice }}/- <span class="author-font">(Paid)</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif
@@ -52,24 +54,26 @@
                                 @endif
 
                                 @if($book->price)
-                                    <span class="bold">UGX {{ rtrim(rtrim(number_format($book->price, 2), 2), '.') }}/-</span>
+                                    <span class="bold">UGX {{ $book->formatPrice }}/-</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif
                             </a>
                         @else
-                            <span class="bold">{{ $book->very_short_title }}</span><br />
-                            @if($book->creator)
-                                <span class="author-font">{{ $book->creator->name }}</span><br />
-                            @else
-                                <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                            @endif
+                            <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none; color: #515152;">
+                                <span class="bold">{{ $book->very_short_title }}</span><br />
+                                @if($book->creator)
+                                    <span class="author-font">{{ $book->creator->name }}</span><br />
+                                @else
+                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                                @endif
 
-                            @if($book->price)
-                                <span class="bold">UGX {{ rtrim(rtrim(number_format($book->price, 2), 2), '.') }}/-</span>
-                            @else
-                                <span class="bold paid_color">Free</span>
-                            @endif
+                                @if($book->price)
+                                    <span class="bold">UGX {{ $book->formatPrice }}/-</span>
+                                @else
+                                    <span class="bold paid_color">Free</span>
+                                @endif
+                            </a>
                         @endif
                         <div class="mt-2">
                             <livewire:buy-book :book="$book" />

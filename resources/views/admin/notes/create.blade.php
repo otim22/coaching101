@@ -73,6 +73,32 @@
                                 @enderror
                             </div>
 
+                            <div class="mb-4">
+                                <div class="form-group dynamic_note_objective">
+                                    <label for="notes_objective">What will students learn in the note?</label>
+                                    <div class="input-group note_objective_section">
+                                        <div class="notes_objective_input">
+                                            <input type="text"
+                                                id="notes_objective"
+                                                value="{{old('notes_objective.0')}}"
+                                                class="form-control form-control mb-2 @error('notes_objective.0') is-invalid @enderror"
+                                                placeholder="Example: Origin of languages"
+                                                name="notes_objective[]" required>
+                                        </div>
+                                        <div class="hidden" id="hidden_note_objective">
+                                            <p class="delete_note_objective">x</p>
+                                        </div>
+                                    </div>
+                                    @error('notes_objective.0')
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <p class="btn_notes_objective hidden" type="button">
+                                    <span><i class="material-icons material-icons_custommd-14 align-middle">add_circle_outline</i><span class="pl-1 align-middle">Add answer</span></span>
+                                </p>
+                            </div>
+
                             <div class="form-group mb-4">
                                 <label for="note" class="bold">Upload Notes</label>
                                 <input type="file" name="note" class="form-control-file @error('note') is-invalid @enderror" id="note" required>
@@ -109,3 +135,12 @@
 </section>
 
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
+@endpush
+
+@prepend('scripts')
+    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+@endprepend

@@ -73,6 +73,32 @@
                                 @enderror
                             </div>
 
+                            <div class="mb-4">
+                                <div class="form-group dynamic_book_objective">
+                                    <label for="books_objective">What will students learn in the book?</label>
+                                    <div class="input-group book_objective_section">
+                                        <div class="books_objective_input">
+                                            <input type="text"
+                                                id="books_objective"
+                                                value="{{old('book_objective.0')}}"
+                                                class="form-control form-control mb-2 @error('book_objective.0') is-invalid @enderror"
+                                                placeholder="Example: Origin of languages"
+                                                name="book_objective[]" required>
+                                        </div>
+                                        <div class="hidden" id="hidden_book_objective">
+                                            <p class="delete_book_objective">x</p>
+                                        </div>
+                                    </div>
+                                    @error('book_objective.0')
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <p class="btn_books_objective hidden" type="button">
+                                    <span><i class="material-icons material-icons_custommd-14 align-middle">add_circle_outline</i><span class="pl-1 align-middle">Add answer</span></span>
+                                </p>
+                            </div>
+
                             <div class="form-group mb-4">
                                 <label for="cover_image" class="bold">Cover image</label>
                                 <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" required>
@@ -117,3 +143,12 @@
 </section>
 
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/books.js')}}" type="text/javascript"></script>
+@endpush
+
+@prepend('scripts')
+    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+@endprepend

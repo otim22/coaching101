@@ -3189,7 +3189,7 @@ select {
 }
 
 .paid_color {
-  color: #3490dc;
+  color: #515152;
 }
 
 .dark-blue_color {
@@ -3219,6 +3219,11 @@ select {
 .author-font {
   color: #515152;
   font-size: 15px;
+}
+
+.revenue-font {
+  color: #9b9b9b;
+  font-size: 18px;
 }
 
 .title-font:hover,
@@ -4009,7 +4014,7 @@ form .btn button {
 }
 
 .section-bread {
-  margin-top: 12px;
+  margin-top: 22px;
   padding-bottom: 40px;
 }
 
@@ -4246,13 +4251,15 @@ div > .student-image {
 
 .student_learn_section,
 .class_requirement_section,
-.target_students_section {
+.target_students_section,
+.book_objective_section {
   display: flex;
 }
 
 .students_learn_input,
 .class_requirement_input,
-.target_students_input {
+.target_students_input,
+.books_objective_input {
   flex-grow: 1;
 }
 
@@ -4266,7 +4273,8 @@ div > .student-image {
 
 .delete_student_learn,
 .delete_class_requirement,
-.delete_target_students {
+.delete_target_students,
+.delete_book_objective {
   color: white;
   background-color: #e74c3c;
   text-align: center;
@@ -4446,6 +4454,38 @@ img.rounded-corners {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 20px;
   padding: 25px;
+}
+
+.book_objective_section,
+.note_objective_section {
+  display: flex;
+}
+
+.books_objective_input,
+.notes_objective_input {
+  flex-grow: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+.seen {
+  display: block;
+}
+
+.delete_book_objective,
+.delete_note_objective {
+  color: white;
+  background-color: #e74c3c;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 6px;
+  font-weight: 700;
+  border-radius: 5px;
+  height: 30px;
+  min-width: 30px;
+  cursor: pointer;
 }
 
 /*!

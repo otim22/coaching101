@@ -39,6 +39,7 @@ class TeacherNoteController extends Controller
         $note = new Note($request->except('note'));
 
         $note->title = $request->input('title');
+        $note->notes_objective = $request->input('notes_objective');
         $note->price = $request->input('price');
         $note->category_id = $request->input('category_id');
         $note->year_id = $request->input('year_id');
@@ -88,6 +89,7 @@ class TeacherNoteController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
+            'notes_objective.*'  => 'nullable|string|distinct|min:2',
             'price' => 'nullable',
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',

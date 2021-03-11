@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
     let url = location.href.replace(/\/$/, "");
 
     if (location.hash) {

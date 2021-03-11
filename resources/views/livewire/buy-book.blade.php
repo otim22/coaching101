@@ -4,14 +4,14 @@
             @if($book->creator)
                 <a href="{{ $book->getFirstMediaUrl('teacher_book') }}" id="round-button-2"
                                 name="button"
-                                class="btn btn-outline-danger btn-sm" target="_blank">
-                                Download book
+                                class="btn btn-outline-secondary btn-sm" target="_blank">
+                                View book
                 </a>
             @else
                 <a href="{{ $book->getFirstMediaUrl('book') }}" id="round-button-2"
                                 name="button"
-                                class="btn btn-outline-danger btn-sm" target="_blank">
-                                Download book
+                                class="btn btn-outline-secondary btn-sm" target="_blank">
+                                View book
                 </a>
             @endif
         @else
@@ -26,14 +26,14 @@
         @if($book->creator)
             <a href="{{ $book->getFirstMediaUrl('teacher_book') }}" id="round-button-2"
                             name="button"
-                            class="btn btn-outline-danger btn-sm" target="_blank">
-                            Download book
+                            class="btn btn-outline-secondary btn-sm" target="_blank">
+                            View book
             </a>
         @else
             <a href="{{ $book->getFirstMediaUrl('book') }}" id="round-button-2"
                             name="button"
-                            class="btn btn-outline-danger btn-sm" target="_blank">
-                            Download book
+                            class="btn btn-outline-secondary btn-sm" target="_blank">
+                            View book
             </a>
         @endif
     @endif

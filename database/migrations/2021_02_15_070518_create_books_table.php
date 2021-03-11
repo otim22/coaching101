@@ -16,6 +16,7 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->json('book_objective');
             $table->string('slug');
             $table->float('price')->nullable();
             $table->boolean('is_approved')->default(false);

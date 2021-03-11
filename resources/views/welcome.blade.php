@@ -135,14 +135,22 @@
                                                         @endif
 
                                                         @if($subject->price)
-                                                            <span class="bold">UGX {{  rtrim(rtrim(number_format($subject->price, 2), 2), '.') }}/-</span>
+                                                            @if($subject->isSubscribedTo)
+                                                                <span class="author-font">UGX {{  $subject->formatPrice }}/- (Paid)</span></span>
+                                                            @else
+                                                                <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
+                                                            @endif
                                                         @else
                                                             <span class="bold paid_color">Free</span>
                                                         @endif
                                                     </a>
                                                     <div class="mt-2 d-flex justify-content-between">
-                                                        <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
-                                                        <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                                                        @if($subject->isSubscribedTo)
+                                                            <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                                        @else
+                                                            <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
+                                                            <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -197,14 +205,22 @@
                                 @endif
 
                                 @if($subject->price)
-                                    <span class="bold">UGX {{  rtrim(rtrim(number_format($subject->price, 2), 2), '.') }}/-</span>
+                                    @if($subject->isSubscribedTo)
+                                        <span class="author-font">UGX {{  $subject->formatPrice }}/- (Paid)</span></span>
+                                    @else
+                                        <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
+                                    @endif
                                 @else
                                     <span class="bold">Free</span>
                                 @endif
                             </a>
                             <div class="mt-2 d-flex justify-content-between">
-                                <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
-                                <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                                @if($subject->isSubscribedTo)
+                                    <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                @else
+                                    <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
+                                    <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                                @endif
                             </div>
                         </div>
                     </div>

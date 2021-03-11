@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <h5 class="bold mb-3">Overview</h5>
+                <h5 class="bold mb-4">Overview</h5>
                 <ul class="nav nav-tabs" id="performanceTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="revenue-tab" data-toggle="tab" href="#revenue" role="tab" aria-controls="revenue" aria-selected="true">Revenue</a>
@@ -55,8 +55,10 @@
                                 </div>
                             </div>
                             @forelse($subjects as $subject)
-                                <h6 class="bold">{{ $subject->title }}</h6>
-                                <p>Total revenue: <span  class="author-font">UGX {{  rtrim(rtrim(number_format(($subject->price * $subject->subscriptionCount), 2), 2), '.') }}/-</span></p>
+                                <div class="mb-4">
+                                    <h6 class="bold">{{ $subject->title }}</h6>
+                                    <p>Total Revenue: <span  class="revenue-font">UGX {{ $subject->totalRevenue  }}/-</span></p>
+                                </div>
                             @empty
                                 <p>No data to display</p>
                             @endforelse
@@ -77,8 +79,10 @@
                                 </div>
                             </div>
                             @forelse($subjects as $subject)
-                            <h6 class="bold">{{ $subject->title }}</h6>
-                            <p>Enrollment : <span  class="author-font">{{ $subject->subscriptionCount }} students</span></p>
+                                <div class="mb-4">
+                                    <h6 class="bold">{{ $subject->title }}</h6>
+                                    <p>Enrollment : <span  class="revenue-font">{{ $subject->subscriptionCount }} students</span></p>
+                                </div>
                             @empty
                             <p>No data to display</p>
                             @endforelse
@@ -99,12 +103,14 @@
                                 </div>
                             </div>
                             @forelse($subjects as $subject)
-                            <h6 class="bold">{{ $subject->title }}</h6>
-                            @if($subject->averageRating())
-                                <p>Reviews: <span  class="author-font">{{ number_format($subject->averageRating(), 1, ".", "") }} stars</span></p>
-                            @else
-                                <p>Reviews: <span  class="author-font">No reviews yet!</span></p>
-                            @endif
+                                <div class="mb-4">
+                                    <h6 class="bold">{{ $subject->title }}</h6>
+                                    @if($subject->averageRating())
+                                        <p>Reviews: <span  class="revenue-font">{{ number_format($subject->averageRating(), 1, ".", "") }} stars</span></p>
+                                    @else
+                                        <p>Reviews: <span  class="revenue-font">No reviews yet!</span></p>
+                                    @endif
+                                </div>
                             @empty
                             <p>No data to display</p>
                             @endforelse

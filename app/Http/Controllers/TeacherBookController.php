@@ -39,6 +39,7 @@ class TeacherBookController extends Controller
         $book = new Book($request->except(['book', 'cover_image']));
 
         $book->title = $request->input('title');
+        $book->book_objective = $request->input('book_objective');
         $book->price = $request->input('price');
         $book->category_id = $request->input('category_id');
         $book->year_id = $request->input('year_id');
@@ -93,6 +94,7 @@ class TeacherBookController extends Controller
         $request->validate([
             'title' => 'required|string',
             'price' => 'nullable',
+            'book_objective.*'  => 'nullable|string|distinct|min:2',
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
