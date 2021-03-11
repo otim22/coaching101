@@ -36,8 +36,8 @@
                     @endif
                 </div>
             </div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-sm-12 col-md-12 col-lg-10 mt-5 d-flex justify-content-between">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-10 offset-1 mt-5 d-flex justify-content-between">
                     @if($book->creator)
                         <a id="round-button-2" class="btn btn-secondary btn-sm" href="{{ route('student.books.index') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -67,7 +67,7 @@
                     @endif
                 </div>
             </div>
-            @else
+        @else
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <h5 class="mb-4">{{ $book->title }}</h5>
@@ -89,8 +89,8 @@
                     </a>
                     <livewire:buy-book :book="$book" />
                 </div>
-            @endif
-        </div>
+            </div>
+        @endif
     </div>
 </section>
 
