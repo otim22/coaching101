@@ -71,10 +71,11 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <h5 class="bold">{{ $book->title }}</h5>
-                    <p>By {{ $book->creator->name }}</p>
                     @if($book->creator)
+                        <span class="author-font">By {{ $book->creator->name }}</span><br />
                         <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" class="rounded-corners" width="100%" height="auto">
                     @else
+                        <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                         <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="auto">
                     @endif
                 </div>

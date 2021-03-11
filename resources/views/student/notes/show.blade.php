@@ -69,7 +69,11 @@
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-10 offset-1">
                     <h5 class="bold">{{ $note->title }}</h5>
-                    <p>By {{ $note->creator->name }}</p>
+                    @if($note->creator)
+                        <span class="author-font">By {{ $note->creator->name }}</span><br />
+                    @else
+                        <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                    @endif
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-10 offset-1 mt-4">
                     <div class="d-flex justify-content-between">
