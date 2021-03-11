@@ -25,69 +25,70 @@
 
 <section>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                @if($pastpaper->creator)
-                    <embed src="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
-                @else
-                    <embed src="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" type="application/pdf" width="1000" height="800" frameborder="0" allowfullscreen>
-                @endif
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                @if($pastpaper->creator)
-                    <a href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" id="round-button-2"
-                                    name="button"
-                                    class="btn btn-secondary btn-sm mt-5" target="_blank">
-                                    Download pastpapers
-                    </a>
-                @else
-                    <a href="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" id="round-button-2"
-                                    name="button"
-                                    class="btn btn-secondary btn-sm mt-5" target="_blank">
-                                    Download pastpapers
-                    </a>
-                @endif
-            </div>
-        </div>
-    </div>
-</section>
+        @if($pastpaper->isSubscribedTo)
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-10 offset-1">
+                    <h5 class="bold">{{ $pastpaper->title }}</h5>
+                    <p>By {{ $pastpaper->creator->name }}</p>
+                    @if($pastpaper->creator)
+                        <embed src="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
+                    @else
+                        <embed src="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
+                    @endif
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-10 offset-1 mt-5 d-flex justify-content-between">
+                    @if($pastpaper->creator)
+                        <a id="round-button-2" class="btn btn-secondary btn-sm" href="{{ route('student.notes.index') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                            Back
+                        </a>
 
-<section class="bg-white">
-    @include('partials.categories')
-</section>
-
-<section class="seven">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 col-md-9 col-sm-12">
-                <div class="d-flex">
-                    <div class="mr-4">
-                        <svg class="bi bi-collection-play" width="4em" height="4em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M14.5 13.5h-13A.5.5 0 011 13V6a.5.5 0 01.5-.5h13a.5.5 0 01.5.5v7a.5.5 0 01-.5.5zm-13 1A1.5 1.5 0 010 13V6a1.5 1.5 0 011.5-1.5h13A1.5 1.5 0 0116 6v7a1.5 1.5 0 01-1.5 1.5h-13zM2 3a.5.5 0 00.5.5h11a.5.5 0 000-1h-11A.5.5 0 002 3zm2-2a.5.5 0 00.5.5h7a.5.5 0 000-1h-7A.5.5 0 004 1z" clip-rule="evenodd"/>
-                            <path fill-rule="evenodd" d="M6.258 6.563a.5.5 0 01.507.013l4 2.5a.5.5 0 010 .848l-4 2.5A.5.5 0 016 12V7a.5.5 0 01.258-.437z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h4 class="bold">Teach students online</h4>
-                        <p>Top teachers from best schools teaching millions of students on Coaching101.</p>
+                        <a href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" id="round-button-2"
+                                        name="button"
+                                        class="btn btn-primary btn-sm" target="_blank">
+                                        Download pastpapers
+                        </a>
+                    @else
+                        <a id="round-button-2" class="btn btn-secondary btn-sm" href="{{ route('student.notes.index') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                            Back
+                        </a>
+                        <a href="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" id="round-button-2"
+                                        name="button"
+                                        class="btn btn-secondary btn-sm mt-5" target="_blank">
+                                        Download pastpapers
+                        </a>
+                    @endif
+                </div>
+            </div>
+        @else
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-10 offset-1">
+                    <h5 class="bold">{{ $pastpaper->title }}</h5>
+                    <p>By {{ $pastpaper->creator->name }}</p>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-10 offset-1 mt-4">
+                    <div class="d-flex justify-content-between">
+                        <a id="round-button-2" type="button" class="btn btn-secondary btn-sm" href="{{ route('student.pastpapers.index') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                            Back
+                        </a>
+                        <livewire:buy-pastpaper :pastpaper="$pastpaper" />
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-12">
-                @guest
-                    <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">Start teaching</a>
-                @endguest
-
-                @if(auth()->user()->role == 1)
-                    <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-primary" name="button">Start teaching</a>
-                @endif
-
-                @if(auth()->user()->role == 2)
-                    <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">My Subjects</a>
-                @endif
-            </div>
-        </div>
+        @endif
     </div>
+</section>
+
+<section class="bg-gray-2">
+    @include('partials.categories')
 </section>
 
 @endsection

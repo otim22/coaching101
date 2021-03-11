@@ -35,18 +35,20 @@
                                 @endif
                             </a>
                         @else
-                            <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
-                            @if($pastpaper->creator)
-                                <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
-                            @else
-                                <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                            @endif
+                            <a href="{{ route('student.pastpapers.show', $pastpaper) }}" style="text-decoration: none" class="title-font">
+                                <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
+                                @if($pastpaper->creator)
+                                    <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
+                                @else
+                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                                @endif
 
-                            @if($pastpaper->price)
-                                <span class="bold">UGX {{ $pastpaper->formatPrice }}/-</span>
-                            @else
-                                <span class="bold paid_color">Free</span>
-                            @endif
+                                @if($pastpaper->price)
+                                    <span class="bold">UGX {{ $pastpaper->formatPrice }}/-</span>
+                                @else
+                                    <span class="bold paid_color">Free</span>
+                                @endif
+                            </a>
                         @endif
                         <div class="mt-2">
                             <livewire:buy-pastpaper :pastpaper="$pastpaper" />

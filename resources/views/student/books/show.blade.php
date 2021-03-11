@@ -70,17 +70,15 @@
         @else
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-12 col-md-12 col-lg-8">
-                    <h5 class="mb-4">{{ $book->title }}</h5>
+                    <h5 class="bold">{{ $book->title }}</h5>
+                    <p>By {{ $book->creator->name }}</p>
                     @if($book->creator)
                         <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" class="rounded-corners" width="100%" height="auto">
                     @else
                         <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="auto">
                     @endif
-                    <div class="mt-3">
-                        <p class="author-font">By {{ $book->creator->name }}</p>
-                    </div>
                 </div>
-                <div class="col-sm-12 col-md-12 col-lg-8 mt-3 d-flex justify-content-between">
+                <div class="col-sm-12 col-md-12 col-lg-8 mt-4 d-flex justify-content-between">
                     <a id="round-button-2" type="button" class="btn btn-secondary btn-sm" href="{{ route('student.books.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>

@@ -71,7 +71,7 @@
                     <h5 class="bold">{{ $note->title }}</h5>
                     <p>By {{ $note->creator->name }}</p>
                 </div>
-                <div class="col-sm-12 col-md-12 col-lg-10 offset-1 mt-5">
+                <div class="col-sm-12 col-md-12 col-lg-10 offset-1 mt-4">
                     <div class="d-flex justify-content-between">
                         <a id="round-button-2" type="button" class="btn btn-secondary btn-sm" href="{{ route('student.notes.index') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
