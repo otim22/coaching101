@@ -60,10 +60,11 @@
 
                     <h5 class="bold mt-2 mb-3">{{ $book->title }}</h5>
                     <img src="{{ asset($book->getFirstMediaUrl('teacher_cover_image')) }}" class="rounded-corners w-100 mb-3">
+
                     @if(!$book->price)
-                    <p>Free</p>
+                        <p>Free</p>
                     @else
-                    <p>UGX {{ number_format($book->price) }}/-</p>
+                        <p>UGX {{ number_format($book->price) }}/-</p>
                     @endif
 
                     <p>{{ $book->year->name }} {{ $book->category->name }}, {{ $book->term->name }}. </p>
