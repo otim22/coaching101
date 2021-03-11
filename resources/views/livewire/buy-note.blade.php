@@ -4,13 +4,13 @@
             @if($note->creator)
                 <a href="{{ $note->getFirstMediaUrl('teacher_note') }}" id="round-button-2"
                                 name="button"
-                                class="btn btn-outline-danger btn-sm" target="_blank">
+                                class="btn btn-outline-secondary btn-sm" target="_blank">
                                 Download notes
                 </a>
             @else
                 <a href="{{ $note->getFirstMediaUrl('note') }}" id="round-button-2"
                                 name="button"
-                                class="btn btn-outline-danger btn-sm" target="_blank">
+                                class="btn btn-outline-secondary btn-sm" target="_blank">
                                 Download notes
                 </a>
             @endif
@@ -26,13 +26,13 @@
         @if($note->creator)
             <a href="{{ $note->getFirstMediaUrl('teacher_note') }}" id="round-button-2"
                             name="button"
-                            class="btn btn-outline-danger btn-sm" target="_blank">
+                            class="btn btn-outline-secondary btn-sm" target="_blank">
                             Download notes
             </a>
         @else
             <a href="{{ $note->getFirstMediaUrl('note') }}" id="round-button-2"
                             name="button"
-                            class="btn btn-outline-danger btn-sm" target="_blank">
+                            class="btn btn-outline-secondary btn-sm" target="_blank">
                             Download notes
             </a>
         @endif

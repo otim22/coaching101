@@ -10,7 +10,7 @@
             @else
                 <a href="{{ $book->getFirstMediaUrl('book') }}" id="round-button-2"
                                 name="button"
-                                class="btn btn-outline-danger btn-sm" target="_blank">
+                                class="btn btn-outline-secondary btn-sm" target="_blank">
                                 Download book
                 </a>
             @endif
@@ -26,13 +26,13 @@
         @if($book->creator)
             <a href="{{ $book->getFirstMediaUrl('teacher_book') }}" id="round-button-2"
                             name="button"
-                            class="btn btn-outline-danger btn-sm" target="_blank">
+                            class="btn btn-outline-secondary btn-sm" target="_blank">
                             Download book
             </a>
         @else
             <a href="{{ $book->getFirstMediaUrl('book') }}" id="round-button-2"
                             name="button"
-                            class="btn btn-outline-danger btn-sm" target="_blank">
+                            class="btn btn-outline-secondary btn-sm" target="_blank">
                             Download book
             </a>
         @endif
