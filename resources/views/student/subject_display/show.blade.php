@@ -21,37 +21,46 @@
                 </div>
                 <div class="mt-5">
                     <nav>
-                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <a class="nav-link active bold" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-controls="nav-description" aria-selected="true">Description</a>
-                        <a class="nav-link bold" id="nav-resource-tab" data-toggle="tab" href="#nav-resource" role="tab" aria-controls="nav-resource" aria-selected="false">Extra resources</a>
-                        <a class="nav-link bold" id="nav-rate-tab" data-toggle="tab" href="#nav-rate" role="tab" aria-controls="nav-rate" aria-selected="false">Rate teacher</a>
-                      </div>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-link active bold" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+                            <a class="nav-link bold" id="resource-tab" data-toggle="tab" href="#resource" role="tab" aria-controls="resource" aria-selected="false">Extra resources</a>
+                            <a class="nav-link bold" id="questions-tab" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">Q&A</a>
+                            <a class="nav-link bold" id="rate-tab" data-toggle="tab" href="#rate" role="tab" aria-controls="rate" aria-selected="false">Rate teacher</a>
+                        </div>
                     </nav>
 
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+                        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                             <div class="mt-4">
+                                <h5 class="bold">Topic brief description</h5>
                                 <p>{{ $topic->description }}</p>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="nav-resource" role="tabpanel" aria-labelledby="nav-resource-tab">
+                        <div class="tab-pane fade" id="resource" role="tabpanel" aria-labelledby="resource-tab">
                             <div class="mt-4">
+                                <h5 class="bold">Useful resources to help you</h5>
                                 <ul>
                                     @forelse($topic->getMedia('resource_attachment') as $topicMedia)
-                                    <li class="mb-3">
-                                        <a target="_blank" href="{{ $topicMedia->getUrl() }}" style="text-decoration: none">
-                                            <p><i class="fa subject-icon fa-file "></i> {{ $topicMedia->name }}</p>
-                                        </a>
-                                    </li>
+                                        <li>
+                                            <a target="_blank" href="{{ $topicMedia->getUrl() }}" style="text-decoration: none; color: #515152;">
+                                                <p><i class="fa subject-icon fa-file "></i> {{ $topicMedia->name }}</p>
+                                            </a>
+                                        </li>
                                     @empty
-                                    <p>No available attachments.</p>
+                                        <p>No available attachments.</p>
                                     @endforelse
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="nav-rate" role="tabpanel" aria-labelledby="nav-rate-tab">
+                        <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="questions-tab">
+                            <div class="mt-4">
+                                @include('student.questions.index')
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="rate" role="tabpanel" aria-labelledby="rate-tab">
                             <div class="mt-4">
                                 <livewire:rate-teacher :subject="$subject" :key="$subject->id" />
                             </div>
@@ -131,3 +140,8 @@
 @endpush
 
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/student_subject_display.js')}}" type="text/javascript"></script>
+@endpush

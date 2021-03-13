@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\WithPagination;
-use App\Models\Rating;
 use App\Models\User;
+use App\Models\Rating;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 
 class RateTeacher extends Component

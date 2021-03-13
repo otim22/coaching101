@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LibraryController;
-use App\Http\Controllers\MySubjectsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\HomeController;
@@ -78,7 +77,13 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/get-more-subjects', [HomeController::class, 'getMoreSubjects'])->name('get-more-subjects');
-Route::get('/home/my-subjects', [MySubjectsController::class, 'index'])->name('my-subjects');
+Route::get('/home/my-subjects', [HomeController::class, 'mySubjects'])->name('my-subjects');
+
+Route::get('/questions', 'QuestionController@index')->name('questions');
+Route::post('/question', 'QuestionController@store')->name('question.store');
+
+Route::get('/comments', 'CommentController@index')->name('comments');
+Route::post('/comment', 'CommentController@store')->name('comment.store');
 
 Auth::routes(['verify' => true]);
 

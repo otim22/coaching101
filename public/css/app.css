@@ -3373,12 +3373,27 @@ select {
   overflow: hidden;
 }
 
+.question-search input[type=text] {
+  width: 100%;
+  min-width: 150px;
+  display: block;
+  padding-left: 20px;
+  border-radius: 19px;
+  overflow: hidden;
+}
+
 #top-search-button {
   border-top-right-radius: 19px;
   border-bottom-right-radius: 19px;
 }
 
-.top-search-svg svg {
+#question-search-button {
+  border-top-right-radius: 19px;
+  border-bottom-right-radius: 19px;
+}
+
+.top-search-svg svg,
+.question-search-svg svg {
   width: 25px;
   height: 25px;
 }
@@ -3461,6 +3476,49 @@ select {
 
 @media only screen and (max-width: 575px) {
   .top-search input[type=text] {
+    width: 270px;
+  }
+}
+
+.question-search input[type=text] {
+  width: 100%;
+  min-width: 150px;
+  display: block;
+  padding-left: 20px;
+  border-radius: 19px;
+  overflow: hidden;
+}
+
+#question-search-button {
+  border-top-right-radius: 19px;
+  border-bottom-right-radius: 19px;
+}
+
+.question-search-svg svg {
+  width: 25px;
+  height: 25px;
+}
+
+@media only screen and (min-width: 1300px) {
+  .question-search input[type=text] {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .question-search input[type=text] {
+    width: 450px;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .question-search input[type=text] {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .question-search input[type=text] {
     width: 270px;
   }
 }
@@ -3567,7 +3625,8 @@ select {
   white-space: nowrap;
 }
 
-#round-button-2 {
+#round-button-2,
+#ask {
   border-radius: 30px;
   padding-left: 20px;
   padding-right: 20px;

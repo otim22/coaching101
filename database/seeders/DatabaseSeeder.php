@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             BookTableSeeder::class,
             NoteTableSeeder::class,
             PastpaperTableSeeder::class,
+            QuestionTableSeeder::class,
         ]);
     }
 }
