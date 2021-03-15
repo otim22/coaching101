@@ -9,7 +9,18 @@
             </div>
 
             <div class="description">
-                <h5>  {{ $subject->short_title }}</h5>
+                <div class="d-flex justify-content-between">
+                    <div class="mr-4">
+                        <h5>  {{ $subject->short_title }}</h5>
+                    </div>
+                    <div>
+                        @if($subject->is_approved)
+                            <span class="badge badge-success">Approved</span>
+                        @else
+                            <span class="badge badge-warning">Pending</span>
+                        @endif
+                    </div>
+                </div>
                 <div>
                     <a href="{{ route('subjects.show', $subject) }}" style="text-decoration: none">
                         Edit / Manage your subject

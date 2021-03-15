@@ -67,7 +67,7 @@ Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
 Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
-Route::get('/subjects/{subject?}/topics/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show');
+Route::get('/subjects/{subject?}/topics/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show')->middleware('auth');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
 Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('teachers.index');
@@ -84,6 +84,7 @@ Route::post('/question', 'QuestionController@store')->name('question.store');
 
 Route::get('/comments', 'CommentController@index')->name('comments');
 Route::post('/comment', 'CommentController@store')->name('comment.store');
+Route::post('/reply', 'CommentController@reply')->name('reply.store');
 
 Auth::routes(['verify' => true]);
 

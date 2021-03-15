@@ -11,6 +11,7 @@ use App\Models\Menu;
 use App\Models\Profile;
 use App\Models\Subject;
 use App\Models\Question;
+use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -78,6 +79,12 @@ class ComposerServiceProvider extends ServiceProvider
             $questions = Question::get();
 
             $view->withQuestions($questions);
+        });
+
+        View::composer(['student.*'], function ($view) {
+            $comments = Comment::get();
+
+            $view->withComments($comments);
         });
     }
 }

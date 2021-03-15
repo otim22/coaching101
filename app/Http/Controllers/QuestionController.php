@@ -14,7 +14,6 @@ class QuestionController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $request->validate(['body' => 'required|string|min:4|max:200']);
 
         $question =  new Question;
