@@ -107,6 +107,23 @@
     font-size: 15px;
 }
 
+.circle_comment-tr {
+    display: inline-table;
+    vertical-align: middle;
+    width: 28px;
+    height: 28px;
+    background-color: $blue-2;
+    color: $color-white;
+    border-radius: 50%;
+}
+
+.circle_comment-tr__content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 15px;
+}
+
 @include xl-screens {
     #cartId1 {
         display: none;

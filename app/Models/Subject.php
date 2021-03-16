@@ -118,6 +118,11 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->hasMany('App\Models\Subject');
     }
 
+    public function questions()
+    {
+        return $this->hasMany('App\Models\Question');
+    }
+
     public function subscribe($userId = null)
     {
         $this->subscription()->create([

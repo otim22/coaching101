@@ -155,27 +155,35 @@
                     <h5 class="bold">Congragulation message</h5>
                     <p class="mb-5"> {{ $subject->message['congragulation_message'] }} </p>
                 @endif
+                <hr />
+                <h5 class="bold mb-3 mt-2">Subject Asked Questions</h5>
+                @foreach($subject->questions as $question)
+                    <p type="button" data-toggle="modal" data-target="#askingAQuestion{{ $question->id }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check" viewBox="0 0 18 18">
+                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                        </svg>
+                        {{ $question->body }}
+                    </p>
 
-                <h5 class="bold mb-3">Subject topics</h5>
-                @if($subject->topics)
-                    @forelse($subject->topics as $key => $topic)
-                        <a href="{{ route('topics.show', [$subject, $topic]) }}" style="text-decoration: none">
-                            <div class="content-card mb-4" style="max-height: 120px;">
-                                <div>
-                                    <video controls preload="auto"  height="119" width="212" data-setup="{}" controlslist="nodownload">
-                                        <source src="{{ asset($topic->getFirstMediaUrl('content_file')) }}" type='video/mp4'>
-                                    </video>
+                    <div class="modal fade" id="askingAQuestion{{ $question->id }}" tabindex="-1" aria-labelledby="askingAQuestionLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <p class="bold">{{ $question->body }}</p>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <div class="description">
-                                    <p>{{ $key+1 }} - {{ $topic->short_title }}</p>
-                                    <p>View details</p>
+                                <div class="modal-body">
+                                    @include('teacher.manage_subject.partials.replies')
+
+                                    @include('teacher.manage_subject.partials.comment')
                                 </div>
                             </div>
-                        </a>
-                    @empty
-                        <p>No available topics yet.</p>
-                    @endforelse
-                @endif
+                        </div>
+                    </div>
+                @endforeach
+
             </div>
         </div>
     </div>
