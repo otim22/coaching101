@@ -48,7 +48,7 @@
                                             </a>
                                         </li>
                                     @empty
-                                        <p>No available attachments.</p>
+                                        <p>No extra resource.</p>
                                     @endforelse
                                 </ul>
                             </div>
@@ -76,7 +76,7 @@
                             <h5 class="bold">Subject content</h5>
                         </div>
                         <div class="card">
-                            @forelse($subject->topics as $key => $topic)
+                            @foreach($subject->topics as $key => $topic)
                             <div class="card-header" id="{{ $topic->id }}">
                                 <button  id="id{{ $topic->id }}" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
                                     <div class="d-flex justify-content-between">
@@ -96,32 +96,24 @@
 
                             <div id="collapse{{ $topic->id }}" class="collapse {{ $topic->id === 1 ? 'show' : '' }}" aria-labelledby="{{ $topic->id }}" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    @forelse($topic->getMedia('content_file') as $topicMedia)
+                                    @foreach($topic->getMedia('content_file') as $topicMedia)
                                         <p class="remove_bottom_margin mb-3">
                                             <a href="{{ route('student.show', [$subject, $topic]) }}" style="text-decoration: none">
                                                 <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
                                             </a>
                                         </p>
-                                    @empty
-                                        <p>No available attachments.</p>
-                                    @endforelse
+                                    @endforeach
 
-                                    @forelse($topic->getMedia('resource_attachment') as $topicMedia)
+                                    @foreach($topic->getMedia('resource_attachment') as $topicMedia)
                                         <p class="remove_bottom_margin mb-3">
                                             <a target="_blank" href="{{ $topicMedia->getUrl() }}" style="text-decoration: none">
                                                 <i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}
                                             </a>
                                         </p>
-                                    @empty
-                                        <p>No available attachments.</p>
-                                    @endforelse
+                                    @endforeach
                               </div>
                             </div>
-                            @empty
-                            <div class="p-3">
-                                <p>No topics available yet!</p>
-                            </div>
-                            @endforelse
+                            @endforeach
                         </div>
                     </div>
                 </aside>

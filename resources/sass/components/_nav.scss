@@ -79,7 +79,6 @@
     vertical-align: middle;
     width: 36px;
     height: 36px;
-
     background-color: $color-gray-4;
     color: $color-white;
     border-radius: 50%;
@@ -89,6 +88,23 @@
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+}
+
+.circle_comment {
+    display: inline-table;
+    vertical-align: middle;
+    width: 28px;
+    height: 28px;
+    background-color: $color-gray-2;
+    color: $color-white;
+    border-radius: 50%;
+}
+
+.circle_comment__content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 15px;
 }
 
 @include xl-screens {

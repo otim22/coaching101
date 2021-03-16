@@ -3346,6 +3346,23 @@ select {
   text-align: center;
 }
 
+.circle_comment {
+  display: inline-table;
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+  background-color: #cdcfd1;
+  color: #ffffff;
+  border-radius: 50%;
+}
+
+.circle_comment__content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 15px;
+}
+
 @media only screen and (max-width: 1300px) {
   #cartId1 {
     display: none;

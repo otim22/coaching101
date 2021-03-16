@@ -15,11 +15,13 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
+        $request->validate(['body' => 'required|string|min:3']);
+
         $comment = new Comment;
-       $comment->body = $request->get('body');
+       $comment->body = $request->input('body');
        $comment->user()->associate($request->user());
-       $question = Question::find($request->get('question_id'));
+
+       $question = Question::find($request->input('question_id'));
        $question->comments()->save($comment);
 
         return redirect()->back();
@@ -27,16 +29,16 @@ class CommentController extends Controller
 
     public function reply(Request $request)
     {
-        dd($request);
-        $reply = new Comment();
-        $reply->body = $request->get('body');
-        $reply->user()->associate($request->user());
-        $reply->parent_id = $request->get('comment_id');
-        $post = Question::find($request->get('question_id'));
+        $request->validate(['body' => 'required|string|min:3']);
 
-        $post->comments()->save($reply);
+        $reply = new Comment();
+        $reply->body = $request->input('body');
+        $reply->user()->associate($request->user());
+        $reply->parent_id = $request->input('comment_id');
+
+        $question = Question::find($request->input('question_id'));
+        $question->comments()->save($reply);
 
         return redirect()->back();
-
     }
 }
