@@ -1,15 +1,28 @@
 @forelse($question->comments->whereNull('parent_id') as $comment)
     <div class="pb-2">
-        <div class="circle_comment">
-            <span class="circle_comment__content">{{ Helper::generate_initials(App\Models\User::where('id', $comment->user_id)->firstOrFail()->name) }}</span>
-        </div>
+        @if($comment->user->role == 1)
+            <div class="circle_comment">
+                <span class="circle_comment__content">{{ Helper::generate_initials($comment->user->name) }}</span>
+            </div>
+        @else
+            <div class="circle_comment-tr">
+                <span class="circle_comment-tr__content">{{ Helper::generate_initials($comment->user->name) }}</span>
+            </div>
+        @endif
+
         {{ $comment->body }}
     </div>
     @foreach($comment->replies as $reply)
         <div class="pb-2">
-            <div class="circle_comment">
-                <span class="circle_comment__content">{{ Helper::generate_initials(App\Models\User::where('id', $reply->user_id)->firstOrFail()->name) }}</span>
-            </div>
+            @if($reply->user->role == 1)
+                <div class="circle_comment">
+                    <span class="circle_comment__content">{{ Helper::generate_initials($reply->user->name) }}</span>
+                </div>
+            @else
+                <div class="circle_comment-tr">
+                    <span class="circle_comment-tr__content">{{ Helper::generate_initials($reply->user->name) }}</span>
+                </div>
+            @endif
             {{ $reply->body }}
         </div>
     @endforeach

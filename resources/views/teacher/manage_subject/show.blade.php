@@ -92,20 +92,20 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
-                <h5 class="bold mb-4">{{ $subject->title }}</h5>
+                <h5 class="bold mb-3">{{ $subject->title }}</h5>
                 <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="rounded-corners w-100" alt="{{ $subject->title }}">
 
                 <div class="mt-3 mb-4">
                     <p> {{ $subject->subtitle }} </p>
                 </div>
 
-                <div class="mb-5">
+                <div class="mb-4">
                     <h5 class="bold">Subject description</h5>
                     <p> {{ $subject->description }} </p>
                 </div>
 
                 @if($subject->audience)
-                    <ul class="mb-5">
+                    <ul class="mb-4">
                         <h5 class="bold">What students will learn</h5>
                         @forelse($subject->audience['student_learn'] as $student_learn)
                             <li class="mb-2">
@@ -119,7 +119,7 @@
                         @endforelse
                     </ul>
 
-                    <ul class="mb-5">
+                    <ul class="mb-4">
                         <h5 class="bold">The subject requirements for students</h5>
                         @forelse($subject->audience['class_requirement'] as $class_requirement)
                             <li class="mb-2">
@@ -133,7 +133,7 @@
                         @endforelse
                     </ul>
 
-                    <ul class="mb-5">
+                    <ul class="mb-4">
                         <h5 class="bold">Your target students</h5>
                             @forelse($subject->audience['target_student'] as $target_student)
                                 <li class="mb-2">
@@ -150,7 +150,7 @@
 
                 @if($subject->message)
                     <h5 class="bold">Welcome message</h5>
-                    <p class="mb-5"> {{ $subject->message['welcome_message'] }} </p>
+                    <p class="mb-4"> {{ $subject->message['welcome_message'] }} </p>
 
                     <h5 class="bold">Congragulation message</h5>
                     <p class="mb-5"> {{ $subject->message['congragulation_message'] }} </p>
