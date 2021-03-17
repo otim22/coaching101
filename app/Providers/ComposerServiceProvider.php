@@ -45,7 +45,7 @@ class ComposerServiceProvider extends ServiceProvider
             $view->withCategories($categories);
         });
 
-        View::composer(['welcome', 'home', 'teacher.*', 'student.*'], function ($view) {
+        View::composer(['welcome', 'home', 'teacher.*', 'student.*', 'user.*'], function ($view) {
             $topCategories = Category::get()->take(18);
 
             $view->withTopCategories($topCategories);

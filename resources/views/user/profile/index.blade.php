@@ -301,6 +301,10 @@
     </div>
 </section>
 
+<section class="bg-gray-2">
+    @include('partials.categories')
+</section>
+
 @endsection
 
 @push('scripts')
