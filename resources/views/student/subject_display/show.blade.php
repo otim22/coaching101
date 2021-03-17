@@ -56,7 +56,7 @@
 
                         <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="questions-tab">
                             <div class="mt-4">
-                                @include('student.questions.index')
+                                @include('student.asked_questions.index')
                             </div>
                         </div>
 

@@ -17,6 +17,10 @@
     height: 25px;
 }
 
+.qtn:hover {
+    color: $blue;
+}
+
 @include xxl-screens {
     .question-search input[type="text"] {
         width: 500px;

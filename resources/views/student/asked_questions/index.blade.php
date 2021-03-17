@@ -1,6 +1,9 @@
 <div>
     <div id="displayed-questions" class="mb-3">
-        <h5 class="bold mb-4">All questions in this course ({{ count($questions->where('subject_id', $subject->id)) }})</h5>
+        @if(count($questions->where('subject_id', $subject->id)))
+            <h5 class="bold mb-4">All questions in this course ({{ count($questions->where('subject_id', $subject->id)) }})</h5>
+        @endif
+
         @foreach($questions as $question)
             @if($question->subject_id == $subject->id)
                 @if(count($questions->where('subject_id', $subject->id)) >= 6)
@@ -19,7 +22,7 @@
                     </form>
                 @endif
 
-                <p type="button" data-toggle="modal" data-target="#singleQuestion{{ $question->id }}">
+                <p type="button" data-toggle="modal" data-target="#singleQuestion{{ $question->id }}" class="qtn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check" viewBox="0 0 18 18">
                         <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
                     </svg>
@@ -36,9 +39,9 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    @include('student.questions.partials.replies')
+                                    @include('student.asked_questions.partials.replies')
 
-                                    @include('student.questions.partials.comment')
+                                    @include('student.asked_questions.partials.comment')
                                 </div>
                             </div>
                     </div>
@@ -51,7 +54,7 @@
     <div class="modal fade" id="askingAQuestion" tabindex="-1" aria-labelledby="askingAQuestionLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                @include('student.questions.partials.question')
+                @include('student.asked_questions.partials.question')
             </div>
         </div>
     </div>

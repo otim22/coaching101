@@ -25,7 +25,7 @@
 
             <form action="{{ route('search') }}" method="GET" class="form-inline top-search">
                 <div class="input-group space-bottom">
-                    <input type="text" name="query" class="form-control" placeholder="Search for subject...">
+                    <input type="text" name="query" class="form-control" placeholder="Search for video subjects...">
                     <div class="input-group-append">
                         <button class="btn btn-secondary" type="submit" id="top-search-button">
                             <svg class="bi bi-search top-search-svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
