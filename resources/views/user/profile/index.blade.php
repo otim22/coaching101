@@ -96,9 +96,9 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="age" class="bold">Age</label>
-                                                    <input type="integer" name="age" class="form-control @error('profile') is-invalid @enderror" value="{{ $user->profile->age }}">
-                                                    @error('age')
+                                                    <label for="dob" class="bold">Date of Birth (DOB)</label>
+                                                    <input type="text" name="dob" class="form-control @error('profile') is-invalid @enderror" value="{{ $user->profile->dob }}">
+                                                    @error('dob')
                                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                     @enderror
                                                 </div>
@@ -184,7 +184,7 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="school" class="bold">Your school </label>
-                                                <input type="text" name="school" class="form-control @error('school') is-invalid @enderror" required>
+                                                <input type="text" name="school" class="form-control @error('school') is-invalid @enderror" value="{{ old('school') }}" required>
                                                 @error('profile')
                                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                 @enderror
@@ -196,7 +196,7 @@
                                                     <select class="custom-select" name="year_id" required>
                                                         <option selected>All classes</option>
                                                         @foreach($years as $year)
-                                                            <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                                            <option value="{{ $year->id }}" {{ old('year_id', $year->id) == $year->id ? 'selected' : '' }}>{{ $year->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -207,16 +207,16 @@
 
                                             <div class="form-group">
                                                 <label for="phone" class="bold">Telephone number</label>
-                                                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror">
+                                                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Example: 0706100000" value="{{ old('phone') }}">
                                                 @error('phone')
                                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                 @enderror
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="age" class="bold">Age</label>
-                                                <input type="integer" name="age" class="form-control @error('age') is-invalid @enderror" required>
-                                                @error('age')
+                                                <label for="dob" class="bold">Date of Birth (DOB)</label>
+                                                <input type="date" name="dob" max="3000-12-31" min="1000-01-01" class="form-control" value="{{ old('dob') }}">
+                                                @error('dob')
                                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -244,7 +244,7 @@
                                                     <select class="custom-select" name="category_id" required>
                                                         <option selected>All subjects</option>
                                                         @foreach($categories as $category)
-                                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                            <option value="{{ $category->id }}" {{ old('category_id', $category->id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -255,7 +255,7 @@
 
                                             <div class="form-group">
                                                 <label for="school" class="bold">School you teach at <small> (Optional)</small></label>
-                                                <input type="text" name="school" class="form-control @error('school') is-invalid @enderror">
+                                                <input type="text" name="school" class="form-control @error('school') is-invalid @enderror" value="{{ old('school') }}">
                                                 @error('profile')
                                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                 @enderror
@@ -263,7 +263,7 @@
 
                                             <div class="form-group">
                                                 <label for="phone" class="bold">Telephone number<small>(Optional)</small></label>
-                                                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror">
+                                                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}">
                                                 @error('phone')
                                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                 @enderror
@@ -271,7 +271,7 @@
 
                                             <div class="form-group">
                                                 <label for="bio" class="bold">Your brief biography <small>(< 25 words)</small></label>
-                                                <textarea type="text" name="bio" class="form-control @error('bio') is-invalid @enderror" rows="3" required></textarea>
+                                                <textarea type="text" name="bio" class="form-control @error('bio') is-invalid @enderror" rows="3" required>{{ old('bio') }}</textarea>
                                                 @error('bio')
                                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                                 @enderror

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Traits\PresentsMedia;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
@@ -15,7 +16,7 @@ class Profile extends Model implements HasMedia
 {
     use HasFactory, PresentsMedia, InteractsWithMedia;
 
-    protected $fillable = ['category_id', 'year_id', 'age', 'school', 'phone', 'bio'];
+    protected $fillable = ['category_id', 'year_id', 'dob', 'school', 'phone', 'bio'];
     protected $with = ['media'];
     protected $appends = ['hasProfileUpdated'];
 
@@ -36,6 +37,16 @@ class Profile extends Model implements HasMedia
     public function getHasProfileUpdatedAttribute()
     {
         return $this->user()->where('id', Auth::id())->exists();
+    }
+
+    public function setDobAttribute($value)
+    {
+        $this->attributes['dob'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
+    public function getDobAttribute()
+    {
+        return  Carbon::createFromFormat('Y-m-d', $this->attributes['dob'])->format('m/d/Y');
     }
 
     public function user()
