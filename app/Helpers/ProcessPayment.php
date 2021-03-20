@@ -18,13 +18,8 @@ class ProcessPayment
 
     public function cardPayment() {
         $postData = $this->encrypt3Des(json_encode($this->data), $this->key);
-        $response = Http::withToken(config('app.rave_key'))->post(
+        return Http::withToken(config('app.rave_key'))->post(
             $this->url . '?type=card', [ 'client' => $postData ] );
-
-        if ($response->successful()) {
-            return $response->body();
-        }
-        return [];
     }
 
     protected function encrypt3Des($data, $key){

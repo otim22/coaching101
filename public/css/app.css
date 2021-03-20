@@ -4438,8 +4438,11 @@ img.rounded-corners {
   text-align: center;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+.card-js .icon {
+  position: absolute !important;
+  top: 18px !important;
+}
+
 .resource-filter_input .custom-select {
   border-radius: 30px !important;
 }
@@ -4448,16 +4451,6 @@ img.rounded-corners {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 20px;
   padding: 25px;
-=======
-.card-js .icon {
-  position: absolute !important;
-  top: 18px !important;
->>>>>>> Added payment integration for cards
-=======
-.card-js .icon {
-  position: absolute !important;
-  top: 18px !important;
->>>>>>> 547d9cc05f009f1cb51fadeefaa5a22677fdfcbe
 }
 
 /*!

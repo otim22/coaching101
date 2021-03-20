@@ -8,7 +8,7 @@ services:
       - .:/usr/src/app/
     env_file: .env
     working_dir: /usr/src/app/
-    command: bash -c 'composer install && php artisan migrate && php artisan serve --host 0.0.0.0'
+    command: bash -c 'composer install && php artisan serve --host 0.0.0.0'
     depends_on:
       - db
     links:

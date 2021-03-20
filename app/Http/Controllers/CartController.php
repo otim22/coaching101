@@ -8,6 +8,11 @@ class CartController extends Controller
 {
     public function index(Request $request)
     {
-        return view('student.cart.index', [ 'response' => [$request->input('response')] ]);
+        $data = $request->input('response');
+        $message = $data !== null ? 'Transaction Successfull' : '';
+        if (!empty($message)) {
+            $request->session()->flash('success', $message);
+        }
+        return view('student.cart.index', [ 'response' => [$data] ]);
     }
 }
