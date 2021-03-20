@@ -111,6 +111,7 @@ class Cart extends Component
             $currency = "UGX";
             $userEmail = $user->email;
             $userName= $user->name;
+            $phoneNumber = $user->profile->phone_number;
             $cartSum = $this->sum;
             $redirectLink = "http://0.0.0.0:8009/cart";
 
@@ -125,6 +126,7 @@ class Cart extends Component
                 "expiry_month" => $this->cardDetails['expiryMonth'],
                 "expiry_year" => $this->cardDetails['expiryYear'],
                 "email" => $userEmail,
+                "phone_number" => $phoneNumber,
                 "meta" => [
                     "consumer_id" => Auth::id()
                 ],
@@ -139,13 +141,18 @@ class Cart extends Component
                 ]
             ];
             $payment = new Payment($data);
-            $success = $payment->cardPayment();
-            $response = json_decode($success, true);
-            $status = $response['data']['status'];
-            if ($status == 'successful') {
-                $this->clearCart();
+            $response = $payment->cardPayment();
+            $data = json_decode($response->body(), true);
+            if ($response->successful()) {
+                $status = $response['data']['status'];
+                if ($status == 'successful') {
+                    $this->clearCart();
+                }
+                $this->emit('onSuccess', $data);
             }
-            $this->emit('onSuccess', $success);
+            if ($data['status'] == 'error') {
+                $this->emit('onError', $data);
+            }
         }
     }
 
