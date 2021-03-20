@@ -86,7 +86,17 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-        <div class="card-js" id="my-card" data-capture-name="true"></div>
+        <div class="card-js" id="my-card"></div>
+            <div id="spinner">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="sr-only">Processing...</span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <span>Processing...</span>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" id="process">Process</button>
@@ -101,17 +111,45 @@
     <script src="{{ asset('js/card-js.js') }}"></script>
     <script>
         document.addEventListener('livewire:load', function (event) {
-            $("#process").click(function(){
+            var spinner = $('#spinner')
+            spinner.attr("style","display:none !important");
+            $("#process").click(function() {
                 var myCard = $('#my-card');
                 var cardNumber = myCard.CardJs('cardNumber');
                 var expiryMonth = myCard.CardJs('expiryMonth');
                 var expiryYear = myCard.CardJs('expiryYear');
+                var cvc = myCard.CardJs('cvc');
                 var valid = CardJs.isExpiryValid(expiryMonth, expiryYear);
-                if (valid) {
-                    console.log(CardJs.numbersOnlyString(cardNumber))
-                    console.log(valid)
+                if (cardNumber === '') {
+                    $('.card-number-wrapper').addClass('has-error')
+                    return
                 }
-                @this.cardNumber = CardJs.numbersOnlyString(cardNumber)
+                if (expiryMonth === '') {
+                    $('.expiry-wrapper').addClass('has-error')
+                    return
+                }
+                if (expiryYear === '') {
+                    $('.expiry-wrapper').addClass('has-error')
+                    return
+                }
+                if (cvc === '') {
+                    $('.cvc-wrapper').addClass('has-error')
+                    return
+                }
+                if (!valid) {
+                    $('.expiry-wrapper').addClass('has-error')
+                    return
+                }
+                var cardDetails = {
+                    'number': CardJs.numbersOnlyString(cardNumber),
+                    'expiryMonth': expiryMonth,
+                    'expiryYear': expiryYear,
+                    'cvv': cvc
+                }
+                $('#process').attr('disabled', 'disabled')
+                myCard.attr("style","display:none !important");
+                spinner.removeAttr('style');
+                @this.cardDetails = cardDetails
                 @this.checkout()
             });
 
