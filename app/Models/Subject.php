@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Image\Manipulations;
+use willvincent\Rateable\Rateable;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Searchable\Searchable;
 use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Support\Facades\DB;
 use Spatie\Searchable\SearchResult;
 use Illuminate\Support\Facades\Auth;
+use App\Constants\GlobalConstants;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,22 +22,24 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Subject extends Model implements HasMedia, Searchable
 {
-    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText;
+    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable;
 
-    protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id', 'content_approved'];
+    protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id', 'is_approved'];
     protected $with = ['media'];
     protected $appends = ['isSubscribedTo'];
+    protected $dates = ['created_at', 'updated_at'];
+
     /**
      * Get the options for generating the slug.
      */
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug')
-            ->allowDuplicateSlugs()
-            ->slugsShouldBeNoLongerThan(50)
-            ->usingSeparator('_');
+                                                ->generateSlugsFrom('title')
+                                                ->saveSlugsTo('slug')
+                                                ->allowDuplicateSlugs()
+                                                ->slugsShouldBeNoLongerThan(50)
+                                                ->usingSeparator('_');
     }
 
     /**
@@ -58,6 +64,16 @@ class Subject extends Model implements HasMedia, Searchable
                                 ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
                                 ->nonQueued();
                 });
+    }
+
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getSubtitleAttribute($value)
+    {
+        return ucfirst($value);
     }
 
     public function audience()
@@ -85,7 +101,6 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->message()->save($message);
     }
 
-
     public function updateMessage($message)
     {
         return $this->message()->update($message->toArray());
@@ -96,9 +111,7 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->hasMany('App\Models\Topic');
     }
 
-    /**
-     * Get the category that owns the subject.
-     */
+    /**  Get the category that owns the subject. */
     public function category()
     {
         return $this->belongsTo('App\Models\Category', 'category_id');
@@ -117,7 +130,7 @@ class Subject extends Model implements HasMedia, Searchable
 
     public function subscribe($userId = null)
     {
-        $this->subscriptions()->create([
+        $this->subscription()->create([
             'user_id' => $userId ?: Auth::id()
         ]);
 
@@ -126,29 +139,67 @@ class Subject extends Model implements HasMedia, Searchable
 
     public function unsubscribe($userId = null)
     {
-        $this->subscriptions()->where('user_id', $userId ?: Auth::id())->delete();
+        $this->subscription()->where('user_id', $userId ?: Auth::id())->delete();
     }
 
-    public function subscriptions()
+    /** Get the subject's subscription. */
+    public function subscription()
     {
-        return $this->hasMany('App\Models\SubjectSubscription');
+        return $this->morphOne(Subscription::class, 'subscriptionable');
     }
 
     public function getIsSubscribedToAttribute()
     {
-        return $this->subscriptions()->where('user_id', Auth::id())->exists();
+        return $this->subscription()->where('user_id', Auth::id())->exists();
     }
 
+    public function getSubscriptionCountAttribute()
+    {
+        return $this->subscription()->count();
+    }
+
+    public function rating()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
+    public static function getSubjectsForTeacherPerforamce($days, int $limit = 10)
+    {
+        return static::whereBetween('created_at', [Carbon::now()->subDays($days)->format('Y-m-d H:i:s'), Carbon::now()->format('Y-m-d H:i:s')])
+                                ->latest()
+                                ->limit($limit);
+    }
+
+    /** Searching for subjects results*/
     public function getSearchResult(): SearchResult
-     {
+    {
         $url = route('student.show', $this->slug);
 
-         return new SearchResult(
+        return new SearchResult(
             $this,
             $this->title,
             $this->subtitle,
             $this->description,
             $url
-         );
-     }
+        );
+    }
+
+    public static function getSubjects($category, $year, $term)
+    {
+        $items = ['is_approved' => 1];
+
+        if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
+            $items['category_id'] = $category;
+        }
+
+        if ($year && $year !== GlobalConstants::ALL_YEARS) {
+            $items['year_id'] = $year;
+        }
+
+        if ($term && $term !== GlobalConstants::ALL_TERMS) {
+            $items['term_id'] = $term;
+        }
+
+        return static::where($items)->paginate(12);
+    }
 }

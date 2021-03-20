@@ -23,6 +23,6 @@ class AccountController extends Controller
      */
     public function create()
     {
-        return view('pages.account.index');
+        return view('student.account.index');
     }
 }

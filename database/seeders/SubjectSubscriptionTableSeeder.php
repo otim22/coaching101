@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
-use App\Models\SubjectSubscription;
+use App\Models\Subscription;
 
-class SubjectSubscriptionTableSeeder extends Seeder
+class SubscriptionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class SubjectSubscriptionTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(SubjectSubscription::class, 100)->create();
+        factory(Subscription::class, 100)->create();
     }
 }

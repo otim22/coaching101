@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Note;
+use App\Models\Book;
 use App\Models\Subject;
+use App\Models\Pastpaper;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -15,8 +18,11 @@ class TeacherController extends Controller
      */
     public function index(User $teacher)
     {
-        $subjects = Subject::where('user_id', $teacher->id)->get();
+        $subjects = Subject::where(['user_id' => $teacher->id, 'is_approved' => 1])->paginate(8);
+        $books = Book::where(['user_id' => $teacher->id, 'is_approved' => 1])->paginate(8);
+        $notes = Note::where(['user_id' => $teacher->id, 'is_approved' => 1])->paginate(8);
+        $pastpapers = Pastpaper::where(['user_id' => $teacher->id, 'is_approved' => 1])->paginate(8);
 
-        return view('pages.teacher_courses.index', compact(['subjects', 'teacher']));
+        return view('teacher.teacher_subjects.index', compact(['subjects', 'teacher', 'books', 'notes', 'pastpapers']));
     }
 }

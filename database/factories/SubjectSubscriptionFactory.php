@@ -5,9 +5,9 @@
 use App\Models\User;
 use App\Models\Subject;
 use Faker\Generator as Faker;
-use App\Models\SubjectSubscription;
+use App\Models\Subscription;
 
-$factory->define(SubjectSubscription::class, function (Faker $faker) {
+$factory->define(Subscription::class, function (Faker $faker) {
     return [
         'user_id' => User::all()->random()->id,
         'subject_id' => Subject::all()->random()->id,

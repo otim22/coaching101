@@ -8,6 +8,6 @@ class CartController extends Controller
 {
     public function index(Request $request)
     {
-        return view('pages.cart.index', [ 'response' => [$request->input('response')] ]);
+        return view('student.cart.index', [ 'response' => [$request->input('response')] ]);
     }
 }

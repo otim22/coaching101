@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Year;
+use App\Models\Term;
+use App\Models\Subject;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Constants\GlobalConstants;
 
 class HomeController extends Controller
 {
@@ -13,16 +18,29 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware(['auth', 'verified']);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('home');
+        $subjects =  Subject::getSubjects(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS);
+        $years =  Year::get();
+        $terms =  Term::get();
+        $categories = Category::get();
+
+        return view('home', compact(['subjects', 'categories', 'years', 'terms']));
+    }
+
+    public function getMoreSubjects(Request $request)
+    {
+        $category= $request->category;
+        $year= $request->year;
+        $term= $request->term;
+
+        if ($request->ajax()) {
+            $subjects = Subject::getSubjects($category, $year, $term);
+
+            return view('student.subject_display.filtered_subjects', compact('subjects'));
+        }
     }
 }

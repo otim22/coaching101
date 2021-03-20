@@ -18,17 +18,18 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             SliderTableSeeder::class,
             CategoryTableSeeder::class,
-            MenuTableSeeder::class,
             YearTableSeeder::class,
             TermTableSeeder::class,
             SubjectTableSeeder::class,
-            RatingTableSeeder::class,
-            SubjectSubscriptionTableSeeder::class,
             MessageTableSeeder::class,
             AudienceTableSeeder::class,
+            ProfileTableSeeder::class,
             StudentImageTableSeeder::class,
             TeacherImageTableSeeder::class,
             FaqTableSeeder::class,
+            BookTableSeeder::class,
+            NoteTableSeeder::class,
+            PastpaperTableSeeder::class,
         ]);
     }
 }

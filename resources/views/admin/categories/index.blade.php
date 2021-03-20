@@ -10,10 +10,10 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <h4>Categories</h4>
+                                <h4>Subjects</h4>
                             </div>
                             <div>
-                                <a type="button" href="{{ route('admin.categories.create') }}" class="btn btn-primary pt-1" name="button">Create Category</a>
+                                <a type="button" href="{{ route('admin.categories.create') }}" class="btn btn-primary pt-1" name="button">Create Subject</a>
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                         @foreach($categories as $category)
                             <h5 class="mb-2">
                                 <a href="{{ route('admin.categories.show', $category) }}" style="text-decoration: none;">
-                                    <i class="material-icons material-icons_custom">navigate_next</i>{{ Str::ucfirst($category->name) }}
+                                    <i class="material-icons material-icons_custom">navigate_next</i>{{ $category->name }}
                                 </a>
                             </h5>
                         @endforeach

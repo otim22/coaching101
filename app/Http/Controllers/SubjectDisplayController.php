@@ -10,7 +10,7 @@ class SubjectDisplayController extends Controller
 {
     public function index(Subject $subject)
     {
-        $subjects = Subject::orderBy('id', 'desc')->where('user_id', $subject->user_id)->get()->take(4 );
+        $subjects = Subject::orderBy('id', 'desc')->where(['user_id' => $subject->user_id, 'is_approved' => 1])->get()->take(4 );
         $resourceCount = 0;
 
         foreach ($subject->topics as $topic) {
@@ -19,7 +19,7 @@ class SubjectDisplayController extends Controller
             }
         }
 
-        return view('pages.subject_display.index', compact(['subjects', 'subject', 'resourceCount']));
+        return view('student.subject_display.index', compact(['subjects', 'subject', 'resourceCount']));
     }
 
     public function show(Subject $subject = null, Topic $topic = null)
@@ -27,6 +27,6 @@ class SubjectDisplayController extends Controller
         $previous = Topic::where('id', '<', $topic->id)->orderBy('id', 'desc')->first();
         $next = Topic::where('id', '>', $topic->id)->orderBy('id')->first();
 
-        return view('pages.subject_display.show', compact(['subject', 'topic', 'previous', 'next']));
+        return view('student.subject_display.show', compact(['subject', 'topic', 'previous', 'next']));
     }
 }

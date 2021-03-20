@@ -89,20 +89,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row ml-3 mr-3 mb-4">
-                                <label for="avatar" class="pl-3 col-form-label">{{ __('Avatar (optional)') }}</label>
-
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <input type="file" class="form-control-file" id="avatar" name="avatar">
-                                </div>
-                            </div>
-
                             <div class="form-group form-check row ml-3 mr-3">
                                 <input class="mr-2" type="checkbox" name="agreement" id="agreement" {{ old('agreement') ? 'checked' : '' }}>
 
                                 <label class="form-check-label" for="agreement">
                                     {{ __('I accept Terms of Use & Privacy Policy.') }}
-                                    <!-- I accept the <a href="#" style="text-decoration: none">Terms of Use</a> & <a href="#" style="text-decoration: none">Privacy Policy</a> -->
                                 </label>
                               </div>
 

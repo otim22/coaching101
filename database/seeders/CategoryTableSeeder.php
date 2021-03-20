@@ -40,8 +40,8 @@ class CategoryTableSeeder extends Seeder
         ]);
 
         factory(Category::class)->create([
-            'name' => 'Political sciences',
-            'slug' => 'political_sciences',
+            'name' => 'Physics',
+            'slug' => 'physics',
         ]);
 
         factory(Category::class)->create([

@@ -59,10 +59,6 @@ class PermissionTableSeeder extends Seeder
             'role' => $studentRole
         ]);
 
-        $imageUrl = 'http://via.placeholder.com/55x45';
-
-        $student->addMediaFromUrl($imageUrl)->toMediaCollection('avatars');
-
         // create a teacher user
         $teacher = Factory(User::class)->create([
             'name' => 'Otim teacher',
@@ -70,8 +66,6 @@ class PermissionTableSeeder extends Seeder
             'password' => bcrypt('password'),
             'role' => $teacherRole
         ]);
-
-        $teacher->addMediaFromUrl($imageUrl)->toMediaCollection('avatars');
 
         // create an admin user
         $admin = Factory(User::class)->create([
@@ -81,8 +75,6 @@ class PermissionTableSeeder extends Seeder
             'role' => $adminRole
         ]);
 
-        $admin->addMediaFromUrl($imageUrl)->toMediaCollection('avatars');
-
         // create a super admin user
         $super = Factory(User::class)->create([
             'name' => 'Otim deere',
@@ -90,7 +82,5 @@ class PermissionTableSeeder extends Seeder
             'password' => bcrypt('password'),
             'role' => $superRole
         ]);
-
-        $super->addMediaFromUrl($imageUrl)->toMediaCollection('avatars');
     }
 }

@@ -10,7 +10,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <h2>Category</h2>
+                                <h2>Subject</h2>
                             </div>
                             <div>
                                 <a type="button" href="{{ route('admin.categories.index') }}" class="btn btn-secondary pt-1" name="button">Back</a>
@@ -27,6 +27,22 @@
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
+
+                            <div class="form-group mb-4">
+                                <label for="year_id" class="bold">Year</label>
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" name="year_id">
+                                        <option selected>Choose year...</option>
+                                        @foreach($years as $year)
+                                            <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('year_id')
+                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-2 increased-font py-3">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-3 increased-font py-3">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}"><span class="logo-font">Coaching101</span></a>
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,28 +15,14 @@
                         Browse
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
-                        @foreach ($menus as $menu)
-                            <ul class="dropdown-submenu">
-                                <a class="dropdown-item" href="#">{{ $menu->title }}</a>
-                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    @foreach ($menu->allChildren as $childMenu)
-                                        <ul class="dropdown-submenu">
-                                            <a class="dropdown-item" href="#">{{ $childMenu->title }}</a>
-                                            <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                @foreach ($childMenu['allChildren'] as $child)
-                                                    <a class="dropdown-item" href="#">{{ $child->title }}</a>
-                                                @endforeach
-                                            </li>
-                                        </ul>
-                                    @endforeach
-                                </li>
-                            </ul>
-                        @endforeach
+                        <a class="dropdown-item" href="{{ route('home') }}">Videos</a>
+                        <a class="dropdown-item" href="{{ route('student.books.index') }}">Books</a>
+                        <a class="dropdown-item" href="{{ route('student.notes.index') }}">Notes</a>
+                        <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past papers</a>
                     </div>
                 </li>
             </ul>
-
+            
             <form action="{{ route('search') }}" method="GET" class="form-inline top-search">
                 <div class="input-group space-bottom">
                     <input type="text" name="query" class="form-control" placeholder="Search for subject...">
@@ -68,11 +54,11 @@
                         </li>
                     @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
                         <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">
-                            <a class="nav-link" href="{{ route('manage.subjects') }}">Teacher</a>
+                            <a class="nav-link" href="{{ route('my-subjects') }}">Student</a>
                         </li>
 
                         <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
-                            <a class="nav-link" href="{{ route('manage.subjects') }}">My subjects</a>
+                            <a class="nav-link" href="{{ route('manage.subjects') }}">Teacher</a>
                         </li>
                     @endif
                 @endauth
@@ -82,59 +68,53 @@
                 </li>
 
                 @guest
-                <li class="nav-item {{ Helper::set_active(['login']) }} mt-1 mr-2 space-bottom">
-                    <a class="btn btn-primary btn-sm nav-link bold" id="round-button" href="{{ route('login') }}">Login</a>
-                </li>
-                @if (Route::has('register'))
-                    <li class="nav-item {{ Helper::set_active(['register']) }} mt-1 mr-2 register-button">
-                        <a class="btn btn-outline-secondary btn-sm nav-link bold" id="round-button" href="{{ route('register') }}">Register</a>
+                    <li class="nav-item {{ Helper::set_active(['login']) }} mt-1 mr-2 space-bottom">
+                        <a class="btn btn-danger btn-sm nav-link" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">Login</a>
                     </li>
-                @endif
-                @else
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <div class="circle text-center">
-                            <span class="circle__content">{{ Helper::generate_initials(Auth::user()->name) }}</span>
-                        </div>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item d-flex" href="{{ route('edit-profile') }}">
-                            <div class="mr-2 pt-2">
-                                <div class="circle">
+                    @if (Route::has('register'))
+                        <li class="nav-item {{ Helper::set_active(['register']) }} mt-1 mr-2 register-button">
+                            <a class="btn btn-outline-secondary btn-sm nav-link" id="round-button" href="{{ route('register') }}">Register</a>
+                        </li>
+                    @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <div class="circle text-center">
                                     <span class="circle__content">{{ Helper::generate_initials(Auth::user()->name) }}</span>
                                 </div>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item d-flex" href="{{ route('users.profile') }}">
+                                    <div class="mr-2 pt-2">
+                                        <div class="circle">
+                                            <span class="circle__content">{{ Helper::generate_initials(Auth::user()->name) }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="mr-1">
+                                        <p>{{ Auth::user()->name }} <br>
+                                        {{ Auth::user()->email }}</p>
+                                    </div>
+                                 </a>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('my-subjects') }}">My subjects</a>
+                                <a class="dropdown-item" href="{{ url('cart') }}">My cart</a>
+
+                                <a class="dropdown-item" href="{{ route('users.profile') }}">Profile details</a>
+                                <div class="dropdown-divider"></div>
+
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" class="bold" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
-                            <div class="mr-1">
-                                <p>{{ Auth::user()->name }} <br>
-                                {{ Auth::user()->email }}</p>
-                            </div>
-                         </a>
-
-                        <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="{{ route('accounts') }}">My courses</a>
-                        <a class="dropdown-item" href="{{ route('accounts') }}">My cart</a>
-
-                        <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="{{ route('accounts') }}">Account settings</a>
-                        <a class="dropdown-item" href="{{ route('accounts') }}">Payment methods</a>
-                        <a class="dropdown-item" href="{{ route('accounts') }}">Edit profile</a>
-
-                        <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" class="bold" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-                @endguest
+                        </li>
+                    @endguest
             </ul>
         </div>
     </div>
