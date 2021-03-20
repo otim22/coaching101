@@ -16,7 +16,7 @@ class Cart extends Component
     public $sum = 0;
     public $cartItems = [];
     public $wishlistItems = [];
-    public $cardNumber = null;
+    public $cardDetails = [];
 
     public $response = [];
 
@@ -108,7 +108,7 @@ class Cart extends Component
             $user = Auth::user();
             // WIP
             $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
-            $currency = "NGN";
+            $currency = "UGX";
             $userEmail = $user->email;
             $userName= $user->name;
             $cartSum = $this->sum;
@@ -116,14 +116,14 @@ class Cart extends Component
 
             $data = [
                 "tx_ref" => $paymentToken,
-                "amount"=> '1000',
+                "amount"=> '2000',
                 "currency"=> $currency,
                 "redirect_url" => $redirectLink,
                 "payment_options" => "card",
-                "card_number" => $this->cardNumber,
-                "cvv" => "828",
-                "expiry_month" => "09",
-                "expiry_year" => "32",
+                "card_number" => $this->cardDetails['number'],
+                "cvv" => $this->cardDetails['cvv'],
+                "expiry_month" => $this->cardDetails['expiryMonth'],
+                "expiry_year" => $this->cardDetails['expiryYear'],
                 "email" => $userEmail,
                 "meta" => [
                     "consumer_id" => Auth::id()
@@ -138,9 +138,14 @@ class Cart extends Component
                     "logo" => "https://assets.piedpiper.com/logo.png"
                 ]
             ];
-
             $payment = new Payment($data);
-            $this->emit('onSuccess', $payment->cardPayment());
+            $success = $payment->cardPayment();
+            $response = json_decode($success, true);
+            $status = $response['data']['status'];
+            if ($status == 'successful') {
+                $this->clearCart();
+            }
+            $this->emit('onSuccess', $success);
         }
     }
 

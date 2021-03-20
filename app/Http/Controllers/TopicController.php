@@ -26,11 +26,13 @@ class TopicController extends Controller
 
     public function store(TopicRequest $request, Subject $subject)
     {
+        dd($request->hasFile('content_file_path'));
+        dd($request->file('content_file_path')->isValid());
+        dd($request->file('content_file_path'));
         $topic = new Topic;
 
         $topic->title = $request->title;
         $topic->description = $request->description;
-
         if($request->hasFile('content_file_path') && $request->file('content_file_path')->isValid()) {
             $topic->addMedia($request->file('content_file_path'))
                         ->preservingOriginal()
