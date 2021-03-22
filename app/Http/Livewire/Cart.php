@@ -105,41 +105,19 @@ class Cart extends Component
     public function checkout()
     {
         if(Auth::check()) {
-            $user = Auth::user();
-            // WIP
-            $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
-            $currency = "UGX";
-            $userEmail = $user->email;
-            $userName= $user->name;
-            $phoneNumber = $user->profile->phone_number;
-            $cartSum = $this->sum;
-            $redirectLink = "http://0.0.0.0:8009/cart";
-
-            $data = [
-                "tx_ref" => $paymentToken,
-                "amount"=> '2000',
-                "currency"=> $currency,
-                "redirect_url" => $redirectLink,
+            $data = array_merge($this->setPaymentDefaults(), [
                 "payment_options" => "card",
                 "card_number" => $this->cardDetails['number'],
                 "cvv" => $this->cardDetails['cvv'],
                 "expiry_month" => $this->cardDetails['expiryMonth'],
                 "expiry_year" => $this->cardDetails['expiryYear'],
-                "email" => $userEmail,
-                "phone_number" => $phoneNumber,
-                "meta" => [
-                    "consumer_id" => Auth::id()
-                ],
-                "customer" => [
-                    "email" => $userEmail,
-                    "name" => $userName
-                ],
+                "fullname" => Auth::user()->name,
                 "customizations" => [
                     "title" => "OTF Payments",
                     "description" => "Middleout isn't free. Pay the price",
                     "logo" => "https://assets.piedpiper.com/logo.png"
                 ]
-            ];
+            ]);
             $payment = new Payment($data);
             $response = $payment->cardPayment();
             $data = json_decode($response->body(), true);
@@ -154,6 +132,47 @@ class Cart extends Component
                 $this->emit('onError', $data);
             }
         }
+    }
+
+    public function proccessMobileMoney($network)
+    {
+        if(Auth::check()) {
+            $data = array_merge($this->setPaymentDefaults(), [
+                "network" => $network
+            ]);
+            dd($data);
+            // $payment = new Payment($data);
+            // $response = $payment->mobileMoney();
+            // $data = json_decode($response->body(), true);
+            // if ($response->successful()) {
+            //     $this->emit('onSuccess', $data);
+            // }
+            // if ($data['status'] == 'error') {
+            //     $this->emit('onError', $data);
+            // }
+        }
+    }
+
+    private function setPaymentDefaults() {
+        $user = Auth::user();
+        $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
+        $currency = "UGX";
+        $userEmail = $user->email;
+        $phoneNumber = $user->profile->phone;
+        $cartSum = $this->sum;
+        $redirectLink = "http://0.0.0.0:8009/cart";
+
+        return [
+            "tx_ref" => $paymentToken,
+            "amount"=> '2000',
+            "currency"=> $currency,
+            "redirect_url" => $redirectLink,
+            "email" => $userEmail,
+            "phone_number" => $phoneNumber,
+            "meta" => [
+                "consumer_id" => Auth::id()
+            ]
+        ];
     }
 
     public function clearCart() {

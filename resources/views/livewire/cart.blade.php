@@ -84,24 +84,39 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
-            <strong>Error!</strong>&nbsp;<span id="error-message"></span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Card</a>
+            <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Mobile Money</a>
         </div>
-        <div class="alert alert-success" role="alert" id="alert-success">
-            <span id="success-body"></span>
-        </div>
-        <div class="card-js" id="my-card"></div>
-        <div id="spinner">
-            <div class="d-flex justify-content-center">
-                <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
-                    <span class="sr-only">Processing...</span>
+        </br>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
+                    <strong>Error!</strong>&nbsp;<span id="error-message"></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="alert alert-success" role="alert" id="alert-success">
+                    <span id="success-body"></span>
+                </div>
+                <div class="card-js" id="my-card"></div>
+                <div id="spinner">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="sr-only">Processing...</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <span>Processing...</span>
+                    </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center">
-                <span>Processing...</span>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="d-flex justify-content-around">
+                    <img wire:click="proccessMobileMoney('MTN')" src="{{ asset('images/mtn-image.png') }}" width="150" height="100" atl="mtn image">
+                    <img wire:click="proccessMobileMoney('AIRTEL')" src="{{ asset('images/airtel-image.jpeg') }}" width="150" height="100" atl="Airtel image">
+                </div>
             </div>
         </div>
         </div>
