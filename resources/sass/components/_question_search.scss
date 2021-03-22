@@ -1,0 +1,46 @@
+.question-search input[type="text"] {
+    width: 100%;
+    min-width: 150px;
+    display: block;
+    padding-left: 20px;
+    border-radius: 19px;
+    overflow: hidden;
+}
+
+#question-search-button {
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
+
+.question-search-svg svg {
+    width: 25px;
+    height: 25px;
+}
+
+.qtn:hover {
+    color: $blue;
+}
+
+@include xxl-screens {
+    .question-search input[type="text"] {
+        width: 500px;
+    }
+}
+
+@include xl-screens {
+    .question-search input[type="text"] {
+        width: 450px;
+    }
+}
+
+@include xlg-screens {
+    .question-search input[type="text"] {
+        width: 400px;
+    }
+}
+
+@include xs-screens {
+    .question-search input[type="text"] {
+        width: 270px;
+    }
+}

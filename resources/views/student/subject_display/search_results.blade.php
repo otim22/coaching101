@@ -14,6 +14,9 @@
                         </svg>
                     </a>
                 </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">Search results</li>
             </ol>
         </nav>
@@ -77,8 +80,8 @@
                                     @endif
                                 </a>
                                 <div class="mt-2 d-flex justify-content-between">
-                                    @if($subject->isSubscribedTo)
-                                        <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                    @if($search->searchable->isSubscribedTo)
+                                        <a href="{{ route('subjects.index', $search->searchable) }}" style="text-decoration: none;">Start learning</a>
                                     @else
                                         <livewire:add-to-cart :subject="$search->searchable" :key="$search->searchable->id" />
                                         <livewire:add-to-wish-list :subject="$search->searchable" :key="$search->searchable->id" />

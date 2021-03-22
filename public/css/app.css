@@ -3346,6 +3346,40 @@ select {
   text-align: center;
 }
 
+.circle_comment {
+  display: inline-table;
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+  background-color: #cdcfd1;
+  color: #ffffff;
+  border-radius: 50%;
+}
+
+.circle_comment__content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 15px;
+}
+
+.circle_comment-tr {
+  display: inline-table;
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+  background-color: #A9C8DA;
+  color: #ffffff;
+  border-radius: 50%;
+}
+
+.circle_comment-tr__content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 15px;
+}
+
 @media only screen and (max-width: 1300px) {
   #cartId1 {
     display: none;
@@ -3373,12 +3407,27 @@ select {
   overflow: hidden;
 }
 
+.question-search input[type=text] {
+  width: 100%;
+  min-width: 150px;
+  display: block;
+  padding-left: 20px;
+  border-radius: 19px;
+  overflow: hidden;
+}
+
 #top-search-button {
   border-top-right-radius: 19px;
   border-bottom-right-radius: 19px;
 }
 
-.top-search-svg svg {
+#question-search-button {
+  border-top-right-radius: 19px;
+  border-bottom-right-radius: 19px;
+}
+
+.top-search-svg svg,
+.question-search-svg svg {
   width: 25px;
   height: 25px;
 }
@@ -3461,6 +3510,53 @@ select {
 
 @media only screen and (max-width: 575px) {
   .top-search input[type=text] {
+    width: 270px;
+  }
+}
+
+.question-search input[type=text] {
+  width: 100%;
+  min-width: 150px;
+  display: block;
+  padding-left: 20px;
+  border-radius: 19px;
+  overflow: hidden;
+}
+
+#question-search-button {
+  border-top-right-radius: 19px;
+  border-bottom-right-radius: 19px;
+}
+
+.question-search-svg svg {
+  width: 25px;
+  height: 25px;
+}
+
+.qtn:hover {
+  color: #3490dc;
+}
+
+@media only screen and (min-width: 1300px) {
+  .question-search input[type=text] {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .question-search input[type=text] {
+    width: 450px;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .question-search input[type=text] {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .question-search input[type=text] {
     width: 270px;
   }
 }
@@ -3567,7 +3663,8 @@ select {
   white-space: nowrap;
 }
 
-#round-button-2 {
+#round-button-2,
+#ask {
   border-radius: 30px;
   padding-left: 20px;
   padding-right: 20px;
@@ -4001,6 +4098,7 @@ form .btn button {
 }
 
 .section-one {
+  margin-top: 16px;
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
@@ -4496,10 +4594,6 @@ img.rounded-corners {
   height: 30px;
   min-width: 30px;
   cursor: pointer;
-
-.card-js .icon {
-  position: absolute !important;
-  top: 18px !important;
 }
 
 /*!

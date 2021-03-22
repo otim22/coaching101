@@ -118,6 +118,11 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->hasMany('App\Models\Subject');
     }
 
+    public function questions()
+    {
+        return $this->hasMany('App\Models\Question');
+    }
+
     public function subscribe($userId = null)
     {
         $this->subscription()->create([
@@ -158,14 +163,11 @@ class Subject extends Model implements HasMedia, Searchable
     /** Searching for subjects results*/
     public function getSearchResult(): SearchResult
     {
-        $url = route('student.show', $this->slug);
-
         return new SearchResult(
             $this,
             $this->title,
             $this->subtitle,
-            $this->description,
-            $url
+            $this->description
         );
     }
 

@@ -14,6 +14,9 @@
                         </svg>
                     </a>
                 </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">Subjects</li>
             </ol>
         </nav>
@@ -91,7 +94,7 @@
     </div>
 </section>
 
-<section class="bg-white">
+<section class="bg-gray-2">
     @include('partials.categories')
 </section>
 

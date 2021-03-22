@@ -70,9 +70,9 @@
                 <div class="col-sm-12 col-md-12 col-lg-10 offset-1">
                     <h5 class="bold">{{ $note->title }}</h5>
                     @if($note->creator)
-                        <span class="author-font">By {{ $note->creator->name }}</span><br />
+                        <p>By {{ $note->creator->name }}</p>
                     @else
-                        <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                        <p>By {{ \App\Constants\GlobalConstants::ADMIN }}</p>
                     @endif
                     <div class="mb-3 mt-4">
                         <h5 class="bold">Notes objectives </h5>

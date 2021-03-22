@@ -80,7 +80,7 @@
                                                         class="custom-file-input  @error('content_file_path') is-invalid @enderror"
                                                         id="content_file_path"
                                                         name="content_file_path"
-                                                        value="{{ old('content_file_path') }}">
+                                                        value="{{ old('content_file_path') }}" accept="video/*">
                                             <label class="custom-file-label" for="content_file_path">Choose file</label>
                                         </div>
 
@@ -108,7 +108,7 @@
                                                                 id="resource_attachment_path"
                                                                 name="resource_attachment_path[]"
                                                                 value="{{ old('resource_attachment_path[]') }}"
-                                                                multiple>
+                                                                multiple accept="image/*,.pdf,.doc">
                                                 </div>
                                                 <div>
                                                     <p type="button" class="btn btn-upload btn-resource_attachment pr-3">

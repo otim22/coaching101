@@ -2,9 +2,9 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-3">
+<section class="section-bread bg-gray-2">
     <div class="container">
-        <div class="row mt-4">
+        <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -15,6 +15,9 @@
                                     <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
                                 </svg>
                             </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
                     </ol>
@@ -33,4 +36,9 @@
         @livewire('cart', [ 'response' => $response])
     </div>
 </section>
+
+<section class="bg-gray-2">
+    @include('partials.categories')
+</section>
+
 @endsection
