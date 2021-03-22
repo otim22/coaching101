@@ -140,16 +140,15 @@ class Cart extends Component
             $data = array_merge($this->setPaymentDefaults(), [
                 "network" => $network
             ]);
-            dd($data);
-            // $payment = new Payment($data);
-            // $response = $payment->mobileMoney();
-            // $data = json_decode($response->body(), true);
-            // if ($response->successful()) {
-            //     $this->emit('onSuccess', $data);
-            // }
-            // if ($data['status'] == 'error') {
-            //     $this->emit('onError', $data);
-            // }
+            $payment = new Payment($data);
+            $response = $payment->mobileMoney();
+            $data = json_decode($response->body(), true);
+            if ($response->successful()) {
+                $this->emit('onSuccess', $data);
+            }
+            if ($data['status'] == 'error') {
+                $this->emit('onError', $data);
+            }
         }
     }
 
