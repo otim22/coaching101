@@ -84,6 +84,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/teacher/onBoard', [SubjectController::class, 'onBoard'])->name('subjects.onBoard');
 Route::middleware('auth')->group(function() {
+    Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+
     Route::get('/cart/{response?}', [CartController::class, 'index'])->name('cart.index');
 
     Route::post( '/pay', [PaymentController::class, 'initialize'])->name('pay');

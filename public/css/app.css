@@ -4446,15 +4446,11 @@ img.rounded-corners {
   text-align: center;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 .card-js .icon {
   position: absolute !important;
   top: 18px !important;
 }
 
->>>>>>> fix: Added validation for insuufficient funds and flash for message for successfull
 .resource-filter_input .custom-select {
   border-radius: 30px !important;
 }
@@ -4463,12 +4459,11 @@ img.rounded-corners {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 20px;
   padding: 25px;
-<<<<<<< HEAD
-=======
+}
+
 .card-js .icon {
   position: absolute !important;
   top: 18px !important;
->>>>>>> Added payment integration for cards
 }
 
 .book_objective_section,
@@ -4505,8 +4500,6 @@ img.rounded-corners {
 .card-js .icon {
   position: absolute !important;
   top: 18px !important;
-=======
->>>>>>> fix: Added validation for insuufficient funds and flash for message for successfull
 }
 
 /*!
