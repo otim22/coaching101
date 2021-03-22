@@ -2,11 +2,11 @@
     <div class="pb-2">
         @if($comment->user->role == 1)
             <div class="circle_comment">
-                <span class="circle_comment__content">{{ Helper::generate_initials($comment->user->name) }}</span>
+                <span class="circle_comment__content">{{ InitialGenerator::generate_initials($comment->user->name) }}</span>
             </div>
         @else
             <div class="circle_comment-tr">
-                <span class="circle_comment-tr__content">{{ Helper::generate_initials($comment->user->name) }}</span>
+                <span class="circle_comment-tr__content">{{ InitialGenerator::generate_initials($comment->user->name) }}</span>
             </div>
         @endif
         {{ $comment->body }}
@@ -15,11 +15,11 @@
         <div class="pb-2">
             @if($reply->user->role == 1)
                 <div class="circle_comment">
-                    <span class="circle_comment__content">{{ Helper::generate_initials($reply->user->name) }}</span>
+                    <span class="circle_comment__content">{{ InitialGenerator::generate_initials($reply->user->name) }}</span>
                 </div>
             @else
                 <div class="circle_comment-tr">
-                    <span class="circle_comment-tr__content">{{ Helper::generate_initials($reply->user->name) }}</span>
+                    <span class="circle_comment-tr__content">{{ InitialGenerator::generate_initials($reply->user->name) }}</span>
                 </div>
             @endif
             {{ $reply->body }}
