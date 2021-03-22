@@ -23,7 +23,7 @@
                 </li>
             </ul>
 
-            <form action="{{ route('search') }}" method="GET" class="form-inline top-search">
+            <form action="{{ route('videos') }}" method="GET" class="form-inline top-search">
                 <div class="input-group space-bottom">
                     <input type="text" name="query" class="form-control" placeholder="Search for video subjects...">
                     <div class="input-group-append">

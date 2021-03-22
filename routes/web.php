@@ -68,7 +68,8 @@ Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.st
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject?}/topics/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show')->middleware('auth');
-Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::get('/videos', [SearchController::class, 'videoSubjects'])->name('videos');
+Route::get('/questions', [SearchController::class, 'subjectQuestions'])->name('questions');
 Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
 Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('teachers.index');
 Route::get('/subjects/{term}', [MenuCategoryController::class, 'index'])->name('terms.index');
@@ -79,12 +80,12 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/get-more-subjects', [HomeController::class, 'getMoreSubjects'])->name('get-more-subjects');
 Route::get('/home/my-subjects', [HomeController::class, 'mySubjects'])->name('my-subjects');
 
-Route::get('/questions', 'QuestionController@index')->name('questions');
-Route::post('/question', 'QuestionController@store')->name('question.store');
+Route::get('/questions', [QuestionController::class, 'index'])->name('questions');
+Route::post('/question', [QuestionController::class, 'store'])->name('question.store');
 
-Route::get('/comments', 'CommentController@index')->name('comments');
-Route::post('/comment', 'CommentController@store')->name('comment.store');
-Route::post('/reply', 'CommentController@reply')->name('reply.store');
+Route::get('/comments', [CommentController::class, 'index'])->name('comments');
+Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
+Route::post('/reply', [CommentController::class, 'reply'])->name('reply.store');
 
 Auth::routes(['verify' => true]);
 

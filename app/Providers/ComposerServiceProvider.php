@@ -74,17 +74,5 @@ class ComposerServiceProvider extends ServiceProvider
 
             $view->withTerms($terms);
         });
-
-        View::composer(['student.*'], function ($view) {
-            $questions = Question::get();
-
-            $view->withQuestions($questions);
-        });
-
-        View::composer(['student.*'], function ($view) {
-            $comments = Comment::get();
-
-            $view->withComments($comments);
-        });
     }
 }

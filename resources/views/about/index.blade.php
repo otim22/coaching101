@@ -14,6 +14,9 @@
                         </svg>
                     </a>
                 </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">About us</li>
             </ol>
         </nav>

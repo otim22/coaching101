@@ -163,14 +163,11 @@ class Subject extends Model implements HasMedia, Searchable
     /** Searching for subjects results*/
     public function getSearchResult(): SearchResult
     {
-        $url = route('student.show', $this->slug);
-
         return new SearchResult(
             $this,
             $this->title,
             $this->subtitle,
-            $this->description,
-            $url
+            $this->description
         );
     }
 
