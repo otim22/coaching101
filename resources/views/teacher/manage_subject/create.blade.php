@@ -72,7 +72,7 @@
 
                                 <div class="form-group mb-4">
                                     <label for="description">Description</label>
-                                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Description of the subject" name="description" value="{{ old('description') }}" rows="3" required></textarea>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Description of the subject" name="description" rows="3" required autocomplete="description" autofocus>{{ old('description') }}</textarea>
                                     @error('description')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
@@ -82,9 +82,9 @@
                                     <label for="category_id">Category</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="category_id">
-                                            <option selected>Choose category...</option>
+                                            <option>Choose category...</option>
                                             @foreach($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option value="{{ $category->id }}" {{ old('category_id', $category->id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -97,9 +97,9 @@
                                     <label for="year_id">Year</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="year_id">
-                                            <option selected>Choose year...</option>
+                                            <option>Choose year...</option>
                                             @foreach($years as $year)
-                                                <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                                <option value="{{ $year->id }}" {{ old('year_id', $year->id) == $year->id ? 'selected' : '' }}>{{ $year->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -112,9 +112,9 @@
                                     <label for="term_id">Term</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="term_id">
-                                            <option selected>Choose term...</option>
+                                            <option>Choose term...</option>
                                             @foreach($terms as $term)
-                                                <option value="{{ $term->id }}">{{ $term->name }}</option>
+                                                <option value="{{ $term->id }}" {{ old('term_id', $term->id) == $term->id ? 'selected' : '' }}>{{ $term->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -135,7 +135,7 @@
                                                     name="price"
                                                     value="{{ old('price') }}">
                                     </div>
-                                    <p><small style="color: red; font-weight: bold;">*Price should be only digits</small></p>
+                                    <p><small class="color_red">*Price should be only digits</small></p>
                                     @error('price')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
@@ -143,7 +143,7 @@
 
                                 <div class="form-group">
                                     <label for="cover_image">Subject cover image</label>
-                                    <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" required>
+                                    <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" required accept="image/*">
                                     @error('cover_image')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror

@@ -43,4 +43,9 @@ class HomeController extends Controller
             return view('student.subject_display.filtered_subjects', compact('subjects'));
         }
     }
+
+    public function mySubjects()
+    {
+        return view('student.my_subjects.index');
+    }
 }

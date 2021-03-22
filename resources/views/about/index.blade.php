@@ -14,6 +14,9 @@
                         </svg>
                     </a>
                 </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">About us</li>
             </ol>
         </nav>
@@ -23,18 +26,23 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12  d-flex justify-content-center">
-                <img src="{{ asset('images/founder.jpg') }}" alt="Founder image" width="80%" class="rounded-circle">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <img src="{{ asset('images/founder.jpg') }}" alt="Founder image" width="80%" class="rounded-circle p-2">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <h2 class="mt-5 mb-4">Our founder</h2>
+                <h3 class="mt-5 mb-4">Our founder</h3>
                 <hr>
-                <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-4">
+                    Hey, I'm Otim Fredrick with a Bachelors Of Science in Software Engineering, over
+                    the years  I have worked on a number of projects ranging from Fin-Tech,
+                    Agric-Tech, Pharmaceutical and Ecommerce.
+                    At quarter year of 2020 when Covid-19 became a global pandermic and the world went undersiege with schools closed, businesses stopped, disrupting economies and social fabrics of some communities interrupted.
+                    It's around that time a light buld idea dropped into my mind to create an online learning platform for students who where struggling to find quality learning resources while at their on convience anywhere.
+                </p>
                 <div class="mt-4">
                     <a target="_blank" href="https://twitter.com/otim16"><i class="fa fa-sm fa-twitter mr-2"></i></a>
                     <a target="_blank" href="https://medium.com/@otimfredrick"><i class="fa fa-sm fa-medium mr-2"></i></a>
                     <a target="_blank" href="https://linkedin.com/in/otim-fredrick-29730a86"><i class="fa fa-sm fa-linkedin mr-2"></i></a>
-                    <a target="_blank" href="https://www.facebook.com/fredrickot"><i class="fa fa-sm fa-facebook"></i></a>
                 </div>
             </div>
         </div>
@@ -45,9 +53,18 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12 off-set-3">
-                <h2 class="mb-4">Overview</h2>
-                <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
+                <h3 class="mb-4">Overview</h3>
+                <p class="mt-4">
+                    As technologies infiltrate most aspects of our everyday life, it is imperative that we are kept up to date, learning the most effective ways to use technology to enhance our lives.
+                    Looking at learning, schools spend on technology and the number of computers in schools continue to grow, but less is spent on the professional development and training needed for teachers to implement this technology in the classroom.
+                </p>
+                <p class="mt-4">
+                    Many of the professional development programs that are currently offered to teachers fail to provide the kind of ongoing support teachers need to make effective use of educational technology, and as a result, few teachers are in a position to integrate new technologies into their classroom practices. Teachers may attend a one day workshop and return to school the following day not knowing how or having the time to integrate what they learned into their curricula, or they may lack the support from colleagues that is necessary for their attempts to be successful in their endeavors to learn and implement new technologies, teachers need hands on learning rooted in their own curricula that will enable them to translate training into practice.
+                </p>
+                <p class="mt-4">
+                    We focus on the use of online studies to boost the learning capacity of students who can have access to either; smartphones, tablets, or computers providing a quality professional platform to enable administrators and teachers to integrate technology into the curriculum while meeting standards. This improves student achievement through the use of technology, to raise student technology literacy, and to ensure that teachers can integrate technology into the curriculum effectively.
+                </p>
+                <p class="mt-4">The team trains teachers to be Online Course Learning and Delivery Professionals who design and deliver a rigorous program of standards based technology enhanced online courses for students across all subject areas and grade levels. Participants are trained to use online tools to evaluate the effectiveness of the online professional development courses, and to use online assessment techniques to measure the impact of the online courses on teacher practice and student achievement. All curriculum materials created are in alignment with the Educational Standards. </p>
             </div>
         </div>
     </div>
@@ -110,7 +127,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mb-4">
-                <h2 class="mb-4">Our office</h2>
+                <h3 class="mb-4">Our office</h3>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 text-center mb-4">
                 <img src="{{ asset('images/kampala.jpg') }}" alt="office image" class="rounded-corners" width="85%">
@@ -123,7 +140,7 @@
                     </svg>
                 </div>
                 <h5 class="gray_color wraps-text">Old Butabika Road,</h5>
-                <h5 class="gray_color wraps-text">2nd Floor</h5>
+                <h5 class="gray_color wraps-text">2<sup>nd</sup> Floor</h5>
                 <h5 class="mb-5 gray_color">Mutungo, <span class="wraps-text">Kampala Uganda.</span></h5>
             </div>
         </div>

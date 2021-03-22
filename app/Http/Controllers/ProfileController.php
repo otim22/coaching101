@@ -37,14 +37,14 @@ class ProfileController extends Controller
                 'school' => 'required|string',
                 'year_id' => 'required|integer',
                 'phone' => 'required|regex:/(0)[0-9]{9}$/',
-                'age' => 'required|integer',
+                'dob' => 'required|date',
                 'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png'
             ]);
 
             $profile = new Profile($request->except(['profile_picture']));
 
             $profile->school = $request->school;
-            $profile->age = $request->age;
+            $profile->dob = $request->dob;
             $profile->year_id = $request->year_id;
             $profile->phone = $request->phone;
             $profile->user_id = Auth::id();
@@ -84,14 +84,14 @@ class ProfileController extends Controller
                 'school' => 'required|string',
                 'year_id' => 'required|integer',
                 'phone' => 'required|regex:/(0)[0-9]{9}$/',
-                'age' => 'required|integer',
+                'dob' => 'required|date',
                 'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png'
             ]);
 
             $profile = Profile::where('user_id', Auth::id())->firstOrFail();
 
             $profile->school = $request->school;
-            $profile->age = $request->age;
+            $profile->dob = $request->dob;
             $profile->year_id = $request->year_id;
             $profile->phone = $request->phone;
             $profile->user_id = Auth::id();

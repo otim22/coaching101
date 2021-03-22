@@ -70,9 +70,9 @@
                 <div class="col-sm-12 col-md-12 col-lg-10 offset-1">
                     <h5 class="bold">{{ $pastpaper->title }}</h5>
                     @if($pastpaper->creator)
-                        <span class="author-font">By {{ $pastpaper->creator->name }}</span><br />
+                        <p>By {{ $pastpaper->creator->name }}</p>
                     @else
-                        <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                        <p>By {{ \App\Constants\GlobalConstants::ADMIN }}</p>
                     @endif
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-10 offset-1 mt-4">

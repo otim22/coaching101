@@ -11,7 +11,7 @@ use Faker\Generator as Faker;
 $factory->define(Profile::class, function (Faker $faker) {
     return [
         'year_id' => Year::all()->random()->id,
-        'age' => $faker->numberBetween(10, 25),
+        'dob' => $faker->dateTimeBetween('1990-01-01', '2015-12-31')->format('d/m/Y'),
         'category_id' => Category::all()->random()->id,
         'school' => $faker->word,
         'phone' => $faker->e164PhoneNumber,

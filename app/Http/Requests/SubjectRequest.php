@@ -28,6 +28,8 @@ class SubjectRequest extends FormRequest
             'subtitle' => 'nullable|string',
             'description' => 'required|string',
             'category_id' => 'required|integer',
+            'year_id' => 'required|integer',
+            'term_id' => 'required|integer',
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'cover_image' => 'required|image|mimes:jpg, jpeg, png|max:5520'
         ];
@@ -39,6 +41,8 @@ class SubjectRequest extends FormRequest
             'title.required' => 'Title is required.',
             'description.required' => 'A description is required',
             'category_id.required' => 'Choose a subject',
+            'year_id' => 'required|integer',
+            'term_id' => 'required|integer',
             'price.required' => 'Price is required in digits without (, .) characters',
             'cover_image.required' => 'A cover image is required'
         ];

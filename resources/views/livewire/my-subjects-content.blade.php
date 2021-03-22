@@ -1,7 +1,7 @@
 @include('flash.messages')
 
 <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
+    <div class="col-sm-12 col-md-12 col-lg-12">
         <h5 class="bold">My subjects</h5>
     </div>
 
