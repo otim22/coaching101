@@ -26,10 +26,14 @@
         </div>
     </div>
 </section>
-
+<section class="bg-white section-two">
+    <div class="container">
+        @include('flash.messages')
+    </div>
+</section>
 <section class="bg-white">
     <div class="container">
-        <livewire:cart />
+        @livewire('cart', [ 'response' => $response])
     </div>
 </section>
 

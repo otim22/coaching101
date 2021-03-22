@@ -4544,6 +4544,11 @@ img.rounded-corners {
   text-align: center;
 }
 
+.card-js .icon {
+  position: absolute !important;
+  top: 18px !important;
+}
+
 .resource-filter_input .custom-select {
   border-radius: 30px !important;
 }

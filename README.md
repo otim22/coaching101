@@ -19,7 +19,7 @@ Clone the repository
 
     git clone https://github.com/otim22/coaching101.git
 
- Switch to the repo folder
+Switch to the repo folder
 
     cd coaching101
 
@@ -103,7 +103,11 @@ docker-compose exec php php artisan db:seed
 docker-compose exec php php artisan serve --host=0.0.0.0
 ```
 
-The app gets served and accessed at [http://localhost:8000](http://localhost:8000).
+The app gets served and accessed at  [http://0.0.0.0:8009/](lhttp://0.0.0.0:8009) to view it in the browser.
+
+### phpMyAdmin
+
+Open [http://0.0.0.0:8090](lhttp://0.0.0.0:8090) to view it in the browser.
 
 
 ## Code overview
@@ -131,6 +135,6 @@ Run the laravel development server
 
     php artisan serve
 
- The api can now be accessed at
+The api can now be accessed at
 
     http://localhost:8000

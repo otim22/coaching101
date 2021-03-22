@@ -2,15 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use Config;
 use Illuminate\View\View;
 use App\Models\Subject;
 use App\Models\Wishlist;
 use Livewire\Component;
-use Illuminate\Http\Request;
+use App\Helpers\ProcessPayment as Payment;
 use Illuminate\Support\Facades\Auth;
 use App\Facades\Cart as CartFacade;
-use Illuminate\Support\Facades\Http;
 
 class Cart extends Component
 {
@@ -18,6 +16,9 @@ class Cart extends Component
     public $sum = 0;
     public $cartItems = [];
     public $wishlistItems = [];
+    public $cardDetails = [];
+
+    public $response = [];
 
     protected $listeners = [
         'goToCart' => 'getItems',
@@ -43,7 +44,15 @@ class Cart extends Component
         foreach ($this->cartItems as $cartItem) {
             $this->sum = $this->sum + $cartItem->price;
         }
+        if (count($this->response) > 0) {
+            $this->updatedPaymentInfo($this->response[0]);
+        }
         return $this->sum;
+    }
+
+    public function updatedPaymentInfo($value)
+    {
+        $this->response = $value;
     }
 
     public function render()
@@ -93,29 +102,31 @@ class Cart extends Component
         Rave::initialize(route('callback'));
     }
 
-    public function checkout(Request $request): void
+    public function checkout()
     {
         if(Auth::check()) {
             $user = Auth::user();
-
-            $cartFacade = new CartFacade;
-            $this->cartItems = $cartFacade->get()['subjects'];
-
             // WIP
             $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
             $currency = "UGX";
             $userEmail = $user->email;
             $userName= $user->name;
+            $phoneNumber = $user->profile->phone_number;
             $cartSum = $this->sum;
-            $redirectLink = "https://coaching101.app/cart";
+            $redirectLink = "http://0.0.0.0:8009/cart";
 
-            $response = Http::withToken(config('app.rave_key'))->post(
-                'https://api.flutterwave.com/v3/charges', [
+            $data = [
                 "tx_ref" => $paymentToken,
-                "amount"=> $cartSum,
+                "amount"=> '2000',
                 "currency"=> $currency,
                 "redirect_url" => $redirectLink,
                 "payment_options" => "card",
+                "card_number" => $this->cardDetails['number'],
+                "cvv" => $this->cardDetails['cvv'],
+                "expiry_month" => $this->cardDetails['expiryMonth'],
+                "expiry_year" => $this->cardDetails['expiryYear'],
+                "email" => $userEmail,
+                "phone_number" => $phoneNumber,
                 "meta" => [
                     "consumer_id" => Auth::id()
                 ],
@@ -128,21 +139,34 @@ class Cart extends Component
                     "description" => "Middleout isn't free. Pay the price",
                     "logo" => "https://assets.piedpiper.com/logo.png"
                 ]
-    		]);
-
-            $response->successful();
-
-            // dd($response);
-            //
-            foreach($this->cartItems as $item) {
-                $item->subscribe();
+            ];
+            $payment = new Payment($data);
+            $response = $payment->cardPayment();
+            $data = json_decode($response->body(), true);
+            if ($response->successful()) {
+                $status = $response['data']['status'];
+                if ($status == 'successful') {
+                    $this->clearCart();
+                }
+                $this->emit('onSuccess', $data);
             }
-
-            $cartFacade->clear();
-            $this->emit('clearCart');
-            $this->sum = 0;
-            $this->cart = $cartFacade->get();
+            if ($data['status'] == 'error') {
+                $this->emit('onError', $data);
+            }
         }
+    }
+
+    public function clearCart() {
+        $cartFacade = new CartFacade;
+        $this->cartItems = $cartFacade->get()['subjects'];
+        foreach($this->cartItems as $item) {
+            $item->subscribe();
+        }
+
+        $cartFacade->clear();
+        $this->emit('clearCart');
+        $this->sum = 0;
+        $this->cart = $cartFacade->get();
     }
 
     public function wishlistItemUpdate(): void
