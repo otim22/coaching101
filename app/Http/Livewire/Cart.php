@@ -42,11 +42,13 @@ class Cart extends Component
         $this->wishlistItems = Wishlist::where('user_id', Auth::id())->get();
 
         foreach ($this->cartItems as $cartItem) {
-            $this->sum = $this->sum + $cartItem->price;
+            $this->sum += $cartItem->price;
         }
+
         if (count($this->response) > 0) {
             $this->updatedPaymentInfo($this->response[0]);
         }
+
         return $this->sum;
     }
 
@@ -106,7 +108,6 @@ class Cart extends Component
     {
         if(Auth::check()) {
             $user = Auth::user();
-            // WIP
             $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
             $currency = "UGX";
             $userEmail = $user->email;
@@ -140,9 +141,11 @@ class Cart extends Component
                     "logo" => "https://assets.piedpiper.com/logo.png"
                 ]
             ];
+
             $payment = new Payment($data);
             $response = $payment->cardPayment();
             $data = json_decode($response->body(), true);
+
             if ($response->successful()) {
                 $status = $response['data']['status'];
                 if ($status == 'successful') {
@@ -150,6 +153,7 @@ class Cart extends Component
                 }
                 $this->emit('onSuccess', $data);
             }
+
             if ($data['status'] == 'error') {
                 $this->emit('onError', $data);
             }
@@ -159,6 +163,7 @@ class Cart extends Component
     public function clearCart() {
         $cartFacade = new CartFacade;
         $this->cartItems = $cartFacade->get()['subjects'];
+
         foreach($this->cartItems as $item) {
             $item->subscribe();
         }
@@ -195,7 +200,6 @@ class Cart extends Component
     public function removeItemFromCart($subjectId): void
     {
         $cartFacade = new CartFacade;
-
         $cartFacade->remove($subjectId);
 
         $this->emit('itemRemoved');
@@ -229,9 +233,7 @@ class Cart extends Component
     public function removeFromWishlist($subjectId): void
     {
         $wishlist = Wishlist::findOrFail($subjectId);
-
         $wishlist->delete();
-
         $this->emit('updateWishlist');
     }
 

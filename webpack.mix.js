@@ -14,7 +14,6 @@ const mix = require('laravel-mix');
  const domain = 'coaching101.app';
  const homedir = require('os').homedir();
 
-
  mix.scripts([
     'node_modules/card-js/card-js.min.js',
 ],  'public/js/card-js.js')

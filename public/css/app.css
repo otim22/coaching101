@@ -4559,11 +4559,6 @@ img.rounded-corners {
   padding: 25px;
 }
 
-.card-js .icon {
-  position: absolute !important;
-  top: 18px !important;
-}
-
 .book_objective_section,
 .note_objective_section {
   display: flex;
@@ -15528,3 +15523,4 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+
