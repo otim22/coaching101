@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use Auth;
-use App\Helpers\Helper;
+use App\Helpers\InitialGenerator;
 use App\Models\User;
 use Faker\Factory as Faker;
 use Tests\TestCase;
@@ -24,7 +24,7 @@ class InitialGeneratorTest extends TestCase
 
         $this->actingAs($user);
 
-        Helper::generate_initials(Auth::user()->name);
+        InitialGenerator::generate_initials(Auth::user()->name);
 
         $this->assertTrue(true);
     }

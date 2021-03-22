@@ -41,35 +41,35 @@
                         </ul>
 
                         <ul class="navbar-nav ml-auto nav nav-pills">
-                            <li class="nav-item {{ Helper::set_active(['subjects.starter']) }} pt-1">
+                            <li class="nav-item {{ InitialGenerator::set_active(['subjects.starter']) }} pt-1">
                                 <a class="nav-link" href="{{ route('subjects.starter') }}">Teach</a>
                             </li>
 
                             @auth()
                                 @if(auth()->user()->role == 1)
-                                    <li class="nav-item {{ Helper::set_active(['subjects.starter']) }} mt-1">
+                                    <li class="nav-item {{ InitialGenerator::set_active(['subjects.starter']) }} mt-1">
                                         <a class="nav-link" href="{{ route('subjects.starter') }}">Teach</a>
                                     </li>
-                                    <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
+                                    <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
                                         <a class="nav-link" href="{{ route('my-subjects') }}">My subjects</a>
                                     </li>
                                 @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
-                                    <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1">
+                                    <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} mt-1">
                                         <a class="nav-link" href="{{ route('my-subjects') }}">Learn</a>
                                     </li>
 
-                                    <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
+                                    <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
                                         <a class="nav-link" href="{{ route('manage.subjects') }}">Teacher</a>
                                     </li>
                                 @endif
                             @endauth
 
                             @guest
-                                <li class="nav-item {{ Helper::set_active(['login']) }} mt-1 mr-2 space-bottom">
+                                <li class="nav-item {{ InitialGenerator::set_active(['login']) }} mt-1 mr-2 space-bottom">
                                     <a class="btn btn-danger btn-sm nav-link" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">Login</a>
                                 </li>
                                 @if (Route::has('register'))
-                                    <li class="nav-item {{ Helper::set_active(['register']) }} mt-1 mr-2 register-button">
+                                    <li class="nav-item {{ InitialGenerator::set_active(['register']) }} mt-1 mr-2 register-button">
                                         <a class="btn btn-outline-secondary btn-sm nav-link" id="round-button" href="{{ route('register') }}">Register</a>
                                     </li>
                                 @endif
@@ -77,7 +77,7 @@
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             <div class="circle text-center">
-                                                <span class="circle__content">{{ Helper::generate_initials(Auth::user()->name) }}</span>
+                                                <span class="circle__content">{{ InitialGenerator::generate_initials(Auth::user()->name) }}</span>
                                             </div>
                                         </a>
 
@@ -85,7 +85,7 @@
                                             <a class="dropdown-item d-flex" href="{{ route('users.profile') }}">
                                                 <div class="mr-2 pt-2">
                                                     <div class="circle">
-                                                        <span class="circle__content">{{ Helper::generate_initials(Auth::user()->name) }}</span>
+                                                        <span class="circle__content">{{ InitialGenerator::generate_initials(Auth::user()->name) }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="mr-1">
