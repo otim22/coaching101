@@ -14,6 +14,7 @@
 @import 'components/fonts';
 @import 'components/nav';
 @import 'components/search';
+@import 'components/question_search';
 @import 'components/landing_page';
 @import 'components/footer';
 @import 'components/button';
@@ -39,6 +40,7 @@
 @import 'pages/teacher';
 @import 'pages/cart';
 @import 'pages/welcome';
+@import 'pages/objectives';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

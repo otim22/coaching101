@@ -1,7 +1,7 @@
 @include('flash.messages')
 
 <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
+    <div class="col-sm-12 col-md-12 col-lg-12">
         <h5 class="bold">My subjects</h5>
     </div>
 
@@ -93,7 +93,7 @@
                                         @endif
 
                                         @if($wishlistItem->subject->price)
-                                            <span class="bold">UGX {{  rtrim(rtrim(number_format($wishlistItem->subject->price, 2), 2), '.') }}/-</span>
+                                            <span class="bold">UGX {{  $wishlistItem->subject->formatPrice }}/-</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif

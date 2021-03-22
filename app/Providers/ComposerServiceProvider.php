@@ -10,6 +10,8 @@ use App\Models\Slider;
 use App\Models\Menu;
 use App\Models\Profile;
 use App\Models\Subject;
+use App\Models\Question;
+use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -43,7 +45,7 @@ class ComposerServiceProvider extends ServiceProvider
             $view->withCategories($categories);
         });
 
-        View::composer(['welcome', 'home', 'teacher.*', 'student.*'], function ($view) {
+        View::composer(['welcome', 'home', 'teacher.*', 'student.*', 'user.*'], function ($view) {
             $topCategories = Category::get()->take(18);
 
             $view->withTopCategories($topCategories);

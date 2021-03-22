@@ -128,7 +128,7 @@
                             @enderror
                         </div>
 
-                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm">Save</button>
+                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm">Update</button>
                     </form>
                 </div>
             </div>

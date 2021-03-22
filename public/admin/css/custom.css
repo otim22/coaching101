@@ -12,3 +12,40 @@
   vertical-align: top;
 }
 
+.book_objective_section,
+.note_objective_section {
+  display: flex;
+}
+
+.books_objective_input,
+.notes_objective_input {
+  flex-grow: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+.seen {
+  display: block;
+}
+
+.btn_books_objective,
+.btn_notes_objective {
+  cursor: pointer;
+}
+
+.delete_book_objective,
+.delete_note_objective {
+  color: white;
+  background-color: #e74c3c;
+  text-align: center;
+  margin-left: 10px;
+  padding-top: 6px;
+  font-weight: 700;
+  border-radius: 5px;
+  height: 30px;
+  min-width: 30px;
+  cursor: pointer;
+}
+

@@ -85,6 +85,7 @@ class BooksController extends Controller
         $request->validate([
             'title' => 'required|string',
             'price' => 'nullable',
+            'book_objective.*'  => 'nullable|string|distinct|min:2',
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',

@@ -7,12 +7,26 @@
     overflow: hidden;
 }
 
+.question-search input[type="text"] {
+    width: 100%;
+    min-width: 150px;
+    display: block;
+    padding-left: 20px;
+    border-radius: 19px;
+    overflow: hidden;
+}
+
 #top-search-button {
     border-top-right-radius: 19px;
     border-bottom-right-radius: 19px;
 }
 
-.top-search-svg svg {
+#question-search-button {
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
+
+.top-search-svg svg, .question-search-svg svg {
     width: 25px;
     height: 25px;
 }

@@ -77,8 +77,19 @@ class NotesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(NoteRequest $request, Note $note)
+    public function update(Request $request, Note $note)
     {
+        $request->validate([
+            'title' => 'required|string',
+            'price' => 'nullable',
+            'notes_objective.*'  => 'nullable|string|distinct|min:2',
+            'category_id' => 'required|integer',
+            'year_id' => 'required|integer',
+            'term_id' => 'required|integer',
+            'note' => 'nullable|mimes:pdf|max:5000',
+            'user_id' => 'integer|nullable',
+        ]);
+
         $note->fill($request->except(['note']))->save();
 
         if($request->hasFile('note') && $request->file('note')->isValid()) {

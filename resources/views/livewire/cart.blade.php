@@ -35,10 +35,10 @@
         @endforelse
 
         <div class="pt-3">
+            @foreach($wishlistItems as $wishlistItem)
             <div class="mb-3">
                 <h5 class="bold">Recently wishlisted</h5>
             </div>
-            @forelse($wishlistItems as $wishlistItem)
             <div class="card-custom p-3 mb-3">
                 <div class="d-flex justify-content-between">
                     <div class="flex-grow-1">
@@ -47,7 +47,7 @@
                         </a>
                     </div>
                     <div class="order-2">
-                        <span class="red_color bold text-set"> {{  rtrim(rtrim(number_format($wishlistItem->subject->price, 2), 2), '.') }}/-</span>
+                        <span class="red_color bold text-set"> {{  $wishlistItem->subject->formatPrice }}/-</span>
                     </div>
                     <div class="d-flex pr-3 align-items-start flex-column">
                         <a type="button" wire:click="removeFromWishlist({{ $wishlistItem->id }})"><small>Remove</small></a>
@@ -55,11 +55,7 @@
                     </div>
                 </div>
             </div>
-            @empty
-                <div class="text-center mt-5 mb-5">
-                    <p>No item(s) in wishlist</p>
-                </div>
-            @endforelse
+            @endforeach
         </div>
     </div>
 

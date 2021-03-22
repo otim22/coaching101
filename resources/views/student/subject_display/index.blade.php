@@ -14,6 +14,9 @@
                         </svg>
                     </a>
                 </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $subject->title }}</li>
             </ol>
         </nav>
@@ -43,9 +46,9 @@
                     </div>
                 @endif
                 @if(!$subject->isSubscribedTo)
-                <span class="bold">UGX {{  rtrim(rtrim(number_format($subject->price, 2), 2), '.') }}/-</span>
+                    <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
                 @endif
-                <p>Created by {{ $subject->creator->name }}</p>
+                <p class="mb-4">Created by {{ $subject->creator->name }}</p>
             </div>
         </div>
     </div>
@@ -76,7 +79,7 @@
                         <h5 class="bold">Subject Content</h5>
                     </div>
                   <div class="card">
-                        @forelse($subject->topics as $key => $topic)
+                        @foreach($subject->topics as $key => $topic)
                         <div class="card-header" id="{{ $topic->id }}">
                             <p class="mb-0">
                                 <button  id="id{{ $topic->id }}" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $topic->id }}" aria-expanded="true" aria-controls="collapse{{ $topic->id }}" style="text-decoration: none">
@@ -98,7 +101,7 @@
 
                         <div id="collapse{{ $topic->id }}" class="collapse {{ $topic->id === 1 ? 'show' : '' }}" aria-labelledby="{{ $topic->id }}" data-parent="#accordionExample">
                             <div class="card-body">
-                                @forelse($topic->getMedia('content_file') as $key => $topicMedia)
+                                @foreach($topic->getMedia('content_file') as $key => $topicMedia)
                                     <p class="mt-1">
                                         @if($subject->isSubscribedTo)
                                             <a href="{{ route('student.show', [$subject, $topic]) }}" style="text-decoration: none">
@@ -108,11 +111,9 @@
                                             <i class="fa subject-icon fa-play-circle"></i>{{ $topicMedia->name }}
                                         @endif
                                     </p>
-                                @empty
-                                    <p>No available attachments.</p>
-                                @endforelse
+                                @endforeach
 
-                                @forelse($topic->getMedia('resource_attachment') as $topicMedia)
+                                @foreach($topic->getMedia('resource_attachment') as $topicMedia)
                                     @if($subject->isSubscribedTo)
                                         <p>
                                             <a target="_blank" href="{{ $topicMedia->name }}" style="text-decoration: none">
@@ -122,16 +123,10 @@
                                     @else
                                         <p><i class="fa subject-icon fa-file"></i>{{ $topicMedia->name }}</p>
                                     @endif
-                                @empty
-                                    <p>No available attachments.</p>
-                                @endforelse
+                                @endforeach
                             </div>
                         </div>
-                        @empty
-                            <div class="p-3">
-                                <p>No topics available yet!</p>
-                            </div>
-                        @endforelse
+                        @endforeach
                     </div>
                 </div>
 
@@ -140,8 +135,8 @@
                     <ul>
                         @forelse($subject->audience['class_requirement']  as $class_requirement)
                         <li>
-                            <svg width="2em" height="2em" viewBox="0 0 18 18" class="bi bi-dot" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                            <svg width="1.8em" height="1.8em" viewBox="0 0 16 19" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
                             </svg>
                             {{ $class_requirement }}
                         </li>
@@ -261,11 +256,19 @@
                                     <span class="title-font ml-3">({{ $subject->subscriptionCount }}) students</span><br />
                                 </div>
                                 @endif
-                                <span class="bold">UGX {{  rtrim(rtrim(number_format($subject->price, 2), 2), '.') }}/-</span>
+                                @if($subject->isSubscribedTo)
+                                    <span class="author-font">UGX {{  $subject->formatPrice }}/- (Paid)</span></span>
+                                @else
+                                    <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
+                                @endif
                             </a>
                             <div class="mt-2 d-flex justify-content-between">
-                                <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
-                                <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                                @if($subject->isSubscribedTo)
+                                    <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                @else
+                                    <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
+                                    <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                                @endif
                             </div>
                         </div>
                     </div>

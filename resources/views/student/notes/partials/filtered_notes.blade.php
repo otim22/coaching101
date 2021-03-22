@@ -14,7 +14,7 @@
                                 @endif
 
                                 @if($note->price)
-                                    UGX {{ rtrim(rtrim(number_format($note->price, 2), 2), '.') }}/- <span class="author-font">(Paid)</span>
+                                    UGX {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif
@@ -29,24 +29,26 @@
                                 @endif
 
                                 @if($note->price)
-                                    UGX {{ rtrim(rtrim(number_format($note->price, 2), 2), '.') }}/- <span class="author-font">(Paid)</span>
+                                    UGX {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif
                             </a>
                         @else
-                            <span class="bold">{{ $note->very_short_title }}</span><br />
-                            @if($note->creator)
-                                <span class="author-font">{{ $note->creator->name }}</span><br />
-                            @else
-                                <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                            @endif
+                            <a href="{{ route('student.notes.show', $note) }}" style="text-decoration: none" class="title-font">
+                                <span class="bold">{{ $note->very_short_title }}</span><br />
+                                @if($note->creator)
+                                    <span class="author-font">{{ $note->creator->name }}</span><br />
+                                @else
+                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
+                                @endif
 
-                            @if($note->price)
-                                <span class="bold">UGX {{ rtrim(rtrim(number_format($note->price, 2), 2), '.') }}/-</span>
-                            @else
-                                <span class="bold paid_color">Free</span>
-                            @endif
+                                @if($note->price)
+                                    <span class="bold">UGX {{ $note->formatPrice }}/-</span>
+                                @else
+                                    <span class="bold paid_color">Free</span>
+                                @endif
+                            </a>
                         @endif
                         <div class="mt-2">
                             <livewire:buy-note :note="$note" />

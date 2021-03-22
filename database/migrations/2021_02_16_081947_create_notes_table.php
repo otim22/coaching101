@@ -17,6 +17,7 @@ class CreateNotesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->json('notes_objective');
             $table->float('price')->nullable();
             $table->boolean('is_approved')->default(false);
             $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <p class="copyright">
-                    Copyright &copy;  <?php echo date("Y"); ?> Coaching101. <a class="footer-text" href="#">Terms and conditions</a> | <a class="footer-text" href="#">All Rights Reserved.</a>
+                    <span class="light_gray_color">Copyright &copy;  <?php echo date("Y"); ?> Coaching101.</span> <a class="footer-text" href="#">Terms and conditions</a> <span class="light_gray_color"> | </span><a class="footer-text" href="#">All Rights Reserved.</a>
                 </p>
             </div>
         </div>

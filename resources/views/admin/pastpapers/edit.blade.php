@@ -104,7 +104,7 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary float-right">Submit</button>
+                            <button type="submit" class="btn btn-primary float-right">Update</button>
                         </form>
                     </div>
                 </div>

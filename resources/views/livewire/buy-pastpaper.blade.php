@@ -4,14 +4,14 @@
             @if($pastpaper->creator)
                 <a href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" id="round-button-2"
                                 name="button"
-                                class="btn btn-outline-danger btn-sm" target="_blank">
-                                Download pastpaper
+                                class="btn btn-outline-secondary btn-sm" target="_blank">
+                                View pastpaper
                 </a>
             @else
                 <a href="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" id="round-button-2"
                                 name="button"
-                                class="btn btn-outline-danger btn-sm" target="_blank">
-                                Download pastpaper
+                                class="btn btn-outline-secondary btn-sm" target="_blank">
+                                View pastpaper
                 </a>
             @endif
         @else
@@ -26,14 +26,14 @@
         @if($pastpaper->creator)
             <a href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" id="round-button-2"
                             name="button"
-                            class="btn btn-outline-danger btn-sm" target="_blank">
-                            Download pastpaper
+                            class="btn btn-outline-secondary btn-sm" target="_blank">
+                            View pastpaper
             </a>
         @else
             <a href="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" id="round-button-2"
                             name="button"
-                            class="btn btn-outline-danger btn-sm" target="_blank">
-                            Download pastpaper
+                            class="btn btn-outline-secondary btn-sm" target="_blank">
+                            View pastpaper
             </a>
         @endif
     @endif

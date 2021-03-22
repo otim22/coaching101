@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Topic;
 use App\Models\Subject;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class SubjectDisplayController extends Controller
@@ -26,7 +27,8 @@ class SubjectDisplayController extends Controller
     {
         $previous = Topic::where('id', '<', $topic->id)->orderBy('id', 'desc')->first();
         $next = Topic::where('id', '>', $topic->id)->orderBy('id')->first();
+        $questions = Question::where('subject_id', $subject->id)->paginate(18);
 
-        return view('student.subject_display.show', compact(['subject', 'topic', 'previous', 'next']));
+        return view('student.subject_display.show', compact(['subject', 'topic', 'previous', 'next', 'questions']));
     }
 }

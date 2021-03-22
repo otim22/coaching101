@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
+use App\Traits\PresentsSubject;
 use Spatie\Image\Manipulations;
 use willvincent\Rateable\Rateable;
 use Spatie\Sluggable\SlugOptions;
@@ -22,7 +23,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Subject extends Model implements HasMedia, Searchable
 {
-    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable;
+    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable, PresentsSubject;
 
     protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id', 'is_approved'];
     protected $with = ['media'];
@@ -34,8 +35,7 @@ class Subject extends Model implements HasMedia, Searchable
      */
     public function getSlugOptions() : SlugOptions
     {
-        return SlugOptions::create()
-                                                ->generateSlugsFrom('title')
+        return SlugOptions::create()->generateSlugsFrom('title')
                                                 ->saveSlugsTo('slug')
                                                 ->allowDuplicateSlugs()
                                                 ->slugsShouldBeNoLongerThan(50)
@@ -64,16 +64,6 @@ class Subject extends Model implements HasMedia, Searchable
                                 ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
                                 ->nonQueued();
                 });
-    }
-
-    public function getTitleAttribute($value)
-    {
-        return ucfirst($value);
-    }
-
-    public function getSubtitleAttribute($value)
-    {
-        return ucfirst($value);
     }
 
     public function audience()
@@ -128,6 +118,11 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->hasMany('App\Models\Subject');
     }
 
+    public function questions()
+    {
+        return $this->hasMany('App\Models\Question');
+    }
+
     public function subscribe($userId = null)
     {
         $this->subscription()->create([
@@ -148,16 +143,6 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->morphOne(Subscription::class, 'subscriptionable');
     }
 
-    public function getIsSubscribedToAttribute()
-    {
-        return $this->subscription()->where('user_id', Auth::id())->exists();
-    }
-
-    public function getSubscriptionCountAttribute()
-    {
-        return $this->subscription()->count();
-    }
-
     public function rating()
     {
         return $this->belongsTo(Subject::class);
@@ -170,17 +155,19 @@ class Subject extends Model implements HasMedia, Searchable
                                 ->limit($limit);
     }
 
+    public function getTotalRevenueAttribute()
+    {
+        return rtrim(rtrim(number_format(($this->price * $this->subscriptionCount), 2), 2), '.');
+    }
+
     /** Searching for subjects results*/
     public function getSearchResult(): SearchResult
     {
-        $url = route('student.show', $this->slug);
-
         return new SearchResult(
             $this,
             $this->title,
             $this->subtitle,
-            $this->description,
-            $url
+            $this->description
         );
     }
 
