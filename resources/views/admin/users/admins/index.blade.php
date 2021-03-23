@@ -9,7 +9,7 @@
                 <div class="card admin-shadow">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <div><h4>Admins</h4></div>
+                            <div><h4 class="pt-1">Admins list</h4></div>
                         </div>
                     </div>
                     <div class="card-body">
