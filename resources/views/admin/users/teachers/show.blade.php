@@ -38,7 +38,7 @@
                                     @forelse($subjects as $subject)
                                         <div class="mb-4">
                                             <h6 class="bold">{{ $subject->title }}</h6>
-                                            <p>Total Revenue: <span  class="revenue-font">UGX {{ $subject->totalRevenue  }}/-</span></p>
+                                            <p>Total Revenue: <span>UGX {{ $subject->totalRevenue  }}/-</span></p>
                                         </div>
                                     @empty
                                         <p>No data to display</p>
@@ -50,7 +50,7 @@
                                     @forelse($subjects as $subject)
                                         <div class="mb-4">
                                             <h6 class="bold">{{ $subject->title }}</h6>
-                                            <p>Enrollment : <span  class="revenue-font">{{ $subject->subscriptionCount }} students</span></p>
+                                            <p>Enrollment : <span>{{ $subject->subscriptionCount }} students</span></p>
                                         </div>
                                     @empty
                                     <p>No data to display</p>
@@ -63,9 +63,9 @@
                                         <div class="mb-4">
                                             <h6 class="bold">{{ $subject->title }}</h6>
                                             @if($subject->averageRating())
-                                                <p>Reviews: <span  class="revenue-font">{{ number_format($subject->averageRating(), 1, ".", "") }} stars</span></p>
+                                                <p>Reviews: <span>{{ number_format($subject->averageRating(), 1, ".", "") }} stars</span></p>
                                             @else
-                                                <p>Reviews: <span  class="revenue-font">No reviews yet!</span></p>
+                                                <p>Reviews: <span>No reviews yet!</span></p>
                                             @endif
                                         </div>
                                     @empty

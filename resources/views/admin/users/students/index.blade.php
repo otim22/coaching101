@@ -28,8 +28,8 @@
                                 @forelse($students as $key => $student)
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
-                                    <td>{{ Str::ucfirst($student->name) }}</td>
-                                    <td>{{ $student->email }}</td>
+                                    <td><a href="{{ route('admin.students.show', $student) }}" style="text-decoration: none;">{{ Str::ucfirst($student->name) }}</a></td>
+                                    <td><a href="{{ route('admin.students.show', $student) }}" style="text-decoration: none;">{{ $student->email }}</a></td>
                                     <td class="align-middle" style="width:40px">
                                         @if(Auth::user()->role == 4)
                                             <a class="btn btn-white btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

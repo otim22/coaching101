@@ -149,6 +149,7 @@ Route::middleware('auth')->group(function() {
         Route::delete('/admins/{user}', [AdminController::class, 'destroy'])->name('admins.destroy');
 
         Route::get('/students', [Student::class, 'index'])->name('students.index');
+        Route::get('/students/{student}', [Student::class, 'show'])->name('students.show');
         Route::delete('/students/{student}/destroy', [Student::class, 'destroy'])->name('students.destroy');
         Route::get('/teachers', [Teacher::class, 'index'])->name('teachers.index');;
         Route::get('/teachers/{teacher}', [Teacher::class, 'show'])->name('teachers.show');;

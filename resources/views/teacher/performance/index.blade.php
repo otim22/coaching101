@@ -42,7 +42,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="revenue" role="tabpanel" aria-labelledby="revenue-tab">
                         <div class="mt-4">
-                            <div class="row" style="display: flex; justify-content: flex-end">
+                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
                                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
                                         <select class="custom-select" id="performance_filter">
@@ -53,7 +53,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             @forelse($subjects as $subject)
                                 <div class="mb-4">
                                     <h6 class="bold">{{ $subject->title }}</h6>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
                         <div class="mt-4">
-                            <div class="row" style="display: flex; justify-content: flex-end">
+                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
                                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
                                         <select class="custom-select" id="performance_filter">
@@ -77,7 +77,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             @forelse($subjects as $subject)
                                 <div class="mb-4">
                                     <h6 class="bold">{{ $subject->title }}</h6>
@@ -90,7 +90,7 @@
                     </div>
                     <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                         <div class="mt-4">
-                            <div class="row" style="display: flex; justify-content: flex-end">
+                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
                                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
                                         <select class="custom-select" id="performance_filter">
@@ -101,7 +101,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             @forelse($subjects as $subject)
                                 <div class="mb-4">
                                     <h6 class="bold">{{ $subject->title }}</h6>
