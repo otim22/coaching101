@@ -85,12 +85,12 @@
         </div>
         <div class="modal-body">
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Card</a>
-            <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Mobile Money</a>
+            <a class="nav-link active" id="nav-card-tab" data-toggle="tab" href="#nav-card" role="tab" aria-controls="nav-card" aria-selected="true">Card</a>
+            <a class="nav-link" id="nav-mobilemoney-tab" data-toggle="tab" href="#nav-mobilemoney" role="tab" aria-controls="nav-mobilemoney" aria-selected="false">Mobile Money</a>
         </div>
         </br>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="tab-pane fade show active" id="nav-card" role="tabpanel" aria-labelledby="nav-card-tab">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
                     <strong>Error!</strong>&nbsp;<span id="error-message"></span>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -112,10 +112,21 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <div class="d-flex justify-content-around">
-                    <img wire:click="proccessMobileMoney('MTN')" src="{{ asset('images/mtn-image.png') }}" width="150" height="100" atl="mtn image">
-                    <img wire:click="proccessMobileMoney('AIRTEL')" src="{{ asset('images/airtel-image.jpeg') }}" width="150" height="100" atl="Airtel image">
+            <div class="tab-pane fade" id="nav-mobilemoney" role="tabpanel" aria-labelledby="nav-mobilemoney-tab">
+                <div>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Telephone Number</label>
+                        <input type="number" class="form-control" id="phoneNumber" placeholder="256123456789">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Select Network</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Airtel</option>
+                            <option>MTN</option>
+                        </select>
+                    </div>
+                </form>
                 </div>
             </div>
         </div>
@@ -132,6 +143,39 @@
 @push('scripts')
     <script src="{{ asset('js/card-js.js') }}"></script>
     <script>
+        function validateNetwork(network, number) {
+            const networks = {
+                airtel: ["70", "75"],
+                mtn: ["77", "78"]
+            }
+            let startIndex = null
+            let endIndex = null
+            if (str.length === 10) {
+                startIndex = 1
+                endIndex = 3
+            }
+            if (str.length === 12) {
+                startIndex = 3
+                endIndex = 5
+            }
+
+            if (str.length === 13) {
+                startIndex = 4
+                endIndex = 6
+            }
+            if (startIndex !== null && endIndex !== null) {
+                if (networks.hasOwnProperty(network)) {
+                    const prefix = str.substring(startIndex, endIndex)
+                    return networks[network].includes(prefix)
+                }
+                return false
+            }
+            return false
+        }
+        function validateMobile(mobilenumber) {
+            var regmm='^([0|\+[0-9]{1,3})?([0-9]{10})$'
+            return new RegExp(regmm).test(mobilenumber)
+        }
         document.addEventListener('livewire:load', function (event) {
             var spinner = $('#spinner')
             var alert = $('#alert')
@@ -142,7 +186,7 @@
             alert.attr("style","display:none !important");
             alertSuccess.attr("style","display:none !important");
 
-            $("#process").click(function() {
+            function processCardPayment () {
                 var cardNumber = myCard.CardJs('cardNumber');
                 var expiryMonth = myCard.CardJs('expiryMonth');
                 var expiryYear = myCard.CardJs('expiryYear');
@@ -179,6 +223,22 @@
                 spinner.removeAttr('style');
                 @this.cardDetails = cardDetails
                 @this.checkout()
+            }
+
+            $("#process").click(function() {
+                if ($('.nav-link').hasClass('active')) {
+                    var tab = $('.nav-link.active').attr('id')
+                    if (tab === 'nav-card-tab') {
+                        processCardPayment()
+                        return
+                    }
+                    if (tab === 'nav-mobilemoney-tab') {
+                        var phoneNumber = $('#phoneNumber').val()
+
+                        console.log(validateMobile(phoneNumber))
+                        return
+                    }
+                }
             });
 
             var showSuccess = function() {
@@ -209,6 +269,7 @@
             if (response !== null && Object.keys(response).length) {
                 @this.clearCart()
             }
+            $()
         })
     </script>
 @endpush
