@@ -15,9 +15,9 @@ class TeacherController extends Controller
         return view('admin.users.teachers.index', compact('teachers'));
     }
 
-    public function show(User $user)
+    public function show(User $teacher)
     {
-        return view('admin.users.teachers.show', compact('user'));
+        return view('admin.users.teachers.show', compact('teacher'));
     }
 
     /**

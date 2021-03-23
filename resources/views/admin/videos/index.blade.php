@@ -12,50 +12,52 @@
                             <div><h4>Subjects</h4></div>
                         </div>
                     </div>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Names</th>
-                                <th scope="col">Status</th>
-                                @if(Auth::user()->role == 4)
-                                    <th scope="col">Action</th>
-                                @endif
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($subjects as $subject)
-                            <tr>
-                                <th scope="row">{{ $subject->created_at->diffForHumans() }}</th>
-                                <td><a href="{{ route('admin.subjects.show', $subject) }}" style="text-decoration: none;">{{ $subject->title }}</a></td>
-                                <td>
-                                    @if($subject->is_approved)
-                                        <div class="badge badge-success">Approved</div>
-                                    @else
-                                        <div class="badge badge-warning">Pending</div>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Names</th>
+                                    <th scope="col">Status</th>
+                                    @if(Auth::user()->role == 4)
+                                        <th scope="col">Action</th>
                                     @endif
-                                </td>
-                                @if(Auth::user()->role == 4)
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($subjects as $subject)
+                                <tr>
+                                    <th scope="row">{{ $subject->created_at->diffForHumans() }}</th>
+                                    <td><a href="{{ route('admin.subjects.show', $subject) }}" style="text-decoration: none;">{{ $subject->title }}</a></td>
                                     <td>
-                                        <a class="btn btn-outline-danger"
-                                                    href="#"
-                                                    onclick="event.preventDefault(); document.getElementById('delete-subject-{{ $subject->id }}').submit();">
-                                                    {{ __('Delete') }}
-                                        </a>
+                                        @if($subject->is_approved)
+                                            <div class="badge badge-success">Approved</div>
+                                        @else
+                                            <div class="badge badge-warning">Pending</div>
+                                        @endif
                                     </td>
-                                @endif
-                                <form action="{{ route('admin.subjects.destroy', $subject) }}" class="hidden" id="delete-subject-{{ $subject->id }}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                </form>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td>No available subjects</td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                                    @if(Auth::user()->role == 4)
+                                        <td>
+                                            <a class="btn btn-outline-danger"
+                                                        href="#"
+                                                        onclick="event.preventDefault(); document.getElementById('delete-subject-{{ $subject->id }}').submit();">
+                                                        {{ __('Delete') }}
+                                            </a>
+                                        </td>
+                                    @endif
+                                    <form action="{{ route('admin.subjects.destroy', $subject) }}" class="hidden" id="delete-subject-{{ $subject->id }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                    </form>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td>No available subjects</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center">

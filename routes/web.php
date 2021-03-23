@@ -151,6 +151,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/students', [Student::class, 'index'])->name('students.index');
         Route::delete('/students/{student}/destroy', [Student::class, 'destroy'])->name('students.destroy');
         Route::get('/teachers', [Teacher::class, 'index'])->name('teachers.index');;
+        Route::get('/teachers/{teacher}', [Teacher::class, 'show'])->name('teachers.show');;
         Route::delete('/teachers/{teacher}/destroy', [Teacher::class, 'destroy'])->name('teachers.destroy');
         Route::get('/student-profiles', [StudentProfileController::class, 'index']);
         Route::get('/teacher-profiles', [TeacherProfileController::class, 'index']);

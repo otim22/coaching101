@@ -12,42 +12,44 @@
                             <div><h4>Admins</h4></div>
                         </div>
                     </div>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Names</th>
-                                <th scope="col">Email</th>
-                                @if(Auth::user()->role == 4)
-                                    <th scope="col">Action</th>
-                                @endif
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($admins as $key => $admin)
-                            <tr>
-                                <th scope="row">{{ $key + 1 }}</th>
-                                <td>{{ Str::ucfirst($admin->name) }}</td>
-                                <td>{{ $admin->email }}</td>
-                                @if(Auth::user()->role == 4)
-                                    <td>
-                                        <a class="btn btn-outline-danger"
-                                                    href="#"
-                                                    onclick="event.preventDefault(); document.getElementById('delete-admin-{{ $admin->id }}').submit();">
-                                                    {{ __('Delete') }}
-                                        </a>
-                                    </td>
-                                @endif
-                                <form action="{{ route('admin.admins.destroy', $admin) }}" class="hidden" id="delete-admin-{{ $admin->id }}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                </form>
-                            </tr>
-                            @empty
-                                <p class="mb-2">No admins</p>
-                            @endforelse
-                        </tbody>
-                    </table>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Names</th>
+                                    <th scope="col">Email</th>
+                                    @if(Auth::user()->role == 4)
+                                        <th scope="col">Action</th>
+                                    @endif
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($admins as $key => $admin)
+                                <tr>
+                                    <th scope="row">{{ $key + 1 }}</th>
+                                    <td>{{ Str::ucfirst($admin->name) }}</td>
+                                    <td>{{ $admin->email }}</td>
+                                    @if(Auth::user()->role == 4)
+                                        <td>
+                                            <a class="btn btn-outline-danger"
+                                                        href="#"
+                                                        onclick="event.preventDefault(); document.getElementById('delete-admin-{{ $admin->id }}').submit();">
+                                                        {{ __('Delete') }}
+                                            </a>
+                                        </td>
+                                    @endif
+                                    <form action="{{ route('admin.admins.destroy', $admin) }}" class="hidden" id="delete-admin-{{ $admin->id }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                    </form>
+                                </tr>
+                                @empty
+                                    <p class="mb-2">No admins</p>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

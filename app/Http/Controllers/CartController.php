@@ -15,6 +15,6 @@ class CartController extends Controller
             $request->session()->flash('success', $message);
         }
 
-        return view('student.cart.index', [ 'response' => [$data] ]);
+        return view('student.cart.index', [ 'response' => [$data]]);
     }
 }
