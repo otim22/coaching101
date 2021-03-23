@@ -10,7 +10,11 @@
                         <div class="card mb-3">
                             <div class="row no-gutters">
                                 <div class="col-4">
-                                    <img src="{{ asset($teacher->profile->getFirstMediaUrl('profile')) }}" width="150" height="100" alt="{{ $teacher->name }}">
+                                    @if($teacher->profile->getFirstMediaUrl('profile'))
+                                        <img src="{{ asset($teacher->profile->getFirstMediaUrl('profile')) }}" width="120" height="80" alt="{{ $teacher->name }}">
+                                    @else
+                                        <img src="{{ asset('/images/no-image.jpeg') }}" width="120" height="80" alt="{{ $teacher->name }}">
+                                    @endif
                                 </div>
                                 <div class="col-8">
                                     <div class="card-body" style="padding: 1.1rem 0rem 0rem 1rem;">
