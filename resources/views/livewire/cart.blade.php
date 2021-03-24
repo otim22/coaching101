@@ -101,33 +101,28 @@
                     <span id="success-body"></span>
                 </div>
                 <div class="card-js" id="my-card"></div>
-                <div id="spinner">
-                    <div class="d-flex justify-content-center">
-                        <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
-                            <span class="sr-only">Processing...</span>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <span>Processing...</span>
-                    </div>
-                </div>
+                @include('partials.spinner')
             </div>
             <div class="tab-pane fade" id="nav-mobilemoney" role="tabpanel" aria-labelledby="nav-mobilemoney-tab">
-                <div>
-                <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Telephone Number</label>
-                        <input type="number" class="form-control" id="phoneNumber" placeholder="256123456789">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Select Network</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Airtel</option>
-                            <option>MTN</option>
-                        </select>
-                    </div>
-                </form>
+                <div class="mobilemoney-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Telephone Number</label>
+                            <input type="number" class="form-control phone " id="phoneNumber" placeholder="256123456789">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Select Network</label>
+                            <select class="form-control network-select" id="network">
+                                <option value="airtel">Airtel</option>
+                                <option value="mtn">MTN</option>
+                            </select>
+                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                Please select valid network.
+                            </div>
+                        </div>
+                    </form>
                 </div>
+                @include('partials.spinner')
             </div>
         </div>
         </div>
@@ -150,22 +145,22 @@
             }
             let startIndex = null
             let endIndex = null
-            if (str.length === 10) {
+            if (number.length === 10) {
                 startIndex = 1
                 endIndex = 3
             }
-            if (str.length === 12) {
+            if (number.length === 12) {
                 startIndex = 3
                 endIndex = 5
             }
 
-            if (str.length === 13) {
+            if (number.length === 13) {
                 startIndex = 4
                 endIndex = 6
             }
             if (startIndex !== null && endIndex !== null) {
                 if (networks.hasOwnProperty(network)) {
-                    const prefix = str.substring(startIndex, endIndex)
+                    const prefix = number.substring(startIndex, endIndex)
                     return networks[network].includes(prefix)
                 }
                 return false
@@ -173,11 +168,13 @@
             return false
         }
         function validateMobile(mobilenumber) {
-            var regmm='^([0|\+[0-9]{1,3})?([0-9]{10})$'
-            return new RegExp(regmm).test(mobilenumber)
+            var regxNotWithPrefix = '^[0-9]{10}$'
+            var regxWithPrefix='^(/+[0-9]{1,3})?([0-9]{10})$'
+            var regex = mobilenumber.startsWith('0') ? regxNotWithPrefix : regxWithPrefix
+            return new RegExp(regex).test(mobilenumber)
         }
         document.addEventListener('livewire:load', function (event) {
-            var spinner = $('#spinner')
+            var spinner = $('.tab-pane').find('#spinner')
             var alert = $('#alert')
             var myCard = $('#my-card');
             var proccessBtn = $('#process')
@@ -234,12 +231,51 @@
                     }
                     if (tab === 'nav-mobilemoney-tab') {
                         var phoneNumber = $('#phoneNumber').val()
-
-                        console.log(validateMobile(phoneNumber))
+                        var network = $('#network').val()
+                        var isPhoneNumberValid = validateMobile(phoneNumber)
+                        if (!isPhoneNumberValid) {
+                            $('.phone').addClass('is-invalid')
+                            return
+                        }
+                        var isValidNetwork = validateNetwork(network, phoneNumber)
+                        if (!isValidNetwork) {
+                            $('.network-select').addClass('is-invalid')
+                            return
+                        }
+                        var data = { 'network': network, 'phoneNumber': phoneNumber }
+                        proccessBtn.attr('disabled', 'disabled')
+                        $('.mobilemoney-form').attr("style","display:none !important");
+                        $('.nav-link:first-child').addClass('disabled')
+                        spinner.removeAttr('style');
+                        @this.proccessMobileMoney(data)
                         return
                     }
                 }
             });
+
+            $('#myModal').on('hidden.bs.modal', function (event) {
+                if ($('.nav-link').hasClass('active')) {
+                    var tab = $('.nav-link.active').attr('id')
+                    if (tab === 'nav-mobilemoney-tab') {
+                        $('.mobilemoney-form').removeAttr("style");
+                        $('.nav-link:first-child').removeClass('disabled')
+                        spinner.attr("style","display:none !important")
+                        proccessBtn.removeAttr('disabled')
+                    }
+                }
+            })
+
+            $('.phone').keyup(function() {
+                if($(this).hasClass('is-invalid')) {
+                    $(this).removeClass('is-invalid')
+                }
+            })
+
+            $('.network-select').change(function() {
+                if($(this).hasClass('is-invalid')) {
+                    $(this).removeClass('is-invalid')
+                }
+            })
 
             var showSuccess = function() {
                 spinner.attr("style","display:none !important");
@@ -249,7 +285,6 @@
             }
 
             @this.on('onSuccess', function (res) {
-                console.log(res)
                 if (res.hasOwnProperty('meta')) {
                     window.open(res.meta.authorization.redirect)
                 }

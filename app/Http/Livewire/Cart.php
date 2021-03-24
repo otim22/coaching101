@@ -111,6 +111,7 @@ class Cart extends Component
                 "cvv" => $this->cardDetails['cvv'],
                 "expiry_month" => $this->cardDetails['expiryMonth'],
                 "expiry_year" => $this->cardDetails['expiryYear'],
+                "phone_number" => Auth::user()->profile->phone,
                 "fullname" => Auth::user()->name,
                 "customizations" => [
                     "title" => "OTF Payments",
@@ -134,17 +135,19 @@ class Cart extends Component
         }
     }
 
-    public function proccessMobileMoney($network)
+    public function proccessMobileMoney($data)
     {
         if(Auth::check()) {
             $data = array_merge($this->setPaymentDefaults(), [
-                "network" => $network
+                "network" => strtoupper($data['network']),
+                "phone_number" => $data['phoneNumber']
             ]);
             $payment = new Payment($data);
             $response = $payment->mobileMoney();
             $data = json_decode($response->body(), true);
             if ($response->successful()) {
                 $this->emit('onSuccess', $data);
+                $this->clearCart();
             }
             if ($data['status'] == 'error') {
                 $this->emit('onError', $data);
@@ -157,7 +160,6 @@ class Cart extends Component
         $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
         $currency = "UGX";
         $userEmail = $user->email;
-        $phoneNumber = $user->profile->phone;
         $cartSum = $this->sum;
         $redirectLink = "http://0.0.0.0:8009/cart";
 
@@ -167,7 +169,6 @@ class Cart extends Component
             "currency"=> $currency,
             "redirect_url" => $redirectLink,
             "email" => $userEmail,
-            "phone_number" => $phoneNumber,
             "meta" => [
                 "consumer_id" => Auth::id()
             ]
