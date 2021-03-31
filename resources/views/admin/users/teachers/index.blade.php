@@ -9,34 +9,35 @@
                 <div class="card admin-shadow">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <div><h4>Teacher</h4></div>
+                            <div><h4 class="pt-1">Teachers list</h4></div>
                         </div>
                     </div>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Names</th>
-                                <th scope="col">Email</th>
-                                @if(Auth::user()->role == 4)
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Names</th>
+                                    <th scope="col">Email</th>
+                                    @if(Auth::user()->role == 4)
                                     <th scope="col">Action</th>
-                                @endif
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($teachers as $key => $teacher)
-                            <tr>
-                                <th scope="row">{{ $key + 1 }}</th>
-                                <td>{{ Str::ucfirst($teacher->name) }}</td>
-                                <td>{{ $teacher->email }}</td>
-                                @if(Auth::user()->role == 4)
+                                    @endif
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($teachers as $key => $teacher)
+                                <tr>
+                                    <th scope="row">{{ $key + 1 }}</th>
+                                    <td><a href="{{ route('admin.teachers.show', $teacher) }}" style="text-decoration: none;"> {{ Str::ucfirst($teacher->name) }}</a></td>
+                                    <td><a href="{{ route('admin.teachers.show', $teacher) }}" style="text-decoration: none;">{{ $teacher->email }}</a></td>
+                                    @if(Auth::user()->role == 4)
                                     <td>
                                         <a class="btn btn-outline-danger"
-                                                    href="#"
-                                                    onclick="event.preventDefault(); document.getElementById('delete-teacher-{{ $teacher->id }}').submit();">
-                                                    {{ __('Delete') }}
-                                        </a>
-                                    </td>
+                                        href="#"
+                                        onclick="event.preventDefault(); document.getElementById('delete-teacher-{{ $teacher->id }}').submit();">
+                                        {{ __('Delete') }}
+                                    </a>
+                                </td>
                                 @endif
                                 <form action="{{ route('admin.teachers.destroy', $teacher) }}" class="hidden" id="delete-teacher-{{ $teacher->id }}" method="POST">
                                     @csrf
@@ -44,7 +45,7 @@
                                 </form>
                             </tr>
                             @empty
-                                <p class="mb-2">No teachers</p>
+                            <p class="mb-2">No teachers</p>
                             @endforelse
                         </tbody>
                     </table>
@@ -64,11 +65,12 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary btn-sm mr-4" data-dismiss="modal">Cancel</button>
                                     {!! Form::open(['route' => ['admin.teachers.destroy', $teacher], 'method' => 'delete']) !!}
-                                        <button type="submit" class="btn btn-primary btn-sm">Understood</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Understood</button>
                                     {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

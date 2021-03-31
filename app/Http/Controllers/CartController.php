@@ -10,9 +10,11 @@ class CartController extends Controller
     {
         $data = $request->input('response');
         $message = $data !== null ? 'Transaction Successfull' : '';
+
         if (!empty($message)) {
             $request->session()->flash('success', $message);
         }
-        return view('student.cart.index', [ 'response' => [$data] ]);
+
+        return view('student.cart.index', [ 'response' => [$data]]);
     }
 }

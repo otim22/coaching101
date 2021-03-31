@@ -10,7 +10,7 @@ class TeacherProfileController extends Controller
 {
     public function index()
     {
-        $teachers = Profile::whereNull('age')->paginate(20);
+        $teachers = Profile::whereNull('dob')->paginate(20);
 
         return view('admin.profiles.teachers.index', compact('teachers'));
     }
