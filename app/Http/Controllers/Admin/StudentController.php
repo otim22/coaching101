@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Note;
+use App\Models\Book;
+use App\Models\Subject;
+use App\Models\Pastpaper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,6 +17,11 @@ class StudentController extends Controller
         $students = User::where('role', 1)->paginate(20);
 
         return view('admin.users.students.index', compact('students'));
+    }
+
+    public function show(User $student)
+    {
+        return view('admin.users.students.show', compact('student'));
     }
 
     /**

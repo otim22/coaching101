@@ -24,7 +24,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto nav nav-pills">
-                        <li class="nav-item {{ Helper::set_active(['manage.subjects']) }} mt-1 mr-2">
+                        <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} mt-1 mr-2">
                             <a class="btn btn-outline-secondary btn-sm nav-link bold" href="{{ URL::previous() }}">Exit</a>
                         </li>
                     </ul>

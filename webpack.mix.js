@@ -14,7 +14,15 @@ const mix = require('laravel-mix');
  const domain = 'coaching101.app';
  const homedir = require('os').homedir();
 
-mix.js('resources/js/app.js', 'public/js')
+ mix.scripts([
+    'node_modules/card-js/card-js.min.js',
+],  'public/js/card-js.js')
+
+.styles([
+    'node_modules/card-js/card-js.min.css',
+],  'public/css/card-js.css');
+
+mix.js('resources/js/app.js', 'public/js/')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/admin/custom.scss', 'public/admin/css')
     .copy('node_modules/font-awesome/fonts', 'public/fonts');

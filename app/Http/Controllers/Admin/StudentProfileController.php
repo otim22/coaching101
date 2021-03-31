@@ -10,7 +10,7 @@ class StudentProfileController extends Controller
 {
     public function index()
     {
-        $students = Profile::whereNotNull('age')->paginate(20);
+        $students = Profile::whereNotNull('dob')->paginate(20);
 
         return view('admin.profiles.students.index', compact('students'));
     }

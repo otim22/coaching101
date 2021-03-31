@@ -90,9 +90,15 @@ Route::post('/reply', [CommentController::class, 'reply'])->name('reply.store');
 Auth::routes(['verify' => true]);
 
 Route::get('/teacher/onBoard', [SubjectController::class, 'onBoard'])->name('subjects.onBoard');
+
 Route::middleware('auth')->group(function() {
     Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::get('/cart/{response?}', [CartController::class, 'index'])->name('cart.index');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+    Route::post( '/pay', [PaymentController::class, 'initialize'])->name('pay');
+    Route::post('/rave/callback', [PaymentController::class, 'callback'])->name('callback');
+
     Route::prefix('teacher')->group(function() {
         Route::get('/starter', [SubjectController::class, 'starter'])->name('subjects.starter');
         Route::post('/captureRole', [SubjectController::class, 'captureRole'])->name('subjects.captureRole');
@@ -143,8 +149,10 @@ Route::middleware('auth')->group(function() {
         Route::delete('/admins/{user}', [AdminController::class, 'destroy'])->name('admins.destroy');
 
         Route::get('/students', [Student::class, 'index'])->name('students.index');
+        Route::get('/students/{student}', [Student::class, 'show'])->name('students.show');
         Route::delete('/students/{student}/destroy', [Student::class, 'destroy'])->name('students.destroy');
         Route::get('/teachers', [Teacher::class, 'index'])->name('teachers.index');;
+        Route::get('/teachers/{teacher}', [Teacher::class, 'show'])->name('teachers.show');;
         Route::delete('/teachers/{teacher}/destroy', [Teacher::class, 'destroy'])->name('teachers.destroy');
         Route::get('/student-profiles', [StudentProfileController::class, 'index']);
         Route::get('/teacher-profiles', [TeacherProfileController::class, 'index']);

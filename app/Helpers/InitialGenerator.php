@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class Helper
+class InitialGenerator
 {
     public static function set_active($path, $active = 'active')
     {
