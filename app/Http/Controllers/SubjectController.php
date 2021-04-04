@@ -7,6 +7,7 @@ use App\Models\Term;
 use App\Models\Topic;
 use App\Models\Ratings;
 use App\Models\Subject;
+use App\Models\ItemContent;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class SubjectController extends Controller
         $this->middleware('auth')->except('onBoard');
     }
 
-    public function index(Subject $subject)
+    public function index(Subject $subjects)
     {
         $subjects = Subject::orderBy('id', 'desc')->where('user_id', Auth::id())->paginate(10);
 
@@ -40,17 +41,19 @@ class SubjectController extends Controller
         return view('teacher.manage_subject.show', compact('subject'));
     }
 
-    public function store(SubjectRequest $request, Subject $subject)
+    public function store(SubjectRequest $request)
     {
-        $subject = new Subject($request->except(['cover_image']));
+        $itemContent = new ItemContent($request->except(['cover_image']));
+        dd($itemContent);
 
-        $subject->title     = $request->input('title');
-        $subject->subtitle      = $request->input('subtitle');
-        $subject->description = $request->input('description');
-        $subject->category_id = $request->input('category_id');
-        $subject->year_id = $request->input('year_id');
-        $subject->term_id = $request->input('term_id');
-        $subject->user_id = Auth::id();
+        // $itemContent->title = $request->input('item');
+        $itemContent->title = $request->input('title');
+        $itemContent->subtitle = $request->input('subtitle');
+        $itemContent->description = $request->input('description');
+        $itemContent->category_id = $request->input('category_id');
+        $itemContent->year_id = $request->input('year_id');
+        $itemContent->term_id = $request->input('term_id');
+        $itemContent->user_id = Auth::id();
 
         $category = Category::findOrFail($request->input('category_id'));
         $category->years()->attach($request->input('year_id'));
@@ -58,15 +61,15 @@ class SubjectController extends Controller
         $year = Year::findOrFail($request->input('year_id'));
         $year->terms()->attach($request->input('term_id'));
 
-        $subject->save();
+        $itemContent->save();
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
-            $subject->addMediaFromRequest('cover_image')
+            $itemContent->addMediaFromRequest('cover_image')
                             ->preservingOriginal()
                             ->toMediaCollection('default');
         }
 
-        return redirect()->route('audiences', $subject);
+        return redirect()->route('audiences', $itemContent);
     }
 
     public function edit(Subject $subject)

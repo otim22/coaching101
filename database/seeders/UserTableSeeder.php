@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $students = factory(User::class, 20)->create(['role' => 1]);
-        $teachers = factory(User::class, 20)->create(['role' => 2]);
+        factory(User::class, 20)->create(['role' => 1]);
+        factory(User::class, 20)->create(['role' => 2]);
     }
 }

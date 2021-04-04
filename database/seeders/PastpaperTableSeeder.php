@@ -15,6 +15,6 @@ class PastpaperTableSeeder extends Seeder
      */
     public function run()
     {
-        $notes = factory(Pastpaper::class, 100)->create();
+        factory(Pastpaper::class, 100)->create();
     }
 }
