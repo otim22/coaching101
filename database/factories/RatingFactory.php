@@ -4,7 +4,7 @@
 
 use App\Models\User;
 use App\Models\Rating;
-use App\Models\Subject;
+use App\Models\ItemContent;
 use Faker\Generator as Faker;
 
 $factory->define(Rating::class, function (Faker $faker) {
@@ -12,6 +12,6 @@ $factory->define(Rating::class, function (Faker $faker) {
         'rating' => $faker->numberBetween(1, 5),
         'comment' => $faker->sentence,
         'user_id' => User::all()->random()->id,
-        'subject_id' => Subject::all()->random()->id
+        'item_content_id' => ItemContent::all()->random()->id
     ];
 });

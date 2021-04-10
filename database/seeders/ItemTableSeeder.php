@@ -6,7 +6,7 @@ use Faker\Factory as Faker;
 use App\Models\Item;
 use Illuminate\Database\Seeder;
 
-class PastpaperTableSeeder extends Seeder
+class ItemTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

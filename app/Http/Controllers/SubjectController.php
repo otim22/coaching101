@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Year;
 use App\Models\Term;
+use App\Models\Item;
 use App\Models\Topic;
 use App\Models\Ratings;
 use App\Models\Subject;
@@ -20,9 +21,9 @@ class SubjectController extends Controller
         $this->middleware('auth')->except('onBoard');
     }
 
-    public function index(Subject $subjects)
+    public function index(ItemContent $subjects)
     {
-        $subjects = Subject::orderBy('id', 'desc')->where('user_id', Auth::id())->paginate(10);
+        $subjects = ItemContent::orderBy('id', 'desc')->where('user_id', Auth::id())->paginate(10);
 
         return view('teacher.manage_subject.index', compact('subjects'));
     }
@@ -32,28 +33,27 @@ class SubjectController extends Controller
         $categories = Category::get();
         $years = Year::get();
         $terms = Term::get();
+        $item = Item::where('name', 'Subject')->firstOrFail();
 
-        return view('teacher.manage_subject.create', compact(['categories', 'years', 'terms']));
+        return view('teacher.manage_subject.create', compact(['categories', 'years', 'terms', 'item']));
     }
 
-    public function show(Subject $subject)
+    public function show(ItemContent $subject)
     {
         return view('teacher.manage_subject.show', compact('subject'));
     }
 
     public function store(SubjectRequest $request)
     {
-        $itemContent = new ItemContent($request->except(['cover_image']));
-        dd($itemContent);
+        $subject = new ItemContent($request->except(['cover_image']));
 
-        // $itemContent->title = $request->input('item');
-        $itemContent->title = $request->input('title');
-        $itemContent->subtitle = $request->input('subtitle');
-        $itemContent->description = $request->input('description');
-        $itemContent->category_id = $request->input('category_id');
-        $itemContent->year_id = $request->input('year_id');
-        $itemContent->term_id = $request->input('term_id');
-        $itemContent->user_id = Auth::id();
+        $subject->title = $request->input('title');
+        $subject->subtitle = $request->input('subtitle');
+        $subject->description = $request->input('description');
+        $subject->category_id = $request->input('category_id');
+        $subject->year_id = $request->input('year_id');
+        $subject->term_id = $request->input('term_id');
+        $subject->user_id = Auth::id();
 
         $category = Category::findOrFail($request->input('category_id'));
         $category->years()->attach($request->input('year_id'));
@@ -61,18 +61,18 @@ class SubjectController extends Controller
         $year = Year::findOrFail($request->input('year_id'));
         $year->terms()->attach($request->input('term_id'));
 
-        $itemContent->save();
+        $subject->save();
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
-            $itemContent->addMediaFromRequest('cover_image')
+            $subject->addMediaFromRequest('cover_image')
                             ->preservingOriginal()
                             ->toMediaCollection('default');
         }
 
-        return redirect()->route('audiences', $itemContent);
+        return redirect()->route('audiences', $subject);
     }
 
-    public function edit(Subject $subject)
+    public function edit(ItemContent $subject)
     {
         $categories = Category::get();
         $category = Category::find($subject->category_id);
@@ -87,13 +87,14 @@ class SubjectController extends Controller
     }
 
 
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request, ItemContent $subject)
     {
         $request->validate([
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
             'description' => 'required|string',
             'category_id' => 'required|integer',
+            'item_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
             'price' => 'required|string',
@@ -128,7 +129,7 @@ class SubjectController extends Controller
         return redirect()->route('manage.subjects');
     }
 
-    public function destroy(Subject $subject)
+    public function destroy(ItemContent $subject)
     {
         try {
             $subject->delete();

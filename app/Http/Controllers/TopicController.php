@@ -4,31 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Topic;
-use App\Models\Subject;
+use App\Models\ItemContent;
 use App\Http\Requests\TopicRequest;
 
 class TopicController extends Controller
 {
-    public function create(Subject $subject)
+    public function create(ItemContent $subject)
     {
         return view('teacher.manage_subject.topics.create', compact('subject'));
     }
 
-    public function show(Subject $subject, Topic $topic)
+    public function show(ItemContent $subject, Topic $topic)
     {
         return view('teacher.manage_subject.topics.show', compact(['subject', 'topic']));
     }
 
-    public function edit(Subject $subject, Topic $topic)
+    public function edit(ItemContent $subject, Topic $topic)
     {
         return view('teacher.manage_subject.topics.edit', compact(['subject', 'topic']));
     }
 
-    public function store(TopicRequest $request, Subject $subject)
+    public function store(TopicRequest $request, ItemContent $subject)
     {
-        dd($request->hasFile('content_file_path'));
-        dd($request->file('content_file_path')->isValid());
-        dd($request->file('content_file_path'));
         $topic = new Topic;
 
         $topic->title = $request->title;
@@ -52,7 +49,7 @@ class TopicController extends Controller
         return redirect()->route('subjects.show', $subject);
     }
 
-    public function update(Request $request, Subject $subject, Topic $topic)
+    public function update(Request $request, ItemContent $subject, Topic $topic)
     {
         $request->validate([
             'title' => 'required|string',

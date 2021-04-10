@@ -70,6 +70,12 @@
                                     @enderror
                                 </div>
 
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="hidden" class="form-control" name="item_id" value="{{ $item->id }}">
+                                    </div>
+                                </div>
+
                                 <div class="form-group mb-4">
                                     <label for="description">Description</label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Description of the subject" name="description" rows="3" required autocomplete="description" autofocus>{{ old('description') }}</textarea>

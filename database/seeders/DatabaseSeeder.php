@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             YearTableSeeder::class,
             TermTableSeeder::class,
             SubjectTableSeeder::class,
+            ItemTableSeeder::class,
+            ItemContentTableSeeder::class,
             MessageTableSeeder::class,
             AudienceTableSeeder::class,
             ProfileTableSeeder::class,

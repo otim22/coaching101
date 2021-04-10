@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subject;
+use App\Models\ItemContent;
 use Illuminate\Support\Arr;
 use App\Models\Audience;
 use Illuminate\Http\Request;
@@ -15,12 +15,12 @@ class AudienceController extends Controller
         return view('teacher.manage_subject.audience.index');
     }
 
-    public function create(Subject $subject)
+    public function create(ItemContent $subject)
     {
         return view('teacher.manage_subject.audience.create', compact('subject'));
     }
 
-    public function edit(Subject $subject)
+    public function edit(ItemContent $subject)
     {
         return view('teacher.manage_subject.audience.edit', compact('subject'));
     }
@@ -31,7 +31,7 @@ class AudienceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AudienceRequest $request, Subject $subject)
+    public function store(AudienceRequest $request, ItemContent $subject)
     {
         $student_learn = $request->get('student_learn');
         $class_requirement = $request->get('class_requirement');
@@ -54,7 +54,7 @@ class AudienceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(AudienceRequest $request, Audience $audience, Subject $subject)
+    public function update(AudienceRequest $request, Audience $audience, ItemContent $subject)
     {
         $student_learn = $request->input('student_learn');
         $class_requirement = $request->input('class_requirement');
