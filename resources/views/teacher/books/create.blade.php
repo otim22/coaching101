@@ -88,12 +88,18 @@
                             @enderror
                         </div>
 
-                        <div class="form-group mb-4">
+                        <div class="form-group">
                             <label for="title">Book title</label>
                             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Example: Introduction to modern physics" value="{{ old('title') }}">
                             @error('title')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="hidden" class="form-control" name="item_id" value="{{ $item->id }}">
+                            </div>
                         </div>
 
                         <div class="mb-4">
@@ -103,16 +109,16 @@
                                     <div class="books_objective_input">
                                         <input type="text"
                                             id="books_objective"
-                                            value="{{old('book_objective.0')}}"
-                                            class="form-control form-control mb-2 @error('book_objective.0') is-invalid @enderror"
+                                            value="{{old('objective.0')}}"
+                                            class="form-control form-control mb-2 @error('objective.0') is-invalid @enderror"
                                             placeholder="Example: Origin of languages"
-                                            name="book_objective[]" required>
+                                            name="objective[]" required>
                                     </div>
                                     <div class="hidden" id="hidden_book_objective">
                                         <p class="delete_book_objective">x</p>
                                     </div>
                                 </div>
-                                @error('book_objective.0')
+                                @error('objective.0')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -131,7 +137,7 @@
 
                         <div class="form-group mb-4">
                             <label for="cover_image">Cover image</label>
-                            <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" required>
+                            <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" required accept="image/*">
                             @error('cover_image')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror

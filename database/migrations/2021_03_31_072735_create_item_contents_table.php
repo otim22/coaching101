@@ -18,7 +18,8 @@ class CreateItemContentsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('subtitle')->nullable();
-            $table->text('description');
+            $table->text('description')->nullable();
+            $table->json('objective')->nullable();
             $table->float('price')->nullable();
             $table->boolean('is_approved')->default(false);
             $table->foreignId('item_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

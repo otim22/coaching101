@@ -17,6 +17,7 @@ $factory->define(ItemContent::class, function (Faker $faker) {
         'slug' => $faker->slug,
         'subtitle' => $faker->text,
         'description' => $faker->paragraph,
+        'objective' => $faker->sentences,
         'price' => $faker->numberBetween(1000, 10000),
         'is_approved' => $faker->boolean(true),
         'item_id' => Item::all()->random()->id,

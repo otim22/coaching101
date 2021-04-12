@@ -25,11 +25,11 @@ class ItemContent extends Model implements HasMedia, Searchable
 {
     use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable, PresentsSubject;
 
-    protected $fillable = ['title', 'subtitle', 'description', 'price', 'item_id', 'category_id', 'is_approved'];
+    protected $fillable = ['title', 'subtitle', 'description', 'objective', 'price', 'item_id', 'category_id', 'year_id', 'term_id', 'user_id', 'is_approved'];
     protected $with = ['media'];
     protected $appends = ['isSubscribedTo'];
     protected $dates = ['created_at', 'updated_at'];
-
+    protected $casts = ['objective' => 'array' ];
     /**
      * Get the options for generating the slug.
      */
@@ -105,6 +105,22 @@ class ItemContent extends Model implements HasMedia, Searchable
     public function category()
     {
         return $this->belongsTo('App\Models\Category', 'category_id');
+    }
+
+    /**
+     * Get the year that owns the book.
+     */
+    public function year()
+    {
+        return $this->belongsTo('App\Models\Year', 'year_id');
+    }
+
+    /**
+     * Get the term that owns the book.
+     */
+    public function term()
+    {
+        return $this->belongsTo('App\Models\Term', 'term_id');
     }
 
     /** Return the ItemContent's creator */

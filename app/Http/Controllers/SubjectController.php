@@ -23,8 +23,8 @@ class SubjectController extends Controller
 
     public function index(ItemContent $subjects)
     {
-        $subjects = ItemContent::orderBy('id', 'desc')->where('user_id', Auth::id())->paginate(10);
-
+        $subjects = ItemContent::orderBy('id', 'desc')->where(['user_id' => Auth::id(), 'item_id' => 1])->paginate(10);
+        
         return view('teacher.manage_subject.index', compact('subjects'));
     }
 

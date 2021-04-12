@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Year;
 use App\Models\Term;
-use App\Models\Book;
+use App\Models\Item;
+use App\Models\ItemContent;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,8 +15,8 @@ class TeacherBookController extends Controller
 {
     public function index()
     {
-        $books = Book::where('user_id', Auth::id())->paginate(20);
-
+        $books = ItemContent::where(['user_id' => Auth::id(), 'item_id' => 2])->paginate(20);
+        
         return view('teacher.books.index', compact('books'));
     }
 
@@ -24,8 +25,9 @@ class TeacherBookController extends Controller
         $years =  Year::get();
         $terms =  Term::get();
         $categories = Category::get();
+        $item = Item::where('name', 'Book')->firstOrFail();
 
-        return view('teacher.books.create', compact(['categories', 'years', 'terms']));
+        return view('teacher.books.create', compact(['categories', 'years', 'terms', 'item']));
     }
 
     /**
@@ -34,12 +36,11 @@ class TeacherBookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BookRequest $request, Book $book)
+    public function store(BookRequest $request)
     {
-        $book = new Book($request->except(['book', 'cover_image']));
-
+        $book = new ItemContent($request->except(['book', 'cover_image']));
         $book->title = $request->input('title');
-        $book->book_objective = $request->input('book_objective');
+        $book->objective = $request->input('objective');
         $book->price = $request->input('price');
         $book->category_id = $request->input('category_id');
         $book->year_id = $request->input('year_id');
@@ -60,7 +61,7 @@ class TeacherBookController extends Controller
         return redirect()->route('teacher.books')->with('success', 'Book added successfully.');
     }
 
-    public function show(Book $book)
+    public function show(ItemContent $book)
     {
         return view('teacher.books.show', compact('book'));
     }
@@ -71,7 +72,7 @@ class TeacherBookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit(ItemContent $book)
     {
         $years =  Year::get();
         $terms =  Term::get();
@@ -89,13 +90,14 @@ class TeacherBookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, ItemContent $book)
     {
         $request->validate([
             'title' => 'required|string',
             'price' => 'nullable',
-            'book_objective.*'  => 'nullable|string|distinct|min:2',
+            'objective.*'  => 'nullable|string|distinct|min:2',
             'category_id' => 'required|integer',
+            'item_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
             'book' => 'nullable|mimes:pdf|max:1000',
@@ -122,7 +124,7 @@ class TeacherBookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy(ItemContent $book)
     {
         try {
             $book->delete();
