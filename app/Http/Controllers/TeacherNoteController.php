@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Arr;
 use App\Models\Year;
 use App\Models\Term;
-use App\Models\Note;
+use App\Models\Item;
+use App\Models\ItemContent;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +16,7 @@ class TeacherNoteController extends Controller
 {
     public function index()
     {
-        $notes = Note::where('user_id', Auth::id())->paginate(20);
+        $notes = ItemContent::where(['user_id' => Auth::id(), 'item_id' => 3])->paginate(20);
 
         return view('teacher.notes.index', compact('notes'));
     }
@@ -24,8 +26,9 @@ class TeacherNoteController extends Controller
         $years =  Year::get();
         $terms =  Term::get();
         $categories = Category::get();
+        $item = Item::where('name', 'Note')->firstOrFail();
 
-        return view('teacher.notes.create', compact(['categories', 'years', 'terms']));
+        return view('teacher.notes.create', compact(['categories', 'years', 'terms', 'item']));
     }
 
     /**
@@ -34,14 +37,15 @@ class TeacherNoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(NoteRequest $request, Note $note)
+    public function store(NoteRequest $request)
     {
-        $note = new Note($request->except('note'));
+        $note = new ItemContent($request->except('note'));
 
         $note->title = $request->input('title');
-        $note->notes_objective = $request->input('notes_objective');
+        $note->objective = $request->input('objective');
         $note->price = $request->input('price');
         $note->category_id = $request->input('category_id');
+        $note->item_id = $request->input('item_id');
         $note->year_id = $request->input('year_id');
         $note->term_id = $request->input('term_id');
         $note->user_id = $request->input('user_id');
@@ -56,7 +60,7 @@ class TeacherNoteController extends Controller
         return redirect()->route('teacher.notes')->with('success', 'Note added successfully.');
     }
 
-    public function show(Note $note)
+    public function show(ItemContent $note)
     {
         return view('teacher.notes.show', compact('note'));
     }
@@ -67,7 +71,7 @@ class TeacherNoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Note $note)
+    public function edit(ItemContent $note)
     {
         $years =  Year::get();
         $terms =  Term::get();
@@ -85,12 +89,12 @@ class TeacherNoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Note $note)
+    public function update(Request $request, ItemContent $note)
     {
-        $request->validate([
+        $data = $request->validate([
             'title' => 'required|string',
-            'notes_objective.*'  => 'nullable|string|distinct|min:2',
             'price' => 'nullable',
+            'objective.*'  => 'nullable|string|distinct|min:2',
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
@@ -98,7 +102,11 @@ class TeacherNoteController extends Controller
             'user_id' => 'integer|nullable',
         ]);
 
-        $note->fill($request->except(['note']))->save();
+        $note->fill(Arr::except($data, ['objective', 'note']));
+
+        $note->objective = array_filter($request->objective);
+
+        $note->save();
 
         if($request->hasFile('note') && $request->file('note')->isValid()) {
             $note->addMediaFromRequest('note')->toMediaCollection('teacher_note');
@@ -107,16 +115,29 @@ class TeacherNoteController extends Controller
         return redirect()->route('teacher.notes')->with('success', 'Note added successfully.');
     }
 
+    public function deleteObjective(ItemContent $note, $objectiveId)
+    {
+        $objectives = $note->objective;
+        $updatedObjectives = Arr::except($objectives, $objectiveId);
+
+        $note->objective = $updatedObjectives;
+        $note->save();
+
+        return redirect()->route('teacher.notes');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Note $note)
+    public function destroy(ItemContent $note)
     {
         try {
-            $note->delete();
+            if(exists($note) && !empty($note)) {
+                $note->delete();
+            }
 
             return redirect()->route('teacher.notes')->with('success', 'Note deleted successfully');
         } catch (\Exception $e) {

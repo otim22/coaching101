@@ -27,6 +27,7 @@ class BookRequest extends FormRequest
             'title' => 'required|string',
             'price' => 'nullable',
             'category_id' => 'required|integer',
+            'item_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
             'book' => 'required|mimes:pdf|max:5520',

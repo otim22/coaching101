@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Arr;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Item;
@@ -16,7 +17,7 @@ class TeacherBookController extends Controller
     public function index()
     {
         $books = ItemContent::where(['user_id' => Auth::id(), 'item_id' => 2])->paginate(20);
-        
+
         return view('teacher.books.index', compact('books'));
     }
 
@@ -39,13 +40,14 @@ class TeacherBookController extends Controller
     public function store(BookRequest $request)
     {
         $book = new ItemContent($request->except(['book', 'cover_image']));
+
         $book->title = $request->input('title');
         $book->objective = $request->input('objective');
         $book->price = $request->input('price');
         $book->category_id = $request->input('category_id');
+        $book->item_id = $request->input('item_id');
         $book->year_id = $request->input('year_id');
         $book->term_id = $request->input('term_id');
-        $book->user_id = $request->input('user_id');
         $book->user_id = Auth::id();
 
         $book->save();
@@ -92,12 +94,11 @@ class TeacherBookController extends Controller
      */
     public function update(Request $request, ItemContent $book)
     {
-        $request->validate([
+        $data = $request->validate([
             'title' => 'required|string',
             'price' => 'nullable',
             'objective.*'  => 'nullable|string|distinct|min:2',
             'category_id' => 'required|integer',
-            'item_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
             'book' => 'nullable|mimes:pdf|max:1000',
@@ -105,7 +106,11 @@ class TeacherBookController extends Controller
             'user_id' => 'integer|nullable'
         ]);
 
-        $book->fill($request->except(['book', 'cover_image']))->save();
+        $book->fill(Arr::except($data, ['objective', 'note', 'book', 'cover_image']));
+
+        $book->objective = array_filter($request->objective);
+
+        $book->save();
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
             $book->addMediaFromRequest('cover_image')->toMediaCollection('teacher_cover_image');

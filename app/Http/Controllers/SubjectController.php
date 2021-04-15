@@ -24,7 +24,7 @@ class SubjectController extends Controller
     public function index(ItemContent $subjects)
     {
         $subjects = ItemContent::orderBy('id', 'desc')->where(['user_id' => Auth::id(), 'item_id' => 1])->paginate(10);
-        
+
         return view('teacher.manage_subject.index', compact('subjects'));
     }
 
@@ -101,7 +101,7 @@ class SubjectController extends Controller
             'cover_image' => 'nullable|image|mimes:jpg, jpeg, png|max:5520'
         ]);
 
-        $subject->fill($request->except(['cover_image']))->save();
+        $subject->update($request->except(['cover_image']));
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
             $subject->addMediaFromRequest('cover_image')->toMediaCollection('default');

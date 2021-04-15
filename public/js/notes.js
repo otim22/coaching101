@@ -72,3 +72,37 @@ $(function () {
     }
 });
 /** End note objectives **/
+
+$(function() {
+    $("p.to-delete").on("click", function() {
+        var deleteUrl = $(this).attr("data-delete-url");
+        var objectiveId = $(this).attr("data-objective-id");
+
+        deleteObjective(deleteUrl, objectiveId);
+    });
+});
+
+function deleteObjective(deleteUrl, objectiveId) {
+    $.ajax({
+        type: "POST",
+        url: deleteUrl,
+        dataType: "JSON",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            id: objectiveId,
+        },
+        success: function (response) {
+            console.log(response);
+
+        },
+        error: function(xhr) {
+            console.log(xhr.responseText);
+       }
+    });
+
+    setTimeout(function () {
+        document.location.reload(true);
+    }, 2000);
+}

@@ -115,6 +115,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/books', [TeacherBookController::class, 'index'])->name('teacher.books');
         Route::resource('/notes', 'TeacherNoteController')->except(['index']);
         Route::get('/notes', [TeacherNoteController::class, 'index'])->name('teacher.notes');
+        Route::post('/notes/{note}/objectives/{objective}', [TeacherNoteController::class, 'deleteObjective'])->name('teacher.notes.objective.destroy');
         Route::resource('/pastpapers', 'TeacherPastpaperController')->except(['index']);
         Route::get('/pastpapers', [TeacherPastpaperController::class, 'index'])->name('teacher.pastpapers');
 

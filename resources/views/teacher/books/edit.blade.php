@@ -112,6 +112,7 @@
                                 <small class="form-text text-muted">
                                     <p class="red_color"><strong>*</strong> Adding new information will override all current book objectives. Be sure you include current ones you don't want to loose.</p>
                                 </small>
+
                                 <div class="input-group book_objective_section">
                                     <div class="books_objective_input">
                                         <input type="text"
@@ -119,7 +120,7 @@
                                             value="{{old('objective.0')}}"
                                             class="form-control form-control mb-2 @error('objective.0') is-invalid @enderror"
                                             placeholder="Example: Origin of languages"
-                                            name="objective[]" required>
+                                            name="objective[]">
                                     </div>
                                     <div class="hidden" id="hidden_book_objective">
                                         <p class="delete_book_objective">x</p>

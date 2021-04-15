@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
-use App\Traits\PresentsSubject;
+use App\Traits\PresentsItem;
 use Spatie\Image\Manipulations;
 use willvincent\Rateable\Rateable;
 use Spatie\Sluggable\SlugOptions;
@@ -23,7 +23,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ItemContent extends Model implements HasMedia, Searchable
 {
-    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable, PresentsSubject;
+    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable, PresentsItem;
 
     protected $fillable = ['title', 'subtitle', 'description', 'objective', 'price', 'item_id', 'category_id', 'year_id', 'term_id', 'user_id', 'is_approved'];
     protected $with = ['media'];
