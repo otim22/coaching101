@@ -52,9 +52,9 @@ class Category extends Model
     /**
     * Get the subjects for the category.
     */
-   public function subjects()
+   public function itemContents()
    {
-        return $this->hasMany('App\Models\Subject');
+        return $this->hasMany('App\Models\ItemContent');
    }
 
     /**

@@ -20,7 +20,7 @@ class BookTableSeeder extends Seeder
         $imageUrl = 'http://via.placeholder.com/800x650';
 
         foreach ($books as $book) {
-            $book->addMediaFromUrl($imageUrl)->toMediaCollection('default');
+            $book->addMediaFromUrl($imageUrl)->toMediaCollection('teacher_cover_image');
         }
     }
 }

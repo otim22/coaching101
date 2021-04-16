@@ -86,7 +86,6 @@ class SubjectController extends Controller
         ]));
     }
 
-
     public function update(Request $request, ItemContent $subject)
     {
         $request->validate([

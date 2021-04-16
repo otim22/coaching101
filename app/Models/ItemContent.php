@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
@@ -156,7 +157,7 @@ class ItemContent extends Model implements HasMedia, Searchable
     /** Get the ItemContent's subscription. */
     public function subscription()
     {
-        return $this->morphOne(ItemContent::class, 'subscriptionable');
+        return $this->morphOne(Subscription::class, 'subscriptionable');
     }
 
     public function rating()
@@ -176,6 +177,12 @@ class ItemContent extends Model implements HasMedia, Searchable
         return rtrim(rtrim(number_format(($this->price * $this->subscriptionCount), 2), 2), '.');
     }
 
+    /** Generates slug */
+    public function generateItemContentSlugAttribute($value)
+    {
+        return Str::slug($value);
+    }
+
     /** Searching for subjects results*/
     public function getSearchResult(): SearchResult
     {
@@ -187,39 +194,27 @@ class ItemContent extends Model implements HasMedia, Searchable
         );
     }
 
-    public static function getSubjects($category, $year, $term)
+    public static function getItemContents($category, $year, $term, $item = null)
     {
         $items = ['is_approved' => 1];
 
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
             $items['category_id'] = $category;
         }
-
         if ($year && $year !== GlobalConstants::ALL_YEARS) {
             $items['year_id'] = $year;
         }
-
         if ($term && $term !== GlobalConstants::ALL_TERMS) {
             $items['term_id'] = $term;
         }
-
-        return static::where($items)->paginate(12);
-    }
-
-    public static function getPastpapers($category, $year, $term)
-    {
-        $items = ['is_approved' => 1];
-
-        if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
-            $items['category_id'] = $category;
-        }
-
-        if ($year && $year !== GlobalConstants::ALL_YEARS) {
-            $items['year_id'] = $year;
-        }
-
-        if ($term && $term !== GlobalConstants::ALL_TERMS) {
-            $items['term_id'] = $term;
+        if ($item && $item !== GlobalConstants::SUBJECT) {
+            $items['item_id'] = $item;
+        } else if($item && $item !== GlobalConstants::BOOK) {
+            $items['item_id'] = $item;
+        } else if($item && $item !== GlobalConstants::NOTE) {
+            $items['item_id'] = $item;
+        } else if($item && $item !== GlobalConstants::PASTPAPER) {
+            $items['item_id'] = $item;
         }
 
         return static::where($items)->paginate(12);
