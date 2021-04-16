@@ -35,23 +35,23 @@
         @endforelse
 
         <div class="pt-3">
-            @foreach($wishlistItems as $wishlistItem)
-            <div class="mb-3">
+            <div class="mb-4">
                 <h5 class="bold">Recently wishlisted</h5>
             </div>
+            @foreach($wishlistItems as $wishlistItem)
             <div class="card-custom p-3 mb-3">
                 <div class="d-flex justify-content-between">
                     <div class="flex-grow-1">
                         <a href="#" style="text-decoration: none;">
-                            <span class="bold">{{ $wishlistItem->subject->title }}</span> <br />
+                            <span class="bold">{{ $wishlistItem->itemContent->title }}</span> <br />
                         </a>
                     </div>
                     <div class="order-2">
-                        <span class="red_color bold text-set"> {{  $wishlistItem->subject->formatPrice }}/-</span>
+                        <span class="red_color bold text-set"> {{  $wishlistItem->itemContent->formatPrice }}/-</span>
                     </div>
                     <div class="d-flex pr-3 align-items-start flex-column">
                         <a type="button" wire:click="removeFromWishlist({{ $wishlistItem->id }})"><small>Remove</small></a>
-                        <a type="button" wire:click="addToCart({{ $wishlistItem->subject->id }})"><small type="button" class="text-set">Add to Cart</small></a>
+                        <a type="button" wire:click="addToCart({{ $wishlistItem->itemContent->id }})"><small type="button" class="text-set">Add to Cart</small></a>
                     </div>
                 </div>
             </div>

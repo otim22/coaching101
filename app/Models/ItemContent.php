@@ -177,12 +177,6 @@ class ItemContent extends Model implements HasMedia, Searchable
         return rtrim(rtrim(number_format(($this->price * $this->subscriptionCount), 2), 2), '.');
     }
 
-    /** Generates slug */
-    public function generateItemContentSlugAttribute($value)
-    {
-        return Str::slug($value);
-    }
-
     /** Searching for subjects results*/
     public function getSearchResult(): SearchResult
     {

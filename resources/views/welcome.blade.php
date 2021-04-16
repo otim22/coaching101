@@ -147,8 +147,8 @@
                                                         @if($subject->isSubscribedTo)
                                                             <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
                                                         @else
-                                                            <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
-                                                            <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                                                            <livewire:add-to-cart :subject="$subject" />
+                                                            <livewire:add-to-wish-list :subject="$subject" />
                                                         @endif
                                                     </div>
                                                 </div>
