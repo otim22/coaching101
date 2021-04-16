@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Book;
 use App\Models\Note;
 use App\Models\Subject;
-use App\Models\PastPaper;
+use App\Models\Pastpaper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,7 +26,7 @@ class AdminController extends Controller
         $subjectCount = Subject::count();
         $bookCount = Book::count();
         $noteCount = Note::count();
-        $pastpaperCount = PastPaper::count();
+        $pastpaperCount = Pastpaper::count();
 
         return view('admin.index', compact([
                     'userCount', 'studentCount', 'teacherCount', 'subjectCount', 'bookCount', 'noteCount', 'pastpaperCount'

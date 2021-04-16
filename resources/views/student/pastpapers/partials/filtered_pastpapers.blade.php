@@ -62,7 +62,7 @@
             <p>The pastpaper(s) you are looking for was not found. </p>
         </div>
     @endforelse
-        <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
-            {{ $pastpapers->links() }}
-        </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
+        {{ $pastpapers->links() }}
+    </div>
 </div>

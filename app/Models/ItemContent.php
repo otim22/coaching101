@@ -205,4 +205,23 @@ class ItemContent extends Model implements HasMedia, Searchable
 
         return static::where($items)->paginate(12);
     }
+
+    public static function getPastpapers($category, $year, $term)
+    {
+        $items = ['is_approved' => 1];
+
+        if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
+            $items['category_id'] = $category;
+        }
+
+        if ($year && $year !== GlobalConstants::ALL_YEARS) {
+            $items['year_id'] = $year;
+        }
+
+        if ($term && $term !== GlobalConstants::ALL_TERMS) {
+            $items['term_id'] = $term;
+        }
+
+        return static::where($items)->paginate(12);
+    }
 }

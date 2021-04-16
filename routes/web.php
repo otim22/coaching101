@@ -48,7 +48,7 @@ use App\Http\Controllers\TeacherBookController;
 use App\Http\Controllers\TeacherNoteController;
 use App\Http\Controllers\TeacherPastpaperController;
 use App\Http\Controllers\NotesController as Notes;
-use App\Http\Controllers\PastpaperController as PastPapers;
+use App\Http\Controllers\PastpaperController as Pastpapers;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/books', [Books::class, 'index'])->name('student.books.index');
@@ -57,9 +57,9 @@ Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-bo
 Route::get('/notes', [Notes::class, 'index'])->name('student.notes.index');
 Route::get('/notes/{note}', [Notes::class, 'show'])->name('student.notes.show')->middleware('auth');
 Route::get('/get-more-notes', [Notes::class, 'getMoreNotes'])->name('get-more-notes');
-Route::get('/pastpapers', [PastPapers::class, 'index'])->name('student.pastpapers.index');
-Route::get('/pastpapers/{pastpaper}', [PastPapers::class, 'show'])->name('student.pastpapers.show')->middleware('auth');
-Route::get('/get-more-pastpapers', [PastPapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
+Route::get('/pastpapers', [Pastpapers::class, 'index'])->name('student.pastpapers.index');
+Route::get('/pastpapers/{pastpaper}', [Pastpapers::class, 'show'])->name('student.pastpapers.show')->middleware('auth');
+Route::get('/get-more-pastpapers', [Pastpapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
 Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
 Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');
 Route::patch('/users/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');
