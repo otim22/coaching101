@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Book;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookRequest;
 
@@ -14,7 +14,7 @@ class BooksController extends Controller
 {
     public function index()
     {
-        $books = Book::paginate(20);
+        $books = ItemContent::where('item_id', 2)->paginate(20);
 
         return view('admin.books.index', compact('books'));
     }
@@ -34,9 +34,9 @@ class BooksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BookRequest $request, Book $book)
+    public function store(BookRequest $request, ItemContent $book)
     {
-        $book = new Book($request->except(['book', 'cover_image']));
+        $book = new ItemContent($request->except(['book', 'cover_image']));
 
         $book->save();
 
@@ -51,7 +51,7 @@ class BooksController extends Controller
         return redirect()->route('admin.books.index')->with('success', 'Book added successfully.');
     }
 
-    public function show(Book $book)
+    public function show(ItemContent $book)
     {
         return view('admin.books.show', compact('book'));
     }
@@ -62,7 +62,7 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit(ItemContent $book)
     {
         $years =  Year::get();
         $terms =  Term::get();
@@ -80,7 +80,7 @@ class BooksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, ItemContent $book)
     {
         $request->validate([
             'title' => 'required|string',
@@ -113,7 +113,7 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy(ItemContent $book)
     {
         try {
             $book->delete();
@@ -124,9 +124,9 @@ class BooksController extends Controller
         }
     }
 
-    public function approve(Book $book)
+    public function approve(ItemContent $book)
     {
-        $approveBook = Book::find($book->id);
+        $approveBook = ItemContent::find($book->id);
 
         if($approveBook->is_approved == 0) {
             $approveBook->is_approved = 1;

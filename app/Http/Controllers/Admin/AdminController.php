@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use App\Models\Book;
-use App\Models\Note;
-use App\Models\Subject;
-use App\Models\Pastpaper;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
@@ -23,14 +20,14 @@ class AdminController extends Controller
         $teacherCount = User::where('role', 2)->count();
         $userCount = $studentCount + $teacherCount;
 
-        $subjectCount = Subject::count();
-        $bookCount = Book::count();
-        $noteCount = Note::count();
-        $pastpaperCount = Pastpaper::count();
+        $subjectCount = ItemContent::where('item_id', 1)->count();
+        $bookCount = ItemContent::where('item_id', 2)->count();
+        $noteCount = ItemContent::where('item_id', 3)->count();
+        $pastpaperCount = ItemContent::where('item_id', 4)->count();
 
         return view('admin.index', compact([
-                    'userCount', 'studentCount', 'teacherCount', 'subjectCount', 'bookCount', 'noteCount', 'pastpaperCount'
-                ]));
+            'userCount', 'studentCount', 'teacherCount', 'subjectCount', 'bookCount', 'noteCount', 'pastpaperCount'
+        ]));
     }
 
     public function adminUser()

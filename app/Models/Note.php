@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Traits\PresentsText;
 use Spatie\Sluggable\HasSlug;
-use App\Traits\PresentsSubject;
+use App\Traits\PresentsItem;
 use Spatie\Image\Manipulations;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\MediaLibrary\HasMedia;
@@ -17,7 +17,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Note extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, HasSlug, PresentsText, PresentsSubject;
+    use HasFactory, InteractsWithMedia, HasSlug, PresentsText, PresentsItem;
 
     protected $fillable = ['title', 'notes_objective', 'price', 'category_id', 'year_id', 'term_id', 'user_id'];
     protected $with = ['media'];

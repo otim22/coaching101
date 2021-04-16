@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
-use App\Traits\PresentsSubject;
+use App\Traits\PresentsItem;
 use Spatie\Image\Manipulations;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\MediaLibrary\HasMedia;
@@ -18,7 +18,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Book extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, HasSlug, PresentsMedia, PresentsText, PresentsSubject;
+    use HasFactory, InteractsWithMedia, HasSlug, PresentsMedia, PresentsText, PresentsItem;
 
     protected $fillable = ['title', 'book_objective', 'price', 'category_id', 'year_id', 'term_id', 'user_id'];
     protected $with = ['media'];
