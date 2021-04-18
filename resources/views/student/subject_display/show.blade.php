@@ -57,12 +57,12 @@
                         <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="questions-tab">
                             <div class="mt-4">
                                 <div id="displayed-questions" class="mb-3">
-                                    @if(count($questions->where('subject_id', $subject->id)))
-                                        <h5 class="bold mb-4">All questions in this course ({{ \App\Models\Question::where('subject_id', $subject->id)->count() }})</h5>
+                                    @if(count($questions->where('item_content_id', $subject->id)))
+                                        <h5 class="bold mb-4">All questions in this course ({{ \App\Models\Question::where('item_content_id', $subject->id)->count() }})</h5>
                                     @endif
 
                                     @foreach($questions as $question)
-                                        @if($question->subject_id == $subject->id)
+                                        @if($question->item_content_id == $subject->id)
                                             <p type="button" data-toggle="modal" data-target="#singleQuestion{{ $question->id }}" class="qtn">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check" viewBox="0 0 18 18">
                                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
@@ -107,7 +107,7 @@
 
                         <div class="tab-pane fade" id="rate" role="tabpanel" aria-labelledby="rate-tab">
                             <div class="mt-4">
-                                <livewire:rate-teacher :subject="$subject" :key="$subject->id" />
+                                <livewire:rate-teacher :subject="$subject" />
                             </div>
                         </div>
                     </div>

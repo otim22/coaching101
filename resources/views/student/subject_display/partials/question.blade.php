@@ -43,7 +43,7 @@
             @enderror
         </div>
         <div>
-            <input type="hidden" id="subject_id" name="subject_id" value="{{ $subject->id }}">
+            <input type="hidden" id="item_content_id" name="item_content_id" value="{{ $subject->id }}">
         </div>
     </div>
     <div class="modal-footer">

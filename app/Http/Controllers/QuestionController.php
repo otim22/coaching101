@@ -18,7 +18,7 @@ class QuestionController extends Controller
 
         $question =  new Question;
         $question->body = $request->input('body');
-        $question->subject_id = $request->input('subject_id');
+        $question->item_content_id = $request->input('item_content_id');
 
         $question->save();
 
