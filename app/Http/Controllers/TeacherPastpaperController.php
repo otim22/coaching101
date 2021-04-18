@@ -96,9 +96,12 @@ class TeacherPastpaperController extends Controller
             'user_id' => 'integer|nullable',
         ]);
 
-        $pastpaper->fill($request->except(['pastpaper']))->save();
+        $pastpaper->update($request->except(['pastpaper']));
 
         if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
+            foreach ($pastpaper->media as $media) {
+                $media->delete();
+            }
             $pastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('teacher_pastpaper');
         }
 

@@ -66,12 +66,6 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input type="hidden" class="form-control" name="item_id" value="{{ $item->id }}">
-                                    </div>
-                                </div>
-
                                 <div class="form-group mb-4">
                                     <label for="description">Description</label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Description of the subject" name="description" rows="3" required>{{ old('description', $subject->description) }}</textarea>
@@ -147,7 +141,7 @@
                                     <p><small style="color: red; font-weight: bold;">*Choosing another image replaces this current one</small></p>
 
                                     <label for="cover_image" class="bold">Subject current image</label>
-                                    <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image">
+                                    <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" accept="image/*">
                                     @error('cover_image')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
@@ -158,7 +152,7 @@
 
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
                         <div>
-                            <a href="{{ route('subjects.show', $subject) }}" class="btn btn-secondary btn-block pl-5 pr-5">
+                            <a  id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-secondary btn-block pl-5 pr-5">
                                 <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
                                     <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>

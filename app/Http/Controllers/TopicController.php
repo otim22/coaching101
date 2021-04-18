@@ -60,23 +60,34 @@ class TopicController extends Controller
 
         $topic->title = $request->title;
         $topic->description = $request->description;
+        $content_file = $request->content_file_path;
+        $topic->description = $request->description;
 
-        if($request->hasFile('content_file_path') && $request->isValid()) {
-            $topic->addMedia($content_file)
-                        ->preservingOriginal()
-                        ->toMediaCollection('content_file');
+        if($request->hasFile('content_file_path')) {
+            foreach ($request->file('content_file_path') as $content_file) {
+                $topic->addMedia($content_file)->toMediaCollection('content_file');
+            }
         }
 
         if ($request->hasFile('resource_attachment_path')) {
             foreach ($request->file('resource_attachment_path') as $resource_file) {
-                $topic->addMedia($resource_file)
-                            ->preservingOriginal()
-                            ->toMediaCollection('resource_attachment');
+                $topic->addMedia($resource_file)->toMediaCollection('resource_attachment');
             }
         }
 
         $subject->topics()->save($topic);
 
         return redirect()->route('subjects.show', $subject);
+    }
+
+    public function destroy(ItemContent $subject, Topic $topic)
+    {
+        try {
+            $topic->delete();
+
+            return redirect()->route('subjects.show', $subject)->with('success', 'Topic deleted successfully');
+        } catch (\Exception $e) {
+            return redirect()->route('subjects.show', $subject)->with('error', 'Failed to delete topic');
+        }
     }
 }

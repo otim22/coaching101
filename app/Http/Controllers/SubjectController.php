@@ -61,13 +61,11 @@ class SubjectController extends Controller
         $year = Year::findOrFail($request->input('year_id'));
         $year->terms()->attach($request->input('term_id'));
 
-        $subject->save();
-
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
-            $subject->addMediaFromRequest('cover_image')
-                            ->preservingOriginal()
-                            ->toMediaCollection('default');
+            $subject->addMediaFromRequest('cover_image')->toMediaCollection('default');
         }
+
+        $subject->save();
 
         return redirect()->route('audiences', $subject);
     }
@@ -93,7 +91,6 @@ class SubjectController extends Controller
             'subtitle' => 'nullable|string',
             'description' => 'required|string',
             'category_id' => 'required|integer',
-            'item_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
             'price' => 'required|string',
@@ -103,6 +100,9 @@ class SubjectController extends Controller
         $subject->update($request->except(['cover_image']));
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+            foreach ($subject->media as $media) {
+                $media->delete();
+            }
             $subject->addMediaFromRequest('cover_image')->toMediaCollection('default');
         }
 
@@ -135,7 +135,7 @@ class SubjectController extends Controller
 
             return redirect()->route('manage.subjects')->with('success', 'Subject deleted successfully');
         } catch (\Exception $e) {
-            return redirect()->route('manage.subjects')->with('error', 'Failed to deleted subject');
+            return redirect()->route('manage.subjects')->with('error', 'Failed to delete subject');
         }
     }
 }

@@ -65,6 +65,7 @@ class AudienceController extends Controller
         if(array_filter($target_student)) $audience->target_student = $target_student;
 
         $subject->updateAudience($audience);
+        // dd($subject);
 
         return redirect()->route('subjects.show', $subject)->with('success', 'Audience updated successfully');
     }

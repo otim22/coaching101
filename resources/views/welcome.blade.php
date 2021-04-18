@@ -2,6 +2,7 @@
 
 @section('content')
 
+<!-- Start jumbotron-->
 <section class="bg-image text-white mt-4" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 90vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
         <div class="row mt-5 mb-5">
@@ -30,7 +31,9 @@
         </div>
     </div>
 </section>
+<!-- End jumbotron-->
 
+<!-- Start selling points-->
 <section class="bg-gray-2 background-style">
     <div class="container">
         <div class="row mb-5">
@@ -73,14 +76,15 @@
         </div>
     </div>
 </section>
+<!-- End selling points-->
 
+<!-- Start to learn-->
 <section class="" id="learn-now">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-12 mb-4">
                 <h4 class="bold"> At your own convience start learning</h4>
             </div>
-
             <div class="col-sm-12 col-md-12 col-12">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -164,7 +168,9 @@
         </div>
     </div>
 </section>
+<!-- End Start learn-->
 
+<!-- Start most viewed subjects-->
 <section class="bg-white">
     <div class="container">
         <div class="row">
@@ -228,7 +234,9 @@
         </div>
     </div>
 </section>
+<!-- End most viewed subjects-->
 
+<!-- Start student Image-->
 <section class="bg-white" >
     <div class="bg-green pt-5 pb-5">
     <div class="container">
@@ -251,11 +259,15 @@
     </div>
     </div>
 </section>
+<!-- End student Image-->
 
+<!-- Start Categories-->
 <section class="bg-white">
     @include('partials.categories')
 </section>
+<!-- End Categories-->
 
+<!-- Start teacher Image-->
 <section class="bg-white">
     <div class="bg-blue-2 pt-5 pb-5">
     <div class="container">
@@ -290,11 +302,15 @@
     </div>
     </div>
 </section>
+<!-- End teacher Image-->
 
+<!-- Start Top teacher-->
 <section class="bg-white">
     @include('partials.teachers')
 </section>
+<!-- End teacher-->
 
+<!-- Start FAQ-->
 <section class="bg-gray-2 faq">
     <div class="container">
         <div class="row justify-content-center">
@@ -336,6 +352,7 @@
         </div>
     </div>
 </section>
+<!-- End FAQ-->
 
 @endsection
 

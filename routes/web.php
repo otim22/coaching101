@@ -136,6 +136,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/subjects/{subject}/topics/{topic}', [TopicController::class, 'show'])->name('topics.show');
         Route::post('/subjects/{subject}/topics', [TopicController::class, 'store'])->name('topics');
         Route::get('/subjects/{subject}/topics/{topic}/edit', [TopicController::class, 'edit'])->name('topics.edit');
+        Route::delete('/subjects/{subject}/topics/{topic}/destroy', [TopicController::class, 'destroy'])->name('topics.destroy');
         Route::patch('/subjects/{subject}/topics/{topic}/update', [TopicController::class, 'update'])->name('topics.update');
 
         Route::get('/manage/performances', [PerformanceController::class, 'index'])->name('manage.performances');

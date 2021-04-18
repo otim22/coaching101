@@ -109,6 +109,9 @@ class TeacherNoteController extends Controller
         $note->save();
 
         if($request->hasFile('note') && $request->file('note')->isValid()) {
+            foreach ($note->media as $media) {
+                $media->delete();
+            }
             $note->addMediaFromRequest('note')->toMediaCollection('teacher_note');
         }
 
