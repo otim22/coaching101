@@ -20,7 +20,7 @@
                 <li class="breadcrumb-item active" aria-current="page">{{ $subject->title }}</li>
             </ol>
         </nav>
-        <div class="row mt-4">
+        <div class="row mt-5">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h5 class="bold">{{ $subject->title }}</h5>
                 <h6>{{ $subject->subtitle }}</h6>
@@ -29,7 +29,7 @@
                         @for($i = $subject->averageRating; $i >= 1; $i--)
                             <label for="rate-{{$i}}" class="fa fa-star"></label>
                         @endfor
-                        <@if($subject->isSubscribedTo)
+                        @if($subject->isSubscribedTo)
                             <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
                         @endif
                     </div>
@@ -48,7 +48,7 @@
                 @if(!$subject->isSubscribedTo)
                     <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
                 @endif
-                <p class="mb-4">Created by {{ $subject->creator->name }}</p>
+                <p class="mb-5">Created by {{ $subject->creator->name }}</p>
             </div>
         </div>
     </div>

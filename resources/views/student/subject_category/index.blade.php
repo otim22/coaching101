@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('home') }}" style="text-decoration: none;">Subjects</a>
+                    <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $category->name }}</li>
             </ol>
