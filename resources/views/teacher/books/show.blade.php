@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Subjects</a>
+                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Home</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ url('teacher/books') }}" style="text-decoration: none;">Books</a>
