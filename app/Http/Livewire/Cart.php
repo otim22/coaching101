@@ -107,58 +107,56 @@ class Cart extends Component
     public function checkout()
     {
         if(Auth::check()) {
-            // $user = Auth::user();
-            // $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
-            // $currency = "UGX";
-            // $userEmail = $user->email;
-            // $userName= $user->name;
-            // $phoneNumber = $user->profile->phone_number;
-            // $cartSum = $this->sum;
-            // $redirectLink = "http://0.0.0.0:8009/cart";
-            //
-            // $data = [
-            //     "tx_ref" => $paymentToken,
-            //     "amount"=> '2000',
-            //     "currency"=> $currency,
-            //     "redirect_url" => $redirectLink,
-            //     "payment_options" => "card",
-            //     "card_number" => $this->cardDetails['number'],
-            //     "cvv" => $this->cardDetails['cvv'],
-            //     "expiry_month" => $this->cardDetails['expiryMonth'],
-            //     "expiry_year" => $this->cardDetails['expiryYear'],
-            //     "email" => $userEmail,
-            //     "phone_number" => $phoneNumber,
-            //     "meta" => [
-            //         "consumer_id" => Auth::id()
-            //     ],
-            //     "customer" => [
-            //         "email" => $userEmail,
-            //         "name" => $userName
-            //     ],
-            //     "customizations" => [
-            //         "title" => "OTF Payments",
-            //         "description" => "Middleout isn't free. Pay the price",
-            //         "logo" => "https://assets.piedpiper.com/logo.png"
-            //     ]
-            // ];
-            //
-            // $payment = new Payment($data);
-            // $response = $payment->cardPayment();
-            // $data = json_decode($response->body(), true);
-            //
-            // if ($response->successful()) {
-            //     $status = $response['data']['status'];
-            //     if ($status == 'successful') {
-            //         $this->clearCart();
-            //     }
-            //     $this->emit('onSuccess', $data);
-            // }
-            //
-            // if ($data['status'] == 'error') {
-            //     $this->emit('onError', $data);
-            // }
+            $user = Auth::user();
+            $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
+            $currency = "UGX";
+            $userEmail = $user->email;
+            $userName= $user->name;
+            $phoneNumber = $user->profile->phone_number;
+            $cartSum = $this->sum;
+            $redirectLink = "http://0.0.0.0:8009/cart";
 
-            $this->clearCart();
+            $data = [
+                "tx_ref" => $paymentToken,
+                "amount"=> '2000',
+                "currency"=> $currency,
+                "redirect_url" => $redirectLink,
+                "payment_options" => "card",
+                "card_number" => $this->cardDetails['number'],
+                "cvv" => $this->cardDetails['cvv'],
+                "expiry_month" => $this->cardDetails['expiryMonth'],
+                "expiry_year" => $this->cardDetails['expiryYear'],
+                "email" => $userEmail,
+                "phone_number" => $phoneNumber,
+                "meta" => [
+                    "consumer_id" => Auth::id()
+                ],
+                "customer" => [
+                    "email" => $userEmail,
+                    "name" => $userName
+                ],
+                "customizations" => [
+                    "title" => "OTF Payments",
+                    "description" => "Middleout isn't free. Pay the price",
+                    "logo" => "https://assets.piedpiper.com/logo.png"
+                ]
+            ];
+
+            $payment = new Payment($data);
+            $response = $payment->cardPayment();
+            $data = json_decode($response->body(), true);
+
+            if ($response->successful()) {
+                $status = $response['data']['status'];
+                if ($status == 'successful') {
+                    $this->clearCart();
+                }
+                $this->emit('onSuccess', $data);
+            }
+
+            if ($data['status'] == 'error') {
+                $this->emit('onError', $data);
+            }
         }
     }
 
