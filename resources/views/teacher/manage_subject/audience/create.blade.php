@@ -148,11 +148,11 @@
                         </div>
                     </div>
                 </form>
-
-                @include('teacher.manage_subject.audience.partials.js_files')
             </div>
         </div>
     </div>
 </section>
 
 @endsection
+
+@include('teacher.manage_subject.audience.partials.js_files')

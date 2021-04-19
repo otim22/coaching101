@@ -126,6 +126,9 @@ Route::middleware('auth')->group(function() {
         Route::post('/subjects/{subject}/audiences', [AudienceController::class, 'store'])->name('audiences');
         Route::get('/subjects/{subject}/audiences/edit', [AudienceController::class, 'edit'])->name('audiences.edit');
         Route::patch('/subjects/{subject}/audiences/update', [AudienceController::class, 'update'])->name('audiences.update');
+        Route::post('/subjects/{subject}/audiences/{audience}/deleteStudentLearn', [AudienceController::class, 'deleteStudentLearn'])->name('teacher.subject.student_learn.destroy');
+        Route::post('/subjects/{subject}/audiences/{audience}/deleteClassRequirement', [AudienceController::class, 'deleteClassRequirement'])->name('teacher.subject.class_requirement.destroy');
+        Route::post('/subjects/{subject}/audiences/{audience}/deleteTargetStudent', [AudienceController::class, 'deleteTargetStudent'])->name('teacher.subject.target_student.destroy');
 
         Route::get('/subjects/{subject}/messages', [MessageController::class, 'index']);
         Route::get('/subjects/{subject}/messages', [MessageController::class, 'create']);

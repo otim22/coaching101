@@ -73,6 +73,7 @@ $(function () {
 });
 /** End note objectives **/
 
+/** Start Delete a particular objective */
 $(function() {
     $("p.to-delete").on("click", function() {
         var deleteUrl = $(this).attr("data-delete-url");
@@ -95,7 +96,6 @@ function deleteObjective(deleteUrl, objectiveId) {
         },
         success: function (response) {
             console.log(response);
-
         },
         error: function(xhr) {
             console.log(xhr.responseText);
@@ -104,5 +104,6 @@ function deleteObjective(deleteUrl, objectiveId) {
 
     setTimeout(function () {
         document.location.reload(true);
-    }, 2000);
+    }, 1000);
 }
+/** End Delete a particular objective */

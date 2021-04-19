@@ -56,22 +56,26 @@
                                     <div class="bold">
                                         <label for="students_learn">What will students learn in your class?</label>
                                     </div>
-                                    <p class="mt-2">Current class objectives</p>
-                                    @if(!empty($subject->audience))
-                                        @forelse($subject->audience->student_learn as $student_learn)
-                                        <p>
-                                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                                            </svg>
-                                            {{ $student_learn }}
-                                        </p>
-                                        @empty
-                                        <p>Nothing to learn</p>
-                                        @endforelse
+                                    @if($subject->audience)
+                                        <p class="mt-2">Current learning objectives</p>
                                     @endif
-                                    <small class="form-text text-muted">
-                                        <p class="red_color"><strong>*</strong> Adding new information will override all current class objectives. Be sure you include current ones you don't want to loose.</p>
-                                    </small>
+                                    @foreach($subject->audience->student_learn as $key => $student_learn)
+                                        <div class="d-flex justify-content-between">
+                                            <div style="flex-grow:1">
+                                                <input type="text"
+                                                            value="{{ $student_learn }}"
+                                                            class="form-control form-control mb-2 @error('student_learn.*') is-invalid @enderror"
+                                                            placeholder="Example: Origin of languages"
+                                                            name="student_learn[]">
+                                            </div>
+                                            <div>
+                                                <p class="delete_note_objective student_learn-delete" data-student_learn-id="{{ $key }}" data-student_learn-delete-url="{{ route('teacher.subject.student_learn.destroy', ['subject' => $subject, 'audience' => $key]) }}">x</p>
+                                            </div>
+                                        </div>
+                                        @error('student_learn.*')
+                                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                        @enderror
+                                    @endforeach
                                     <div class="input-group student_learn_section">
                                         <div class="students_learn_input">
                                             <input type="text"
@@ -109,22 +113,26 @@
                                     <div class="bold">
                                         <label for="class_requirement">Are there any class requirements or prerequisites?</label>
                                     </div>
-                                    <p class="mt-3">Current class requirements</p>
-                                    @if(!empty($subject->audience->class_requirement))
-                                        @forelse($subject->audience->class_requirement as $class_requirement)
-                                        <p>
-                                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                                            </svg>
-                                            {{ $class_requirement }}
-                                        </p>
-                                        @empty
-                                        <p>Nothing to requirements</p>
-                                        @endforelse
+                                    @if($subject->audience)
+                                        <p class="mt-3">Current class requirements</p>
                                     @endif
-                                    <small class="form-text text-muted">
-                                        <p class="red_color"><strong>*</strong> Adding new information will override all current class requirements. Be sure you include current ones you don't want to loose.</p>
-                                    </small>
+                                    @foreach($subject->audience->class_requirement as $key => $class_requirement)
+                                        <div class="d-flex justify-content-between">
+                                            <div style="flex-grow:1">
+                                                <input type="text"
+                                                            value="{{ $class_requirement }}"
+                                                            class="form-control form-control mb-2 @error('class_requirement.*') is-invalid @enderror"
+                                                            placeholder="Example: Origin of languages"
+                                                            name="class_requirement[]">
+                                            </div>
+                                            <div>
+                                                <p class="delete_note_objective class_requirement-delete" data-class_requirement-id="{{ $key }}" data-class_requirement-delete-url="{{ route('teacher.subject.class_requirement.destroy', ['subject' => $subject, 'audience' => $key]) }}">x</p>
+                                            </div>
+                                        </div>
+                                        @error('class_requirement.*')
+                                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                        @enderror
+                                    @endforeach
                                     <div class="input-group class_requirement_section">
                                         <div class="class_requirement_input">
                                             <input type="text"
@@ -162,22 +170,26 @@
                                     <div class="bold">
                                         <label for="target_students">Who are your target students?</label>
                                     </div>
-                                    <p class="mt-3">Current target students</p>
-                                    @if(!empty($subject->audience))
-                                        @forelse($subject->audience->target_student as $target_student)
-                                        <p>
-                                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                                            </svg>
-                                            {{ $target_student }}
-                                        </p>
-                                        @empty
-                                        <p>Nothing to targeted students</p>
-                                        @endforelse
+                                    @if($subject->audience)
+                                        <p class="mt-3">Current target students</p>
                                     @endif
-                                    <small class="form-text text-muted">
-                                        <p class="red_color"><strong>*</strong> Adding new information will override all current target students. Be sure you include current ones you don't want to loose.</p>
-                                    </small>
+                                    @foreach($subject->audience->target_student as $key => $target_student)
+                                        <div class="d-flex justify-content-between">
+                                            <div style="flex-grow:1">
+                                                <input type="text"
+                                                            value="{{ $target_student }}"
+                                                            class="form-control form-control mb-2 @error('target_student.*') is-invalid @enderror"
+                                                            placeholder="Example: Origin of languages"
+                                                            name="target_student[]">
+                                            </div>
+                                            <div>
+                                                <p class="delete_note_objective target_student-delete" data-target_student-id="{{ $key }}" data-target_student-delete-url="{{ route('teacher.subject.target_student.destroy', ['subject' => $subject, 'audience' => $key]) }}">x</p>
+                                            </div>
+                                        </div>
+                                        @error('target_student.*')
+                                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                        @enderror
+                                    @endforeach
                                     <div class="input-group target_students_section">
                                         <div class="target_students_input">
                                             <input type="text"
@@ -227,10 +239,11 @@
                         </div>
                     </div>
                 </form>
-                @include('teacher.manage_subject.audience.partials.js_files')
             </div>
         </div>
     </div>
 </section>
 
 @endsection
+
+@include('teacher.manage_subject.audience.partials.js_files')

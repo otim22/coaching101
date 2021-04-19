@@ -116,14 +116,13 @@
                                                     placeholder="Example: Origin of languages"
                                                     name="objective[]">
                                     </div>
-
                                     <div>
                                         <p class="delete_note_objective to-delete" data-objective-id="{{ $key }}" data-delete-url="{{ route('teacher.notes.objective.destroy', ['note' => $note, 'objective' => $key]) }}">x</p>
                                     </div>
                                 </div>
-                                    @error('objective.*')
-                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                    @enderror
+                                @error('objective.*')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @enderror
                                 @endforeach
 
                                 <div class="input-group note_objective_section">
@@ -195,13 +194,8 @@
     </div>
 </section>
 
-@endsection
-
-@push('scripts')
-    <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
-@endpush
-
 @prepend('scripts')
     <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-@endprepend
+    <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
+@endpush
