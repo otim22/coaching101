@@ -129,6 +129,17 @@ class TeacherBookController extends Controller
         return redirect()->route('teacher.books')->with('success', 'Book added successfully.');
     }
 
+    public function deleteObjective(ItemContent $book, $objectiveId)
+    {
+        $objectives = $book->objective;
+        $updatedObjectives = Arr::except($objectives, $objectiveId);
+
+        $book->objective = $updatedObjectives;
+        $book->save();
+
+        return redirect()->route('teacher.books');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -186,7 +186,7 @@
                             @enderror
                         </div>
 
-                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm mt-3">Update</button>
+                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm pl-5 pr-5 mt-3">Update</button>
                     </form>
                 </div>
             </div>
