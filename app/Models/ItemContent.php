@@ -165,7 +165,7 @@ class ItemContent extends Model implements HasMedia, Searchable
         return $this->belongsTo(ItemContent::class);
     }
 
-    public static function getSubjectsForTeacherPerforamce($days, int $limit = 10)
+    public static function getItemContentsForTeacherPerforamce($days, int $limit = 10)
     {
         return static::whereBetween('created_at', [Carbon::now()->subDays($days)->format('Y-m-d H:i:s'), Carbon::now()->format('Y-m-d H:i:s')])
                                 ->latest()

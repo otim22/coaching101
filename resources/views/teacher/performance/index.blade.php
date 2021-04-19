@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('manage.subjects') }}" style="text-decoration:none;">Subjects</a>
+                    <a href="{{ route('manage.subjects') }}" style="text-decoration:none;">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Performance</li>
             </ol>
@@ -29,7 +29,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="d-flex justify-content-between">
                     <div>
-                        <h5 class="bold mb-4">Overview</h5>
+                        <h5 class="bold mb-4">Performance overview</h5>
                     </div>
                     <div>
                         <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-secondary btn-sm">

@@ -7,6 +7,8 @@
                     <label for="rate-{{$i}}" class="fa fa-star"></label>
                 @endfor
                 @if($subject->isSubscribedTo)
+                    <span class="ml-3">{{ number_format($subject->averageRating(), 1, ".", "") }} stars </span>
+
                     <span class="author-font ml-3">({{ $subject->subscriptionCount }}) students</span><br />
                 @endif
             </div>
