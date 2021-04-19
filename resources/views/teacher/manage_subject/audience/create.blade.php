@@ -144,7 +144,7 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
                         <div><h5>Step 2 of 3</h5></div>
                         <div>
-                            <button  id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Save</button>
+                            <button  id="round-button-2" type="submit" class="btn btn-primary btn-block btn-sm pl-5 pr-5 ml-3 mr-3">Save</button>
                         </div>
                     </div>
                 </form>

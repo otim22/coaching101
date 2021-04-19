@@ -32,14 +32,30 @@
 
                     <div class="fast-transition mb-3">
                         <div class="row m-2">
-                            <div class="cols-sm-12 col-md-12 col-lg-12">
-                                <h5>Target your students</h5> <hr />
-                                <p class="mb-4 mt-4">The descriptions you write here will help students decide if your class is the one for them.</p>
+                            <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-between">
+                                <div>
+                                    <h5 class="bold">Target your students</h5>
+                                </div>
+                                <div>
+                                    <a id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-sm btn-secondary btn-block pl-5 pr-5">
+                                        <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+                                            <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                                        </svg>
+                                        Back
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
+                                <hr class="mb-4" />
+                                <p class="mb-4">The descriptions you write here will help students decide if your class is the one for them.</p>
                             </div>
 
                             <div class="cols-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_student_learn">
-                                    <label for="students_learn">What will students learn in your class?</label>
+                                    <div class="bold">
+                                        <label for="students_learn">What will students learn in your class?</label>
+                                    </div>
                                     <p class="mt-2">Current class objectives</p>
                                     @if(!empty($subject->audience))
                                         @forelse($subject->audience->student_learn as $student_learn)
@@ -90,7 +106,9 @@
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_class_requirement">
-                                    <label for="class_requirement">Are there any class requirements or prerequisites?</label>
+                                    <div class="bold">
+                                        <label for="class_requirement">Are there any class requirements or prerequisites?</label>
+                                    </div>
                                     <p class="mt-3">Current class requirements</p>
                                     @if(!empty($subject->audience->class_requirement))
                                         @forelse($subject->audience->class_requirement as $class_requirement)
@@ -141,7 +159,9 @@
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group dynamic_target_students">
-                                    <label for="target_students">Who are your target students?</label>
+                                    <div class="bold">
+                                        <label for="target_students">Who are your target students?</label>
+                                    </div>
                                     <p class="mt-3">Current target students</p>
                                     @if(!empty($subject->audience))
                                         @forelse($subject->audience->target_student as $target_student)
@@ -194,7 +214,7 @@
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
                         <div>
-                            <a id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-secondary btn-block">
+                            <a id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-secondary btn-sm btn-block pl-5 pr-5">
                                 <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
                                     <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
@@ -203,7 +223,7 @@
                             </a>
                         </div>
                         <div>
-                            <button  id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Update</button>
+                            <button  id="round-button-2" type="submit" class="btn btn-primary btn-block btn-sm  pl-5 pr-5 ml-3 mr-3">Update</button>
                         </div>
                     </div>
                 </form>

@@ -170,10 +170,10 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('vendor/js/videojs/video.js') }}"  type="text/javascript"></script>
-<script src="{{ asset('vendor/js/videojs/videojs-playlist.min.js') }}"  type="text/javascript"></script>
-<script src="{{ asset('js/video_player.js')}}" type="text/javascript"></script>
-<script src="{{ asset('js/student_subject_display.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/js/videojs/video.js') }}"  type="text/javascript"></script>
+    <script src="{{ asset('vendor/js/videojs/videojs-playlist.min.js') }}"  type="text/javascript"></script>
+    <script src="{{ asset('js/video_player.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/student_subject_display.js')}}" type="text/javascript"></script>
 @endpush

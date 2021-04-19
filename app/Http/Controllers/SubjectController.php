@@ -57,7 +57,6 @@ class SubjectController extends Controller
 
         $category = Category::findOrFail($request->input('category_id'));
         $category->years()->attach($request->input('year_id'));
-
         $year = Year::findOrFail($request->input('year_id'));
         $year->terms()->attach($request->input('term_id'));
 
