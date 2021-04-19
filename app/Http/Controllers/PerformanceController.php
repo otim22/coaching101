@@ -19,15 +19,4 @@ class PerformanceController extends Controller
 
         return view('teacher.performance.index', compact('subjects'));
     }
-
-    public function getMoreItemContentsTeacherPerforamce(Request $request)
-    {
-        $days = $request->performance_filter;
-
-        if ($request->ajax()) {
-            $subjects = ItemContent::getItemContentsForTeacherPerforamce($days);
-
-            return view('teacher.performance.filtered_subjects', compact('subjects'));
-        }
-    }
 }

@@ -146,7 +146,7 @@ Route::middleware('auth')->group(function() {
         Route::patch('/subjects/{subject}/topics/{topic}/update', [TopicController::class, 'update'])->name('topics.update');
 
         Route::get('/manage/performances', [PerformanceController::class, 'index'])->name('manage.performances');
-        Route::get('/get-more-subjects-for-teacher-performance', [PerformanceController::class, 'getMoreSubjectsTeacherPerforamce'])->name('get-more-subjects-for-teacher-performance');
+        Route::get('manage/performances/itemContents', [PerformanceController::class, 'getItemContentsTeacherPerforamce'])->name('manage.performances.itemContents');
         Route::get('/manage/resources', [ResourceController::class, 'index'])->name('manage.resources');
         Route::get('/manage/tools', [ToolController::class, 'index'])->name('manage.tools');
     });
@@ -163,8 +163,10 @@ Route::middleware('auth')->group(function() {
         Route::get('/teachers', [Teacher::class, 'index'])->name('teachers.index');;
         Route::get('/teachers/{teacher}', [Teacher::class, 'show'])->name('teachers.show');;
         Route::delete('/teachers/{teacher}/destroy', [Teacher::class, 'destroy'])->name('teachers.destroy');
-        Route::get('/student-profiles', [StudentProfileController::class, 'index']);
-        Route::get('/teacher-profiles', [TeacherProfileController::class, 'index']);
+        Route::get('/student-profiles', [StudentProfileController::class, 'index'])->name('student.profiles');
+        Route::get('/student-profiles/{student}', [StudentProfileController::class, 'show'])->name('student.profile.show');
+        Route::get('/teacher-profiles', [TeacherProfileController::class, 'index'])->name('teacher.profiles');
+        Route::get('/teacher-profiles/{teacher}', [TeacherProfileController::class, 'show'])->name('teacher.profile.show');
 
         Route::get('/subjects', [SubjectsController::class, 'index'])->name('subjects.index');
         Route::get('/subjects/{subject}', [SubjectsController::class, 'show'])->name('subjects.show');

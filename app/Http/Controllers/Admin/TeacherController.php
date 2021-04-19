@@ -19,12 +19,11 @@ class TeacherController extends Controller
 
     public function show(User $teacher)
     {
-        $subjects = ItemContent::whereIn('item_id', function($query) {
+        $subjects = ItemContent::whereIn('id', function($query) {
             $query->select('subscriptionable_id')
                         ->from('subscriptions')
                         ->whereColumn('subscriptions.subscriptionable_id', 'item_contents.id');
         })->where('user_id', $teacher->id)->get();
-        
         $subjectTaught = Category::where('id', $teacher->profile->category_id)->firstOrFail()->name;
 
         return view('admin.users.teachers.show', compact(['teacher', 'subjects', 'subjectTaught']));
