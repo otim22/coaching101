@@ -10,14 +10,14 @@ class TeacherProfileController extends Controller
 {
     public function index()
     {
-        $teachers = Profile::whereNull('age')->paginate(20);
+        $teachers = Profile::whereNull('dob')->paginate(20);
 
         return view('admin.profiles.teachers.index', compact('teachers'));
     }
 
-    public function show(Profile $profile)
+    public function show(Profile $teacher)
     {
-        return view('admin.profiles.teachers.show', compact('user'));
+        return view('admin.profiles.teachers.show', compact('teacher'));
     }
 
     /**

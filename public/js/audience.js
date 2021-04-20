@@ -36,6 +36,41 @@ $(function () {
         });
     }
 });
+
+/** Start Delete a particular student_learn */
+$(function() {
+    $("p.student_learn-delete").on("click", function() {
+        var studentLearnDeleteUrl = $(this).attr("data-student_learn-delete-url");
+        var studentLearnId = $(this).attr("data-student_learn-id");
+        deleteStudentLearn(studentLearnDeleteUrl, studentLearnId);
+    });
+});
+
+function deleteStudentLearn(studentLearnDeleteUrl, studentLearnId) {
+    $.ajax({
+        type: "POST",
+        url: studentLearnDeleteUrl,
+        dataType: "JSON",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            id: studentLearnId
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function(xhr) {
+            console.log(xhr.responseText);
+       }
+    });
+
+    setTimeout(function () {
+        document.location.reload(true);
+    }, 1000);
+}
+/** End Delete a particular student_learn */
+
 /** End Students learn **/
 
 /** Start Class requirement**/
@@ -76,6 +111,40 @@ $(function () {
         });
     }
 });
+
+/** Start Delete a particular class_requirement */
+$(function() {
+    $("p.class_requirement-delete").on("click", function() {
+        var classRequirementDeleteUrl = $(this).attr("data-class_requirement-delete-url");
+        var classRequirementId = $(this).attr("data-class_requirement-id");
+        deleteClassRequirement(classRequirementDeleteUrl, classRequirementId);
+    });
+});
+
+function deleteClassRequirement(classRequirementDeleteUrl, classRequirementId) {
+    $.ajax({
+        type: "POST",
+        url: classRequirementDeleteUrl,
+        dataType: "JSON",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            id: classRequirementId,
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function(xhr) {
+            console.log(xhr.responseText);
+       }
+    });
+
+    setTimeout(function () {
+        document.location.reload(true);
+    }, 1000);
+}
+/** End Delete a particular class_requirement */
 /** End Class requirement **/
 
 /** Start Target students **/
@@ -92,7 +161,7 @@ $(function () {
     // Clone the hidden element and shows it
     $('.btn_target_students').click(function() {
         let all_items = document.querySelector('#hidden_target_students');
-        
+
         if(startValue < maxField) {
             startValue++;
             all_items.classList.remove('hidden');
@@ -116,4 +185,38 @@ $(function () {
         });
     }
 });
+
+/** Start Delete a particular target_student */
+$(function() {
+    $("p.target_student-delete").on("click", function() {
+        var targetStudentDeleteUrl = $(this).attr("data-target_student-delete-url");
+        var targetStudentId = $(this).attr("data-target_student-id");
+        deleteTargetStudent(targetStudentDeleteUrl, targetStudentId);
+    });
+});
+
+function deleteTargetStudent(targetStudentDeleteUrl, targetStudentId) {
+    $.ajax({
+        type: "POST",
+        url: targetStudentDeleteUrl,
+        dataType: "JSON",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            id: targetStudentId,
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function(xhr) {
+            console.log(xhr.responseText);
+       }
+    });
+
+    setTimeout(function () {
+        document.location.reload(true);
+    }, 1000);
+}
+/** End Delete a particular target_student */
 /** End Target students **/

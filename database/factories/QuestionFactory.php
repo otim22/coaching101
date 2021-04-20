@@ -9,6 +9,6 @@ use Illuminate\Support\Str;
 $factory->define(Question::class, function (Faker $faker) {
     return [
         'body' => $faker->sentence,
-        'subject_id' => factory('App\Models\Subject')->create()->id
+        'item_content_id' => factory('App\Models\ItemContent')->create()->id
     ];
 });

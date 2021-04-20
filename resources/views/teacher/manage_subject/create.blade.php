@@ -14,7 +14,7 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Subjects</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">New Subject</li>
             </ol>
         </nav>
@@ -68,6 +68,12 @@
                                     @error('subtitle')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="hidden" class="form-control" name="item_id" value="{{ $item->id }}">
+                                    </div>
                                 </div>
 
                                 <div class="form-group mb-4">
@@ -155,7 +161,7 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
                         <div><h5>Step 1 of 3</h5></div>
                         <div>
-                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Save</button>
+                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-sm pl-5 pr-5 ml-3 mr-3">Save</button>
                         </div>
                     </div>
                 </form>

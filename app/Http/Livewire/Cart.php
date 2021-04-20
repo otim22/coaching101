@@ -3,12 +3,12 @@
 namespace App\Http\Livewire;
 
 use Illuminate\View\View;
-use App\Models\Subject;
 use App\Models\Wishlist;
 use Livewire\Component;
-use App\Helpers\ProcessPayment as Payment;
+use App\Models\ItemContent;
 use Illuminate\Support\Facades\Auth;
 use App\Facades\Cart as CartFacade;
+use App\Helpers\ProcessPayment as Payment;
 
 class Cart extends Component
 {
@@ -42,11 +42,13 @@ class Cart extends Component
         $this->wishlistItems = Wishlist::where('user_id', Auth::id())->get();
 
         foreach ($this->cartItems as $cartItem) {
-            $this->sum = $this->sum + $cartItem->price;
+            $this->sum += $cartItem->price;
         }
+
         if (count($this->response) > 0) {
             $this->updatedPaymentInfo($this->response[0]);
         }
+
         return $this->sum;
     }
 
@@ -69,14 +71,14 @@ class Cart extends Component
 
     public function calculateCartSum($subjectId)
     {
-        $subject = Subject::findOrFail($subjectId);
+        $subject = ItemContent::where('id', $subjectId)->firstOrFail();
         $this->sum += $subject->price;
         return $this->sum;
     }
 
     public function calculateCartDeduction($subjectId)
     {
-        $subject = Subject::findOrFail($subjectId);
+        $subject = ItemContent::findOrFail($subjectId);
         $this->sum -= $subject->price;
         return $this->sum;
     }
@@ -119,9 +121,11 @@ class Cart extends Component
                     "logo" => "https://assets.piedpiper.com/logo.png"
                 ]
             ]);
+          
             $payment = new Payment($data);
             $response = $payment->cardPayment();
             $data = json_decode($response->body(), true);
+
             if ($response->successful()) {
                 $status = $response['data']['status'];
                 if ($status == 'successful') {
@@ -129,6 +133,7 @@ class Cart extends Component
                 }
                 $this->emit('onSuccess', $data);
             }
+
             if ($data['status'] == 'error') {
                 $this->emit('onError', $data);
             }
@@ -178,6 +183,7 @@ class Cart extends Component
     public function clearCart() {
         $cartFacade = new CartFacade;
         $this->cartItems = $cartFacade->get()['subjects'];
+
         foreach($this->cartItems as $item) {
             $item->subscribe();
         }
@@ -198,13 +204,15 @@ class Cart extends Component
         $cartFacade = new CartFacade;
         $this->cartItems = $cartFacade->get()['subjects'];
 
-        foreach ($this->cartItems as $cartItem) {
-            if (($cartItem->id === $subjectId)) {
-                return redirect()->back()->with('messaged', 'This subject is already in your cart!');
+        if(!empty($this->cartItems)) {
+            foreach ($this->cartItems as $cartItem) {
+                if (($cartItem->id === $subjectId)) {
+                    return redirect()->back()->with('messaged', 'This subject is already in your cart!');
+                }
             }
         }
 
-        $cartFacade->add(Subject::where('id', $subjectId)->first());
+        $cartFacade->add(ItemContent::where('id', $subjectId)->first());
 
         $this->emit('itemAdded');
         $this->emit('cartSumUpdate', $subjectId);
@@ -214,7 +222,6 @@ class Cart extends Component
     public function removeItemFromCart($subjectId): void
     {
         $cartFacade = new CartFacade;
-
         $cartFacade->remove($subjectId);
 
         $this->emit('itemRemoved');
@@ -225,7 +232,7 @@ class Cart extends Component
     {
         if(Auth::check()) {
             $status = Wishlist::where('user_id', Auth::id())
-                                                ->where('subject_id', $subjectId)
+                                                ->where('item_content_id', $subjectId)
                                                 ->first();
 
             if(isset($status->user_id) && isset($subjectId)) {
@@ -233,7 +240,7 @@ class Cart extends Component
             } else {
                 Wishlist::create([
                     'user_id' => Auth::id(),
-                    'subject_id' => $subjectId
+                    'item_content_id' => $subjectId
                 ]);
 
                 $this->emit('updateWishlist');
@@ -248,15 +255,13 @@ class Cart extends Component
     public function removeFromWishlist($subjectId): void
     {
         $wishlist = Wishlist::findOrFail($subjectId);
-
         $wishlist->delete();
-
         $this->emit('updateWishlist');
     }
 
     public function deleteFromWishlist($subjectId): void
     {
-        $wishlist = Wishlist::where('subject_id', $subjectId);
+        $wishlist = Wishlist::where('item_content_id', $subjectId);
         $wishlist->delete();
         $this->emit('updateWishlist');
     }

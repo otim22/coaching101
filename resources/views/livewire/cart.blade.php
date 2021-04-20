@@ -35,23 +35,23 @@
         @endforelse
 
         <div class="pt-3">
-            @foreach($wishlistItems as $wishlistItem)
-            <div class="mb-3">
+            <div class="mb-4">
                 <h5 class="bold">Recently wishlisted</h5>
             </div>
+            @foreach($wishlistItems as $wishlistItem)
             <div class="card-custom p-3 mb-3">
                 <div class="d-flex justify-content-between">
                     <div class="flex-grow-1">
                         <a href="#" style="text-decoration: none;">
-                            <span class="bold">{{ $wishlistItem->subject->title }}</span> <br />
+                            <span class="bold">{{ $wishlistItem->itemContent->title }}</span> <br />
                         </a>
                     </div>
                     <div class="order-2">
-                        <span class="red_color bold text-set"> {{  $wishlistItem->subject->formatPrice }}/-</span>
+                        <span class="red_color bold text-set"> {{  $wishlistItem->itemContent->formatPrice }}/-</span>
                     </div>
                     <div class="d-flex pr-3 align-items-start flex-column">
                         <a type="button" wire:click="removeFromWishlist({{ $wishlistItem->id }})"><small>Remove</small></a>
-                        <a type="button" wire:click="addToCart({{ $wishlistItem->subject->id }})"><small type="button" class="text-set">Add to Cart</small></a>
+                        <a type="button" wire:click="addToCart({{ $wishlistItem->itemContent->id }})"><small type="button" class="text-set">Add to Cart</small></a>
                     </div>
                 </div>
             </div>
@@ -73,6 +73,7 @@
             </div>
         </aside>
     </div>
+
     <!-- Modal -->
   <div wire:ignore class="modal fade" id="myModal" data-backdrop="static" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
@@ -130,11 +131,9 @@
           <button type="button" class="btn btn-primary" id="process">Process</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
-      </div>
-
     </div>
-  </div>
 </div>
+
 @push('scripts')
     <script src="{{ asset('js/card-js.js') }}"></script>
     <script>
@@ -179,6 +178,7 @@
             var myCard = $('#my-card');
             var proccessBtn = $('#process')
             var alertSuccess = $('#alert-success')
+
             spinner.attr("style","display:none !important");
             alert.attr("style","display:none !important");
             alertSuccess.attr("style","display:none !important");
@@ -189,6 +189,7 @@
                 var expiryYear = myCard.CardJs('expiryYear');
                 var cvc = myCard.CardJs('cvc');
                 var valid = CardJs.isExpiryValid(expiryMonth, expiryYear);
+
                 if (cardNumber === '') {
                     $('.card-number-wrapper').addClass('has-error')
                     return
@@ -209,15 +210,18 @@
                     $('.expiry-wrapper').addClass('has-error')
                     return
                 }
+
                 var cardDetails = {
                     'number': CardJs.numbersOnlyString(cardNumber),
                     'expiryMonth': expiryMonth,
                     'expiryYear': expiryYear,
                     'cvv': cvc
                 }
+
                 proccessBtn.attr('disabled', 'disabled')
                 myCard.attr("style","display:none !important");
                 spinner.removeAttr('style');
+
                 @this.cardDetails = cardDetails
                 @this.checkout()
             }
@@ -292,6 +296,7 @@
                     showSuccess()
                 }
             })
+
             @this.on('onError', function (res) {
                 console.log(res)
                 spinner.attr("style","display:none !important");
@@ -300,6 +305,7 @@
                 proccessBtn.removeAttr('disabled');
                 $('#error-message').append(res.message)
             })
+
             var response = @this.response
             if (response !== null && Object.keys(response).length) {
                 @this.clearCart()

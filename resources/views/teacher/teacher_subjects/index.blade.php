@@ -50,7 +50,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <h5 class="bold mb-4">Subject videos</h5>
+                <h5 class="bold mb-4">Videos</h5>
             </div>
             @forelse($subjects as $subject)
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -107,7 +107,7 @@
                 </div>
             @empty
             <div class="col-sm-12 col-md-12 col-lg-12 mb-2">
-                <p>Sorry, no available subjects in this category!</p>
+                <p>Sorry, no available subjects!</p>
             </div>
             @endforelse
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center mt-4">
@@ -123,7 +123,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <h5 class="bold mb-4">Books</h5>
             </div>
-            @forelse($books as $book)
+            @foreach($books as $book)
                 <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
                     <div class="mb-3">
                         <div class="card">
@@ -202,11 +202,7 @@
                         </div>
                     </div>
                 </div>
-            @empty
-                <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-5">
-                    <p>The book(s) you are looking for was not found. </p>
-                </div>
-            @endforelse
+            @endforeach
             <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
                 {{ $books->links() }}
             </div>
@@ -220,7 +216,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <h5 class="bold mb-4">Notes</h5>
             </div>
-            @forelse($notes as $note)
+            @foreach($notes as $note)
                 <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
                     <div class="mb-3">
                         <div class="card">
@@ -276,11 +272,7 @@
                         </div>
                     </div>
                 </div>
-            @empty
-                <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-5">
-                    <p>The note(s) you are looking for was not found. </p>
-                </div>
-            @endforelse
+            @endforeach
                 <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
                     {{ $notes->links() }}
                 </div>
@@ -294,7 +286,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <h5 class="bold mb-4">Past papers</h5>
             </div>
-            @forelse($pastpapers as $pastpaper)
+            @foreach($pastpapers as $pastpaper)
                 <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
                     <div class="mb-3">
                         <div class="card">
@@ -350,11 +342,7 @@
                         </div>
                     </div>
                 </div>
-            @empty
-                <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-5">
-                    <p>The pastpaper(s) you are looking for was not found. </p>
-                </div>
-            @endforelse
+            @endforeach
                 <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
                     {{ $pastpapers->links() }}
                 </div>

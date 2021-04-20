@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Note;
-use App\Models\Book;
-use App\Models\Subject;
-use App\Models\Pastpaper;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 
 class TeacherController extends Controller
 {
@@ -18,10 +15,10 @@ class TeacherController extends Controller
      */
     public function index(User $teacher)
     {
-        $subjects = Subject::where(['user_id' => $teacher->id, 'is_approved' => 1])->paginate(12);
-        $books = Book::where(['user_id' => $teacher->id, 'is_approved' => 1])->paginate(12);
-        $notes = Note::where(['user_id' => $teacher->id, 'is_approved' => 1])->paginate(12);
-        $pastpapers = Pastpaper::where(['user_id' => $teacher->id, 'is_approved' => 1])->paginate(12);
+        $subjects = ItemContent::where(['user_id' => $teacher->id, 'item_id' => 1, 'is_approved' => 1])->paginate(12);
+        $books = ItemContent::where(['user_id' => $teacher->id, 'item_id' => 2, 'is_approved' => 1])->paginate(12);
+        $notes = ItemContent::where(['user_id' => $teacher->id, 'item_id' => 3, 'is_approved' => 1])->paginate(12);
+        $pastpapers = ItemContent::where(['user_id' => $teacher->id, 'item_id' => 4, 'is_approved' => 1])->paginate(12);
 
         return view('teacher.teacher_subjects.index', compact(['subjects', 'teacher', 'books', 'notes', 'pastpapers']));
     }

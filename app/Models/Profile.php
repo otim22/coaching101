@@ -49,6 +49,11 @@ class Profile extends Model implements HasMedia
         return  Carbon::createFromFormat('Y-m-d', $this->attributes['dob'])->format('m/d/Y');
     }
 
+    public function getAgeAttribute()
+    {
+        return  Carbon::parse($this->attributes['dob'])->age;
+    }
+
     public function user()
     {
         return $this->belongsTo('\App\Models\User');

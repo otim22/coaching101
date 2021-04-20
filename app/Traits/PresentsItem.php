@@ -4,7 +4,7 @@ namespace App\Traits;
 
 use Illuminate\Support\Facades\Auth;
 
-trait PresentsSubject
+trait PresentsItem
 {
     public function getIsSubscribedToAttribute()
     {

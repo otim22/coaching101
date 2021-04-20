@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Year;
 use App\Models\Term;
-use App\Models\Subject;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use App\Constants\GlobalConstants;
 
 class HomeController extends Controller
@@ -23,7 +23,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $subjects =  Subject::getSubjects(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS);
+        $subjects =  ItemContent::getItemContents(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS, GlobalConstants::SUBJECT);
         $years =  Year::get();
         $terms =  Term::get();
         $categories = Category::get();
@@ -36,9 +36,10 @@ class HomeController extends Controller
         $category= $request->category;
         $year= $request->year;
         $term= $request->term;
+        $item = GlobalConstants::SUBJECT;
 
         if ($request->ajax()) {
-            $subjects = Subject::getSubjects($category, $year, $term);
+            $subjects = ItemContent::getItemContents($category, $year, $term, $item);
 
             return view('student.subject_display.filtered_subjects', compact('subjects'));
         }

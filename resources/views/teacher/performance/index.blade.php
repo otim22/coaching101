@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('manage.subjects') }}" style="text-decoration:none;">Subjects</a>
+                    <a href="{{ route('manage.subjects') }}" style="text-decoration:none;">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Performance</li>
             </ol>
@@ -27,7 +27,19 @@
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <h5 class="bold mb-4">Overview</h5>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="bold mb-4">Performance overview</h5>
+                    </div>
+                    <div>
+                        <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-secondary btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                            Back
+                        </a>
+                    </div>
+                </div>
                 <ul class="nav nav-tabs" id="performanceTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="revenue-tab" data-toggle="tab" href="#revenue" role="tab" aria-controls="revenue" aria-selected="true">Revenue</a>
@@ -42,7 +54,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="revenue" role="tabpanel" aria-labelledby="revenue-tab">
                         <div class="mt-4">
-                            <div class="row" style="display: flex; justify-content: flex-end">
+                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
                                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
                                         <select class="custom-select" id="performance_filter">
@@ -53,7 +65,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             @forelse($subjects as $subject)
                                 <div class="mb-4">
                                     <h6 class="bold">{{ $subject->title }}</h6>
@@ -66,7 +78,7 @@
                     </div>
                     <div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
                         <div class="mt-4">
-                            <div class="row" style="display: flex; justify-content: flex-end">
+                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
                                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
                                         <select class="custom-select" id="performance_filter">
@@ -77,7 +89,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             @forelse($subjects as $subject)
                                 <div class="mb-4">
                                     <h6 class="bold">{{ $subject->title }}</h6>
@@ -90,7 +102,7 @@
                     </div>
                     <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                         <div class="mt-4">
-                            <div class="row" style="display: flex; justify-content: flex-end">
+                            <!-- <div class="row" style="display: flex; justify-content: flex-end">
                                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3  mt-2">
                                     <div class="resource-filter_input">
                                         <select class="custom-select" id="performance_filter">
@@ -101,7 +113,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             @forelse($subjects as $subject)
                                 <div class="mb-4">
                                     <h6 class="bold">{{ $subject->title }}</h6>

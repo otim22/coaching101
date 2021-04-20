@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use App\Http\Controllers\Controller;
 
 class TeacherController extends Controller
@@ -15,9 +17,16 @@ class TeacherController extends Controller
         return view('admin.users.teachers.index', compact('teachers'));
     }
 
-    public function show(User $user)
+    public function show(User $teacher)
     {
-        return view('admin.users.teachers.show', compact('user'));
+        $subjects = ItemContent::whereIn('id', function($query) {
+            $query->select('subscriptionable_id')
+                        ->from('subscriptions')
+                        ->whereColumn('subscriptions.subscriptionable_id', 'item_contents.id');
+        })->where('user_id', $teacher->id)->get();
+        $subjectTaught = Category::where('id', $teacher->profile->category_id)->firstOrFail()->name;
+
+        return view('admin.users.teachers.show', compact(['teacher', 'subjects', 'subjectTaught']));
     }
 
     /**

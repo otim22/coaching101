@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('manage.subjects') }}" style="text-decoration:none;">Subjects</a>
+                    <a href="{{ route('manage.subjects') }}" style="text-decoration:none;">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Tools</li>
             </ol>
@@ -27,15 +27,27 @@
     <div class="container">
         <div class="row mt-5 mb-5 justify-content-center">
             <div class="col-lg-8 col-md-8 col-sm-12 mb-3 off-set-2">
-                <h5 class="bold mb-4 text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" fill="currentColor" class="bi bi-camera-video mr-4" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175l3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z"/>
-                    </svg>
-                    Video Film
-                </h5>
-                <div class="mb-4">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="bold mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" fill="currentColor" class="bi bi-camera-video mr-4" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175l3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z"/>
+                            </svg>
+                            Video Film
+                        </h5>
+                    </div>
+                    <div>
+                        <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-secondary float-right btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                            Back
+                        </a>
+                    </div>
+                </div>
+                <div class="mb-5">
                     <p>Below are our picks of affordable camera, lights and editing software to help you.</p>
-                    <h5> Talking head</h5>
+                    <h6 class="bold"> Talking head</h6>
                     <ul>
                         <li>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
@@ -59,7 +71,7 @@
                 </div>
 
                 <div>
-                    <h5> Cast equipment</h5>
+                    <h6 class="bold"> Cast equipment</h6>
                     <ul>
                         <li>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
@@ -90,7 +102,7 @@
     <div class="container">
         <div class="row mt-5 mb-5 justify-content-center">
             <div class="col-lg-8 col-md-8 col-sm-12 off-set-2">
-                <h5 class="bold mb-4 text-center">
+                <h5 class="bold mb-5 text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" fill="currentColor" class="bi bi-graph-up mr-4" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5z"/>
                     </svg>
