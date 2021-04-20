@@ -24,7 +24,7 @@ class AddToWishList extends Component
     {
         if(Auth::check()) {
             $status = Wishlist::where('user_id', Auth::id())
-                                                ->where('subject_id', $subjectId)
+                                                ->where('item_content_id', $subjectId)
                                                 ->first();
 
             if(isset($status->user_id) && isset($subjectId)) {
@@ -32,7 +32,7 @@ class AddToWishList extends Component
             } else {
                 Wishlist::create([
                     'user_id' => Auth::id(),
-                    'subject_id' => $subjectId
+                    'item_content_id' => $subjectId
                 ]);
            }
         } else {

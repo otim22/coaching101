@@ -143,22 +143,15 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
                         <div><h6 class="bold">Step 2 of 3</h6></div>
                         <div>
-                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Save</button>
+                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-sm pl-5 pr-5 ml-3 mr-3">Save</button>
                         </div>
                     </div>
                 </form>
-
-                @push('scripts')
-                    <script src="{{ asset('js/audience.js')}}" type="text/javascript"></script>
-                @endpush
-
-                @prepend('scripts')
-                    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
-                    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-                @endprepend
             </div>
         </div>
     </div>
 </section>
 
 @endsection
+
+@include('teacher.manage_subject.audience.partials.js_files')

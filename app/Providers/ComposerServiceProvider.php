@@ -9,10 +9,10 @@ use App\Models\Term;
 use App\Models\Slider;
 use App\Models\Menu;
 use App\Models\Profile;
-use App\Models\Subject;
 use App\Models\Question;
 use App\Models\Comment;
 use App\Models\Category;
+use App\Models\ItemContent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -37,8 +37,8 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(['welcome'], function ($view) {
-            $categories = Category::with('subjects')->get()->map(function($query) {
-                $query->setRelation('subjects', $query->subjects->where('is_approved', 1)->take(8));
+            $categories = Category::with('itemContents')->get()->map(function($query) {
+                $query->setRelation('itemContents', $query->itemContents->where('is_approved', 1)->take(8));
                 return $query;
             })->groupBy('name')->take(8);
 
@@ -52,7 +52,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['welcome', 'home'], function ($view) {
-            $mostViewedSubjects = Subject::where('is_approved', 1)->get()->take(8);
+            $mostViewedSubjects = ItemContent::where(['is_approved' => 1, 'item_id' => 1])->get()->take(8);
 
             $view->withMostViewedSubjects($mostViewedSubjects);
         });

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Category;
-use App\Models\Pastpaper;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PastpaperRequest;
 
@@ -14,8 +14,8 @@ class PastpaperController extends Controller
 {
     public function index()
     {
-        $pastpapers = Pastpaper::paginate(20);
-
+        $pastpapers = ItemContent::where('item_id', 4)->paginate(20);
+        
         return view('admin.pastpapers.index', compact('pastpapers'));
     }
 
@@ -34,9 +34,9 @@ class PastpaperController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PastpaperRequest $request, Pastpaper $pastpaper)
+    public function store(PastpaperRequest $request)
     {
-        $pastpaper = new Pastpaper($request->except(['pastpaper']));
+        $pastpaper = new ItemContent($request->except(['pastpaper']));
 
         $pastpaper->save();
 
@@ -47,7 +47,7 @@ class PastpaperController extends Controller
         return redirect()->route('admin.pastpapers.index')->with('success', 'Pastpaper added successfully.');
     }
 
-    public function show(Pastpaper $pastpaper)
+    public function show(ItemContent $pastpaper)
     {
         return view('admin.pastpapers.show', compact('pastpaper'));
     }
@@ -58,7 +58,7 @@ class PastpaperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pastpaper $pastpaper)
+    public function edit(ItemContent $pastpaper)
     {
         $years =  Year::get();
         $terms =  Term::get();
@@ -77,7 +77,7 @@ class PastpaperController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(PastpaperRequest $request, Pastpaper $pastpaper)
+    public function update(PastpaperRequest $request, ItemContent $pastpaper)
     {
         $pastpaper->fill($request->except(['pastpaper']))->save();
 
@@ -94,7 +94,7 @@ class PastpaperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pastpaper $pastpaper)
+    public function destroy(ItemContent $pastpaper)
     {
         try {
             $pastpaper->delete();
@@ -105,9 +105,9 @@ class PastpaperController extends Controller
         }
     }
 
-    public function approve(Pastpaper $pastpaper)
+    public function approve(ItemContent $pastpaper)
     {
-        $approvePastpaper = Pastpaper::find($pastpaper->id);
+        $approvePastpaper = ItemContent::find($pastpaper->id);
 
         if($approvePastpaper->is_approved == 0) {
             $approvePastpaper->is_approved = 1;

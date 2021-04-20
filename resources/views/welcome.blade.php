@@ -2,6 +2,7 @@
 
 @section('content')
 
+<!-- Start jumbotron-->
 <section class="bg-image text-white mt-4" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 90vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
         <div class="row mt-5 mb-5">
@@ -30,7 +31,9 @@
         </div>
     </div>
 </section>
+<!-- End jumbotron-->
 
+<!-- Start selling points-->
 <section class="bg-gray-2 background-style">
     <div class="container">
         <div class="row mb-5">
@@ -73,36 +76,36 @@
         </div>
     </div>
 </section>
+<!-- End selling points-->
 
+<!-- Start to learn-->
 <section class="" id="learn-now">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-12 mb-4">
                 <h4 class="bold"> At your own convience start learning</h4>
             </div>
-
             <div class="col-sm-12 col-md-12 col-12">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         @foreach($categories as $key => $category)
                             <a class="nav-item nav-link {{ $key === $categories->keys()->first() ? 'active' : '' }}"
-                                id="nav-{{$key}}-tab"
+                                id="nav-{{ Str::slug($key) }}-tab"
                                 data-toggle="tab"
-                                href="#nav-{{$key}}"
+                                href="#{{ Str::slug($key) }}"
                                 role="tab"
-                                aria-controls="nav-{{$key}}"
-                                aria-selected="true">
-                                <h6>{{ $key }}</h6>
+                                aria-controls="nav-{{ Str::slug($key) }}">
+                                <h6>{{ $key }} </h6>
                             </a>
                         @endforeach
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     @foreach($categories as $key => $category)
-                        <div class="tab-pane fade show {{ $key === $categories->keys()->first() ? 'active' : '' }}" id="nav-{{$key}}" role="tabpanel" aria-labelledby="nav-{{$key}}-tab">
+                        <div class="tab-pane fade show {{ $key === $categories->keys()->first() ? 'active' : '' }}" id="{{ Str::slug($key) }}" role="tabpanel" aria-labelledby="nav-{{ Str::slug($key) }}-tab">
                             <div class="row mt-4">
                                 @foreach($category as $cat)
-                                    @foreach($cat->subjects as $subject)
+                                    @foreach($cat->itemContents as $subject)
                                         <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
                                             <div class="card">
                                                 <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
@@ -148,8 +151,8 @@
                                                         @if($subject->isSubscribedTo)
                                                             <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
                                                         @else
-                                                            <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
-                                                            <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                                                            <livewire:add-to-cart :subject="$subject" />
+                                                            <livewire:add-to-wish-list :subject="$subject" />
                                                         @endif
                                                     </div>
                                                 </div>
@@ -165,7 +168,9 @@
         </div>
     </div>
 </section>
+<!-- End Start learn-->
 
+<!-- Start most viewed subjects-->
 <section class="bg-white">
     <div class="container">
         <div class="row">
@@ -229,7 +234,9 @@
         </div>
     </div>
 </section>
+<!-- End most viewed subjects-->
 
+<!-- Start student Image-->
 <section class="bg-white" >
     <div class="bg-green pt-5 pb-5">
     <div class="container">
@@ -252,11 +259,15 @@
     </div>
     </div>
 </section>
+<!-- End student Image-->
 
+<!-- Start Categories-->
 <section class="bg-white">
     @include('partials.categories')
 </section>
+<!-- End Categories-->
 
+<!-- Start teacher Image-->
 <section class="bg-white">
     <div class="bg-blue-2 pt-5 pb-5">
     <div class="container">
@@ -291,11 +302,15 @@
     </div>
     </div>
 </section>
+<!-- End teacher Image-->
 
+<!-- Start Top teacher-->
 <section class="bg-white">
     @include('partials.teachers')
 </section>
+<!-- End teacher-->
 
+<!-- Start FAQ-->
 <section class="bg-gray-2 faq">
     <div class="container">
         <div class="row justify-content-center">
@@ -337,6 +352,7 @@
         </div>
     </div>
 </section>
+<!-- End FAQ-->
 
 @endsection
 

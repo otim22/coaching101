@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubjectsTable extends Migration
+class CreateItemContentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subjects', function (Blueprint $table) {
+        Schema::create('item_contents', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug');
             $table->string('subtitle')->nullable();
-            $table->text('description');
+            $table->text('description')->nullable();
+            $table->json('objective')->nullable();
             $table->float('price')->nullable();
             $table->boolean('is_approved')->default(false);
+            $table->foreignId('item_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('year_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('term_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
@@ -36,6 +38,6 @@ class CreateSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('item_contents');
     }
 }

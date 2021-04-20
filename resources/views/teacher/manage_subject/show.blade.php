@@ -14,7 +14,7 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Subjects</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $subject->short_title }}</li>
             </ol>
         </nav>
@@ -33,7 +33,7 @@
                                     <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
                                     <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
                                 </svg>
-                                Back To Subjects
+                                Back Home
                             </a>
                         </li>
                         <li class="nav-item">
@@ -42,7 +42,7 @@
                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                 </svg>
-                                Edit Subject Outline
+                                Edit Subject 
                             </a>
                         </li>
                         <li class="nav-item">
@@ -93,7 +93,7 @@
             </div>
             <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
                 <h5 class="bold mb-3">{{ $subject->title }}</h5>
-                <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="rounded-corners w-100" alt="{{ $subject->title }}">
+                <img src="{{ asset($subject->cover_image) }}" class="rounded-corners w-100" alt="{{ $subject->title }}">
 
                 <div class="mt-3 mb-4">
                     <p> {{ $subject->subtitle }} </p>
@@ -135,16 +135,16 @@
 
                     <ul class="mb-4">
                         <h5 class="bold">Your target students</h5>
-                            @forelse($subject->audience['target_student'] as $target_student)
-                                <li class="mb-2">
-                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                                    </svg>
-                                    {{ $target_student }}
-                                </li>
-                            @empty
-                                <p>No target students indicated.</p>
-                            @endforelse
+                        @forelse($subject->audience['target_student'] as $target_student)
+                            <li class="mb-2">
+                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                                </svg>
+                                {{ $target_student }}
+                            </li>
+                        @empty
+                            <p>No target students indicated.</p>
+                        @endforelse
                     </ul>
                 @endif
 
@@ -195,6 +195,5 @@
 @push('scripts')
     <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-
-    <script src="{{ asset('js/subject.js')}}" type="text/javascript"></script>
+    <!-- <script src="{{ asset('js/subject.js')}}" type="text/javascript"></script> -->
 @endpush

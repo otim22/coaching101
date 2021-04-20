@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subject;
+use App\Models\ItemContent;
 use Illuminate\Support\Arr;
 use App\Models\Audience;
 use Illuminate\Http\Request;
@@ -15,12 +15,12 @@ class AudienceController extends Controller
         return view('teacher.manage_subject.audience.index');
     }
 
-    public function create(Subject $subject)
+    public function create(ItemContent $subject)
     {
         return view('teacher.manage_subject.audience.create', compact('subject'));
     }
 
-    public function edit(Subject $subject)
+    public function edit(ItemContent $subject)
     {
         return view('teacher.manage_subject.audience.edit', compact('subject'));
     }
@@ -31,7 +31,7 @@ class AudienceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AudienceRequest $request, Subject $subject)
+    public function store(AudienceRequest $request, ItemContent $subject)
     {
         $student_learn = $request->get('student_learn');
         $class_requirement = $request->get('class_requirement');
@@ -54,18 +54,51 @@ class AudienceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(AudienceRequest $request, Audience $audience, Subject $subject)
+    public function update(AudienceRequest $request, Audience $audience, ItemContent $subject)
     {
         $student_learn = $request->input('student_learn');
         $class_requirement = $request->input('class_requirement');
         $target_student = $request->input('target_student');
 
-        if(array_filter($student_learn)) $audience->student_learn = $student_learn;
-        if(array_filter($class_requirement)) $audience->class_requirement = $class_requirement;
-        if(array_filter($target_student)) $audience->target_student = $target_student;
+        $audience->student_learn =  array_filter($student_learn);
+        $audience->class_requirement = array_filter($class_requirement);
+        $audience->target_student = array_filter($target_student);
 
         $subject->updateAudience($audience);
 
         return redirect()->route('subjects.show', $subject)->with('success', 'Audience updated successfully');
+    }
+
+    public function deleteStudentLearn(ItemContent $subject, $studentLearnId)
+    {
+        $objectives = $subject->audience->student_learn;
+        $updatedObjectives = Arr::except($objectives, $studentLearnId);
+        $audience = new Audience;
+        $audience->student_learn = array_filter($updatedObjectives);
+        $subject->updateAudience($audience);
+
+        return redirect()->route('subjects.show', $subject);
+    }
+
+    public function deleteClassRequirement(ItemContent $subject, $classRequirementId)
+    {
+        $objectives = $subject->audience->class_requirement;
+        $updatedObjectives = Arr::except($objectives, $classRequirementId);
+        $audience = new Audience;
+        $audience->class_requirement = array_filter($updatedObjectives);
+        $subject->updateAudience($audience);
+
+        return redirect()->route('subjects.show', $subject);
+    }
+
+    public function deleteTargetStudent(ItemContent $subject, $targetStudentId)
+    {
+        $objectives = $subject->audience->target_student;
+        $updatedObjectives = Arr::except($objectives, $targetStudentId);
+        $audience = new Audience;
+        $audience->target_student = array_filter($updatedObjectives);
+        $subject->updateAudience($audience);
+
+        return redirect()->route('subjects.show', $subject);
     }
 }

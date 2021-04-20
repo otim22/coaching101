@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Subject;
+use App\Models\ItemContent;
 use App\Facades\Cart as CartFacade;
 
 class AddToCart extends Component
@@ -26,13 +26,16 @@ class AddToCart extends Component
         $this->cartItems = $cartFacade->get()['subjects'];
 
         // Checks for duplication in the cart otherwise add subject to cart
-        foreach ($this->cartItems as $cartItem) {
-            if ($cartItem->id === $subjectId) {
-                return redirect()->back()->with('flash_messaged', 'This subject is already in your cart!');
+        if(! empty($this->cartItems)) {
+            foreach ($this->cartItems as $cartItem) {
+                if ($cartItem->id === $subjectId) {
+                    return redirect()->back()->with('flash_messaged', 'This subject is already in your cart!');
+                }
             }
         }
 
-        $cartFacade->add(Subject::where('id', $subjectId)->first());
+        // dd(ItemContent::where('id', $subjectId)->first());
+        $cartFacade->add(ItemContent::where('id', $subjectId)->firstOrFail());
 
         $this->emit('itemAdded');
         $this->emit('cartSumUpdate');

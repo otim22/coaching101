@@ -18,7 +18,7 @@
             <div class="tab-pane fade show active mt-4" id="videos" role="tabpanel" aria-labelledby="videos-tab">
                 <div class="row">
                     @forelse($subjects as $subject)
-                        @foreach(\App\Models\Subject::where('id', $subject->subscriptionable_id)->get() as $item)
+                        @foreach(\App\Models\ItemContent::where('id', $subject->subscriptionable_id)->get() as $item)
                             <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
                                 <a href="{{ route('subjects.index', $item->slug) }}" style="text-decoration: none">
                                     <div class="card mb-4">
@@ -69,17 +69,17 @@
                     @forelse($wishlistItems as $wishlistItem)
                         <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
                             <div class="card">
-                                <a href="{{ route('subjects.index', $wishlistItem->subject->slug) }}" style="text-decoration: none">
-                                    <img src="{{ $wishlistItem->subject->image_thumb}}" alt="{{ $wishlistItem->subject->very_short_title }}" width="100%" height="130">
+                                <a href="{{ route('subjects.index', $wishlistItem->itemContent->slug) }}" style="text-decoration: none">
+                                    <img src="{{ $wishlistItem->itemContent->image_thumb}}" alt="{{ $wishlistItem->itemContent->very_short_title }}" width="100%" height="130">
                                     <div class="card-body">
-                                        <span class="bold">{{ $wishlistItem->subject->very_short_title }}</span><br />
-                                        <span class="author-font">{{$wishlistItem->subject->creator->name }}</span>
-                                        @if($wishlistItem->subject->averageRating)
+                                        <span class="bold">{{ $wishlistItem->itemContent->very_short_title }}</span><br />
+                                        <span class="author-font">{{$wishlistItem->itemContent->creator->name }}</span>
+                                        @if($wishlistItem->itemContent->averageRating)
                                             <div class="star-display">
-                                                @for($i = $wishlistItem->subject->averageRating; $i >= 1; $i--)
+                                                @for($i = $wishlistItem->itemContent->averageRating; $i >= 1; $i--)
                                                     <label for="rate-{{$i}}" class="fa fa-star"></label>
                                                 @endfor
-                                                <span class="author-font">({{ $wishlistItem->subject->subscriptionCount }}) students</span>
+                                                <span class="author-font">({{ $wishlistItem->itemContent->subscriptionCount }}) students</span>
                                             </div>
                                         @else
                                             <div class="rating">
@@ -88,19 +88,19 @@
                                                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                                                     </svg>
                                                 @endfor
-                                                <span class="author-font ml-2">({{ $wishlistItem->subject->subscriptionCount }}) students</span><br />
+                                                <span class="author-font ml-2">({{ $wishlistItem->itemContent->subscriptionCount }}) students</span><br />
                                             </div>
                                         @endif
 
-                                        @if($wishlistItem->subject->price)
-                                            <span class="bold">UGX {{  $wishlistItem->subject->formatPrice }}/-</span>
+                                        @if($wishlistItem->itemContent->price)
+                                            <span class="bold">UGX {{  $wishlistItem->itemContent->formatPrice }}/-</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
                                     </a>
                                     <div class="mt-2 d-flex justify-content-between">
-                                        <livewire:add-to-cart :subject="$wishlistItem->subject" :key="$wishlistItem->subject->id" />
-                                        <livewire:add-to-wish-list :subject="$wishlistItem->subject" :key="$wishlistItem->subject->id" />
+                                        <livewire:add-to-cart :subject="$wishlistItem->itemContent" />
+                                        <livewire:add-to-wish-list :subject="$wishlistItem->itemContent" />
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
             <div class="tab-pane fade mt-4" id="books" role="tabpanel" aria-labelledby="books-tab">
                 <div class="row">
                     @forelse($books as $book)
-                        @foreach(\App\Models\Book::where('id', $book->subscriptionable_id)->get() as $item)
+                        @foreach(\App\Models\ItemContent::where('id', $book->subscriptionable_id)->get() as $item)
                             <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
                                 <a href="{{ route('student.books.show', $item->slug) }}" style="text-decoration: none">
                                     <div class="card mb-4">
@@ -153,7 +153,7 @@
             <div class="tab-pane fade mt-4" id="notes" role="tabpanel" aria-labelledby="notes-tab">
                 <div class="row">
                     @forelse($notes as $note)
-                        @foreach(\App\Models\Note::where('id', $note->subscriptionable_id)->get() as $item)
+                        @foreach(\App\Models\ItemContent::where('id', $note->subscriptionable_id)->get() as $item)
                             <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
                                 <a href="{{ route('student.notes.show', $item->slug) }}" style="text-decoration: none">
                                     <div class="card mb-4">

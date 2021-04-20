@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subject;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use App\Http\Requests\MessageRequest;
 
 class MessageController extends Controller
@@ -14,12 +14,12 @@ class MessageController extends Controller
         return view('teacher.manage_subject.messages.index');
     }
 
-    public function create(Subject $subject)
+    public function create(ItemContent $subject)
     {
         return view('teacher.manage_subject.messages.index', compact('subject'));
     }
 
-    public function edit(Subject $subject)
+    public function edit(ItemContent $subject)
     {
         return view('teacher.manage_subject.messages.edit', compact('subject'));
     }
@@ -30,7 +30,7 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MessageRequest $request, Subject $subject)
+    public function store(MessageRequest $request, ItemContent $subject)
     {
         $message =  new Message;
 
@@ -48,7 +48,7 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(MessageRequest $request, Subject $subject, Message $message)
+    public function update(MessageRequest $request, ItemContent $subject, Message $message)
     {
         $message->welcome_message = $request->welcome_message;
         $message->congragulation_message = $request->congragulation_message;

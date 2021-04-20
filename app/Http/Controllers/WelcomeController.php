@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Faq;
 use App\Models\Slider;
-use App\Models\Subject;
+use App\Models\ItemContent;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\StudentImage;
@@ -14,34 +14,14 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $subjects =  Subject::where('is_approved', 1)->get();
+        $faqs = Faq::get();
         $sliders = Slider::latest()->first();
+        $filterCategories = Category::get();
         $studentImage = StudentImage::latest()->first();
         $teacherImage = TeacherImage::latest()->first();
-        $faqs = Faq::get();
-        $filterCategories = Category::get();
 
         return view('welcome',
-            compact(['subjects', 'sliders', 'studentImage', 'teacherImage', 'faqs', 'filterCategories'])
+            compact(['sliders', 'studentImage', 'teacherImage', 'faqs', 'filterCategories'])
         );
-    }
-
-    public function getMoreSubjects(request $request)
-    {
-        $sliders = Slider::latest()->first();
-        $studentImage = StudentImage::latest()->first();
-        $teacherImage = TeacherImage::latest()->first();
-        $faqs = Faq::get();
-        $filterCategories = Category::get();
-
-        if ($request->ajax()) {
-            $category= $request->category_id;
-            $year= $request->year_id;
-            $term= $request->term_id;
-
-            $subjects = Subject::getSubjects($category);
-
-            return view('home', compact(['subjects', 'sliders', 'studentImage', 'teacherImage', 'faqs', 'filterCategories']));
-        }
     }
 }

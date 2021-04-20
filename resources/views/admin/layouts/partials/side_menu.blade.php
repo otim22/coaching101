@@ -86,6 +86,11 @@
                                     <span class="drawer-menu-text"> Past papers</span>
                                 </a>
                             </li>
+                            <li class="drawer-menu-item  ">
+                                <a href="{{ url('/admin/items') }}">
+                                    <span class="drawer-menu-text"> Items</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

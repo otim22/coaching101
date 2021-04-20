@@ -2,7 +2,7 @@
 
 namespace App\Facades;
 
-use App\Models\Subject;
+use App\Models\ItemContent;
 
 class Cart
 {
@@ -12,7 +12,7 @@ class Cart
             $this->set($this->empty());
     }
 
-    public function add(Subject $subject): void
+    public function add(ItemContent $subject): void
     {
         $cart = $this->get();
 

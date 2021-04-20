@@ -20,16 +20,14 @@ class DatabaseSeeder extends Seeder
             CategoryTableSeeder::class,
             YearTableSeeder::class,
             TermTableSeeder::class,
-            SubjectTableSeeder::class,
+            ItemTableSeeder::class,
+            ItemContentTableSeeder::class,
             MessageTableSeeder::class,
             AudienceTableSeeder::class,
             ProfileTableSeeder::class,
             StudentImageTableSeeder::class,
             TeacherImageTableSeeder::class,
             FaqTableSeeder::class,
-            BookTableSeeder::class,
-            NoteTableSeeder::class,
-            PastpaperTableSeeder::class,
             QuestionTableSeeder::class,
         ]);
     }

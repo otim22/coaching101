@@ -15,7 +15,7 @@ class CreateAudiencesTable extends Migration
     {
         Schema::create('audiences', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('subject_id')->constrained()->onDelete('cascade');
+            $table->foreignId('item_content_id')->constrained()->onDelete('cascade');
             $table->json('student_learn');
             $table->json('class_requirement');
             $table->json('target_student');

@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use App\Traits\PresentsText;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
-use App\Traits\PresentsSubject;
+use App\Traits\PresentsItem;
 use Spatie\Image\Manipulations;
 use willvincent\Rateable\Rateable;
 use Spatie\Sluggable\SlugOptions;
@@ -21,15 +22,15 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Subject extends Model implements HasMedia, Searchable
+class ItemContent extends Model implements HasMedia, Searchable
 {
-    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable, PresentsSubject;
+    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable, PresentsItem;
 
-    protected $fillable = ['title', 'subtitle', 'description', 'price', 'category_id', 'is_approved'];
+    protected $fillable = ['title', 'subtitle', 'description', 'objective', 'price', 'item_id', 'category_id', 'year_id', 'term_id', 'user_id', 'is_approved'];
     protected $with = ['media'];
     protected $appends = ['isSubscribedTo'];
     protected $dates = ['created_at', 'updated_at'];
-
+    protected $casts = ['objective' => 'array' ];
     /**
      * Get the options for generating the slug.
      */
@@ -101,13 +102,29 @@ class Subject extends Model implements HasMedia, Searchable
         return $this->hasMany('App\Models\Topic');
     }
 
-    /**  Get the category that owns the subject. */
+    /**  Get the category that owns the ItemContent. */
     public function category()
     {
         return $this->belongsTo('App\Models\Category', 'category_id');
     }
 
-    /** Return the subject's creator */
+    /**
+     * Get the year that owns the book.
+     */
+    public function year()
+    {
+        return $this->belongsTo('App\Models\Year', 'year_id');
+    }
+
+    /**
+     * Get the term that owns the book.
+     */
+    public function term()
+    {
+        return $this->belongsTo('App\Models\Term', 'term_id');
+    }
+
+    /** Return the ItemContent's creator */
     public function creator()
     {
         return $this->belongsTo('App\Models\User', 'user_id');
@@ -115,7 +132,7 @@ class Subject extends Model implements HasMedia, Searchable
 
     public function wishlists()
     {
-        return $this->hasMany('App\Models\Subject');
+        return $this->hasMany('App\Models\ItemContent');
     }
 
     public function questions()
@@ -137,7 +154,7 @@ class Subject extends Model implements HasMedia, Searchable
         $this->subscription()->where('user_id', $userId ?: Auth::id())->delete();
     }
 
-    /** Get the subject's subscription. */
+    /** Get the ItemContent's subscription. */
     public function subscription()
     {
         return $this->morphOne(Subscription::class, 'subscriptionable');
@@ -145,10 +162,10 @@ class Subject extends Model implements HasMedia, Searchable
 
     public function rating()
     {
-        return $this->belongsTo(Subject::class);
+        return $this->belongsTo(ItemContent::class);
     }
 
-    public static function getSubjectsForTeacherPerforamce($days, int $limit = 10)
+    public static function getItemContentsForTeacherPerforamce($days, int $limit = 10)
     {
         return static::whereBetween('created_at', [Carbon::now()->subDays($days)->format('Y-m-d H:i:s'), Carbon::now()->format('Y-m-d H:i:s')])
                                 ->latest()
@@ -171,20 +188,27 @@ class Subject extends Model implements HasMedia, Searchable
         );
     }
 
-    public static function getSubjects($category, $year, $term)
+    public static function getItemContents($category, $year, $term, $item = null)
     {
         $items = ['is_approved' => 1];
 
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
             $items['category_id'] = $category;
         }
-
         if ($year && $year !== GlobalConstants::ALL_YEARS) {
             $items['year_id'] = $year;
         }
-
         if ($term && $term !== GlobalConstants::ALL_TERMS) {
             $items['term_id'] = $term;
+        }
+        if ($item && $item !== GlobalConstants::SUBJECT) {
+            $items['item_id'] = $item;
+        } else if($item && $item !== GlobalConstants::BOOK) {
+            $items['item_id'] = $item;
+        } else if($item && $item !== GlobalConstants::NOTE) {
+            $items['item_id'] = $item;
+        } else if($item && $item !== GlobalConstants::PASTPAPER) {
+            $items['item_id'] = $item;
         }
 
         return static::where($items)->paginate(12);

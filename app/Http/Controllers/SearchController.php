@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subject;
 use App\Models\Question;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use Spatie\Searchable\Search;
 use Spatie\Searchable\ModelSearchAspect;
 
@@ -20,7 +20,7 @@ class SearchController extends Controller
         $approved = 1;
 
         $searchResults = (new Search())
-                                ->registerModel(Subject::class, function(ModelSearchAspect $modelSearchAspect) use ($approved) {
+                                ->registerModel(ItemContent::class, function(ModelSearchAspect $modelSearchAspect) use ($approved) {
                                             $modelSearchAspect->addSearchableAttribute('title')
                                                             ->addSearchableAttribute('subtitle')
                                                             ->where('is_approved', $approved);
@@ -28,7 +28,7 @@ class SearchController extends Controller
 
         return view('student.subject_display.search_results', compact('searchResults'));
     }
-    
+
     // public function subjectQuestions(Request $request)
     // {
     //     if (! $request->filled('query')) {

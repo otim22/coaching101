@@ -15,9 +15,9 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Subjects</a>
+                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Books</li>
+                <li class="breadcrumb-item active" aria-current="page">Note</li>
             </ol>
         </nav>
     </div>
@@ -29,9 +29,12 @@
             <div class="col-lg-8 col-md-12 col-sm-12 off-set-2">
                 <div class="card p-4">
                     <div class="d-flex justify-content-between mb-2">
+                        <div class="bold">
+                            <h5 class="bold">Note</h5>
+                        </div>
                         <div>
                             <a id="round-button-2" href="{{ route('teacher.notes') }}" class="btn btn-secondary btn-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-3" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                                 </svg>
                                 Back
@@ -44,6 +47,7 @@
                     <form action="{{ route('notes.update', $note) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('patch')
+
                         <div class="form-group mb-4">
                             <label for="year_id">Subject</label>
                             <div class="input-group mb-3">
@@ -100,33 +104,42 @@
                         <div class="mb-4">
                             <div class="form-group dynamic_note_objective">
                                 <label for="notes_objective">What will students learn in the note?</label>
-                                <p class="mt-2">Current note objectives</p>
-                                @foreach($note->notes_objective as $note_objective)
-                                <p>
-                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                                    </svg>
-                                    {{ $note_objective }}
-                                </p>
+                                @if($note->objective)
+                                    <p class="mt-2">Current note objectives</p>
+                                @endif
+                                @foreach($note->objective as $key => $note_objective)
+                                <div class="d-flex justify-content-between">
+                                    <div style="flex-grow:1">
+                                        <input type="text"
+                                                    value="{{ $note_objective }}"
+                                                    class="form-control form-control mb-2 @error('objective.*') is-invalid @enderror"
+                                                    placeholder="Example: Origin of languages"
+                                                    name="objective[]">
+                                    </div>
+                                    <div>
+                                        <p class="delete_note_objective to-delete" data-objective-id="{{ $key }}" data-delete-url="{{ route('teacher.notes.objective.destroy', ['note' => $note, 'objective' => $key]) }}">x</p>
+                                    </div>
+                                </div>
+                                @error('objective.*')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @enderror
                                 @endforeach
-                                <small class="form-text text-muted">
-                                    <p class="red_color"><strong>*</strong> Adding new information will override all current note objectives. Be sure you include current ones you don't want to loose.</p>
-                                </small>
+
                                 <div class="input-group note_objective_section">
                                     <div class="notes_objective_input">
                                         <input type="text"
                                             id="notes_objective"
-                                            value="{{old('notes_objective.0')}}"
-                                            class="form-control form-control mb-2 @error('notes_objective.0') is-invalid @enderror"
+                                            value="{{ old('objective.*') }}"
+                                            class="form-control form-control mb-2 @error('objective.0') is-invalid @enderror"
                                             placeholder="Example: Origin of languages"
-                                            name="notes_objective[]" required>
+                                            name="objective[]">
                                     </div>
                                     <div class="hidden" id="hidden_note_objective">
                                         <p class="delete_note_objective">x</p>
                                     </div>
                                 </div>
-                                @error('notes_objective.0')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @error('objective.*')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -173,7 +186,7 @@
                             @enderror
                         </div>
 
-                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm mt-3">Update</button>
+                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm pl-5 pr-5 mt-3">Update</button>
                     </form>
                 </div>
             </div>
@@ -181,13 +194,8 @@
     </div>
 </section>
 
-@endsection
-
-@push('scripts')
-    <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
-@endpush
-
 @prepend('scripts')
     <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-@endprepend
+    <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
+@endpush
