@@ -75,42 +75,61 @@
     </div>
 
     <!-- Modal -->
-    <div wire:ignore class="modal fade" id="myModal" data-backdrop="static" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
+  <div wire:ignore class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Process Payment</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Process Payment</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-link active" id="nav-card-tab" data-toggle="tab" href="#nav-card" role="tab" aria-controls="nav-card" aria-selected="true">Card</a>
+            <a class="nav-link" id="nav-mobilemoney-tab" data-toggle="tab" href="#nav-mobilemoney" role="tab" aria-controls="nav-mobilemoney" aria-selected="false">Mobile Money</a>
+        </div>
+        </br>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-card" role="tabpanel" aria-labelledby="nav-card-tab">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
+                    <strong>Error!</strong>&nbsp;<span id="error-message"></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="modal-body">
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
-                        <strong>Error!</strong>&nbsp;<span id="error-message"></span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="alert alert-success" role="alert" id="alert-success">
-                        <span id="success-body"></span>
-                    </div>
-                    <div class="card-js" id="my-card"></div>
-                    <div id="spinner">
-                        <div class="d-flex justify-content-center">
-                            <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
-                                <span class="sr-only">Processing...</span>
+                <div class="alert alert-success" role="alert" id="alert-success">
+                    <span id="success-body"></span>
+                </div>
+                <div class="card-js" id="my-card"></div>
+                @include('partials.spinner')
+            </div>
+            <div class="tab-pane fade" id="nav-mobilemoney" role="tabpanel" aria-labelledby="nav-mobilemoney-tab">
+                <div class="mobilemoney-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Telephone Number</label>
+                            <input type="number" class="form-control phone " id="phoneNumber" placeholder="256123456789">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Select Network</label>
+                            <select class="form-control network-select" id="network">
+                                <option value="airtel">Airtel</option>
+                                <option value="mtn">MTN</option>
+                            </select>
+                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                Please select valid network.
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center">
-                            <span>Processing...</span>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="process">Process</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+                @include('partials.spinner')
             </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="process">Process</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>
 </div>
@@ -118,8 +137,43 @@
 @push('scripts')
     <script src="{{ asset('js/card-js.js') }}"></script>
     <script>
+        function validateNetwork(network, number) {
+            const networks = {
+                airtel: ["70", "75"],
+                mtn: ["77", "78"]
+            }
+            let startIndex = null
+            let endIndex = null
+            if (number.length === 10) {
+                startIndex = 1
+                endIndex = 3
+            }
+            if (number.length === 12) {
+                startIndex = 3
+                endIndex = 5
+            }
+
+            if (number.length === 13) {
+                startIndex = 4
+                endIndex = 6
+            }
+            if (startIndex !== null && endIndex !== null) {
+                if (networks.hasOwnProperty(network)) {
+                    const prefix = number.substring(startIndex, endIndex)
+                    return networks[network].includes(prefix)
+                }
+                return false
+            }
+            return false
+        }
+        function validateMobile(mobilenumber) {
+            var regxNotWithPrefix = '^[0-9]{10}$'
+            var regxWithPrefix='^(/+[0-9]{1,3})?([0-9]{10})$'
+            var regex = mobilenumber.startsWith('0') ? regxNotWithPrefix : regxWithPrefix
+            return new RegExp(regex).test(mobilenumber)
+        }
         document.addEventListener('livewire:load', function (event) {
-            var spinner = $('#spinner')
+            var spinner = $('.tab-pane').find('#spinner')
             var alert = $('#alert')
             var myCard = $('#my-card');
             var proccessBtn = $('#process')
@@ -129,7 +183,7 @@
             alert.attr("style","display:none !important");
             alertSuccess.attr("style","display:none !important");
 
-            $("#process").click(function() {
+            function processCardPayment () {
                 var cardNumber = myCard.CardJs('cardNumber');
                 var expiryMonth = myCard.CardJs('expiryMonth');
                 var expiryYear = myCard.CardJs('expiryYear');
@@ -170,7 +224,62 @@
 
                 @this.cardDetails = cardDetails
                 @this.checkout()
+            }
+
+            $("#process").click(function() {
+                if ($('.nav-link').hasClass('active')) {
+                    var tab = $('.nav-link.active').attr('id')
+                    if (tab === 'nav-card-tab') {
+                        processCardPayment()
+                        return
+                    }
+                    if (tab === 'nav-mobilemoney-tab') {
+                        var phoneNumber = $('#phoneNumber').val()
+                        var network = $('#network').val()
+                        var isPhoneNumberValid = validateMobile(phoneNumber)
+                        if (!isPhoneNumberValid) {
+                            $('.phone').addClass('is-invalid')
+                            return
+                        }
+                        var isValidNetwork = validateNetwork(network, phoneNumber)
+                        if (!isValidNetwork) {
+                            $('.network-select').addClass('is-invalid')
+                            return
+                        }
+                        var data = { 'network': network, 'phoneNumber': phoneNumber }
+                        proccessBtn.attr('disabled', 'disabled')
+                        $('.mobilemoney-form').attr("style","display:none !important");
+                        $('.nav-link:first-child').addClass('disabled')
+                        spinner.removeAttr('style');
+                        @this.proccessMobileMoney(data)
+                        return
+                    }
+                }
             });
+
+            $('#myModal').on('hidden.bs.modal', function (event) {
+                if ($('.nav-link').hasClass('active')) {
+                    var tab = $('.nav-link.active').attr('id')
+                    if (tab === 'nav-mobilemoney-tab') {
+                        $('.mobilemoney-form').removeAttr("style");
+                        $('.nav-link:first-child').removeClass('disabled')
+                        spinner.attr("style","display:none !important")
+                        proccessBtn.removeAttr('disabled')
+                    }
+                }
+            })
+
+            $('.phone').keyup(function() {
+                if($(this).hasClass('is-invalid')) {
+                    $(this).removeClass('is-invalid')
+                }
+            })
+
+            $('.network-select').change(function() {
+                if($(this).hasClass('is-invalid')) {
+                    $(this).removeClass('is-invalid')
+                }
+            })
 
             var showSuccess = function() {
                 spinner.attr("style","display:none !important");
@@ -180,7 +289,6 @@
             }
 
             @this.on('onSuccess', function (res) {
-                console.log(res)
                 if (res.hasOwnProperty('meta')) {
                     window.open(res.meta.authorization.redirect)
                 }
@@ -202,6 +310,7 @@
             if (response !== null && Object.keys(response).length) {
                 @this.clearCart()
             }
+            $()
         })
     </script>
 @endpush

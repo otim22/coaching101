@@ -18,8 +18,16 @@ class ProcessPayment
 
     public function cardPayment() {
         $postData = $this->encrypt3Des(json_encode($this->data), $this->key);
+       return $this->postPayment('card', ['client' => $postData]);
+    }
+
+    public function mobileMoney() {
+        return $this->postPayment('mobile_money_uganda', $this->data);
+    }
+
+    protected function postPayment($type, $data) {
         return Http::withToken(config('app.rave_key'))->post(
-            $this->url . '?type=card', [ 'client' => $postData ] );
+            $this->url . '?type='. $type, $data);
     }
 
     protected function encrypt3Des($data, $key) {
