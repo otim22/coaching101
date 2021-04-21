@@ -118,7 +118,7 @@
                 <aside>
                     <div class="accordion make-me-sticky mr-4 mb-5" id="accordionExample">
                         <div class="mb-3">
-                            <h5 class="bold">Subject content</h5>
+                            <h5 class="bold">Subject contents</h5>
                         </div>
                         <div class="card">
                             @foreach($subject->topics as $key => $topic)

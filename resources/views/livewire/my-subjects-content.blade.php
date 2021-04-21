@@ -8,21 +8,21 @@
     <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-link active" id="videos-tab" data-toggle="tab" href="#videos" role="tab" aria-controls="videos" aria-selected="true">Videos</a>
+                @foreach($items as $key => $item)
+                    <a class="nav-link {{ $key === $items->keys()->first() ? 'active' : '' }}" id="{{ $item->slug }}-tab" data-toggle="tab" href="#{{ $item->slug }}" role="tab" aria-controls="{{ $item->slug }}" aria-selected="true">{{ $item->name }}</a>
+                @endforeach
                 <a class="nav-link" id="wishlist-tab" data-toggle="tab" href="#wishlist" role="tab" aria-controls="wishlist" aria-selected="false">Wishlist</a>
-                <a class="nav-link" id="books-tab" data-toggle="tab" href="#books" role="tab" aria-controls="books" aria-selected="false">Books</a>
-                <a class="nav-link" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="notes" aria-selected="false">Notes</a>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active mt-4" id="videos" role="tabpanel" aria-labelledby="videos-tab">
+            <div class="tab-pane fade show active mt-4" id="subject" role="tabpanel" aria-labelledby="subject-tab">
                 <div class="row">
                     @forelse($subjects as $subject)
-                        @foreach(\App\Models\ItemContent::where('id', $subject->subscriptionable_id)->get() as $item)
+                        @foreach($subject->filterItemContent($subject) as $item)
                             <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
                                 <a href="{{ route('subjects.index', $item->slug) }}" style="text-decoration: none">
                                     <div class="card mb-4">
-                                        <img src="{{ $item->image_thumb}}" alt="{{ $item->very_short_title }}" width="100%" height="150">
+                                        <img src="{{ $item->image_thumb }}" alt="{{ $item->very_short_title }}" width="100%" height="150">
                                         <div class="card-body">
                                             <span class="bold">{{ $item->very_short_title }}</span><br />
                                             <span class="author-font">{{$item->creator->name }}</span>
@@ -61,6 +61,100 @@
                     @endforelse
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-center">
                         {{ $subjects->links() }}
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade mt-4" id="book" role="tabpanel" aria-labelledby="book-tab">
+                <div class="row">
+                    @forelse($books as $book)
+                        @foreach($book->filterItemContent($book) as $item)
+                            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                                <a href="{{ route('student.books.show', $item->slug) }}" style="text-decoration: none">
+                                    <div class="card mb-4">
+                                        <img src="{{ $item->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $item->very_short_title }}" width="100%" height="150">
+                                        <div class="card-body">
+                                            <span class="bold">{{ $item->very_short_title }}</span><br />
+                                            <span class="author-font">{{$item->creator->name }}</span>
+                                            <div class="mt-2 d-flex justify-content-between">
+                                                <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    @empty
+                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
+                        <p>You currently don't have books</p>
+                        <a type="button" href="{{ route('student.books.index') }}" class="btn btn-danger mb-4" id="round-button-2">
+                            Go shopping
+                        </a>
+                    </div>
+                    @endforelse
+                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-center">
+                        {{ $books->links() }}
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade mt-4" id="note" role="tabpanel" aria-labelledby="note-tab">
+                <div class="row">
+                    @forelse($notes as $note)
+                        @foreach($note->filterItemContent($note) as $item)
+                            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                                <a href="{{ route('student.notes.show', $item->slug) }}" style="text-decoration: none">
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <span class="bold">{{ $item->very_short_title }}</span><br />
+                                            <span class="author-font">{{$item->creator->name }}</span>
+                                            <div class="mt-2 d-flex justify-content-between">
+                                                <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    @empty
+                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
+                        <p>You currently don't have notes</p>
+                        <a type="button" href="{{ route('student.notes.index') }}" class="btn btn-danger mb-4" id="round-button-2">
+                            Go shopping
+                        </a>
+                    </div>
+                    @endforelse
+                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-center">
+                        {{ $notes->links() }}
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade mt-4" id="pastpaper" role="tabpanel" aria-labelledby="pastpaper-tab">
+                <div class="row">
+                    @forelse($pastpapers as $pastpaper)
+                        @foreach($pastpaper->filterItemContent($pastpaper) as $item)
+                            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                                <a href="{{ route('student.pastpapers.show', $item->slug) }}" style="text-decoration: none">
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <span class="bold">{{ $item->very_short_title }}</span><br />
+                                            <span class="author-font">{{$item->creator->name }}</span>
+                                            <div class="mt-2 d-flex justify-content-between">
+                                                <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    @empty
+                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
+                        <p>You currently don't have pastpapers</p>
+                        <a type="button" href="{{ route('student.pastpapers.index') }}" class="btn btn-danger mb-4" id="round-button-2">
+                            Go shopping
+                        </a>
+                    </div>
+                    @endforelse
+                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-center">
+                        {{ $pastpapers->links() }}
                     </div>
                 </div>
             </div>
@@ -115,69 +209,6 @@
                     @endforelse
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-center">
                         {{ $wishlistItems->links() }}
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade mt-4" id="books" role="tabpanel" aria-labelledby="books-tab">
-                <div class="row">
-                    @forelse($books as $book)
-                        @foreach(\App\Models\ItemContent::where('id', $book->subscriptionable_id)->get() as $item)
-                            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
-                                <a href="{{ route('student.books.show', $item->slug) }}" style="text-decoration: none">
-                                    <div class="card mb-4">
-                                        <img src="{{ $item->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $item->very_short_title }}" width="100%" height="150">
-                                        <div class="card-body">
-                                            <span class="bold">{{ $item->very_short_title }}</span><br />
-                                            <span class="author-font">{{$item->creator->name }}</span>
-                                            <div class="mt-2 d-flex justify-content-between">
-                                                <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        @endforeach
-                    @empty
-                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
-                        <p>You currently don't have books</p>
-                        <a type="button" href="{{ route('student.books.index') }}" class="btn btn-danger mb-4" id="round-button-2">
-                            Go shopping
-                        </a>
-                    </div>
-                    @endforelse
-                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-center">
-                        {{ $books->links() }}
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade mt-4" id="notes" role="tabpanel" aria-labelledby="notes-tab">
-                <div class="row">
-                    @forelse($notes as $note)
-                        @foreach(\App\Models\ItemContent::where('id', $note->subscriptionable_id)->get() as $item)
-                            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
-                                <a href="{{ route('student.notes.show', $item->slug) }}" style="text-decoration: none">
-                                    <div class="card mb-4">
-                                        <div class="card-body">
-                                            <span class="bold">{{ $item->very_short_title }}</span><br />
-                                            <span class="author-font">{{$item->creator->name }}</span>
-                                            <div class="mt-2 d-flex justify-content-between">
-                                                <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        @endforeach
-                    @empty
-                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
-                        <p>You currently don't have notes</p>
-                        <a type="button" href="{{ route('student.notes.index') }}" class="btn btn-danger mb-4" id="round-button-2">
-                            Go shopping
-                        </a>
-                    </div>
-                    @endforelse
-                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-center">
-                        {{ $notes->links() }}
                     </div>
                 </div>
             </div>
