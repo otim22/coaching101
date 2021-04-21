@@ -17,40 +17,38 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active mt-4" id="subject" role="tabpanel" aria-labelledby="subject-tab">
                 <div class="row">
-                    @forelse($subjects as $subject)
-                        @foreach($subject->filterItemContent($subject) as $item)
-                            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
-                                <a href="{{ route('subjects.index', $item->slug) }}" style="text-decoration: none">
-                                    <div class="card mb-4">
-                                        <img src="{{ $item->image_thumb }}" alt="{{ $item->very_short_title }}" width="100%" height="150">
-                                        <div class="card-body">
-                                            <span class="bold">{{ $item->very_short_title }}</span><br />
-                                            <span class="author-font">{{$item->creator->name }}</span>
-                                            @if($item->averageRating)
-                                                <div class="star-display">
-                                                    @for($i = $item->averageRating; $i >= 1; $i--)
-                                                        <label for="rate-{{$i}}" class="fa fa-star"></label>
-                                                    @endfor
-                                                    <span class="author-font ml-2">({{ $item->subscriptionCount }}) students</span><br />
-                                                </div>
-                                            @else
-                                                <div class="rating">
-                                                    @for($i = 0; $i < 5; $i++)
-                                                        <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                        </svg>
-                                                    @endfor
-                                                    <span class="author-font ml-2">({{ $item->subscriptionCount }}) students</span><br />
-                                                </div>
-                                            @endif
-                                            <div class="mt-2 d-flex justify-content-between">
-                                                <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
+                    @forelse($subjects as $item)
+                        <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                            <a href="{{ route('subjects.index', $item->slug) }}" style="text-decoration: none">
+                                <div class="card mb-4">
+                                    <img src="{{ $item->image_thumb }}" alt="{{ $item->very_short_title }}" width="100%" height="150">
+                                    <div class="card-body">
+                                        <span class="bold">{{ $item->very_short_title }}</span><br />
+                                        <span class="author-font">{{$item->creator->name }}</span>
+                                        @if($item->averageRating)
+                                            <div class="star-display">
+                                                @for($i = $item->averageRating; $i >= 1; $i--)
+                                                    <label for="rate-{{$i}}" class="fa fa-star"></label>
+                                                @endfor
+                                                <span class="author-font ml-2">({{ $item->subscriptionCount }}) students</span><br />
                                             </div>
+                                        @else
+                                            <div class="rating">
+                                                @for($i = 0; $i < 5; $i++)
+                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                                    </svg>
+                                                @endfor
+                                                <span class="author-font ml-2">({{ $item->subscriptionCount }}) students</span><br />
+                                            </div>
+                                        @endif
+                                        <div class="mt-2 d-flex justify-content-between">
+                                            <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
                                         </div>
                                     </div>
-                                </a>
-                            </div>
-                        @endforeach
+                                </div>
+                            </a>
+                        </div>
                     @empty
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
                         <p>You currently don't have subjects to learn.</p>
@@ -66,23 +64,21 @@
             </div>
             <div class="tab-pane fade mt-4" id="book" role="tabpanel" aria-labelledby="book-tab">
                 <div class="row">
-                    @forelse($books as $book)
-                        @foreach($book->filterItemContent($book) as $item)
-                            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
-                                <a href="{{ route('student.books.show', $item->slug) }}" style="text-decoration: none">
-                                    <div class="card mb-4">
-                                        <img src="{{ $item->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $item->very_short_title }}" width="100%" height="150">
-                                        <div class="card-body">
-                                            <span class="bold">{{ $item->very_short_title }}</span><br />
-                                            <span class="author-font">{{$item->creator->name }}</span>
-                                            <div class="mt-2 d-flex justify-content-between">
-                                                <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
-                                            </div>
+                    @forelse($books as $item)
+                        <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                            <a href="{{ route('student.books.show', $item->slug) }}" style="text-decoration: none">
+                                <div class="card mb-4">
+                                    <img src="{{ $item->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $item->very_short_title }}" width="100%" height="150">
+                                    <div class="card-body">
+                                        <span class="bold">{{ $item->very_short_title }}</span><br />
+                                        <span class="author-font">{{$item->creator->name }}</span>
+                                        <div class="mt-2 d-flex justify-content-between">
+                                            <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
                                         </div>
                                     </div>
-                                </a>
-                            </div>
-                        @endforeach
+                                </div>
+                            </a>
+                        </div>
                     @empty
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
                         <p>You currently don't have books</p>
@@ -98,22 +94,20 @@
             </div>
             <div class="tab-pane fade mt-4" id="note" role="tabpanel" aria-labelledby="note-tab">
                 <div class="row">
-                    @forelse($notes as $note)
-                        @foreach($note->filterItemContent($note) as $item)
-                            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
-                                <a href="{{ route('student.notes.show', $item->slug) }}" style="text-decoration: none">
-                                    <div class="card mb-4">
-                                        <div class="card-body">
-                                            <span class="bold">{{ $item->very_short_title }}</span><br />
-                                            <span class="author-font">{{$item->creator->name }}</span>
-                                            <div class="mt-2 d-flex justify-content-between">
-                                                <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
-                                            </div>
+                    @forelse($notes as $item)
+                        <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                            <a href="{{ route('student.notes.show', $item->slug) }}" style="text-decoration: none">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <span class="bold">{{ $item->very_short_title }}</span><br />
+                                        <span class="author-font">{{$item->creator->name }}</span>
+                                        <div class="mt-2 d-flex justify-content-between">
+                                            <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
                                         </div>
                                     </div>
-                                </a>
-                            </div>
-                        @endforeach
+                                </div>
+                            </a>
+                        </div>
                     @empty
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
                         <p>You currently don't have notes</p>
@@ -129,22 +123,20 @@
             </div>
             <div class="tab-pane fade mt-4" id="pastpaper" role="tabpanel" aria-labelledby="pastpaper-tab">
                 <div class="row">
-                    @forelse($pastpapers as $pastpaper)
-                        @foreach($pastpaper->filterItemContent($pastpaper) as $item)
-                            <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
-                                <a href="{{ route('student.pastpapers.show', $item->slug) }}" style="text-decoration: none">
-                                    <div class="card mb-4">
-                                        <div class="card-body">
-                                            <span class="bold">{{ $item->very_short_title }}</span><br />
-                                            <span class="author-font">{{$item->creator->name }}</span>
-                                            <div class="mt-2 d-flex justify-content-between">
-                                                <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
-                                            </div>
+                    @forelse($pastpapers as $item)
+                        <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                            <a href="{{ route('student.pastpapers.show', $item->slug) }}" style="text-decoration: none">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <span class="bold">{{ $item->very_short_title }}</span><br />
+                                        <span class="author-font">{{$item->creator->name }}</span>
+                                        <div class="mt-2 d-flex justify-content-between">
+                                            <button id="round-button-2" type="button" class="btn btn-primary btn-sm">Start learning</button>
                                         </div>
                                     </div>
-                                </a>
-                            </div>
-                        @endforeach
+                                </div>
+                            </a>
+                        </div>
                     @empty
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
                         <p>You currently don't have pastpapers</p>
