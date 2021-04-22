@@ -14,7 +14,7 @@
     "devDependencies": {
         "@babel/preset-env": "^7.10.4",
         "@vue/test-utils": "^1.0.3",
-        "axios": "^0.19",
+        "axios": "^0.21",
         "babel-core": "^7.0.0-bridge.0",
         "babel-preset-vue": "^2.0.2",
         "bootstrap": "^4.0.0",
