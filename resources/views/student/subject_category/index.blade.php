@@ -73,7 +73,7 @@
                             </a>
                             <div class="mt-2 d-flex justify-content-between">
                                 @if($subject->isSubscribedTo)
-                                    <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                    <a id="round-button-2" class="btn btn-sm btn-outline-primary" href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
                                 @else
                                     <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
                                     <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />

@@ -15,12 +15,6 @@
                 </a>
             @endif
         @else
-            <!-- <button type="button" id="round-button-2"
-                            name="button"
-                            wire:click="checkout({{ $book->id }})"
-                            class="btn btn-outline-danger btn-sm">
-                            Buy book
-            </button> -->
             <div class="mt-2 d-flex justify-content-between">
                 <livewire:add-to-cart :subject="$book" />
                 <livewire:add-to-wish-list :subject="$book" />
