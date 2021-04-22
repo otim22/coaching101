@@ -26,7 +26,7 @@ class MySubjectsContent extends Component
     }
 
     protected function wishListData() {
-        return Wishlist::where('user_id', Auth::id())->get()->paginate(12);
+        return Wishlist::where('user_id', Auth::id())->paginate(12);
     }
 
     protected function getItems() {
