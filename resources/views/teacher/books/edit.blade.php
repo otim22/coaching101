@@ -15,9 +15,14 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Home</a>
+                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Book</li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ url('teacher/books') }}" style="text-decoration: none;">Books</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ $book->title }}
+                </li>
             </ol>
         </nav>
     </div>

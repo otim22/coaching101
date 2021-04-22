@@ -11,17 +11,17 @@ class MessageController extends Controller
 {
     public function index()
     {
-        return view('teacher.manage_subject.messages.index');
+        return view('teacher.videos.messages.index');
     }
 
     public function create(ItemContent $subject)
     {
-        return view('teacher.manage_subject.messages.index', compact('subject'));
+        return view('teacher.videos.messages.index', compact('subject'));
     }
 
     public function edit(ItemContent $subject)
     {
-        return view('teacher.manage_subject.messages.edit', compact('subject'));
+        return view('teacher.videos.messages.edit', compact('subject'));
     }
 
     /**

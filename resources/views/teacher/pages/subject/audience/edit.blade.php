@@ -197,7 +197,7 @@
                     </div>
                 </form>
 
-                @include('teacher.manage_subject.audience.partials.js_files')
+                @include('teacher.videos.audience.partials.js_files')
             </div>
         </div>
     </div>

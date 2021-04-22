@@ -68,13 +68,13 @@
             </div>
             <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
                 @if(request()->route()->getName() === "manage.subjects")
-                    @include('teacher.manage_subject.partials.subjects')
+                    @include('teacher.videos.partials.subjects')
                 @elseif(request()->route()->getName() === "manage.performances")
-                    @include('teacher.manage_subject.partials.performances')
+                    @include('teacher.videos.partials.performances')
                 @elseif(request()->route()->getName() === "manage.tools")
-                    @include('teacher.manage_subject.partials.tools')
+                    @include('teacher.videos.partials.tools')
                 @elseif(request()->route()->getName() === "manage.resources")
-                    @include('teacher.manage_subject.partials.resources')
+                    @include('teacher.videos.partials.resources')
                 @endif
             </div>
         </div>

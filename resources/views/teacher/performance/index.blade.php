@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('manage.subjects') }}" style="text-decoration:none;">Home</a>
+                    <a href="{{ route('manage.subjects') }}" style="text-decoration:none;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Performance</li>
             </ol>

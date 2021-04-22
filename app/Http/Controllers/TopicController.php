@@ -11,17 +11,17 @@ class TopicController extends Controller
 {
     public function create(ItemContent $subject)
     {
-        return view('teacher.manage_subject.topics.create', compact('subject'));
+        return view('teacher.videos.topics.create', compact('subject'));
     }
 
     public function show(ItemContent $subject, Topic $topic)
     {
-        return view('teacher.manage_subject.topics.show', compact(['subject', 'topic']));
+        return view('teacher.videos.topics.show', compact(['subject', 'topic']));
     }
 
     public function edit(ItemContent $subject, Topic $topic)
     {
-        return view('teacher.manage_subject.topics.edit', compact(['subject', 'topic']));
+        return view('teacher.videos.topics.edit', compact(['subject', 'topic']));
     }
 
     public function store(TopicRequest $request, ItemContent $subject)
