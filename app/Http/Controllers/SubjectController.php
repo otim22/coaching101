@@ -25,7 +25,7 @@ class SubjectController extends Controller
     {
         $subjects = ItemContent::orderBy('id', 'desc')->where(['user_id' => Auth::id(), 'item_id' => 1])->paginate(10);
 
-        return view('teacher.manage_subject.index', compact('subjects'));
+        return view('teacher.videos.index', compact('subjects'));
     }
 
     public function create()
@@ -35,12 +35,12 @@ class SubjectController extends Controller
         $terms = Term::get();
         $item = Item::where('name', 'Subject')->firstOrFail();
 
-        return view('teacher.manage_subject.create', compact(['categories', 'years', 'terms', 'item']));
+        return view('teacher.videos.create', compact(['categories', 'years', 'terms', 'item']));
     }
 
     public function show(ItemContent $subject)
     {
-        return view('teacher.manage_subject.show', compact('subject'));
+        return view('teacher.videos.show', compact('subject'));
     }
 
     public function store(SubjectRequest $request)
@@ -78,7 +78,7 @@ class SubjectController extends Controller
         $terms = Term::get();
         $term = Term::find($subject->term_id);
 
-        return view('teacher.manage_subject.edit', compact([
+        return view('teacher.videos.edit', compact([
             'subject', 'categories', 'category', 'years', 'year', 'terms', 'term'
         ]));
     }

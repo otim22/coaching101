@@ -121,7 +121,7 @@ class Cart extends Component
                     "logo" => "https://assets.piedpiper.com/logo.png"
                 ]
             ]);
-          
+
             $payment = new Payment($data);
             $response = $payment->cardPayment();
             $data = json_decode($response->body(), true);

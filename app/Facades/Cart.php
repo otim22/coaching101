@@ -26,9 +26,9 @@ class Cart
     public function remove(int $subjectId): void
     {
         $cart = $this->get();
-
-        array_splice($cart['subjects'], array_search($subjectId, array_column($cart['subjects'], 'id')), 1);
-
+        $cart['subjects'] = array_filter($cart['subjects'], function ($value) use ($subjectId) {
+            return !($subjectId == $value->id);
+        });
         $this->set($cart);
     }
 

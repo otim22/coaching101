@@ -10,16 +10,16 @@
                 <div class="d-flex justify-content-between mt-4">
                     <div>
                         @if (isset($previous))
-                            <a href="{{ url('subjects/'. $subject->slug . '/topics/' . $previous->slug) }}" type="button" name="button" style="text-decoration: none">Previous lession</a>
+                            <a id="round-button-2" class="btn btn-sm btn-secondary" href="{{ url('subjects/'. $subject->slug . '/topics/' . $previous->slug) }}" type="button" name="button" style="text-decoration: none">Previous lession</a>
                         @endif
                     </div>
                     <div>
                         @if (isset($next))
-                            <a href="{{ url('subjects/'. $subject->slug . '/topics/' . $next->slug) }}" type="button" class="" name="button" style="text-decoration: none">Next lession</a>
+                            <a id="round-button-2" class="btn btn-sm btn-outline-secondary" href="{{ url('subjects/'. $subject->slug . '/topics/' . $next->slug) }}" type="button" class="" name="button" style="text-decoration: none">Next lession</a>
                         @endif
                     </div>
                 </div>
-                <div class="mt-5">
+                <div class="mt-5  pt-5">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-link active bold" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
@@ -118,7 +118,7 @@
                 <aside>
                     <div class="accordion make-me-sticky mr-4 mb-5" id="accordionExample">
                         <div class="mb-3">
-                            <h5 class="bold">Subject content</h5>
+                            <h5 class="bold">Subject contents</h5>
                         </div>
                         <div class="card">
                             @foreach($subject->topics as $key => $topic)
@@ -170,7 +170,6 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendor/js/videojs/video.js') }}"  type="text/javascript"></script>
     <script src="{{ asset('vendor/js/videojs/videojs-playlist.min.js') }}"  type="text/javascript"></script>

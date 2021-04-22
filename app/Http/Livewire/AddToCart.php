@@ -29,7 +29,7 @@ class AddToCart extends Component
         if(! empty($this->cartItems)) {
             foreach ($this->cartItems as $cartItem) {
                 if ($cartItem->id === $subjectId) {
-                    return redirect()->back()->with('flash_messaged', 'This subject is already in your cart!');
+                    return redirect()->back()->with('flash_messaged', 'This item is already in your cart!');
                 }
             }
         }

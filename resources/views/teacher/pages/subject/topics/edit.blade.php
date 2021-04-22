@@ -159,7 +159,7 @@
                     </div>
                 </div>
 
-                @include('teacher.manage_subject.topics.partials.js_files')
+                @include('teacher.videos.topics.partials.js_files')
 
             </div>
         </div>

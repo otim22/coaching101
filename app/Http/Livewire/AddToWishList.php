@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Wishlist;
 use Livewire\Component;
+use App\Facades\Cart as CartFacade;
 
 class AddToWishList extends Component
 {
@@ -20,8 +21,16 @@ class AddToWishList extends Component
         return view('livewire.add-to-wish-list');
     }
 
+    protected function removeFromCart($subjectId): void
+    {
+        $cartFacade = new CartFacade;
+        $cartFacade->remove($subjectId);
+    }
+
     public function addToWishlist(int $subjectId)
     {
+        // $this->removeFromCart($subjectId);
+        // dd($subjectId);
         if(Auth::check()) {
             $status = Wishlist::where('user_id', Auth::id())
                                                 ->where('item_content_id', $subjectId)
@@ -34,6 +43,8 @@ class AddToWishList extends Component
                     'user_id' => Auth::id(),
                     'item_content_id' => $subjectId
                 ]);
+                $this->removeFromCart($subjectId);
+                $this->emit('itemAdded');
            }
         } else {
             redirect('/login');

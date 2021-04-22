@@ -22,10 +22,10 @@
         </nav>
         <div class="row mt-5">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <h5 class="bold">{{ $subject->title }}</h5>
+                <h5 class="bold mb-3">{{ $subject->title }}</h5>
                 <h6>{{ $subject->subtitle }}</h6>
                 @if($subject->averageRating)
-                    <div class="star-display">
+                    <div class="star-display mb-3">
                         @for($i = $subject->averageRating; $i >= 1; $i--)
                             <label for="rate-{{$i}}" class="fa fa-star"></label>
                         @endfor
@@ -34,7 +34,7 @@
                         @endif
                     </div>
                 @else
-                    <div class="rating">
+                    <div class="rating mb-3">
                         @for($i = 0; $i < 5; $i++)
                             <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -46,7 +46,7 @@
                     </div>
                 @endif
                 @if(!$subject->isSubscribedTo)
-                    <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
+                    <span class="bold mb-3">UGX {{  $subject->formatPrice }}/-</span>
                 @endif
                 <p class="mb-5">Created by {{ $subject->creator->name }}</p>
             </div>
@@ -264,7 +264,7 @@
                             </a>
                             <div class="mt-2 d-flex justify-content-between">
                                 @if($subject->isSubscribedTo)
-                                    <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                    <a id="round-button-2" class="btn btn-sm btn-outline-primary" href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
                                 @else
                                     <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
                                     <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />

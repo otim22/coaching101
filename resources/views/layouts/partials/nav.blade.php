@@ -25,7 +25,7 @@
 
             <form action="{{ route('videos') }}" method="GET" class="form-inline top-search">
                 <div class="input-group space-bottom">
-                    <input type="text" name="query" class="form-control" placeholder="Search for video subjects...">
+                    <input type="text" name="query" class="form-control" placeholder="Search for content...">
                     <div class="input-group-append">
                         <button class="btn btn-secondary" type="submit" id="top-search-button">
                             <svg class="bi bi-search top-search-svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -40,14 +40,14 @@
             <ul class="navbar-nav ml-auto nav nav-pills">
                 @guest
                     <li class="nav-item {{ InitialGenerator::set_active(['subjects.onBoard']) }} pt-1">
-                        <a class="nav-link" href="{{ route('subjects.onBoard') }}">Teach</a>
+                        <a class="nav-link" href="{{ route('subjects.onBoard') }}">Teacher</a>
                     </li>
                 @endguest
 
                 @auth()
                     @if(auth()->user()->role == 1)
                         <li class="nav-item {{ InitialGenerator::set_active(['subjects.starter']) }} mt-1">
-                            <a class="nav-link" href="{{ route('subjects.starter') }}">Teach</a>
+                            <a class="nav-link" href="{{ route('subjects.starter') }}">Teacher</a>
                         </li>
                         <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
                             <a class="nav-link" href="{{ route('my-subjects') }}">My subjects</a>
