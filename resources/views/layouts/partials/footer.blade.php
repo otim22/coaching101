@@ -13,18 +13,18 @@
                 <h5>Resources</h5>
                 <ul class="list-unstyled">
                     @guest
-                        <li><a href="{{ route('subjects.starter') }}">Teach</a></li>
+                        <li><a href="{{ route('subjects.starter') }}">Teacher</a></li>
                     @endguest
                     @auth
                         @if(Auth::user()->role == 1)
-                            <li><a href="{{ route('subjects.starter') }}">Teach</a></li>
+                            <li><a href="{{ route('subjects.starter') }}">Teacher</a></li>
                         @elseif(Auth::user()->role == 2)
-                            <li><a href="{{ route('manage.subjects') }}">Teach</a></li>
+                            <li><a href="{{ route('manage.subjects') }}">Teacher</a></li>
                         @else
-                            <li><a href="{{ route('manage.subjects') }}">Teach</a></li>
+                            <li><a href="{{ route('manage.subjects') }}">Teacher</a></li>
                         @endif
                     @endauth
-                    <li><a href="{{ url('/#learn-now') }}">Learn</a></li>
+                    <li><a href="{{ url('/#learn-now') }}">Learner</a></li>
                     <li><a href="#">Affiliate</a></li>
                 </ul>
             </div>

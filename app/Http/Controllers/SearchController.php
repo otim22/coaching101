@@ -22,22 +22,9 @@ class SearchController extends Controller
         $searchResults = (new Search())
                                 ->registerModel(ItemContent::class, function(ModelSearchAspect $modelSearchAspect) use ($approved) {
                                             $modelSearchAspect->addSearchableAttribute('title')
-                                                            ->addSearchableAttribute('subtitle')
                                                             ->where('is_approved', $approved);
                                 })->search($request->input('query'))->paginate(12)->withQueryString();
 
         return view('student.subject_display.search_results', compact('searchResults'));
     }
-
-    // public function subjectQuestions(Request $request)
-    // {
-    //     if (! $request->filled('query')) {
-    //         return back()->with('error', 'Please enter something');
-    //     }
-    //
-    //     $searchResults = (new Search())
-    //                             ->registerModel(Question::class, 'body')->search($request->input('query'))->paginate(12)->withQueryString();
-    //
-    //     return view('student.subject_display.show', compact('searchResults'));
-    // }
 }
