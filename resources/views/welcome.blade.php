@@ -106,7 +106,7 @@
                             <div class="row mt-4">
                                 @foreach($category as $cat)
                                     @foreach($cat->itemContents as $subject)
-                                        <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
+                                        <div class="col-sm-6 col-md-6 col-lg-3 mb-4">
                                             <div class="card">
                                                 <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
                                                     <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
