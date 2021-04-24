@@ -71,7 +71,7 @@ Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.st
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject?}/topics/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show')->middleware('auth');
-Route::get('/videos', [SearchController::class, 'videoSubjects'])->name('videos');
+Route::get('/items', [SearchController::class, 'videoSubjects'])->name('items');
 Route::get('/questions', [SearchController::class, 'subjectQuestions'])->name('questions');
 Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
 Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('teachers.index');
