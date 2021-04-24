@@ -14,7 +14,7 @@
 }
 
 @include md-screens {
-    .register-button {
+    .hide-at-md {
         display: none;
     }
 }
@@ -27,7 +27,7 @@
 
 @include sm-screens {
     .guest-techer,
-    .register-button {
+    .hide-at-md {
         display: block;
     }
 }

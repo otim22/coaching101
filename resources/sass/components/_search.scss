@@ -33,37 +33,37 @@
 
 @include xxl-screens {
     .top-search input[type="text"] {
-        width: 500px;
+        width: 480px;
     }
 }
 
 @include xl-screens {
     .top-search input[type="text"] {
-        width: 450px;
+        width: 430px;
     }
 }
 
 @include xlg-screens {
     .top-search input[type="text"] {
-        width: 400px;
+        width: 380px;
     }
 }
 
 @include lg-screens {
     .top-search input[type="text"] {
-        width: 350px;
+        width: 340px;
     }
 }
 
 @include slg-screens {
     .top-search input[type="text"] {
-      width: 250px;
+      width: 230px;
     }
 }
 
 @include sslg-screens {
     .top-search input[type="text"] {
-      width: 200px;
+      width: 180px;
     }
 }
 

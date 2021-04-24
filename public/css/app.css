@@ -3433,37 +3433,37 @@ select {
 
 @media only screen and (min-width: 1300px) {
   .top-search input[type=text] {
-    width: 500px;
+    width: 480px;
   }
 }
 
 @media only screen and (max-width: 1300px) {
   .top-search input[type=text] {
-    width: 450px;
+    width: 430px;
   }
 }
 
 @media only screen and (max-width: 1250px) {
   .top-search input[type=text] {
-    width: 400px;
+    width: 380px;
   }
 }
 
 @media only screen and (max-width: 1200px) {
   .top-search input[type=text] {
-    width: 350px;
+    width: 340px;
   }
 }
 
 @media only screen and (max-width: 1150px) {
   .top-search input[type=text] {
-    width: 250px;
+    width: 230px;
   }
 }
 
 @media only screen and (max-width: 1050px) {
   .top-search input[type=text] {
-    width: 200px;
+    width: 180px;
   }
 }
 
@@ -4470,7 +4470,7 @@ img.rounded-corners {
 }
 
 @media only screen and (max-width: 991px) {
-  .register-button {
+  .hide-at-md {
     display: none;
   }
 }
@@ -4483,7 +4483,7 @@ img.rounded-corners {
 
 @media only screen and (max-width: 767px) {
   .guest-techer,
-  .register-button {
+  .hide-at-md {
     display: block;
   }
 }

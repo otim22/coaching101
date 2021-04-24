@@ -12,13 +12,13 @@
                         <svg class="bi bi-grid-3x3-gap-fill mr-1" width="1.3em" height="1.3em" viewBox="1 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1V2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1V2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V2zM1 7a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1V7zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1V7zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V7zM1 12a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1v-2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1v-2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2z"/>
                         </svg>
-                        Browse
+                        Courses
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('home') }}">Video subjects</a>
-                        <a class="dropdown-item" href="{{ route('student.books.index') }}">Pdf books</a>
+                        <a class="dropdown-item" href="{{ route('home') }}">Video Subjects</a>
+                        <a class="dropdown-item" href="{{ route('student.books.index') }}">Pdf Books</a>
                         <a class="dropdown-item" href="{{ route('student.notes.index') }}">Notes</a>
-                        <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past papers</a>
+                        <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past Papers</a>
                     </div>
                 </li>
             </ul>
@@ -38,32 +38,34 @@
             </form>
 
             <ul class="navbar-nav ml-auto nav nav-pills">
-                @guest
-                    <li class="nav-item {{ InitialGenerator::set_active(['subjects.onBoard']) }} pt-1">
-                        <a class="nav-link" href="{{ route('subjects.onBoard') }}">Teacher</a>
+                <li class="nav-item {{ InitialGenerator::set_active(['subjects.onBoard']) }} pt-1">
+                    <a class="nav-link" href="{{ route('subjects.onBoard') }}">Donate</a>
+                </li>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown mt-1 hide-at-md">
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Browse
+                        </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @guest
+                                    <a class="dropdown-item" href="{{ route('login') }}">Learner</a>
+                                    <a class="dropdown-item" href="{{ route('subjects.starter') }}">Teacher</a>
+                                @endguest
+                                @auth()
+                                    @if(auth()->user()->role == 1)
+                                        <a class="dropdown-item" href="{{ route('home') }}">Learner</a>
+                                        <a class="dropdown-item" href="{{ route('subjects.starter') }}">Teacher</a>
+                                    @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
+                                        <a class="dropdown-item" href="{{ route('my-subjects') }}">Learner</a>
+                                        <a class="dropdown-item" href="{{ route('manage.subjects') }}">Teacher</a>
+                                    @endif
+                                @endauth
+                            </div>
                     </li>
-                @endguest
+                </ul>
 
-                @auth()
-                    @if(auth()->user()->role == 1)
-                        <li class="nav-item {{ InitialGenerator::set_active(['subjects.starter']) }} mt-1">
-                            <a class="nav-link" href="{{ route('subjects.starter') }}">Teacher</a>
-                        </li>
-                        <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
-                            <a class="nav-link" href="{{ route('my-subjects') }}">My subjects</a>
-                        </li>
-                    @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
-                        <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} mt-1">
-                            <a class="nav-link" href="{{ route('my-subjects') }}">Student</a>
-                        </li>
-
-                        <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
-                            <a class="nav-link" href="{{ route('manage.subjects') }}">Teacher</a>
-                        </li>
-                    @endif
-                @endauth
-
-                <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} mt-1">
+                <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} mt-1 mr-2">
                     <livewire:nav-cart />
                 </li>
 
@@ -72,7 +74,7 @@
                         <a class="btn btn-danger btn-sm nav-link" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">Login</a>
                     </li>
                     @if (Route::has('register'))
-                        <li class="nav-item {{ InitialGenerator::set_active(['register']) }} mt-1 mr-2 register-button">
+                        <li class="nav-item {{ InitialGenerator::set_active(['register']) }} mt-1 mr-2 hide-at-md">
                             <a class="btn btn-outline-secondary btn-sm nav-link" id="round-button" href="{{ route('register') }}">Register</a>
                         </li>
                     @endif
