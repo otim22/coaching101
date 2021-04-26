@@ -38,8 +38,8 @@
             </form>
 
             <ul class="navbar-nav ml-auto nav nav-pills">
-                <li class="nav-item {{ InitialGenerator::set_active(['subjects.onBoard']) }} pt-1">
-                    <a class="nav-link" href="{{ route('subjects.onBoard') }}">Donate</a>
+                <li class="nav-item {{ InitialGenerator::set_active(['donate.index']) }} pt-1">
+                    <a class="nav-link" href="{{ route('donate.index') }}">Donate</a>
                 </li>
 
                 <ul class="navbar-nav">
@@ -65,7 +65,7 @@
                     </li>
                 </ul>
 
-                <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} mt-1 mr-2">
+                <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} mt-1 mr-1">
                     <livewire:nav-cart />
                 </li>
 

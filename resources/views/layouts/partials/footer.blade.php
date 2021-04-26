@@ -6,6 +6,7 @@
                 <ul class="list-unstyled">
                     <li><a href="{{ route('about') }}">About</a></li>
                     <li><a href="{{ route('contacts') }}">Contact</a></li>
+                    <li><a href="{{ route('donate.index') }}">Donate</a></li>
                     <!-- <li><a href="#">Blog</a></li> -->
                 </ul>
             </div>

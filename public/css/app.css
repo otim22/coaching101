@@ -3220,6 +3220,11 @@ select {
   font-size: 15px;
 }
 
+.donate-font {
+  color: #515152;
+  font-size: 20px;
+}
+
 .revenue-font {
   color: #9b9b9b;
   font-size: 18px;
@@ -4467,6 +4472,10 @@ img.rounded-corners {
 
 .auth-background {
   background: url("/images/auth_image.jpg") no-repeat fixed center;
+}
+
+.input-group > .custom-select {
+  max-width: 100px;
 }
 
 @media only screen and (max-width: 991px) {

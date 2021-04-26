@@ -311,7 +311,7 @@
 <!-- End teacher-->
 
 <!-- Start FAQ-->
-<section class="bg-gray-2 faq">
+<section class="bg-gray-2">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12">

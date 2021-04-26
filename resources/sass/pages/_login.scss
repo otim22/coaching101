@@ -13,6 +13,10 @@
     background: url('/images/auth_image.jpg') no-repeat fixed center;
 }
 
+.input-group > .custom-select {
+        max-width: 100px;
+}
+
 @include md-screens {
     .hide-at-md {
         display: none;
