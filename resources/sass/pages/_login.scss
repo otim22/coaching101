@@ -13,8 +13,8 @@
     background: url('/images/auth_image.jpg') no-repeat fixed center;
 }
 
-.input-group > .custom-select {
-        max-width: 100px;
+.input-group > .currency {
+        max-width: 100px !important;
 }
 
 @include md-screens {

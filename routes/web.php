@@ -15,7 +15,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\AudienceController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\TopCategoryController;
-use App\Http\Controllers\DonateController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\YearController;
 use App\Http\Controllers\Admin\TermController;
@@ -55,7 +55,10 @@ use App\Http\Controllers\PastpaperController as Pastpapers;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/books', [Books::class, 'index'])->name('student.books.index');
-Route::get('/donate', [DonateController::class, 'index'])->name('donate.index');
+Route::get('/donations', [DonationController::class, 'index'])->name('donate.index');
+Route::get('/donations/{donor}', [DonationController::class, 'show'])->name('donate.show');
+Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
+Route::get('/checkout/{donor}', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show')->middleware('auth');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
 Route::get('/notes', [Notes::class, 'index'])->name('student.notes.index');
@@ -97,7 +100,6 @@ Auth::routes(['verify' => true]);
 Route::get('/teacher/onBoard', [SubjectController::class, 'onBoard'])->name('subjects.onBoard');
 
 Route::middleware('auth')->group(function() {
-    Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::get('/cart/{response?}', [CartController::class, 'index'])->name('cart.index');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 

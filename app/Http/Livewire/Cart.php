@@ -100,9 +100,9 @@ class Cart extends Component
         $this->emit('itemTotalUpdate');
     }
 
-    public function initialize() {
-        Rave::initialize(route('callback'));
-    }
+    // public function initialize() {
+    //     Rave::initialize(route('callback'));
+    // }
 
     public function checkout()
     {
@@ -117,7 +117,7 @@ class Cart extends Component
                 "fullname" => Auth::user()->name,
                 "customizations" => [
                     "title" => "OTF Payments",
-                    "description" => "Middleout isn't free. Pay the price",
+                    "description" => "Your transaction is secure with us.",
                     "logo" => "https://assets.piedpiper.com/logo.png"
                 ]
             ]);

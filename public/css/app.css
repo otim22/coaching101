@@ -3668,7 +3668,8 @@ select {
 }
 
 #round-button-2,
-#ask {
+#ask,
+#process {
   border-radius: 30px;
   padding-left: 20px;
   padding-right: 20px;
@@ -4474,8 +4475,8 @@ img.rounded-corners {
   background: url("/images/auth_image.jpg") no-repeat fixed center;
 }
 
-.input-group > .custom-select {
-  max-width: 100px;
+.input-group > .currency {
+  max-width: 100px !important;
 }
 
 @media only screen and (max-width: 991px) {
@@ -4553,6 +4554,35 @@ img.rounded-corners {
 .card-js .icon {
   position: absolute !important;
   top: 18px !important;
+}
+
+.secure-badge__text {
+  display: inline-block;
+  text-transform: uppercase;
+  color: #f5a623;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.secure-badge__icon {
+  display: inline-block;
+  margin-right: 7px;
+  margin-left: 3px;
+}
+
+.secure-badge {
+  text-align: end;
+  flex: 1;
+  margin-top: 35px;
+}
+
+.secure-badge__link {
+  text-decoration: none;
+  width: auto;
+  margin: 0 auto;
+  border-radius: 16px;
+  padding: 2px 10px 5px;
+  background-color: #000;
 }
 
 .resource-filter_input .custom-select {

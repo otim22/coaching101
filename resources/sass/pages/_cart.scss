@@ -37,3 +37,33 @@
     position: absolute !important;
     top: 18px !important;
 }
+
+.secure-badge__text {
+    display: inline-block;
+    text-transform: uppercase;
+    color: #f5a623;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.secure-badge__icon {
+    display: inline-block;
+    margin-right: 7px;
+    margin-left: 3px;
+}
+
+.secure-badge {
+    text-align: end;
+    -ms-flex: 1;
+    flex: 1;
+    margin-top: 35px;
+}
+
+.secure-badge__link {
+    text-decoration: none;
+    width: auto;
+    margin: 0 auto;
+    border-radius: 16px;
+    padding: 2px 10px 5px;
+    background-color: #000;
+}

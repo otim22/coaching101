@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread" style="background-image:url(images/back_img.jpg);">
+<section class="section-bread bg-gray-2">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
