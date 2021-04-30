@@ -1,6 +1,6 @@
 .top-search input[type="text"] {
     width: 100%;
-    min-width: 150px;
+    min-width: 250px;
     display: block;
     padding-left: 20px;
     border-radius: 19px;
@@ -31,86 +31,44 @@
     height: 25px;
 }
 
-#search{width:75px;transition:width .5s ease}
-#search:focus{width:200px}
+.fas.fa-search.pointer {
+	font-family: FontAwesome;
+	font-style: normal;
+    color: $color-gray-2;
+}
 
 @include xxl-screens {
-    .top-search input[type="text"] {
-        width: 480px;
-    }
-}
-
-@include xl-screens {
-    .top-search input[type="text"] {
-        width: 430px;
-    }
-}
-
-@include xlg-screens {
-    .top-search input[type="text"] {
-        width: 380px;
-    }
-}
-
-@include lg-screens {
-    .top-search input[type="text"] {
-        width: 340px;
-    }
-}
-
-@include slg-screens {
-    .top-search input[type="text"] {
-      width: 230px;
-    }
-}
-
-@include sslg-screens {
-    .top-search input[type="text"] {
-      width: 180px;
-    }
-}
-
-@include md-screens {
-    .top-search input[type="text"] {
-        width: 180px;
-    }
-}
-
-@include mmd-screens {
-    .top-search input[type="text"] {
-        width: 120px;
-    }
-}
-
-@include smd-screens {
-    .top-search input[type="text"] {
-        width: 90px;
-    }
-}
-
-@include sm-screens {
-    .space-bottom {
-        margin-bottom: 10px;
-    }
-    .top-search input[type="text"] {
-        width: 625px;
-    }
-}
-
-@include ssm-screens {
-    .top-search input[type="text"] {
-        width: 565px;
-    }
-}
-
-@include lxs-screens {
     .top-search input[type="text"] {
         width: 500px;
     }
 }
 
-@include xs-screens {
+@include xl-screens {
     .top-search input[type="text"] {
-        width: 270px;
+        width: 500px;
+    }
+}
+
+@include xlg-screens {
+    .top-search input[type="text"] {
+        width: 500px;
+    }
+}
+
+@include md-screens {
+    .top-search input[type="text"] {
+        width: 400px;
+    }
+}
+
+@include md-screens {
+    .top-search input[type="text"] {
+        width: 300px;
+    }
+}
+
+@include sm-screens {
+    .top-search input[type="text"] {
+        width: 260px;
     }
 }

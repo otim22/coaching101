@@ -1,11 +1,26 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-3 increased-font py-3">
-    <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}"><span class="logo-font">all cloud prep</span></a>
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container" id="navbarSupportedContentOther">
+        <a class="navbar-brand mr-auto" href="{{ url('/') }}"><span class="logo-font">all cloud prep</span></a>
+        <span class="sm-search d-md-none" id="smSearch"> <a class="ml-auto hide-at-md mr-3" href="#" style="text-decoration: none;"> <i class="fas fa-search pointer"></i></a></span>
+        <div class="search-bar" style="display: none !important;" id="search-bar">
+            <form action="{{ route('items') }}" method="GET" class="form-inline top-search">
+                <div class="input-group space-bottom">
+                    <input type="text" name="query" class="form-control" placeholder="Search for content...">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit" id="top-search-button">
+                            <svg class="bi bi-search top-search-svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <button class="navbar-toggler" id="navbarButtonToggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse topmenu navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link make-upper-case" href="#" id="navbarDropdownMenuLinkUneb" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,26 +89,15 @@
                         </div>
                     </li>
                 </ul>
-                <li class="nav-item {{ InitialGenerator::set_active(['donate.index']) }}">
+                <li class="nav-item hide-at-md {{ InitialGenerator::set_active(['donate.index']) }}">
                     <a class="nav-link make-upper-case" href="{{ route('donate.index') }}">donate</a>
                 </li>
             </ul>
 
-            <!-- <form action="{{ route('items') }}" method="GET" class="form-inline top-search">
-                <div class="input-group space-bottom">
-                    <input type="text" name="query" class="form-control" placeholder="Search for content...">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit" id="top-search-button">
-                            <svg class="bi bi-search top-search-svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
-                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </form> -->
-
             <ul class="navbar-nav ml-auto nav nav-pills">
+                <li class="nav-item search mr-1 d-none d-md-block">
+					<a class="nav-link" href="#"> <i class="fas fa-search pointer"></i></a>
+				</li>
                 <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} mr-2">
                     <livewire:nav-cart />
                 </li>
@@ -151,3 +155,9 @@
         </div>
     </div>
 </nav>
+
+@push('scripts')
+    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/search.js') }}"></script>
+@endpush

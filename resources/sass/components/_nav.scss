@@ -4,9 +4,10 @@
 }
 
 .logo-font {
-    font-size: 26px;
+    font-size: 1.625rem;
     text-transform: uppercase;
     font-weight: bold;
+    padding-right: 18px;
 }
 
 .navbar-nav li:hover > .dropdown-menu {
@@ -137,7 +138,7 @@
     margin-top: 9px;
 }
 
-.dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown-menu{
+.dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown-menu {
     display: flex;
     flex-direction: column;
     position: absolute !important;
