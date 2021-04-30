@@ -2,9 +2,49 @@
     <div class="container" id="navbarSupportedContentOther">
         <a class="navbar-brand mr-auto" href="{{ url('/') }}"><span class="logo-font">all cloud prep</span></a>
         <span class="sm-search d-md-none" id="smSearch"> <a class="ml-auto hide-at-md mr-1" href="#" style="text-decoration: none;"> <i class="fas fa-search pointer"></i></a></span>
-        <div id="smCart" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-md-none mr-1">
+        <div id="smCart" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-md-none">
             <livewire:nav-cart />
         </div>
+        @auth
+        <div  id="smInitials" class="nav-item dropdown d-md-none">
+            <a id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <div class="circle text-center">
+                    <span class="circle__content">{{ InitialGenerator::generate_initials(Auth::user()->name) }}</span>
+                </div>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" id="customisedInitialDrop" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item d-flex" href="{{ route('users.profile') }}">
+                    <div class="mr-2 pt-2">
+                        <div class="circle">
+                            <span class="circle__content">{{ InitialGenerator::generate_initials(Auth::user()->name) }}</span>
+                        </div>
+                    </div>
+                    <div class="mr-1">
+                        <p>{{ Auth::user()->name }} <br>
+                        {{ Auth::user()->email }}</p>
+                    </div>
+                 </a>
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="{{ route('my-subjects') }}">My subjects</a>
+                <a class="dropdown-item" href="{{ url('cart') }}">My cart</a>
+                <a class="dropdown-item" href="{{ route('users.profile') }}">Profile details</a>
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" class="bold" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </div>
+        @endauth
         <div class="search-bar" style="display: none !important;" id="search-bar">
             <form action="{{ route('items') }}" method="GET" class="form-inline top-search">
                 <div class="input-group space-bottom">
@@ -20,7 +60,7 @@
                 </div>
             </form>
         </div>
-        <button class="navbar-toggler collapsed" id="navbarButtonToggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler collapsed ml-3" id="navbarButtonToggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="my-1 mx-2 close">X</span>
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -116,14 +156,14 @@
                         </li>
                     @endif
                     @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <li class="nav-item dropdown d-none d-md-block">
+                            <a id="navbarDropdown" class="nav-link d-block" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <div class="circle text-center">
                                     <span class="circle__content">{{ InitialGenerator::generate_initials(Auth::user()->name) }}</span>
                                 </div>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div  id="customisedInitialDrop" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item d-flex" href="{{ route('users.profile') }}">
                                     <div class="mr-2 pt-2">
                                         <div class="circle">
