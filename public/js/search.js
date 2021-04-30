@@ -1,6 +1,7 @@
 $(function() {
     var navItems = $('#navbarSupportedContent');
     var smSearch = $('#smSearch');
+    var smCart = $('#smCart');
     var navbarToggler = $('#navbarButtonToggler');
     var search = $('#search-bar');
 
@@ -16,6 +17,7 @@ $(function() {
         navItems.attr("style","display:none !important");
         navbarToggler.attr("style","display:none !important");
         smSearch.attr("style","display:none !important");
+        smCart.attr("style","display:none !important");
         search.removeAttr('style');
      	e.preventDefault();
     });
@@ -27,6 +29,7 @@ $(function() {
             search.attr("style","display:none !important");
             navItems.removeAttr('style');
             smSearch.removeAttr('style');
+            smCart.removeAttr('style');
             navbarToggler.removeAttr('style');
         }
     });

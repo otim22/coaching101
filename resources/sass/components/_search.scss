@@ -72,3 +72,10 @@
         width: 260px;
     }
 }
+
+@include sm-screens {
+    .space-bottom {
+        margin-top: 8px;
+        margin-bottom: 15px;
+    }
+}

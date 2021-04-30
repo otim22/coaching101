@@ -1,7 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-3 increased-font py-3">
     <div class="container" id="navbarSupportedContentOther">
         <a class="navbar-brand mr-auto" href="{{ url('/') }}"><span class="logo-font">all cloud prep</span></a>
-        <span class="sm-search d-md-none" id="smSearch"> <a class="ml-auto hide-at-md mr-3" href="#" style="text-decoration: none;"> <i class="fas fa-search pointer"></i></a></span>
+        <span class="sm-search d-md-none" id="smSearch"> <a class="ml-auto hide-at-md mr-1" href="#" style="text-decoration: none;"> <i class="fas fa-search pointer"></i></a></span>
+        <div id="smCart" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-md-none mr-1">
+            <livewire:nav-cart />
+        </div>
         <div class="search-bar" style="display: none !important;" id="search-bar">
             <form action="{{ route('items') }}" method="GET" class="form-inline top-search">
                 <div class="input-group space-bottom">
@@ -98,7 +101,7 @@
                 <li class="nav-item search mr-1 d-none d-md-block">
 					<a class="nav-link" href="#"> <i class="fas fa-search pointer"></i></a>
 				</li>
-                <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} mr-2">
+                <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-none d-md-block mr-2">
                     <livewire:nav-cart />
                 </li>
 

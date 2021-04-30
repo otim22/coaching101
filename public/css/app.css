@@ -3511,6 +3511,13 @@ select {
   }
 }
 
+@media only screen and (max-width: 767px) {
+  .space-bottom {
+    margin-top: 8px;
+    margin-bottom: 15px;
+  }
+}
+
 .question-search input[type=text] {
   width: 100%;
   min-width: 150px;
