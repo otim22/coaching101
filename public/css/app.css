@@ -3407,6 +3407,24 @@ select {
   left: 100%;
 }
 
+/** Start Hamburger */
+
+.navbar-toggler > .close {
+  display: inline;
+  color: #cdcfd1;
+}
+
+.navbar-toggler > .close:hover {
+  color: #f0f0f0;
+}
+
+.navbar-toggler.collapsed > .close,
+.navbar-toggler:not(.collapsed) > .navbar-toggler-icon {
+  display: none;
+}
+
+/** End Hamburger */
+
 @media (max-width: 992px) {
   .dropdown-menu {
     width: 50%;

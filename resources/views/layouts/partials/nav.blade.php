@@ -20,7 +20,8 @@
                 </div>
             </form>
         </div>
-        <button class="navbar-toggler" id="navbarButtonToggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler collapsed" id="navbarButtonToggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="my-1 mx-2 close">X</span>
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse topmenu navbar-collapse" id="navbarSupportedContent">
