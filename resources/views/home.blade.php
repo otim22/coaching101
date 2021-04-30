@@ -14,7 +14,7 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Home</li>
+                <li class="breadcrumb-item active mr-auto" aria-current="page">Home</li>
             </ol>
         </nav>
     </div>

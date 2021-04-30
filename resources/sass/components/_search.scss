@@ -31,6 +31,9 @@
     height: 25px;
 }
 
+#search{width:75px;transition:width .5s ease}
+#search:focus{width:200px}
+
 @include xxl-screens {
     .top-search input[type="text"] {
         width: 480px;
