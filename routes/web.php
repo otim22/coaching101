@@ -58,6 +58,7 @@ Route::get('/books', [Books::class, 'index'])->name('student.books.index');
 Route::get('/donations', [DonationController::class, 'index'])->name('donate.index');
 Route::get('/donations/{donor}', [DonationController::class, 'show'])->name('donate.show');
 Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
+Route::post('/cancel-donation', [DonationController::class, 'cancelDonation'])->name('donations.cancel');
 Route::get('/checkout/{donor}', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show')->middleware('auth');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');

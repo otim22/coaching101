@@ -21,6 +21,7 @@ class DonationController extends Controller
             'sponsee_name' => ['nullable', 'string', 'max:255'],
             'sponsee_email' => ['nullable', 'string', 'email', 'max:255'],
             'interval' => ['nullable', 'string', 'max:25'],
+            'duration' => 'nullable',
             'currency' => ['required', 'string', 'max:10'],
             'amount' => 'required',
         ]);
@@ -33,5 +34,11 @@ class DonationController extends Controller
     public function show(Donation $donor)
     {
         return view("donation.show", compact('donor'));
+    }
+
+    public function cancelDonation(Request $request)
+    {
+        dd($request);
+        return redirect()->route('donation.index');
     }
 }

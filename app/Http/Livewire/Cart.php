@@ -12,6 +12,7 @@ use App\Helpers\ProcessPayment as Payment;
 
 class Cart extends Component
 {
+    private $url = "https://api.flutterwave.com/v3/charges";
     public $cartItemTotal = 0;
     public $sum = 0;
     public $cartItems = [];
@@ -100,10 +101,6 @@ class Cart extends Component
         $this->emit('itemTotalUpdate');
     }
 
-    // public function initialize() {
-    //     Rave::initialize(route('callback'));
-    // }
-
     public function checkout()
     {
         if(Auth::check()) {
@@ -122,7 +119,7 @@ class Cart extends Component
                 ]
             ]);
 
-            $payment = new Payment($data);
+            $payment = new Payment($data, $this->url);
             $response = $payment->cardPayment();
             $data = json_decode($response->body(), true);
 
@@ -147,7 +144,7 @@ class Cart extends Component
                 "network" => strtoupper($data['network']),
                 "phone_number" => $data['phoneNumber']
             ]);
-            $payment = new Payment($data);
+            $payment = new Payment($data, $this->url);
             $response = $payment->mobileMoney();
             $data = json_decode($response->body(), true);
             if ($response->successful()) {
@@ -162,11 +159,11 @@ class Cart extends Component
 
     private function setPaymentDefaults() {
         $user = Auth::user();
-        $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
+        $paymentToken = 'REF-' . 'TX-'. time() . '-' . $user->id;
         $currency = "UGX";
         $userEmail = $user->email;
         $cartSum = $this->sum;
-        $redirectLink = "http://0.0.0.0:8009/cart";
+        $redirectLink = "https://coaching101.app/cart";
 
         return [
             "tx_ref" => $paymentToken,

@@ -9,7 +9,7 @@ class Donation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['sponsor_name', 'sponsor_email', 'sponsee_name', 'sponsee_email', 'interval', 'currency', 'amount'];
+    protected $fillable = ['sponsor_name', 'sponsor_email', 'sponsee_name', 'sponsee_email', 'interval', 'currency', 'duration', 'amount'];
 
     public function getFormatAmountAttribute()
     {

@@ -168,6 +168,8 @@
                                         @enderror
                                     </div>
 
+                                    <input type="hidden" name="duration" value="">
+
                                     <div class="pt-4">
                                         <button id="round-button-2" type="submit" class="btn btn-danger btn-block">Give Once</button>
                                     </div>
@@ -194,9 +196,9 @@
                                     </div>
 
                                     <div class="form-group mt-4">
-                                        <label for="sponsor_email">Duration <span class="light_gray_color">(*Optional)</span></label>
-                                        <input type="number" class="form-control" name="sponsor_email" value="{{ old('sponsor_email') }}" />
-                                        @error('sponsor_email')
+                                        <label for="duration">Duration <span class="light_gray_color">(*Optional)</span></label>
+                                        <input type="number" class="form-control" name="duration" value="{{ old('duration') }}" />
+                                        @error('duration')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -209,6 +211,7 @@
                                             </div>
                                         </div>
                                     </a>
+
                                     <div class="collapse" id="sponseeSection">
                                         <div class="form-group">
                                             <label for="sponsee_name">Sponsee's Full Names</label>
@@ -301,6 +304,7 @@
                                     </div>
 
                                     <input id="monthlyInterval" type="hidden" name="interval" value="">
+
                                     <div class="pt-4">
                                         <button id="round-button-2" type="submit" class="btn btn-danger btn-block">Give Monthly</button>
                                     </div>
@@ -308,7 +312,7 @@
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="cancel" role="tabpanel" aria-labelledby="cancel-tab">
-                                <form action="{{ route('donations.store') }}" method="POST">
+                                <form action="{{ route('donations.cancel') }}" method="POST">
                                     @csrf
                                     <div class="form-group mt-4">
                                         <label for="sponsor_email">Email Address</label>

@@ -8,6 +8,7 @@ use App\Helpers\ProcessPayment as Payment;
 
 class Checkout extends Component
 {
+    private $url = "https://api.flutterwave.com/v3/charges";
     public $donor = "";
     public $cardDetails = [];
 
@@ -44,7 +45,7 @@ class Checkout extends Component
             ]
         ]);
 
-        $payment = new Payment($data);
+        $payment = new Payment($data, $this->url);
         $response = $payment->cardPayment();
         $data = json_decode($response->body(), true);
 
@@ -67,7 +68,7 @@ class Checkout extends Component
             "network" => strtoupper($data['network']),
             "phone_number" => $data['phoneNumber']
         ]);
-        $payment = new Payment($data);
+        $payment = new Payment($data, $this->url);
         $response = $payment->mobileMoney();
         $data = json_decode($response->body(), true);
         if ($response->successful()) {
@@ -82,11 +83,11 @@ class Checkout extends Component
 
     private function setPaymentDefaults() {
         $user =  $this->getDonor();
-        $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
+        $paymentToken = 'REF-' . 'TX-'. time() . '-' . $user->id;
         $currency = $user->currency;
         $userEmail = $user->sponsor_email;
         $donationSum = $user->amount;
-        $redirectLink = "https://coaching101.app";
+        $redirectLink = "https://coaching101.app/donations";
 
         return [
             "tx_ref" => $paymentToken,
