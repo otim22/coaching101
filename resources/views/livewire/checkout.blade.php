@@ -5,7 +5,7 @@
                 <a class="nav-link active" id="nav-card-tab" data-toggle="tab" href="#nav-card" role="tab" aria-controls="nav-card" aria-selected="true">Card</a>
                 <a class="nav-link" id="nav-mobilemoney-tab" data-toggle="tab" href="#nav-mobilemoney" role="tab" aria-controls="nav-mobilemoney" aria-selected="false">Mobile Money</a>
             </div>
-            <div class="tab-content" id="nav-tabContent">
+            <div wire:ignore class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-card" role="tabpanel" aria-labelledby="nav-card-tab">
                     <div class="bg-white add-shadow rounded p-5">
                         <p>Please, Provide Card Details (International)</p>
@@ -199,7 +199,7 @@
                 }
 
                 proccessBtn.attr('disabled', 'disabled')
-                myCard.attr("style","display:none !important");
+                myCard.attr("style","display: none !important");
                 spinner.removeAttr('style');
 
                 @this.cardDetails = cardDetails

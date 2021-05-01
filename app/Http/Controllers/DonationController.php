@@ -32,7 +32,6 @@ class DonationController extends Controller
 
     public function show(Donation $donor)
     {
-        // dd($donor);
         return view("donation.show", compact('donor'));
     }
 }
