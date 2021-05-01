@@ -88,6 +88,6 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/tab-selection.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/home.js')}}" type="text/javascript"></script>
 @endpush
