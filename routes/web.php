@@ -86,7 +86,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/get-more-subjects', [HomeController::class, 'getMoreSubjects'])->name('get-more-subjects');
-Route::get('/home/my-subjects', [HomeController::class, 'mySubjects'])->name('my-subjects');
+Route::get('/home/my-account', [HomeController::class, 'mySubjects'])->name('my-account');
 
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions');
 Route::post('/question', [QuestionController::class, 'store'])->name('question.store');

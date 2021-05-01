@@ -9,11 +9,11 @@ use App\Models\Subscription;
 use App\Models\ItemContent;
 use Illuminate\Support\Facades\Auth;
 
-class MySubjectsContent extends Component
+class MyAccountContent extends Component
 {
     public function render()
     {
-        return view('livewire.my-subjects-content', $this->renderData());
+        return view('livewire.my-account-content', $this->renderData());
     }
 
     protected function renderData() {

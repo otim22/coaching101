@@ -51,11 +51,11 @@
                                         <a class="nav-link" href="{{ route('subjects.starter') }}">Teacher</a>
                                     </li>
                                     <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
-                                        <a class="nav-link" href="{{ route('my-subjects') }}">My subjects</a>
+                                        <a class="nav-link" href="{{ route('my-account') }}">My subjects</a>
                                     </li>
                                 @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
                                     <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} mt-1">
-                                        <a class="nav-link" href="{{ route('my-subjects') }}">Learn</a>
+                                        <a class="nav-link" href="{{ route('my-account') }}">Learn</a>
                                     </li>
 
                                     <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
@@ -95,10 +95,10 @@
                                              </a>
 
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="{{ route('my-subjects') }}">My subjects</a>
-                                            <a class="dropdown-item" href="{{ url('cart') }}">My cart</a>
+                                            <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
+                                            <a class="dropdown-item" href="{{ url('cart') }}">My Cart</a>
 
-                                            <a class="dropdown-item" href="{{ route('users.profile') }}">Profile details</a>
+                                            <a class="dropdown-item" href="{{ route('users.profile') }}">Profile Details</a>
                                             <div class="dropdown-divider"></div>
 
                                             <a class="dropdown-item" href="{{ route('logout') }}"

@@ -28,9 +28,9 @@
 
                 <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item" href="{{ route('my-subjects') }}">My subjects</a>
-                <a class="dropdown-item" href="{{ url('cart') }}">My cart</a>
-                <a class="dropdown-item" href="{{ route('users.profile') }}">Profile details</a>
+                <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
+                <a class="dropdown-item" href="{{ url('cart') }}">My Cart</a>
+                <a class="dropdown-item" href="{{ route('users.profile') }}">Profile Details</a>
 
                 <div class="dropdown-divider"></div>
 
@@ -126,7 +126,7 @@
                                     <a class="dropdown-item" href="{{ route('home') }}">Learner</a>
                                     <a class="dropdown-item" href="{{ route('subjects.starter') }}">Teacher</a>
                                 @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
-                                    <a class="dropdown-item" href="{{ route('my-subjects') }}">Learner</a>
+                                    <a class="dropdown-item" href="{{ route('my-account') }}">Learner</a>
                                     <a class="dropdown-item" href="{{ route('manage.subjects') }}">Teacher</a>
                                 @endif
                             @endauth
@@ -178,9 +178,9 @@
 
                                 <div class="dropdown-divider"></div>
 
-                                <a class="dropdown-item" href="{{ route('my-subjects') }}">My subjects</a>
-                                <a class="dropdown-item" href="{{ url('cart') }}">My cart</a>
-                                <a class="dropdown-item" href="{{ route('users.profile') }}">Profile details</a>
+                                <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
+                                <a class="dropdown-item" href="{{ url('cart') }}">My Cart</a>
+                                <a class="dropdown-item" href="{{ route('users.profile') }}">Profile Details</a>
 
                                 <div class="dropdown-divider"></div>
 
