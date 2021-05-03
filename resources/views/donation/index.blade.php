@@ -30,9 +30,9 @@
 <section class="bg-white">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
                 <h4 class="bold">Give a Life Changing Gift Today!</h4>
-                <div class="mt-4 pr-3">
+                <div class="mt-4 pr-3 mb-5">
                     <h5 class="donate-font"> As one of our great leaders Nelson Mandela once said... "Education is the most powerful weapon which you can use to change the world."</h5><br />
                     <h5 class="donate-font">Sometimes this weapon "Education" could need sharpening in times of crisis such as Coronavirus (COVID-19), Limited Resources, Inequality among others.</h5><br />
                     <h5 class="donate-font">Well, your generous giving helps us normalize the distribution of quality education and also supporting the content creators on this platform who are based in Africa.</h5><br />
