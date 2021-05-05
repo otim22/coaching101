@@ -15,6 +15,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\AudienceController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\TopCategoryController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\YearController;
 use App\Http\Controllers\Admin\TermController;
@@ -33,6 +34,7 @@ use App\Http\Controllers\Admin\SubjectsController;
 use App\Http\Controllers\Admin\TopicsController;
 use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\Admin\PastpaperController;
+use App\Http\Controllers\Admin\PaymentPlanController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
@@ -54,6 +56,11 @@ use App\Http\Controllers\PastpaperController as Pastpapers;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/books', [Books::class, 'index'])->name('student.books.index');
+Route::get('/donations', [DonationController::class, 'index'])->name('donate.index');
+Route::get('/donations/{donor}', [DonationController::class, 'show'])->name('donate.show');
+Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
+Route::post('/cancel-donation', [DonationController::class, 'cancelDonation'])->name('donations.cancel');
+Route::get('/checkout/{donor}', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show')->middleware('auth');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
 Route::get('/notes', [Notes::class, 'index'])->name('student.notes.index');
@@ -71,7 +78,7 @@ Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.st
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/subjects/{subject}', [SubjectDisplayController::class, 'index'])->name('subjects.index');
 Route::get('/subjects/{subject?}/topics/{topic?}', [SubjectDisplayController::class, 'show'])->name('student.show')->middleware('auth');
-Route::get('/videos', [SearchController::class, 'videoSubjects'])->name('videos');
+Route::get('/items', [SearchController::class, 'videoSubjects'])->name('items');
 Route::get('/questions', [SearchController::class, 'subjectQuestions'])->name('questions');
 Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
 Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('teachers.index');
@@ -81,7 +88,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/get-more-subjects', [HomeController::class, 'getMoreSubjects'])->name('get-more-subjects');
-Route::get('/home/my-subjects', [HomeController::class, 'mySubjects'])->name('my-subjects');
+Route::get('/home/my-account', [HomeController::class, 'mySubjects'])->name('my-account');
 
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions');
 Route::post('/question', [QuestionController::class, 'store'])->name('question.store');
@@ -95,7 +102,6 @@ Auth::routes(['verify' => true]);
 Route::get('/teacher/onBoard', [SubjectController::class, 'onBoard'])->name('subjects.onBoard');
 
 Route::middleware('auth')->group(function() {
-    Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::get('/cart/{response?}', [CartController::class, 'index'])->name('cart.index');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
@@ -187,6 +193,7 @@ Route::middleware('auth')->group(function() {
         Route::resource('books', 'BooksController');
         Route::resource('notes', 'NotesController');
         Route::resource('pastpapers', 'PastpaperController');
+        Route::resource('plans', 'PaymentPlanController');
         Route::resource('items', 'ItemController');
     });
 });

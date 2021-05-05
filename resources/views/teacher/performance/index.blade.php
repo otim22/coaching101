@@ -40,7 +40,7 @@
                         </a>
                     </div>
                 </div>
-                <ul class="nav nav-tabs" id="performanceTab" role="tablist">
+                <ul class="nav nav-tabs" id="nav-tab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="revenue-tab" data-toggle="tab" href="#revenue" role="tab" aria-controls="revenue" aria-selected="true">Revenue</a>
                     </li>
@@ -137,5 +137,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/performance.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/tab-selection.js')}}" type="text/javascript"></script>
 @endpush

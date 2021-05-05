@@ -95,6 +95,22 @@
                     </li>
                 </ul>
 
+                <ul class="drawer-menu" id="componentsDonation" data-children=".drawer-submenu">
+                    <li class="drawer-menu-item drawer-submenu">
+                        <a data-toggle="collapse" data-parent="#componentsDonation" href="#" data-target="#uiComponentsDonation" aria-controls="uiComponentsDonation" aria-expanded="false" class="collapsed">
+                            <i class="material-icons">attach_money</i>
+                            <span class="drawer-menu-text"> Donation</span>
+                          </a>
+                        <ul class="collapse " id="uiComponentsDonation">
+                            <li class="drawer-menu-item  ">
+                                <a href="{{ url('/admin/plans') }}">
+                                    <span class="drawer-menu-text"> Create Payment Plan</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
                 <!-- HEADING -->
                 <div class="py-2 drawer-heading">
                     Filter

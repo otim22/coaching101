@@ -134,7 +134,7 @@
                                 <div class="form-group mb-4">
                                     <label for="price">Subject price</label>
                                     <div class="input-group">
-                                        <input type="text"
+                                        <input type="number"
                                                     class="form-control @error('price') is-invalid @enderror"
                                                     id="price"
                                                     aria-describedby="price"

@@ -130,11 +130,13 @@
                         </form>
                     </div>
                 </div>
-
-                @include('teacher.videos.topics.partials.js_files')
-
             </div>
         </div>
     </div>
 </section>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/topic.js')}}" type="text/javascript"></script>
+@endpush

@@ -47,6 +47,6 @@ class HomeController extends Controller
 
     public function mySubjects()
     {
-        return view('student.my_subjects.index');
+        return view('student.account.index');
     }
 }

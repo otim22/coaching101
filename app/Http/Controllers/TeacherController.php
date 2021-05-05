@@ -20,6 +20,6 @@ class TeacherController extends Controller
         $notes = ItemContent::where(['user_id' => $teacher->id, 'item_id' => 3, 'is_approved' => 1])->paginate(12);
         $pastpapers = ItemContent::where(['user_id' => $teacher->id, 'item_id' => 4, 'is_approved' => 1])->paginate(12);
 
-        return view('teacher.teacher_subjects.index', compact(['subjects', 'teacher', 'books', 'notes', 'pastpapers']));
+        return view('teacher.subjects.index', compact(['subjects', 'teacher', 'books', 'notes', 'pastpapers']));
     }
 }

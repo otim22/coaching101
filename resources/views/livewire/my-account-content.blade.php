@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
-        <h5 class="bold">My subjects</h5>
+        <h5 class="bold">My Account</h5>
     </div>
 
     <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
@@ -209,5 +209,5 @@
 </div>
 
 @push('scripts')
-    <script src="{{ asset('js/my-subjects.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/tab-selection.js')}}" type="text/javascript"></script>
 @endpush

@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Start jumbotron-->
-<section class="bg-image text-white mt-4" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 90vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
+<section class="bg-image text-white mt-4" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 100vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
@@ -106,7 +106,7 @@
                             <div class="row mt-4">
                                 @foreach($category as $cat)
                                     @foreach($cat->itemContents as $subject)
-                                        <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
+                                        <div class="col-sm-6 col-md-6 col-lg-3 mb-4">
                                             <div class="card">
                                                 <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
                                                     <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
@@ -311,7 +311,7 @@
 <!-- End teacher-->
 
 <!-- Start FAQ-->
-<section class="bg-gray-2 faq">
+<section class="bg-gray-2">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12">
@@ -357,5 +357,6 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('js/tab-selection.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/home.js')}}" type="text/javascript"></script>
 @endpush

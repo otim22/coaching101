@@ -165,6 +165,11 @@ class ItemContent extends Model implements HasMedia, Searchable
         return $this->belongsTo(ItemContent::class);
     }
 
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
+
     public static function getItemContentsForTeacherPerforamce($days, int $limit = 10)
     {
         return static::whereBetween('created_at', [Carbon::now()->subDays($days)->format('Y-m-d H:i:s'), Carbon::now()->format('Y-m-d H:i:s')])
@@ -177,14 +182,12 @@ class ItemContent extends Model implements HasMedia, Searchable
         return rtrim(rtrim(number_format(($this->price * $this->subscriptionCount), 2), 2), '.');
     }
 
-    /** Searching for subjects results*/
+    /** Searching for items results*/
     public function getSearchResult(): SearchResult
     {
         return new SearchResult(
             $this,
-            $this->title,
-            $this->subtitle,
-            $this->description
+            $this->title
         );
     }
 

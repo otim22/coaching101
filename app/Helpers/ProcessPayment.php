@@ -7,27 +7,28 @@ use Illuminate\Support\Facades\Http;
 
 class ProcessPayment
 {
-    private $url = 'https://api.flutterwave.com/v3/charges';
     public $data = [];
-    private $key = 'FLWSECK_TESTdf9f6e191043';
+    private $key = "FLWSECK_TESTdf9f6e191043";
 
-    public function __construct($data)
+    public function __construct($data, $url)
     {
         $this->data = $data;
+        $this->url = $url;
     }
 
     public function cardPayment() {
         $postData = $this->encrypt3Des(json_encode($this->data), $this->key);
-       return $this->postPayment('card', ['client' => $postData]);
+        return $this->postPayment('card', ['client' => $postData], $this->url);
     }
 
     public function mobileMoney() {
-        return $this->postPayment('mobile_money_uganda', $this->data);
+        return $this->postPayment('mobile_money_uganda', $this->data, $this->url);
     }
 
-    protected function postPayment($type, $data) {
+    protected function postPayment($type, $data, $url) {
         return Http::withToken(config('app.rave_key'))->post(
-            $this->url . '?type='. $type, $data);
+            $this->url . '?type='. $type, $data
+        );
     }
 
     protected function encrypt3Des($data, $key) {

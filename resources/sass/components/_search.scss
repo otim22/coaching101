@@ -1,6 +1,6 @@
 .top-search input[type="text"] {
     width: 100%;
-    min-width: 150px;
+    min-width: 250px;
     display: block;
     padding-left: 20px;
     border-radius: 19px;
@@ -31,6 +31,12 @@
     height: 25px;
 }
 
+.fas.fa-search.pointer {
+	font-family: FontAwesome;
+	font-style: normal;
+    color: $color-gray-2;
+}
+
 @include xxl-screens {
     .top-search input[type="text"] {
         width: 500px;
@@ -39,75 +45,37 @@
 
 @include xl-screens {
     .top-search input[type="text"] {
-        width: 450px;
+        width: 500px;
     }
 }
 
 @include xlg-screens {
     .top-search input[type="text"] {
-        width: 400px;
-    }
-}
-
-@include lg-screens {
-    .top-search input[type="text"] {
-        width: 350px;
-    }
-}
-
-@include slg-screens {
-    .top-search input[type="text"] {
-      width: 250px;
-    }
-}
-
-@include sslg-screens {
-    .top-search input[type="text"] {
-      width: 200px;
+        width: 500px;
     }
 }
 
 @include md-screens {
     .top-search input[type="text"] {
-        width: 180px;
+        width: 400px;
     }
 }
 
-@include mmd-screens {
+@include md-screens {
     .top-search input[type="text"] {
-        width: 120px;
+        width: 300px;
     }
 }
 
-@include smd-screens {
+@include sm-screens {
     .top-search input[type="text"] {
-        width: 90px;
+        width: 260px;
     }
 }
 
 @include sm-screens {
     .space-bottom {
-        margin-bottom: 10px;
-    }
-    .top-search input[type="text"] {
-        width: 625px;
-    }
-}
-
-@include ssm-screens {
-    .top-search input[type="text"] {
-        width: 565px;
-    }
-}
-
-@include lxs-screens {
-    .top-search input[type="text"] {
-        width: 500px;
-    }
-}
-
-@include xs-screens {
-    .top-search input[type="text"] {
-        width: 270px;
+        margin-top: 8px;
+        margin-bottom: 15px;
     }
 }

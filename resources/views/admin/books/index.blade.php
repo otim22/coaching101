@@ -11,7 +11,7 @@
                         <div class="d-flex justify-content-between">
                             <div><h4>Books</h4></div>
                             <div>
-                                <a type="button" href="{{ route('admin.books.create') }}" class="btn btn-primary pt-1" name="button">Upload Book</a>
+                                <a type="button" href="{{ route('admin.books.create') }}" class="btn btn-primary pt-1" name="button">Create Book</a>
                             </div>
                         </div>
                     </div>

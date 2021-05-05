@@ -14,10 +14,10 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item">
+                <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">My subjects</li>
+                <li class="breadcrumb-item active" aria-current="page">Donation Feedback</li>
             </ol>
         </nav>
     </div>
@@ -25,12 +25,13 @@
 
 <section>
     <div class="container">
-        <livewire:my-subjects-content />
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 offset-md-2">
+                <p class="mb-4">Thank you <span class="bold">{{ $donor->name }}</span> for your generous giving.</p>
+                <a id="round-button-2" class="btn btn-secondary btn-sm pl-5 pr-5" href="{{ url('/')}}">Go Home</a>
+            </div>
+        </div>
     </div>
-</section>
-
-<section class="bg-gray-2">
-    @include('partials.categories')
 </section>
 
 @endsection

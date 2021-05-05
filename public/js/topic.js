@@ -40,28 +40,3 @@ $(function() {
         });
     }
 })
-
-/** Clone Topic section */
-// $(function () {
-//     $('.remove_topic').attr('disabled', true);
-//
-//     $('.btn_add_topic').click(function(event) {
-//         event.preventDefault();
-//
-//         let controlForm = $('.clone');
-//         document.querySelector('.topic_form').reset();
-//         $('.card').clone().appendTo('.clone');
-//
-//
-//
-//         attach_delete();
-//     });
-//
-//     function attach_delete() {
-//         $('.remove_topic').off();
-//         $('.remove_topic').attr('disabled', false);
-//         $('.remove_topic').click(function() {
-//             $(this).closest('.card').remove();
-//         });
-//     }
-// });

@@ -14,8 +14,9 @@ return [
     */
 
     'name' => env('APP_NAME', 'Coaching101'),
-
     'rave_key' => env('SECRET_KEY'),
+    'encryption_key' => env('ENCRYPTION_KEY'),
+    'flutterwave_url' => env('FLUTTERWAVE_URL'),
 
     /*
     |--------------------------------------------------------------------------
