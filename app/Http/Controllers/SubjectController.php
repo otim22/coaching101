@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Year;
 use App\Models\Term;
+use App\Models\Item;
 use App\Models\Topic;
 use App\Models\Ratings;
 use App\Models\Subject;
+use App\Models\ItemContent;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,11 +21,11 @@ class SubjectController extends Controller
         $this->middleware('auth')->except('onBoard');
     }
 
-    public function index(Subject $subject)
+    public function index(ItemContent $subjects)
     {
-        $subjects = Subject::orderBy('id', 'desc')->where('user_id', Auth::id())->paginate(10);
+        $subjects = ItemContent::orderBy('id', 'desc')->where(['user_id' => Auth::id(), 'item_id' => 1])->paginate(10);
 
-        return view('teacher.manage_subject.index', compact('subjects'));
+        return view('teacher.videos.index', compact('subjects'));
     }
 
     public function create()
@@ -31,21 +33,22 @@ class SubjectController extends Controller
         $categories = Category::get();
         $years = Year::get();
         $terms = Term::get();
+        $item = Item::where('name', 'Subject')->firstOrFail();
 
-        return view('teacher.manage_subject.create', compact(['categories', 'years', 'terms']));
+        return view('teacher.videos.create', compact(['categories', 'years', 'terms', 'item']));
     }
 
-    public function show(Subject $subject)
+    public function show(ItemContent $subject)
     {
-        return view('teacher.manage_subject.show', compact('subject'));
+        return view('teacher.videos.show', compact('subject'));
     }
 
-    public function store(SubjectRequest $request, Subject $subject)
+    public function store(SubjectRequest $request)
     {
-        $subject = new Subject($request->except(['cover_image']));
+        $subject = new ItemContent($request->except(['cover_image']));
 
-        $subject->title     = $request->input('title');
-        $subject->subtitle      = $request->input('subtitle');
+        $subject->title = $request->input('title');
+        $subject->subtitle = $request->input('subtitle');
         $subject->description = $request->input('description');
         $subject->category_id = $request->input('category_id');
         $subject->year_id = $request->input('year_id');
@@ -54,22 +57,19 @@ class SubjectController extends Controller
 
         $category = Category::findOrFail($request->input('category_id'));
         $category->years()->attach($request->input('year_id'));
-
         $year = Year::findOrFail($request->input('year_id'));
         $year->terms()->attach($request->input('term_id'));
 
-        $subject->save();
-
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
-            $subject->addMediaFromRequest('cover_image')
-                            ->preservingOriginal()
-                            ->toMediaCollection('default');
+            $subject->addMediaFromRequest('cover_image')->toMediaCollection('default');
         }
+
+        $subject->save();
 
         return redirect()->route('audiences', $subject);
     }
 
-    public function edit(Subject $subject)
+    public function edit(ItemContent $subject)
     {
         $categories = Category::get();
         $category = Category::find($subject->category_id);
@@ -78,13 +78,12 @@ class SubjectController extends Controller
         $terms = Term::get();
         $term = Term::find($subject->term_id);
 
-        return view('teacher.manage_subject.edit', compact([
+        return view('teacher.videos.edit', compact([
             'subject', 'categories', 'category', 'years', 'year', 'terms', 'term'
         ]));
     }
 
-
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request, ItemContent $subject)
     {
         $request->validate([
             'title' => 'required|string',
@@ -97,9 +96,12 @@ class SubjectController extends Controller
             'cover_image' => 'nullable|image|mimes:jpg, jpeg, png|max:5520'
         ]);
 
-        $subject->fill($request->except(['cover_image']))->save();
+        $subject->update($request->except(['cover_image']));
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+            foreach ($subject->media as $media) {
+                $media->delete();
+            }
             $subject->addMediaFromRequest('cover_image')->toMediaCollection('default');
         }
 
@@ -125,14 +127,14 @@ class SubjectController extends Controller
         return redirect()->route('manage.subjects');
     }
 
-    public function destroy(Subject $subject)
+    public function destroy(ItemContent $subject)
     {
         try {
             $subject->delete();
 
             return redirect()->route('manage.subjects')->with('success', 'Subject deleted successfully');
         } catch (\Exception $e) {
-            return redirect()->route('manage.subjects')->with('error', 'Failed to deleted subject');
+            return redirect()->route('manage.subjects')->with('error', 'Failed to delete subject');
         }
     }
 }

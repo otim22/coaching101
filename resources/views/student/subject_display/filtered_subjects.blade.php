@@ -2,7 +2,7 @@
     @forelse($subjects as $subject)
         <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
             <a href="{{ route('subjects.show', $subject->slug) }}" style="text-decoration: none">
-                <div class="card mb-4">
+                <div class="card mb-2">
                     <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
                         <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
                     </a>
@@ -44,7 +44,7 @@
                         </a>
                         <div class="mt-2 d-flex justify-content-between">
                             @if($subject->isSubscribedTo)
-                                <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                <a id="round-button-2" class="btn btn-sm btn-outline-primary" href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
                             @else
                                 <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
                                 <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
@@ -59,7 +59,7 @@
             <p>The subject(s) you are looking for was not found. </p>
         </div>
     @endforelse
-    <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
+    <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-5">
         {{ $subjects->links() }}
     </div>
 </div>

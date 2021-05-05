@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Category;
-use App\Models\Note;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoteRequest;
 
@@ -14,8 +14,8 @@ class NotesController extends Controller
 {
     public function index()
     {
-        $notes = Note::paginate(20);
-
+        $notes = ItemContent::where('item_id', 3)->paginate(20);
+        
         return view('admin.notes.index', compact('notes'));
     }
 
@@ -34,9 +34,9 @@ class NotesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(NoteRequest $request, Note $note)
+    public function store(NoteRequest $request, ItemContent $note)
     {
-        $note = new Note($request->except(['note']));
+        $note = new ItemContent($request->except(['note']));
 
         $note->save();
 
@@ -47,7 +47,7 @@ class NotesController extends Controller
         return redirect()->route('admin.notes.index')->with('success', 'Notes added successfully.');
     }
 
-    public function show(Note $note)
+    public function show(ItemContent $note)
     {
         return view('admin.notes.show', compact('note'));
     }
@@ -58,7 +58,7 @@ class NotesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Note $note)
+    public function edit(ItemContent $note)
     {
         $years =  Year::get();
         $terms =  Term::get();
@@ -77,7 +77,7 @@ class NotesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Note $note)
+    public function update(Request $request, ItemContent $note)
     {
         $request->validate([
             'title' => 'required|string',
@@ -105,7 +105,7 @@ class NotesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Note $note)
+    public function destroy(ItemContent $note)
     {
         try {
             $note->delete();
@@ -116,9 +116,9 @@ class NotesController extends Controller
         }
     }
 
-    public function approve(Note $note)
+    public function approve(ItemContent $note)
     {
-        $approveNote = Note::find($note->id);
+        $approveNote = ItemContent::find($note->id);
 
         if($approveNote->is_approved == 0) {
             $approveNote->is_approved = 1;

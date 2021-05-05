@@ -72,3 +72,37 @@ $(function () {
     }
 });
 /** End book objectives **/
+
+/** Start Delete a particular objective */
+$(function() {
+    $("p.objective-delete").on("click", function() {
+        var objectiveDeleteUrl = $(this).attr("data-objective-delete-url");
+        var objectiveId = $(this).attr("data-objective-id");
+        deleteStudentLearn(objectiveDeleteUrl, objectiveId);
+    });
+});
+
+function deleteStudentLearn(objectiveDeleteUrl, objectiveId) {
+    $.ajax({
+        type: "POST",
+        url: objectiveDeleteUrl,
+        dataType: "JSON",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            id: objectiveId
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function(xhr) {
+            console.log(xhr.responseText);
+       }
+    });
+
+    setTimeout(function () {
+        document.location.reload(true);
+    }, 1000);
+}
+/** End Delete a particular objective */

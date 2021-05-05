@@ -16,7 +16,7 @@
                                     <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
                                 </svg>
                             </div>
-                            <h5 class="bold">{{ __('Login to your account') }}</h5>
+                            <h4 class="bold">{{ __('Login To Your Account') }}</h4>
                         </div>
                     </div>
 

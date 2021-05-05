@@ -2,29 +2,29 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-sm-6 col-md-6 col-lg-3">
-                <h5 class="uppercase">Coaching101</h5>
+                <h5 class="uppercase">All cloud prep</h5>
                 <ul class="list-unstyled">
                     <li><a href="{{ route('about') }}">About</a></li>
                     <li><a href="{{ route('contacts') }}">Contact</a></li>
-                    <!-- <li><a href="#">Blog</a></li> -->
+                    <li><a href="{{ route('donate.index') }}">Donate</a></li>
                 </ul>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <h5>Resources</h5>
                 <ul class="list-unstyled">
                     @guest
-                        <li><a href="{{ route('subjects.starter') }}">Teach</a></li>
+                        <li><a href="{{ route('subjects.starter') }}">Teacher</a></li>
                     @endguest
                     @auth
                         @if(Auth::user()->role == 1)
-                            <li><a href="{{ route('subjects.starter') }}">Teach</a></li>
+                            <li><a href="{{ route('subjects.starter') }}">Teacher</a></li>
                         @elseif(Auth::user()->role == 2)
-                            <li><a href="{{ route('manage.subjects') }}">Teach</a></li>
+                            <li><a href="{{ route('manage.subjects') }}">Teacher</a></li>
                         @else
-                            <li><a href="{{ route('manage.subjects') }}">Teach</a></li>
+                            <li><a href="{{ route('manage.subjects') }}">Teacher</a></li>
                         @endif
                     @endauth
-                    <li><a href="{{ url('/#learn-now') }}">Learn</a></li>
+                    <li><a href="{{ url('/#learn-now') }}">Learner</a></li>
                     <li><a href="#">Affiliate</a></li>
                 </ul>
             </div>

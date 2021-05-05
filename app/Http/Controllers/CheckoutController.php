@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
-    public function index()
+    public function index($donor)
     {
-        return view('student.checkout.index');
+        return view('donation.checkout.index', compact('donor'));
     }
 }

@@ -27,16 +27,17 @@ class NoteRequest extends FormRequest
             'title' => 'required|string',
             'price' => 'nullable',
             'category_id' => 'required|integer',
+            'item_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
-            'note' => 'required|mimes:pdf|max:5000',
+            'note' => 'required|mimes:pdf',
             'user_id' => 'integer|nullable',
         ];
 
-        $notes_objective = count($this->input('notes_objective'));
+        $notes_objective = count($this->input('objective'));
 
         foreach(range(0, $notes_objective) as $index) {
-            $rules[]['notes_objective.' . $index] = 'required|string';
+            $rules[]['objective.' . $index] = 'required|string';
         }
 
         return $rules;

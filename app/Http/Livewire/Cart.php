@@ -3,15 +3,16 @@
 namespace App\Http\Livewire;
 
 use Illuminate\View\View;
-use App\Models\Subject;
 use App\Models\Wishlist;
 use Livewire\Component;
-use App\Helpers\ProcessPayment as Payment;
+use App\Models\ItemContent;
 use Illuminate\Support\Facades\Auth;
 use App\Facades\Cart as CartFacade;
+use App\Helpers\ProcessPayment as Payment;
 
 class Cart extends Component
 {
+    private $url = "https://api.flutterwave.com/v3/charges";
     public $cartItemTotal = 0;
     public $sum = 0;
     public $cartItems = [];
@@ -71,14 +72,14 @@ class Cart extends Component
 
     public function calculateCartSum($subjectId)
     {
-        $subject = Subject::findOrFail($subjectId);
+        $subject = ItemContent::where('id', $subjectId)->firstOrFail();
         $this->sum += $subject->price;
         return $this->sum;
     }
 
     public function calculateCartDeduction($subjectId)
     {
-        $subject = Subject::findOrFail($subjectId);
+        $subject = ItemContent::findOrFail($subjectId);
         $this->sum -= $subject->price;
         return $this->sum;
     }
@@ -100,49 +101,25 @@ class Cart extends Component
         $this->emit('itemTotalUpdate');
     }
 
-    public function initialize() {
-        Rave::initialize(route('callback'));
-    }
-
     public function checkout()
     {
         if(Auth::check()) {
-            $user = Auth::user();
-            $paymentToken = 'Ref-' . 'tx-'. time() . '-' . $user->id;
-            $currency = "UGX";
-            $userEmail = $user->email;
-            $userName= $user->name;
-            $phoneNumber = $user->profile->phone_number;
-            $cartSum = $this->sum;
-            $redirectLink = "http://0.0.0.0:8009/cart";
-
-            $data = [
-                "tx_ref" => $paymentToken,
-                "amount"=> '2000',
-                "currency"=> $currency,
-                "redirect_url" => $redirectLink,
+            $data = array_merge($this->setPaymentDefaults(), [
                 "payment_options" => "card",
                 "card_number" => $this->cardDetails['number'],
                 "cvv" => $this->cardDetails['cvv'],
                 "expiry_month" => $this->cardDetails['expiryMonth'],
                 "expiry_year" => $this->cardDetails['expiryYear'],
-                "email" => $userEmail,
-                "phone_number" => $phoneNumber,
-                "meta" => [
-                    "consumer_id" => Auth::id()
-                ],
-                "customer" => [
-                    "email" => $userEmail,
-                    "name" => $userName
-                ],
+                "phone_number" => Auth::user()->profile->phone,
+                "fullname" => Auth::user()->name,
                 "customizations" => [
                     "title" => "OTF Payments",
-                    "description" => "Middleout isn't free. Pay the price",
+                    "description" => "Your transaction is secure with us.",
                     "logo" => "https://assets.piedpiper.com/logo.png"
                 ]
-            ];
+            ]);
 
-            $payment = new Payment($data);
+            $payment = new Payment($data, $this->url);
             $response = $payment->cardPayment();
             $data = json_decode($response->body(), true);
 
@@ -158,6 +135,46 @@ class Cart extends Component
                 $this->emit('onError', $data);
             }
         }
+    }
+
+    public function proccessMobileMoney($data)
+    {
+        if(Auth::check()) {
+            $data = array_merge($this->setPaymentDefaults(), [
+                "network" => strtoupper($data['network']),
+                "phone_number" => $data['phoneNumber']
+            ]);
+            $payment = new Payment($data, $this->url);
+            $response = $payment->mobileMoney();
+            $data = json_decode($response->body(), true);
+            if ($response->successful()) {
+                $this->emit('onSuccess', $data);
+                $this->clearCart();
+            }
+            if ($data['status'] == 'error') {
+                $this->emit('onError', $data);
+            }
+        }
+    }
+
+    private function setPaymentDefaults() {
+        $user = Auth::user();
+        $paymentToken = 'REF-' . 'TX-'. time() . '-' . $user->id;
+        $currency = "UGX";
+        $userEmail = $user->email;
+        $cartSum = $this->sum;
+        $redirectLink = "https://coaching101.app/cart";
+
+        return [
+            "tx_ref" => $paymentToken,
+            "amount"=> '2000',
+            "currency"=> $currency,
+            "redirect_url" => $redirectLink,
+            "email" => $userEmail,
+            "meta" => [
+                "consumer_id" => Auth::id()
+            ]
+        ];
     }
 
     public function clearCart() {
@@ -184,13 +201,15 @@ class Cart extends Component
         $cartFacade = new CartFacade;
         $this->cartItems = $cartFacade->get()['subjects'];
 
-        foreach ($this->cartItems as $cartItem) {
-            if (($cartItem->id === $subjectId)) {
-                return redirect()->back()->with('messaged', 'This subject is already in your cart!');
+        if(!empty($this->cartItems)) {
+            foreach ($this->cartItems as $cartItem) {
+                if (($cartItem->id === $subjectId)) {
+                    return redirect()->back()->with('messaged', 'This subject is already in your cart!');
+                }
             }
         }
 
-        $cartFacade->add(Subject::where('id', $subjectId)->first());
+        $cartFacade->add(ItemContent::where('id', $subjectId)->first());
 
         $this->emit('itemAdded');
         $this->emit('cartSumUpdate', $subjectId);
@@ -210,7 +229,7 @@ class Cart extends Component
     {
         if(Auth::check()) {
             $status = Wishlist::where('user_id', Auth::id())
-                                                ->where('subject_id', $subjectId)
+                                                ->where('item_content_id', $subjectId)
                                                 ->first();
 
             if(isset($status->user_id) && isset($subjectId)) {
@@ -218,7 +237,7 @@ class Cart extends Component
             } else {
                 Wishlist::create([
                     'user_id' => Auth::id(),
-                    'subject_id' => $subjectId
+                    'item_content_id' => $subjectId
                 ]);
 
                 $this->emit('updateWishlist');
@@ -239,7 +258,7 @@ class Cart extends Component
 
     public function deleteFromWishlist($subjectId): void
     {
-        $wishlist = Wishlist::where('subject_id', $subjectId);
+        $wishlist = Wishlist::where('item_content_id', $subjectId);
         $wishlist->delete();
         $this->emit('updateWishlist');
     }

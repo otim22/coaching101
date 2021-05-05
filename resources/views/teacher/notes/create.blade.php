@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Subjects</a>
+                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Notes</li>
             </ol>
@@ -96,6 +96,12 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="hidden" class="form-control" name="item_id" value="{{ $item->id }}">
+                            </div>
+                        </div>
+
                         <div class="mb-4">
                             <div class="form-group dynamic_note_objective">
                                 <label for="notes_objective">What will students learn in the note?</label>
@@ -103,16 +109,16 @@
                                     <div class="notes_objective_input">
                                         <input type="text"
                                             id="notes_objective"
-                                            value="{{old('notes_objective.0')}}"
-                                            class="form-control form-control mb-2 @error('notes_objective.0') is-invalid @enderror"
+                                            value="{{old('objective.0')}}"
+                                            class="form-control form-control mb-2 @error('objective.0') is-invalid @enderror"
                                             placeholder="Example: Origin of languages"
-                                            name="notes_objective[]" required>
+                                            name="objective[]" required>
                                     </div>
                                     <div class="hidden" id="hidden_note_objective">
                                         <p class="delete_note_objective">x</p>
                                     </div>
                                 </div>
-                                @error('notes_objective.0')
+                                @error('objective.0')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -167,11 +173,8 @@
 
 @endsection
 
-@push('scripts')
-    <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
-@endpush
-
 @prepend('scripts')
     <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-@endprepend
+    <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
+@endpush

@@ -9,15 +9,15 @@ class Wishlist extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'subject_id'];
+    protected $fillable = ['user_id', 'item_content_id'];
 
     public function user()
     {
         return $this->belongsTo('App\Models\User');
     }
 
-    public function subject()
+    public function itemContent()
     {
-        return $this->belongsTo('App\Models\Subject');
+        return $this->belongsTo('App\Models\ItemContent');
     }
 }

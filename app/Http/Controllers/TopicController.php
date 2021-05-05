@@ -4,31 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Topic;
-use App\Models\Subject;
+use App\Models\ItemContent;
 use App\Http\Requests\TopicRequest;
 
 class TopicController extends Controller
 {
-    public function create(Subject $subject)
+    public function create(ItemContent $subject)
     {
-        return view('teacher.manage_subject.topics.create', compact('subject'));
+        return view('teacher.videos.topics.create', compact('subject'));
     }
 
-    public function show(Subject $subject, Topic $topic)
+    public function show(ItemContent $subject, Topic $topic)
     {
-        return view('teacher.manage_subject.topics.show', compact(['subject', 'topic']));
+        return view('teacher.videos.topics.show', compact(['subject', 'topic']));
     }
 
-    public function edit(Subject $subject, Topic $topic)
+    public function edit(ItemContent $subject, Topic $topic)
     {
-        return view('teacher.manage_subject.topics.edit', compact(['subject', 'topic']));
+        return view('teacher.videos.topics.edit', compact(['subject', 'topic']));
     }
 
-    public function store(TopicRequest $request, Subject $subject)
+    public function store(TopicRequest $request, ItemContent $subject)
     {
-        dd($request->hasFile('content_file_path'));
-        dd($request->file('content_file_path')->isValid());
-        dd($request->file('content_file_path'));
         $topic = new Topic;
 
         $topic->title = $request->title;
@@ -52,7 +49,7 @@ class TopicController extends Controller
         return redirect()->route('subjects.show', $subject);
     }
 
-    public function update(Request $request, Subject $subject, Topic $topic)
+    public function update(Request $request, ItemContent $subject, Topic $topic)
     {
         $request->validate([
             'title' => 'required|string',
@@ -63,23 +60,34 @@ class TopicController extends Controller
 
         $topic->title = $request->title;
         $topic->description = $request->description;
+        $content_file = $request->content_file_path;
+        $topic->description = $request->description;
 
-        if($request->hasFile('content_file_path') && $request->isValid()) {
-            $topic->addMedia($content_file)
-                        ->preservingOriginal()
-                        ->toMediaCollection('content_file');
+        if($request->hasFile('content_file_path')) {
+            foreach ($request->file('content_file_path') as $content_file) {
+                $topic->addMedia($content_file)->toMediaCollection('content_file');
+            }
         }
 
         if ($request->hasFile('resource_attachment_path')) {
             foreach ($request->file('resource_attachment_path') as $resource_file) {
-                $topic->addMedia($resource_file)
-                            ->preservingOriginal()
-                            ->toMediaCollection('resource_attachment');
+                $topic->addMedia($resource_file)->toMediaCollection('resource_attachment');
             }
         }
 
         $subject->topics()->save($topic);
 
         return redirect()->route('subjects.show', $subject);
+    }
+
+    public function destroy(ItemContent $subject, Topic $topic)
+    {
+        try {
+            $topic->delete();
+
+            return redirect()->route('subjects.show', $subject)->with('success', 'Topic deleted successfully');
+        } catch (\Exception $e) {
+            return redirect()->route('subjects.show', $subject)->with('error', 'Failed to delete topic');
+        }
     }
 }

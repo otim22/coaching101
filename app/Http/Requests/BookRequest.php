@@ -27,6 +27,7 @@ class BookRequest extends FormRequest
             'title' => 'required|string',
             'price' => 'nullable',
             'category_id' => 'required|integer',
+            'item_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
             'book' => 'required|mimes:pdf|max:5520',
@@ -34,10 +35,10 @@ class BookRequest extends FormRequest
             'user_id' => 'integer|nullable'
         ];
 
-        $book_objective = count($this->input('book_objective'));
+        $book_objective = count($this->input('objective'));
 
         foreach(range(0, $book_objective) as $index) {
-            $rules[]['book_objective.' . $index] = 'required|string';
+            $rules[]['objective.' . $index] = 'required|string';
         }
 
         return $rules;

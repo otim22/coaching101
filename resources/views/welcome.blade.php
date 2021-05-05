@@ -2,7 +2,8 @@
 
 @section('content')
 
-<section class="bg-image text-white mt-4" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 90vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
+<!-- Start jumbotron-->
+<section class="bg-image text-white mt-4" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 100vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
@@ -30,7 +31,9 @@
         </div>
     </div>
 </section>
+<!-- End jumbotron-->
 
+<!-- Start selling points-->
 <section class="bg-gray-2 background-style">
     <div class="container">
         <div class="row mb-5">
@@ -73,37 +76,37 @@
         </div>
     </div>
 </section>
+<!-- End selling points-->
 
+<!-- Start to learn-->
 <section class="" id="learn-now">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-12 mb-4">
                 <h4 class="bold"> At your own convience start learning</h4>
             </div>
-
             <div class="col-sm-12 col-md-12 col-12">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         @foreach($categories as $key => $category)
                             <a class="nav-item nav-link {{ $key === $categories->keys()->first() ? 'active' : '' }}"
-                                id="nav-{{$key}}-tab"
+                                id="nav-{{ Str::slug($key) }}-tab"
                                 data-toggle="tab"
-                                href="#nav-{{$key}}"
+                                href="#{{ Str::slug($key) }}"
                                 role="tab"
-                                aria-controls="nav-{{$key}}"
-                                aria-selected="true">
-                                <h6>{{ $key }}</h6>
+                                aria-controls="nav-{{ Str::slug($key) }}">
+                                <h6>{{ $key }} </h6>
                             </a>
                         @endforeach
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     @foreach($categories as $key => $category)
-                        <div class="tab-pane fade show {{ $key === $categories->keys()->first() ? 'active' : '' }}" id="nav-{{$key}}" role="tabpanel" aria-labelledby="nav-{{$key}}-tab">
+                        <div class="tab-pane fade show {{ $key === $categories->keys()->first() ? 'active' : '' }}" id="{{ Str::slug($key) }}" role="tabpanel" aria-labelledby="nav-{{ Str::slug($key) }}-tab">
                             <div class="row mt-4">
                                 @foreach($category as $cat)
-                                    @foreach($cat->subjects as $subject)
-                                        <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
+                                    @foreach($cat->itemContents as $subject)
+                                        <div class="col-sm-6 col-md-6 col-lg-3 mb-4">
                                             <div class="card">
                                                 <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
                                                     <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
@@ -146,10 +149,10 @@
                                                     </a>
                                                     <div class="mt-2 d-flex justify-content-between">
                                                         @if($subject->isSubscribedTo)
-                                                            <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                                            <a id="round-button-2" class="btn btn-sm btn-outline-primary" href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
                                                         @else
-                                                            <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
-                                                            <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
+                                                            <livewire:add-to-cart :subject="$subject" />
+                                                            <livewire:add-to-wish-list :subject="$subject" />
                                                         @endif
                                                     </div>
                                                 </div>
@@ -165,7 +168,9 @@
         </div>
     </div>
 </section>
+<!-- End Start learn-->
 
+<!-- Start most viewed subjects-->
 <section class="bg-white">
     <div class="container">
         <div class="row">
@@ -216,7 +221,7 @@
                             </a>
                             <div class="mt-2 d-flex justify-content-between">
                                 @if($subject->isSubscribedTo)
-                                    <a href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                    <a  id="round-button-2" class="btn btn-sm btn-outline-primary" href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
                                 @else
                                     <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
                                     <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
@@ -229,7 +234,9 @@
         </div>
     </div>
 </section>
+<!-- End most viewed subjects-->
 
+<!-- Start student Image-->
 <section class="bg-white" >
     <div class="bg-green pt-5 pb-5">
     <div class="container">
@@ -252,11 +259,15 @@
     </div>
     </div>
 </section>
+<!-- End student Image-->
 
+<!-- Start Categories-->
 <section class="bg-white">
     @include('partials.categories')
 </section>
+<!-- End Categories-->
 
+<!-- Start teacher Image-->
 <section class="bg-white">
     <div class="bg-blue-2 pt-5 pb-5">
     <div class="container">
@@ -291,12 +302,16 @@
     </div>
     </div>
 </section>
+<!-- End teacher Image-->
 
+<!-- Start Top teacher-->
 <section class="bg-white">
     @include('partials.teachers')
 </section>
+<!-- End teacher-->
 
-<section class="bg-gray-2 faq">
+<!-- Start FAQ-->
+<section class="bg-gray-2">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12">
@@ -337,10 +352,11 @@
         </div>
     </div>
 </section>
+<!-- End FAQ-->
 
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/tab-selection.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/home.js')}}" type="text/javascript"></script>
 @endpush

@@ -15,9 +15,9 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Subjects</a>
+                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Books</li>
+                <li class="breadcrumb-item active" aria-current="page">Past Paper</li>
             </ol>
         </nav>
     </div>
@@ -29,6 +29,9 @@
             <div class="col-lg-8 col-md-12 col-sm-12 off-set-2">
                 <div class="card p-4">
                     <div class="d-flex justify-content-between mb-2">
+                        <div>
+                            <h5 class="bold">Past Paper</h5>
+                        </div>
                         <div>
                             <a id="round-button-2" href="{{ route('teacher.pastpapers') }}" class="btn btn-secondary btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">

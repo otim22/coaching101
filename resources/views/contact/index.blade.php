@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread" style="background-image:url(images/back_img.jpg);">
+<section class="section-bread bg-gray-2">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -27,10 +27,10 @@
     @include('flash.messages')
 </div>
 
-<section>
+<section class="bg-white">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12" style="margin-top: auto; margin-bottom: auto; width: 8em;">
+            <div class="col-lg-5 col-md-5 col-sm-12" style="margin-top: auto; margin-bottom: auto; width: 8em;">
                 <div class="mb-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#658ebf" class="bi bi-geo-alt ml-5" viewBox="0 0 16 16">
                         <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
@@ -38,16 +38,16 @@
                     </svg>
                 </div>
                 <h5 class="gray_color wraps-text">Old Butabika Road,</h5>
-                <h5 class="gray_color wraps-text">2nd Floor</h5>
+                <h5 class="gray_color wraps-text">2<sup>nd</sup> Floor</h5>
                 <h5 class="mb-5 gray_color">Mutungo, <span class="wraps-text">Kampala Uganda.</span></h5>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="col-lg-7 col-md-7 col-sm-12">
                 <div class="card">
-                    <div class="card-header p-4">
+                    <div class="card-header p-5">
                         <h4>Write us a message</h4>
                         <div>Get in touch with us in the form below or Make any inquiries and surely we will get back to you.</div>
                     </div>
-                    <div class="card-body p-4">
+                    <div class="card-body p-5">
                         <form action="{{ route('contacts.store') }}" method="POST">
                             @csrf
                             <div class="form-group">
