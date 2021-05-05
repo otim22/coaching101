@@ -54,49 +54,26 @@
                                 <form action="{{ route('donations.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="sponsor_name">Full Names</label>
-                                        <input type="text" class="form-control" name="sponsor_name" value="{{ old('sponsor_name') }}">
-                                        @error('sponsor_name')
+                                        <label for="name">Full Names</label>
+                                        <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                        @error('name')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group mt-4">
-                                        <label for="sponsor_email">Email Address</label>
-                                        <input type="text" class="form-control" name="sponsor_email" value="{{ old('sponsor_email') }}" />
-                                        @error('sponsor_email')
+                                        <label for="email">Email Address</label>
+                                        <input type="text" class="form-control" name="email" value="{{ old('email') }}" />
+                                        @error('email')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <a style="text-decoration: none;" id="sponsorSomeoneId" data-toggle="collapse" href="#sponsor" role="button" aria-expanded="false" aria-controls="sponsor">
-                                        <div>
-                                            <div class="d-flex justify-content-between">
-                                                <span class="pt-2">Sponsor Someone (Optional)</span>
-                                                <i class="fa fa-plus-circle"></i>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="collapse" id="sponsor">
-                                        <div class="form-group">
-                                            <label for="sponsee_name">Sponsee's Full Names</label>
-                                            <input type="text" class="form-control" name="sponsee_name" value="{{ old('sponsee_name') }}" />
-                                            @error('sponsee_name')
-                                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                    <input id="onceInterval" type="hidden" name="interval" value="daily">
 
-                                        <div class="form-group mt-4">
-                                            <label for="sponsee_email">Sponsee's Email Address</label>
-                                            <input type="text" class="form-control" name="sponsee_email" value="{{ old('sponsee_email') }}" />
-                                            <p class="author-font">* We will notify your Sponsee of your gift.</p>
-                                            @error('sponsee_email')
-                                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                    <input type="hidden" name="duration" value="1">
 
-                                    <div class="form-group mt-4">
+                                    <div class="form-group mt-4 mb-4">
                                         <label for="body">Amount</label>
                                         <div class="input-group">
                                             <select class="custom-select currency" name="currency">
@@ -168,8 +145,6 @@
                                         @enderror
                                     </div>
 
-                                    <input type="hidden" name="duration" value="">
-
                                     <div class="pt-4">
                                         <button id="round-button-2" type="submit" class="btn btn-danger btn-block">Give Once</button>
                                     </div>
@@ -180,58 +155,30 @@
                                 <form action="{{ route('donations.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="sponsor_name">Full Names</label>
-                                        <input type="text" class="form-control" name="sponsor_name" value="{{ old('sponsor_name') }}">
-                                        @error('sponsor_name')
+                                        <label for="name">Full Names</label>
+                                        <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                        @error('name')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group mt-4">
-                                        <label for="sponsor_email">Email Address</label>
-                                        <input type="text" class="form-control" name="sponsor_email" value="{{ old('sponsor_email') }}" />
-                                        @error('sponsor_email')
+                                        <label for="email">Email Address</label>
+                                        <input type="text" class="form-control" name="email" value="{{ old('email') }}" />
+                                        @error('email')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="form-group mt-4">
-                                        <label for="duration">Duration <span class="light_gray_color">(*Optional)</span></label>
-                                        <input type="number" class="form-control" name="duration" value="{{ old('duration') }}" />
+                                        <label for="duration">Duration <span class="light_gray_color"></span></label>
+                                        <input type="number" class="form-control" name="duration" value="{{ old('duration') }}" placeholder="Example: 1" />
                                         @error('duration')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <a style="text-decoration: none;" id="sponsorSomeoneMonthlyId" data-toggle="collapse" href="#sponseeSection" role="button" aria-expanded="false" aria-controls="sponseeSection">
-                                        <div>
-                                            <div class="d-flex justify-content-between">
-                                                <span class="pt-2">Sponsor Someone (*Optional)</span>
-                                                <i class="fa fa-plus-circle"></i>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                    <div class="collapse" id="sponseeSection">
-                                        <div class="form-group">
-                                            <label for="sponsee_name">Sponsee's Full Names</label>
-                                            <input type="text" class="form-control" name="sponsee_name" value="{{ old('sponsee_name') }}" />
-                                            @error('sponsee_name')
-                                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group mt-4">
-                                            <label for="sponsee_email">Sponsee's Email Address</label>
-                                            <input type="text" class="form-control" name="sponsee_email" value="{{ old('sponsee_email') }}" />
-                                            <p class="author-font">* We will notify your Sponsee of your gift.</p>
-                                            @error('sponsee_email')
-                                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group mt-4">
+                                    <div class="form-group mt-4 mb-4">
                                         <label for="body">Amount</label>
                                         <div class="input-group">
                                             <select class="custom-select currency" name="currency">
@@ -315,9 +262,9 @@
                                 <form action="{{ route('donations.cancel') }}" method="POST">
                                     @csrf
                                     <div class="form-group mt-4">
-                                        <label for="sponsor_email">Email Address</label>
-                                        <input type="text" class="form-control" name="sponsor_email" value="{{ old('sponsor_email') }}" />
-                                        @error('sponsor_email')
+                                        <label for="email">Email Address</label>
+                                        <input type="text" class="form-control" name="email" value="{{ old('email') }}" />
+                                        @error('email')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
                                     </div>

@@ -19,25 +19,19 @@ class Checkout extends Component
 
     public function render()
     {
-        return view('livewire.checkout', $this->renderData());
-    }
-
-    public function renderData()
-    {
-        return [
-            'donationDetails' => $this->getDonor(),
-        ];
+        return view('livewire.checkout');
     }
 
     public function checkout()
     {
+        // dd($this->donor);
         $data = array_merge($this->setPaymentDefaults(), [
             "payment_options" => "card",
             "card_number" => $this->cardDetails['number'],
             "cvv" => $this->cardDetails['cvv'],
             "expiry_month" => $this->cardDetails['expiryMonth'],
             "expiry_year" => $this->cardDetails['expiryYear'],
-            "fullname" => $this->getDonor()->sponsor_name,
+            "fullname" => $this->donor->name,
             "customizations" => [
                 "title" => "OTF Payments",
                 "description" => "Your transaction is secure with us.",
@@ -53,8 +47,7 @@ class Checkout extends Component
             $status = $response['data']['status'];
             if ($status == 'successful') {
                 $this->emit('onSuccess', $data);
-                $donor = $this->getDonor()->id;
-                return redirect()->route('donate.show', $donor);
+                return redirect()->route('donate.show', $this->donor);
             }
         }
         if ($data['status'] == 'error') {
@@ -68,12 +61,14 @@ class Checkout extends Component
             "network" => strtoupper($data['network']),
             "phone_number" => $data['phoneNumber']
         ]);
+
         $payment = new Payment($data, $this->url);
         $response = $payment->mobileMoney();
         $data = json_decode($response->body(), true);
+
         if ($response->successful()) {
             $this->emit('onSuccess', $data);
-            $donor = $this->getDonor()->id;
+            $donor = $this->donor->id;
             return redirect()->route('donate.show', $donor);
         }
         if ($data['status'] == 'error') {
@@ -82,10 +77,10 @@ class Checkout extends Component
     }
 
     private function setPaymentDefaults() {
-        $user =  $this->getDonor();
+        $user =  $this->donor;
         $paymentToken = 'REF-' . 'TX-'. time() . '-' . $user->id;
         $currency = $user->currency;
-        $userEmail = $user->sponsor_email;
+        $userEmail = $user->email;
         $donationSum = $user->amount;
         $redirectLink = "https://coaching101.app/donations";
 
@@ -99,10 +94,5 @@ class Checkout extends Component
                 "consumer_id" => $user->id
             ]
         ];
-    }
-
-    private function getDonor()
-    {
-        return Donation::where('id', $this->donor)->firstOrFail();
     }
 }

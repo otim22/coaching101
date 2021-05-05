@@ -74,16 +74,16 @@
                         <li>
                             <div class="d-flex justify-content-between">
                                 <div>Amount:</div>
-                                <div><span> {{ $donationDetails->format_amount }}/-</span></div>
+                                <div><span> {{ $donor->format_amount }}/-</span></div>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <div>Tax:</div>
                                 <div><span> 0.00/-</span></div>
                             </div>
-                            @if($donationDetails->interval)
+                            @if($donor->interval !== "daily")
                                 <div class="d-flex justify-content-between">
                                     <div>Interval:</div>
-                                    <div><span> monthly</span></div>
+                                    <div><span> {{ $donor->interval }}</span></div>
                                 </div>
                             @endif
                         </li>
@@ -91,21 +91,8 @@
                     <hr />
                     <div class="d-flex justify-content-between">
                         <div>Total:</div>
-                        <div><span> {{ $donationDetails->currency }} {{ $donationDetails->format_amount }}/-</span></div>
+                        <div><span> {{ $donor->currency }} {{ $donor->format_amount }}/-</span></div>
                     </div>
-                    @if($donationDetails->sponsee_email)
-                        <div>
-                            <h6 class="mt-4 bold">Sponsee Details</h6>
-                            <div class="d-flex justify-content-between">
-                                <div>Name:</div>
-                                <div><span> {{ $donationDetails->sponsee_name }}</span></div>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div>Email:</div>
-                                <div><span> {{ $donationDetails->sponsee_email }}</span></div>
-                            </div>
-                        </div>
-                    @endif
                     <div class="mt-5">
                         <a id="process"  type="button" class="btn btn-danger btn-block round-button mb-2">Complete Donation</a>
                     </div>
