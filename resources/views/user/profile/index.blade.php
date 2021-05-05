@@ -14,9 +14,15 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item">
-                    <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
-                </li>
+                @if($user->role == 1)
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
+                    </li>
+                @elseif($user->role == 2)
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
+                    </li>
+                @endif
                 <li class="breadcrumb-item active" aria-current="page">Profile</li>
             </ol>
         </nav>
@@ -308,6 +314,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/profile.js')}}" type="text/javascript"></script>
 @endpush

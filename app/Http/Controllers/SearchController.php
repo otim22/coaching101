@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subject;
 use App\Models\Question;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use Spatie\Searchable\Search;
 use Spatie\Searchable\ModelSearchAspect;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class SearchController extends Controller
 {
@@ -19,25 +20,36 @@ class SearchController extends Controller
 
         $approved = 1;
 
-        $searchResults = (new Search())
-                                ->registerModel(Subject::class, function(ModelSearchAspect $modelSearchAspect) use ($approved) {
+        $results = (new Search())
+                                ->registerModel(ItemContent::class, function(ModelSearchAspect $modelSearchAspect) use ($approved) {
                                             $modelSearchAspect->addSearchableAttribute('title')
-                                                            ->addSearchableAttribute('subtitle')
-                                                            ->where('is_approved', $approved);
-                                })->search($request->input('query'))->paginate(12)->withQueryString();
+                                                            ->where('is_approved', $approved)
+                                                            ->with('item');
+                                })->search($request->input('query'))->paginate(16)->withQueryString();
 
-        return view('student.subject_display.search_results', compact('searchResults'));
+        // $results = [];
+        // foreach($searchResults as $searchResult) {
+        //     $results[$searchResult->searchable->item->name . 's'][] = $searchResult;
+        // }
+
+        // $paginator  = $this->getPaginator($request, $results);
+
+        return view('student.subject_display.search_results', compact('results'));
     }
-    
-    // public function subjectQuestions(Request $request)
+
+    // private function getPaginator(Request $request, $results)
     // {
-    //     if (! $request->filled('query')) {
-    //         return back()->with('error', 'Please enter something');
+    //     foreach ($results as  $result) {
+    //         $total = count($result);
+    //         $page = $request->page ?? 1;
+    //         $perPage = 8;
+    //         $offset = ($page - 1) * $perPage;
+    //         $result = array_slice($result, $offset, $perPage);
+    //
+    //         return new LengthAwarePaginator($result, $total, $perPage, $page, [
+    //             'path' => $request->url(),
+    //             'query' => $request->query()
+    //         ]);
     //     }
-    //
-    //     $searchResults = (new Search())
-    //                             ->registerModel(Question::class, 'body')->search($request->input('query'))->paginate(12)->withQueryString();
-    //
-    //     return view('student.subject_display.show', compact('searchResults'));
     // }
 }

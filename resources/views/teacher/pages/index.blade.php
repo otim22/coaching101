@@ -29,33 +29,33 @@
                                     <svg class="bi bi-grid-3x3-gap-fill mr-1" width="1.3em" height="1.3em" viewBox="1 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1 2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1V2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1V2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V2zM1 7a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1V7zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1V7zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V7zM1 12a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H2a1 1 0 01-1-1v-2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1v-2zm5 0a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2z"/>
                                     </svg>
-                                    Browse
+                                    Courses
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="{{ route('home') }}">Videos</a>
-                                    <a class="dropdown-item" href="{{ route('student.books.index') }}">Books</a>
+                                    <a class="dropdown-item" href="{{ route('home') }}">Video Subjects</a>
+                                    <a class="dropdown-item" href="{{ route('student.books.index') }}">Pdf Books</a>
                                     <a class="dropdown-item" href="{{ route('student.notes.index') }}">Notes</a>
-                                    <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past papers</a>
+                                    <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past Papers</a>
                                 </div>
                             </li>
                         </ul>
 
                         <ul class="navbar-nav ml-auto nav nav-pills">
                             <li class="nav-item {{ InitialGenerator::set_active(['subjects.starter']) }} pt-1">
-                                <a class="nav-link" href="{{ route('subjects.starter') }}">Teach</a>
+                                <a class="nav-link" href="{{ route('subjects.starter') }}">Teacher</a>
                             </li>
 
                             @auth()
                                 @if(auth()->user()->role == 1)
                                     <li class="nav-item {{ InitialGenerator::set_active(['subjects.starter']) }} mt-1">
-                                        <a class="nav-link" href="{{ route('subjects.starter') }}">Teach</a>
+                                        <a class="nav-link" href="{{ route('subjects.starter') }}">Teacher</a>
                                     </li>
                                     <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
-                                        <a class="nav-link" href="{{ route('my-subjects') }}">My subjects</a>
+                                        <a class="nav-link" href="{{ route('my-account') }}">My subjects</a>
                                     </li>
                                 @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
                                     <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} mt-1">
-                                        <a class="nav-link" href="{{ route('my-subjects') }}">Learn</a>
+                                        <a class="nav-link" href="{{ route('my-account') }}">Learn</a>
                                     </li>
 
                                     <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
@@ -69,7 +69,7 @@
                                     <a class="btn btn-danger btn-sm nav-link" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">Login</a>
                                 </li>
                                 @if (Route::has('register'))
-                                    <li class="nav-item {{ InitialGenerator::set_active(['register']) }} mt-1 mr-2 register-button">
+                                    <li class="nav-item {{ InitialGenerator::set_active(['register']) }} mt-1 mr-2 hide-at-md">
                                         <a class="btn btn-outline-secondary btn-sm nav-link" id="round-button" href="{{ route('register') }}">Register</a>
                                     </li>
                                 @endif
@@ -95,10 +95,10 @@
                                              </a>
 
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="{{ route('my-subjects') }}">My subjects</a>
-                                            <a class="dropdown-item" href="{{ url('cart') }}">My cart</a>
+                                            <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
+                                            <a class="dropdown-item" href="{{ url('cart') }}">My Cart</a>
 
-                                            <a class="dropdown-item" href="{{ route('users.profile') }}">Profile details</a>
+                                            <a class="dropdown-item" href="{{ route('users.profile') }}">Profile Details</a>
                                             <div class="dropdown-divider"></div>
 
                                             <a class="dropdown-item" href="{{ route('logout') }}"

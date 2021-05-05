@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Audience::class, function (Faker $faker) {
     return [
-        'subject_id' => factory('App\Models\Subject')->create()->id,
+        'item_content_id' => factory('App\Models\ItemContent')->create()->id,
         'student_learn' => $faker->sentences,
         'class_requirement' => $faker->sentences,
         'target_student' =>  $faker->sentences

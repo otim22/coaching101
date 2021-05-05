@@ -16,8 +16,8 @@ class Audience extends Model
         'target_student' => 'array'
     ];
 
-    public function subject()
+    public function itemContent()
     {
-        return $this->belongsTo('App\Models\Subject');
+        return $this->belongsTo('App\Models\ItemContent');
     }
 }

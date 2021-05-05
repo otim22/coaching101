@@ -6,7 +6,7 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-8">
                 <div class="card auth-card">
-                    <div class="card-header pt-3">
+                    <div class="card-header pt-3" id="grayBg">
                         <h5 class="bold">{{ __('Reset Password') }}</h5>
                     </div>
 

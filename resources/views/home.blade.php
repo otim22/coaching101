@@ -14,7 +14,7 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Home</li>
+                <li class="breadcrumb-item active mr-auto" aria-current="page">Home</li>
             </ol>
         </nav>
     </div>
@@ -88,6 +88,6 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/tab-selection.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/home.js')}}" type="text/javascript"></script>
 @endpush

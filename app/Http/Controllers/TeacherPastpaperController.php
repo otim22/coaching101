@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Category;
-use App\Models\Pastpaper;
+use App\Models\ItemContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PastpaperRequest;
@@ -14,7 +14,7 @@ class TeacherPastpaperController extends Controller
 {
     public function index()
     {
-        $pastpapers = Pastpaper::where('user_id', Auth::id())->paginate(20);
+        $pastpapers = ItemContent::where(['user_id' => Auth::id(), 'item_id' => 4])->paginate(20);
 
         return view('teacher.pastpapers.index', compact('pastpapers'));
     }
@@ -34,9 +34,9 @@ class TeacherPastpaperController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PastpaperRequest $request, Pastpaper $pastpaper)
+    public function store(PastpaperRequest $request)
     {
-        $pastpaper = new Pastpaper($request->except('pastpaper'));
+        $pastpaper = new ItemContent($request->except('pastpaper'));
 
         $pastpaper->title = $request->input('title');
         $pastpaper->price = $request->input('price');
@@ -55,7 +55,7 @@ class TeacherPastpaperController extends Controller
         return redirect()->route('teacher.pastpapers')->with('success', 'PastPaper added successfully.');
     }
 
-    public function show(Pastpaper $pastpaper)
+    public function show(ItemContent $pastpaper)
     {
         return view('teacher.pastpapers.show', compact('pastpaper'));
     }
@@ -66,7 +66,7 @@ class TeacherPastpaperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pastpaper $pastpaper)
+    public function edit(ItemContent $pastpaper)
     {
         $years =  Year::get();
         $terms =  Term::get();
@@ -84,7 +84,7 @@ class TeacherPastpaperController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pastpaper $pastpaper)
+    public function update(Request $request, ItemContent $pastpaper)
     {
         $request->validate([
             'title' => 'required|string',
@@ -96,9 +96,12 @@ class TeacherPastpaperController extends Controller
             'user_id' => 'integer|nullable',
         ]);
 
-        $pastpaper->fill($request->except(['pastpaper']))->save();
+        $pastpaper->update($request->except(['pastpaper']));
 
         if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
+            foreach ($pastpaper->media as $media) {
+                $media->delete();
+            }
             $pastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('teacher_pastpaper');
         }
 
@@ -111,7 +114,7 @@ class TeacherPastpaperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pastpaper $pastpaper)
+    public function destroy(ItemContent $pastpaper)
     {
         try {
             $pastpaper->delete();

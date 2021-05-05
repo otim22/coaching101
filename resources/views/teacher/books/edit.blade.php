@@ -15,9 +15,14 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Subjects</a>
+                    <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Books</li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ url('teacher/books') }}" style="text-decoration: none;">Books</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ $book->title }}
+                </li>
             </ol>
         </nav>
     </div>
@@ -29,6 +34,9 @@
             <div class="col-lg-8 col-md-12 col-sm-12 off-set-2">
                 <div class="card p-4">
                     <div class="d-flex justify-content-between">
+                        <div>
+                            <h5 class="bold">Book</h5>
+                        </div>
                         <div>
                             <a id="round-button-2" href="{{ route('teacher.books') }}" class="btn btn-secondary btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
@@ -100,32 +108,41 @@
                         <div class="mb-4">
                             <div class="form-group dynamic_book_objective">
                                 <label for="books_objective">What will students learn in the book?</label>
-                                <p class="mt-2">Current book objectives</p>
-                                @foreach($book->book_objective as $book_objective)
-                                <p>
-                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                                    </svg>
-                                    {{ $book_objective }}
-                                </p>
+                                @if($book->objective)
+                                    <p class="mt-2">Current book objectives</p>
+                                @endif
+                                @foreach($book->objective as $key => $objective)
+                                    <div class="d-flex justify-content-between">
+                                        <div style="flex-grow:1">
+                                            <input type="text"
+                                                        value="{{ $objective }}"
+                                                        class="form-control form-control mb-2 @error('objective.*') is-invalid @enderror"
+                                                        placeholder="Example: Origin of languages"
+                                                        name="objective[]">
+                                        </div>
+                                        <div>
+                                            <p class="delete_note_objective objective-delete" data-objective-id="{{ $key }}" data-objective-delete-url="{{ route('teacher.books.objective.destroy', ['book' => $book, 'objective' => $key]) }}">x</p>
+                                        </div>
+                                    </div>
+                                    @error('objective.*')
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
                                 @endforeach
-                                <small class="form-text text-muted">
-                                    <p class="red_color"><strong>*</strong> Adding new information will override all current book objectives. Be sure you include current ones you don't want to loose.</p>
-                                </small>
+
                                 <div class="input-group book_objective_section">
                                     <div class="books_objective_input">
                                         <input type="text"
                                             id="books_objective"
-                                            value="{{old('book_objective.0')}}"
-                                            class="form-control form-control mb-2 @error('book_objective.0') is-invalid @enderror"
+                                            value="{{old('objective.0')}}"
+                                            class="form-control form-control mb-2 @error('objective.0') is-invalid @enderror"
                                             placeholder="Example: Origin of languages"
-                                            name="book_objective[]" required>
+                                            name="objective[]">
                                     </div>
                                     <div class="hidden" id="hidden_book_objective">
                                         <p class="delete_book_objective">x</p>
                                     </div>
                                 </div>
-                                @error('book_objective.0')
+                                @error('objective.0')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -147,7 +164,7 @@
                             <img src="{{ asset($book->getFirstMediaUrl('teacher_cover_image')) }}" class="w-50 mb-2">
                             <p><small class="red_color">*Choosing another file replaces this current one.</small></p>
                             <label for="cover_image">Upload Book</label>
-                            <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image">
+                            <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" accept="image/*">
                             @error('cover_image')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
@@ -184,7 +201,7 @@
                             @enderror
                         </div>
 
-                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm">Update</button>
+                        <button id="round-button-2" type="submit" class="btn btn-primary float-right pl-5 pr-5 btn-sm">Update</button>
                     </form>
                 </div>
             </div>

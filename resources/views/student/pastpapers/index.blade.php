@@ -83,6 +83,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/pastpapers.js')}}" type="text/javascript"></script>
 @endpush
