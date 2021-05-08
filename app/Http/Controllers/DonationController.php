@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Rules\NameValidator;
+use App\Models\Currency;
 use App\Models\DonationUser;
 use App\Models\DonationPayment;
 use Illuminate\Support\Facades\Http;
@@ -14,7 +15,9 @@ class DonationController extends Controller
 
     public function index()
     {
-        return view("donation.index");
+        $currencies = Currency::get();
+
+        return view("donation.index", compact('currencies'));
     }
 
     public function store(Request $request)

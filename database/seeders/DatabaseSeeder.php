@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             CategoryTableSeeder::class,
             YearTableSeeder::class,
             TermTableSeeder::class,
+            CurrencyTableSeeder::class,
             ItemTableSeeder::class,
             ItemContentTableSeeder::class,
             MessageTableSeeder::class,

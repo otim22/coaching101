@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\TopicsController;
 use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\Admin\PastpaperController;
 use App\Http\Controllers\Admin\PaymentPlanController;
+use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
@@ -195,5 +196,6 @@ Route::middleware('auth')->group(function() {
         Route::resource('pastpapers', 'PastpaperController');
         Route::resource('plans', 'PaymentPlanController');
         Route::resource('items', 'ItemController');
+        Route::resource('currencies', 'CurrencyController');
     });
 });

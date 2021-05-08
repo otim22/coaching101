@@ -91,6 +91,11 @@
                                     <span class="drawer-menu-text"> Items</span>
                                 </a>
                             </li>
+                            <li class="drawer-menu-item  ">
+                                <a href="{{ url('/admin/currencies') }}">
+                                    <span class="drawer-menu-text"> Currencies</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Item;
+use App\Models\Currency;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ItemController extends Controller
+class CurrencyController extends Controller
 {
     public function index()
     {
-        $items = Item::get();
+        $currencies = Currency::get();
 
-        return view('admin.items.index', compact('items'));
+        return view('admin.currencies.index', compact('currencies'));
     }
 
     public function create()
     {
-        return view('admin.items.create');
+        return view('admin.currencies.create');
     }
 
     /**
@@ -32,14 +32,14 @@ class ItemController extends Controller
             'name' =>  'required|string',
         ]);
 
-        Item::create($request->all());
+        Currency::create($request->all());
 
-        return redirect()->route('admin.items.index')->with('success', 'Item added successfully.');
+        return redirect()->route('admin.currencies.index')->with('success', 'Currency added successfully.');
     }
 
-    public function show(Item $item)
+    public function show(Currency $currency)
     {
-        return view('admin.items.show', compact('item'));
+        return view('admin.currencies.show', compact('currency'));
     }
 
     /**
@@ -48,9 +48,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Item $item)
+    public function edit(Currency $currency)
     {
-        return view('admin.items.edit', compact('item'));
+        return view('admin.currencies.edit', compact('currency'));
     }
 
     /**
@@ -59,15 +59,15 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(Request $request, Currency $currency)
     {
         $request->validate([
             'name' =>  'required', 'string'
         ]);
 
-        $item->fill($request->all())->save();
+        $currency->fill($request->all())->save();
 
-        return redirect()->route('admin.items.index')->with('success', 'Item added successfully.');
+        return redirect()->route('admin.currencies.index')->with('success', 'Currency added successfully.');
     }
 
     /**
@@ -76,12 +76,12 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function destroy(Currency $currency)
     {
         try {
-            $item->delete();
+            $currency->delete();
 
-            return redirect()->route('admin.items.index')->with('success', 'Item deleted successfully');
+            return redirect()->route('admin.currencies.index')->with('success', 'Currency deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDonationUsersTable extends Migration
+class CreateCurrenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateDonationUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('donation_users', function (Blueprint $table) {
+        Schema::create('currencies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email');
             $table->string('slug');
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ class CreateDonationUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('donation_users');
+        Schema::dropIfExists('currencies');
     }
 }

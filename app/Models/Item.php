@@ -13,9 +13,9 @@ class Item extends Model
 
     protected $fillable = ['name'];
 
-        /**
+    /**
      * Get the options for generating the slug.
-     */
+    */
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()->generateSlugsFrom('name')
