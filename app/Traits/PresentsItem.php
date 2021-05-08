@@ -18,6 +18,11 @@ trait PresentsItem
 
     public function getFormatPriceAttribute()
     {
+        return number_format($this->price);
+    }
+
+    public function getFormatPriceDecimalAttribute()
+    {
         return rtrim(rtrim(number_format($this->price, 2), 2), '.');
     }
 
