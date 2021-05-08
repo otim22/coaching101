@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Donation;
 use Illuminate\Http\Request;
 use App\Rules\NameValidator;
+use App\Models\DonationUser;
+use App\Models\DonationPayment;
 use Illuminate\Support\Facades\Http;
 
 class DonationController extends Controller
@@ -18,7 +19,32 @@ class DonationController extends Controller
 
     public function store(Request $request)
     {
-        $requestData = $request->validate([
+        $requestData = $this->validateUser($request);
+        $paymentPlanData = $this->createPaymentPlan($requestData);
+        $donorAvailable = DonationUser::where('email', '=', $requestData['email'])->exists();
+
+        if (!$donorAvailable) {
+            $this->saveDonor($requestData);
+            $newDonor = $this->getUserDonated($requestData);
+            $this->saveDonationDetails($requestData, $paymentPlanData, $newDonor);
+        } else {
+            $newDonor = $this->getUserDonated($requestData);
+            $this->saveDonationDetails($requestData, $paymentPlanData, $newDonor);
+        }
+
+        $donor = DonationPayment::where('donation_user_id', $this->getUserDonated($requestData)->id)->firstOrFail();
+
+        return view('donation.checkout.index', compact('donor'));
+    }
+
+    protected function getUserDonated($requestData)
+    {
+        return DonationUser::where('email', '=', $requestData['email'])->firstOrFail();
+    }
+
+    protected function validateUser($request)
+    {
+        return $request->validate([
             'name' => ['required', 'string', 'max:255', new NameValidator],
             'email' => ['required', 'string', 'email', 'max:255'],
             'interval' => ['nullable', 'string', 'max:25'],
@@ -26,24 +52,29 @@ class DonationController extends Controller
             'currency' => ['required', 'string', 'max:6'],
             'amount' => 'required',
         ]);
-
-        $paymentPlanData = $this->createPaymentPlan($requestData);
-        $donor = new Donation();
-        $donor->name = $request->name;
-        $donor->email = $request->email;
-        $donor->interval = $request->interval;
-        $donor->duration = $request->duration;
-        $donor->payment_plan_id = $paymentPlanData['id'];
-        $donor->currency = $request->currency;
-        $donor->amount = $request->amount;
-        $donor->save();
-
-        $donor = Donation::where('id', $donor->id)->firstOrFail();
-
-        return view('donation.checkout.index', compact('donor'));
     }
 
-    public function show(Donation $donor)
+    protected function saveDonor($requestData)
+    {
+        $donationUser = new DonationUser();
+        $donationUser->name = $requestData['name'];
+        $donationUser->email = $requestData['email'];
+        $donationUser->save();
+    }
+
+    protected function saveDonationDetails($requestData, $paymentPlanData, $newDonor)
+    {
+        $donationDetails = new DonationPayment();
+        $donationDetails->interval = $requestData['interval'];
+        $donationDetails->duration = $requestData['duration'];
+        $donationDetails->payment_plan_id = $paymentPlanData['id'];
+        $donationDetails->currency = $requestData['currency'];
+        $donationDetails->amount = $requestData['amount'];
+        $donationDetails->donation_user_id = $newDonor->id;
+        $donationDetails->save();
+    }
+
+    public function show(DonationUser $donor)
     {
         return view('donation.show', compact('donor'));
     }
@@ -71,8 +102,10 @@ class DonationController extends Controller
 
     public function cancelDonation(Request $request)
     {
-        $userCancellation = Donation::where('email', $request->email)->latest()->firstOrFail();
-        $response = Http::withToken(config('app.rave_key'))->put($this->url . "/" . $userCancellation->payment_plan_id . "/cancel");
+        $userCancellation = DonationUser::where('email', $request->email)->firstOrFail();
+        $paymentCancellation = DonationPayment::where('donation_user_id', $userCancellation->id)->latest()->firstOrFail();
+
+        $response = Http::withToken(config('app.rave_key'))->put($this->url . "/" . $paymentCancellation->payment_plan_id . "/cancel");
         $data = json_decode($response->body(), true);
 
         if ($response->successful()) {

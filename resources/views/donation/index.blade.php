@@ -133,9 +133,6 @@
                                                 <option value="ZMD">ZMD</option>
                                             </select>
                                             <input type="number"  name="amount" value="{{ old('amount') }}" aria-label="First name" class="form-control">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">.00</span>
-                                            </div>
                                         </div>
                                         @error('currency')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -171,8 +168,9 @@
                                     </div>
 
                                     <div class="form-group mt-4">
-                                        <label for="duration">Duration <span class="light_gray_color"></span></label>
+                                        <label for="duration">Duration of donation<span class="light_gray_color">(*Optional)</span></label>
                                         <input type="number" class="form-control" name="duration" value="{{ old('duration') }}" placeholder="Example: 1" />
+                                        <span class="light_gray_color"><small>Example: If set to 5 with interval of monthly you would be charged 5 months, and the subscription stops.</small></span>
                                         @error('duration')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
@@ -238,9 +236,6 @@
                                                 <option value="ZMD">ZMD</option>
                                             </select>
                                             <input type="number"  name="amount" value="{{ old('amount') }}" aria-label="First name" class="form-control">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">.00</span>
-                                            </div>
                                         </div>
                                         @error('currency')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
