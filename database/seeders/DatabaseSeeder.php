@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             PermissionTableSeeder::class,
             UserTableSeeder::class,
             SliderTableSeeder::class,
+            StandardTableSeeder::class,
             CategoryTableSeeder::class,
             LevelTableSeeder::class,
             YearTableSeeder::class,

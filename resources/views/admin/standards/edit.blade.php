@@ -10,7 +10,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <h2>Level</h2>
+                                <h2>Standard</h2>
                             </div>
                             <div>
                                 <a type="button" href="{{ url()->previous() }}" class="btn btn-secondary pt-1" name="button">Back</a>
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.levels.update', $level) }}" method="POST">
+                        <form action="{{ route('admin.standards.update', $standard) }}" method="POST">
                             @csrf
                             @method('patch')
 
@@ -27,23 +27,8 @@
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
                                             name="name"
                                             id="name"
-                                            value="{{ old('name', $level->name) }}">
+                                            value="{{ old('name', $standard->name) }}">
                                 @error('name')
-                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="standard_id">Standard</label>
-                                <div class="input-group mb-3">
-                                    <select class="custom-select" name="standard_id">
-                                        <option selected value="{{ $standard->id }}">{{ $standard->name }}</option>
-                                        @foreach($standards as $standard)
-                                            <option value="{{ $standard->id }}">{{ $standard->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @error('standard_id')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>

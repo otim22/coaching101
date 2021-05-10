@@ -7,8 +7,10 @@ use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Level extends Model
+class Standard extends Model
 {
+    use HasFactory;
+
     use HasFactory, HasSlug;
 
     protected $fillable = ['name'];
@@ -34,10 +36,5 @@ class Level extends Model
     public function getRouteKeyName()
     {
         return 'slug';
-    }
-
-    public function standard()
-    {
-        return $this->belongsTo('App\Models\Standard', 'standard_id');
     }
 }

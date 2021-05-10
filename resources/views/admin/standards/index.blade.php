@@ -10,19 +10,18 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <h4>Levels</h4>
+                                <h4>Standards</h4>
                             </div>
                             <div>
-                                <a type="button" href="{{ route('admin.levels.create') }}" class="btn btn-primary pt-1" name="button">Create Level</a>
+                                <a type="button" href="{{ route('admin.standards.create') }}" class="btn btn-primary pt-1" name="button">Create Standard</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        @foreach($levels as $level)
+                        @foreach($standards as $standard)
                             <h5 class="mb-2">
-                                <a href="{{ route('admin.levels.show', $level) }}" style="text-decoration: none;">
-                                    <i class="material-icons material-icons_custom">navigate_next</i>{{ Str::ucfirst($level->name) }} &nbsp;
-                                    <span class="badge badge-pill badge-info">{{ $level->standard->name }}</span>
+                                <a href="{{ route('admin.standards.show', $standard) }}" style="text-decoration: none;">
+                                    <i class="material-icons material-icons_custom">navigate_next</i>{{ Str::ucfirst($standard->name) }}
                                 </a>
                             </h5>
                         @endforeach

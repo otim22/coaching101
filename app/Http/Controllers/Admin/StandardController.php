@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Level;
 use App\Models\Standard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LevelController extends Controller
+class StandardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class LevelController extends Controller
      */
     public function index()
     {
-        $levels = Level::get();
+        $standards = Standard::get();
 
-        return view('admin.levels.index', compact('levels'));
+        return view('admin.standards.index', compact('standards'));
     }
 
     /**
@@ -28,9 +27,7 @@ class LevelController extends Controller
      */
     public function create()
     {
-        $standards = Standard::get();
-
-        return view('admin.levels.create', compact('standards'));
+        return view('admin.standards.create');
     }
 
     /**
@@ -43,15 +40,11 @@ class LevelController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'standard_id' => 'required|integer',
         ]);
 
-        $level = new Level();
-        $level->name = $request->name;
-        $level->standard_id = $request->standard_id;
-        $level->save();
+        Standard::create(['name' => $request->name]);
 
-        return redirect()->route('admin.levels.index')->with('success', 'Level added successfully.');
+        return redirect()->route('admin.standards.index')->with('success', 'Standard added successfully.');
     }
 
     /**
@@ -60,9 +53,9 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Level $level)
+    public function show(Standard $standard)
     {
-        return view('admin.levels.show', compact('level'));
+        return view('admin.standards.show', compact('standard'));
     }
 
     /**
@@ -71,12 +64,9 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Level $level)
+    public function edit(Standard $standard)
     {
-        $standards = Standard::get();
-        $standard = Standard::find($level->standard_id);
-
-        return view('admin.levels.edit', compact(['level', 'standards', 'standard']));
+        return view('admin.standards.edit', compact('standard'));
     }
 
     /**
@@ -86,16 +76,15 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Level $level)
+    public function update(Request $request, Standard $standard)
     {
         $request->validate([
             'name' => 'required|string',
-            'standard_id' => 'required|integer',
         ]);
 
-        $level->fill($request->all())->save();
+        $standard->fill($request->all())->save();
 
-        return redirect()->route('admin.levels.index')->with('success', 'Level updated successfully');
+        return redirect()->route('admin.standards.index')->with('success', 'Standard updated successfully');
     }
 
     /**
@@ -104,12 +93,12 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Level $level)
+    public function destroy(Standard $standard)
     {
         try {
-            $level->delete();
+            $standard->delete();
 
-            return redirect()->route('admin.levels.index')->with('success', 'Level deleted successfully');
+            return redirect()->route('admin.standards.index')->with('success', 'Standard deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

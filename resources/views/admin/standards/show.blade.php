@@ -10,24 +10,24 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <a type="button" href="{{ route('admin.levels.index') }}" class="btn btn-secondary" name="button">Back</a>
+                                <a type="button" href="{{ route('admin.standards.index') }}" class="btn btn-secondary" name="button">Back</a>
                             </div>
                             <div>
                                 <li class="nav-item dropdown d-flex align-items-center">
-                                    <a href="{{ route('admin.levels.edit', $level) }}" class="nav-link dropdown-toggle btn btn-primary" data-toggle="dropdown" aria-expanded="false">
+                                    <a href="{{ route('admin.standards.edit', $standard) }}" class="nav-link dropdown-toggle btn btn-primary" data-toggle="dropdown" aria-expanded="false">
                                       Action
                                     </a>
                                     <div class="dropdown-menu">
                                         <ul class="list-unstyled">
                                             <li>
-                                                <a href="{{ route('admin.levels.edit', $level) }}" class="dropdown-item">
+                                                <a href="{{ route('admin.standards.edit', $standard) }}" class="dropdown-item">
                                                     Edit
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item"
                                                    href="#"
-                                                   onclick="event.preventDefault(); document.getElementById('delete-level-item').submit();">
+                                                   onclick="event.preventDefault(); document.getElementById('delete-standard-item').submit();">
                                                     {{ __('Delete') }}
                                                 </a>
                                             </li>
@@ -38,16 +38,9 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <h2>{{ $level->name }}</h2>
-                            </div>
-                            <div>
-                                <span class="badge badge-pill badge-info">{{ $level->standard->name }}</span>
-                            </div>
-                        </div>
+                        <h2>{{ $standard->name }}</h2>
                     </div>
-                    <form action="{{ route('admin.levels.destroy', $level) }}" class="hidden" id="delete-level-item" method="POST">
+                    <form action="{{ route('admin.standards.destroy', $standard) }}" class="hidden" id="delete-standard-item" method="POST">
                         @csrf
                         @method('delete')
                     </form>

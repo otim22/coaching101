@@ -119,6 +119,11 @@
                                 </a>
                             </li>
                             <li class="drawer-menu-item">
+                                <a href="{{ url('/admin/standards') }}">
+                                    <span class="drawer-menu-text">Standard</span>
+                                </a>
+                            </li>
+                            <li class="drawer-menu-item">
                                 <a href="{{ url('/admin/levels') }}">
                                     <span class="drawer-menu-text">Level</span>
                                 </a>

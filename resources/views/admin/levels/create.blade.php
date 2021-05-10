@@ -22,11 +22,27 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
                                 @error('name')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label for="name">Standard</label>
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" name="standard_id">
+                                        <option>Choose Level...</option>
+                                        @foreach($standards as $standard)
+                                            <option value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('standard_id')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
