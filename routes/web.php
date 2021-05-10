@@ -19,6 +19,7 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\YearController;
 use App\Http\Controllers\Admin\TermController;
+use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MenuController;
@@ -189,6 +190,7 @@ Route::middleware('auth')->group(function() {
         Route::resource('teacherImages', 'TeacherImageController');
         Route::resource('faqs', 'FaqController');
         Route::resource('categories', 'CategoryController');
+        Route::resource('levels', 'LevelController');
         Route::resource('years', 'YearController');
         Route::resource('terms', 'TermController');
         Route::resource('books', 'BooksController');

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Term;
+use App\Models\Level;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TermController extends Controller
+class LevelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class TermController extends Controller
      */
     public function index()
     {
-        $terms = Term::orderBy('created_at', 'desc')->get();
+        $levels = Level::get();
 
-        return view('admin.terms.index', compact('terms'));
+        return view('admin.levels.index', compact('levels'));
     }
 
     /**
@@ -27,7 +27,7 @@ class TermController extends Controller
      */
     public function create()
     {
-        return view('admin.terms.create');
+        return view('admin.levels.create');
     }
 
     /**
@@ -42,9 +42,9 @@ class TermController extends Controller
             'name' => 'required|string',
         ]);
 
-        Term::create(['name' => $request->name]);
+        Level::create(['name' => $request->name]);
 
-        return redirect()->route('admin.terms.index')->with('success', 'Term added successfully.');
+        return redirect()->route('admin.levels.index')->with('success', 'Level added successfully.');
     }
 
     /**
@@ -53,9 +53,9 @@ class TermController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Term $term)
+    public function show(Level $level)
     {
-        return view('admin.terms.show', compact('term'));
+        return view('admin.levels.show', compact('level'));
     }
 
     /**
@@ -64,9 +64,9 @@ class TermController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Term $term)
+    public function edit(Level $level)
     {
-        return view('admin.terms.edit', compact('term'));
+        return view('admin.levels.edit', compact('level'));
     }
 
     /**
@@ -76,15 +76,15 @@ class TermController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Term $term)
+    public function update(Request $request, Level $level)
     {
         $request->validate([
             'name' => 'required|string',
         ]);
 
-        $term->fill($request->all())->save();
+        $level->fill($request->all())->save();
 
-        return redirect()->route('admin.terms.index')->with('success', 'Term updated successfully');
+        return redirect()->route('admin.levels.index')->with('success', 'Level updated successfully');
     }
 
     /**
@@ -93,12 +93,12 @@ class TermController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Term $term)
+    public function destroy(Level $level)
     {
         try {
-            $term->delete();
+            $level->delete();
 
-            return redirect()->route('admin.terms.index')->with('success', 'Term deleted successfully');
+            return redirect()->route('admin.levels.index')->with('success', 'Level deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

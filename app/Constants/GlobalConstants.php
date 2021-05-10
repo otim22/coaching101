@@ -7,6 +7,7 @@ class GlobalConstants
     const ALL_SUBJECTS = 'All subjects';
     const ALL_YEARS = 'All years';
     const ALL_TERMS = 'All terms';
+    const ALL_TERMS = 'All levels';
     const SUBJECT = 1;
     const BOOK = 2;
     const NOTE = 3;

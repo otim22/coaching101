@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             SliderTableSeeder::class,
             CategoryTableSeeder::class,
+            LevelTableSeeder::class,
             YearTableSeeder::class,
             TermTableSeeder::class,
             CurrencyTableSeeder::class,

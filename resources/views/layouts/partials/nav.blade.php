@@ -67,8 +67,8 @@
         <div class="collapse topmenu navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link make-upper-case" href="#" id="navbarDropdownMenuLinkUneb" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        uneb
+                    <a class="nav-link make-upper-case" href="#" id="navbarDropdownMenuLinkUneb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Browse
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkUneb">
                         <a class="dropdown-item" href="{{ route('home') }}">Video Subjects</a>
@@ -78,10 +78,14 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link make-upper-case" href="#" id="navbarDropdownCambridge" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        cambridge
+                    <a class="nav-link make-upper-case" href="#" id="navbarDropdownStandard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Standard
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCambridge">
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownStandard">
+                        <a class="dropdown-item" href="{{ route('home') }}">Cambridge</a>
+                        <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">UNEB</a>
+                    </div>
+                    <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdownCambridge">
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" data-toggle="dropdown" href="#">Check Point</a>
                             <ul class="dropdown-menu">
@@ -109,7 +113,7 @@
                                 <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past Papers</a>
                             </ul>
                         </li>
-                    </ul>
+                    </ul> -->
                 </li>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown hide-at-md">
