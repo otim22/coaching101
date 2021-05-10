@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Models\Year;
 use App\Models\Term;
-use App\Models\Item;
+use App\Models\Level;
 use App\Models\Topic;
 use App\Models\Ratings;
 use App\Models\Subject;
-use App\Models\ItemContent;
+use App\Models\Standard;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SubjectRequest;
 
@@ -30,12 +32,14 @@ class SubjectController extends Controller
 
     public function create()
     {
+        $standards = Standard::get();
+        $levels = Level::get();
         $categories = Category::get();
         $years = Year::get();
         $terms = Term::get();
         $item = Item::where('name', 'Subject')->firstOrFail();
 
-        return view('teacher.videos.create', compact(['categories', 'years', 'terms', 'item']));
+        return view('teacher.videos.create', compact(['categories', 'years', 'terms', 'item', 'standards', 'levels']));
     }
 
     public function show(ItemContent $subject)
@@ -50,6 +54,8 @@ class SubjectController extends Controller
         $subject->title = $request->input('title');
         $subject->subtitle = $request->input('subtitle');
         $subject->description = $request->input('description');
+        $subject->standard_id = $request->input('standard_id');
+        $subject->level_id = $request->input('level_id');
         $subject->category_id = $request->input('category_id');
         $subject->year_id = $request->input('year_id');
         $subject->term_id = $request->input('term_id');
@@ -73,22 +79,29 @@ class SubjectController extends Controller
     {
         $categories = Category::get();
         $category = Category::find($subject->category_id);
+        $standards = Standard::get();
+        $standard = Standard::find($subject->standard_id);
+        $levels = Level::get();
+        $level = Level::find($subject->level_id);
         $years = Year::get();
         $year = Year::find($subject->year_id);
         $terms = Term::get();
         $term = Term::find($subject->term_id);
 
         return view('teacher.videos.edit', compact([
-            'subject', 'categories', 'category', 'years', 'year', 'terms', 'term'
+            'subject', 'categories', 'category', 'years', 'year', 'terms', 'term', 'level', 'levels', 'standards', 'standard'
         ]));
     }
 
     public function update(Request $request, ItemContent $subject)
     {
+        // dd($request);
         $request->validate([
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
             'description' => 'required|string',
+            'standard_id' => 'required|integer',
+            'level_id' => 'required|integer',
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',

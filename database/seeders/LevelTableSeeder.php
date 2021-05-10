@@ -23,5 +23,17 @@ class LevelTableSeeder extends Seeder
             'name' => 'A Level',
             'standard_id' => Standard::all()->random()->id,
         ]);
+        factory(Level::class)->create([
+            'name' => 'Check Point',
+            'standard_id' => Standard::all()->random()->id,
+        ]);
+        factory(Level::class)->create([
+            'name' => 'IGCSE',
+            'standard_id' => Standard::all()->random()->id,
+        ]);
+        factory(Level::class)->create([
+            'name' => 'AS / A2',
+            'standard_id' => Standard::all()->random()->id,
+        ]);
     }
 }

@@ -26,7 +26,7 @@ class ItemContent extends Model implements HasMedia, Searchable
 {
     use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable, PresentsItem;
 
-    protected $fillable = ['title', 'subtitle', 'description', 'objective', 'price', 'item_id', 'category_id', 'year_id', 'term_id', 'user_id', 'is_approved'];
+    protected $fillable = ['title', 'subtitle', 'description', 'objective', 'price', 'item_id', 'standard_id', 'level_id', 'category_id', 'year_id', 'term_id', 'user_id', 'is_approved'];
     protected $with = ['media'];
     protected $appends = ['isSubscribedTo'];
     protected $dates = ['created_at', 'updated_at'];
