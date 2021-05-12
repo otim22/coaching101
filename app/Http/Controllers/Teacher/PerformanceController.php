@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Teacher;
 
-use App\Models\ItemContent;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
+use App\Http\Controllers\Controller;
 use App\Constants\GlobalConstants;
 use Illuminate\Support\Facades\Auth;
 

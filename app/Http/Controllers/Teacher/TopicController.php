@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Teacher;
 
-use Illuminate\Http\Request;
 use App\Models\Topic;
+use Illuminate\Http\Request;
 use App\Models\ItemContent;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
 
 class TopicController extends Controller

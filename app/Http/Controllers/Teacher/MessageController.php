@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Teacher;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
 use App\Models\ItemContent;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\MessageRequest;
 
 class MessageController extends Controller

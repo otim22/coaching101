@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Teacher;
 
 use Arr;
 use App\Models\Year;
@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Standard;
 use Illuminate\Http\Request;
 use App\Models\ItemContent;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\BookRequest;
 

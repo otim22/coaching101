@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Teacher;
 
 use App\Models\Item;
 use App\Models\Year;
@@ -8,8 +8,9 @@ use App\Models\Term;
 use App\Models\Level;
 use App\Models\Standard;
 use App\Models\Category;
-use App\Models\ItemContent;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PastpaperRequest;
 

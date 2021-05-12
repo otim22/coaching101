@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Teacher;
 
-use App\Models\ItemContent;
 use Illuminate\Support\Arr;
 use App\Models\Audience;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\AudienceRequest;
 
 class AudienceController extends Controller

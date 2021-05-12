@@ -1,21 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\ResourceController;
-use App\Http\Controllers\ToolController;
-use App\Http\Controllers\TopicController;
 use App\Http\Controllers\SubjectDisplayController;
-use App\Http\Controllers\MessageController;
-use App\Http\Controllers\AudienceController;
-use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\TopCategoryController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\Teacher\TeacherController;
+use App\Http\Controllers\Teacher\SubjectController;
+use App\Http\Controllers\Teacher\ResourceController;
+use App\Http\Controllers\Teacher\ToolController;
+use App\Http\Controllers\Teacher\TopicController;
+use App\Http\Controllers\Teacher\MessageController;
+use App\Http\Controllers\Teacher\AudienceController;
+use App\Http\Controllers\Teacher\PerformanceController;
+use App\Http\Controllers\Teacher\TeacherBookController;
+use App\Http\Controllers\Teacher\TeacherNoteController;
+use App\Http\Controllers\Teacher\TeacherPastpaperController;
 use App\Http\Controllers\Admin\StandardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\YearController;
@@ -51,9 +54,6 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\BooksController as Books;
-use App\Http\Controllers\TeacherBookController;
-use App\Http\Controllers\TeacherNoteController;
-use App\Http\Controllers\TeacherPastpaperController;
 use App\Http\Controllers\NotesController as Notes;
 use App\Http\Controllers\PastpaperController as Pastpapers;
 

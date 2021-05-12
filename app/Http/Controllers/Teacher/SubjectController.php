@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Teacher;
 
 use App\Models\Item;
 use App\Models\Year;
@@ -14,6 +14,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\ItemContent;
 use Spatie\Image\Manipulations;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SubjectRequest;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
