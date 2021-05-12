@@ -60,11 +60,11 @@ class TeacherBookController extends Controller
         $book->save();
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
-            $book->addMediaFromRequest('cover_image')->toMediaCollection('teacher_cover_image');
+            $book->addMediaFromRequest('cover_image')->toMediaCollection('cover_images');
         }
 
         if($request->hasFile('book') && $request->file('book')->isValid()) {
-            $book->addMediaFromRequest('book')->toMediaCollection('teacher_book');
+            $book->addMediaFromRequest('book')->toMediaCollection('books');
         }
 
         return redirect()->route('teacher.books')->with('success', 'Book added successfully.');
@@ -107,7 +107,31 @@ class TeacherBookController extends Controller
      */
     public function update(Request $request, ItemContent $book)
     {
-        $data = $request->validate([
+        $data = $this->validateData($request);
+        $book->fill(Arr::except($data, ['objective', 'note', 'book', 'cover_image']));
+        $book->objective = array_filter($request->objective);
+        $book->save();
+
+        if($request->hasFile('cover_image') && $request->file('cover_images')->isValid()) {
+            foreach ($book->media as $media) {
+                $media->delete();
+            }
+            $book->addMediaFromRequest('cover_image')->toMediaCollection('cover_image');
+        }
+
+        if($request->hasFile('book') && $request->file('book')->isValid()) {
+            foreach ($book->media as $media) {
+                $media->delete();
+            }
+            $book->addMediaFromRequest('book')->toMediaCollection('books');
+        }
+
+        return redirect()->route('teacher.books')->with('success', 'Book added successfully.');
+    }
+
+    protected function validateData($request)
+    {
+        return $request->validate([
             'title' => 'required|string',
             'price' => 'nullable',
             'objective.*'  => 'nullable|string|distinct|min:2',
@@ -120,28 +144,6 @@ class TeacherBookController extends Controller
             'cover_image' => 'nullable|image|mimes:jpg, jpeg, png|max:5520',
             'user_id' => 'integer|nullable'
         ]);
-
-        $book->fill(Arr::except($data, ['objective', 'note', 'book', 'cover_image']));
-
-        $book->objective = array_filter($request->objective);
-
-        $book->save();
-
-        if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
-            foreach ($book->media as $media) {
-                $media->delete();
-            }
-            $book->addMediaFromRequest('cover_image')->toMediaCollection('teacher_cover_image');
-        }
-
-        if($request->hasFile('book') && $request->file('book')->isValid()) {
-            foreach ($book->media as $media) {
-                $media->delete();
-            }
-            $book->addMediaFromRequest('book')->toMediaCollection('teacher_book');
-        }
-
-        return redirect()->route('teacher.books')->with('success', 'Book added successfully.');
     }
 
     public function deleteObjective(ItemContent $book, $objectiveId)

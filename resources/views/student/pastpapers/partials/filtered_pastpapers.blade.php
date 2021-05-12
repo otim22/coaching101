@@ -9,8 +9,6 @@
                                 <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                 @if($pastpaper->creator)
                                     <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($pastpaper->price)
@@ -24,8 +22,6 @@
                                 <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                 @if($pastpaper->creator)
                                     <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($pastpaper->price)
@@ -39,8 +35,6 @@
                                 <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                 @if($pastpaper->creator)
                                     <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($pastpaper->price)

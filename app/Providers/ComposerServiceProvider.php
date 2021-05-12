@@ -5,10 +5,12 @@ namespace App\Providers;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Year;
+use App\Models\Level;
 use App\Models\Term;
 use App\Models\Slider;
 use App\Models\Menu;
 use App\Models\Profile;
+use App\Models\Standard;
 use App\Models\Question;
 use App\Models\Comment;
 use App\Models\Category;
@@ -61,6 +63,18 @@ class ComposerServiceProvider extends ServiceProvider
             $teachers = User::with('profile')->where('role', '2')->get()->take(12);
 
             $view->withTeachers($teachers);
+        });
+
+        View::composer(['welcome', 'home', 'student.*'], function ($view) {
+            $standards = Standard::get();
+
+            $view->withStandards($standards);
+        });
+
+        View::composer(['welcome', 'home', 'student.*'], function ($view) {
+            $levels = Level::get();
+
+            $view->withLevels($levels);
         });
 
         View::composer(['welcome', 'home', 'student.*'], function ($view) {

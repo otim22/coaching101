@@ -191,7 +191,7 @@
 
                         <div class="form-group mb-4">
                             <p>Current cover image</p>
-                            <img src="{{ asset($book->getFirstMediaUrl('teacher_cover_image')) }}" class="w-50 mb-2">
+                            <img src="{{ asset($book->getFirstMediaUrl('cover_images')) }}" class="w-50 mb-2">
                             <p><small class="red_color">*Choosing another file replaces this current one.</small></p>
                             <label for="cover_image">Upload Book</label>
                             <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" accept="image/*">
@@ -202,7 +202,7 @@
 
                         <div class="form-group mb-4">
                             <p>Current book</p>
-                            <embed src="{{ $book->getFirstMediaUrl('teacher_book') }}" type="application/pdf" width="50%" height="50%">
+                            <embed src="{{ $book->getFirstMediaUrl('books') }}" type="application/pdf" width="50%" height="50%">
                             <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
 
                             <label for="book">Upload Book</label>

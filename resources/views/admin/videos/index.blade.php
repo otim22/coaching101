@@ -9,7 +9,7 @@
                 <div class="card admin-shadow">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <div><h4>Subjects</h4></div>
+                            <div><h4>Video Subjects</h4></div>
                         </div>
                     </div>
                     <div class="card-body">

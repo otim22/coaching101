@@ -60,7 +60,7 @@ class TeacherNoteController extends Controller
         $note->save();
 
         if($request->hasFile('note') && $request->file('note')->isValid()) {
-            $note->addMediaFromRequest('note')->toMediaCollection('teacher_note');
+            $note->addMediaFromRequest('note')->toMediaCollection('notes');
         }
 
         return redirect()->route('teacher.notes')->with('success', 'Note added successfully.');
@@ -79,7 +79,6 @@ class TeacherNoteController extends Controller
      */
     public function edit(ItemContent $note)
     {
-        // dd($note->standard_id);
         $years =  Year::get();
         $terms =  Term::get();
         $standards = Standard::get();
@@ -104,7 +103,24 @@ class TeacherNoteController extends Controller
      */
     public function update(Request $request, ItemContent $note)
     {
-        $data = $request->validate([
+        $data = $this->validateData($request);
+        $note->fill(Arr::except($data, ['objective', 'note']));
+        $note->objective = array_filter($request->objective);
+        $note->save();
+
+        if($request->hasFile('note') && $request->file('note')->isValid()) {
+            foreach ($note->media as $media) {
+                $media->delete();
+            }
+            $note->addMediaFromRequest('note')->toMediaCollection('notes');
+        }
+
+        return redirect()->route('teacher.notes')->with('success', 'Note added successfully.');
+    }
+
+    protected function validateData($request)
+    {
+        return $request->validate([
             'title' => 'required|string',
             'price' => 'nullable',
             'objective.*'  => 'nullable|string|distinct|min:2',
@@ -116,21 +132,6 @@ class TeacherNoteController extends Controller
             'note' => 'nullable|mimes:pdf|max:5000',
             'user_id' => 'integer|nullable',
         ]);
-
-        $note->fill(Arr::except($data, ['objective', 'note']));
-
-        $note->objective = array_filter($request->objective);
-
-        $note->save();
-
-        if($request->hasFile('note') && $request->file('note')->isValid()) {
-            foreach ($note->media as $media) {
-                $media->delete();
-            }
-            $note->addMediaFromRequest('note')->toMediaCollection('teacher_note');
-        }
-
-        return redirect()->route('teacher.notes')->with('success', 'Note added successfully.');
     }
 
     public function deleteObjective(ItemContent $note, $objectiveId)

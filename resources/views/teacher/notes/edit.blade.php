@@ -187,7 +187,7 @@
 
                         <div class="form-group mb-4">
                             <p>Current note</p>
-                            <embed src="{{ $note->getFirstMediaUrl('teacher_note') }}" type="application/pdf" width="50%" height="50%">
+                            <embed src="{{ $note->getFirstMediaUrl('notes') }}" type="application/pdf" width="50%" height="50%">
                             <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
 
                             <label for="note">Upload Book</label>

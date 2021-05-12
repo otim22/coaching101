@@ -47,6 +47,18 @@
                         </div>
 
                         <div class="pt-3 mb-3">
+                            <h6 class="bold">Standard</h6>
+                            <div class="resource-filter_input">
+                                <select class="custom-select" id="standard">
+                                    <option>{{ \App\Constants\GlobalConstants::ALL_STANDARDS }}</option>
+                                    @foreach($standards as $standard)
+                                        <option value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 mb-3">
                             <h6 class="bold">Level</h6>
                             <div class="resource-filter_input">
                                 <select class="custom-select" id="level">

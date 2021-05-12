@@ -53,20 +53,6 @@ class ItemContent extends Model implements HasMedia, Searchable
         return 'slug';
     }
 
-    public function registerMediaCollections() : void
-    {
-        $this->addMediaCollection('default')
-                ->registerMediaConversions(function (Media $media) {
-                        $this->addMediaConversion('default')
-                                ->fit(Manipulations::FIT_CONTAIN, 800, 600)
-                                ->nonQueued();
-
-                        $this->addMediaConversion('thumb')
-                                ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
-                                ->nonQueued();
-                });
-    }
-
     public function audience()
     {
         return $this->hasOne('App\Models\Audience');

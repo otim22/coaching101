@@ -13,8 +13,10 @@ use App\Models\Standard;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\ItemContent;
+use Spatie\Image\Manipulations;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SubjectRequest;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class SubjectController extends Controller
 {
@@ -67,7 +69,15 @@ class SubjectController extends Controller
         $year->terms()->attach($request->input('term_id'));
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
-            $subject->addMediaFromRequest('cover_image')->toMediaCollection('default');
+            $subject->addMediaFromRequest('cover_image')->toMediaCollection('videos')->registerMediaConversions(function (Media $media) {
+                    $this->addMediaConversion('videos')
+                            ->fit(Manipulations::FIT_CONTAIN, 800, 600)
+                            ->nonQueued();
+
+                    $this->addMediaConversion('thumb')
+                            ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
+                            ->nonQueued();
+            });
         }
 
         $subject->save();
@@ -95,7 +105,30 @@ class SubjectController extends Controller
 
     public function update(Request $request, ItemContent $subject)
     {
-        $request->validate([
+        $this->validateData($request);
+        $subject->update($request->except(['cover_image']));
+
+        if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+            foreach ($subject->media as $media) {
+                $media->delete();
+            }
+            $subject->addMediaFromRequest('cover_image')->toMediaCollection('videos')->registerMediaConversions(function (Media $media) {
+                    $this->addMediaConversion('videos')
+                            ->fit(Manipulations::FIT_CONTAIN, 800, 600)
+                            ->nonQueued();
+
+                    $this->addMediaConversion('thumb')
+                            ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
+                            ->nonQueued();
+            });
+        }
+
+        return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');
+    }
+
+    protected function validateData($request)
+    {
+        return $request->validate([
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
             'description' => 'required|string',
@@ -107,17 +140,6 @@ class SubjectController extends Controller
             'price' => 'required|string',
             'cover_image' => 'nullable|image|mimes:jpg, jpeg, png|max:5520'
         ]);
-
-        $subject->update($request->except(['cover_image']));
-
-        if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
-            foreach ($subject->media as $media) {
-                $media->delete();
-            }
-            $subject->addMediaFromRequest('cover_image')->toMediaCollection('default');
-        }
-
-        return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');
     }
 
     public function onBoard()

@@ -55,7 +55,7 @@ class TeacherPastpaperController extends Controller
         $pastpaper->save();
 
         if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
-            $pastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('teacher_pas');
+            $pastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('pastpapers');
         }
 
         return redirect()->route('teacher.pastpapers')->with('success', 'PastPaper added successfully.');
@@ -98,7 +98,22 @@ class TeacherPastpaperController extends Controller
      */
     public function update(Request $request, ItemContent $pastpaper)
     {
-        $request->validate([
+        $this->validateData($request);
+        $pastpaper->update($request->except(['pastpaper']));
+
+        if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
+            foreach ($pastpaper->media as $media) {
+                $media->delete();
+            }
+            $pastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('pastpapers');
+        }
+
+        return redirect()->route('teacher.pastpapers')->with('success', 'Pastpaper added successfully.');
+    }
+
+    protected function validateData($request)
+    {
+        return $request->validate([
             'title' => 'required|string',
             'price' => 'nullable',
             'standard_id' => 'required|integer',
@@ -109,17 +124,6 @@ class TeacherPastpaperController extends Controller
             'pastpaper' => 'nullable|mimes:pdf|max:5000',
             'user_id' => 'integer|nullable',
         ]);
-
-        $pastpaper->update($request->except(['pastpaper']));
-
-        if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
-            foreach ($pastpaper->media as $media) {
-                $media->delete();
-            }
-            $pastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('teacher_pastpaper');
-        }
-
-        return redirect()->route('teacher.pastpapers')->with('success', 'Pastpaper added successfully.');
     }
 
     /**

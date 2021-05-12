@@ -33,12 +33,7 @@
                         <div class="mb-3">
                             <p>By {{ $book->creator->name }}</p>
                         </div>
-                        <embed src="{{ $book->getFirstMediaUrl('teacher_book') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
-                    @else
-                        <div class="mb-3">
-                            <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                        </div>
-                        <embed src="{{ $book->getFirstMediaUrl('book') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
+                        <embed src="{{ $book->getFirstMediaUrl('books') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
                     @endif
                 </div>
             </div>
@@ -52,22 +47,9 @@
                             Back
                         </a>
 
-                        <a href="{{ $book->getFirstMediaUrl('teacher_book') }}" id="round-button-2"
+                        <a href="{{ $book->getFirstMediaUrl('books') }}" id="round-button-2"
                                         name="button"
                                         class="btn btn-primary btn-sm" target="_blank">
-                                        Download book
-                        </a>
-                    @else
-                        <a id="round-button-2" type="button" class="btn btn-secondary btn-sm" href="{{ route('student.books.index') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                            </svg>
-                            Back
-                        </a>
-
-                        <a href="{{ $book->getFirstMediaUrl('book') }}" id="round-button-2"
-                                        name="button"
-                                        class="btn btn-secondary btn-sm mt-5" target="_blank">
                                         Download book
                         </a>
                     @endif
@@ -78,20 +60,14 @@
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <h5 class="bold">{{ $book->title }}</h5>
                     @if($book->creator)
-                    <div class="mb-4">
-                        <div class="mb-3">
-                            <p>By {{ $book->creator->name }}</p>
+                        <div class="mb-4">
+                            <div class="mb-3">
+                                <p>By {{ $book->creator->name }}</p>
+                            </div>
+                            <img src="{{ $book->getFirstMediaUrl('cover_images') }}" alt="{{ $book->very_short_title }}" class="rounded-corners" width="100%" height="auto">
                         </div>
-                        <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" class="rounded-corners" width="100%" height="auto">
-                    </div>
-                    @else
-                    <div class="mb-4">
-                        <div class="mb-3">
-                            <span class="author-font mb-4">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                        </div>
-                        <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="auto">
-                    </div>
                     @endif
+
                     <div class="mb-3 mt-4">
                         <h5 class="bold">Book objectives </h5>
                         @foreach($book->book_objective as $book_objective)

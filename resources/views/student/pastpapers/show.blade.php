@@ -31,9 +31,7 @@
                     <h5 class="bold">{{ $pastpaper->title }}</h5>
                     <p>By {{ $pastpaper->creator->name }}</p>
                     @if($pastpaper->creator)
-                        <embed src="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
-                    @else
-                        <embed src="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
+                        <embed src="{{ $pastpaper->getFirstMediaUrl('pastpapers') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
                     @endif
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-10 offset-1 mt-5 d-flex justify-content-between">
@@ -45,21 +43,9 @@
                             Back
                         </a>
 
-                        <a href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" id="round-button-2"
+                        <a href="{{ $pastpaper->getFirstMediaUrl('pastpapers') }}" id="round-button-2"
                                         name="button"
                                         class="btn btn-primary btn-sm" target="_blank">
-                                        Download pastpapers
-                        </a>
-                    @else
-                        <a id="round-button-2" class="btn btn-secondary btn-sm" href="{{ route('student.notes.index') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                            </svg>
-                            Back
-                        </a>
-                        <a href="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" id="round-button-2"
-                                        name="button"
-                                        class="btn btn-secondary btn-sm mt-5" target="_blank">
                                         Download pastpapers
                         </a>
                     @endif
@@ -71,8 +57,6 @@
                     <h5 class="bold">{{ $pastpaper->title }}</h5>
                     @if($pastpaper->creator)
                         <p>By {{ $pastpaper->creator->name }}</p>
-                    @else
-                        <p>By {{ \App\Constants\GlobalConstants::ADMIN }}</p>
                     @endif
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-10 offset-1 mt-4">

@@ -27,11 +27,6 @@
                                                 </form>
                                             </li>
                                             <li>
-                                                <a href="{{ route('admin.notes.edit', $note) }}" class="dropdown-item">
-                                                    Edit
-                                                </a>
-                                            </li>
-                                            <li>
                                                 <a class="dropdown-item"
                                                    href="#"
                                                    onclick="event.preventDefault(); document.getElementById('delete-book-item').submit();">
@@ -49,9 +44,11 @@
                         <p>{{ $note->year->name }} {{ $note->category->name }}, {{ $note->term->name }}. </p>
 
                         @if($note->creator)
-                            <p style="color: #3864ab; font-weight: bold;">{{ $note->getFirstMedia('teacher_note')->file_name }}</p>
-                        @else
-                            <p style="color: #3864ab; font-weight: bold;">{{ $note->getFirstMedia('note')->file_name }}</p>
+                            @if($note->getFirstMedia('notes'))
+                                <p style="color: #3864ab; font-weight: bold;">{{ $note->getFirstMedia('notes')->file_name }}</p>
+                            @else
+                                <p>No file</p>
+                            @endif
                         @endif
 
                         @if($note->price)
@@ -66,18 +63,18 @@
 
                         <div class="mb-3">
                             <h4 class="bold">Notes objectives </h4>
-                            @foreach($note->notes_objective as $note_objective)
-                            <p><i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i><span class="align-middle">{{ $note_objective }}</span></p>
-                            @endforeach
+                            @if($note->notes_objective)
+                                @foreach($note->notes_objective as $note_objective)
+                                <p><i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i><span class="align-middle">{{ $note_objective }}</span></p>
+                                @endforeach
+                            @else
+                                <p>No data</p>
+                            @endif
                         </div>
 
                         @if(Auth::user()->role == 4)
                             @if($note->creator)
                                 <a class="btn btn-secondary btn-sm float-right mt-3" href="{{ $note->getFirstMediaUrl('teacher_note') }}" target="_blank">
-                                    Download notes here
-                                </a>
-                            @else
-                                <a class="btn btn-secondary btn-sm float-right mt-3" href="{{ $note->getFirstMediaUrl('note') }}" target="_blank">
                                     Download notes here
                                 </a>
                             @endif

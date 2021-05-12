@@ -9,8 +9,6 @@
                                 <span class="bold">{{ $note->very_short_title }}</span><br />
                                 @if($note->creator)
                                     <span class="author-font">{{ $note->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($note->price)
@@ -24,8 +22,6 @@
                                 <span class="bold">{{ $note->very_short_title }}</span><br />
                                 @if($note->creator)
                                     <span class="author-font">{{ $note->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($note->price)
@@ -39,8 +35,6 @@
                                 <span class="bold">{{ $note->very_short_title }}</span><br />
                                 @if($note->creator)
                                     <span class="author-font">{{ $note->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($note->price)
