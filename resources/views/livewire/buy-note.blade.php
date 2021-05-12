@@ -2,13 +2,7 @@
     @if($note->price)
         @if($note->isSubscribedTo)
             @if($note->creator)
-                <a href="{{ $note->getFirstMediaUrl('teacher_note') }}" id="round-button-2"
-                                name="button"
-                                class="btn btn-outline-secondary btn-sm" target="_blank">
-                                View notes
-                </a>
-            @else
-                <a href="{{ $note->getFirstMediaUrl('note') }}" id="round-button-2"
+                <a href="{{ $note->getFirstMediaUrl('notes') }}" id="round-button-2"
                                 name="button"
                                 class="btn btn-outline-secondary btn-sm" target="_blank">
                                 View notes
@@ -22,13 +16,7 @@
         @endif
     @else
         @if($note->creator)
-            <a href="{{ $note->getFirstMediaUrl('teacher_note') }}" id="round-button-2"
-                            name="button"
-                            class="btn btn-outline-secondary btn-sm" target="_blank">
-                            View notes
-            </a>
-        @else
-            <a href="{{ $note->getFirstMediaUrl('note') }}" id="round-button-2"
+            <a href="{{ $note->getFirstMediaUrl('notes') }}" id="round-button-2"
                             name="button"
                             class="btn btn-outline-secondary btn-sm" target="_blank">
                             View notes

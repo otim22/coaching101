@@ -17,7 +17,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Books</li>
+                <li class="breadcrumb-item active" aria-current="page">Pdf Books</li>
             </ol>
         </nav>
     </div>

@@ -21,7 +21,7 @@ class BooksController extends Controller
         return view('student.books.index', compact(['categories', 'years', 'terms', 'books']));
     }
 
-    public function show(Book $book)
+    public function show(ItemContent $book)
     {
         return view('student.books.show', compact('book'));
     }

@@ -22,7 +22,7 @@ class NotesController extends Controller
         return view('student.notes.index', compact(['notes', 'categories', 'years', 'terms']));
     }
 
-    public function show(Note $note)
+    public function show(ItemContent $note)
     {
         return view('student.notes.show', compact('note'));
     }

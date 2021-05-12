@@ -42,12 +42,7 @@
                                 @if($book->creator)
                                     <span class="author-font">{{ $book->creator->name }}</span><br />
                                 @endif
-
-                                @if($book->price)
-                                    <span class="bold">UGX {{ $book->formatPrice }}/-</span>
-                                @else
-                                    <span class="bold paid_color">Free</span>
-                                @endif
+                                <span class="bold paid_color">Free</span>
                             </a>
                         @else
                             <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none; color: #515152;">

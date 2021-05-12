@@ -23,12 +23,7 @@
                                 @if($note->creator)
                                     <span class="author-font">{{ $note->creator->name }}</span><br />
                                 @endif
-
-                                @if($note->price)
-                                    UGX {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
-                                @else
-                                    <span class="bold paid_color">Free</span>
-                                @endif
+                                <span class="bold paid_color">Free</span>
                             </a>
                         @else
                             <a href="{{ route('student.notes.show', $note) }}" style="text-decoration: none" class="title-font">
