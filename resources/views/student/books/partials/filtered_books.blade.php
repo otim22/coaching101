@@ -9,12 +9,6 @@
                                 <img src="{{ $book->cover_image }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
                             @endif
                         </a>
-                    @elseif(!$book->price)
-                        <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
-                            @if($book->creator)
-                                <img src="{{ $book->cover_image }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                            @endif
-                        </a>
                     @else
                         <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
                             @if($book->creator)
@@ -35,14 +29,6 @@
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif
-                            </a>
-                        @elseif(!$book->price)
-                            <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none" class="title-font">
-                                <span class="bold">{{ $book->very_short_title }}</span><br />
-                                @if($book->creator)
-                                    <span class="author-font">{{ $book->creator->name }}</span><br />
-                                @endif
-                                <span class="bold paid_color">Free</span>
                             </a>
                         @else
                             <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none; color: #515152;">
