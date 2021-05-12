@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
 use App\Models\Question;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\ItemContent;
 use Spatie\Searchable\Search;
+use App\Http\Controllers\Controller;
 use Spatie\Searchable\ModelSearchAspect;
 use Illuminate\Pagination\LengthAwarePaginator;
 

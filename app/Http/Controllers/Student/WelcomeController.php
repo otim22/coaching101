@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
 use App\Models\Faq;
 use App\Models\Slider;
@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\StudentImage;
 use App\Models\TeacherImage;
+use App\Http\Controllers\Controller;
 
 class WelcomeController extends Controller
 {

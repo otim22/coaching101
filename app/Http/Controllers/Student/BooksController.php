@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\ItemContent;
+use App\Http\Controllers\Controller;
 use App\Constants\GlobalConstants;
 
 class BooksController extends Controller

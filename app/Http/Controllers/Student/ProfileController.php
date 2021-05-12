@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
 use App\Models\Year;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Constants\GlobalConstants;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProfileRequest;

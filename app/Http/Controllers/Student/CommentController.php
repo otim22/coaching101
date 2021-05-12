@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
 use App\Models\Comment;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CommentController extends Controller
 {
