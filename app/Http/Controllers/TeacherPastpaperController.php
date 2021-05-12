@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Models\Year;
 use App\Models\Term;
+use App\Models\Level;
+use App\Models\Standard;
 use App\Models\Category;
 use App\Models\ItemContent;
 use Illuminate\Http\Request;
@@ -23,9 +26,12 @@ class TeacherPastpaperController extends Controller
     {
         $years =  Year::get();
         $terms =  Term::get();
+        $levels = Level::get();
+        $standards = Standard::get();
         $categories = Category::get();
+        $item = Item::where('name', 'Pastpaper')->firstOrFail();
 
-        return view('teacher.pastpapers.create', compact(['categories', 'years', 'terms']));
+        return view('teacher.pastpapers.create', compact(['categories', 'item', 'years', 'terms', 'standards', 'levels']));
     }
 
     /**
@@ -37,15 +43,15 @@ class TeacherPastpaperController extends Controller
     public function store(PastpaperRequest $request)
     {
         $pastpaper = new ItemContent($request->except('pastpaper'));
-
         $pastpaper->title = $request->input('title');
         $pastpaper->price = $request->input('price');
+        $pastpaper->level_id = $request->input('level_id');
+        $pastpaper->standard_id = $request->input('standard_id');
         $pastpaper->category_id = $request->input('category_id');
         $pastpaper->year_id = $request->input('year_id');
         $pastpaper->term_id = $request->input('term_id');
         $pastpaper->user_id = $request->input('user_id');
         $pastpaper->user_id = Auth::id();
-
         $pastpaper->save();
 
         if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
@@ -70,12 +76,18 @@ class TeacherPastpaperController extends Controller
     {
         $years =  Year::get();
         $terms =  Term::get();
+        $standards = Standard::get();
+        $standard = Standard::find($pastpaper->standard_id);
+        $levels = Level::get();
+        $level = Level::find($pastpaper->level_id);
         $categories = Category::get();
         $category = Category::where('id', $pastpaper->category_id)->firstOrFail();
         $year = Year::where('id', $pastpaper->year_id)->firstOrFail();
         $term = Term::where('id', $pastpaper->term_id)->firstOrFail();
 
-        return view('teacher.pastpapers.edit', compact(['pastpaper', 'years', 'terms', 'categories', 'category', 'year', 'term']));
+        return view('teacher.pastpapers.edit', compact([
+            'pastpaper', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'
+        ]));
     }
 
     /**
@@ -89,6 +101,8 @@ class TeacherPastpaperController extends Controller
         $request->validate([
             'title' => 'required|string',
             'price' => 'nullable',
+            'standard_id' => 'required|integer',
+            'level_id' => 'required|integer',
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',

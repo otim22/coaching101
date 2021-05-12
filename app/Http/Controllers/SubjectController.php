@@ -32,11 +32,11 @@ class SubjectController extends Controller
 
     public function create()
     {
-        $standards = Standard::get();
-        $levels = Level::get();
-        $categories = Category::get();
         $years = Year::get();
         $terms = Term::get();
+        $levels = Level::get();
+        $standards = Standard::get();
+        $categories = Category::get();
         $item = Item::where('name', 'Subject')->firstOrFail();
 
         return view('teacher.videos.create', compact(['categories', 'years', 'terms', 'item', 'standards', 'levels']));
