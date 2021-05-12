@@ -26,6 +26,8 @@ class NoteRequest extends FormRequest
         $rules = [
             'title' => 'required|string',
             'price' => 'nullable',
+            'standard_id' => 'required|integer',
+            'level_id' => 'required|integer',
             'category_id' => 'required|integer',
             'item_id' => 'required|integer',
             'year_id' => 'required|integer',

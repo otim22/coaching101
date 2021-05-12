@@ -64,6 +64,36 @@
                         </div>
 
                         <div class="form-group mb-4">
+                            <label for="standard_id">Standard</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select" name="standard_id">
+                                    <option selected value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                    @foreach($standards as $standard)
+                                        <option value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('standard_id')
+                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="level_id">Level</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select" name="level_id">
+                                    <option selected value="{{ $level->id }}">{{ $level->name }}</option>
+                                    @foreach($levels as $level)
+                                        <option value="{{ $level->id }}">{{ $level->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('level_id')
+                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
                             <label for="year_id">Year</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="year_id">
@@ -171,9 +201,8 @@
                         <div class="form-group mb-4">
                             <label for="price">Book price <span class="light_gray_color">(*Optional)</span></label>
                             <div class="input-group mb-2">
-                                <input type="text"
+                                <input type="number"
                                             class="form-control @error('price') is-invalid @enderror"
-                                            id="price"
                                             placeholder="Example price: 10000"
                                             aria-label="Enter subject price"
                                             aria-describedby="price"

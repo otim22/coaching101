@@ -27,6 +27,8 @@ class SubjectRequest extends FormRequest
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
             'description' => 'required|string',
+            'standard_id' => 'required|integer',
+            'level_id' => 'required|integer',
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
@@ -40,6 +42,8 @@ class SubjectRequest extends FormRequest
         return [
             'title.required' => 'Title is required.',
             'description.required' => 'A description is required',
+            'standard_id.required' => 'Choose a standard',
+            'level.required' => 'Choose a level',
             'category_id.required' => 'Choose a subject',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',

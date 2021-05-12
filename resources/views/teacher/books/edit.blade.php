@@ -216,9 +216,8 @@
                         <div class="form-group mb-4">
                             <label for="price">Book price <span class="light_gray_color">(*Optional)</span></label>
                             <div class="input-group mb-2">
-                                <input type="text"
+                                <input type="number"
                                             class="form-control @error('price') is-invalid @enderror"
-                                            id="price"
                                             placeholder="Example price: 10000"
                                             aria-label="Enter subject price"
                                             aria-describedby="price"

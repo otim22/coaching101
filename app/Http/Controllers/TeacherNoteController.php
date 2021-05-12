@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Item;
+use App\Models\Level;
+use App\Models\Standard;
 use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
@@ -25,10 +27,12 @@ class TeacherNoteController extends Controller
     {
         $years =  Year::get();
         $terms =  Term::get();
+        $levels = Level::get();
+        $standards = Standard::get();
         $categories = Category::get();
         $item = Item::where('name', 'Note')->firstOrFail();
 
-        return view('teacher.notes.create', compact(['categories', 'years', 'terms', 'item']));
+        return view('teacher.notes.create', compact(['categories', 'years', 'terms', 'item', 'levels', 'standards']));
     }
 
     /**
@@ -44,6 +48,8 @@ class TeacherNoteController extends Controller
         $note->title = $request->input('title');
         $note->objective = $request->input('objective');
         $note->price = $request->input('price');
+        $note->standard_id = $request->input('standard_id');
+        $note->level_id = $request->input('level_id');
         $note->category_id = $request->input('category_id');
         $note->item_id = $request->input('item_id');
         $note->year_id = $request->input('year_id');
@@ -73,14 +79,21 @@ class TeacherNoteController extends Controller
      */
     public function edit(ItemContent $note)
     {
+        // dd($note->standard_id);
         $years =  Year::get();
         $terms =  Term::get();
+        $standards = Standard::get();
+        $standard = Standard::find($note->standard_id);
+        $levels = Level::get();
+        $level = Level::find($note->level_id);
         $categories = Category::get();
         $category = Category::where('id', $note->category_id)->firstOrFail();
         $year = Year::where('id', $note->year_id)->firstOrFail();
         $term = Term::where('id', $note->term_id)->firstOrFail();
 
-        return view('teacher.notes.edit', compact(['note', 'years', 'terms', 'categories', 'category', 'year', 'term']));
+        return view('teacher.notes.edit', compact([
+            'note', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'
+        ]));
     }
 
     /**
@@ -95,6 +108,8 @@ class TeacherNoteController extends Controller
             'title' => 'required|string',
             'price' => 'nullable',
             'objective.*'  => 'nullable|string|distinct|min:2',
+            'standard_id' => 'required|integer',
+            'level_id' => 'required|integer',
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
