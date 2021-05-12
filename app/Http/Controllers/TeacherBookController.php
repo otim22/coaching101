@@ -6,9 +6,11 @@ use Arr;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Item;
-use App\Models\ItemContent;
+use App\Models\Level;
 use App\Models\Category;
+use App\Models\Standard;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\BookRequest;
 
@@ -23,12 +25,16 @@ class TeacherBookController extends Controller
 
     public function create()
     {
+        $standards = Standard::get();
+        $levels = Level::get();
         $years =  Year::get();
         $terms =  Term::get();
         $categories = Category::get();
         $item = Item::where('name', 'Book')->firstOrFail();
 
-        return view('teacher.books.create', compact(['categories', 'years', 'terms', 'item']));
+        return view('teacher.books.create', compact([
+                'categories', 'years', 'terms', 'item', 'standards', 'levels'
+            ]));
     }
 
     /**
@@ -40,10 +46,11 @@ class TeacherBookController extends Controller
     public function store(BookRequest $request)
     {
         $book = new ItemContent($request->except(['book', 'cover_image']));
-
         $book->title = $request->input('title');
         $book->objective = $request->input('objective');
         $book->price = $request->input('price');
+        $book->standard_id = $request->input('standard_id');
+        $book->level_id = $request->input('level_id');
         $book->category_id = $request->input('category_id');
         $book->item_id = $request->input('item_id');
         $book->year_id = $request->input('year_id');
@@ -79,11 +86,17 @@ class TeacherBookController extends Controller
         $years =  Year::get();
         $terms =  Term::get();
         $categories = Category::get();
+        $standards = Standard::get();
+        $standard = Standard::find($book->standard_id);
+        $levels = Level::get();
+        $level = Level::find($book->level_id);
         $category = Category::where('id', $book->category_id)->firstOrFail();
         $year = Year::where('id', $book->year_id)->firstOrFail();
         $term = Term::where('id', $book->term_id)->firstOrFail();
 
-        return view('teacher.books.edit', compact(['book', 'years', 'terms', 'categories', 'category', 'year', 'term']));
+        return view('teacher.books.edit', compact([
+                'book', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'
+            ]));
     }
 
     /**
@@ -98,6 +111,8 @@ class TeacherBookController extends Controller
             'title' => 'required|string',
             'price' => 'nullable',
             'objective.*'  => 'nullable|string|distinct|min:2',
+            'standard_id' => 'required|integer',
+            'level_id' => 'required|integer',
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',

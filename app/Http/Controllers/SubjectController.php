@@ -95,7 +95,6 @@ class SubjectController extends Controller
 
     public function update(Request $request, ItemContent $subject)
     {
-        // dd($request);
         $request->validate([
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
