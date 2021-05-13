@@ -13,7 +13,7 @@ class Standard extends Model
 
     use HasFactory, HasSlug;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'status'];
 
     /**
      * Get the options for generating the slug.

@@ -82,18 +82,21 @@
                         Standard
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownStandard">
-                        <a class="dropdown-item" href="{{ route('home') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggle-on mb-1" viewBox="0 0 16 16">
-                                <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-                            </svg> &nbsp;
-                            Cambridge
-                        </a>
-                        <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggle-off mb-1" viewBox="0 0 16 16">
-                                <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
-                            </svg> &nbsp;
-                            UNEB
-                        </a>
+                        @foreach($standards as $key => $standard)
+                            <a class="dropdown-item uniqueStandard" href="#" data-standard-id="{{ $key }}" data-standard-url="{{ route('student.standards.activate', ['standard' => $standard]) }}">
+                                @if($standard->name == "Cambridge")
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggle-on mb-1" viewBox="0 0 16 16">
+                                        <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                                    </svg>
+                                @else
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggle-off mb-1" viewBox="0 0 16 16">
+                                        <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
+                                    </svg>
+                                @endif
+                                &nbsp;
+                                {{ $standard->name }}
+                            </a>
+                        @endforeach
                     </div>
                 </li>
                 <ul class="navbar-nav">
@@ -187,5 +190,5 @@
 
 @push('scripts')
     <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/search.js') }}"></script>
+    <script src="{{ asset('js/nav.js') }}"></script>
 @endpush

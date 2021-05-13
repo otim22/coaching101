@@ -49,43 +49,36 @@ class ComposerServiceProvider extends ServiceProvider
 
         View::composer(['welcome', 'home', 'teacher.*', 'student.*', 'user.*'], function ($view) {
             $topCategories = Category::get()->take(18);
-
             $view->withTopCategories($topCategories);
         });
 
         View::composer(['welcome', 'home'], function ($view) {
             $mostViewedSubjects = ItemContent::where(['is_approved' => 1, 'item_id' => 1])->get()->take(8);
-
             $view->withMostViewedSubjects($mostViewedSubjects);
         });
 
         View::composer(['welcome', 'home', 'student.*'], function ($view) {
             $teachers = User::with('profile')->where('role', '2')->get()->take(12);
-
             $view->withTeachers($teachers);
         });
 
         View::composer(['welcome', 'home', 'student.*'], function ($view) {
             $standards = Standard::get();
-
             $view->withStandards($standards);
         });
 
         View::composer(['welcome', 'home', 'student.*'], function ($view) {
             $levels = Level::get();
-
             $view->withLevels($levels);
         });
 
         View::composer(['welcome', 'home', 'student.*'], function ($view) {
             $years = Year::get();
-
             $view->withYears($years);
         });
 
         View::composer(['welcome', 'home', 'student.*'], function ($view) {
             $terms = Term::get();
-
             $view->withTerms($terms);
         });
     }

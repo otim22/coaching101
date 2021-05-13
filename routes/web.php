@@ -56,6 +56,7 @@ use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\ItemController;
 
 Route::get('/', [WelcomeController::class, 'index']);
+Route::post('/standards/{standard}', [WelcomeController::class, 'activateStandard'])->name('student.standards.activate');
 Route::get('/books', [Books::class, 'index'])->name('student.books.index');
 Route::get('/donations', [DonationController::class, 'index'])->name('donate.index');
 Route::get('/donations/{donor}', [DonationController::class, 'show'])->name('donate.show');

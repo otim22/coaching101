@@ -15,10 +15,12 @@ class StandardTableSeeder extends Seeder
     public function run()
     {
         factory(Standard::class)->create([
-            'name' => 'Cambridge'
+            'name' => 'Cambridge',
+            'status' => 'false'
         ]);
         factory(Standard::class)->create([
-            'name' => 'UNEB'
+            'name' => 'UNEB',
+            'status' => 'false'
         ]);
     }
 }

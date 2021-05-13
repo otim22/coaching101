@@ -77,7 +77,6 @@ $(function() {
     $("p.to-delete").on("click", function() {
         var deleteUrl = $(this).attr("data-delete-url");
         var objectiveId = $(this).attr("data-objective-id");
-
         deleteObjective(deleteUrl, objectiveId);
     });
 });
