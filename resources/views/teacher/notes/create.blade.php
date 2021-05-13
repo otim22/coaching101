@@ -132,7 +132,7 @@
 
                         <div class="mb-4">
                             <div class="form-group dynamic_note_objective">
-                                <label for="notes_objective">What will students learn in the note?</label>
+                                <label for="notes_objective">What will students learn in the notes?</label>
                                 <div class="input-group note_objective_section">
                                     <div class="notes_objective_input">
                                         <input type="text"
@@ -201,7 +201,6 @@
 @endsection
 
 @prepend('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
 @endpush

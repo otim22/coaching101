@@ -119,14 +119,15 @@ Route::middleware('auth')->group(function() {
         Route::patch('/subjects/{subject}/update', [SubjectController::class, 'update'])->name('subjects.update');
         Route::delete('/subjects/{subject}/destroy', [SubjectController::class, 'destroy'])->name('subjects.destroy');
 
-        Route::resource('/books', 'TeacherBookController')->except(['index']);
+        Route::resource('/books', 'Teacher\TeacherBookController')->except(['index']);
         Route::get('/books', [TeacherBookController::class, 'index'])->name('teacher.books');
         Route::post('/books/{book}/objectives/{objective}', [TeacherBookController::class, 'deleteObjective'])->name('teacher.books.objective.destroy');
-        Route::resource('/notes', 'TeacherNoteController')->except(['index']);
+        Route::resource('/notes', 'Teacher\TeacherNoteController')->except(['index']);
         Route::get('/notes', [TeacherNoteController::class, 'index'])->name('teacher.notes');
         Route::post('/notes/{note}/objectives/{objective}', [TeacherNoteController::class, 'deleteObjective'])->name('teacher.notes.objective.destroy');
-        Route::resource('/pastpapers', 'TeacherPastpaperController')->except(['index']);
+        Route::resource('/pastpapers', 'Teacher\TeacherPastpaperController')->except(['index']);
         Route::get('/pastpapers', [TeacherPastpaperController::class, 'index'])->name('teacher.pastpapers');
+        Route::post('/pastpapers/{pastpaper}/objectives/{objective}', [TeacherPastpaperController::class, 'deleteObjective'])->name('teacher.pastpapers.objective.destroy');
 
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'create']);

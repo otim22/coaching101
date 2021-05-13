@@ -6,6 +6,7 @@ use App\Models\Item;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Level;
+use Illuminate\Support\Arr;
 use App\Models\Standard;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -45,6 +46,7 @@ class TeacherPastpaperController extends Controller
     {
         $pastpaper = new ItemContent($request->except('pastpaper'));
         $pastpaper->title = $request->input('title');
+        $pastpaper->objective = $request->input('objective');
         $pastpaper->price = $request->input('price');
         $pastpaper->level_id = $request->input('level_id');
         $pastpaper->standard_id = $request->input('standard_id');
@@ -99,8 +101,10 @@ class TeacherPastpaperController extends Controller
      */
     public function update(Request $request, ItemContent $pastpaper)
     {
-        $this->validateData($request);
-        $pastpaper->update($request->except(['pastpaper']));
+        $data = $this->validateData($request);
+        $pastpaper->fill(Arr::except($data, ['objective', 'pastpaper']));
+        $pastpaper->objective = array_filter($request->objective);
+        $pastpaper->save();
 
         if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
             foreach ($pastpaper->media as $media) {
@@ -116,6 +120,7 @@ class TeacherPastpaperController extends Controller
     {
         return $request->validate([
             'title' => 'required|string',
+            'objective.*'  => 'nullable|string|distinct|min:2',
             'price' => 'nullable',
             'standard_id' => 'required|integer',
             'level_id' => 'required|integer',
@@ -125,6 +130,16 @@ class TeacherPastpaperController extends Controller
             'pastpaper' => 'nullable|mimes:pdf|max:5000',
             'user_id' => 'integer|nullable',
         ]);
+    }
+
+    public function deleteObjective(ItemContent $pastpaper, $objectiveId)
+    {
+        $objectives = $pastpaper->objective;
+        $updatedObjectives = Arr::except($objectives, $objectiveId);
+        $pastpaper->objective = $updatedObjectives;
+        $pastpaper->save();
+
+        return redirect()->route('teacher.pastpapers');
     }
 
     /**

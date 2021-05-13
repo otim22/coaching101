@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-10">
-                <div class="mb-5">
+                <div class="mb-4">
                     <h5>
                         <a id="round-button-2" type="button" class="btn btn-secondary btn-sm" href="{{ route('student.books.index') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -87,6 +87,9 @@
                                     <span class="bold">UGX {{ $book->formatPrice }}/-</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
+                                    @if($book->creator)
+                                        <embed src="{{ $book->getFirstMediaUrl('pastpapers') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                    @endif
                                 @endif
                             </div>
 

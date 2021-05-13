@@ -139,7 +139,6 @@ class TeacherNoteController extends Controller
     {
         $objectives = $note->objective;
         $updatedObjectives = Arr::except($objectives, $objectiveId);
-
         $note->objective = $updatedObjectives;
         $note->save();
 

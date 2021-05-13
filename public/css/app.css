@@ -4618,12 +4618,14 @@ img.rounded-corners {
 }
 
 .book_objective_section,
-.note_objective_section {
+.note_objective_section,
+.pastpaper_objective_section {
   display: flex;
 }
 
 .books_objective_input,
-.notes_objective_input {
+.notes_objective_input,
+.pastpapers_objective_input {
   flex-grow: 1;
 }
 
@@ -4636,7 +4638,8 @@ img.rounded-corners {
 }
 
 .delete_book_objective,
-.delete_note_objective {
+.delete_note_objective,
+.delete_pastpaper_objective {
   color: white;
   background-color: #e74c3c;
   text-align: center;

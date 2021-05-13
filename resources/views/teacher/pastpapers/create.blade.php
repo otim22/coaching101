@@ -130,6 +130,39 @@
                             @enderror
                         </div>
 
+                        <div class="mb-4">
+                            <div class="form-group dynamic_pastpaper_objective">
+                                <label for="pastpapers_objective">What will students learn in the past paper?</label>
+                                <div class="input-group pastpaper_objective_section">
+                                    <div class="pastpapers_objective_input">
+                                        <input type="text"
+                                            id="pastpapers_objective"
+                                            value="{{old('objective.0')}}"
+                                            class="form-control form-control mb-2 @error('objective.0') is-invalid @enderror"
+                                            placeholder="Example: Origin of languages"
+                                            name="objective[]" required>
+                                    </div>
+                                    <div class="hidden" id="hidden_pastpaper_objective">
+                                        <p class="delete_pastpaper_objective">x</p>
+                                    </div>
+                                </div>
+                                @error('objective.0')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <p class="btn_pastpapers_objective hidden" type="button">
+                                <span class="mr-1">
+                                    <svg class="bi bi-plus-circle" width="1.3em" height="1.3em" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                                        <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    </svg>
+                                </span>
+                                Add answer
+                            </p>
+                        </div>
+
                         <div class="form-group mb-4">
                             <label for="pastpaper">Upload Past paper</label>
                             <input type="file" name="pastpaper" class="form-control-file @error('pastpaper') is-invalid @enderror" id="pastpaper" required>
@@ -166,3 +199,8 @@
 </section>
 
 @endsection
+
+@prepend('scripts')
+    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/pastpapers.js')}}" type="text/javascript"></script>
+@endpush

@@ -58,7 +58,6 @@ $(function () {
 
             all_items.classList.add('hidden');
         }
-
         attach_delete();
     });
 

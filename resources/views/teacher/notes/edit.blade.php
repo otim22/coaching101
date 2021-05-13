@@ -138,21 +138,21 @@
                                     <p class="mt-2">Current note objectives</p>
                                 @endif
                                 @foreach($note->objective as $key => $note_objective)
-                                <div class="d-flex justify-content-between">
-                                    <div style="flex-grow:1">
-                                        <input type="text"
-                                                    value="{{ $note_objective }}"
-                                                    class="form-control form-control mb-2 @error('objective.*') is-invalid @enderror"
-                                                    placeholder="Example: Origin of languages"
-                                                    name="objective[]">
+                                    <div class="d-flex justify-content-between">
+                                        <div style="flex-grow:1">
+                                            <input type="text"
+                                                        value="{{ $note_objective }}"
+                                                        class="form-control form-control mb-2 @error('objective.*') is-invalid @enderror"
+                                                        placeholder="Example: Origin of languages"
+                                                        name="objective[]">
+                                        </div>
+                                        <div>
+                                            <p class="delete_note_objective to-delete" data-objective-id="{{ $key }}" data-delete-url="{{ route('teacher.notes.objective.destroy', ['note' => $note, 'objective' => $key]) }}">x</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p class="delete_note_objective to-delete" data-objective-id="{{ $key }}" data-delete-url="{{ route('teacher.notes.objective.destroy', ['note' => $note, 'objective' => $key]) }}">x</p>
-                                    </div>
-                                </div>
-                                @error('objective.*')
-                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                @enderror
+                                    @error('objective.*')
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
                                 @endforeach
 
                                 <div class="input-group note_objective_section">

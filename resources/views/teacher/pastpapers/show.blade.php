@@ -67,15 +67,30 @@
 
                     <hr />
 
-                    <h5 class="mt-2">{{ $pastpaper->title }}</h5>
+                    <h5 class="bold mt-2">{{ $pastpaper->title }}</h5>
                     <p>{{ $pastpaper->category->name }} {{ $pastpaper->year->name }}, {{ $pastpaper->term->name }}. </p>
+
                     @if(!$pastpaper->price)
                         <p>Free</p>
                     @else
                         <p>UGX {{ number_format($pastpaper->price) }}/-</p>
                     @endif
 
-                    <embed src="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" type="application/pdf" width="100%" height="400">
+                    @if(count($pastpaper->objective) > 0)
+                        <div class="mb-3">
+                            <p class="bold">Past paper objectives </p>
+                            @foreach($pastpaper->objective as $pastpapers_objective)
+                            <p>
+                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                                </svg>
+                                {{ $pastpapers_objective }}
+                            </p>
+                            @endforeach
+                        </div>
+                    @endif
+
+                    <embed src="{{ $pastpaper->getFirstMediaUrl('pastpapers') }}" type="application/pdf" width="100%" height="400">
 
                     <form action="{{ route('pastpapers.destroy', $pastpaper) }}" class="hidden" id="delete-teacher-pastpaper" method="POST">
                         @csrf
