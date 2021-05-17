@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\ItemContent;
 use App\Models\TeacherImage;
 use App\Models\StudentImage;
+use App\Helpers\SessionWrapper;
 use App\Http\Controllers\Controller;
 
 class WelcomeController extends Controller
@@ -30,20 +31,10 @@ class WelcomeController extends Controller
 
     public function activateStandard(Standard $standard)
     {
-        $standards = Standard::get();
-        $activeStatus = 'active';
-        $falseStatus = 'false';
-        // WIP
-        foreach($standards as $standardFromDB) {
-            if($standardFromDB->status == "active") {
-                $activeStand->status = $falseStatus;
-                $activeStand->save();
-            } else {
-                $standard->status = $activeStatus;
-                $standard->save();
-            }
-        }
+        SessionWrapper::setStandardId($standard->id);
 
-        return redirect('/');
+        return response()->json([
+            'data' => SessionWrapper::getData('standardId')
+        ]);
     }
 }

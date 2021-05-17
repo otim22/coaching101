@@ -89,23 +89,26 @@
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         @foreach($categories as $key => $category)
-                            <a class="nav-item nav-link {{ $key === $categories->keys()->first() ? 'active' : '' }}"
-                                id="nav-{{ Str::slug($key) }}-tab"
-                                data-toggle="tab"
-                                href="#{{ Str::slug($key) }}"
-                                role="tab"
-                                aria-controls="nav-{{ Str::slug($key) }}">
-                                <h6>{{ $key }} </h6>
-                            </a>
+                            @if(count($category->itemContents) > 1)
+                                <a class="nav-item nav-link {{ $key == $categories->keys()->first() ? 'active' : '' }}"
+                                    id="nav-{{ Str::slug($category->name) }}-tab"
+                                    data-toggle="tab"
+                                    href="#{{ Str::slug($category->name) }}"
+                                    role="tab"
+                                    aria-controls="nav-{{ Str::slug($category->name) }}">
+                                    <h6>{{ $category->name }} </h6>
+                                </a>
+                            @endif
                         @endforeach
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     @foreach($categories as $key => $category)
-                        <div class="tab-pane fade show {{ $key === $categories->keys()->first() ? 'active' : '' }}" id="{{ Str::slug($key) }}" role="tabpanel" aria-labelledby="nav-{{ Str::slug($key) }}-tab">
+                        <div class="tab-pane fade show {{ $key == $categories->keys()->first() ? 'active' : '' }}"
+                                id="{{ Str::slug($category->name) }}"
+                                role="tabpanel">
                             <div class="row mt-4">
-                                @foreach($category as $cat)
-                                    @foreach($cat->itemContents as $subject)
+                                    @foreach($category->itemContents as $subject)
                                         <div class="col-sm-6 col-md-6 col-lg-3 mb-4">
                                             <div class="card">
                                                 <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
@@ -159,7 +162,6 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                @endforeach
                             </div>
                         </div>
                     @endforeach

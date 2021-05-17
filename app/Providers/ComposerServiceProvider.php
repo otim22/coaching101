@@ -15,6 +15,7 @@ use App\Models\Question;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Models\ItemContent;
+use App\Helpers\SessionWrapper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -39,21 +40,28 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(['welcome'], function ($view) {
-            $categories = Category::with('itemContents')->get()->map(function($query) {
-                $query->setRelation('itemContents', $query->itemContents->where('is_approved', 1)->take(8));
-                return $query;
-            })->groupBy('name')->take(8);
+            $categories = Category::with(['itemContents'=>function ($query) {
+                $query->where([
+                    'is_approved' => 1,
+                    'standard_id' => SessionWrapper::getData('standardId')
+                ])->take(8);
+            }])->whereIn('id', Standard::categoryIds())->take(8)->get();
 
             $view->withCategories($categories);
         });
 
         View::composer(['welcome', 'home', 'teacher.*', 'student.*', 'user.*'], function ($view) {
-            $topCategories = Category::get()->take(18);
-            $view->withTopCategories($topCategories);
+            $standard = Standard::find(SessionWrapper::getData('standardId'));
+
+            $view->withTopCategories($standard->categories->take(18));
         });
 
         View::composer(['welcome', 'home'], function ($view) {
-            $mostViewedSubjects = ItemContent::where(['is_approved' => 1, 'item_id' => 1])->get()->take(8);
+            $mostViewedSubjects = ItemContent::where([
+                                'is_approved' => 1,
+                                'item_id' => 1,
+                                'standard_id' => SessionWrapper::getData('standardId')
+                            ])->get()->take(8);
             $view->withMostViewedSubjects($mostViewedSubjects);
         });
 
@@ -62,9 +70,23 @@ class ComposerServiceProvider extends ServiceProvider
             $view->withTeachers($teachers);
         });
 
-        View::composer(['welcome', 'home', 'student.*'], function ($view) {
+        View::composer(['welcome', 'home', 'auth.*', 'student.*'], function ($view) {
             $standards = Standard::get();
             $view->withStandards($standards);
+        });
+
+        View::composer(['welcome', 'home', 'auth.*', 'student.*'], function ($view) {
+            $id = SessionWrapper::getData('standardId');
+            $standards = Standard::get();
+
+            foreach($standards as $standard) {
+                if($id < 0 && $standard->status == 'active') {
+                    SessionWrapper::setStandardId($standard->id);
+                    $id = $standard->id;
+                }
+            }
+
+            $view->withId($id);
         });
 
         View::composer(['welcome', 'home', 'student.*'], function ($view) {

@@ -84,7 +84,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownStandard">
                         @foreach($standards as $key => $standard)
                             <a class="dropdown-item uniqueStandard" href="#" data-standard-id="{{ $key }}" data-standard-url="{{ route('student.standards.activate', ['standard' => $standard]) }}">
-                                @if($standard->name == "Cambridge")
+                                @if($standard->id == $id)
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggle-on mb-1" viewBox="0 0 16 16">
                                         <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
                                     </svg>

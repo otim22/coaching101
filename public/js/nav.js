@@ -45,7 +45,7 @@ $(function() {
     $(".dropdown-menu .uniqueStandard").on("click", function() {
         var standardUrl = $(this).attr("data-standard-url");
         var standardId = $(this).attr("data-standard-id");
-        console.log('hello', standardId)
+
         activateStandard(standardUrl, standardId);
     });
 });
@@ -62,15 +62,12 @@ function activateStandard(standardUrl, standardId) {
             id: standardId,
         },
         success: function (response) {
-            console.log(response);
+            document.location.reload(true);
+            // console.log(response);
         },
         error: function(xhr) {
             console.log(xhr.responseText);
        }
     });
-
-    // setTimeout(function () {
-    //     document.location.reload(true);
-    // }, 1000);
 }
 /** End of standard js */
