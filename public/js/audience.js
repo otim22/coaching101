@@ -133,6 +133,7 @@ function deleteClassRequirement(classRequirementDeleteUrl, classRequirementId) {
             id: classRequirementId,
         },
         success: function (response) {
+            document.location.reload(true);
             console.log(response);
         },
         error: function(xhr) {
@@ -140,6 +141,7 @@ function deleteClassRequirement(classRequirementDeleteUrl, classRequirementId) {
        }
     });
 
+    /** To be removed after checking success response */
     setTimeout(function () {
         document.location.reload(true);
     }, 1000);

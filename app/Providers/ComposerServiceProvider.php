@@ -52,8 +52,15 @@ class ComposerServiceProvider extends ServiceProvider
 
         View::composer(['welcome', 'home', 'teacher.*', 'student.*', 'user.*'], function ($view) {
             $standard = Standard::find(SessionWrapper::getData('standardId'));
+            $standardDefaultId = 1;
+            if($standard !== null) {
+                $view->withTopCategories($standard->categories->take(18));
+            } else {
+                SessionWrapper::setStandardId($standardDefaultId);
+                $standard = Standard::find(SessionWrapper::getData('standardId'));
 
-            $view->withTopCategories($standard->categories->take(18));
+                $view->withTopCategories($standard->take(18));
+            }
         });
 
         View::composer(['welcome', 'home'], function ($view) {

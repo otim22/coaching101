@@ -49,8 +49,11 @@ class Standard extends Model
     {
         $categoryIds = [];
         $standard = Standard::find(SessionWrapper::getData('standardId'));
-        foreach ($standard->categories as $category) {
-            array_push($categoryIds, $category->id);
+        
+        if($standard !== null) {
+            foreach ($standard->categories as $category) {
+                array_push($categoryIds, $category->id);
+            }
         }
 
         return $categoryIds;

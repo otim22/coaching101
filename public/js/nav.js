@@ -63,7 +63,6 @@ function activateStandard(standardUrl, standardId) {
         },
         success: function (response) {
             document.location.reload(true);
-            // console.log(response);
         },
         error: function(xhr) {
             console.log(xhr.responseText);
