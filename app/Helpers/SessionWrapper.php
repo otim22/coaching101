@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\Standard;
 
 class SessionWrapper
 {
@@ -28,5 +29,20 @@ class SessionWrapper
     public static function deleteData($key)
     {
         session()->forget($key);
+    }
+
+    public static function getStandardId()
+    {
+        $id = self::getData('standardId');
+        $standards = Standard::get();
+
+        foreach($standards as $standard) {
+            if($id < 0 && $standard->status == 'active') {
+                self::setStandardId($standard->id);
+                $id = $standard->id;
+            }
+        }
+
+        return $id;
     }
 }

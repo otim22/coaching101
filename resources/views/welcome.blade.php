@@ -89,16 +89,14 @@
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         @foreach($categories as $key => $category)
-                            @if(count($category->itemContents) > 1)
-                                <a class="nav-item nav-link {{ $key == $categories->keys()->first() ? 'active' : '' }}"
-                                    id="nav-{{ Str::slug($category->name) }}-tab"
-                                    data-toggle="tab"
-                                    href="#{{ Str::slug($category->name) }}"
-                                    role="tab"
-                                    aria-controls="nav-{{ Str::slug($category->name) }}">
-                                    <h6>{{ $category->name }} </h6>
-                                </a>
-                            @endif
+                            <a class="nav-item nav-link {{ $key == $categories->keys()->first() ? 'active' : '' }}"
+                                id="nav-{{ Str::slug($category->name) }}-tab"
+                                data-toggle="tab"
+                                href="#{{ Str::slug($category->name) }}"
+                                role="tab"
+                                aria-controls="nav-{{ Str::slug($category->name) }}">
+                                <h6>{{ $category->name }} </h6>
+                            </a>
                         @endforeach
                     </div>
                 </nav>
@@ -108,60 +106,60 @@
                                 id="{{ Str::slug($category->name) }}"
                                 role="tabpanel">
                             <div class="row mt-4">
-                                    @foreach($category->itemContents as $subject)
-                                        <div class="col-sm-6 col-md-6 col-lg-3 mb-4">
-                                            <div class="card">
-                                                <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                                                    <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
-                                                </a>
-                                                <div class="card-body">
-                                                    <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
-                                                        <span class="bold">{{ $subject->very_short_title }}</span><br />
-                                                        <span class="author-font">{{$subject->creator->name }}</span><br />
-                                                        @if($subject->averageRating)
-                                                            <div class="star-display">
-                                                                @for($i = $subject->averageRating; $i >= 1; $i--)
-                                                                    <label for="rate-{{$i}}" class="fa fa-star"></label>
-                                                                @endfor
-                                                                @if($subject->isSubscribedTo)
-                                                                    <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
-                                                                @endif
-                                                            </div>
-                                                        @else
-                                                            <div class="rating">
-                                                                @for($i = 0; $i < 5; $i++)
-                                                                    <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                                    </svg>
-                                                                @endfor
-                                                                @if($subject->isSubscribedTo)
-                                                                    <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
-                                                                @endif
-                                                            </div>
-                                                        @endif
-
-                                                        @if($subject->price)
+                                @foreach($category->itemContents as $subject)
+                                    <div class="col-sm-6 col-md-6 col-lg-3 mb-4">
+                                        <div class="card">
+                                            <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
+                                                <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
+                                            </a>
+                                            <div class="card-body">
+                                                <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">
+                                                    <span class="bold">{{ $subject->very_short_title }}</span><br />
+                                                    <span class="author-font">{{$subject->creator->name }}</span><br />
+                                                    @if($subject->averageRating)
+                                                        <div class="star-display">
+                                                            @for($i = $subject->averageRating; $i >= 1; $i--)
+                                                                <label for="rate-{{$i}}" class="fa fa-star"></label>
+                                                            @endfor
                                                             @if($subject->isSubscribedTo)
-                                                                <span class="author-font">UGX {{  $subject->formatPrice }}/- (Paid)</span></span>
-                                                            @else
-                                                                <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
+                                                                <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
                                                             @endif
-                                                        @else
-                                                            <span class="bold paid_color">Free</span>
-                                                        @endif
-                                                    </a>
-                                                    <div class="mt-2 d-flex justify-content-between">
+                                                        </div>
+                                                    @else
+                                                        <div class="rating">
+                                                            @for($i = 0; $i < 5; $i++)
+                                                                <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                                                </svg>
+                                                            @endfor
+                                                            @if($subject->isSubscribedTo)
+                                                                <span class="author-font ml-2">({{ $subject->subscriptionCount }}) students</span><br />
+                                                            @endif
+                                                        </div>
+                                                    @endif
+
+                                                    @if($subject->price)
                                                         @if($subject->isSubscribedTo)
-                                                            <a id="round-button-2" class="btn btn-sm btn-outline-primary" href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                                            <span class="author-font">UGX {{  $subject->formatPrice }}/- (Paid)</span></span>
                                                         @else
-                                                            <livewire:add-to-cart :subject="$subject" />
-                                                            <livewire:add-to-wish-list :subject="$subject" />
+                                                            <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
                                                         @endif
-                                                    </div>
+                                                    @else
+                                                        <span class="bold paid_color">Free</span>
+                                                    @endif
+                                                </a>
+                                                <div class="mt-2 d-flex justify-content-between">
+                                                    @if($subject->isSubscribedTo)
+                                                        <a id="round-button-2" class="btn btn-sm btn-outline-primary" href="{{ route('subjects.index', $subject) }}" style="text-decoration: none;">Start learning</a>
+                                                    @else
+                                                        <livewire:add-to-cart :subject="$subject" />
+                                                        <livewire:add-to-wish-list :subject="$subject" />
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     @endforeach

@@ -40,27 +40,29 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(['welcome'], function ($view) {
-            $categories = Category::with(['itemContents'=>function ($query) {
+            $categories = Category::with(['itemContents' => function ($query) {
                 $query->where([
                     'is_approved' => 1,
                     'standard_id' => SessionWrapper::getData('standardId')
                 ])->take(8);
             }])->whereIn('id', Standard::categoryIds())->take(8)->get();
 
-            $view->withCategories($categories);
+            $clonedCategories = clone $categories;
+
+            foreach($clonedCategories as $key => $category) {
+                if(count($category->itemContents) == 0) {
+                    unset($clonedCategories[$key]);
+                }
+            }
+
+            $view->withCategories($clonedCategories);
         });
 
         View::composer(['welcome', 'home', 'teacher.*', 'student.*', 'user.*'], function ($view) {
-            $standard = Standard::find(SessionWrapper::getData('standardId'));
-            $standardDefaultId = 1;
-            if($standard !== null) {
-                $view->withTopCategories($standard->categories->take(18));
-            } else {
-                SessionWrapper::setStandardId($standardDefaultId);
-                $standard = Standard::find(SessionWrapper::getData('standardId'));
+            $id = SessionWrapper::getStandardId();
+            $standard = Standard::find($id);
 
-                $view->withTopCategories($standard->take(18));
-            }
+            $view->withTopCategories($standard->categories->take(18));
         });
 
         View::composer(['welcome', 'home'], function ($view) {
@@ -83,15 +85,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['welcome', 'home', 'auth.*', 'student.*'], function ($view) {
-            $id = SessionWrapper::getData('standardId');
-            $standards = Standard::get();
-
-            foreach($standards as $standard) {
-                if($id < 0 && $standard->status == 'active') {
-                    SessionWrapper::setStandardId($standard->id);
-                    $id = $standard->id;
-                }
-            }
+            $id = SessionWrapper::getStandardId();
 
             $view->withId($id);
         });
