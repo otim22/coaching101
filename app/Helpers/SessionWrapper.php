@@ -37,7 +37,7 @@ class SessionWrapper
         $standards = Standard::get();
 
         foreach($standards as $standard) {
-            if($id < 0 && $standard->status == 'active') {
+            if($id == null && $standard->status == 'active') {
                 self::setStandardId($standard->id);
                 $id = $standard->id;
             }
