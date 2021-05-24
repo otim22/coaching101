@@ -44,7 +44,7 @@
                     <form action="{{ route('notes.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-4">
-                            <label for="year_id">Subject</label>
+                            <label for="category_id">Subject</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="category_id">
                                     <option selected>Choose subject...</option>

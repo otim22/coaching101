@@ -54,6 +54,9 @@ use App\Http\Controllers\Admin\PastpaperController;
 use App\Http\Controllers\Admin\PaymentPlanController;
 use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\ItemController;
+use App\Http\Controllers\Admin\SurveyController;
+use App\Http\Controllers\Admin\SurveyQuestionController;
+use App\Http\Controllers\Admin\SurveyAnswerController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::post('/standards/{standard}', [WelcomeController::class, 'activateStandard'])->name('student.standards.activate');
@@ -199,6 +202,9 @@ Route::middleware('auth')->group(function() {
         Route::resource('pastpapers', 'PastpaperController');
         Route::resource('plans', 'PaymentPlanController');
         Route::resource('items', 'ItemController');
+        Route::resource('surveys', 'SurveyController');
+        Route::resource('surveyQuestions', 'SurveyQuestionController');
+        Route::resource('surveyAnswers', 'SurveyAnswerController');
         Route::resource('currencies', 'CurrencyController');
     });
 });

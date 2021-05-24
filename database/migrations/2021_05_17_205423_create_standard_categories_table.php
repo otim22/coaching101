@@ -15,8 +15,8 @@ class CreateStandardCategoriesTable extends Migration
     {
         Schema::create('standard_categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('standard_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('standard_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

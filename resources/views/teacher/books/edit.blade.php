@@ -53,7 +53,7 @@
                         @csrf
                         @method('patch')
                         <div class="form-group mb-4">
-                            <label for="year_id">Subject</label>
+                            <label for="category_id">Subject</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="category_id">
                                     <option selected value="{{ $category->id }}">{{ $category->name }}</option>

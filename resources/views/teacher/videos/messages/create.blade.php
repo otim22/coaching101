@@ -57,8 +57,7 @@
                                                             name="congragulation_message"
                                                             placeholder="Example: Congragulations for completing the subject"
                                                             rows="3"
-                                                            required>{{ old('congragulation_message') }}
-                                        </textarea>
+                                                            required>{{ old('congragulation_message') }}</textarea>
                                     </div>
                                     @error('congragulation_message')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
