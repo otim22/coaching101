@@ -70,15 +70,7 @@ class SubjectController extends Controller
         $year->terms()->attach($request->input('term_id'));
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
-            $subject->addMediaFromRequest('cover_image')->toMediaCollection('videos')->registerMediaConversions(function (Media $media) {
-                    $this->addMediaConversion('videos')
-                            ->fit(Manipulations::FIT_CONTAIN, 800, 600)
-                            ->nonQueued();
-
-                    $this->addMediaConversion('thumb')
-                            ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
-                            ->nonQueued();
-            });
+            $subject->addMediaFromRequest('cover_image')->toMediaCollection('videos');
         }
 
         $subject->save();
@@ -113,15 +105,7 @@ class SubjectController extends Controller
             foreach ($subject->media as $media) {
                 $media->delete();
             }
-            $subject->addMediaFromRequest('cover_image')->toMediaCollection('videos')->registerMediaConversions(function (Media $media) {
-                    $this->addMediaConversion('videos')
-                            ->fit(Manipulations::FIT_CONTAIN, 800, 600)
-                            ->nonQueued();
-
-                    $this->addMediaConversion('thumb')
-                            ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20])
-                            ->nonQueued();
-            });
+            $subject->addMediaFromRequest('cover_image')->toMediaCollection('videos');
         }
 
         return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');

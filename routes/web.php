@@ -19,6 +19,7 @@ use App\Http\Controllers\Teacher\PerformanceController;
 use App\Http\Controllers\Teacher\TeacherBookController;
 use App\Http\Controllers\Teacher\TeacherNoteController;
 use App\Http\Controllers\Teacher\TeacherPastpaperController;
+use App\Http\Controllers\Teacher\UserSurveyAnswerController;
 use App\Http\Controllers\Student\HomeController;
 use App\Http\Controllers\Student\SubjectDisplayController;
 use App\Http\Controllers\Student\TopCategoryController;
@@ -111,6 +112,7 @@ Route::middleware('auth')->group(function() {
 
     Route::post( '/pay', [PaymentController::class, 'initialize'])->name('pay');
     Route::post('/rave/callback', [PaymentController::class, 'callback'])->name('callback');
+    Route::post('/userSurveyAnswers', [UserSurveyAnswerController::class, 'store'])->name('userSurveyAnswer.store');
 
     Route::prefix('teacher')->group(function() {
         Route::get('/starter', [SubjectController::class, 'starter'])->name('subjects.starter');
@@ -205,6 +207,7 @@ Route::middleware('auth')->group(function() {
         Route::resource('surveys', 'SurveyController');
         Route::resource('surveyQuestions', 'SurveyQuestionController');
         Route::resource('surveyAnswers', 'SurveyAnswerController');
+        Route::post('/surveyAnswers/{surveyAnswer}/deleteSurveyAnswer', [SurveyAnswerController::class, 'deleteSurveyAnswer'])->name('surveyAnswer.destroy');
         Route::resource('currencies', 'CurrencyController');
     });
 });

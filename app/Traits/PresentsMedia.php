@@ -41,9 +41,9 @@ trait PresentsMedia
         return '/images/no-image.jpeg';
     }
 
-    protected function getFirstMediaImage(string $conversion, string $mediaCollection = 'default')
+    protected function getFirstMediaImage(string $mediaCollection = 'default')
     {
-        $imgPath = $this->getFirstMediaUrl($mediaCollection, $conversion);
+        $imgPath = $this->getFirstMediaUrl($mediaCollection);
 
         return ! empty($imgPath) ? $imgPath : $this->default_image;
     }

@@ -45,7 +45,7 @@ class AudienceController extends Controller
         $audience->target_student = $target_student;
 
         $subject->addAudience($audience);
-        
+
         return redirect()->route('messages', $subject);
     }
 

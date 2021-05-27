@@ -58,3 +58,36 @@
   font-weight: bold;
 }
 
+/** Start survey */
+
+.survey_answer_section {
+  display: flex;
+}
+
+.survey_answer_input {
+  flex-grow: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+.seen {
+  display: block;
+}
+
+.delete_survey_answer {
+  color: white;
+  background-color: #e74c3c;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 1px;
+  font-weight: 700;
+  border-radius: 5px;
+  height: 30px;
+  min-width: 30px;
+  cursor: pointer;
+}
+
+/** End survey */
+

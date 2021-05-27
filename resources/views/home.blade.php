@@ -115,6 +115,6 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/tab-selection.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/tab_selection.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/home.js')}}" type="text/javascript"></script>
 @endpush

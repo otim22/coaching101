@@ -16,28 +16,19 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Answer</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse($surveyAnswers as $key => $surveyAnswer)
-                                <tr>
-                                    <th>{{ $key + 1 }}</th>
-                                    <td>
-                                        <a href="{{ route('admin.surveyAnswers.show', $surveyAnswer) }}" style="text-decoration: none;">{{ $surveyAnswer->answer }}</a>
-                                    </td>
-                                </tr>
-                                @empty
-                                <tr>
-                                    <td>No available answer</td>
-                                </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
+                        @foreach($surveyAnswers as $key => $surveyAnswerByQtns)
+                            <h4>Question {{ $key }}</h4>
+                            @foreach($surveyAnswerByQtns as $surveyAnswer)
+                                <div class="d-flex justify-content-between">
+                                    <div style="flex-grow:1">
+                                        <input type="text"
+                                                    value="{{ $surveyAnswer->answer }}"
+                                                    class="form-control form-control mb-2 @error('answer.*') is-invalid @enderror"
+                                                    name="answer[]">
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -46,3 +37,8 @@
 </section>
 
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/survey_answer.js')}}" type="text/javascript"></script>
+@endpush

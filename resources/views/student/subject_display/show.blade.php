@@ -174,5 +174,5 @@
     <script src="{{ asset('vendor/js/videojs/video.js') }}"  type="text/javascript"></script>
     <script src="{{ asset('vendor/js/videojs/videojs-playlist.min.js') }}"  type="text/javascript"></script>
     <script src="{{ asset('js/video_player.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('js/tab-selection.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/tab_selection.js')}}" type="text/javascript"></script>
 @endpush

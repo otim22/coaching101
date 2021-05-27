@@ -11,7 +11,7 @@ class SurveyAnswerController extends Controller
 {
     public function index()
     {
-        $surveyAnswers = SurveyAnswer::get();
+        $surveyAnswers = SurveyAnswer::get()->groupBy('survey_question_id');
 
         return view('admin.survey_answers.index', compact('surveyAnswers'));
     }
@@ -93,5 +93,10 @@ class SurveyAnswerController extends Controller
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
+    }
+
+    public function deleteSurveyAnswer()
+    {
+        dd('Hello');
     }
 }

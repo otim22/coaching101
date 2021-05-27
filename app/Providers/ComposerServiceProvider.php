@@ -10,11 +10,13 @@ use App\Models\Term;
 use App\Models\Slider;
 use App\Models\Menu;
 use App\Models\Profile;
+use App\Models\Survey;
 use App\Models\Standard;
 use App\Models\Question;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Models\ItemContent;
+use App\Models\SurveyQuestion;
 use App\Helpers\SessionWrapper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -102,6 +104,16 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(['welcome', 'home', 'student.*'], function ($view) {
             $terms = Term::get();
             $view->withTerms($terms);
+        });
+
+        View::composer(['teacher.*'], function ($view) {
+            $surveys = Survey::get();
+            $view->withSurveys($surveys);
+        });
+
+        View::composer(['teacher.*'], function ($view) {
+            $questions = SurveyQuestion::get();
+            $view->withQuestions($questions);
         });
     }
 }
