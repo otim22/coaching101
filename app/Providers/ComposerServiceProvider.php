@@ -87,6 +87,11 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['welcome', 'home', 'auth.*', 'student.*', 'teacher.*', 'user.*'], function ($view) {
+            $activeStandard = Standard::where('id', SessionWrapper::getStandardId())->first();
+            $view->withActiveStandard($activeStandard);
+        });
+
+        View::composer(['welcome', 'home', 'auth.*', 'student.*', 'teacher.*', 'user.*'], function ($view) {
             $id = SessionWrapper::getStandardId();
             $view->withId($id);
         });

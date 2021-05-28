@@ -14,35 +14,15 @@ class YearTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Year::class)->create([
-            'name' => 'Senior one'
-        ]);
-        factory(Year::class)->create([
-            'name' => 'Senior two'
-        ]);
-        factory(Year::class)->create([
-            'name' => 'Senior three'
-        ]);
-        factory(Year::class)->create([
-            'name' => 'Senior four'
-        ]);
-        factory(Year::class)->create([
-            'name' => 'Senior five'
-        ]);
-        factory(Year::class)->create([
-            'name' => 'Senior six'
-        ]);
-        factory(Year::class)->create([
-            'name' => 'Year one'
-        ]);
-        factory(Year::class)->create([
-            'name' => 'Year two'
-        ]);
-        factory(Year::class)->create([
-            'name' => 'Year three'
-        ]);
-        factory(Year::class)->create([
-            'name' => 'Year four'
-        ]);
+        $years = [
+            'Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five',
+            'Senior six', 'Year one', 'Year two', 'Year three', 'Year four'
+        ];
+        
+        foreach ($years as $year) {
+            factory(Year::class)->create([
+                'name' => $year
+            ]);
+        }
     }
 }

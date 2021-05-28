@@ -14,44 +14,28 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Category::class)->create([
-            'name' => 'Sciences',
-        ]);
+        $cambridge = 1;
+        $uneb = 2;
+        $standards = [$uneb, $cambridge];
+        $categories = [
+            $cambridge => [
+                'Sciences', 'Mathematics', 'Chemistry', 'Literature', 'Physics', 'Languages'
+            ],
+            $uneb => [
+                'Sciences', 'Mathematics', 'Chemistry', 'Literature',  'Political sciences',
+                'Physics', 'Languages', 'History', 'Social studies', 'Vocational subjects'
+            ]
+        ];
 
-        factory(Category::class)->create([
-            'name' => 'Mathematics',
-        ]);
+        foreach($standards as $standard) {
+            $standardCategories = $categories[$standard];
 
-        factory(Category::class)->create([
-            'name' => 'Chemistry',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Literature',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Political sciences',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Physics',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Languages',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'History',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Social studies',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Vocational subjects',
-        ]);
+            foreach($standardCategories as $category) {
+                $newCategory = factory(Category::class)->create([
+                    'name' => $category
+                ]);
+                $newCategory->standards()->attach($standard);
+            }
+        }
     }
 }

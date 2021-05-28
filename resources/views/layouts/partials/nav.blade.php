@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-3 increased-font py-3">
-    <div class="container" id="navbarSupportedContentOther">
+    <div class="container-fluid" id="navbarSupportedContentOther">
         <a class="navbar-brand mr-auto" href="{{ url('/') }}"><span class="logo-font">all cloud prep</span></a>
         <span class="sm-search d-md-none" id="smSearch"> <a class="ml-auto hide-at-md mr-1" href="#" style="text-decoration: none;"> <i class="fas fa-search pointer"></i></a></span>
         <div id="smCart" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-md-none">
@@ -77,7 +77,7 @@
                         <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past Papers</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown hide-at-sslg">
                     <a class="nav-link make-upper-case" href="#" id="navbarDropdownStandard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Standard
                     </a>
@@ -100,33 +100,37 @@
                     </div>
                 </li>
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown hide-at-md">
+                    <li class="nav-item dropdown">
                         <a class="nav-link make-upper-case" href="#" id="navbarDropdownMenuLinkStart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             start
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkStart">
                             @guest
-                                <a class="dropdown-item" href="{{ route('login') }}">Learner</a>
-                                <a class="dropdown-item" href="{{ route('subjects.starter') }}">Teacher</a>
+                                <a class="dropdown-item" href="{{ route('login') }}">Learning</a>
+                                <a class="dropdown-item" href="{{ route('subjects.starter') }}">Teaching</a>
                             @endguest
+                            <a class="dropdown-item d-none d-lg-block d-xl-none d-md-block d-lg-none" href="{{ route('donate.index') }}">Donate</a>
                             @auth()
                                 @if(auth()->user()->role == 1)
-                                    <a class="dropdown-item" href="{{ route('home') }}">Learner</a>
-                                    <a class="dropdown-item" href="{{ route('subjects.starter') }}">Teacher</a>
+                                    <a class="dropdown-item" href="{{ route('home') }}">Learning</a>
+                                    <a class="dropdown-item" href="{{ route('subjects.starter') }}">Teaching</a>
                                 @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
-                                    <a class="dropdown-item" href="{{ route('my-account') }}">Learner</a>
-                                    <a class="dropdown-item" href="{{ route('manage.subjects') }}">Teacher</a>
+                                    <a class="dropdown-item" href="{{ route('my-account') }}">Learning</a>
+                                    <a class="dropdown-item" href="{{ route('manage.subjects') }}">Teaching</a>
                                 @endif
                             @endauth
                         </div>
                     </li>
                 </ul>
-                <li class="nav-item hide-at-md {{ InitialGenerator::set_active(['donate.index']) }}">
+                <li class="nav-item hide-at-md d-lg-none d-xl-block {{ InitialGenerator::set_active(['donate.index']) }}">
                     <a class="nav-link make-upper-case" href="{{ route('donate.index') }}">donate</a>
                 </li>
             </ul>
 
             <ul class="navbar-nav ml-auto nav nav-pills">
+                <li class="nav-item">
+                    <span class="badge badge-pill badge-light" style="margin-top: 13px;margin-right: 5px;">{{ $activeStandard->name }}</span>
+				</li>
                 <li class="nav-item search mr-1 d-none d-md-block">
 					<a class="nav-link" href="#"> <i class="fas fa-search pointer"></i></a>
 				</li>

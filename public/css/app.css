@@ -4501,6 +4501,12 @@ img.rounded-corners {
   max-width: 100px !important;
 }
 
+@media only screen and (max-width: 1200px) {
+  .hide-at-lg {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 991px) {
   .hide-at-md {
     display: none;

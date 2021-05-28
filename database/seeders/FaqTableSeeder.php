@@ -21,7 +21,7 @@ class FaqTableSeeder extends Seeder
         ]);
 
         factory(Faq::class)->create([
-            'title' => 'Where is Coaching101 located? ',
+            'title' => 'Where is Coaching101 located?',
             'description' => 'Coaching101 has an office located in Kampala, Uganda.'
         ]);
 
@@ -39,7 +39,7 @@ class FaqTableSeeder extends Seeder
             'title' => 'Do you have a refund policy?',
             'description' => 'Yes, if you are having issues accessing your course we will give you a full refund up to 48 hours after purchase.'
         ]);
-        
+
         factory(Faq::class)->create([
             'title' => 'How do I sign up and pay?',
             'description' => 'Please follow the links under the courses to complete your payment.'
