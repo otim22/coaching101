@@ -20,16 +20,38 @@
                         <form action="{{ route('admin.surveyAnswers.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
-                            <div class="form-group">
-                                <label for="answer">Answer</label>
-                                <input type="text" class="form-control @error('answer') is-invalid @enderror" name="answer">
-                                @error('answer')
+                            <div class="form-group dynamic_survey_answer">
+                                <label for="survey_answer">Survey Answer</label>
+                                <div class="input-group survey_answer_section">
+                                    <div class="survey_answer_input">
+                                        <input type="text"
+                                                    id="survey_answer"
+                                                    value="{{old('answer.0')}}"
+                                                    class="form-control form-control-sm mb-2 @error('answer.0') is-invalid @enderror"
+                                                    name="answer[]" required>
+                                    </div>
+                                    <div class="hidden" id="hidden_survey_answer">
+                                        <p class="delete_survey_answer">x</p>
+                                    </div>
+                                </div>
+                                @error('answer.0')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
+                            <p class="btn_survey_answer d-flex" type="button">
+                                <span class="mr-1">
+                                    <svg class="bi bi-plus-circle" width="1.3em" height="1.3em" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                                        <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    </svg>
+                                </span>
+                                <span>Add answer</span>
+                            </p>
+
                             <div class="form-group mb-4">
-                                <label for="survey_question_id">Question to answer</label>
+                                <label for="survey_question_id">Choose it's question</label>
                                 <div class="input-group mb-3">
                                     <select class="custom-select" name="survey_question_id">
                                         <option selected>Choose question...</option>
@@ -53,3 +75,9 @@
 </section>
 
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/survey_answer.js')}}" type="text/javascript"></script>
+@endpush

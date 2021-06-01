@@ -24,7 +24,7 @@ class SurveyAnswerTableSeeder extends Seeder
         ];
         foreach ($surveyAnswers as $key => $surveyAnswer) {
             factory(SurveyAnswer::class)->create([
-                'answer' => json_encode($surveyAnswer),
+                'answer' => $surveyAnswer,
                 'survey_question_id' => SurveyQuestion::find($key+1)
             ]);
         }

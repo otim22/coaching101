@@ -21,27 +21,18 @@
                             @csrf
                             @method('patch')
 
-                            <div class="form-group mb-4">
-                                <label for="answer">Answer</label>
-                                <input type="text" class="form-control @error('answer') is-invalid @enderror" name="answer" value="{{ old('answer', $surveyAnswer->answer) }}">
-                                @error('answer')
-                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                @enderror
+                            <div>
+                                <h5>Question {{ $key }}</h5>
                             </div>
 
-                            <div class="form-group mb-4">
-                                <label for="survey_question_id">Question to answer</label>
-                                <div class="input-group mb-3">
-                                    <select class="custom-select" name="survey_question_id">
-                                        <option selected value="{{ $question->id }}">{{ $question->question }}</option>
-                                        @foreach($questions as $question)
-                                            <option value="{{ $question->id }}">{{ $question->question }}</option>
-                                        @endforeach
-                                    </select>
+                            <div class="d-flex justify-content-between">
+                                <div style="flex-grow: 1">
+                                    <input type="text"
+                                            value="{{ $surveyAnswer }}"
+                                            readonly
+                                            class="form-control form-control mb-2 @error('answer.*') is-invalid @enderror"
+                                            name="answer[]">
                                 </div>
-                                @error('survey_question_id')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                @enderror
                             </div>
 
                             <button type="submit" class="btn btn-primary float-right">Update</button>

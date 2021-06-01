@@ -9,7 +9,7 @@ use App\Models\SurveyQuestion;
 
 $factory->define(SurveyAnswer::class, function (Faker $faker) {
     return [
-        'answer' => $faker->sentence,
+        'answer' => [$faker->sentence],
         'survey_question_id' => SurveyQuestion::all()->random()->id,
     ];
 });

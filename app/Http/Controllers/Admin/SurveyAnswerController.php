@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\SurveyAnswer;
 use App\Models\SurveyQuestion;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SurveyAnswerRequest;
 
 class SurveyAnswerController extends Controller
 {
@@ -29,13 +30,9 @@ class SurveyAnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SurveyAnswerRequest $request)
     {
-        $request->validate([
-            'answer' =>  'required|string',
-            'survey_question_id' =>  'required'
-        ]);
-
+        // dd($request);
         SurveyAnswer::create($request->all());
 
         return redirect()->route('admin.surveyAnswers.index')->with('success', 'SurveyAnswer added successfully.');
@@ -66,13 +63,8 @@ class SurveyAnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SurveyAnswer $surveyAnswer)
+    public function update(SurveyAnswerRequest $request, SurveyAnswer $surveyAnswer)
     {
-        $request->validate([
-            'answer' =>  'required', 'string',
-            'survey_question_id' =>  'required'
-        ]);
-
         $surveyAnswer->fill($request->all())->save();
 
         return redirect()->route('admin.surveyAnswers.index')->with('success', 'SurveyAnswer added successfully.');
@@ -87,6 +79,7 @@ class SurveyAnswerController extends Controller
     public function destroy(SurveyAnswer $surveyAnswer)
     {
         try {
+            dd($surveyAnswer);
             $surveyAnswer->delete();
 
             return redirect()->route('admin.surveyAnswers.index')->with('success', 'SurveyAnswer deleted successfully');

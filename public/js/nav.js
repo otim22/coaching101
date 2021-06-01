@@ -1,5 +1,5 @@
-/** Start of search js */
 $(function() {
+    /** Start of search js */
     var navItems = $('#navbarSupportedContent');
     var smSearch = $('#smSearch');
     var smCart = $('#smCart');
@@ -37,36 +37,33 @@ $(function() {
             navbarToggler.removeAttr('style');
         }
     });
-});
-/** End of search js */
+    /** End of search js */
 
-/** Start of standard js */
-$(function() {
+    /** Start of standard js */
     $(".dropdown-menu .uniqueStandard").on("click", function() {
         var standardUrl = $(this).attr("data-standard-url");
         var standardId = $(this).attr("data-standard-id");
 
         activateStandard(standardUrl, standardId);
     });
+    function activateStandard(standardUrl, standardId) {
+        $.ajax({
+            type: "POST",
+            url: standardUrl,
+            dataType: "JSON",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                id: standardId,
+            },
+            success: function (response) {
+                document.location.reload(true);
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
+    /** End of standard js */
 });
-
-function activateStandard(standardUrl, standardId) {
-    $.ajax({
-        type: "POST",
-        url: standardUrl,
-        dataType: "JSON",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data: {
-            id: standardId,
-        },
-        success: function (response) {
-            document.location.reload(true);
-        },
-        error: function(xhr) {
-            console.log(xhr.responseText);
-       }
-    });
-}
-/** End of standard js */
