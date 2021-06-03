@@ -16,26 +16,19 @@ class CategoryTableSeeder extends Seeder
     {
         $cambridge = 1;
         $uneb = 2;
-        $standards = [$uneb, $cambridge];
         $categories = [
-            $cambridge => [
-                'Sciences', 'Mathematics', 'Chemistry', 'Literature', 'Physics', 'Languages'
-            ],
-            $uneb => [
-                'Sciences', 'Mathematics', 'Chemistry', 'Literature',  'Political sciences',
-                'Physics', 'Languages', 'History', 'Social studies', 'Vocational subjects'
-            ]
+            'Sciences', 'Mathematics', 'Chemistry', 'Literature',  'Political sciences',
+            'Physics', 'Languages', 'History', 'Social studies', 'Vocational subjects'
         ];
 
-        foreach($standards as $standard) {
-            $standardCategories = $categories[$standard];
-
-            foreach($standardCategories as $category) {
-                $newCategory = factory(Category::class)->create([
-                    'name' => $category
-                ]);
-                $newCategory->standards()->attach($standard);
+        foreach($categories as $category) {
+            $newCategory = factory(Category::class)->create([
+                'name' => $category
+            ]);
+            if($newCategory->id <= 5) {
+                $newCategory->standards()->attach($cambridge);
             }
+            $newCategory->standards()->attach($uneb);
         }
     }
 }

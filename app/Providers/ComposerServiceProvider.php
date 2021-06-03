@@ -63,7 +63,6 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(['welcome', 'home', 'teacher.*', 'student.*', 'user.*'], function ($view) {
             $id = SessionWrapper::getStandardId();
             $standard = Standard::find($id);
-
             $view->withTopCategories($standard->categories->take(18));
         });
 
@@ -94,16 +93,6 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(['welcome', 'home', 'auth.*', 'student.*', 'teacher.*', 'user.*'], function ($view) {
             $id = SessionWrapper::getStandardId();
             $view->withId($id);
-        });
-
-        View::composer(['welcome', 'home', 'student.*'], function ($view) {
-            $levels = Level::get();
-            $view->withLevels($levels);
-        });
-
-        View::composer(['welcome', 'home', 'student.*'], function ($view) {
-            $years = Year::get();
-            $view->withYears($years);
         });
 
         View::composer(['welcome', 'home', 'student.*'], function ($view) {

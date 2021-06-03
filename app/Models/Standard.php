@@ -45,6 +45,11 @@ class Standard extends Model
                             ->wherePivot('standard_id', SessionWrapper::getData('standardId'));
     }
 
+    public function levels()
+    {
+        return $this->hasMany('App\Models\Level');
+    }
+
     public static function categoryIds()
     {
         $categoryIds = [];
