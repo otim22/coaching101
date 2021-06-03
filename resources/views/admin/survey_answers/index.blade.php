@@ -40,17 +40,17 @@
                                     @method('patch')
                                     <div class="mb-2">
                                         @foreach($surveyAnswerByQtn->answer as $surveyAnswer)
-                                                <div class="d-flex justify-content-between">
-                                                    <div style="flex-grow: 1">
-                                                        <input type="text"
-                                                                    value="{{ $surveyAnswer }}"
-                                                                    readonly
-                                                                    class="form-control survey-answer-input-{{$key}} form-control mb-2 @error('answer.*') is-invalid @enderror"
-                                                                    name="answer[]">
-                                                    </div>
+                                            <div class="d-flex justify-content-between">
+                                                <div style="flex-grow: 1">
+                                                    <input type="text"
+                                                                value="{{ $surveyAnswer }}"
+                                                                readonly
+                                                                class="form-control survey-answer-input-{{$key}} form-control mb-2 @error('answer.*') is-invalid @enderror"
+                                                                name="answer[]">
                                                 </div>
+                                            </div>
                                         @endforeach
-                                        <div class="update-button update-button-{{$key}} mb-4 hidden">
+                                        <div class="update-button update-button-{{$key}} mb-4 mt-3 hidden">
                                             <button type="submit" class="btn btn-sm btn-primary">Update</button>
                                         </div>
                                     </div>
