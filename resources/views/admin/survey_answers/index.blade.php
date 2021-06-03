@@ -23,9 +23,12 @@
                                 </div>
                                 <div>
                                     <div class="d-flex justify-content-between">
-                                        <h5 class="btn btn-sm btn-secondary edit-button edit-button-{{$key}} pl-2 pr-2 mr-3"
+                                        <h5 class="btn btn-sm btn-secondary edit-button edit-button-{{$key}} pl-2 pr-2 mr-2"
                                                 data-id="{{ $key }}">Edit</h5>
-                                        <h5 type="button" class="btn btn-sm btn-danger delete-button delete-button-{{$key}} pl-2 pr-2" data-id="{{ $key }}">Delete</h5>
+                                        <h5 type="button"
+                                                class="btn btn-sm btn-danger delete-button delete-button-{{$key}} pl-2 pr-2"
+                                                data-toggle="modal" data-target="#deleteAnswerModal"
+                                                data-id="{{ $key }}">Delete</h5>
                                     </div>
                                 </div>
                             </div>
@@ -51,13 +54,6 @@
                                             <button type="submit" class="btn btn-sm btn-primary">Update</button>
                                         </div>
                                     </div>
-                                    <div class="delete-button delete-button-{{$key}} mb-4 hidden">
-                                        <button type="submit"
-                                                        class="btn btn-sm btn-danger"
-                                                        onclick="event.preventDefault(); document.getElementById('delete-answer').submit();">
-                                                Confirm Deletion
-                                        </button>
-                                    </div>
                                 </form>
                                 <form action="{{ route('admin.surveyAnswers.destroy', $surveyAnswerByQtn) }}"
                                             class="hidden"
@@ -68,14 +64,13 @@
                                 </form>
                                 @endforeach
                             </div>
+
                         @empty
                             <div class="mt-3 mb-3">
                                 <p>No answers</p>
                             </div>
                         @endforelse
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -89,3 +84,28 @@
     <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/survey_answer.js')}}" type="text/javascript"></script>
 @endpush
+
+<div class="modal fade" id="deleteAnswerModal" tabindex="-1" role="dialog" aria-labelledby="deleteAnswerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-3 mb-3">
+                    <h5>Are you sure wanna delete this survey answer?</h5>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                <button type="submit"
+                                class="btn btn-sm btn-danger"
+                                onclick="event.preventDefault(); document.getElementById('delete-answer').submit();">
+                        Confirm Deletion
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             ProfileTableSeeder::class,
             SurveyTableSeeder::class,
             SurveyQuestionTableSeeder::class,
-            // SurveyAnswerTableSeeder::class,
+            SurveyAnswerTableSeeder::class,
             StudentImageTableSeeder::class,
             TeacherImageTableSeeder::class,
             FaqTableSeeder::class,

@@ -79,17 +79,11 @@ class SurveyAnswerController extends Controller
     public function destroy(SurveyAnswer $surveyAnswer)
     {
         try {
-            dd($surveyAnswer);
             $surveyAnswer->delete();
 
             return redirect()->route('admin.surveyAnswers.index')->with('success', 'SurveyAnswer deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
-    }
-
-    public function deleteSurveyAnswer()
-    {
-        dd('Hello');
     }
 }
