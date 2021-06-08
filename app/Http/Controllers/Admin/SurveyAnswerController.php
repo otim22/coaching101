@@ -32,8 +32,15 @@ class SurveyAnswerController extends Controller
      */
     public function store(SurveyAnswerRequest $request)
     {
-        // dd($request);
-        SurveyAnswer::create($request->all());
+        $answers = [];
+        foreach ($request->answer as $answer) {
+            $answers[] = [
+                'answer' =>$answer,
+                'survey_question_id' => $request->survey_question_id
+            ];
+        }
+
+        SurveyAnswer::insert($answers);
 
         return redirect()->route('admin.surveyAnswers.index')->with('success', 'SurveyAnswer added successfully.');
     }
@@ -63,8 +70,12 @@ class SurveyAnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(SurveyAnswerRequest $request, SurveyAnswer $surveyAnswer)
+    public function update(Request $request, SurveyAnswer $surveyAnswer)
     {
+        $request->validate([
+            'answer' => 'required|string',
+        ]);
+        
         $surveyAnswer->fill($request->all())->save();
 
         return redirect()->route('admin.surveyAnswers.index')->with('success', 'SurveyAnswer added successfully.');

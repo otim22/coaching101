@@ -17,25 +17,21 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('admin.surveyAnswers.update', $surveyAnswer) }}" method="POST" enctype="multipart/form-data">
+                        <form class="mt-3" action="{{ route('admin.surveyAnswers.update', $surveyAnswer) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
 
                             <div>
-                                <h5>Question {{ $key }}</h5>
+                                <input type="text"
+                                            value="{{ old('answer', $surveyAnswer->answer) }}"
+                                            class="form-control form-control mb-2 @error('answer') is-invalid @enderror"
+                                            name="answer">
                             </div>
+                            @error('answer')
+                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                            @enderror
 
-                            <div class="d-flex justify-content-between">
-                                <div style="flex-grow: 1">
-                                    <input type="text"
-                                            value="{{ $surveyAnswer }}"
-                                            readonly
-                                            class="form-control form-control mb-2 @error('answer.*') is-invalid @enderror"
-                                            name="answer[]">
-                                </div>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary float-right">Update</button>
+                            <button type="submit" class="btn btn-primary float-right mt-3">Update</button>
                         </form>
                     </div>
                 </div>
