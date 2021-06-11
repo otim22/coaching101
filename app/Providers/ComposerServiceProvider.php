@@ -76,7 +76,14 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['welcome', 'home', 'student.*'], function ($view) {
-            $teachers = User::with('profile')->where('role', '2')->get()->take(12);
+            $teachers = User::with('profile')->where('role', 'teacher')->get()->take(12);
+
+            // $users = User::with(['roles' => function ($query) {
+            //     $query->where([
+            //         'name' => 'teacher'
+            //     ])->take(12);
+            // }])->get();
+
             $view->withTeachers($teachers);
         });
 
@@ -106,7 +113,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['teacher.*'], function ($view) {
-            $questions = SurveyQuestion::get();
+            $questions = SurveyQuestion::with('answers')->get();
             $view->withQuestions($questions);
         });
     }

@@ -88,7 +88,7 @@
                                 @else
                                     <span class="bold paid_color">Free</span>
                                     @if($book->creator)
-                                        <embed src="{{ $book->getFirstMediaUrl('pastpapers') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                        <embed src="{{ $book->getFirstMediaUrl('books') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
                                     @endif
                                 @endif
                             </div>

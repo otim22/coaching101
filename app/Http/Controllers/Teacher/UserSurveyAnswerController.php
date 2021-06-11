@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use App\Models\UserSurveyAnswer;
+use Illuminate\Support\Facades\Auth;
 
 class UserSurveyAnswerController extends Controller
 {
@@ -15,15 +19,25 @@ class UserSurveyAnswerController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            ''
-        ]);
+        // dd($request);
+        // $request->validate([
+        //     ''
+        // ]);
 
-        $userSurveyAnswer = new UserSurveyAnswer();
+        $surveyAnswerIds = $request->input('survey_answer_id');
+        $standardId = $request->input('standard_id');
+        $role = Role::where('name', 'teacher')->firstOrFail();
+        $currentUser = User::with('roles')->find(Auth::id());
 
-        $userSurveyAnswer = $request->get('student_learn');
-        $userSurveyAnswer = $request->get('class_requirement');
-        $userSurveyAnswer = $request->get('target_student');
+        $currentUser->syncRoles([$role->id]);
+        $currentUser->standards()->attach($standardId);
+
+        foreach($surveyAnswerIds as $surveyAnswerId) {
+            UserSurveyAnswer::create([
+                'survey_answer_id' => $surveyAnswerId,
+                'user_id' => Auth::id()
+            ]);
+        }
 
         return redirect()->route('manage.subjects');
     }

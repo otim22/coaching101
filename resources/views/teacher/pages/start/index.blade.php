@@ -44,17 +44,24 @@
                             @csrf
 
                             @foreach($questions as $question)
-                            <div class="mb-5">
-                                <h5 class="pb-3">{{ $question->question }}</h5>
-                                <!-- <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="professional">
-                                    <label class="custom-control-label" for="professional">In Person Professionally</label>
-                                </div> -->
-                            </div>
+                                <div class="mb-5">
+                                    <h5 class="pb-3">{{ $question->question }}</h5>
+                                    @foreach($question->answers as $answer)
+                                        <div class="mb-2">
+                                            <input type="checkbox" class="mr-2" name="survey_answer_id[]" value="{{ $answer->id }}">
+                                            <label for="{{$answer->id }}">{{ $answer->answer }}</label>
+                                        </div>
+                                    @endforeach
+                                </div>
                             @endforeach
-                            <div class="mb-5">
-                                <input type="hidden" id="role" name="role" value="2">
-                            </div>
+
+                            <h5 class="pb-3">What standard do you teach?</h5>
+                            @foreach($standards as $standard)
+                                <div class="mb-2">
+                                    <input type="checkbox" class="mr-2" name="standard_id[]" value="{{ $standard->id }}">
+                                    <label for="{{ $standard->id }}">{{ $standard->name }}</label>
+                                </div>
+                            @endforeach
 
                             <button type="submit" class="btn btn-primary float-right pr-4 pl-4" style="border-radius: 30px; padding-left: 20px; padding-right: 20px; white-space: nowrap;">
                                 Save

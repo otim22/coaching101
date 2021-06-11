@@ -20,7 +20,7 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         // Check if session exists and if user has admin role
-        $this->auth = auth()->user() ? (auth()->user()->role == 3) : false;
+        $this->auth = auth()->user() ? (auth()->user()->hasRole('admin')) : false;
 
         // Pass request if auth is valid
         if($this->auth === true)

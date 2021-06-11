@@ -20,7 +20,6 @@
                 <li class="breadcrumb-item active" aria-current="page">{{ Str::ucfirst($teacher->name) }}</li>
             </ol>
         </nav>
-
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-7 mb-5">
                 <h3 class="bold mt-5">{{ Str::ucfirst($teacher->name) }}</h3>
@@ -46,7 +45,7 @@
     </div>
 </section>
 
-<section id="section-teacher_course">
+<section id="section-teacher_course" class="{{ (count($subjects) == 0) ? 'hide-me' : 'bg-white' }}">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -129,25 +128,17 @@
                         <div class="card">
                             @if($book->isSubscribedTo)
                                 <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
-                                    @if($book->creator)
-                                        <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                                    @else
-                                        <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                                    @endif
+                                    <img src="{{ $book->cover_image }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
                                 </a>
                             @elseif(!$book->price)
                                 <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
-                                    @if($book->creator)
-                                        <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                                    @else
-                                        <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                                    @endif
+                                    <img src="{{ $book->cover_image  }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
                                 </a>
                             @else
                                 @if($book->creator)
-                                    <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                                @else
-                                    <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                                    <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
+                                        <img src="{{ $book->cover_image  }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                                    </a>
                                 @endif
                             @endif
                             <div class="card-body">
@@ -156,8 +147,6 @@
                                         <span class="bold">{{ $book->very_short_title }}</span><br />
                                         @if($book->creator)
                                             <span class="author-font">{{ $book->creator->name }}</span><br />
-                                        @else
-                                            <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                         @endif
 
                                         @if($book->price)
@@ -171,8 +160,6 @@
                                         <span class="bold">{{ $book->very_short_title }}</span><br />
                                         @if($book->creator)
                                             <span class="author-font">{{ $book->creator->name }}</span><br />
-                                        @else
-                                            <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                         @endif
 
                                         @if($book->price)
@@ -182,18 +169,18 @@
                                         @endif
                                     </a>
                                 @else
-                                    <span class="bold">{{ $book->very_short_title }}</span><br />
-                                    @if($book->creator)
-                                        <span class="author-font">{{ $book->creator->name }}</span><br />
-                                    @else
-                                        <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                                    @endif
+                                    <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none" class="title-font">
+                                        <span class="bold">{{ $book->very_short_title }}</span><br />
+                                        @if($book->creator)
+                                            <span class="author-font">{{ $book->creator->name }}</span><br />
+                                        @endif
 
-                                    @if($book->price)
-                                        <span class="bold">UGX {{ $book->formatPrice }}/-</span>
-                                    @else
-                                        <span class="bold paid_color">Free</span>
-                                    @endif
+                                        @if($book->price)
+                                            <span class="bold">UGX {{ $book->formatPrice }}/-</span>
+                                        @else
+                                            <span class="bold paid_color">Free</span>
+                                        @endif
+                                    </a>
                                 @endif
                                 <div class="mt-2">
                                     <livewire:buy-book :book="$book" :key="$book->id" />
@@ -226,8 +213,6 @@
                                         <span class="bold">{{ $note->very_short_title }}</span><br />
                                         @if($note->creator)
                                             <span class="author-font">{{ $note->creator->name }}</span><br />
-                                        @else
-                                            <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                         @endif
 
                                         @if($note->price)
@@ -241,8 +226,6 @@
                                         <span class="bold">{{ $note->very_short_title }}</span><br />
                                         @if($note->creator)
                                             <span class="author-font">{{ $note->creator->name }}</span><br />
-                                        @else
-                                            <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                         @endif
 
                                         @if($note->price)
@@ -252,18 +235,18 @@
                                         @endif
                                     </a>
                                 @else
-                                    <span class="bold">{{ $note->very_short_title }}</span><br />
-                                    @if($note->creator)
-                                        <span class="author-font">{{ $note->creator->name }}</span><br />
-                                    @else
-                                        <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                                    @endif
+                                    <a href="{{ route('student.notes.show', $note) }}" style="text-decoration: none" class="title-font">
+                                        <span class="bold">{{ $note->very_short_title }}</span><br />
+                                        @if($note->creator)
+                                            <span class="author-font">{{ $note->creator->name }}</span><br />
+                                        @endif
 
-                                    @if($note->price)
-                                        <span class="bold">UGX {{ $note->formatPrice }}/-</span>
-                                    @else
-                                        <span class="bold paid_color">Free</span>
-                                    @endif
+                                        @if($note->price)
+                                            <span class="bold">UGX {{ $note->formatPrice }}/-</span>
+                                        @else
+                                            <span class="bold paid_color">Free</span>
+                                        @endif
+                                    </a>
                                 @endif
                                 <div class="mt-2">
                                     <livewire:buy-note :note="$note" :key="$note->id" />
@@ -296,8 +279,6 @@
                                         <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                         @if($pastpaper->creator)
                                             <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
-                                        @else
-                                            <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                         @endif
 
                                         @if($pastpaper->price)
@@ -311,8 +292,6 @@
                                         <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                         @if($pastpaper->creator)
                                             <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
-                                        @else
-                                            <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                         @endif
 
                                         @if($pastpaper->price)
@@ -322,18 +301,18 @@
                                         @endif
                                     </a>
                                 @else
-                                    <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
-                                    @if($pastpaper->creator)
-                                        <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
-                                    @else
-                                        <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                                    @endif
+                                    <a href="{{ route('student.pastpapers.show', $pastpaper) }}" style="text-decoration: none" class="title-font">
+                                        <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
+                                        @if($pastpaper->creator)
+                                            <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
+                                        @endif
 
-                                    @if($pastpaper->price)
-                                        <span class="bold">UGX {{ $pastpaper->formatPrice }}/-</span>
-                                    @else
-                                        <span class="bold paid_color">Free</span>
-                                    @endif
+                                        @if($pastpaper->price)
+                                            <span class="bold">UGX {{ $pastpaper->formatPrice }}/-</span>
+                                        @else
+                                            <span class="bold paid_color">Free</span>
+                                        @endif
+                                    </a>
                                 @endif
                                 <div class="mt-2">
                                     <livewire:buy-pastpaper :pastpaper="$pastpaper" :key="$pastpaper->id" />

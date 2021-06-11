@@ -17,7 +17,7 @@ class Teacher
     public function handle(Request $request, Closure $next)
     {
         // Check if session exists and if user has teacher role
-        $this->auth = auth()->user() ? (auth()->user()->role == 1 || auth()->user()->role == 2) : false;
+        $this->auth = auth()->user() ? (auth()->user()->hasRole('student') || auth()->user()->hasRole('teacher')) : false;
 
         // Pass request if auth is valid
         if($this->auth === true)

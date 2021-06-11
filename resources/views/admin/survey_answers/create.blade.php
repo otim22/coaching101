@@ -75,9 +75,3 @@
 </section>
 
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/survey_answer.js')}}" type="text/javascript"></script>
-@endpush

@@ -109,9 +109,9 @@ Route::get('/teacher/onBoard', [SubjectController::class, 'onBoard'])->name('sub
 Route::middleware('auth')->group(function() {
     Route::get('/cart/{response?}', [CartController::class, 'index'])->name('cart.index');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-
     Route::post( '/pay', [PaymentController::class, 'initialize'])->name('pay');
     Route::post('/rave/callback', [PaymentController::class, 'callback'])->name('callback');
+
     Route::post('/userSurveyAnswers', [UserSurveyAnswerController::class, 'store'])->name('userSurveyAnswer.store');
 
     Route::prefix('teacher')->group(function() {
@@ -207,7 +207,9 @@ Route::middleware('auth')->group(function() {
         Route::resource('surveys', 'SurveyController');
         Route::resource('surveyQuestions', 'SurveyQuestionController');
         Route::resource('surveyAnswers', 'SurveyAnswerController');
-        Route::post('/surveyAnswers/{surveyAnswer}/deleteSurveyAnswer', [SurveyAnswerController::class, 'deleteSurveyAnswer'])->name('surveyAnswer.destroy');
+        Route::post('/surveyAnswers/{surveyAnswer}/deleteSurveyAnswer', [
+            SurveyAnswerController::class, 'deleteSurveyAnswer'
+        ])->name('surveyAnswer.destroy');
         Route::resource('currencies', 'CurrencyController');
     });
 });

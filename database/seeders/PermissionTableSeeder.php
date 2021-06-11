@@ -23,12 +23,12 @@ class PermissionTableSeeder extends Seeder
 
         // create permissions
         $permissions = [
-            'view-subject',
-            'create-subject',
-            'edit-subject',
-            'delete-subject',
-            'publish-subject',
-            'unpublish-subject',
+            'view-course',
+            'create-course',
+            'edit-course',
+            'delete-course',
+            'publish-course',
+            'unpublish-course',
         ];
 
         foreach ($permissions as $permission) {
@@ -37,26 +37,32 @@ class PermissionTableSeeder extends Seeder
 
         // create roles and assign existing permissions
         $studentRole = Role::create(['name' => 'student']);
-        $studentRole->givePermissionTo('view-subject');
+        $studentRole->givePermissionTo('view-course');
 
         $teacherRole = Role::create(['name' => 'teacher']);
-        $teacherRole->givePermissionTo('view-subject');
-        $teacherRole->givePermissionTo('create-subject');
-        $teacherRole->givePermissionTo('edit-subject');
-        $teacherRole->givePermissionTo('delete-subject');
+        $teacherRole->givePermissionTo('view-course');
+        $teacherRole->givePermissionTo('create-course');
+        $teacherRole->givePermissionTo('edit-course');
+        $teacherRole->givePermissionTo('delete-course');
 
         $adminRole = Role::create(['name' => 'admin']);
-        $adminRole->givePermissionTo('publish-subject');
-        $adminRole->givePermissionTo('unpublish-subject');
+        $adminRole->givePermissionTo('publish-course');
+        $adminRole->givePermissionTo('unpublish-course');
 
         $superRole = Role::create(['name' => 'super-admin']);
+        $superRole->givePermissionTo('view-course');
+        $superRole->givePermissionTo('create-course');
+        $superRole->givePermissionTo('edit-course');
+        $superRole->givePermissionTo('delete-course');
+        $superRole->givePermissionTo('publish-course');
+        $superRole->givePermissionTo('unpublish-course');
 
         // create a student user
         $student= Factory(User::class)->create([
             'name' => 'Otim student',
             'email' => 'student@gmail.com',
             'password' => bcrypt('password'),
-            'role' => $studentRole
+            'role' => $studentRole->name
         ]);
 
         // create a teacher user
@@ -64,7 +70,7 @@ class PermissionTableSeeder extends Seeder
             'name' => 'Otim teacher',
             'email' => 'teacher@gmail.com',
             'password' => bcrypt('password'),
-            'role' => $teacherRole
+            'role' => $teacherRole->name
         ]);
 
         // create an admin user
@@ -72,7 +78,7 @@ class PermissionTableSeeder extends Seeder
             'name' => 'Otim admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
-            'role' => $adminRole
+            'role' => $adminRole->name
         ]);
 
         // create a super admin user
@@ -80,7 +86,7 @@ class PermissionTableSeeder extends Seeder
             'name' => 'Otim deere',
             'email' => 'super@gmail.com',
             'password' => bcrypt('password'),
-            'role' => $superRole
+            'role' => $superRole->name
         ]);
     }
 }

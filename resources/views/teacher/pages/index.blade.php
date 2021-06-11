@@ -46,14 +46,14 @@
                             </li>
 
                             @auth()
-                                @if(auth()->user()->role == 1)
+                                @if(auth()->user()->hasRole('student'))
                                     <li class="nav-item {{ InitialGenerator::set_active(['subjects.starter']) }} mt-1">
                                         <a class="nav-link" href="{{ route('subjects.starter') }}">Teacher</a>
                                     </li>
                                     <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} d-md-none d-lg-block mt-1">
                                         <a class="nav-link" href="{{ route('my-account') }}">My subjects</a>
                                     </li>
-                                @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
+                                @elseif(auth()->user()->hasRole('teacher') || auth()->user()->hasRole('admin'))
                                     <li class="nav-item {{ InitialGenerator::set_active(['manage.subjects']) }} mt-1">
                                         <a class="nav-link" href="{{ route('my-account') }}">Learn</a>
                                     </li>

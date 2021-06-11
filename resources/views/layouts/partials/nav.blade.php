@@ -111,10 +111,10 @@
                             @endguest
                             <a class="dropdown-item d-none d-lg-block d-xl-none d-md-block d-lg-none" href="{{ route('donate.index') }}">Donate</a>
                             @auth()
-                                @if(auth()->user()->role == 1)
+                                @if(auth()->user()->hasRole('student'))
                                     <a class="dropdown-item" href="{{ route('home') }}">Learning</a>
                                     <a class="dropdown-item" href="{{ route('subjects.starter') }}">Teaching</a>
-                                @elseif(auth()->user()->role == 2 || auth()->user()->role == 3)
+                                @elseif(auth()->user()->hasRole('teacher') || auth()->user()->hasRole('admin'))
                                     <a class="dropdown-item" href="{{ route('my-account') }}">Learning</a>
                                     <a class="dropdown-item" href="{{ route('manage.subjects') }}">Teaching</a>
                                 @endif
