@@ -47,7 +47,7 @@
                             <label for="category_id">Subject</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="category_id">
-                                    <option selected>Choose subject...</option>
+                                    <option selected>Choose subject</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -62,8 +62,9 @@
                             <label for="standard_id">Standard</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="standard_id">
+                                    <option selected>Choose standard</option>
                                     @foreach($standards as $standard)
-                                        <option value="{{ $standard->id }}" {{ old('standard_id', $standard->id) == $standard->id ? 'selected' : '' }}>{{ $standard->name }}</option>
+                                        <option value="{{ $standard->id }}">{{ $standard->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -76,6 +77,7 @@
                             <label for="level_id">Level</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="level_id">
+                                    <option selected>Choose level</option>
                                     @foreach($levels as $level)
                                         <option value="{{ $level->id }}" {{ old('level_id', $level->id) == $level->id ? 'selected' : '' }}>{{ $level->name }}</option>
                                     @endforeach
@@ -90,7 +92,7 @@
                             <label for="year_id">Year</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="year_id">
-                                    <option selected>Choose year...</option>
+                                    <option selected>Choose year</option>
                                     @foreach($years as $year)
                                         <option value="{{ $year->id }}">{{ $year->name }}</option>
                                     @endforeach
@@ -105,7 +107,7 @@
                             <label for="year_id">Term</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="term_id">
-                                    <option selected>Choose term...</option>
+                                    <option selected>Choose term</option>
                                     @foreach($terms as $term)
                                         <option value="{{ $term->id }}">{{ $term->name }}</option>
                                     @endforeach
@@ -165,7 +167,11 @@
 
                         <div class="form-group mb-4">
                             <label for="pastpaper">Upload Past paper</label>
-                            <input type="file" name="pastpaper" class="form-control-file @error('pastpaper') is-invalid @enderror" id="pastpaper" required>
+                            <input type="file" name="pastpaper"
+                                        class="form-control-file @error('pastpaper') is-invalid @enderror"
+                                        id="pastpaper"
+                                        multiple accept="image/*,.pdf"
+                                        required>
                             <p><small class="light_gray_color">*Past paper should be a pdf file</small></p>
                             @error('pastpaper')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>

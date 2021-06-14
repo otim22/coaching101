@@ -108,7 +108,7 @@
                                                                 id="resource_attachment_path"
                                                                 name="resource_attachment_path[]"
                                                                 value="{{ old('resource_attachment_path[]') }}"
-                                                                multiple accept="image/*,.pdf,.doc">
+                                                                multiple accept="image/*,.pdf">
                                                 </div>
                                                 <div>
                                                     <p type="button" class="btn btn-upload btn-resource_attachment pr-3">

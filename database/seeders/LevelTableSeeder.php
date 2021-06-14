@@ -25,11 +25,12 @@ class LevelTableSeeder extends Seeder
                     'name' => $level,
                     'standard_id' => $uneb,
                 ]);
+            } else {
+                factory(Level::class)->create([
+                    'name' => $level,
+                    'standard_id' => $cambridge,
+                ]);
             }
-            factory(Level::class)->create([
-                'name' => $level,
-                'standard_id' => $cambridge,
-            ]);
         }
     }
 }

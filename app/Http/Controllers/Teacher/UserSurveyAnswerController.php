@@ -32,7 +32,6 @@ class UserSurveyAnswerController extends Controller
         $currentUser->syncRoles([$role->id]);
         $currentUser->standards()->attach($standardId);
 
-        // dd($currentUser->standards->first());
         foreach($surveyAnswerIds as $surveyAnswerId) {
             UserSurveyAnswer::create([
                 'survey_answer_id' => $surveyAnswerId,

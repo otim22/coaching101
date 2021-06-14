@@ -1,5 +1,5 @@
+/** Start Students learn **/
 $(function () {
-    /** Start Students learn **/
     let maxField = 10;
     let startValue = 1;
 
@@ -35,41 +35,46 @@ $(function () {
             startValue--;
         });
     }
-    /** End Students learn **/
+});
 
-    /** Start Delete a particular student_learn */
+/** Start Delete a particular student_learn */
+$(function() {
     $("p.student_learn-delete").on("click", function() {
         var studentLearnDeleteUrl = $(this).attr("data-student_learn-delete-url");
         var studentLearnId = $(this).attr("data-student_learn-id");
         deleteStudentLearn(studentLearnDeleteUrl, studentLearnId);
     });
+});
 
-    function deleteStudentLearn(studentLearnDeleteUrl, studentLearnId) {
-        $.ajax({
-            type: "POST",
-            url: studentLearnDeleteUrl,
-            dataType: "JSON",
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: {
-                id: studentLearnId
-            },
-            success: function (response) {
-                console.log(response);
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText);
-            }
-        });
+function deleteStudentLearn(studentLearnDeleteUrl, studentLearnId) {
+    $.ajax({
+        type: "POST",
+        url: studentLearnDeleteUrl,
+        dataType: "JSON",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            id: studentLearnId
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function(xhr) {
+            console.log(xhr.responseText);
+       }
+    });
 
-        setTimeout(function () {
-            document.location.reload(true);
-        }, 1000);
-    }
-    /** End Delete a particular student_learn */
+    setTimeout(function () {
+        document.location.reload(true);
+    }, 1000);
+}
+/** End Delete a particular student_learn */
 
-    /** Start Class requirement */
+/** End Students learn **/
+
+/** Start Class requirement**/
+$(function () {
     let maxField = 10;
     let startValue = 1;
 
@@ -105,42 +110,45 @@ $(function () {
             startValue--;
         });
     }
+});
 
+/** Start Delete a particular class_requirement */
+$(function() {
     $("p.class_requirement-delete").on("click", function() {
         var classRequirementDeleteUrl = $(this).attr("data-class_requirement-delete-url");
         var classRequirementId = $(this).attr("data-class_requirement-id");
         deleteClassRequirement(classRequirementDeleteUrl, classRequirementId);
     });
+});
 
-    function deleteClassRequirement(classRequirementDeleteUrl, classRequirementId) {
-        $.ajax({
-            type: "POST",
-            url: classRequirementDeleteUrl,
-            dataType: "JSON",
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: {
-                id: classRequirementId,
-            },
-            success: function (response) {
-                document.location.reload(true);
-                console.log(response);
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText);
-           }
-        });
+function deleteClassRequirement(classRequirementDeleteUrl, classRequirementId) {
+    $.ajax({
+        type: "POST",
+        url: classRequirementDeleteUrl,
+        dataType: "JSON",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            id: classRequirementId,
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function(xhr) {
+            console.log(xhr.responseText);
+       }
+    });
 
-        /** To be removed after checking success response */
-        setTimeout(function () {
-            document.location.reload(true);
-        }, 1000);
-    }
-    /** End Delete a particular class_requirement */
-    /** End Class requirement */
+    setTimeout(function () {
+        document.location.reload(true);
+    }, 1000);
+}
+/** End Delete a particular class_requirement */
+/** End Class requirement **/
 
-    /** Start Target students **/
+/** Start Target students **/
+$(function () {
     let maxField = 10;
     let startValue = 1;
 
@@ -176,37 +184,39 @@ $(function () {
             startValue--;
         });
     }
+});
 
-    /** Start Delete a particular target_student */
+/** Start Delete a particular target_student */
+$(function() {
     $("p.target_student-delete").on("click", function() {
         var targetStudentDeleteUrl = $(this).attr("data-target_student-delete-url");
         var targetStudentId = $(this).attr("data-target_student-id");
         deleteTargetStudent(targetStudentDeleteUrl, targetStudentId);
     });
-
-    function deleteTargetStudent(targetStudentDeleteUrl, targetStudentId) {
-        $.ajax({
-            type: "POST",
-            url: targetStudentDeleteUrl,
-            dataType: "JSON",
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: {
-                id: targetStudentId,
-            },
-            success: function (response) {
-                console.log(response);
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText);
-           }
-        });
-
-        setTimeout(function () {
-            document.location.reload(true);
-        }, 1000);
-    }
-    /** End Delete a particular target_student */
-    /** End Target students **/
 });
+
+function deleteTargetStudent(targetStudentDeleteUrl, targetStudentId) {
+    $.ajax({
+        type: "POST",
+        url: targetStudentDeleteUrl,
+        dataType: "JSON",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            id: targetStudentId,
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function(xhr) {
+            console.log(xhr.responseText);
+       }
+    });
+
+    setTimeout(function () {
+        document.location.reload(true);
+    }, 1000);
+}
+/** End Delete a particular target_student */
+/** End Target students **/

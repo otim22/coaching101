@@ -29,14 +29,14 @@
                     @csrf
                     @method('PATCH')
 
-                    <div class="fast-transition mb-3">
-                        <div class="row m-2 pb-2">
+                    <div class="card mb-3">
+                        <div class="card-body m-2 pb-2">
                             <div class="col-sm-12 col-md-12 col-lg-12 mb-2 mt-3 d-flex justify-content-between">
                                 <div>
                                     <h5 class="bold">Subject introduction</h5>
                                 </div>
                                 <div>
-                                    <a id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-sm btn-secondary btn-block pl-5 pr-5">
+                                    <a id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-md btn-secondary btn-block pl-5 pr-5">
                                         <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
                                             <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
@@ -45,8 +45,10 @@
                                     </a>
                                 </div>
                             </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 mt-4 mb-4">
+                                <hr />
+                            </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <hr class="mb-4" />
                                 <div class="form-group">
                                     <label for="title">Subject title</label>
                                     <div class="input-group">
@@ -179,7 +181,7 @@
 
                                 <div class="form-group">
                                     <p>Current image</p>
-                                    <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="mb-2 rounded-corners w-100">
+                                    <img src="{{ asset($subject->cover_image) }}" class="mb-2 rounded-corners w-100">
                                     <p><small style="color: red; font-weight: bold;">*Choosing another image replaces this current one</small></p>
 
                                     <label for="cover_image" class="bold">Subject image</label>
@@ -194,7 +196,7 @@
 
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
                         <div>
-                            <a  id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-secondary btn-block btn-sm pl-5 pr-5">
+                            <a  id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-secondary btn-block btn-md pl-5 pr-5">
                                 <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
                                     <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
@@ -203,7 +205,7 @@
                             </a>
                         </div>
                         <div>
-                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-sm pl-5 pr-5 ml-3 mr-3">Update</button>
+                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Update</button>
                         </div>
                     </div>
                 </form>

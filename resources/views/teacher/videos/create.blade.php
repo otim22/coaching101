@@ -28,12 +28,14 @@
                 <form action="{{ route('subjects') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="fast-transition mb-3">
-                        <div class="row m-2 pb-2">
+                    <div class="card mb-3">
+                        <div class="card-body m-2 pb-2">
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <h5>Subject introduction</h5> <hr />
+                                <h5 class="bold">Subject introduction</h5>
                             </div>
-
+                            <div class="col-sm-12 col-md-12 col-lg-12 mt-4 mb-4">
+                                <hr />
+                            </div>
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group mb-4 mt-3">
                                     <label for="title">Subject title</label>
@@ -86,9 +88,9 @@
                                     <label for="category_id">Category</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="category_id">
-                                            <option>Choose category...</option>
+                                            <option selected>Choose category</option>
                                             @foreach($categories as $category)
-                                                <option value="{{ $category->id }}" {{ old('category_id', $category->id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -101,8 +103,9 @@
                                     <label for="standard_id">Standard</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="standard_id">
+                                            <option selected>Select standard</option>
                                             @foreach($standards as $standard)
-                                                <option value="{{ $standard->id }}" {{ old('standard_id', $standard->id) == $standard->id ? 'selected' : '' }}>{{ $standard->name }}</option>
+                                                <option value="{{ $standard->id }}">{{ $standard->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -115,8 +118,9 @@
                                     <label for="level_id">Level</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="level_id">
+                                            <option selected>Select level</option>
                                             @foreach($levels as $level)
-                                                <option value="{{ $level->id }}" {{ old('level_id', $level->id) == $level->id ? 'selected' : '' }}>{{ $level->name }}</option>
+                                                <option value="{{ $level->id }}">{{ $level->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -129,9 +133,9 @@
                                     <label for="year_id">Year</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="year_id">
-                                            <option>Choose year...</option>
+                                            <option selected>Choose year</option>
                                             @foreach($years as $year)
-                                                <option value="{{ $year->id }}" {{ old('year_id', $year->id) == $year->id ? 'selected' : '' }}>{{ $year->name }}</option>
+                                                <option value="{{ $year->id }}">{{ $year->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -144,9 +148,9 @@
                                     <label for="term_id">Term</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="term_id">
-                                            <option>Choose term...</option>
+                                            <option selected>Choose term</option>
                                             @foreach($terms as $term)
-                                                <option value="{{ $term->id }}" {{ old('term_id', $term->id) == $term->id ? 'selected' : '' }}>{{ $term->name }}</option>
+                                                <option value="{{ $term->id }}">{{ $term->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -186,7 +190,7 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
                         <div><h5>Step 1 of 3</h5></div>
                         <div>
-                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-sm pl-5 pr-5 ml-3 mr-3">Save</button>
+                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Save</button>
                         </div>
                     </div>
                 </form>

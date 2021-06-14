@@ -154,9 +154,7 @@ class TeacherNoteController extends Controller
     public function destroy(ItemContent $note)
     {
         try {
-            if(exists($note) && !empty($note)) {
-                $note->delete();
-            }
+            $note->delete();
 
             return redirect()->route('teacher.notes')->with('success', 'Note deleted successfully');
         } catch (\Exception $e) {

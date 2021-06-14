@@ -185,7 +185,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <p>Current pastpaper</p>
+                            <p>Current past paper</p>
                             <embed src="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" type="application/pdf" width="50%" height="50%">
                             <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
 

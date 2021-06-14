@@ -124,7 +124,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="title">Book title</label>
+                            <label for="title">Notes title</label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{ old('title', $note->title) }}">
                             @error('title')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>

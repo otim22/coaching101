@@ -4091,6 +4091,7 @@ form .btn button {
   padding: 15px;
   border-radius: 8px;
   min-height: 500px;
+  border: 1px solid #e6e6e6;
 }
 
 .fast-transition-2 {

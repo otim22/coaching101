@@ -128,13 +128,15 @@
             </ul>
 
             <ul class="navbar-nav ml-auto nav nav-pills">
-                <li class="nav-item">
-                    <span class="badge badge-pill badge-light" style="margin-top: 13px;margin-right: 5px;">{{ $activeStandard->name }}</span>
-				</li>
-                <li class="nav-item search mr-1 d-none d-md-block">
+                @if(Auth::user()->hasRole('student'))
+                    <li class="nav-item">
+                        <span class="badge badge-pill badge-light" style="margin-top: 13px; padding-top: 4px; padding-bottom: 4px; margin-right: 5px;">{{ $activeStandard->name }}</span>
+    				</li>
+                @endif
+                <li class="nav-item search d-none d-md-block">
 					<a class="nav-link" href="#"> <i class="fas fa-search pointer"></i></a>
 				</li>
-                <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-none d-md-block mr-2">
+                <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-none d-md-block">
                     <livewire:nav-cart />
                 </li>
 
