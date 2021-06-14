@@ -116,7 +116,7 @@ Route::middleware('auth')->group(function() {
 
     Route::prefix('teacher')->group(function() {
         Route::get('/starter', [SubjectController::class, 'starter'])->name('subjects.starter');
-        Route::post('/captureRole', [SubjectController::class, 'captureRole'])->name('subjects.captureRole');
+        Route::get('/onBoard', [SubjectController::class, 'onBoard'])->name('subjects.onBoard');
         Route::get('/manage/subjects', [SubjectController::class, 'index'])->name('manage.subjects')->middleware('teacher');
         Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
         Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects');

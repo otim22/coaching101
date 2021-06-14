@@ -16,11 +16,19 @@ class LevelTableSeeder extends Seeder
     public function run()
     {
         $levels = ['O Level', 'A Level','Check Point', 'IGCSE', 'AS / A2'];
+        $cambridge = 1;
+        $uneb = 2;
 
-        foreach ($levels as $level) {
+        foreach ($levels as $key => $level) {
+            if($key < 2) {
+                factory(Level::class)->create([
+                    'name' => $level,
+                    'standard_id' => $uneb,
+                ]);
+            }
             factory(Level::class)->create([
                 'name' => $level,
-                'standard_id' => Standard::all()->random()->id,
+                'standard_id' => $cambridge,
             ]);
         }
     }

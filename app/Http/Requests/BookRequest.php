@@ -39,7 +39,7 @@ class BookRequest extends FormRequest
 
         $book_objective = count($this->input('objective'));
 
-        foreach(range(0, $book_objective) as $index) {
+        foreach(range(1, $book_objective) as $index) {
             $rules[]['objective.' . $index] = 'required|string';
         }
 

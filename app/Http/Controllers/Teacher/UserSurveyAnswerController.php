@@ -19,10 +19,10 @@ class UserSurveyAnswerController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // $request->validate([
-        //     ''
-        // ]);
+        $request->validate([
+            'survey_answer_id' => 'required|array|min:1',
+            'standard_id' => 'required|array|min:1'
+        ]);
 
         $surveyAnswerIds = $request->input('survey_answer_id');
         $standardId = $request->input('standard_id');
@@ -32,6 +32,7 @@ class UserSurveyAnswerController extends Controller
         $currentUser->syncRoles([$role->id]);
         $currentUser->standards()->attach($standardId);
 
+        // dd($currentUser->standards->first());
         foreach($surveyAnswerIds as $surveyAnswerId) {
             UserSurveyAnswer::create([
                 'survey_answer_id' => $surveyAnswerId,

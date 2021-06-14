@@ -72,7 +72,7 @@
                             @endif
                         </div>
 
-                        @if(Auth::user()->role == 4)
+                        @if(Auth::user()->hasRole('super-admin'))
                             @if($note->creator)
                                 <a class="btn btn-secondary btn-sm float-right mt-3" href="{{ $note->getFirstMediaUrl('teacher_note') }}" target="_blank">
                                     Download notes here

@@ -62,7 +62,7 @@
                             @endif
                         </div>
 
-                        @if(Auth::user()->role == 4)
+                        @if(Auth::user()->hasRole('super-admin'))
                             @if($book->creator)
                                 <a class="btn btn-secondary btn-sm" href="{{ $book->getFirstMediaUrl('books') }}" target="_blank">
                                     Download book

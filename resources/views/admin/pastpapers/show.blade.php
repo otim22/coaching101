@@ -57,7 +57,7 @@
                             <span style="font-weight: bold;">Free</span>
                         @endif
 
-                        @if(Auth::user()->role == 4)
+                        @if(Auth::user()->hasRole('super-admin'))
                             @if($pastpaper->creator)
                                 <a class="btn btn-secondary btn-sm float-right mt-3" href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" target="_blank">
                                     Download pastpaper here

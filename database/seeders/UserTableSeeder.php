@@ -14,7 +14,19 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 20)->create(['role' => 'student']);
-        factory(User::class, 20)->create(['role' => 'teacher']);
+        $this->createUsers(20, 'student');
+        $this->createUsers(20, 'teacher');
+    }
+
+    protected function createUsers($number, $role)
+    {
+        for ($i = 0; $i < $number; $i ++) {
+            $newUser = Factory(User::class)->create();
+            $newUser->assignRole($role);
+            if($role == 'teacher') {
+                $id = $i < 10 ? 1 : 2;
+                $newUser->standards()->attach($id);
+            }
+        }
     }
 }

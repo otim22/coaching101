@@ -38,7 +38,7 @@ class NoteRequest extends FormRequest
 
         $notes_objective = count($this->input('objective'));
 
-        foreach(range(0, $notes_objective) as $index) {
+        foreach(range(1, $notes_objective) as $index) {
             $rules[]['objective.' . $index] = 'required|string';
         }
 

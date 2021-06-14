@@ -76,15 +76,21 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer(['welcome', 'home', 'student.*'], function ($view) {
-            $teachers = User::with('profile')->where('role', 'teacher')->get()->take(12);
+            $standard = Standard::find(SessionWrapper::getData('standardId'));
+            $users =  $standard->users;
+            $userIds = [];
 
-            // $users = User::with(['roles' => function ($query) {
-            //     $query->where([
-            //         'name' => 'teacher'
-            //     ])->take(12);
-            // }])->get();
+            foreach ($users as $user) {
+                $userIds[] = $user->id;
+            }
 
-            $view->withTeachers($teachers);
+            $userProfiles = User::with(['profile', 'roles' => function ($query) {
+                $query->where([
+                    'name' => 'teacher'
+                ]);
+            }])->whereIn('id', $userIds)->get()->take(12);
+
+            $view->withTeachers($userProfiles);
         });
 
         View::composer(['welcome', 'home', 'auth.*', 'student.*', 'teacher.*', 'user.*'], function ($view) {

@@ -26,7 +26,7 @@
                                                     <button type="submit" class="dropdown-item"> Approve </button>
                                                 </form>
                                             </li>
-                                            @if(Auth::user()->role == 4)
+                                            @if(Auth::user()->hasRole('super-admin'))
                                                 <li>
                                                     <a class="dropdown-item"
                                                        href="#"

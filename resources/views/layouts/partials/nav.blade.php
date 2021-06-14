@@ -102,20 +102,20 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link make-upper-case" href="#" id="navbarDropdownMenuLinkStart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            start
+                            Start
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkStart">
                             @guest
                                 <a class="dropdown-item" href="{{ route('login') }}">Learning</a>
-                                <a class="dropdown-item" href="{{ route('subjects.starter') }}">Teaching</a>
+                                <a class="dropdown-item" href="{{ route('subjects.onBoard') }}">Teaching</a>
                             @endguest
                             <a class="dropdown-item d-none d-lg-block d-xl-none d-md-block d-lg-none" href="{{ route('donate.index') }}">Donate</a>
                             @auth()
-                                @if(auth()->user()->hasRole('student'))
-                                    <a class="dropdown-item" href="{{ route('home') }}">Learning</a>
-                                    <a class="dropdown-item" href="{{ route('subjects.starter') }}">Teaching</a>
-                                @elseif(auth()->user()->hasRole('teacher') || auth()->user()->hasRole('admin'))
-                                    <a class="dropdown-item" href="{{ route('my-account') }}">Learning</a>
+                                <a class="dropdown-item" href="{{ route('home') }}">Learning</a>
+                                <a class="dropdown-item" href="{{ route('my-account') }}">My courses</a>
+                                @if(Auth::user()->hasRole('student'))
+                                    <a class="dropdown-item" href="{{ route('subjects.onBoard') }}">Teaching</a>
+                                @elseif(Auth::user()->hasRole('teacher') || Auth::user()->hasRole('admin'))
                                     <a class="dropdown-item" href="{{ route('manage.subjects') }}">Teaching</a>
                                 @endif
                             @endauth

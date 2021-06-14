@@ -48,7 +48,8 @@
                                     <h5 class="pb-3">{{ $question->question }}</h5>
                                     @foreach($question->answers as $answer)
                                         <div class="mb-2">
-                                            <input type="checkbox" class="mr-2" name="survey_answer_id[]" value="{{ $answer->id }}">
+                                            <input type="checkbox" class="mr-2"
+                                                        name="survey_answer_id[]" value="{{ $answer->id }}">
                                             <label for="{{$answer->id }}">{{ $answer->answer }}</label>
                                         </div>
                                     @endforeach
@@ -58,12 +59,14 @@
                             <h5 class="pb-3">What standard do you teach?</h5>
                             @foreach($standards as $standard)
                                 <div class="mb-2">
-                                    <input type="checkbox" class="mr-2" name="standard_id[]" value="{{ $standard->id }}">
+                                    <input type="checkbox" class="mr-2"
+                                                name="standard_id[]" value="{{ $standard->id }}">
                                     <label for="{{ $standard->id }}">{{ $standard->name }}</label>
                                 </div>
                             @endforeach
 
-                            <button type="submit" class="btn btn-primary float-right pr-4 pl-4" style="border-radius: 30px; padding-left: 20px; padding-right: 20px; white-space: nowrap;">
+                            <button type="submit" class="btn btn-primary float-right pr-4 pl-4"
+                                            style="border-radius: 30px; padding-left: 20px; padding-right: 20px; white-space: nowrap;">
                                 Save
                             </button>
                         </form>

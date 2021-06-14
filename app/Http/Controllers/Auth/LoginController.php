@@ -34,9 +34,9 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        if(Auth::user() && $this->guard()->user()->role == 2) {
+        if(Auth::user() && $this->guard()->user()->role == "teacher") {
             return '/teacher/manage/subjects';
-        } else if(Auth::user() && $this->guard()->user()->role == 3) {
+        } else if(Auth::user() && $this->guard()->user()->role == "admin") {
             return '/admin/dashboard';
         } else {
             return '/home';

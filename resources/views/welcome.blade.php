@@ -15,14 +15,13 @@
                     @endguest
 
                     @auth
-                        @if(Auth::user()->role == 1)
+                        @if(Auth::user()->hasRole('student'))
                             <p><a id="round-button-2" class="btn btn-primary btn-lg get-started_student mt-5" href="#learn-now" role="button">Get started &raquo;</a></p>
                         @endif
-
-                        @if(Auth::user()->role == 2)
+                        @if(Auth::user()->hasRole('teacher'))
                             <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get started &raquo;</a></p>
                         @endif
-                        @if(Auth::user()->role == 3)
+                        @if(Auth::user()->hasRole('admin'))
                             <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get started &raquo;</a></p>
                         @endif
                     @endauth
@@ -284,15 +283,15 @@
                     @endguest
 
                     @auth
-                        @if(Auth::user()->role == 1)
+                        @if(Auth::user()->hasRole('student'))
                             <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
                         @endif
 
-                        @if(Auth::user()->role == 2)
+                        @if(Auth::user()->hasRole('teacher'))
                             <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
                         @endif
 
-                        @if(Auth::user()->role == 3)
+                        @if(Auth::user()->hasRole('admin'))
                             <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
                         @endif
                     @endauth

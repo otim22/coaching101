@@ -137,15 +137,6 @@ class SubjectController extends Controller
         return view('teacher.pages.start.index');
     }
 
-    public function captureRole(Request $request)
-    {
-        $user = Auth::user();
-        $user->role = $request->role;
-        $user->save();
-
-        return redirect()->route('manage.subjects');
-    }
-
     public function destroy(ItemContent $subject)
     {
         try {
