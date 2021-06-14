@@ -14,54 +14,21 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Category::class)->create([
-            'name' => 'Sciences',
-            'slug' => 'sciences',
-        ]);
+        $cambridge = 1;
+        $uneb = 2;
+        $categories = [
+            'Sciences', 'Mathematics', 'Chemistry', 'Literature',  'Political sciences',
+            'Physics', 'Languages', 'History', 'Social studies', 'Vocational subjects'
+        ];
 
-        factory(Category::class)->create([
-            'name' => 'Mathematics',
-            'slug' => 'mathematics',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Chemistry',
-            'slug' => 'chemistry',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Literature',
-            'slug' => 'literature',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Political sciences',
-            'slug' => 'political_sciences',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Physics',
-            'slug' => 'physics',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Languages',
-            'slug' => 'languages',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'History',
-            'slug' => 'history',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Social studies',
-            'slug' => 'social_studies',
-        ]);
-
-        factory(Category::class)->create([
-            'name' => 'Vocational subjects',
-            'slug' => 'vocational_subjects',
-        ]);
+        foreach($categories as $category) {
+            $newCategory = factory(Category::class)->create([
+                'name' => $category
+            ]);
+            if($newCategory->id <= 5) {
+                $newCategory->standards()->attach($cambridge);
+            }
+            $newCategory->standards()->attach($uneb);
+        }
     }
 }

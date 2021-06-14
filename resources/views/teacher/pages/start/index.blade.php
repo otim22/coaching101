@@ -36,74 +36,39 @@
             <div class="container">
                 <div class="row justify-content-center mt-4">
                     <div class="col-lg-8 col-md-10 col-sm-12">
-                        <h4 class="bold">So, you wanna share your knowledge?</h4>
-                        <p class="pb-3">Our classes are majorly video based that give students edge skills to excellence in life. Whether you are exeperienced or not, we will work together to give great value to students.</p>
-                        <form action="{{ route('subjects.captureRole') }}" method="POST">
+                        @foreach($surveys as $survey)
+                            <h4 class="bold">{{ $survey->title }}</h4>
+                            <p class="pb-3">{{ $survey->description }}</p>
+                        @endforeach
+                        <form action="{{ route('userSurveyAnswer.store') }}" method="POST">
                             @csrf
-                            <div class="mb-5">
-                                <h5 class="pb-3">What kind of teaching have you done before?</h5>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="professional">
-                                    <label class="custom-control-label" for="professional">In Person Professionally</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="informal">
-                                    <label class="custom-control-label" for="informal">In Person Informally</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="online">
-                                    <label class="custom-control-label" for="online">Online</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="other">
-                                    <label class="custom-control-label" for="other">Other</label>
-                                </div>
-                            </div>
 
-                            <div class="mb-5">
-                                <h5 class="pb-3">How exeperienced are you at videos?</h5>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="beginner">
-                                    <label class="custom-control-label" for="beginner">I am a beginner</label>
+                            @foreach($questions as $question)
+                                <div class="mb-5">
+                                    <h5 class="pb-3">{{ $question->question }}</h5>
+                                    @foreach($question->answers as $answer)
+                                        <div class="mb-2">
+                                            <input type="checkbox" class="mr-2"
+                                                        name="survey_answer_id[]" value="{{ $answer->id }}">
+                                            <label for="{{$answer->id }}">{{ $answer->answer }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="intermidiate">
-                                    <label class="custom-control-label" for="intermidiate">I have intermidiate knowledge</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="exeperienced">
-                                    <label class="custom-control-label" for="exeperienced">I am exeperienced</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="ready">
-                                    <label class="custom-control-label" for="ready">I have videos ready to start</label>
-                                </div>
-                            </div>
+                            @endforeach
 
-                            <div>
-                                <h5 class="pb-3">Do you have an audience?</h5>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="dont">
-                                    <label class="custom-control-label" for="dont">I am a beginner, i don't have</label>
+                            <h5 class="pb-3">What standard do you teach?</h5>
+                            @foreach($standards as $standard)
+                                <div class="mb-2">
+                                    <input type="checkbox" class="mr-2"
+                                                name="standard_id[]" value="{{ $standard->id }}">
+                                    <label for="{{ $standard->id }}">{{ $standard->name }}</label>
                                 </div>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="some">
-                                    <label class="custom-control-label" for="some">I have some audience</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="enough">
-                                    <label class="custom-control-label" for="enough">I have enough audience</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="not_sure">
-                                    <label class="custom-control-label" for="not_sure">I am not sure</label>
-                                </div>
-                                <div>
-                                    <input type="hidden" id="role" name="role" value="2">
-                                </div>
-                            </div>
+                            @endforeach
 
-                            <button type="submit" class="btn btn-primary float-right">Continue</button>
+                            <button type="submit" class="btn btn-primary float-right pr-4 pl-4"
+                                            style="border-radius: 30px; padding-left: 20px; padding-right: 20px; white-space: nowrap;">
+                                Save
+                            </button>
                         </form>
 
                     </div>

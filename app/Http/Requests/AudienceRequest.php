@@ -25,19 +25,19 @@ class AudienceRequest extends FormRequest
     {
         $rules = [];
 
-        $student_learn = count($this->input('student_learn'));
-        $class_requirement = count($this->input('class_requirement'));
-        $target_student = count($this->input('target_student'));
+        $studentLearnCount = count($this->input('student_learn'));
+        $classRequirementCount = count($this->input('class_requirement'));
+        $targetStudentCount = count($this->input('target_student'));
 
-        foreach(range(0, $student_learn) as $index) {
+        foreach(range(1, $studentLearnCount) as $index) {
             $rules[]['student_learn.' . $index] = 'required|string';
         }
 
-        foreach(range(0, $class_requirement) as $index) {
+        foreach(range(1, $classRequirementCount) as $index) {
             $rules[]['class_requirement.' . $index] = 'required|string';
         }
 
-        foreach(range(0, $target_student) as $index) {
+        foreach(range(1, $targetStudentCount) as $index) {
             $rules[]['target_student.' . $index] = 'required|string';
         }
 

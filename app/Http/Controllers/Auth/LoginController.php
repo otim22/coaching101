@@ -34,10 +34,10 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        if(Auth::user() && $this->guard()->user()->role == 2) {
-            return '/teacher/manage/subjects';     # Teacher dashboard
-        } else if(Auth::user() && $this->guard()->user()->role == 3) {
-            return '/admin/dashboard';           # Admin dashboard
+        if(Auth::user() && $this->guard()->user()->role == "teacher") {
+            return '/teacher/manage/subjects';
+        } else if(Auth::user() && $this->guard()->user()->role == "admin") {
+            return '/admin/dashboard';
         } else {
             return '/home';
         }

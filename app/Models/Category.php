@@ -4,9 +4,10 @@ namespace App\Models;
 
 use App\Utilities\FilterBuilder;
 use Spatie\Sluggable\HasSlug;
+use App\Helpers\SessionWrapper;
 use Spatie\Sluggable\SlugOptions;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -63,5 +64,11 @@ class Category extends Model
     public function years()
     {
         return $this->belongsToMany('App\Models\Year');
+    }
+
+    public function standards()
+    {
+        return $this->belongsToMany('App\Models\Standard', 'standard_categories')
+                            ->wherePivot('standard_id', SessionWrapper::getData('standardId'));
     }
 }

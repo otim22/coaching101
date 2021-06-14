@@ -10,10 +10,8 @@ $(function() {
         //replace the "Choose a file" label
         $(this).next('.custom-file-label').html(fileName);
     })
-});
 
-$(function() {
-/** Handle multiple upload resource attachment files */
+    /** Handle multiple upload resource attachment files */
     $('.btn-resource_attachment').click(function(event) {
         event.preventDefault();
 
@@ -39,4 +37,4 @@ $(function() {
             $(this).closest('.resource-entry').remove();
         });
     }
-})
+});

@@ -17,7 +17,7 @@
                         </a>
                     </div>
                     <div class="order-2">
-                        <span class="red_color bold text-set">{{  rtrim(rtrim(number_format($subject['price'], 2), 2), '.') }}/-</span>
+                        <span class="red_color bold text-set">{{  number_format($subject['price']) }}/-</span>
                     </div>
                     <div class="d-flex pr-3 align-items-start flex-column">
                         <a type="button" wire:click="removeFromCart({{ $subject['id'] }})"><small>Remove</small></a>
@@ -35,9 +35,11 @@
         @endforelse
 
         <div class="pt-3">
-            <div class="mb-4">
-                <h5 class="bold">Recently wishlisted</h5>
-            </div>
+            @if(count($wishlistItems) > 0)
+                <div class="mb-4">
+                    <h5 class="bold">Recently wishlisted</h5>
+                </div>
+            @endif
             @foreach($wishlistItems as $wishlistItem)
             <div class="card-custom p-3 mb-3">
                 <div class="d-flex justify-content-between">

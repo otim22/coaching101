@@ -26,7 +26,7 @@
                                                     <button type="submit" class="dropdown-item"> Approve </button>
                                                 </form>
                                             </li>
-                                            @if(Auth::user()->role == 4)
+                                            @if(Auth::user()->hasRole('super-admin'))
                                                 <li>
                                                     <a class="dropdown-item"
                                                        href="#"
@@ -43,7 +43,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="bold mb-3">{{ $subject->title }}</h5>
-                        <img src="{{ asset($subject->getFirstMediaUrl()) }}" class="rounded-corners w-50" alt="{{ $subject->title }}">
+                        <img src="{{ asset($subject->getFirstMediaUrl('cover_images')) }}" class="rounded-corners w-50" alt="{{ $subject->title }}">
 
                         <div class="mt-3 mb-3">
                             <p> {{ $subject->subtitle }} </p>

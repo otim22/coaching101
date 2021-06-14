@@ -88,7 +88,7 @@
                         @endforeach
                     </div>
 
-                    <embed src="{{ $note->getFirstMediaUrl('teacher_note') }}" type="application/pdf" width="100%" height="400">
+                    <embed src="{{ $note->getFirstMediaUrl('notes') }}" type="application/pdf" width="100%" height="400">
 
                     <form action="{{ route('notes.destroy', $note) }}" class="hidden" id="delete-teacher-note" method="POST">
                         @csrf

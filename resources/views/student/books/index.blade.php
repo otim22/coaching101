@@ -17,7 +17,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Books</li>
+                <li class="breadcrumb-item active" aria-current="page">Pdf Books</li>
             </ol>
         </nav>
     </div>
@@ -37,6 +37,18 @@
                                     <option>{{ \App\Constants\GlobalConstants::ALL_SUBJECTS }}</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 mb-3">
+                            <h6 class="bold">Level</h6>
+                            <div class="resource-filter_input">
+                                <select class="custom-select" id="level">
+                                    <option>{{ \App\Constants\GlobalConstants::ALL_LEVELS }}</option>
+                                    @foreach($levels as $level)
+                                        <option value="{{ $level->id }}">{{ $level->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

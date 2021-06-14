@@ -16,9 +16,9 @@
                         <li><a href="{{ route('subjects.starter') }}">Teacher</a></li>
                     @endguest
                     @auth
-                        @if(Auth::user()->role == 1)
+                        @if(Auth::user()->hasRole('student'))
                             <li><a href="{{ route('subjects.starter') }}">Teacher</a></li>
-                        @elseif(Auth::user()->role == 2)
+                        @elseif(Auth::user()->hasRole('teacher'))
                             <li><a href="{{ route('manage.subjects') }}">Teacher</a></li>
                         @else
                             <li><a href="{{ route('manage.subjects') }}">Teacher</a></li>

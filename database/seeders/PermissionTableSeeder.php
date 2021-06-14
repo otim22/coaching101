@@ -23,12 +23,61 @@ class PermissionTableSeeder extends Seeder
 
         // create permissions
         $permissions = [
-            'view-subject',
-            'create-subject',
-            'edit-subject',
-            'delete-subject',
-            'publish-subject',
-            'unpublish-subject',
+            'view-course',
+            'create-course',
+            'edit-course',
+            'delete-course',
+            'publish-course',
+            'unpublish-course',
+        ];
+
+        $roles = [
+            'student' => [
+                'view-course'
+            ],
+            'teacher' => [
+                'view-course',
+                'create-course',
+                'edit-course',
+                'delete-course'
+            ],
+            'admin' => [
+                'view-course',
+                'delete-course',
+                'publish-course',
+                'unpublish-course'
+            ],
+            'super-admin' => [
+                'view-course',
+                'create-course',
+                'edit-course',
+                'delete-course',
+                'publish-course',
+                'unpublish-course'
+            ],
+        ];
+
+        $users = [
+            'student' => [
+                'name' => 'Otim student',
+                'email' => 'student@gmail.com',
+                'password' => bcrypt('password')
+            ],
+            'teacher' => [
+                'name' => 'Otim teacher',
+                'email' => 'teacher@gmail.com',
+                'password' => bcrypt('password')
+            ],
+            'admin' => [
+                'name' => 'Otim admin',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('password')
+            ],
+            'super-admin' => [
+                'name' => 'Otim deere',
+                'email' => 'super@gmail.com',
+                'password' => bcrypt('password')
+            ]
         ];
 
         foreach ($permissions as $permission) {
@@ -36,51 +85,18 @@ class PermissionTableSeeder extends Seeder
         }
 
         // create roles and assign existing permissions
-        $studentRole = Role::create(['name' => 'student']);
-        $studentRole->givePermissionTo('view-subject');
+        foreach ($roles as $key => $role) {
+            $newRole = Role::create(['name' => $key]);
+            $newRole->givePermissionTo($role);
+        }
 
-        $teacherRole = Role::create(['name' => 'teacher']);
-        $teacherRole->givePermissionTo('view-subject');
-        $teacherRole->givePermissionTo('create-subject');
-        $teacherRole->givePermissionTo('edit-subject');
-        $teacherRole->givePermissionTo('delete-subject');
-
-        $adminRole = Role::create(['name' => 'admin']);
-        $adminRole->givePermissionTo('publish-subject');
-        $adminRole->givePermissionTo('unpublish-subject');
-
-        $superRole = Role::create(['name' => 'super-admin']);
-
-        // create a student user
-        $student= Factory(User::class)->create([
-            'name' => 'Otim student',
-            'email' => 'student@gmail.com',
-            'password' => bcrypt('password'),
-            'role' => $studentRole
-        ]);
-
-        // create a teacher user
-        $teacher = Factory(User::class)->create([
-            'name' => 'Otim teacher',
-            'email' => 'teacher@gmail.com',
-            'password' => bcrypt('password'),
-            'role' => $teacherRole
-        ]);
-
-        // create an admin user
-        $admin = Factory(User::class)->create([
-            'name' => 'Otim admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('password'),
-            'role' => $adminRole
-        ]);
-
-        // create a super admin user
-        $super = Factory(User::class)->create([
-            'name' => 'Otim deere',
-            'email' => 'super@gmail.com',
-            'password' => bcrypt('password'),
-            'role' => $superRole
-        ]);
+        // create a user
+        foreach ($users as $key => $user) {
+            $newUser = Factory(User::class)->create($user);
+            $newUser->assignRole($key);
+            if($key == 'teacher') {
+                $newUser->standards()->attach(1);
+            }
+        }
     }
 }

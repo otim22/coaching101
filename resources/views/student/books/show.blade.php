@@ -25,6 +25,20 @@
 
 <section>
     <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-12 col-md-12 col-lg-10">
+                <div class="mb-4">
+                    <h5>
+                        <a id="round-button-2" type="button" class="btn btn-secondary btn-sm" href="{{ route('student.books.index') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                            Back
+                        </a>
+                    </h5>
+                </div>
+            </div>
+        </div>
         @if($book->isSubscribedTo)
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-10 offset-1">
@@ -33,12 +47,7 @@
                         <div class="mb-3">
                             <p>By {{ $book->creator->name }}</p>
                         </div>
-                        <embed src="{{ $book->getFirstMediaUrl('teacher_book') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
-                    @else
-                        <div class="mb-3">
-                            <span class="author-font">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                        </div>
-                        <embed src="{{ $book->getFirstMediaUrl('book') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
+                        <embed src="{{ $book->getFirstMediaUrl('books') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
                     @endif
                 </div>
             </div>
@@ -52,22 +61,9 @@
                             Back
                         </a>
 
-                        <a href="{{ $book->getFirstMediaUrl('teacher_book') }}" id="round-button-2"
+                        <a href="{{ $book->getFirstMediaUrl('books') }}" id="round-button-2"
                                         name="button"
                                         class="btn btn-primary btn-sm" target="_blank">
-                                        Download book
-                        </a>
-                    @else
-                        <a id="round-button-2" type="button" class="btn btn-secondary btn-sm" href="{{ route('student.books.index') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                            </svg>
-                            Back
-                        </a>
-
-                        <a href="{{ $book->getFirstMediaUrl('book') }}" id="round-button-2"
-                                        name="button"
-                                        class="btn btn-secondary btn-sm mt-5" target="_blank">
                                         Download book
                         </a>
                     @endif
@@ -75,43 +71,48 @@
             </div>
         @else
             <div class="row d-flex justify-content-center">
-                <div class="col-sm-12 col-md-12 col-lg-8">
-                    <h5 class="bold">{{ $book->title }}</h5>
-                    @if($book->creator)
-                    <div class="mb-4">
-                        <div class="mb-3">
-                            <p>By {{ $book->creator->name }}</p>
+                <div class="col-sm-12 col-md-12 col-lg-10">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <h5 class="bold mb-4">{{ $book->title }}</h5>
+                            <div class="mb-4">
+                                <img src="{{ $book->getFirstMediaUrl('cover_images') }}" alt="{{ $book->very_short_title }}" class="rounded-corners" width="100%" height="auto">
+                            </div>
+
+                            <div class="mb-4">
+                                @if($book->creator)
+                                    <p>By {{ $book->creator->name }}</p>
+                                @endif
+                                @if($book->price)
+                                    <span class="bold">UGX {{ $book->formatPrice }}/-</span>
+                                @else
+                                    <span class="bold paid_color">Free</span>
+                                    @if($book->creator)
+                                        <embed src="{{ $book->getFirstMediaUrl('books') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                    @endif
+                                @endif
+                            </div>
+
+                            <div class="mb-3 mt-4">
+                                <h5 class="bold">Book objectives </h5>
+                                @if($book->book_objective)
+                                    @foreach($book->book_objective as $book_objective)
+                                    <p>
+                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                                        </svg>
+                                        {{ $book_objective }}
+                                    </p>
+                                    @endforeach
+                                @else
+                                    <p>No data</p>
+                                @endif
+                            </div>
+                            <div class="mt-4">
+                                <livewire:buy-book :book="$book" />
+                            </div>
                         </div>
-                        <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" class="rounded-corners" width="100%" height="auto">
                     </div>
-                    @else
-                    <div class="mb-4">
-                        <div class="mb-3">
-                            <span class="author-font mb-4">By {{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                        </div>
-                        <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="auto">
-                    </div>
-                    @endif
-                    <div class="mb-3 mt-4">
-                        <h5 class="bold">Book objectives </h5>
-                        @foreach($book->book_objective as $book_objective)
-                        <p>
-                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                            </svg>
-                            {{ $book_objective }}
-                        </p>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-8 mt-4 d-flex justify-content-between">
-                    <a id="round-button-2" type="button" class="btn btn-secondary btn-sm" href="{{ route('student.books.index') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                        </svg>
-                        Back
-                    </a>
-                    <livewire:buy-book :book="$book" />
                 </div>
             </div>
         @endif

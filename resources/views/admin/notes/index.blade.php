@@ -10,9 +10,6 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div><h4>Notes</h4></div>
-                            <div>
-                                <a type="button" href="{{ route('admin.notes.create') }}" class="btn btn-primary pt-1" name="button">Create Notes</a>
-                            </div>
                         </div>
                     </div>
                     <div class="card-body">

@@ -1,5 +1,5 @@
-/** Start notes filtering **/
 $(function() {
+    /** Start notes filtering **/
     $(document).on('click', '.pagination a', function(event) {
         event.preventDefault();
 
@@ -10,31 +10,29 @@ $(function() {
     $('#notes_category, #notes_year, #notes_term').on('change', function() {
         getMoreNotes();
     });
-});
 
-function getMoreNotes(page) {
-    var selectedCategory = $("#notes_category option:selected").val();
-    var selectedYear = $("#notes_year option:selected").val();
-    var selectedTerm = $("#notes_term option:selected").val();
+    function getMoreNotes(page) {
+        var selectedCategory = $("#notes_category option:selected").val();
+        var selectedYear = $("#notes_year option:selected").val();
+        var selectedTerm = $("#notes_term option:selected").val();
 
-    $.ajax({
-        type: "GET",
-        data: {
-            'notes_category': selectedCategory,
-            'notes_year': selectedYear,
-            'notes_term': selectedTerm
-        },
-        url: "get-more-notes" + "?page=" + page,
-        success: function(data) {
-            $('#notes_data').html(data);
-            window.livewire.rescan();
-        }
-    });
-}
-/** Start notes filtering **/
+        $.ajax({
+            type: "GET",
+            data: {
+                'notes_category': selectedCategory,
+                'notes_year': selectedYear,
+                'notes_term': selectedTerm
+            },
+            url: "get-more-notes" + "?page=" + page,
+            success: function(data) {
+                $('#notes_data').html(data);
+                window.livewire.rescan();
+            }
+        });
+    }
+    /** Start notes filtering **/
 
-/** Start note objectives **/
-$(function () {
+    /** Start note objectives **/
     let maxField = 10;
     let startValue = 1;
 
@@ -58,7 +56,6 @@ $(function () {
 
             all_items.classList.add('hidden');
         }
-
         attach_delete();
     });
 
@@ -70,40 +67,37 @@ $(function () {
             startValue--;
         });
     }
-});
-/** End note objectives **/
+    /** End note objectives **/
 
-/** Start Delete a particular objective */
-$(function() {
+    /** Start Delete a particular objective */
     $("p.to-delete").on("click", function() {
         var deleteUrl = $(this).attr("data-delete-url");
         var objectiveId = $(this).attr("data-objective-id");
-
         deleteObjective(deleteUrl, objectiveId);
     });
+
+    function deleteObjective(deleteUrl, objectiveId) {
+        $.ajax({
+            type: "POST",
+            url: deleteUrl,
+            dataType: "JSON",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                id: objectiveId,
+            },
+            success: function (response) {
+                console.log(response);
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+
+        setTimeout(function () {
+            document.location.reload(true);
+        }, 1000);
+    }
+    /** End Delete a particular objective */
 });
-
-function deleteObjective(deleteUrl, objectiveId) {
-    $.ajax({
-        type: "POST",
-        url: deleteUrl,
-        dataType: "JSON",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data: {
-            id: objectiveId,
-        },
-        success: function (response) {
-            console.log(response);
-        },
-        error: function(xhr) {
-            console.log(xhr.responseText);
-       }
-    });
-
-    setTimeout(function () {
-        document.location.reload(true);
-    }, 1000);
-}
-/** End Delete a particular objective */

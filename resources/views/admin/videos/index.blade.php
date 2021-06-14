@@ -9,7 +9,7 @@
                 <div class="card admin-shadow">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <div><h4>Subjects</h4></div>
+                            <div><h4>Video Subjects</h4></div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -19,7 +19,7 @@
                                     <th scope="col"></th>
                                     <th scope="col">Names</th>
                                     <th scope="col">Status</th>
-                                    @if(Auth::user()->role == 4)
+                                    @if(Auth::user()->hasRole('super-admin'))
                                         <th scope="col">Action</th>
                                     @endif
                                 </tr>
@@ -36,7 +36,7 @@
                                             <div class="badge badge-warning">Pending</div>
                                         @endif
                                     </td>
-                                    @if(Auth::user()->role == 4)
+                                    @if(Auth::user()->hasRole('super-admin'))
                                         <td>
                                             <a class="btn btn-outline-danger"
                                                         href="#"

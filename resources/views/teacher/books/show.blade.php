@@ -68,8 +68,7 @@
                     <hr />
 
                     <h5 class="bold mt-2 mb-3">{{ $book->title }}</h5>
-
-                    <img src="{{ asset($book->getFirstMediaUrl('teacher_cover_image')) }}" class="rounded-corners w-100 mb-3">
+                    <img src="{{ asset($book->cover_image) }}" class="rounded-corners w-100 mb-3">
 
                     @if(!$book->price)
                         <p>Free</p>
@@ -91,7 +90,7 @@
                         @endforeach
                     </div>
 
-                    <embed src="{{ $book->getFirstMediaUrl('teacher_book') }}" type="application/pdf" width="100%" height="400">
+                    <embed src="{{ $book->getFirstMediaUrl('books') }}" type="application/pdf" width="100%" height="400">
 
                     <form action="{{ route('books.destroy', $book) }}" class="hidden" id="delete-teacher-book" method="POST">
                         @csrf

@@ -1,24 +1,42 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupportController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\ResourceController;
-use App\Http\Controllers\ToolController;
-use App\Http\Controllers\TopicController;
-use App\Http\Controllers\SubjectDisplayController;
-use App\Http\Controllers\MessageController;
-use App\Http\Controllers\AudienceController;
-use App\Http\Controllers\PerformanceController;
-use App\Http\Controllers\TopCategoryController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Teacher\TeacherController;
+use App\Http\Controllers\Teacher\SubjectController;
+use App\Http\Controllers\Teacher\ResourceController;
+use App\Http\Controllers\Teacher\ToolController;
+use App\Http\Controllers\Teacher\TopicController;
+use App\Http\Controllers\Teacher\MessageController;
+use App\Http\Controllers\Teacher\AudienceController;
+use App\Http\Controllers\Teacher\PerformanceController;
+use App\Http\Controllers\Teacher\TeacherBookController;
+use App\Http\Controllers\Teacher\TeacherNoteController;
+use App\Http\Controllers\Teacher\TeacherPastpaperController;
+use App\Http\Controllers\Teacher\UserSurveyAnswerController;
+use App\Http\Controllers\Student\HomeController;
+use App\Http\Controllers\Student\SubjectDisplayController;
+use App\Http\Controllers\Student\TopCategoryController;
+use App\Http\Controllers\Student\CartController;
+use App\Http\Controllers\Student\ProfileController;
+use App\Http\Controllers\Student\SearchController;
+use App\Http\Controllers\Student\QuestionController;
+use App\Http\Controllers\Student\CommentController;
+use App\Http\Controllers\Student\WelcomeController;
+use App\Http\Controllers\Student\BooksController as Books;
+use App\Http\Controllers\Student\NotesController as Notes;
+use App\Http\Controllers\Student\PastpaperController as Pastpapers;
+use App\Http\Controllers\Admin\StandardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\YearController;
 use App\Http\Controllers\Admin\TermController;
+use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MenuController;
@@ -37,25 +55,12 @@ use App\Http\Controllers\Admin\PastpaperController;
 use App\Http\Controllers\Admin\PaymentPlanController;
 use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\ItemController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\WishlistController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\WelcomeController;
-use App\Http\Controllers\MenuCategoryController;
-use App\Http\Controllers\BooksController as Books;
-use App\Http\Controllers\TeacherBookController;
-use App\Http\Controllers\TeacherNoteController;
-use App\Http\Controllers\TeacherPastpaperController;
-use App\Http\Controllers\NotesController as Notes;
-use App\Http\Controllers\PastpaperController as Pastpapers;
+use App\Http\Controllers\Admin\SurveyController;
+use App\Http\Controllers\Admin\SurveyQuestionController;
+use App\Http\Controllers\Admin\SurveyAnswerController;
 
 Route::get('/', [WelcomeController::class, 'index']);
+Route::post('/standards/{standard}', [WelcomeController::class, 'activateStandard'])->name('student.standards.activate');
 Route::get('/books', [Books::class, 'index'])->name('student.books.index');
 Route::get('/donations', [DonationController::class, 'index'])->name('donate.index');
 Route::get('/donations/{donor}', [DonationController::class, 'show'])->name('donate.show');
@@ -83,7 +88,6 @@ Route::get('/items', [SearchController::class, 'videoSubjects'])->name('items');
 Route::get('/questions', [SearchController::class, 'subjectQuestions'])->name('questions');
 Route::get('/categories/{category}', [TopCategoryController::class, 'index'])->name('categories.index');
 Route::get('/teachers/{teacher}', [TeacherController::class, 'index'])->name('teachers.index');
-Route::get('/subjects/{term}', [MenuCategoryController::class, 'index'])->name('terms.index');
 
 Auth::routes();
 
@@ -105,13 +109,14 @@ Route::get('/teacher/onBoard', [SubjectController::class, 'onBoard'])->name('sub
 Route::middleware('auth')->group(function() {
     Route::get('/cart/{response?}', [CartController::class, 'index'])->name('cart.index');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-
     Route::post( '/pay', [PaymentController::class, 'initialize'])->name('pay');
     Route::post('/rave/callback', [PaymentController::class, 'callback'])->name('callback');
 
+    Route::post('/userSurveyAnswers', [UserSurveyAnswerController::class, 'store'])->name('userSurveyAnswer.store');
+
     Route::prefix('teacher')->group(function() {
         Route::get('/starter', [SubjectController::class, 'starter'])->name('subjects.starter');
-        Route::post('/captureRole', [SubjectController::class, 'captureRole'])->name('subjects.captureRole');
+        Route::get('/onBoard', [SubjectController::class, 'onBoard'])->name('subjects.onBoard');
         Route::get('/manage/subjects', [SubjectController::class, 'index'])->name('manage.subjects')->middleware('teacher');
         Route::get('/subjects', [SubjectController::class, 'create'])->name('subjects.create');
         Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects');
@@ -120,14 +125,15 @@ Route::middleware('auth')->group(function() {
         Route::patch('/subjects/{subject}/update', [SubjectController::class, 'update'])->name('subjects.update');
         Route::delete('/subjects/{subject}/destroy', [SubjectController::class, 'destroy'])->name('subjects.destroy');
 
-        Route::resource('/books', 'TeacherBookController')->except(['index']);
+        Route::resource('/books', 'Teacher\TeacherBookController')->except(['index']);
         Route::get('/books', [TeacherBookController::class, 'index'])->name('teacher.books');
         Route::post('/books/{book}/objectives/{objective}', [TeacherBookController::class, 'deleteObjective'])->name('teacher.books.objective.destroy');
-        Route::resource('/notes', 'TeacherNoteController')->except(['index']);
+        Route::resource('/notes', 'Teacher\TeacherNoteController')->except(['index']);
         Route::get('/notes', [TeacherNoteController::class, 'index'])->name('teacher.notes');
         Route::post('/notes/{note}/objectives/{objective}', [TeacherNoteController::class, 'deleteObjective'])->name('teacher.notes.objective.destroy');
-        Route::resource('/pastpapers', 'TeacherPastpaperController')->except(['index']);
+        Route::resource('/pastpapers', 'Teacher\TeacherPastpaperController')->except(['index']);
         Route::get('/pastpapers', [TeacherPastpaperController::class, 'index'])->name('teacher.pastpapers');
+        Route::post('/pastpapers/{pastpaper}/objectives/{objective}', [TeacherPastpaperController::class, 'deleteObjective'])->name('teacher.pastpapers.objective.destroy');
 
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'create']);
@@ -188,7 +194,9 @@ Route::middleware('auth')->group(function() {
         Route::resource('studentImages', 'StudentImageController');
         Route::resource('teacherImages', 'TeacherImageController');
         Route::resource('faqs', 'FaqController');
+        Route::resource('standards', 'StandardController');
         Route::resource('categories', 'CategoryController');
+        Route::resource('levels', 'LevelController');
         Route::resource('years', 'YearController');
         Route::resource('terms', 'TermController');
         Route::resource('books', 'BooksController');
@@ -196,6 +204,12 @@ Route::middleware('auth')->group(function() {
         Route::resource('pastpapers', 'PastpaperController');
         Route::resource('plans', 'PaymentPlanController');
         Route::resource('items', 'ItemController');
+        Route::resource('surveys', 'SurveyController');
+        Route::resource('surveyQuestions', 'SurveyQuestionController');
+        Route::resource('surveyAnswers', 'SurveyAnswerController');
+        Route::post('/surveyAnswers/{surveyAnswer}/deleteSurveyAnswer', [
+            SurveyAnswerController::class, 'deleteSurveyAnswer'
+        ])->name('surveyAnswer.destroy');
         Route::resource('currencies', 'CurrencyController');
     });
 });

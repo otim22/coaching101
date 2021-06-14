@@ -49,7 +49,7 @@
                         @method('patch')
 
                         <div class="form-group mb-4">
-                            <label for="year_id">Subject</label>
+                            <label for="category_id">Subject</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="category_id">
                                     <option selected value="{{ $category->id }}">{{ $category->name }}</option>
@@ -59,6 +59,36 @@
                                 </select>
                             </div>
                             @error('category_id')
+                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="standard_id">Standard</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select" name="standard_id">
+                                    <option selected value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                    @foreach($standards as $standard)
+                                        <option value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('standard_id')
+                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="level_id">Level</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select" name="level_id">
+                                    <option selected value="{{ $level->id }}">{{ $level->name }}</option>
+                                    @foreach($levels as $level)
+                                        <option value="{{ $level->id }}">{{ $level->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('level_id')
                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
@@ -108,21 +138,21 @@
                                     <p class="mt-2">Current note objectives</p>
                                 @endif
                                 @foreach($note->objective as $key => $note_objective)
-                                <div class="d-flex justify-content-between">
-                                    <div style="flex-grow:1">
-                                        <input type="text"
-                                                    value="{{ $note_objective }}"
-                                                    class="form-control form-control mb-2 @error('objective.*') is-invalid @enderror"
-                                                    placeholder="Example: Origin of languages"
-                                                    name="objective[]">
+                                    <div class="d-flex justify-content-between">
+                                        <div style="flex-grow:1">
+                                            <input type="text"
+                                                        value="{{ $note_objective }}"
+                                                        class="form-control form-control mb-2 @error('objective.*') is-invalid @enderror"
+                                                        placeholder="Example: Origin of languages"
+                                                        name="objective[]">
+                                        </div>
+                                        <div>
+                                            <p class="delete_note_objective to-delete" data-objective-id="{{ $key }}" data-delete-url="{{ route('teacher.notes.objective.destroy', ['note' => $note, 'objective' => $key]) }}">x</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p class="delete_note_objective to-delete" data-objective-id="{{ $key }}" data-delete-url="{{ route('teacher.notes.objective.destroy', ['note' => $note, 'objective' => $key]) }}">x</p>
-                                    </div>
-                                </div>
-                                @error('objective.*')
-                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                @enderror
+                                    @error('objective.*')
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
                                 @endforeach
 
                                 <div class="input-group note_objective_section">
@@ -157,7 +187,7 @@
 
                         <div class="form-group mb-4">
                             <p>Current note</p>
-                            <embed src="{{ $note->getFirstMediaUrl('teacher_note') }}" type="application/pdf" width="50%" height="50%">
+                            <embed src="{{ $note->getFirstMediaUrl('notes') }}" type="application/pdf" width="50%" height="50%">
                             <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
 
                             <label for="note">Upload Book</label>
@@ -171,9 +201,8 @@
                         <div class="form-group mb-4">
                             <label for="price">Book price <span class="light_gray_color">(*Optional)</span></label>
                             <div class="input-group mb-2">
-                                <input type="text"
+                                <input type="number"
                                             class="form-control @error('price') is-invalid @enderror"
-                                            id="price"
                                             placeholder="Example price: 10000"
                                             aria-label="Enter subject price"
                                             aria-describedby="price"

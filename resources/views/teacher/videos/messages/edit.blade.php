@@ -55,8 +55,7 @@
                                         <textarea class="form-control @error('welcome_message') is-invalid @enderror"
                                                             name="welcome_message"
                                                             rows="3"
-                                                            required>{{ old('welcome_message', $subject->message['welcome_message']) }}
-                                        </textarea>
+                                                            required>{{ old('welcome_message', $subject->message['welcome_message']) }}</textarea>
                                     </div>
                                     @error('welcome_message')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>

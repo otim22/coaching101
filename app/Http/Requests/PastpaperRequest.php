@@ -26,6 +26,8 @@ class PastpaperRequest extends FormRequest
         return [
             'title' => 'required|string',
             'price' => 'nullable',
+            'standard_id' => 'required|integer',
+            'level_id' => 'required|integer',
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
@@ -38,6 +40,8 @@ class PastpaperRequest extends FormRequest
         return [
             'title.required' => 'Title is required.',
             'price.nullable' => 'Price is required in digits without (, .) characters',
+            'standard_id.required' => 'Choose a standard',
+            'level.required' => 'Choose a level',
             'category_id.required' => 'Choose a subject',
             'year_id.required' => 'Choose a year',
             'term_id.required' => 'Choose a term',

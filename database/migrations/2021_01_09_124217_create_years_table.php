@@ -17,6 +17,7 @@ class CreateYearsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->foreignId('standard_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

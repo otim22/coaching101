@@ -40,7 +40,6 @@
                                     <div class="input-group">
                                         <input type="text"
                                                     class="form-control @error('title') is-invalid @enderror"
-                                                    id="title"
                                                     placeholder="Your subject title"
                                                     aria-label="Your subject title"
                                                     aria-describedby="title"
@@ -58,7 +57,6 @@
                                     <div class="input-group">
                                         <input type="text"
                                                     class="form-control @error('subtitle') is-invalid @enderror"
-                                                    id="subtitle"
                                                     placeholder="Write your sub title"
                                                     aria-label="Write your sub title"
                                                     aria-describedby="subtitle"
@@ -100,6 +98,34 @@
                                 </div>
 
                                 <div class="form-group mb-4">
+                                    <label for="standard_id">Standard</label>
+                                    <div class="input-group mb-3">
+                                        <select class="custom-select" name="standard_id">
+                                            @foreach($standards as $standard)
+                                                <option value="{{ $standard->id }}" {{ old('standard_id', $standard->id) == $standard->id ? 'selected' : '' }}>{{ $standard->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('standard_id')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="level_id">Level</label>
+                                    <div class="input-group mb-3">
+                                        <select class="custom-select" name="level_id">
+                                            @foreach($levels as $level)
+                                                <option value="{{ $level->id }}" {{ old('level_id', $level->id) == $level->id ? 'selected' : '' }}>{{ $level->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('level_id')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-4">
                                     <label for="year_id">Year</label>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" name="year_id">
@@ -134,7 +160,6 @@
                                     <div class="input-group">
                                         <input type="number"
                                                     class="form-control @error('price') is-invalid @enderror"
-                                                    id="price"
                                                     placeholder="Example price: 20000"
                                                     aria-label="Enter subject price"
                                                     aria-describedby="price"

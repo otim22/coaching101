@@ -27,11 +27,6 @@
                                                 </form>
                                             </li>
                                             <li>
-                                                <a href="{{ route('admin.pastpapers.edit', $pastpaper) }}" class="dropdown-item">
-                                                    Edit
-                                                </a>
-                                            </li>
-                                            <li>
                                                 <a class="dropdown-item"
                                                    href="#"
                                                    onclick="event.preventDefault(); document.getElementById('delete-book-item').submit();">
@@ -49,9 +44,11 @@
                         <p>{{ $pastpaper->category->name }} {{ $pastpaper->year->name }}, {{ $pastpaper->term->name }}. </p>
 
                         @if($pastpaper->creator)
-                            <p style="color: #3864ab; font-weight: bold;">{{ $pastpaper->getFirstMedia('teacher_pastpaper')->file_name }}</p>
-                        @else
-                            <p style="color: #3864ab; font-weight: bold;">{{ $pastpaper->getFirstMedia('pastpaper')->file_name }}</p>
+                            @if($pastpaper->getFirstMedia('pastpapers'))
+                                <p style="color: #3864ab; font-weight: bold;">{{ $pastpaper->getFirstMedia('pastpapers')->file_name }}</p>
+                            @else
+                                <p>No file</p>
+                            @endif
                         @endif
 
                         @if($pastpaper->price)
@@ -60,13 +57,9 @@
                             <span style="font-weight: bold;">Free</span>
                         @endif
 
-                        @if(Auth::user()->role == 4)
+                        @if(Auth::user()->hasRole('super-admin'))
                             @if($pastpaper->creator)
                                 <a class="btn btn-secondary btn-sm float-right mt-3" href="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" target="_blank">
-                                    Download pastpaper here
-                                </a>
-                            @else
-                                <a class="btn btn-secondary btn-sm float-right mt-3" href="{{ $pastpaper->getFirstMediaUrl('pastpaper') }}" target="_blank">
                                     Download pastpaper here
                                 </a>
                             @endif
