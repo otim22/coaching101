@@ -26,9 +26,12 @@
 <section>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-12 col-sm-12 off-set-2">
+            <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">
                 <div class="card p-4">
                     <div class="d-flex justify-content-between mb-2">
+                        <div>
+                            <h5 class="bold">Past paper</h5>
+                        </div>
                         <div>
                             <a id="round-button-2" href="{{ route('teacher.pastpapers') }}" class="btn btn-secondary btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
@@ -38,9 +41,9 @@
                             </a>
                         </div>
                     </div>
-
-                    <hr />
-
+                    <div>
+                        <hr />
+                    </div>
                     <form action="{{ route('pastpapers.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-4">
@@ -79,7 +82,7 @@
                                 <select class="custom-select" name="level_id">
                                     <option selected>Choose level</option>
                                     @foreach($levels as $level)
-                                        <option value="{{ $level->id }}" {{ old('level_id', $level->id) == $level->id ? 'selected' : '' }}>{{ $level->name }}</option>
+                                        <option value="{{ $level->id }}">{{ $level->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -166,19 +169,6 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="pastpaper">Upload Past paper</label>
-                            <input type="file" name="pastpaper"
-                                        class="form-control-file @error('pastpaper') is-invalid @enderror"
-                                        id="pastpaper"
-                                        multiple accept="image/*,.pdf"
-                                        required>
-                            <p><small class="light_gray_color">*Past paper should be a pdf file</small></p>
-                            @error('pastpaper')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group mb-4">
                             <label for="price">Past paper price <span class="light_gray_color">(*Optional)</span></label>
                             <div class="input-group">
                                 <input type="text"
@@ -196,7 +186,7 @@
                             @enderror
                         </div>
 
-                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm">Submit</button>
+                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm">Proceed</button>
                     </form>
                 </div>
             </div>

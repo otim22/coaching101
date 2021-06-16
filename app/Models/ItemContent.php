@@ -132,6 +132,11 @@ class ItemContent extends Model implements HasMedia, Searchable
         return $this->hasMany('App\Models\SubNote');
     }
 
+    public function subPastpapers()
+    {
+        return $this->hasMany('App\Models\SubPastpaper');
+    }
+
     public function subscribe($userId = null)
     {
         $this->subscription()->create([

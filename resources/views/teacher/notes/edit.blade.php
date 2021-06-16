@@ -41,9 +41,9 @@
                             </a>
                         </div>
                     </div>
-
-                    <hr />
-
+                    <div>
+                        <hr />
+                    </div>
                     <form action="{{ route('notes.update', $note) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('patch')

@@ -183,7 +183,7 @@
                             @enderror
                         </div>
 
-                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm">Submit</button>
+                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm">Proceed</button>
                     </form>
                 </div>
             </div>

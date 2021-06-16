@@ -19,6 +19,7 @@ use App\Http\Controllers\Teacher\PerformanceController;
 use App\Http\Controllers\Teacher\TeacherBookController;
 use App\Http\Controllers\Teacher\TeacherNoteController;
 use App\Http\Controllers\Teacher\TeacherSubNoteController;
+use App\Http\Controllers\Teacher\TeacherSubPastpaperController;
 use App\Http\Controllers\Teacher\TeacherPastpaperController;
 use App\Http\Controllers\Teacher\UserSurveyAnswerController;
 use App\Http\Controllers\Student\HomeController;
@@ -140,6 +141,13 @@ Route::middleware('auth')->group(function() {
         Route::resource('/pastpapers', 'Teacher\TeacherPastpaperController')->except(['index']);
         Route::get('/pastpapers', [TeacherPastpaperController::class, 'index'])->name('teacher.pastpapers');
         Route::post('/pastpapers/{pastpaper}/objectives/{objective}', [TeacherPastpaperController::class, 'deleteObjective'])->name('teacher.pastpapers.objective.destroy');
+
+        Route::get('/pastpapers/{pastpaper}/subPastpapers', [TeacherSubPastpaperController::class, 'create'])->name('subPastpapers.create');
+        Route::post('/pastpapers/{pastpaper}/subPastpapers', [TeacherSubPastpaperController::class, 'store'])->name('subPastpapers.store');
+        Route::get('/pastpapers/{pastpaper}/subPastpapers/{subPastpaper}', [TeacherSubPastpaperController::class, 'show'])->name('subPastpapers.show');
+        Route::get('/pastpapers/{pastpaper}/subPastpapers/{subPastpaper}/edit', [TeacherSubPastpaperController::class, 'edit'])->name('subPastpapers.edit');
+        Route::patch('/pastpapers/{pastpaper}/subPastpapers/{subPastpaper}/update', [TeacherSubPastpaperController::class, 'update'])->name('subPastpapers.update');
+        Route::delete('/pastpapers/{pastpaper}/subPastpapers/{subPastpaper}/destroy', [TeacherSubPastpaperController::class, 'destroy'])->name('subPastpapers.delete');
 
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'create']);

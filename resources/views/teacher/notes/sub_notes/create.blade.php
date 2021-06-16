@@ -31,7 +31,7 @@
 <section>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-12 col-sm-12 off-set-2">
+            <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">
                 <div class="card p-4">
                     <div class="d-flex justify-content-between">
                         <div>
@@ -63,7 +63,7 @@
                             <input type="file" name="note"
                                         class="form-control-file @error('note') is-invalid @enderror"
                                         id="note"
-                                        multiple accept="image/*,.pdf"
+                                        multiple accept=".pdf"
                                         required>
                             <p><small class="light_gray_color">*Notes should be a pdf file</small></p>
                             @error('note')

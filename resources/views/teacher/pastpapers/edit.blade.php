@@ -17,7 +17,7 @@
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Past Paper</li>
+                <li class="breadcrumb-item active" aria-current="page">Past paper</li>
             </ol>
         </nav>
     </div>
@@ -26,11 +26,11 @@
 <section>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-12 col-sm-12 off-set-2">
+            <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">
                 <div class="card p-4">
                     <div class="d-flex justify-content-between mb-2">
                         <div>
-                            <h5 class="bold">Past Paper</h5>
+                            <h5 class="bold">Past paper</h5>
                         </div>
                         <div>
                             <a id="round-button-2" href="{{ route('teacher.pastpapers') }}" class="btn btn-secondary btn-sm">
@@ -182,19 +182,6 @@
                                 </span>
                                 Add answer
                             </p>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <p>Current past paper</p>
-                            <embed src="{{ $pastpaper->getFirstMediaUrl('teacher_pastpaper') }}" type="application/pdf" width="50%" height="50%">
-                            <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
-
-                            <label for="pastpaper">Upload Past paper</label>
-                            <input type="file" name="pastpaper" class="form-control-file @error('pastpaper') is-invalid @enderror" id="pastpaper">
-                            <p><small class="light_gray_color">*Past paper should be a pdf file</small></p>
-                            @error('pastpaper')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                            @enderror
                         </div>
 
                         <div class="form-group mb-4">

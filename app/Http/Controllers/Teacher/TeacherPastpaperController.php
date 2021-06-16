@@ -57,11 +57,7 @@ class TeacherPastpaperController extends Controller
         $pastpaper->user_id = Auth::id();
         $pastpaper->save();
 
-        if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
-            $pastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('pastpapers');
-        }
-
-        return redirect()->route('teacher.pastpapers')->with('success', 'PastPaper added successfully.');
+        return redirect()->route('subPastpapers.create', $pastpaper)->with('success', 'Past paper added successfully.');
     }
 
     public function show(ItemContent $pastpaper)
@@ -106,14 +102,7 @@ class TeacherPastpaperController extends Controller
         $pastpaper->objective = array_filter($request->objective);
         $pastpaper->save();
 
-        if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
-            foreach ($pastpaper->media as $media) {
-                $media->delete();
-            }
-            $pastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('pastpapers');
-        }
-
-        return redirect()->route('teacher.pastpapers')->with('success', 'Pastpaper added successfully.');
+        return redirect()->route('teacher.pastpapers')->with('success', 'Past paper added successfully.');
     }
 
     protected function validateData($request)
@@ -152,8 +141,7 @@ class TeacherPastpaperController extends Controller
     {
         try {
             $pastpaper->delete();
-
-            return redirect()->route('teacher.pastpapers')->with('success', 'Pastpaper deleted successfully');
+            return redirect()->route('teacher.pastpapers')->with('success', 'Past paper deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

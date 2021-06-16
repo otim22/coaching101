@@ -119,7 +119,7 @@
                     @endforelse
                 </div>
                 <div class="mb-3">
-                    <p class="bold">All Notes Below </p>
+                    <p class="bold">All notes below </p>
                     @forelse($note->subnotes as $subnote)
                     <a href="{{ route('subNotes.show', [$note, $subnote]) }}" style="text-decoration: none;">
                         <p>
@@ -163,7 +163,3 @@
 </section>
 
 @endsection
-
-@prepend('scripts')
-    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-@endpush
