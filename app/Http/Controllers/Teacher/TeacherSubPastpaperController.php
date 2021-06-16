@@ -41,7 +41,7 @@ class TeacherSubPastpaperController extends Controller
             $subPastpaper->addMediaFromRequest('answer')->toMediaCollection('answers');
         }
 
-        return redirect()->route('subPastpapers.show', [$pastpaper, $subPastpaper])->with('success', 'Past paper added successfully.');
+        return redirect()->route('subPastpapers.show', [$pastpaper, $subPastpaper])->with('success', 'Past paper saved successfully.');
     }
 
     public function show(ItemContent $pastpaper, SubPastpaper $subPastpaper)

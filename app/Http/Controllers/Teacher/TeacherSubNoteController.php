@@ -37,7 +37,7 @@ class TeacherSubNoteController extends Controller
             $subNote->addMediaFromRequest('note')->toMediaCollection('notes');
         }
 
-        return redirect()->route('subNotes.show', [$note, $subNote])->with('success', 'Notes added successfully.');
+        return redirect()->route('subNotes.show', [$note, $subNote])->with('success', 'Notes saved successfully.');
     }
 
     public function show(ItemContent $note, SubNote $subNote)

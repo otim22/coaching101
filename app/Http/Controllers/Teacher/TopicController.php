@@ -47,7 +47,7 @@ class TopicController extends Controller
 
         $subject->topics()->save($topic);
 
-        return redirect()->route('subjects.show', $subject);
+        return redirect()->route('subjects.show', $subject)->with('success', 'Topic saved successfully.');
     }
 
     public function update(Request $request, ItemContent $subject, Topic $topic)
@@ -78,7 +78,7 @@ class TopicController extends Controller
 
         $subject->topics()->save($topic);
 
-        return redirect()->route('subjects.show', $subject);
+        return redirect()->route('subjects.show', $subject)->with('success', 'Topic updated successfully.');
     }
 
     public function destroy(ItemContent $subject, Topic $topic)

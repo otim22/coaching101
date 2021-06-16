@@ -75,7 +75,7 @@ class SubjectController extends Controller
 
         $subject->save();
 
-        return redirect()->route('audiences', $subject);
+        return redirect()->route('audiences', $subject)->with('success', 'Subject saved successfully.');
     }
 
     public function edit(ItemContent $subject)

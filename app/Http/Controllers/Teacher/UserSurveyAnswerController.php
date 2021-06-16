@@ -39,6 +39,6 @@ class UserSurveyAnswerController extends Controller
             ]);
         }
 
-        return redirect()->route('manage.subjects');
+        return redirect()->route('manage.subjects')->with('success', 'Survey answer added successfully.');
     }
 }

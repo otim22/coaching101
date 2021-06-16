@@ -20,7 +20,9 @@
         </nav>
     </div>
 </section>
-
+<div class="container">
+    @include('flash.messages')
+</div>
 <section class="section-two">
     <div class="container">
         <div class="row justify-content-center mt-5 mb-5">

@@ -22,7 +22,9 @@
         </nav>
     </div>
 </section>
-
+<div class="container">
+    @include('flash.messages')
+</div>
 <section>
     <div class="container">
         <div class="row justify-content-center">
@@ -47,7 +49,9 @@
                             </a>
                         </div>
                     </div>
-                    <hr />
+                    <div>
+                        <hr />
+                    </div>
                     @forelse($books as $book)
                     <div class="mb-2 mt-2">
                         <a href="{{ route('books.show', $book) }}" style="text-decoration: none;">

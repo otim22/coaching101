@@ -40,7 +40,7 @@ class MessageController extends Controller
 
         $subject->addMessage($message);
 
-        return redirect()->route('subjects.show', $subject);
+        return redirect()->route('subjects.show', $subject)->with('success', 'Message saved successfully.');
     }
 
     /**

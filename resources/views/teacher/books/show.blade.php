@@ -27,7 +27,9 @@
         </nav>
     </div>
 </section>
-
+<div class="container">
+    @include('flash.messages')
+</div>
 <section>
     <div class="container">
         <div class="row justify-content-center">
@@ -64,9 +66,9 @@
                             </div>
                         </div>
                     </div>
-
-                    <hr />
-
+                    <div>
+                        <hr />
+                    </div>
                     <h5 class="bold mt-2 mb-3">{{ $book->title }}</h5>
                     <img src="{{ asset($book->cover_image) }}" class="rounded-corners w-100 mb-3">
 

@@ -57,7 +57,7 @@ class TeacherPastpaperController extends Controller
         $pastpaper->user_id = Auth::id();
         $pastpaper->save();
 
-        return redirect()->route('subPastpapers.create', $pastpaper)->with('success', 'Past paper added successfully.');
+        return redirect()->route('subPastpapers.create', $pastpaper)->with('success', 'Past paper saved successfully.');
     }
 
     public function show(ItemContent $pastpaper)
@@ -102,7 +102,7 @@ class TeacherPastpaperController extends Controller
         $pastpaper->objective = array_filter($request->objective);
         $pastpaper->save();
 
-        return redirect()->route('teacher.pastpapers')->with('success', 'Past paper added successfully.');
+        return redirect()->route('teacher.pastpapers')->with('success', 'Past paper saved successfully.');
     }
 
     protected function validateData($request)

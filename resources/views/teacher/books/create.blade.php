@@ -22,7 +22,9 @@
         </nav>
     </div>
 </section>
-
+<div class="container">
+    @include('flash.messages')
+</div>
 <section>
     <div class="container">
         <div class="row justify-content-center">
@@ -38,9 +40,9 @@
                             </a>
                         </div>
                     </div>
-
-                    <hr />
-
+                    <div>
+                        <hr />
+                    </div>
                     <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-4">

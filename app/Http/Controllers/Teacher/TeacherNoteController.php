@@ -58,7 +58,7 @@ class TeacherNoteController extends Controller
         $note->user_id = Auth::id();
         $note->save();
 
-        return redirect()->route('subNotes.create', $note)->with('success', 'Notes added successfully.');
+        return redirect()->route('subNotes.create', $note)->with('success', 'Notes saved successfully.');
     }
 
     public function show(ItemContent $note)
