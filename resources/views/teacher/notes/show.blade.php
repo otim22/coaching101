@@ -18,7 +18,7 @@
                     <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('teacher.notes') }}" style="text-decoration: none;">Books</a>
+                    <a href="{{ route('teacher.notes') }}" style="text-decoration: none;">Notes</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     {{$note->title}}
@@ -27,75 +27,135 @@
         </nav>
     </div>
 </section>
-
+<div class="container">
+    @include('flash.messages')
+</div>
 <section>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-12 col-sm-12 off-set-2">
-                <div class="card p-4">
-                    <div class="d-flex justify-content-between mb-2">
-                        <div>
-                            <a id="round-button-2" href="{{ route('teacher.notes') }}" class="btn btn-secondary btn-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <div class="fast-transition">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('teacher.notes') }}">
+                                <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+                                    <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
                                 </svg>
                                 Back
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('subNotes.create', $note)}}">
+                                <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-journal-richtext" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                                    <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm1.639-4.208l1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047L11 4.75V7a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 7v-.5s1.54-1.274 1.639-1.208zM6.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+                                </svg>
+                                Upload
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('notes.edit', $note) }}">
+                                <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                </svg>
+                                Edit
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a type="button" class="nav-link" href="#" data-toggle="modal" data-target="#deleteNotes">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" fill="currentColor" class="bi bi-trash" viewBox="0 0 18 18">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                                Delete
+                            </a>
+                        </li>
+                        <li class="nav-item ml-2">
+                            <a type="button" data-toggle="tooltip" data-placement="right" title="Break and upload notes into small topics to make a full notes package.">
+                                <span class="badge badge-pill badge-primary">Upload notes into smaller topics</span>
+                            </a>
+                        </li>
+                        <hr>
+                        <div class="ml-3">
+                            <li class="nav-item">
+                                <p>{{ $note->standard->name }}</p>
+                            </li>
+                            <li class="nav-item">
+                                <p>{{ $note->category->name }}</p>
+                            </li>
+                            <li class="nav-item">
+                                <p>{{ $note->year->name }}</p>
+                            </li>
+                            <li class="nav-item">
+                                <p>{{ $note->term->name }}</p>
+                            </li>
+                            <li class="nav-item">
+                                @if(!$note->price)
+                                <p>Free</p>
+                                @else
+                                <p>UGX {{ $note->formatPrice }}/-</p>
+                                @endif
+                            </li>
                         </div>
-                        <div class="dropdown">
-                            <button id="round-button-2" class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="{{ route('notes.edit', $note) }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen mr-2" viewBox="0 0 16 16">
-                                        <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
-                                    </svg>
-                                    Edit
-                                </a>
-                                <a class="dropdown-item" href="#"
-                                        onclick="event.preventDefault(); document.getElementById('delete-teacher-note').submit();">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash mr-2" viewBox="0 0 16 16">
-                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                        </svg>
-                                        Delete
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr />
-
-                    <h5 class="bold mt-2">{{ $note->title }}</h5>
-                    <p>{{ $note->year->name }} {{ $note->category->name }}, {{ $note->term->name }}. </p>
-
-                    @if(!$note->price)
-                        <p>Free</p>
-                    @else
-                        <p>UGX {{ $note->formatPrice }}/-</p>
-                    @endif
-
-                    <div class="mb-3">
-                        <p class="bold">Notes objectives </p>
-                        @forelse($note->objective as $notes_objective)
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
+                <h5 class="bold mb-3">{{ $note->title }}</h5>
+                <div class="mb-3">
+                    <p class="bold">Notes objectives </p>
+                    @forelse($note->objective as $notes_objective)
+                    <p>
+                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                        </svg>
+                        {{ $notes_objective }}
+                    </p>
+                    @empty
+                    <p>No objectives</p>
+                    @endforelse
+                </div>
+                <div class="mb-3">
+                    <p class="bold">All Notes Below </p>
+                    @forelse($note->subnotes as $subnote)
+                    <a href="{{ route('subNotes.show', [$note, $subnote]) }}" style="text-decoration: none;">
                         <p>
                             <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
                             </svg>
-                            {{ $notes_objective }}
+                            {{ $subnote->title }}
                         </p>
-                        @empty
-                        <p>No objectives</p>
-                        @endforelse
-                    </div>
+                    <a>
+                    @empty
+                    <p>No notes</p>
+                    @endforelse
+                </div>
+            </div>
+            <form action="{{ route('notes.destroy', $note) }}" class="hidden" id="delete-teacher-note" method="POST">
+                @csrf
+                @method('delete')
+            </form>
+        </div>
+    </div>
 
-                    <embed src="{{ $note->getFirstMediaUrl('notes') }}" type="application/pdf" width="100%" height="400">
-
-                    <form action="{{ route('notes.destroy', $note) }}" class="hidden" id="delete-teacher-note" method="POST">
-                        @csrf
-                        @method('delete')
-                    </form>
+    <div class="modal fade" id="deleteNotes" tabindex="-1" aria-labelledby="deleteNotesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteNotesLabel">{{ $note->title }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete these notes?
+                </div>
+                <div class="modal-footer">
+                    <button  id="round-button-2" type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                    <button  id="round-button-2" type="button" class="btn btn-sm btn-danger" onclick="event.preventDefault(); document.getElementById('delete-teacher-note').submit();">Delete</button>
                 </div>
             </div>
         </div>
@@ -103,3 +163,7 @@
 </section>
 
 @endsection
+
+@prepend('scripts')
+    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+@endpush

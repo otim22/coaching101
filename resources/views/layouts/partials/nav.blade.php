@@ -128,11 +128,13 @@
             </ul>
 
             <ul class="navbar-nav ml-auto nav nav-pills">
-                @if(Auth::user()->hasRole('student'))
-                    <li class="nav-item">
-                        <span class="badge badge-pill badge-light" style="margin-top: 13px; padding-top: 4px; padding-bottom: 4px; margin-right: 5px;">{{ $activeStandard->name }}</span>
-    				</li>
-                @endif
+                @auth
+                    @if(Auth::user()->hasRole('student'))
+                        <li class="nav-item">
+                            <span class="badge badge-pill badge-light" style="margin-top: 13px; padding-top: 4px; padding-bottom: 4px; margin-right: 5px;">{{ $activeStandard->name }}</span>
+        				</li>
+                    @endif
+                @endauth
                 <li class="nav-item search d-none d-md-block">
 					<a class="nav-link" href="#"> <i class="fas fa-search pointer"></i></a>
 				</li>

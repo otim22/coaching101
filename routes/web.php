@@ -18,6 +18,7 @@ use App\Http\Controllers\Teacher\AudienceController;
 use App\Http\Controllers\Teacher\PerformanceController;
 use App\Http\Controllers\Teacher\TeacherBookController;
 use App\Http\Controllers\Teacher\TeacherNoteController;
+use App\Http\Controllers\Teacher\TeacherSubNoteController;
 use App\Http\Controllers\Teacher\TeacherPastpaperController;
 use App\Http\Controllers\Teacher\UserSurveyAnswerController;
 use App\Http\Controllers\Student\HomeController;
@@ -52,7 +53,6 @@ use App\Http\Controllers\Admin\SubjectsController;
 use App\Http\Controllers\Admin\TopicsController;
 use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\Admin\PastpaperController;
-use App\Http\Controllers\Admin\PaymentPlanController;
 use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\SurveyController;
@@ -109,8 +109,6 @@ Route::get('/teacher/onBoard', [SubjectController::class, 'onBoard'])->name('sub
 Route::middleware('auth')->group(function() {
     Route::get('/cart/{response?}', [CartController::class, 'index'])->name('cart.index');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::post( '/pay', [PaymentController::class, 'initialize'])->name('pay');
-    Route::post('/rave/callback', [PaymentController::class, 'callback'])->name('callback');
 
     Route::post('/userSurveyAnswers', [UserSurveyAnswerController::class, 'store'])->name('userSurveyAnswer.store');
 
@@ -130,6 +128,14 @@ Route::middleware('auth')->group(function() {
         Route::post('/books/{book}/objectives/{objective}', [TeacherBookController::class, 'deleteObjective'])->name('teacher.books.objective.destroy');
         Route::resource('/notes', 'Teacher\TeacherNoteController')->except(['index']);
         Route::get('/notes', [TeacherNoteController::class, 'index'])->name('teacher.notes');
+
+        Route::get('/notes/{note}/subNotes', [TeacherSubNoteController::class, 'create'])->name('subNotes.create');
+        Route::post('/notes/{note}/subNotes', [TeacherSubNoteController::class, 'store'])->name('subNotes.store');
+        Route::get('/notes/{note}/subNotes/{subNote}', [TeacherSubNoteController::class, 'show'])->name('subNotes.show');
+        Route::get('/notes/{note}/subNotes/{subNote}/edit', [TeacherSubNoteController::class, 'edit'])->name('subNotes.edit');
+        Route::patch('/notes/{note}/subNotes/{subNote}/update', [TeacherSubNoteController::class, 'update'])->name('subNotes.update');
+        Route::delete('/notes/{note}/subNotes/{subNote}/destroy', [TeacherSubNoteController::class, 'destroy'])->name('subNotes.delete');
+
         Route::post('/notes/{note}/objectives/{objective}', [TeacherNoteController::class, 'deleteObjective'])->name('teacher.notes.objective.destroy');
         Route::resource('/pastpapers', 'Teacher\TeacherPastpaperController')->except(['index']);
         Route::get('/pastpapers', [TeacherPastpaperController::class, 'index'])->name('teacher.pastpapers');
@@ -202,7 +208,6 @@ Route::middleware('auth')->group(function() {
         Route::resource('books', 'BooksController');
         Route::resource('notes', 'NotesController');
         Route::resource('pastpapers', 'PastpaperController');
-        Route::resource('plans', 'PaymentPlanController');
         Route::resource('items', 'ItemController');
         Route::resource('surveys', 'SurveyController');
         Route::resource('surveyQuestions', 'SurveyQuestionController');

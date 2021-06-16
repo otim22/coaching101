@@ -5,9 +5,9 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\Traits\PresentsText;
+use App\Traits\PresentsItem;
 use App\Traits\PresentsMedia;
 use Spatie\Sluggable\HasSlug;
-use App\Traits\PresentsItem;
 use Spatie\Image\Manipulations;
 use willvincent\Rateable\Rateable;
 use Spatie\Sluggable\SlugOptions;
@@ -43,11 +43,6 @@ class ItemContent extends Model implements HasMedia, Searchable
                                                 ->usingSeparator('_');
     }
 
-    /**
-     * Get the route key for the model.
-     *
-     * @return string
-     */
     public function getRouteKeyName()
     {
         return 'slug';
@@ -94,6 +89,12 @@ class ItemContent extends Model implements HasMedia, Searchable
         return $this->belongsTo('App\Models\Category', 'category_id');
     }
 
+    /**  Get the standard that owns the ItemContent. */
+    public function standard()
+    {
+        return $this->belongsTo('App\Models\Standard', 'standard_id');
+    }
+
     /**
      * Get the year that owns the book.
      */
@@ -126,6 +127,11 @@ class ItemContent extends Model implements HasMedia, Searchable
         return $this->hasMany('App\Models\Question');
     }
 
+    public function subNotes()
+    {
+        return $this->hasMany('App\Models\SubNote');
+    }
+
     public function subscribe($userId = null)
     {
         $this->subscription()->create([
@@ -143,17 +149,17 @@ class ItemContent extends Model implements HasMedia, Searchable
     /** Get the ItemContent's subscription. */
     public function subscription()
     {
-        return $this->morphOne(Subscription::class, 'subscriptionable');
+        return $this->morphOne('App\Models\Subscription', 'subscriptionable');
     }
 
     public function rating()
     {
-        return $this->belongsTo(ItemContent::class);
+        return $this->belongsTo('App\Models\ItemContent');
     }
 
     public function item()
     {
-        return $this->belongsTo(Item::class);
+        return $this->belongsTo('App\Models\Item');
     }
 
     public static function getItemContentsForTeacherPerforamce($days, int $limit = 10)

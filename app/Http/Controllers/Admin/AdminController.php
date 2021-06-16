@@ -16,8 +16,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        $studentCount = User::where('role', "student")->count();
-        $teacherCount = User::where('role', "teacher")->count();
+        $studentCount = User::role('student')->get()->count();
+        $teacherCount = User::role('teacher')->get()->count();
         $userCount = $studentCount + $teacherCount;
 
         $subjectCount = ItemContent::where('item_id', 1)->count();

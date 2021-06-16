@@ -65,8 +65,8 @@ class Topic extends Model implements HasMedia
                 });
     }
 
-    public function subject()
-    {
-        return $this->belongsTo('App\Models\Subject');
-    }
+    // public function subject()
+    // {
+    //     return $this->belongsTo('App\Models\Subject');
+    // }
 }

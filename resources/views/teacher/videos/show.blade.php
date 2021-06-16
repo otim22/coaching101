@@ -84,7 +84,8 @@
                         <hr>
                         @forelse($subject->topics as $key => $topic)
                         <li class="nav-item">
-                            <a  class="nav-link" href="{{ route('topics.show', [$subject, $topic]) }}" style="text-decoration: none;">{{ $key+1 }} - {{ $topic->extra_very_short_title }}</a></li>
+                            <a  class="nav-link" href="{{ route('topics.show', [$subject, $topic]) }}" style="text-decoration: none;">{{ $key+1 }} - {{ $topic->extra_very_short_title }}</a>
+                        </li>
                         @empty
                         <li>No available Topics yet!</li>
                         @endforelse
@@ -184,7 +185,6 @@
                         </div>
                     </div>
                 @endforeach
-
             </div>
         </div>
     </div>

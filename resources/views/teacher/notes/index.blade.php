@@ -22,7 +22,9 @@
         </nav>
     </div>
 </section>
-
+<div class="container">
+    @include('flash.messages')
+</div>
 <section>
     <div class="container">
         <div class="row justify-content-center">

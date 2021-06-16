@@ -41,15 +41,7 @@
                     </div>
                     <div class="card-body">
                         <h4>{{ $note->title }}</h4>
-                        <p>{{ $note->year->name }} {{ $note->category->name }}, {{ $note->term->name }}. </p>
-
-                        @if($note->creator)
-                            @if($note->getFirstMedia('notes'))
-                                <p style="color: #3864ab; font-weight: bold;">{{ $note->getFirstMedia('notes')->file_name }}</p>
-                            @else
-                                <p>No file</p>
-                            @endif
-                        @endif
+                        <p>{{ $note->year->name }}, {{ $note->category->name }}, {{ $note->term->name }}. </p>
 
                         @if($note->price)
                             <div class="mb-3">
@@ -62,7 +54,7 @@
                         @endif
 
                         <div class="mb-3">
-                            <h4 class="bold">Notes objectives </h4>
+                            <h5 class="bold">Notes objectives </h5>
                             @if($note->notes_objective)
                                 @foreach($note->notes_objective as $note_objective)
                                 <p><i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i><span class="align-middle">{{ $note_objective }}</span></p>
@@ -71,6 +63,19 @@
                                 <p>No data</p>
                             @endif
                         </div>
+
+                        @if($note->creator)
+                            <h5 class="bold">All notes below </h5>
+                            <ul>
+                                @forelse($note->subnotes as $subnote)
+                                    <li class="mb-2">
+                                        {{ $subnote->title }}
+                                    </li>
+                                @empty
+                                    <p>No notes</p>
+                                @endforelse
+                            </ul>
+                        @endif
 
                         @if(Auth::user()->hasRole('super-admin'))
                             @if($note->creator)

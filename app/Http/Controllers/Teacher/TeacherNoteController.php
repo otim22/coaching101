@@ -44,8 +44,7 @@ class TeacherNoteController extends Controller
      */
     public function store(NoteRequest $request)
     {
-        $note = new ItemContent($request->except('note'));
-
+        $note = new ItemContent();
         $note->title = $request->input('title');
         $note->objective = $request->input('objective');
         $note->price = $request->input('price');
@@ -57,14 +56,9 @@ class TeacherNoteController extends Controller
         $note->term_id = $request->input('term_id');
         $note->user_id = $request->input('user_id');
         $note->user_id = Auth::id();
-
         $note->save();
 
-        if($request->hasFile('note') && $request->file('note')->isValid()) {
-            $note->addMediaFromRequest('note')->toMediaCollection('notes');
-        }
-
-        return redirect()->route('teacher.notes')->with('success', 'Note added successfully.');
+        return redirect()->route('subNotes.create', $note)->with('success', 'Notes added successfully.');
     }
 
     public function show(ItemContent $note)
@@ -116,7 +110,7 @@ class TeacherNoteController extends Controller
             $note->addMediaFromRequest('note')->toMediaCollection('notes');
         }
 
-        return redirect()->route('teacher.notes')->with('success', 'Note added successfully.');
+        return redirect()->route('teacher.notes')->with('success', 'Notes updated successfully.');
     }
 
     protected function validateData($request)
@@ -156,7 +150,7 @@ class TeacherNoteController extends Controller
         try {
             $note->delete();
 
-            return redirect()->route('teacher.notes')->with('success', 'Note deleted successfully');
+            return redirect()->route('teacher.notes')->with('success', 'Notes deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

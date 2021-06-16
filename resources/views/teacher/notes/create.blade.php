@@ -38,12 +38,10 @@
                             </a>
                         </div>
                     </div>
-
                     <hr />
-
                     <form action="{{ route('notes.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group mb-4">
+                        <div class="form-group mb-4 mt-2">
                             <label for="category_id">Subject</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="category_id">
@@ -163,20 +161,6 @@
                                 </span>
                                 Add answer
                             </p>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="note">Upload Notes</label>
-
-                            <input type="file" name="note"
-                                        class="form-control-file @error('note') is-invalid @enderror"
-                                        id="note"
-                                        multiple accept="image/*,.pdf"
-                                        required>
-                            <p><small class="light_gray_color">*Notes should be a pdf file</small></p>
-                            @error('note')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                            @enderror
                         </div>
 
                         <div class="form-group mb-4">
