@@ -28,7 +28,7 @@
 <section>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-12 col-sm-12 off-set-2">
+            <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">
                 <div class="card p-4">
                     <div class="d-flex justify-content-between mb-2">
                         <div>

@@ -26,9 +26,12 @@
 <section>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-12 col-sm-12 off-set-2">
+            <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">
                 <div class="card p-4">
                     <div class="d-flex justify-content-between">
+                        <div>
+                            <h5 class="bold">Notes</h5>
+                        </div>
                         <div>
                             <a id="round-button-2" href="{{ route('teacher.notes') }}" class="btn btn-secondary btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
