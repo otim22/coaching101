@@ -41,21 +41,38 @@
                     </div>
                     <div class="card-body">
                         <h4>{{ $pastpaper->title }}</h4>
-                        <p>{{ $pastpaper->category->name }} {{ $pastpaper->year->name }}, {{ $pastpaper->term->name }}. </p>
-
-                        @if($pastpaper->creator)
-                            @if($pastpaper->getFirstMedia('pastpapers'))
-                                <p style="color: #3864ab; font-weight: bold;">{{ $pastpaper->getFirstMedia('pastpapers')->file_name }}</p>
-                            @else
-                                <p>No file</p>
-                            @endif
-                        @endif
+                        <p>{{ $pastpaper->category->name }}, {{ $pastpaper->year->name }}, {{ $pastpaper->term->name }}. </p>
 
                         @if($pastpaper->price)
-                            <span>UGX {{ number_format($pastpaper->price) }}/-</span>
+                            <div class="mb-3">
+                                <span>UGX {{ number_format($pastpaper->price) }}/-</span>
+                            </div>
                         @else
-                            <span style="font-weight: bold;">Free</span>
+                            <div class="mb-3">
+                                <span style="font-weight: bold;">Free</span>
+                            </div>
                         @endif
+
+                        <div class="mb-3">
+                            <h5 class="bold">Past paper objectives </h5>
+                            @if($pastpaper->objective)
+                                @foreach($pastpaper->objective as $pastpaper_objective)
+                                    <p><i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i><span class="align-middle">{{ $pastpaper_objective }}</span></p>
+                                @endforeach
+                            @else
+                                <p>No data</p>
+                            @endif
+                        </div>
+
+                        <h5 class="bold">All past papers below </h5>
+                        @forelse($pastpaper->subpastpapers as $subpastpaper)
+                            <p>
+                                <i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i>
+                                <span class="align-middle">{{ $subpastpaper->title }}</span>
+                            </p>
+                        @empty
+                            <p>No past papers</p>
+                        @endforelse
 
                         @if(Auth::user()->hasRole('super-admin'))
                             @if($pastpaper->creator)

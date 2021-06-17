@@ -64,18 +64,15 @@
                             @endif
                         </div>
 
-                        @if($note->creator)
-                            <h5 class="bold">All notes below </h5>
-                            <ul>
-                                @forelse($note->subnotes as $subnote)
-                                    <li class="mb-2">
-                                        {{ $subnote->title }}
-                                    </li>
-                                @empty
-                                    <p>No notes</p>
-                                @endforelse
-                            </ul>
-                        @endif
+                        <h5 class="bold">All notes below </h5>
+                        @forelse($note->subnotes as $subnote)
+                            <p>
+                                <i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i>
+                                <span class="align-middle">{{ $subnote->title }}</span>
+                            </p>
+                        @empty
+                            <p>No notes</p>
+                        @endforelse
 
                         @if(Auth::user()->hasRole('super-admin'))
                             @if($note->creator)
