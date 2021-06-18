@@ -27,7 +27,7 @@
 <section>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">
                 <div class="d-flex justify-content-between mb-4">
                     <a id="round-button-2" class="btn btn-secondary btn-md" type="button" href="{{ route('subjects.show', $subject) }}">
                         <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

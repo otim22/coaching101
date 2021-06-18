@@ -31,8 +31,8 @@
                 <form action="{{ route('messages', $subject) }}" method="POST">
                     @csrf
 
-                    <div class="card mb-3">
-                        <div class="card-body m-2">
+                    <div class="card p-3">
+                        <div class="card-body">
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <h5 class="bold">Subject messages</h5>
                             </div>

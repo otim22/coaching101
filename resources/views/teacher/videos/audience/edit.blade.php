@@ -27,13 +27,13 @@
 <section class="section-two">
     <div class="container">
         <div class="row justify-content-center mt-5 mb-5">
-            <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">
                 <form action="{{ route('audiences.update', $subject) }}" method="POST">
                     @csrf
                     @method('PATCH')
 
-                    <div class="card mb-3">
-                        <div class="card-body m-2">
+                    <div class="card p-3">
+                        <div class="card-body">
                             <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-between">
                                 <div>
                                     <h5 class="bold">Target your students</h5>
