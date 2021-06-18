@@ -20,6 +20,7 @@ use App\Http\Controllers\Teacher\TeacherBookController;
 use App\Http\Controllers\Teacher\TeacherNoteController;
 use App\Http\Controllers\Teacher\TeacherSubNoteController;
 use App\Http\Controllers\Teacher\TeacherSubPastpaperController;
+use App\Http\Controllers\Teacher\TeacherSubPastpaperAnswerController;
 use App\Http\Controllers\Teacher\TeacherPastpaperController;
 use App\Http\Controllers\Teacher\UserSurveyAnswerController;
 use App\Http\Controllers\Student\HomeController;
@@ -124,12 +125,17 @@ Route::middleware('auth')->group(function() {
         Route::patch('/subjects/{subject}/update', [SubjectController::class, 'update'])->name('subjects.update');
         Route::delete('/subjects/{subject}/destroy', [SubjectController::class, 'destroy'])->name('subjects.destroy');
 
+        /** Books */
         Route::resource('/books', 'Teacher\TeacherBookController')->except(['index']);
         Route::get('/books', [TeacherBookController::class, 'index'])->name('teacher.books');
         Route::post('/books/{book}/objectives/{objective}', [TeacherBookController::class, 'deleteObjective'])->name('teacher.books.objective.destroy');
+
+        /** Notes */
         Route::resource('/notes', 'Teacher\TeacherNoteController')->except(['index']);
         Route::get('/notes', [TeacherNoteController::class, 'index'])->name('teacher.notes');
+        Route::post('/notes/{note}/objectives/{objective}', [TeacherNoteController::class, 'deleteObjective'])->name('teacher.notes.objective.destroy');
 
+        /** Sub Notes */
         Route::get('/notes/{note}/subNotes', [TeacherSubNoteController::class, 'create'])->name('subNotes.create');
         Route::post('/notes/{note}/subNotes', [TeacherSubNoteController::class, 'store'])->name('subNotes.store');
         Route::get('/notes/{note}/subNotes/{subNote}', [TeacherSubNoteController::class, 'show'])->name('subNotes.show');
@@ -137,11 +143,12 @@ Route::middleware('auth')->group(function() {
         Route::patch('/notes/{note}/subNotes/{subNote}/update', [TeacherSubNoteController::class, 'update'])->name('subNotes.update');
         Route::delete('/notes/{note}/subNotes/{subNote}/destroy', [TeacherSubNoteController::class, 'destroy'])->name('subNotes.delete');
 
-        Route::post('/notes/{note}/objectives/{objective}', [TeacherNoteController::class, 'deleteObjective'])->name('teacher.notes.objective.destroy');
+        /** Questions */
         Route::resource('/pastpapers', 'Teacher\TeacherPastpaperController')->except(['index']);
         Route::get('/pastpapers', [TeacherPastpaperController::class, 'index'])->name('teacher.pastpapers');
         Route::post('/pastpapers/{pastpaper}/objectives/{objective}', [TeacherPastpaperController::class, 'deleteObjective'])->name('teacher.pastpapers.objective.destroy');
 
+        /** Sub questions */
         Route::get('/pastpapers/{pastpaper}/subPastpapers', [TeacherSubPastpaperController::class, 'create'])->name('subPastpapers.create');
         Route::post('/pastpapers/{pastpaper}/subPastpapers', [TeacherSubPastpaperController::class, 'store'])->name('subPastpapers.store');
         Route::get('/pastpapers/{pastpaper}/subPastpapers/{subPastpaper}', [TeacherSubPastpaperController::class, 'show'])->name('subPastpapers.show');
@@ -149,6 +156,15 @@ Route::middleware('auth')->group(function() {
         Route::patch('/pastpapers/{pastpaper}/subPastpapers/{subPastpaper}/update', [TeacherSubPastpaperController::class, 'update'])->name('subPastpapers.update');
         Route::delete('/pastpapers/{pastpaper}/subPastpapers/{subPastpaper}/destroy', [TeacherSubPastpaperController::class, 'destroy'])->name('subPastpapers.delete');
 
+        /** Sub answers to questions */
+        Route::get('/pastpapers/{pastpaper}/subPastpaperAnswers', [TeacherSubPastpaperAnswerController::class, 'create'])->name('subPastpaperAnswers.create');
+        Route::post('/pastpapers/{pastpaper}/subPastpaperAnswers', [TeacherSubPastpaperAnswerController::class, 'store'])->name('subPastpaperAnswers.store');
+        Route::get('/pastpapers/{pastpaper}/subPastpaperAnswers/{subPastpaperAnswer}', [TeacherSubPastpaperAnswerController::class, 'show'])->name('subPastpaperAnswers.show');
+        Route::get('/pastpapers/{pastpaper}/subPastpaperAnswers/{subPastpaperAnswer}/edit', [TeacherSubPastpaperAnswerController::class, 'edit'])->name('subPastpaperAnswers.edit');
+        Route::patch('/pastpapers/{pastpaper}/subPastpaperAnswers/{subPastpaperAnswer}/update', [TeacherSubPastpaperAnswerController::class, 'update'])->name('subPastpaperAnswers.update');
+        Route::delete('/pastpapers/{pastpaper}/subPastpaperAnswers/{subPastpaperAnswer}/destroy', [TeacherSubPastpaperAnswerController::class, 'destroy'])->name('subPastpaperAnswers.delete');
+
+        /** Audiences to subjects */
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'create']);
         Route::post('/subjects/{subject}/audiences', [AudienceController::class, 'store'])->name('audiences');
@@ -158,12 +174,14 @@ Route::middleware('auth')->group(function() {
         Route::post('/subjects/{subject}/audiences/{audience}/deleteClassRequirement', [AudienceController::class, 'deleteClassRequirement'])->name('teacher.subject.class_requirement.destroy');
         Route::post('/subjects/{subject}/audiences/{audience}/deleteTargetStudent', [AudienceController::class, 'deleteTargetStudent'])->name('teacher.subject.target_student.destroy');
 
+        /** Messages to subjects */
         Route::get('/subjects/{subject}/messages', [MessageController::class, 'index']);
         Route::get('/subjects/{subject}/messages', [MessageController::class, 'create']);
         Route::post('/subjects/{subject}/messages', [MessageController::class, 'store'])->name('messages');
         Route::get('/subjects/{subject}/messages/edit', [MessageController::class, 'edit'])->name('messages.edit');
         Route::patch('/subjects/{subject}/messages/update', [MessageController::class, 'update'])->name('messages.update');
 
+        /** Topics to subjects */
         Route::get('/subjects/{subject}/topics', [TopicController::class, 'index'])->name('topics.index');
         Route::get('/subjects/{subject}/topics', [TopicController::class, 'create'])->name('topics.create');
         Route::get('/subjects/{subject}/topics/{topic}', [TopicController::class, 'show'])->name('topics.show');

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Spatie\Sluggable\HasSlug;
+use App\Traits\SelfReferenceTrait;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
@@ -11,9 +12,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SubPastpaper extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, HasSlug;
+    use HasFactory, InteractsWithMedia, HasSlug, SelfReferenceTrait;
 
-    protected $fillable = ['title', 'item_content_id', 'user_id'];
+    protected $fillable = ['title', 'parent_id', 'item_content_id', 'user_id'];
 
     public function getSlugOptions() : SlugOptions
     {

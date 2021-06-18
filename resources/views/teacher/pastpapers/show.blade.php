@@ -47,12 +47,20 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('subPastpapers.create', $pastpaper)}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" fill="currentColor" class="bi bi-file-earmark-ruled" viewBox="0 0 20 20">
+                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h7v1a1 1 0 0 1-1 1H6zm7-3H6v-2h7v2z"/>
+                                </svg>
+                                Upload question
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('subPastpaperAnswers.create', $pastpaper)}}">
                                 <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-journal-richtext" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
                                     <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
                                     <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm1.639-4.208l1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047L11 4.75V7a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 7v-.5s1.54-1.274 1.639-1.208zM6.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
                                 </svg>
-                                Upload
+                                Upload answer
                             </a>
                         </li>
                         <li class="nav-item">
@@ -107,31 +115,44 @@
                 <h5 class="bold mb-3">{{ $pastpaper->title }}</h5>
                 <div class="mb-3">
                     <p class="bold">Past paper objectives </p>
+                    <ul>
                     @forelse($pastpaper->objective as $pastpapers_objective)
-                    <p>
-                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                        </svg>
-                        {{ $pastpapers_objective }}
-                    </p>
+                        <li class="mb-1">
+                            <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-check mb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                            </svg>
+                            {{ $pastpapers_objective }}
+                        </li>
                     @empty
-                    <p>No objectives</p>
+                        <p>No objectives</p>
                     @endforelse
+                </ul>
                 </div>
                 <div class="mb-3">
                     <p class="bold">All past paper below </p>
-                    @forelse($pastpaper->subpastpapers as $subpastpaper)
-                    <a href="{{ route('subPastpapers.show', [$pastpaper, $subpastpaper]) }}" style="text-decoration: none;">
-                        <p>
-                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                            </svg>
-                            {{ $subpastpaper->title }}
-                        </p>
-                    <a>
-                    @empty
-                    <p>No past paper</p>
-                    @endforelse
+                    <ul>
+                        @forelse($pastpaper->subpastpapers as $subpastpaper)
+                            @if($subpastpaper->parent_id == null)
+                                <a class="mb-1" href="{{ route('subPastpapers.show', [$pastpaper, $subpastpaper]) }}" style="text-decoration: none;">
+                                    <li class="mb-1">
+                                    {{ $subpastpaper->title }}
+                                    </li>
+                                <a>
+                            @endif
+                            @if($subpastpaper->parent_id != null)
+                                <a href="{{ route('subPastpaperAnswers.show', [$pastpaper, $subpastpaper]) }}" style="text-decoration: none;">
+                                    <li class="mb-2">
+                                        <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-check mb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                                        </svg>
+                                        {{ $subpastpaper->title }}
+                                    </li>
+                                <a>
+                            @endif
+                        @empty
+                            <p>No past paper</p>
+                        @endforelse
+                    </ul>
                 </div>
             </div>
             <form action="{{ route('pastpapers.destroy', $pastpaper) }}" class="hidden" id="delete-teacher-subpastpaper" method="POST">

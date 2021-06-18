@@ -49,24 +49,39 @@
                     <div>
                         <hr />
                     </div>
-                    <form action="{{ route('subPastpapers.store', $pastpaper) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('subPastpaperAnswers.store', $pastpaper) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-4">
-                            <label for="title">Past paper title</label>
-                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Example: Introduction to modern physics">
+                            <label for="title">Past paper answer title</label>
+                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Example: Answer to past paper">
                             @error('title')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="pastpaper">Upload past paper</label>
-                            <input type="file" name="pastpaper"
-                                        class="form-control-file @error('pastpaper') is-invalid @enderror"
+                            <label for="parent_id">Question to answer</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select" name="parent_id">
+                                    <option selected>Choose question</option>
+                                    @foreach($subPastpapers as $subPastpaper)
+                                        <option value="{{ $subPastpaper->id }}">{{ $subPastpaper->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('parent_id')
+                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="answer">Upload past paper answer</label>
+                            <input type="file" name="answer"
+                                        class="form-control-file @error('answer') is-invalid @enderror"
                                         accept=".pdf"
                                         required>
-                            <p><small class="light_gray_color">*Past paper should be a pdf file</small></p>
-                            @error('pastpaper')
+                            <p><small class="light_gray_color">*Past paper answer should be a pdf file</small></p>
+                            @error('answer')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>

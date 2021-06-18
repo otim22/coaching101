@@ -66,7 +66,9 @@
             <div class="make-me-sticky">
                 <h5>Total:</h5>
                 <h4 class="bold">UGX {{  rtrim(rtrim(number_format($sum, 2), 2), '.') }}/-</h4>
-                <hr />
+                <div class="mb-4 mt-4">
+                    <hr />
+                </div>
                 @if($cartItemTotal > 0)
                     <div class="mt-4">
                         <a id="round-button-2" type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-block mb-2 text-white">Checkout</a>

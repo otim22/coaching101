@@ -24,21 +24,17 @@ class TeacherSubPastpaperController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'pastpaper' => 'required|mimes:pdf',
-            'answer' => 'required|mimes:pdf'
+            'pastpaper' => 'required|mimes:pdf'
         ]);
         $subPastpaper = new SubPastpaper($request->except('pastpaper'));
         $subPastpaper->item_content_id = $pastpaper->id;
         $subPastpaper->title = $request->input('title');
+        $subPastpaper->parent_id = empty($request->input('parent_id')) ? null : $request->input('parent_id');
         $subPastpaper->user_id = Auth::id();
         $subPastpaper->save();
 
         if($request->hasFile('pastpaper') && $request->file('pastpaper')->isValid()) {
             $subPastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('pastpapers');
-        }
-
-        if($request->hasFile('answer') && $request->file('answer')->isValid()) {
-            $subPastpaper->addMediaFromRequest('answer')->toMediaCollection('answers');
         }
 
         return redirect()->route('subPastpapers.show', [$pastpaper, $subPastpaper])->with('success', 'Past paper saved successfully.');
@@ -70,8 +66,7 @@ class TeacherSubPastpaperController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'pastpaper' => 'nullable|mimes:pdf',
-            'answer' => 'nullable|mimes:pdf'
+            'pastpaper' => 'nullable|mimes:pdf'
         ]);
 
         $subPastpaper->title = $request->input('title');
@@ -81,13 +76,6 @@ class TeacherSubPastpaperController extends Controller
                 $media->delete();
             }
             $subPastpaper->addMediaFromRequest('pastpaper')->toMediaCollection('pastpapers');
-        }
-
-        if($request->hasFile('answer') && $request->file('answer')->isValid()) {
-            foreach ($subPastpaper->media as $media) {
-                $media->delete();
-            }
-            $subPastpaper->addMediaFromRequest('answer')->toMediaCollection('answers');
         }
 
         $subPastpaper->save();

@@ -99,4 +99,16 @@ $(function() {
         }, 1000);
     }
     /** End Delete a particular objective */
+
+    /** WIP */
+    $('.v-pills-answer').click(function() {
+        var dataAnswerId = $(this).attr("data-answer-id");
+        var questionClass = $('.question');
+        var questionClass = $('.question');
+        var answerClass = $('.answer');
+
+        questionClass.attr("style","display:none !important");
+        answerClass.removeClass("hidden");
+        console.log("hello", questionClass);
+    });
 });

@@ -17,6 +17,7 @@ class CreateSubPastpapersTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->integer('parent_id')->nullable();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('item_content_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

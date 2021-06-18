@@ -24,36 +24,78 @@
 </section>
 
 <section>
-    <div class="container">
+    <div class="container-fluid">
         @if($pastpaper->isSubscribedTo)
             <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-10 offset-1">
-                    <h5 class="bold">{{ $pastpaper->title }}</h5>
-                    <p>By {{ $pastpaper->creator->name }}</p>
-                    @if($pastpaper->creator)
-                        <embed src="{{ $pastpaper->getFirstMediaUrl('pastpapers') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
-                    @endif
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-10 offset-1 mt-5 d-flex justify-content-between">
-                    @if($pastpaper->creator)
-                        <a id="round-button-2" class="btn btn-secondary btn-sm" href="{{ route('student.pastpapers.index') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                            </svg>
-                            Back
-                        </a>
-
-                        <a href="{{ $pastpaper->getFirstMediaUrl('pastpapers') }}" id="round-button-2"
-                                        name="button"
-                                        class="btn btn-primary btn-sm" target="_blank">
-                                        Download pastpapers
-                        </a>
-                    @endif
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h5 class="bold">{{ $pastpaper->title }}</h5>
+                                </div>
+                                <div>
+                                    <a id="round-button-2" class="btn btn-secondary btn-sm" href="{{ route('student.pastpapers.index') }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                                        </svg>
+                                        Back
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <hr />
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-12">
+                                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                        @forelse($pastpaper->subpastpapers as $key => $subpastpaper)
+                                            <a type="button" style="text-decoration: none; margin-bottom: 3px;"
+                                                    class="{{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}"
+                                                    id="v-pills-{{$subpastpaper->slug}}-tab"
+                                                    data-toggle="pill"
+                                                    href="#v-pills-{{$subpastpaper->slug}}"
+                                                    role="tab"
+                                                    aria-controls="v-pills-{{$subpastpaper->slug}}"
+                                                    aria-selected="true">
+                                                {{$key + 1}}. {{ $subpastpaper->title }}
+                                            </a>
+                                            <a type="button" style="text-decoration: none; margin-bottom: 10px;"
+                                                    class="v-pills-answer"
+                                                    href="#v-pills-{{$key}}"
+                                                    data-answer-id="{{$key}}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-x-diamond mb-1" viewBox="0 0 16 16">
+                                                    <path d="M7.987 16a1.526 1.526 0 0 1-1.07-.448L.45 9.082a1.531 1.531 0 0 1 0-2.165L6.917.45a1.531 1.531 0 0 1 2.166 0l6.469 6.468A1.526 1.526 0 0 1 16 8.013a1.526 1.526 0 0 1-.448 1.07l-6.47 6.469A1.526 1.526 0 0 1 7.988 16zM7.639 1.17 4.766 4.044 8 7.278l3.234-3.234L8.361 1.17a.51.51 0 0 0-.722 0zM8.722 8l3.234 3.234 2.873-2.873c.2-.2.2-.523 0-.722l-2.873-2.873L8.722 8zM8 8.722l-3.234 3.234 2.873 2.873c.2.2.523.2.722 0l2.873-2.873L8 8.722zM7.278 8 4.044 4.766 1.17 7.639a.511.511 0 0 0 0 .722l2.874 2.873L7.278 8z"/>
+                                                </svg>
+                                                Answer
+                                            </a>
+                                        @empty
+                                            <p>No past papers</p>
+                                        @endforelse
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-12">
+                                    <div class="tab-content" id="v-pills-tabContent">
+                                        @forelse($pastpaper->subpastpapers as $key => $subpastpaper)
+                                            <div class="tab-pane fade show {{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}" id="v-pills-{{$subpastpaper->slug}}" role="tabpanel" aria-labelledby="v-pills-{{$subpastpaper->slug}}-tab">
+                                                <p>{{ $subpastpaper->title }}</p>
+                                                <div class="question">
+                                                    <embed src="{{ $subpastpaper->getFirstMediaUrl('pastpapers') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                                </div>
+                                            </div>
+                                        @empty
+                                            <p>No past papers</p>
+                                        @endforelse
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         @else
             <div class="row d-flex justify-content-center">
-                <div class="col-sm-12 col-md-12 col-lg-10">
+                <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="card p-3">
                         <div class="card-body">
                             <div>
@@ -66,8 +108,11 @@
                                     </a>
                                 </h5>
                             </div>
-                            <hr />
+                            <div class="mb-4">
+                                <hr />
+                            </div>
                             <h5 class="bold">{{ $pastpaper->title }}</h5>
+                            <p>{{ $pastpaper->year->name }}, {{ $pastpaper->category->name }}, {{ $pastpaper->term->name }}. </p>
                             @if($pastpaper->creator)
                                 <p>By {{ $pastpaper->creator->name }}</p>
                             @endif
@@ -75,14 +120,11 @@
                                 <span class="bold">UGX {{ $pastpaper->formatPrice }}/-</span>
                             @else
                                 <p class="bold paid_color">Free</p>
-                                @if($pastpaper->creator)
-                                    <embed src="{{ $pastpaper->getFirstMediaUrl('pastpapers') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
-                                @endif
                             @endif
                             <div class="mb-3 mt-4">
                                 <h5 class="bold">Past paper objectives </h5>
-                                @if($pastpaper->book_objective)
-                                    @foreach($pastpaper->pastpapers_objective as $pastpaper_objective)
+                                @if($pastpaper->objective)
+                                    @foreach($pastpaper->objective as $pastpaper_objective)
                                     <p>
                                         <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
@@ -110,3 +152,7 @@
 </section>
 
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/pastpapers.js')}}" type="text/javascript"></script>
+@endpush

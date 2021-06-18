@@ -35,7 +35,7 @@
                 <div class="card p-4">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <h5 class="bold">Upload your past paper here.</h5>
+                            <h5 class="bold">Edit your pastpaper here.</h5>
                         </div>
                         <div>
                             <a id="round-button-2" href="{{ route('pastpapers.show', $pastpaper) }}" class="btn btn-secondary btn-sm">
@@ -49,29 +49,52 @@
                     <div>
                         <hr />
                     </div>
-                    <form action="{{ route('subPastpapers.store', $pastpaper) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('subPastpaperAnswers.update', [$pastpaper, $subPastpaperAnswer]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group mb-4">
-                            <label for="title">Past paper title</label>
-                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Example: Introduction to modern physics">
+                        @method('patch')
+                        <div class="form-group mb-4 mt-2">
+                            <label for="title">Past paper answer title</label>
+                            <input type="text" name="title"
+                                        class="form-control @error('title') is-invalid @enderror"
+                                        value="{{ old('title', $subPastpaperAnswer->title) }}">
                             @error('title')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="pastpaper">Upload past paper</label>
-                            <input type="file" name="pastpaper"
-                                        class="form-control-file @error('pastpaper') is-invalid @enderror"
-                                        accept=".pdf"
-                                        required>
-                            <p><small class="light_gray_color">*Past paper should be a pdf file</small></p>
-                            @error('pastpaper')
+                            <label for="parent_id">Choose question</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select" name="parent_id">
+                                    <option selected value="{{ $subPastpaper->id }}">{{ $subPastpaper->title }}</option>
+                                    @foreach($subPastpapers as $subPastpaperQtn)
+                                        <option value="{{ $subPastpaperQtn->id }}">{{ $subPastpaperQtn->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('parent_id')
+                            <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="pastpapers">Current answer</label>
+                            <embed src="{{ $subPastpaperAnswer->getFirstMediaUrl('answers') }}" type="application/pdf" width="100%" height="300">
+                            <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="answer">Upload answer</label>
+                            <input type="file" name="answer"
+                                        class="form-control-file @error('answer') is-invalid @enderror"
+                                        accept=".pdf">
+                            <p><small class="light_gray_color">*Answer should be a pdf file</small></p>
+                            @error('answer')
                                 <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm">Submit</button>
+                        <button id="round-button-2" type="submit" class="btn btn-primary float-right btn-sm">Update</button>
                     </form>
                 </div>
             </div>
