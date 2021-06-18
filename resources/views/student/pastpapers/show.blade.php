@@ -50,25 +50,30 @@
                                 <div class="col-lg-3 col-md-3 col-sm-12">
                                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                         @forelse($pastpaper->subpastpapers as $key => $subpastpaper)
-                                            <a type="button" style="text-decoration: none; margin-bottom: 3px;"
-                                                    class="{{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}"
-                                                    id="v-pills-{{$subpastpaper->slug}}-tab"
-                                                    data-toggle="pill"
-                                                    href="#v-pills-{{$subpastpaper->slug}}"
-                                                    role="tab"
-                                                    aria-controls="v-pills-{{$subpastpaper->slug}}"
-                                                    aria-selected="true">
-                                                {{$key + 1}}. {{ $subpastpaper->title }}
-                                            </a>
-                                            <a type="button" style="text-decoration: none; margin-bottom: 10px;"
-                                                    class="v-pills-answer"
-                                                    href="#v-pills-{{$key}}"
-                                                    data-answer-id="{{$key}}">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-x-diamond mb-1" viewBox="0 0 16 16">
-                                                    <path d="M7.987 16a1.526 1.526 0 0 1-1.07-.448L.45 9.082a1.531 1.531 0 0 1 0-2.165L6.917.45a1.531 1.531 0 0 1 2.166 0l6.469 6.468A1.526 1.526 0 0 1 16 8.013a1.526 1.526 0 0 1-.448 1.07l-6.47 6.469A1.526 1.526 0 0 1 7.988 16zM7.639 1.17 4.766 4.044 8 7.278l3.234-3.234L8.361 1.17a.51.51 0 0 0-.722 0zM8.722 8l3.234 3.234 2.873-2.873c.2-.2.2-.523 0-.722l-2.873-2.873L8.722 8zM8 8.722l-3.234 3.234 2.873 2.873c.2.2.523.2.722 0l2.873-2.873L8 8.722zM7.278 8 4.044 4.766 1.17 7.639a.511.511 0 0 0 0 .722l2.874 2.873L7.278 8z"/>
-                                                </svg>
-                                                Answer
-                                            </a>
+                                            @if($subpastpaper->parent_id == null)
+                                                <a type="button" style="text-decoration: none; margin-bottom: 3px;"
+                                                        class="{{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}"
+                                                        id="v-pills-{{$subpastpaper->slug}}-tab"
+                                                        data-toggle="pill"
+                                                        href="#v-pills-{{$subpastpaper->slug}}"
+                                                        role="tab"
+                                                        aria-controls="v-pills-{{$subpastpaper->slug}}"
+                                                        aria-selected="true">
+                                                    Qtn: {{ $subpastpaper->title }}
+                                                </a>
+                                            @endif
+                                            @if($subpastpaper->parent_id != null)
+                                                <a type="button" style="text-decoration: none; margin-bottom: 10px;"
+                                                        class="{{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}"
+                                                        id="v-pills-{{$subpastpaper->slug}}-tab"
+                                                        data-toggle="pill"
+                                                        href="#v-pills-{{$subpastpaper->slug}}"
+                                                        role="tab"
+                                                        aria-controls="v-pills-{{$subpastpaper->slug}}"
+                                                        aria-selected="true">
+                                                    Ans: {{ $subpastpaper->title }}
+                                                </a>
+                                            @endif
                                         @empty
                                             <p>No past papers</p>
                                         @endforelse
@@ -77,12 +82,21 @@
                                 <div class="col-lg-9 col-md-9 col-sm-12">
                                     <div class="tab-content" id="v-pills-tabContent">
                                         @forelse($pastpaper->subpastpapers as $key => $subpastpaper)
-                                            <div class="tab-pane fade show {{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}" id="v-pills-{{$subpastpaper->slug}}" role="tabpanel" aria-labelledby="v-pills-{{$subpastpaper->slug}}-tab">
-                                                <p>{{ $subpastpaper->title }}</p>
-                                                <div class="question">
-                                                    <embed src="{{ $subpastpaper->getFirstMediaUrl('pastpapers') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                            @if($subpastpaper->parent_id == null)
+                                                <div class="tab-pane fade show {{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}" id="v-pills-{{$subpastpaper->slug}}" role="tabpanel" aria-labelledby="v-pills-{{$subpastpaper->slug}}-tab">
+                                                    <p>{{ $subpastpaper->title }}</p>
+                                                    <div>
+                                                        <embed src="{{ $subpastpaper->getFirstMediaUrl('pastpapers') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @else
+                                                <div class="tab-pane fade show {{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}" id="v-pills-{{$subpastpaper->slug}}" role="tabpanel" aria-labelledby="v-pills-{{$subpastpaper->slug}}-tab">
+                                                    <p>{{ $subpastpaper->title }}</p>
+                                                    <div>
+                                                        <embed src="{{ $subpastpaper->getFirstMediaUrl('answers') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         @empty
                                             <p>No past papers</p>
                                         @endforelse

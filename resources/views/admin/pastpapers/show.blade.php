@@ -66,10 +66,17 @@
 
                         <h5 class="bold">All past papers below </h5>
                         @forelse($pastpaper->subpastpapers as $subpastpaper)
-                            <p>
-                                <i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i>
-                                <span class="align-middle">{{ $subpastpaper->title }}</span>
-                            </p>
+                            @if($subpastpaper->parent_id == null)
+                                <p>
+                                    <span class="align-middle">{{ $subpastpaper->title }}</span>
+                                </p>
+                            @endif
+                            @if($subpastpaper->parent_id != null)
+                                <p>
+                                    <i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i>
+                                    <span class="align-middle">{{ $subpastpaper->title }}</span>
+                                </p>
+                            @endif
                         @empty
                             <p>No past papers</p>
                         @endforelse
