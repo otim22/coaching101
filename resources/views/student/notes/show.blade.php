@@ -24,7 +24,7 @@
 </section>
 
 <section>
-    <div class="container-fluid">
+    <div class="container">
         @if($note->isSubscribedTo)
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 mb-2">
@@ -80,7 +80,7 @@
             </div>
         @else
             <div class="row d-flex justify-content-center">
-                <div class="col-sm-12 col-md-12 col-lg-10">
+                <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="card p-3">
                         <div class="card-body">
                             <div>

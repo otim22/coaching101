@@ -24,7 +24,7 @@
 </section>
 
 <section>
-    <div class="container-fluid">
+    <div class="container">
         @if($pastpaper->isSubscribedTo)
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12">
@@ -59,11 +59,11 @@
                                                         role="tab"
                                                         aria-controls="v-pills-{{$subpastpaper->slug}}"
                                                         aria-selected="true">
-                                                    Qtn: {{ $subpastpaper->title }}
+                                                    Qtn. {{ $subpastpaper->title }}
                                                 </a>
                                             @endif
                                             @if($subpastpaper->parent_id != null)
-                                                <a type="button" style="text-decoration: none; margin-bottom: 10px;"
+                                                <a type="button" style="text-decoration: none;"
                                                         class="{{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}"
                                                         id="v-pills-{{$subpastpaper->slug}}-tab"
                                                         data-toggle="pill"
@@ -71,8 +71,11 @@
                                                         role="tab"
                                                         aria-controls="v-pills-{{$subpastpaper->slug}}"
                                                         aria-selected="true">
-                                                    Ans: {{ $subpastpaper->title }}
+                                                    Ans. {{ $subpastpaper->title }}
                                                 </a>
+                                                <div class="mb-1">
+                                                    <hr />
+                                                </div>
                                             @endif
                                         @empty
                                             <p>No past papers</p>
