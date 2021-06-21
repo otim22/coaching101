@@ -27,13 +27,12 @@ class BooksController extends Controller
         return view('student.books.index', compact(['categories', 'years', 'terms', 'books', 'levels']));
     }
 
-
-    protected function getMatchingYearsToLevel($value = null)
+    protected function getMatchingYearsToLevel($value = 'All levels')
     {
         $standardId = SessionWrapper::getStandardId();
         $standards = Standard::find($standardId);
 
-        if($value == null || $value == 'All levels') {
+        if($value == 'All levels') {
             return Year::where('standard_id', $standardId)->get();
         } else {
             return  Year::where(['standard_id' => $standardId, 'level_id' => $value])->get();

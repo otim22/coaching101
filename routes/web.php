@@ -128,6 +128,8 @@ Route::middleware('auth')->group(function() {
         Route::get('/subjects/{subject}/edit', [SubjectController::class, 'edit'])->name('subjects.edit');
         Route::patch('/subjects/{subject}/update', [SubjectController::class, 'update'])->name('subjects.update');
         Route::delete('/subjects/{subject}/destroy', [SubjectController::class, 'destroy'])->name('subjects.destroy');
+        Route::get('/get-matching-years-to-level/{id}', [SubjectController::class, 'getMatchingYearsToLevel'])->name('get-matching-years-to-level');
+        Route::get('/get-matching-levels-to-standard/{id}', [SubjectController::class, 'getMatchingLevelsToStandard'])->name('get-matching-levels-to-standard');
 
         /** Books */
         Route::resource('/books', 'Teacher\TeacherBookController')->except(['index']);

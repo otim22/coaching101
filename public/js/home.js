@@ -28,7 +28,7 @@ $(function() {
     }
     /* End handle filtering subjects videos*/
 
-    /** Start Filter years by levels objective **/
+    /** Start Filter years by levels **/
     $("select.level").change(function() {
         var selectedLevelId = $(this).children("option:selected").val();
         getMatchingYearstoLevel(selectedLevelId)
@@ -43,6 +43,7 @@ $(function() {
                 var len = response.length;
                 $("#year").empty();
                 if(len > 0) {
+                    $("#year").append("<option selected>Select year</option>");
                     for(var i = 0; i < len; i++) {
                         var id = response[i]['id'];
                         var name = response[i]['name'];
@@ -57,5 +58,5 @@ $(function() {
             }
         });
     }
-    /** End Filter years by levels objective **/
+    /** End Filter years by levels **/
 });
