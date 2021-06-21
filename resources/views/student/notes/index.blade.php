@@ -45,7 +45,7 @@
                         <div class="pt-3 mb-3">
                             <h6 class="bold">Level</h6>
                             <div class="resource-filter_input">
-                                <select class="custom-select" id="level">
+                                <select class="custom-select level" id="level">
                                     <option selected>{{ \App\Constants\GlobalConstants::ALL_LEVELS }}</option>
                                     @foreach($levels as $level)
                                         <option value="{{ $level->id }}">{{ $level->name }}</option>
@@ -59,9 +59,6 @@
                             <div class="resource-filter_input">
                                 <select class="custom-select" id="notes_year">
                                     <option selected>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
-                                    @foreach($years as $year)
-                                        <option value="{{ $year->id }}">{{ $year->name }}</option>
-                                    @endforeach
                                 </select>
                             </div>
                         </div>

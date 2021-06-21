@@ -19,12 +19,25 @@ class BooksController extends Controller
         $books =  ItemContent::getItemContents(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS, GlobalConstants::BOOK);
         $standardId = SessionWrapper::getStandardId();
         $standards = Standard::find($standardId);
-        $years =  Year::where('standard_id', $standardId)->get();
+        $years =  $this->getMatchingYearsToLevel();
         $terms =  Term::get();
         $levels = $standards->levels;
         $categories = $standards->categories;
 
         return view('student.books.index', compact(['categories', 'years', 'terms', 'books', 'levels']));
+    }
+
+
+    protected function getMatchingYearsToLevel($value = null)
+    {
+        $standardId = SessionWrapper::getStandardId();
+        $standards = Standard::find($standardId);
+
+        if($value == null || $value == 'All levels') {
+            return Year::where('standard_id', $standardId)->get();
+        } else {
+            return  Year::where(['standard_id' => $standardId, 'level_id' => $value])->get();
+        }
     }
 
     public function show(ItemContent $book)

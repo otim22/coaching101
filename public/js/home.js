@@ -28,6 +28,7 @@ $(function() {
     }
     /* End handle filtering subjects videos*/
 
+    /** Start Filter years by levels objective **/
     $("select.level").change(function() {
         var selectedLevelId = $(this).children("option:selected").val();
         getMatchingYearstoLevel(selectedLevelId)
@@ -56,4 +57,5 @@ $(function() {
             }
         });
     }
+    /** End Filter years by levels objective **/
 });

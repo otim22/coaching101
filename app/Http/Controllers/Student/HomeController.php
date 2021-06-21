@@ -37,7 +37,7 @@ class HomeController extends Controller
         return view('home', compact(['subjects', 'categories', 'years', 'terms', 'levels']));
     }
 
-    public function getMatchingYearsToLevel($value = null)
+    protected function getMatchingYearsToLevel($value = null)
     {
         $standardId = SessionWrapper::getStandardId();
         $standards = Standard::find($standardId);

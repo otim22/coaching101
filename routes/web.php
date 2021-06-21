@@ -71,11 +71,14 @@ Route::post('/cancel-donation', [DonationController::class, 'cancelDonation'])->
 Route::get('/checkout/{donor}', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::get('/books/{book}', [Books::class, 'show'])->name('student.books.show')->middleware('auth');
 Route::get('/get-more-books', [Books::class, 'getMoreBooks'])->name('get-more-books');
+Route::get('/get-matching-years-to-level/{id}', [Books::class, 'getMatchingYearsToLevel'])->name('get-matching-years-to-level');
 Route::get('/notes', [Notes::class, 'index'])->name('student.notes.index');
 Route::get('/notes/{note}', [Notes::class, 'show'])->name('student.notes.show')->middleware('auth');
 Route::get('/get-more-notes', [Notes::class, 'getMoreNotes'])->name('get-more-notes');
+Route::get('/get-matching-years-to-level/{id}', [Notes::class, 'getMatchingYearsToLevel'])->name('get-matching-years-to-level');
 Route::get('/pastpapers', [Pastpapers::class, 'index'])->name('student.pastpapers.index');
 Route::get('/pastpapers/{pastpaper}', [Pastpapers::class, 'show'])->name('student.pastpapers.show')->middleware('auth');
+Route::get('/get-matching-years-to-level/{id}', [Pastpapers::class, 'getMatchingYearsToLevel'])->name('get-matching-years-to-level');
 Route::get('/get-more-pastpapers', [Pastpapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
 Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
 Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');
