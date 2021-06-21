@@ -21,6 +21,7 @@ $factory->define(ItemContent::class, function (Faker $faker) {
         'description' => $faker->paragraph,
         'objective' => $faker->sentences,
         'price' => $faker->numberBetween(1000, 10000),
+        // 'currency' => $faker->currencyCode,
         'is_approved' => $faker->boolean(true),
         'standard_id' => Standard::all()->random()->id,
         'level_id' => Level::all()->random()->id,

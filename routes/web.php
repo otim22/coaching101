@@ -95,6 +95,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/get-more-subjects', [HomeController::class, 'getMoreSubjects'])->name('get-more-subjects');
+Route::get('/get-matching-years-to-level/{id}', [HomeController::class, 'getMatchingYearsToLevel'])->name('get-matching-years-to-level');
 Route::get('/home/my-account', [HomeController::class, 'mySubjects'])->name('my-account');
 
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions');

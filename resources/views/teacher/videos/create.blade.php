@@ -171,8 +171,23 @@
                                                     name="price"
                                                     value="{{ old('price') }}">
                                     </div>
-                                    <p><small class="color_red">*Price should be only digits</small></p>
+                                    <p><small class="light_gray_color">*Price should be only digits</small></p>
                                     @error('price')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="currency">Currency</label>
+                                    <div class="input-group">
+                                        <select class="custom-select" name="currency">
+                                            <option selected>Select currency</option>
+                                            <option value="USD">USD</option>
+                                            <option value="UGX">UGX</option>
+                                        </select>
+                                    </div>
+                                    <p><small class="light_gray_color">*The currency should match price above</small></p>
+                                    @error('currency')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>

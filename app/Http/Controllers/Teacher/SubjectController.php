@@ -53,7 +53,6 @@ class SubjectController extends Controller
     public function store(SubjectRequest $request)
     {
         $subject = new ItemContent($request->except(['cover_image']));
-
         $subject->title = $request->input('title');
         $subject->subtitle = $request->input('subtitle');
         $subject->description = $request->input('description');
