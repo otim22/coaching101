@@ -93,4 +93,5 @@
 
 @push('scripts')
     <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/student_notes.js')}}" type="text/javascript"></script>
 @endpush

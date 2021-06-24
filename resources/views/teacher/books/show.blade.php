@@ -84,16 +84,16 @@
                         <div class="mb-3">
                             <p class="bold">Book objectives </p>
                             @foreach($book->objective as $book_objective)
-                            <p>
-                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                                </svg>
-                                {{ $book_objective }}
-                            </p>
+                                <p>
+                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 20" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                                    </svg>
+                                    {{ $book_objective }}
+                                </p>
                             @endforeach
                         </div>
 
-                        <embed src="{{ $book->getFirstMediaUrl('books') }}" type="application/pdf" width="100%" height="400">
+                        <embed src="{{ $book->getFirstMediaUrl('books') }}#toolbar=0" type="application/pdf" width="100%" height="400">
 
                         <form action="{{ route('books.destroy', $book) }}" class="hidden" id="delete-teacher-book" method="POST">
                             @csrf

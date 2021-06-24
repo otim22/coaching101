@@ -35,9 +35,9 @@ class SubjectController extends Controller
 
     public function create()
     {
-        $years = $this->getMatchingYearsToLevel();
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $terms = Term::get();
-        $levels = Level::get();
         $standards = Standard::get();
         $categories = Category::get();
         $item = Item::where('name', 'Subject')->firstOrFail();
@@ -79,13 +79,13 @@ class SubjectController extends Controller
 
     public function edit(ItemContent $subject)
     {
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $categories = Category::get();
         $category = Category::find($subject->category_id);
         $standards = Standard::get();
         $standard = Standard::find($subject->standard_id);
-        $levels = $this->getMatchingLevelsToStandard();
         $level = Level::find($subject->level_id);
-        $years = $this->getMatchingYearsToLevel();
         $year = Year::find($subject->year_id);
         $terms = Term::get();
         $term = Term::find($subject->term_id);
@@ -144,24 +144,6 @@ class SubjectController extends Controller
             return redirect()->route('manage.subjects')->with('success', 'Subject deleted successfully');
         } catch (\Exception $e) {
             return redirect()->route('manage.subjects')->with('error', 'Failed to delete subject');
-        }
-    }
-
-    protected function getMatchingLevelsToStandard($value = 'Select standard')
-    {
-        if($value == 'Select standard') {
-            return Level::get();
-        } else {
-            return  Level::where('standard_id', $value)->get();
-        }
-    }
-
-    protected function getMatchingYearsToLevel($value = 'Select level')
-    {
-        if($value == 'Select level') {
-            return Year::get();
-        } else {
-            return  Year::where('level_id', $value)->get();
         }
     }
 }

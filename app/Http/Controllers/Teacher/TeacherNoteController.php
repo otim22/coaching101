@@ -26,9 +26,9 @@ class TeacherNoteController extends Controller
 
     public function create()
     {
-        $years =  Year::get();
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $terms =  Term::get();
-        $levels = Level::get();
         $standards = Standard::get();
         $categories = Category::get();
         $item = Item::where('name', 'Note')->firstOrFail();
@@ -74,16 +74,16 @@ class TeacherNoteController extends Controller
      */
     public function edit(ItemContent $note)
     {
-        $years =  Year::get();
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $terms =  Term::get();
         $standards = Standard::get();
         $standard = Standard::find($note->standard_id);
-        $levels = Level::get();
         $level = Level::find($note->level_id);
         $categories = Category::get();
-        $category = Category::where('id', $note->category_id)->firstOrFail();
-        $year = Year::where('id', $note->year_id)->firstOrFail();
-        $term = Term::where('id', $note->term_id)->firstOrFail();
+        $category = Category::find($note->category_id);
+        $year = Year::find($note->year_id);
+        $term = Term::find($note->term_id);
 
         return view('teacher.notes.edit', compact([
             'note', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'

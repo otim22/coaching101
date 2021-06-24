@@ -50,7 +50,7 @@
                                 <label for="category_id">Subject</label>
                                 <div class="input-group mb-3">
                                     <select class="custom-select" name="category_id">
-                                        <option selected>Choose subject</option>
+                                        <option selected>Select subject</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -64,10 +64,10 @@
                             <div class="form-group mb-4">
                                 <label for="standard_id">Standard</label>
                                 <div class="input-group mb-3">
-                                    <select class="custom-select" name="standard_id">
-                                        <option selected>Choose standard</option>
+                                    <select class="custom-select standard" name="standard_id">
+                                        <option selected>Select standard</option>
                                         @foreach($standards as $standard)
-                                            <option value="{{ $standard->id }}" {{ old('standard_id', $standard->id) == $standard->id ? 'selected' : '' }}>{{ $standard->name }}</option>
+                                            <option value="{{ $standard->id }}">{{ $standard->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -79,10 +79,10 @@
                             <div class="form-group mb-4">
                                 <label for="level_id">Level</label>
                                 <div class="input-group mb-3">
-                                    <select class="custom-select" name="level_id">
-                                        <option selected>Choose level</option>
+                                    <select class="custom-select level" name="level_id" id="level_id">
+                                        <option selected>Select level</option>
                                         @foreach($levels as $level)
-                                            <option value="{{ $level->id }}" {{ old('level_id', $level->id) == $level->id ? 'selected' : '' }}>{{ $level->name }}</option>
+                                            <option value="{{ $level->id }}">{{ $level->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -94,8 +94,8 @@
                             <div class="form-group mb-4">
                                 <label for="year_id">Year</label>
                                 <div class="input-group mb-3">
-                                    <select class="custom-select" name="year_id">
-                                        <option selected>Choose year</option>
+                                    <select class="custom-select" name="year_id" id="year_id">
+                                        <option selected>Select year</option>
                                         @foreach($years as $year)
                                             <option value="{{ $year->id }}">{{ $year->name }}</option>
                                         @endforeach
@@ -110,7 +110,7 @@
                                 <label for="year_id">Term</label>
                                 <div class="input-group mb-3">
                                     <select class="custom-select" name="term_id">
-                                        <option selected>Choose term</option>
+                                        <option selected>Select term</option>
                                         @foreach($terms as $term)
                                             <option value="{{ $term->id }}">{{ $term->name }}</option>
                                         @endforeach
@@ -219,9 +219,5 @@
 
 @push('scripts')
     <script src="{{ asset('js/books.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/filter_levels_and_years.js')}}" type="text/javascript"></script>
 @endpush
-
-@prepend('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-@endprepend

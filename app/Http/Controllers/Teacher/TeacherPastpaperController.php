@@ -26,9 +26,9 @@ class TeacherPastpaperController extends Controller
 
     public function create()
     {
-        $years =  Year::get();
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $terms =  Term::get();
-        $levels = Level::get();
         $standards = Standard::get();
         $categories = Category::get();
         $item = Item::where('name', 'Pastpaper')->firstOrFail();
@@ -73,16 +73,16 @@ class TeacherPastpaperController extends Controller
      */
     public function edit(ItemContent $pastpaper)
     {
-        $years =  Year::get();
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $terms =  Term::get();
         $standards = Standard::get();
         $standard = Standard::find($pastpaper->standard_id);
-        $levels = Level::get();
         $level = Level::find($pastpaper->level_id);
         $categories = Category::get();
-        $category = Category::where('id', $pastpaper->category_id)->firstOrFail();
-        $year = Year::where('id', $pastpaper->year_id)->firstOrFail();
-        $term = Term::where('id', $pastpaper->term_id)->firstOrFail();
+        $category = Category::find($pastpaper->category_id);
+        $year = Year::find($pastpaper->year_id);
+        $term = Term::find($pastpaper->term_id);
 
         return view('teacher.pastpapers.edit', compact([
             'pastpaper', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'

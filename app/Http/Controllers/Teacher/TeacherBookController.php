@@ -26,9 +26,9 @@ class TeacherBookController extends Controller
 
     public function create()
     {
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $standards = Standard::get();
-        $levels = Level::get();
-        $years =  Year::get();
         $terms =  Term::get();
         $categories = Category::get();
         $item = Item::where('name', 'Book')->firstOrFail();
@@ -84,16 +84,16 @@ class TeacherBookController extends Controller
      */
     public function edit(ItemContent $book)
     {
-        $years =  Year::get();
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $terms =  Term::get();
         $categories = Category::get();
         $standards = Standard::get();
         $standard = Standard::find($book->standard_id);
-        $levels = Level::get();
         $level = Level::find($book->level_id);
-        $category = Category::where('id', $book->category_id)->firstOrFail();
-        $year = Year::where('id', $book->year_id)->firstOrFail();
-        $term = Term::where('id', $book->term_id)->firstOrFail();
+        $category = Category::find( $book->category_id);
+        $year = Year::find($book->year_id);
+        $term = Term::find($book->term_id);
 
         return view('teacher.books.edit', compact([
                 'book', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'

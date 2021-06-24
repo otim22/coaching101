@@ -21,6 +21,7 @@ use App\Http\Controllers\Teacher\TeacherNoteController;
 use App\Http\Controllers\Teacher\TeacherSubNoteController;
 use App\Http\Controllers\Teacher\TeacherSubPastpaperController;
 use App\Http\Controllers\Teacher\TeacherSubPastpaperAnswerController;
+use App\Http\Controllers\Teacher\TeacherFilterLevelsYearsController;
 use App\Http\Controllers\Teacher\TeacherPastpaperController;
 use App\Http\Controllers\Teacher\UserSurveyAnswerController;
 use App\Http\Controllers\Student\HomeController;
@@ -128,13 +129,14 @@ Route::middleware('auth')->group(function() {
         Route::get('/subjects/{subject}/edit', [SubjectController::class, 'edit'])->name('subjects.edit');
         Route::patch('/subjects/{subject}/update', [SubjectController::class, 'update'])->name('subjects.update');
         Route::delete('/subjects/{subject}/destroy', [SubjectController::class, 'destroy'])->name('subjects.destroy');
-        Route::get('/get-matching-years-to-level/{id}', [SubjectController::class, 'getMatchingYearsToLevel'])->name('get-matching-years-to-level');
-        Route::get('/get-matching-levels-to-standard/{id}', [SubjectController::class, 'getMatchingLevelsToStandard'])->name('get-matching-levels-to-standard');
 
         /** Books */
         Route::resource('/books', 'Teacher\TeacherBookController')->except(['index']);
         Route::get('/books', [TeacherBookController::class, 'index'])->name('teacher.books');
         Route::post('/books/{book}/objectives/{objective}', [TeacherBookController::class, 'deleteObjective'])->name('teacher.books.objective.destroy');
+
+        Route::get('/get-years-to-level/{id}', [TeacherFilterLevelsYearsController::class, 'getYearsToLevel'])->name('get-years-to-level');
+        Route::get('/get-levels-to-standard/{id}', [TeacherFilterLevelsYearsController::class, 'getLevelsToStandard'])->name('get-levels-to-standard');
 
         /** Notes */
         Route::resource('/notes', 'Teacher\TeacherNoteController')->except(['index']);
@@ -149,12 +151,12 @@ Route::middleware('auth')->group(function() {
         Route::patch('/notes/{note}/subNotes/{subNote}/update', [TeacherSubNoteController::class, 'update'])->name('subNotes.update');
         Route::delete('/notes/{note}/subNotes/{subNote}/destroy', [TeacherSubNoteController::class, 'destroy'])->name('subNotes.delete');
 
-        /** Questions */
+        /** Past papers */
         Route::resource('/pastpapers', 'Teacher\TeacherPastpaperController')->except(['index']);
         Route::get('/pastpapers', [TeacherPastpaperController::class, 'index'])->name('teacher.pastpapers');
         Route::post('/pastpapers/{pastpaper}/objectives/{objective}', [TeacherPastpaperController::class, 'deleteObjective'])->name('teacher.pastpapers.objective.destroy');
 
-        /** Sub questions */
+        /** Sub past papers */
         Route::get('/pastpapers/{pastpaper}/subPastpapers', [TeacherSubPastpaperController::class, 'create'])->name('subPastpapers.create');
         Route::post('/pastpapers/{pastpaper}/subPastpapers', [TeacherSubPastpaperController::class, 'store'])->name('subPastpapers.store');
         Route::get('/pastpapers/{pastpaper}/subPastpapers/{subPastpaper}', [TeacherSubPastpaperController::class, 'show'])->name('subPastpapers.show');
@@ -162,7 +164,7 @@ Route::middleware('auth')->group(function() {
         Route::patch('/pastpapers/{pastpaper}/subPastpapers/{subPastpaper}/update', [TeacherSubPastpaperController::class, 'update'])->name('subPastpapers.update');
         Route::delete('/pastpapers/{pastpaper}/subPastpapers/{subPastpaper}/destroy', [TeacherSubPastpaperController::class, 'destroy'])->name('subPastpapers.delete');
 
-        /** Sub answers to questions */
+        /** Sub answers to past papers */
         Route::get('/pastpapers/{pastpaper}/subPastpaperAnswers', [TeacherSubPastpaperAnswerController::class, 'create'])->name('subPastpaperAnswers.create');
         Route::post('/pastpapers/{pastpaper}/subPastpaperAnswers', [TeacherSubPastpaperAnswerController::class, 'store'])->name('subPastpaperAnswers.store');
         Route::get('/pastpapers/{pastpaper}/subPastpaperAnswers/{subPastpaperAnswer}', [TeacherSubPastpaperAnswerController::class, 'show'])->name('subPastpaperAnswers.show');

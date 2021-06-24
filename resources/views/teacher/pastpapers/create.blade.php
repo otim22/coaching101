@@ -67,7 +67,7 @@
                             <div class="form-group mb-4">
                                 <label for="standard_id">Standard</label>
                                 <div class="input-group mb-3">
-                                    <select class="custom-select" name="standard_id">
+                                    <select class="custom-select standard" name="standard_id">
                                         <option selected>Choose standard</option>
                                         @foreach($standards as $standard)
                                             <option value="{{ $standard->id }}">{{ $standard->name }}</option>
@@ -82,11 +82,8 @@
                             <div class="form-group mb-4">
                                 <label for="level_id">Level</label>
                                 <div class="input-group mb-3">
-                                    <select class="custom-select" name="level_id">
+                                    <select class="custom-select level" name="level_id" id="level_id">
                                         <option selected>Choose level</option>
-                                        @foreach($levels as $level)
-                                            <option value="{{ $level->id }}">{{ $level->name }}</option>
-                                        @endforeach
                                     </select>
                                 </div>
                                 @error('level_id')
@@ -97,11 +94,8 @@
                             <div class="form-group mb-4">
                                 <label for="year_id">Year</label>
                                 <div class="input-group mb-3">
-                                    <select class="custom-select" name="year_id">
+                                    <select class="custom-select" name="year_id" id="year_id">
                                         <option selected>Choose year</option>
-                                        @foreach($years as $year)
-                                            <option value="{{ $year->id }}">{{ $year->name }}</option>
-                                        @endforeach
                                     </select>
                                 </div>
                                 @error('year_id')
@@ -200,7 +194,7 @@
 
 @endsection
 
-@prepend('scripts')
-    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+@push('scripts')
     <script src="{{ asset('js/pastpapers.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/filter_levels_and_years.js')}}" type="text/javascript"></script>
 @endpush

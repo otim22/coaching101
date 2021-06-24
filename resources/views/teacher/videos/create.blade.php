@@ -67,7 +67,7 @@
                                                     value="{{ old('subtitle') }}">
                                     </div>
                                     @error('subtitle')
-                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -96,7 +96,7 @@
                                         </select>
                                     </div>
                                     @error('category_id')
-                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -123,7 +123,7 @@
                                         </select>
                                     </div>
                                     @error('level_id')
-                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -135,7 +135,7 @@
                                         </select>
                                     </div>
                                     @error('year_id')
-                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -150,7 +150,7 @@
                                         </select>
                                     </div>
                                     @error('term_id')
-                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -167,7 +167,7 @@
                                     </div>
                                     <p><small class="light_gray_color">*Price should be only digits</small></p>
                                     @error('price')
-                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -182,7 +182,7 @@
                                     </div>
                                     <p><small class="light_gray_color">*The currency should match price above</small></p>
                                     @error('currency')
-                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -212,5 +212,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/teacher_video_subject.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/filter_levels_and_years.js')}}" type="text/javascript"></script>
 @endpush

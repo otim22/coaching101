@@ -17,7 +17,12 @@
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Note</li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('teacher.notes') }}" style="text-decoration: none;">Notes</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{$note->title}}
+                </li>
             </ol>
         </nav>
     </div>
@@ -62,14 +67,14 @@
                                     </select>
                                 </div>
                                 @error('category_id')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="standard_id">Standard</label>
                                 <div class="input-group mb-3">
-                                    <select class="custom-select" name="standard_id">
+                                    <select class="custom-select standard" name="standard_id">
                                         <option selected value="{{ $standard->id }}">{{ $standard->name }}</option>
                                         @foreach($standards as $standard)
                                             <option value="{{ $standard->id }}">{{ $standard->name }}</option>
@@ -77,37 +82,31 @@
                                     </select>
                                 </div>
                                 @error('standard_id')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="level_id">Level</label>
                                 <div class="input-group mb-3">
-                                    <select class="custom-select" name="level_id">
+                                    <select class="custom-select level" name="level_id" id="level_id">
                                         <option selected value="{{ $level->id }}">{{ $level->name }}</option>
-                                        @foreach($levels as $level)
-                                            <option value="{{ $level->id }}">{{ $level->name }}</option>
-                                        @endforeach
                                     </select>
                                 </div>
                                 @error('level_id')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="year_id">Year</label>
                                 <div class="input-group mb-3">
-                                    <select class="custom-select" name="year_id">
+                                    <select class="custom-select" name="year_id" id="year_id">
                                         <option selected value="{{ $year->id }}">{{ $year->name }}</option>
-                                        @foreach($years as $year)
-                                            <option value="{{ $year->id }}">{{ $year->name }}</option>
-                                        @endforeach
                                     </select>
                                 </div>
                                 @error('year_id')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -122,7 +121,7 @@
                                     </select>
                                 </div>
                                 @error('term_id')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -201,7 +200,7 @@
                                 </div>
                                 <p><small class="red_color">*Price should be only digits</small></p>
                                 @error('price')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -214,7 +213,7 @@
     </div>
 </section>
 
-@prepend('scripts')
-    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+@push('scripts')
     <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/filter_levels_and_years.js')}}" type="text/javascript"></script>
 @endpush

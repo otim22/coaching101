@@ -213,4 +213,22 @@ class ItemContent extends Model implements HasMedia, Searchable
 
         return static::where($items)->paginate(12);
     }
+
+    protected function getLevelsToStandard($value = 'Select standard')
+    {
+        if($value == 'Select standard') {
+            return Level::get();
+        } else {
+            return  Level::where('standard_id', $value)->get();
+        }
+    }
+
+    protected function getYearsToLevel($value = 'Select level')
+    {
+        if($value == 'Select level') {
+            return Year::get();
+        } else {
+            return  Year::where('level_id', $value)->get();
+        }
+    }
 }
