@@ -188,7 +188,7 @@
 
                             <div class="form-group mb-4">
                                 <p>Current cover image</p>
-                                <img src="{{ asset($book->getFirstMediaUrl('cover_images')) }}" class="w-50 mb-2">
+                                <img src="{{ asset($book->getFirstMediaUrl('cover_image')) }}" class="w-50 mb-2">
                                 <p><small class="red_color">*Choosing another file replaces this current one.</small></p>
                                 <label for="cover_image">Upload Book</label>
                                 <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" accept="image/*">

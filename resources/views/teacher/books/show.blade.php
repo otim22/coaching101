@@ -71,7 +71,7 @@
                             <hr />
                         </div>
                         <h5 class="bold mt-2 mb-3">{{ $book->title }}</h5>
-                        <img src="{{ asset($book->cover_image) }}" class="rounded-corners w-100 mb-3">
+                        <img src="{{ asset($book->getFirstMediaUrl('cover_image')) }}" class="rounded-corners w-100 mb-3">
 
                         @if(!$book->price)
                             <p>Free</p>

@@ -113,16 +113,21 @@ class TeacherBookController extends Controller
         $book->objective = array_filter($request->objective);
         $book->save();
 
-        if($request->hasFile('cover_image') && $request->file('cover_images')->isValid()) {
+        if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+
             foreach ($book->media as $media) {
-                $media->delete();
+                if($media->collection_name == "cover_image") {
+                    $media->delete();
+                }
             }
             $book->addMediaFromRequest('cover_image')->toMediaCollection('cover_image');
         }
 
         if($request->hasFile('book') && $request->file('book')->isValid()) {
             foreach ($book->media as $media) {
-                $media->delete();
+                if($media->collection_name == "books") {
+                    $media->delete();
+                }
             }
             $book->addMediaFromRequest('book')->toMediaCollection('books');
         }
