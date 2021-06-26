@@ -66,7 +66,7 @@
                                         @forelse($note->subnotes as $key => $subnote)
                                             <div class="tab-pane fade show {{ $key == $note->subnotes->keys()->first() ? 'active' : '' }}" id="v-pills-{{$subnote->slug}}" role="tabpanel" aria-labelledby="v-pills-{{$subnote->slug}}-tab">
                                                 <p>{{ $subnote->title }}</p>
-                                                <embed src="{{ $subnote->getFirstMediaUrl('notes') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                                <embed src="{{ $subnote->getFirstMediaUrl('notes') }}#toolbar=0" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
                                             </div>
                                         @empty
                                             <p>No notes</p>

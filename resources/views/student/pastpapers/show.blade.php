@@ -89,14 +89,14 @@
                                                 <div class="tab-pane fade show {{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}" id="v-pills-{{$subpastpaper->slug}}" role="tabpanel" aria-labelledby="v-pills-{{$subpastpaper->slug}}-tab">
                                                     <p>{{ $subpastpaper->title }}</p>
                                                     <div>
-                                                        <embed src="{{ $subpastpaper->getFirstMediaUrl('pastpapers') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                                        <embed src="{{ $subpastpaper->getFirstMediaUrl('pastpapers') }}#toolbar=0" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
                                                     </div>
                                                 </div>
                                             @else
                                                 <div class="tab-pane fade show {{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}" id="v-pills-{{$subpastpaper->slug}}" role="tabpanel" aria-labelledby="v-pills-{{$subpastpaper->slug}}-tab">
                                                     <p>{{ $subpastpaper->title }}</p>
                                                     <div>
-                                                        <embed src="{{ $subpastpaper->getFirstMediaUrl('answers') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                                        <embed src="{{ $subpastpaper->getFirstMediaUrl('answers') }}#toolbar=0" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
                                                     </div>
                                                 </div>
                                             @endif
