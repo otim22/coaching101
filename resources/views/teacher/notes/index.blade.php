@@ -53,18 +53,22 @@
                         <div>
                             <hr />
                         </div>
-                        @forelse($notes as $note)
-                        <div class="mb-2 mt-2">
-                            <a href="{{ route('notes.show', $note) }}" style="text-decoration: none;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check" viewBox="0 0 18 18">
-                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-                                </svg>
-                                {{ $note->title }}
-                            </a>
-                        </div>
-                        @empty
-                        <p>No notes available yet.</p>
-                        @endforelse
+                        <ul class="mt-4 mb-3">
+                            @forelse($notes as $note)
+                                <div>
+                                    <a href="{{ route('notes.show', $note) }}" style="text-decoration: none;">
+                                        <li class="mb-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check" viewBox="0 0 18 18">
+                                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                            </svg>
+                                            {{ $note->title }}
+                                        </li>
+                                    </a>
+                                </div>
+                            @empty
+                                <p>No notes available yet.</p>
+                            @endforelse
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -44,7 +44,7 @@ class TeacherPastpaperController extends Controller
      */
     public function store(PastpaperRequest $request)
     {
-        $pastpaper = new ItemContent($request->except('pastpaper'));
+        $pastpaper = new ItemContent();
         $pastpaper->title = $request->input('title');
         $pastpaper->objective = $request->input('objective');
         $pastpaper->price = $request->input('price');
@@ -98,7 +98,7 @@ class TeacherPastpaperController extends Controller
     public function update(Request $request, ItemContent $pastpaper)
     {
         $data = $this->validateData($request);
-        $pastpaper->fill(Arr::except($data, ['objective', 'pastpaper']));
+        $pastpaper->fill(Arr::except($data, ['objective']));
         $pastpaper->objective = array_filter($request->objective);
         $pastpaper->save();
 
@@ -116,7 +116,6 @@ class TeacherPastpaperController extends Controller
             'category_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
-            'pastpaper' => 'nullable|mimes:pdf|max:5000',
             'user_id' => 'integer|nullable',
         ]);
     }

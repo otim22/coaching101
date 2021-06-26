@@ -11,8 +11,8 @@ class TeacherSubPastpaperAnswerController extends Controller
 {
     public function create(ItemContent $pastpaper)
     {
-        $subPastpapers = SubPastpaper::get();
-
+        $subPastpapers = SubPastpaper::whereNull('parent_id')->get();
+        
         return view('teacher.pastpapers.sub_pastpaper_answers.create', compact(['pastpaper', 'subPastpapers']));
     }
 

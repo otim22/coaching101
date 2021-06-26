@@ -117,7 +117,7 @@
                     <p class="bold">Past paper objectives </p>
                     <ul>
                         @forelse($pastpaper->objective as $pastpapers_objective)
-                            <li class="mb-1">
+                            <li class="mb-2">
                                 <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-check mb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
                                 </svg>
@@ -133,9 +133,9 @@
                     <ul>
                         @forelse($pastpaper->subpastpapers as $subpastpaper)
                             @if($subpastpaper->parent_id == null)
-                                <a class="mb-1" href="{{ route('subPastpapers.show', [$pastpaper, $subpastpaper]) }}" style="text-decoration: none;">
-                                    <li class="mb-1">
-                                    {{ $subpastpaper->title }}
+                                <a href="{{ route('subPastpapers.show', [$pastpaper, $subpastpaper]) }}" style="text-decoration: none;">
+                                    <li class="mb-2">
+                                        {{ $subpastpaper->title }}
                                     </li>
                                 <a>
                             @endif
