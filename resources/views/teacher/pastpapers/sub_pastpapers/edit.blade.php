@@ -65,7 +65,7 @@
 
                             <div class="form-group mb-4">
                                 <label for="pastpapers">Current past paper</label>
-                                <embed src="{{ $subPastpaper->getFirstMediaUrl('pastpapers') }}" type="application/pdf" width="100%" height="300">
+                                <embed src="{{ $subPastpaper->getFirstMediaUrl('pastpapers') }}#toolbar=0" type="application/pdf" width="100%" height="300">
                                 <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
                             </div>
 

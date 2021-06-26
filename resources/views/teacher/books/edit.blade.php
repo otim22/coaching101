@@ -199,7 +199,7 @@
 
                             <div class="form-group mb-4">
                                 <p>Current book</p>
-                                <embed src="{{ $book->getFirstMediaUrl('books') }}" type="application/pdf" width="50%" height="50%">
+                                <embed src="{{ $book->getFirstMediaUrl('books') }}#toolbar=0" type="application/pdf" width="50%" height="50%">
                                 <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
 
                                 <label for="book">Upload Book</label>

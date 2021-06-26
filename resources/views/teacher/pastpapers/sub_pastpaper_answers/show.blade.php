@@ -74,7 +74,7 @@
                             <h5 class="bold">{{ $subPastpaperAnswer->title }}</h5>
                         </div>
                         <div>
-                            <embed src="{{ $subPastpaperAnswer->getFirstMediaUrl('answers') }}" type="application/pdf" width="100%" height="400">
+                            <embed src="{{ $subPastpaperAnswer->getFirstMediaUrl('answers') }}#toolbar=0" type="application/pdf" width="100%" height="400">
                         </div>
                     </div>
                 </div>

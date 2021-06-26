@@ -65,7 +65,7 @@
 
                             <div class="form-group mb-4">
                                 <label for="note">Current notes</label>
-                                <embed src="{{ $subNote->getFirstMediaUrl('notes') }}" type="application/pdf" width="100%" height="300">
+                                <embed src="{{ $subNote->getFirstMediaUrl('notes') }}#toolbar=0" type="application/pdf" width="100%" height="300">
                                 <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
                             </div>
 

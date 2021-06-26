@@ -73,7 +73,7 @@
                         <div class="mt-4 mb-3">
                             <h5 class="bold">{{ $subNote->title }}</h5>
                         </div>
-                        <embed src="{{ $subNote->getFirstMediaUrl('notes') }}" type="application/pdf" width="100%" height="400">
+                        <embed src="{{ $subNote->getFirstMediaUrl('notes') }}#toolbar=0" type="application/pdf" width="100%" height="400">
                     </div>
                 </div>
                 <form action="{{ route('subNotes.delete', [$note, $subNote]) }}" class="hidden" id="delete-teacher-subnotes" method="POST">
