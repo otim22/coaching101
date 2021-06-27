@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-2">
                             <div>
-                                <a id="round-button-2" href="{{ route('pastpapers.show', $pastpaper) }}" class="btn btn-secondary btn-sm">
+                                <a id="round-button-2" href="{{ route('pastpapers.show', $pastpaper) }}" class="btn btn-secondary">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                                     </svg>
@@ -46,7 +46,7 @@
                                 </a>
                             </div>
                             <div class="dropdown">
-                                <button id="round-button-2" class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button id="round-button-2" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Action
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">

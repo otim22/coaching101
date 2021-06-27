@@ -191,7 +191,7 @@
                                 <label for="price">Book price <span class="light_gray_color">(*Optional)</span></label>
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="currency">$</span>
+                                        <span class="input-group-text" id="currency">{{ $note->currency->name }}</span>
                                     </div>
                                     <input type="number"
                                                 class="form-control @error('price') is-invalid @enderror"
