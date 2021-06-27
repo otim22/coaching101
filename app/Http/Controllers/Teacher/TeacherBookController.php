@@ -7,6 +7,7 @@ use App\Models\Year;
 use App\Models\Term;
 use App\Models\Item;
 use App\Models\Level;
+use App\Models\Currency;
 use App\Models\Category;
 use App\Models\Standard;
 use Illuminate\Http\Request;
@@ -34,8 +35,8 @@ class TeacherBookController extends Controller
         $item = Item::where('name', 'Book')->firstOrFail();
 
         return view('teacher.books.create', compact([
-                'categories', 'years', 'terms', 'item', 'standards', 'levels'
-            ]));
+            'categories', 'years', 'terms', 'item', 'standards', 'levels'
+        ]));
     }
 
     /**
@@ -57,7 +58,15 @@ class TeacherBookController extends Controller
         $book->year_id = $request->input('year_id');
         $book->term_id = $request->input('term_id');
         $book->user_id = Auth::id();
+        $std = Standard::find($request->input('standard_id'));
 
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        $book->currency_id = $currency->id;
         $book->save();
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
@@ -96,8 +105,8 @@ class TeacherBookController extends Controller
         $term = Term::find($book->term_id);
 
         return view('teacher.books.edit', compact([
-                'book', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'
-            ]));
+            'book', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'
+        ]));
     }
 
     /**

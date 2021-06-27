@@ -37,14 +37,13 @@ class SubjectController extends Controller
     public function create()
     {
         $levels = ItemContent::getLevelsToStandard();
-        $currency = ItemContent::getRightCurrency();
         $years = ItemContent::getYearsToLevel();
         $terms = Term::get();
         $standards = Standard::get();
         $categories = Category::get();
         $item = Item::where('name', 'Subject')->firstOrFail();
 
-        return view('teacher.videos.create', compact(['categories', 'years', 'terms', 'item', 'standards', 'levels', 'currency']));
+        return view('teacher.videos.create', compact(['categories', 'years', 'terms', 'item', 'standards', 'levels']));
     }
 
     public function show(ItemContent $subject)
@@ -54,7 +53,6 @@ class SubjectController extends Controller
 
     public function store(SubjectRequest $request)
     {
-        // dd($request);
         $subject = new ItemContent($request->except(['cover_image']));
         $subject->title = $request->input('title');
         $subject->subtitle = $request->input('subtitle');
@@ -91,7 +89,6 @@ class SubjectController extends Controller
     {
         $levels = ItemContent::getLevelsToStandard();
         $years = ItemContent::getYearsToLevel();
-        // $currency = ItemContent::getRightCurrency();
         $categories = Category::get();
         $category = Category::find($subject->category_id);
         $standards = Standard::get();

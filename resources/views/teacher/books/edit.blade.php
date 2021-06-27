@@ -41,8 +41,8 @@
                                 <h5 class="bold">Book</h5>
                             </div>
                             <div>
-                                <a id="round-button-2" href="{{ route('teacher.books') }}" class="btn btn-secondary btn-sm">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
+                                <a id="round-button-2" href="{{ route('teacher.books') }}" class="btn btn-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2 mb-1" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                                     </svg>
                                     Back
@@ -188,7 +188,7 @@
 
                             <div class="form-group mb-4">
                                 <p>Current cover image</p>
-                                <img src="{{ asset($book->getFirstMediaUrl('cover_image')) }}" class="w-50 mb-2">
+                                <img src="{{ asset($book->getFirstMediaUrl('cover_images')) }}" class="w-50 mb-2">
                                 <p><small class="red_color">*Choosing another file replaces this current one.</small></p>
                                 <label for="cover_image">Upload Book</label>
                                 <input type="file" name="cover_image" class="form-control-file @error('cover_image') is-invalid @enderror" id="cover_image" accept="image/*">
@@ -213,6 +213,9 @@
                             <div class="form-group mb-4">
                                 <label for="price">Book price <span class="light_gray_color">(*Optional)</span></label>
                                 <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="currency">{{ $book->currency->name }}</span>
+                                    </div>
                                     <input type="number"
                                                 class="form-control @error('price') is-invalid @enderror"
                                                 placeholder="Example price: 10000"
@@ -220,6 +223,9 @@
                                                 aria-describedby="price"
                                                 name="price"
                                                 value="{{ old('price', $book->price) }}">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
                                 </div>
                                 <p><small class="red_color">*Price should be only digits</small></p>
                                 @error('price')
@@ -227,7 +233,7 @@
                                 @enderror
                             </div>
 
-                            <button id="round-button-2" type="submit" class="btn btn-primary float-right pl-5 pr-5 btn-sm">Update</button>
+                            <button id="round-button-2" type="submit" class="btn btn-primary float-right pl-5 pr-5">Update</button>
                         </form>
                     </div>
                 </div>
@@ -241,4 +247,5 @@
 @push('scripts')
     <script src="{{ asset('js/books.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/filter_levels_and_years.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/get_right_currency.js')}}" type="text/javascript"></script>
 @endpush
