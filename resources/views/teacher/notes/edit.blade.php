@@ -190,6 +190,9 @@
                             <div class="form-group mb-4">
                                 <label for="price">Book price <span class="light_gray_color">(*Optional)</span></label>
                                 <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="currency">$</span>
+                                    </div>
                                     <input type="number"
                                                 class="form-control @error('price') is-invalid @enderror"
                                                 placeholder="Example price: 10000"
@@ -197,6 +200,9 @@
                                                 aria-describedby="price"
                                                 name="price"
                                                 value="{{ old('price', $note->price) }}">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
                                 </div>
                                 <p><small class="red_color">*Price should be only digits</small></p>
                                 @error('price')
@@ -216,4 +222,5 @@
 @push('scripts')
     <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/filter_levels_and_years.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/get_right_currency.js')}}" type="text/javascript"></script>
 @endpush

@@ -56,6 +56,15 @@ class TeacherNoteController extends Controller
         $note->term_id = $request->input('term_id');
         $note->user_id = $request->input('user_id');
         $note->user_id = Auth::id();
+        $std = Standard::find($request->input('standard_id'));
+
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        $note->currency_id = $currency->id;
         $note->save();
 
         return redirect()->route('subNotes.create', $note)->with('success', 'Notes saved successfully.');
