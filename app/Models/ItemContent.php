@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Year;
+use App\Models\Level;
+use App\Models\Standard;
+use App\Models\Currency;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\Traits\PresentsText;
@@ -26,7 +30,7 @@ class ItemContent extends Model implements HasMedia, Searchable
 {
     use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable, PresentsItem;
 
-    protected $fillable = ['title', 'subtitle', 'description', 'objective', 'price', 'item_id', 'standard_id', 'level_id', 'category_id', 'year_id', 'term_id', 'user_id', 'is_approved'];
+    protected $fillable = ['title', 'subtitle', 'description', 'objective', 'price', 'item_id', 'standard_id', 'level_id', 'category_id', 'year_id', 'term_id', 'user_id', 'is_approved', 'currency_id'];
     protected $with = ['media'];
     protected $appends = ['isSubscribedTo'];
     protected $dates = ['created_at', 'updated_at'];
@@ -93,6 +97,12 @@ class ItemContent extends Model implements HasMedia, Searchable
     public function standard()
     {
         return $this->belongsTo('App\Models\Standard', 'standard_id');
+    }
+
+    /**  Get the currency that owns the ItemContent. */
+    public function currency()
+    {
+        return $this->belongsTo('App\Models\Currency', 'currency_id');
     }
 
     /**
@@ -229,6 +239,20 @@ class ItemContent extends Model implements HasMedia, Searchable
             return Year::get();
         } else {
             return  Year::where('level_id', $value)->get();
+        }
+    }
+
+    protected function getRightCurrency($value = 'Select standard')
+    {
+        if($value == 'Select standard') {
+            return  Currency::where('name', 'UGX')->first();
+        } else {
+            $standard = Standard::find($value);
+            if($standard->name == 'Cambridge') {
+                return  Currency::where('name', 'USD')->first();
+            } else {
+                return  Currency::where('name', 'UGX')->first();
+            }
         }
     }
 }

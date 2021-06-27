@@ -9,6 +9,7 @@ use App\Models\Level;
 use App\Models\Topic;
 use App\Models\Ratings;
 use App\Models\Subject;
+use App\Models\Currency;
 use App\Models\Standard;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -36,13 +37,14 @@ class SubjectController extends Controller
     public function create()
     {
         $levels = ItemContent::getLevelsToStandard();
+        $currency = ItemContent::getRightCurrency();
         $years = ItemContent::getYearsToLevel();
         $terms = Term::get();
         $standards = Standard::get();
         $categories = Category::get();
         $item = Item::where('name', 'Subject')->firstOrFail();
 
-        return view('teacher.videos.create', compact(['categories', 'years', 'terms', 'item', 'standards', 'levels']));
+        return view('teacher.videos.create', compact(['categories', 'years', 'terms', 'item', 'standards', 'levels', 'currency']));
     }
 
     public function show(ItemContent $subject)
@@ -52,6 +54,7 @@ class SubjectController extends Controller
 
     public function store(SubjectRequest $request)
     {
+        // dd($request);
         $subject = new ItemContent($request->except(['cover_image']));
         $subject->title = $request->input('title');
         $subject->subtitle = $request->input('subtitle');
@@ -62,7 +65,15 @@ class SubjectController extends Controller
         $subject->year_id = $request->input('year_id');
         $subject->term_id = $request->input('term_id');
         $subject->user_id = Auth::id();
+        $std = Standard::find($request->input('standard_id'));
 
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        $subject->currency_id = $currency->id;
         $category = Category::findOrFail($request->input('category_id'));
         $category->years()->attach($request->input('year_id'));
         $year = Year::findOrFail($request->input('year_id'));
@@ -73,7 +84,6 @@ class SubjectController extends Controller
         }
 
         $subject->save();
-
         return redirect()->route('audiences', $subject)->with('success', 'Subject saved successfully.');
     }
 
@@ -81,6 +91,7 @@ class SubjectController extends Controller
     {
         $levels = ItemContent::getLevelsToStandard();
         $years = ItemContent::getYearsToLevel();
+        // $currency = ItemContent::getRightCurrency();
         $categories = Category::get();
         $category = Category::find($subject->category_id);
         $standards = Standard::get();
@@ -140,7 +151,6 @@ class SubjectController extends Controller
     {
         try {
             $subject->delete();
-
             return redirect()->route('manage.subjects')->with('success', 'Subject deleted successfully');
         } catch (\Exception $e) {
             return redirect()->route('manage.subjects')->with('error', 'Failed to delete subject');

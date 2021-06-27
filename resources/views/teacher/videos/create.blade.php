@@ -157,31 +157,22 @@
                                 <div class="form-group mb-4">
                                     <label for="price">Subject price</label>
                                     <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="currency">$</span>
+                                        </div>
                                         <input type="number"
                                                     class="form-control @error('price') is-invalid @enderror"
-                                                    placeholder="Example price: 20000"
+                                                    placeholder="Example price:  5000"
                                                     aria-label="Enter subject price"
                                                     aria-describedby="price"
                                                     name="price"
                                                     value="{{ old('price') }}">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">.00</span>
+                                        </div>
                                     </div>
                                     <p><small class="light_gray_color">*Price should be only digits</small></p>
                                     @error('price')
-                                        <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group mb-4">
-                                    <label for="currency">Currency</label>
-                                    <div class="input-group">
-                                        <select class="custom-select" name="currency">
-                                            <option selected>Select currency</option>
-                                            <option value="USD">USD</option>
-                                            <option value="UGX">UGX</option>
-                                        </select>
-                                    </div>
-                                    <p><small class="light_gray_color">*The currency should match price above</small></p>
-                                    @error('currency')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -213,4 +204,5 @@
 
 @push('scripts')
     <script src="{{ asset('js/filter_levels_and_years.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/get_right_currency.js')}}" type="text/javascript"></script>
 @endpush

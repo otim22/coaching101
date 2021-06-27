@@ -21,7 +21,7 @@ use App\Http\Controllers\Teacher\TeacherNoteController;
 use App\Http\Controllers\Teacher\TeacherSubNoteController;
 use App\Http\Controllers\Teacher\TeacherSubPastpaperController;
 use App\Http\Controllers\Teacher\TeacherSubPastpaperAnswerController;
-use App\Http\Controllers\Teacher\TeacherFilterLevelsYearsController;
+use App\Http\Controllers\Teacher\TeacherFilterController;
 use App\Http\Controllers\Teacher\TeacherPastpaperController;
 use App\Http\Controllers\Teacher\UserSurveyAnswerController;
 use App\Http\Controllers\Student\HomeController;
@@ -135,8 +135,9 @@ Route::middleware('auth')->group(function() {
         Route::get('/books', [TeacherBookController::class, 'index'])->name('teacher.books');
         Route::post('/books/{book}/objectives/{objective}', [TeacherBookController::class, 'deleteObjective'])->name('teacher.books.objective.destroy');
 
-        Route::get('/get-years-to-level/{id}', [TeacherFilterLevelsYearsController::class, 'getYearsToLevel'])->name('get-years-to-level');
-        Route::get('/get-levels-to-standard/{id}', [TeacherFilterLevelsYearsController::class, 'getLevelsToStandard'])->name('get-levels-to-standard');
+        Route::get('/get-years-to-level/{id}', [TeacherFilterController::class, 'getYearsToLevel'])->name('get-years-to-level');
+        Route::get('/get-levels-to-standard/{id}', [TeacherFilterController::class, 'getLevelsToStandard'])->name('get-levels-to-standard');
+        Route::get('/get-right-currency/{id}', [TeacherFilterController::class, 'getRightCurrency'])->name('get-levels-to-standard');
 
         /** Notes */
         Route::resource('/notes', 'Teacher\TeacherNoteController')->except(['index']);

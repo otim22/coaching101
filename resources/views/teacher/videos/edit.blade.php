@@ -108,7 +108,7 @@
                                 <div class="form-group mb-4">
                                     <label for="standard_id">Standard</label>
                                     <div class="input-group mb-3">
-                                        <select class="custom-select" name="standard_id">
+                                        <select class="custom-select standard" name="standard_id">
                                             <option selected value="{{ $standard->id }}">{{ $standard->name }}</option>
                                             @foreach($standards as $standard)
                                                 <option value="{{ $standard->id }}">{{ $standard->name }}</option>
@@ -168,12 +168,18 @@
                                 <div class="form-group mb-4">
                                     <label for="price">Subject price</label>
                                     <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="currency">{{ $subject->currency->name }}</span>
+                                        </div>
                                         <input type="number"
                                                     class="form-control @error('price') is-invalid @enderror"
                                                     id="price"
                                                     aria-describedby="price"
                                                     name="price"
                                                     value="{{ old('price', $subject->price) }}">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">.00</span>
+                                        </div>
                                     </div>
                                     <p><small style="color: gray; font-weight: bold;">*Price should be only digits</small></p>
                                     @error('price')
@@ -219,4 +225,5 @@
 
 @push('scripts')
     <script src="{{ asset('js/filter_levels_and_years.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/get_right_currency.js')}}" type="text/javascript"></script>
 @endpush

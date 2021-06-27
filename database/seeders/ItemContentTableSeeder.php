@@ -16,7 +16,6 @@ class ItemContentTableSeeder extends Seeder
     public function run()
     {
         $itemContents = factory(ItemContent::class, 100)->create();
-
         $imageUrl = 'http://via.placeholder.com/800x650';
 
         foreach ($itemContents as $itemContent) {
