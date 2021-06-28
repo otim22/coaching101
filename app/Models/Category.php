@@ -4,9 +4,10 @@ namespace App\Models;
 
 use App\Utilities\FilterBuilder;
 use Spatie\Sluggable\HasSlug;
+use App\Helpers\SessionWrapper;
 use Spatie\Sluggable\SlugOptions;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -19,12 +20,11 @@ class Category extends Model
      */
     public function getSlugOptions() : SlugOptions
     {
-        return SlugOptions::create()
-                                                ->generateSlugsFrom('name')
-                                                ->saveSlugsTo('slug')
-                                                ->allowDuplicateSlugs()
-                                                ->slugsShouldBeNoLongerThan(20)
-                                                ->usingSeparator('_');
+        return SlugOptions::create()->generateSlugsFrom('name')
+                                    ->saveSlugsTo('slug')
+                                    ->allowDuplicateSlugs()
+                                    ->slugsShouldBeNoLongerThan(20)
+                                    ->usingSeparator('_');
     }
 
     /**
@@ -53,9 +53,9 @@ class Category extends Model
     /**
     * Get the subjects for the category.
     */
-   public function subjects()
+   public function itemContents()
    {
-        return $this->hasMany('App\Models\Subject');
+        return $this->hasMany('App\Models\ItemContent');
    }
 
     /**
@@ -64,5 +64,11 @@ class Category extends Model
     public function years()
     {
         return $this->belongsToMany('App\Models\Year');
+    }
+
+    public function standards()
+    {
+        return $this->belongsToMany('App\Models\Standard', 'standard_categories')
+                            ->wherePivot('standard_id', SessionWrapper::getData('standardId'));
     }
 }

@@ -20,11 +20,11 @@
             @endguest
 
             @auth
-                @if(auth()->user()->role == 1)
+                @if(auth()->user()->hasRole('student'))
                     <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-primary" name="button">Start teaching</a>
-                @elseif(auth()->user()->role == 2)
+                @elseif(auth()->user()->hasRole('teacher'))
                     <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">My Subjects</a>
-                @else(auth()->user()->role == 3)
+                @else(auth()->user()->hasRole('admin'))
                     <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">My Subjects</a>
                 @endif
             @endauth

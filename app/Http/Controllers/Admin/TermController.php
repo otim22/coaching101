@@ -17,7 +17,7 @@ class TermController extends Controller
     {
         $terms = Term::orderBy('created_at', 'desc')->get();
 
-        return view('admin.terms.index', compact(['terms']));
+        return view('admin.terms.index', compact('terms'));
     }
 
     /**

@@ -1,8 +1,14 @@
-.student_learn_section, .class_requirement_section, .target_students_section, .book_objective_section {
+.student_learn_section,
+.class_requirement_section,
+.target_students_section,
+.book_objective_section{
     display: flex;
   }
 
-.students_learn_input, .class_requirement_input, .target_students_input, .books_objective_input {
+.students_learn_input,
+.class_requirement_input,
+.target_students_input,
+.books_objective_input{
     flex-grow: 1;
 }
 
@@ -14,7 +20,10 @@
     display: block;
 }
 
-.delete_student_learn, .delete_class_requirement, .delete_target_students, .delete_book_objective {
+.delete_student_learn,
+.delete_class_requirement,
+.delete_target_students,
+.delete_book_objective {
     color: white;
     background-color: rgb(231, 76, 60);
     text-align: center;

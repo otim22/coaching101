@@ -2,7 +2,7 @@
 
 namespace App\Facades;
 
-use App\Models\Subject;
+use App\Models\ItemContent;
 
 class Cart
 {
@@ -12,7 +12,7 @@ class Cart
             $this->set($this->empty());
     }
 
-    public function add(Subject $subject): void
+    public function add(ItemContent $subject): void
     {
         $cart = $this->get();
 
@@ -26,9 +26,9 @@ class Cart
     public function remove(int $subjectId): void
     {
         $cart = $this->get();
-
-        array_splice($cart['subjects'], array_search($subjectId, array_column($cart['subjects'], 'id')), 1);
-
+        $cart['subjects'] = array_filter($cart['subjects'], function ($value) use ($subjectId) {
+            return !($subjectId == $value->id);
+        });
         $this->set($cart);
     }
 

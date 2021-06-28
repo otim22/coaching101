@@ -27,11 +27,6 @@
                                                 </form>
                                             </li>
                                             <li>
-                                                <a href="{{ route('admin.books.edit', $book) }}" class="dropdown-item">
-                                                    Edit
-                                                </a>
-                                            </li>
-                                            <li>
                                                 <a class="dropdown-item"
                                                    href="#"
                                                    onclick="event.preventDefault(); document.getElementById('delete-book-item').submit();">
@@ -46,11 +41,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="mb-3">{{ $book->title }}</h4>
-                        @if($book->creator)
-                            <img src="{{ asset($book->getFirstMediaUrl('teacher_cover_image')) }}" class="w-50 mb-3">
-                        @else
-                            <img src="{{ asset($book->getFirstMediaUrl('cover_image')) }}" class="w-50 mb-3">
-                        @endif
+                        <img src="{{ asset($book->getFirstMediaUrl('cover_images')) }}" class="w-50 mb-3">
 
                         @if(!$book->price)
                             <p>Free</p>
@@ -62,18 +53,18 @@
 
                         <div class="mb-3">
                             <h4 class="bold">Book objectives </h4>
-                            @foreach($book->book_objective as $book_objective)
-                            <p><i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i><span class="align-middle">{{ $book_objective }}</span></p>
-                            @endforeach
+                            @if($book->book_objective)
+                                @foreach($book->book_objective as $book_objective)
+                                <p><i class="material-icons material-icons_custommd-14 align-middle">navigate_next</i><span class="align-middle">{{ $book_objective }}</span></p>
+                                @endforeach
+                            @else
+                                <p>No data</p>
+                            @endif
                         </div>
 
-                        @if(Auth::user()->role == 4)
+                        @if(Auth::user()->hasRole('super-admin'))
                             @if($book->creator)
-                                <a class="btn btn-secondary btn-sm" href="{{ $book->getFirstMediaUrl('teacher_book') }}" target="_blank">
-                                    Download book
-                                </a>
-                            @else
-                                <a class="btn btn-secondary btn-sm" href="{{ $book->getFirstMediaUrl('book') }}" target="_blank">
+                                <a class="btn btn-secondary btn-sm" href="{{ $book->getFirstMediaUrl('books') }}" target="_blank">
                                     Download book
                                 </a>
                             @endif

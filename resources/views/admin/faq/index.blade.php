@@ -14,7 +14,7 @@
                             <h4 class="card-title mt-1 increased-font"><strong>All</strong>  available faqs</h4>
                         </div>
                         <div>
-                            <a type="button" class="btn btn-secondary float-right" href="{{ route('admin.faqs.create') }}">
+                            <a type="button" class="btn btn-primary float-right" href="{{ route('admin.faqs.create') }}">
                                 Create new faq
                             </a>
                         </div>

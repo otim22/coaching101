@@ -14,9 +14,15 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item">
-                    <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
-                </li>
+                @if(auth()->user()->hasRole('student'))
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
+                    </li>
+                @elseif(auth()->user()->hasRole('teacher'))
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
+                    </li>
+                @endif
                 <li class="breadcrumb-item active" aria-current="page">Profile</li>
             </ol>
         </nav>
@@ -58,7 +64,7 @@
 
                     <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                         @if($user->profile)
-                            @if($user->role == 1)
+                            @if(auth()->user()->hasRole('student'))
                                 <form action="{{ route('users.profile.update') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('patch')
@@ -118,7 +124,7 @@
                                             </div>
                                         </div>
                                 </form>
-                            @elseif($user->role == 2)
+                            @elseif(auth()->user()->hasRole('teacher'))
                                 <form action="{{ route('users.profile.update') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('patch')
@@ -180,7 +186,7 @@
                                 </form>
                             @endif
                         @else
-                            @if($user->role == 1)
+                            @if(auth()->user()->hasRole('student'))
                             <form action="{{ route('users.profile.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                     <div class="card  p-2">
@@ -236,7 +242,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            @elseif($user->role == 2)
+                            @elseif(auth()->user()->hasRole('teacher'))
                             <form action="{{ route('users.profile.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                     <div class="card  p-2">
@@ -308,6 +314,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('vendor/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/profile.js')}}" type="text/javascript"></script>
 @endpush

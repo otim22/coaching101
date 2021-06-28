@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Subject;
+use App\Models\ItemContent;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Category;
@@ -14,19 +14,19 @@ class SubjectsController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::paginate(50);
+        $subjects = ItemContent::where('item_id', 1)->paginate(50);
 
         return view('admin.videos.index', compact('subjects'));
     }
 
-    public function show(Subject $subject)
+    public function show(ItemContent $subject)
     {
         return view('admin.videos.show', compact('subject'));
     }
 
-    public function approve(Subject $subject)
+    public function approve(ItemContent $subject)
     {
-        $approveSubject = Subject::find($subject->id);
+        $approveSubject = ItemContent::find($subject->id);
 
         if($approveSubject->is_approved == 0) {
             $approveSubject->is_approved = 1;
@@ -44,7 +44,7 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy(ItemContent $subject)
     {
         try {
             $subject->delete();

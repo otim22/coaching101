@@ -86,6 +86,43 @@
                                     <span class="drawer-menu-text"> Past papers</span>
                                 </a>
                             </li>
+                            <li class="drawer-menu-item  ">
+                                <a href="{{ url('/admin/items') }}">
+                                    <span class="drawer-menu-text"> Items</span>
+                                </a>
+                            </li>
+                            <li class="drawer-menu-item  ">
+                                <a href="{{ url('/admin/currencies') }}">
+                                    <span class="drawer-menu-text"> Currencies</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- MANAGEMENT MENU -->
+                <ul class="drawer-menu" id="componentsSurvey" data-children=".drawer-submenu">
+                    <li class="drawer-menu-item drawer-submenu">
+                        <a data-toggle="collapse" data-parent="#componentsSurvey" href="#" data-target="#uiComponentsSurvey" aria-controls="uiComponentsSurvey" aria-expanded="false" class="collapsed">
+                            <i class="material-icons">live_help</i>
+                            <span class="drawer-menu-text"> Survey</span>
+                          </a>
+                        <ul class="collapse " id="uiComponentsSurvey">
+                            <li class="drawer-menu-item  ">
+                                <a href="{{ url('/admin/surveys') }}">
+                                    <span class="drawer-menu-text"> Survey</span>
+                                </a>
+                            </li>
+                            <li class="drawer-menu-item  ">
+                                <a href="{{ url('/admin/surveyQuestions') }}">
+                                    <span class="drawer-menu-text"> Question</span>
+                                </a>
+                            </li>
+                            <li class="drawer-menu-item  ">
+                                <a href="{{ url('/admin/surveyAnswers') }}">
+                                    <span class="drawer-menu-text"> Answer</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -106,6 +143,16 @@
                             <li class="drawer-menu-item">
                                 <a href="{{ url('/admin/categories') }}">
                                     <span class="drawer-menu-text">Subject</span>
+                                </a>
+                            </li>
+                            <li class="drawer-menu-item">
+                                <a href="{{ url('/admin/standards') }}">
+                                    <span class="drawer-menu-text">Standard</span>
+                                </a>
+                            </li>
+                            <li class="drawer-menu-item">
+                                <a href="{{ url('/admin/levels') }}">
+                                    <span class="drawer-menu-text">Level</span>
                                 </a>
                             </li>
                             <li class="drawer-menu-item">

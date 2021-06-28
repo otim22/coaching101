@@ -14,22 +14,26 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            StandardTableSeeder::class,
             PermissionTableSeeder::class,
             UserTableSeeder::class,
             SliderTableSeeder::class,
             CategoryTableSeeder::class,
+            LevelTableSeeder::class,
             YearTableSeeder::class,
             TermTableSeeder::class,
-            SubjectTableSeeder::class,
+            CurrencyTableSeeder::class,
+            ItemTableSeeder::class,
+            ItemContentTableSeeder::class,
             MessageTableSeeder::class,
             AudienceTableSeeder::class,
             ProfileTableSeeder::class,
+            SurveyTableSeeder::class,
+            SurveyQuestionTableSeeder::class,
+            SurveyAnswerTableSeeder::class,
             StudentImageTableSeeder::class,
             TeacherImageTableSeeder::class,
             FaqTableSeeder::class,
-            BookTableSeeder::class,
-            NoteTableSeeder::class,
-            PastpaperTableSeeder::class,
             QuestionTableSeeder::class,
         ]);
     }

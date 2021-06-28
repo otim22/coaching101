@@ -7,7 +7,7 @@
             @if($teacher->profile)
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <a href="{{ route('teachers.index', $teacher->slug) }}" style="text-decoration:none;">
-                        <div class="card mb-3">
+                        <div class="card mb-4">
                             <div class="row no-gutters">
                                 <div class="col-4">
                                     @if($teacher->profile->getFirstMediaUrl('profile'))

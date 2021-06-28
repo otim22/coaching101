@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use App\Models\Book;
-use App\Models\Note;
-use App\Models\Subject;
-use App\Models\PastPaper;
 use Illuminate\Http\Request;
+use App\Models\ItemContent;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
@@ -19,23 +16,23 @@ class AdminController extends Controller
 
     public function index()
     {
-        $studentCount = User::where('role', 1)->count();
-        $teacherCount = User::where('role', 2)->count();
+        $studentCount = User::role('student')->get()->count();
+        $teacherCount = User::role('teacher')->get()->count();
         $userCount = $studentCount + $teacherCount;
 
-        $subjectCount = Subject::count();
-        $bookCount = Book::count();
-        $noteCount = Note::count();
-        $pastpaperCount = PastPaper::count();
+        $subjectCount = ItemContent::where('item_id', 1)->count();
+        $bookCount = ItemContent::where('item_id', 2)->count();
+        $noteCount = ItemContent::where('item_id', 3)->count();
+        $pastpaperCount = ItemContent::where('item_id', 4)->count();
 
         return view('admin.index', compact([
-                    'userCount', 'studentCount', 'teacherCount', 'subjectCount', 'bookCount', 'noteCount', 'pastpaperCount'
-                ]));
+            'userCount', 'studentCount', 'teacherCount', 'subjectCount', 'bookCount', 'noteCount', 'pastpaperCount'
+        ]));
     }
 
     public function adminUser()
     {
-        $admins = User::where('role', 3)->get();
+        $admins = User::where('role', "admin")->get();
 
         return view('admin.users.admins.index', compact('admins'));
     }
@@ -44,8 +41,8 @@ class AdminController extends Controller
     {
         $approveUser = User::find($student->id);
 
-        if($approveUser->role == 1) {
-            $approveUser->role = 3;
+        if($approveUser->role == "student") {
+            $approveUser->role = "admin";
             $approveUser->save();
         } else {
             return redirect()->route('admin.admins.index')->with('info', 'User already approved');

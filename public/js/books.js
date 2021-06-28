@@ -1,5 +1,5 @@
-/** Start book filtering **/
 $(function() {
+    /** Start book filtering **/
     $(document).on('click', '.pagination a', function(event) {
         event.preventDefault();
 
@@ -10,31 +10,29 @@ $(function() {
     $('#book_category, #book_year, #book_term').on('change', function() {
         getMoreBooks();
     });
-});
 
-function getMoreBooks(page) {
-    var selectedCategory = $("#book_category option:selected").val();
-    var selectedYear = $("#book_year option:selected").val();
-    var selectedTerm = $("#book_term option:selected").val();
+    function getMoreBooks(page) {
+        var selectedCategory = $("#book_category option:selected").val();
+        var selectedYear = $("#book_year option:selected").val();
+        var selectedTerm = $("#book_term option:selected").val();
 
-    $.ajax({
-        type: "GET",
-        data: {
-            'book_category': selectedCategory,
-            'book_year': selectedYear,
-            'book_term': selectedTerm
-        },
-        url: "get-more-books" + "?page=" + page,
-        success: function(data) {
-            $('#book_data').html(data);
-            window.livewire.rescan();
-        }
-    });
-}
-/** Start book filtering **/
+        $.ajax({
+            type: "GET",
+            data: {
+                'book_category': selectedCategory,
+                'book_year': selectedYear,
+                'book_term': selectedTerm
+            },
+            url: "get-more-books" + "?page=" + page,
+            success: function(data) {
+                $('#book_data').html(data);
+                window.livewire.rescan();
+            }
+        });
+    }
+    /** Start book filtering **/
 
-/** Start book objectives **/
-$(function () {
+    /** Start book objectives **/
     let maxField = 10;
     let startValue = 1;
 
@@ -70,5 +68,37 @@ $(function () {
             startValue--;
         });
     }
+    /** End book objectives **/
+
+    /** Start Delete a particular objective **/
+    $("p.objective-delete").on("click", function() {
+        var objectiveDeleteUrl = $(this).attr("data-objective-delete-url");
+        var objectiveId = $(this).attr("data-objective-id");
+        deleteStudentLearn(objectiveDeleteUrl, objectiveId);
+    });
+
+    function deleteStudentLearn(objectiveDeleteUrl, objectiveId) {
+        $.ajax({
+            type: "POST",
+            url: objectiveDeleteUrl,
+            dataType: "JSON",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                id: objectiveId
+            },
+            success: function (response) {
+                console.log(response);
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+           }
+        });
+
+        setTimeout(function () {
+            document.location.reload(true);
+        }, 1000);
+    }
+    /** End Delete a particular objective **/
 });
-/** End book objectives **/

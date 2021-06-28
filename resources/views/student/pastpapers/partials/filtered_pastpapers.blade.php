@@ -9,23 +9,6 @@
                                 <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                 @if($pastpaper->creator)
                                     <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                                @endif
-
-                                @if($pastpaper->price)
-                                    UGX {{ $pastpaper->formatPrice }}/- <span class="author-font">(Paid)</span>
-                                @else
-                                    <span class="bold paid_color">Free</span>
-                                @endif
-                            </a>
-                        @elseif(!$pastpaper->price)
-                            <a href="{{ route('student.pastpapers.show', $pastpaper) }}" style="text-decoration: none" class="title-font">
-                                <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
-                                @if($pastpaper->creator)
-                                    <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($pastpaper->price)
@@ -39,8 +22,6 @@
                                 <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                 @if($pastpaper->creator)
                                     <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($pastpaper->price)
@@ -62,7 +43,7 @@
             <p>The pastpaper(s) you are looking for was not found. </p>
         </div>
     @endforelse
-        <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
-            {{ $pastpapers->links() }}
-        </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-4">
+        {{ $pastpapers->links() }}
+    </div>
 </div>

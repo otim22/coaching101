@@ -9,23 +9,6 @@
                                 <span class="bold">{{ $note->very_short_title }}</span><br />
                                 @if($note->creator)
                                     <span class="author-font">{{ $note->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                                @endif
-
-                                @if($note->price)
-                                    UGX {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
-                                @else
-                                    <span class="bold paid_color">Free</span>
-                                @endif
-                            </a>
-                        @elseif(!$note->price)
-                            <a href="{{ route('student.notes.show', $note) }}" style="text-decoration: none" class="title-font">
-                                <span class="bold">{{ $note->very_short_title }}</span><br />
-                                @if($note->creator)
-                                    <span class="author-font">{{ $note->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($note->price)
@@ -39,8 +22,6 @@
                                 <span class="bold">{{ $note->very_short_title }}</span><br />
                                 @if($note->creator)
                                     <span class="author-font">{{ $note->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($note->price)

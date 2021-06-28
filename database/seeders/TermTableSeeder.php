@@ -14,14 +14,12 @@ class TermTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Term::class)->create([
-            'name' => 'Term one'
-        ]);
-        factory(Term::class)->create([
-            'name' => 'Term two'
-        ]);
-        factory(Term::class)->create([
-            'name' => 'Term three'
-        ]);
+        $terms = ['Term one', 'Term two', 'Term three'];
+        
+        foreach ($terms as $term) {
+            factory(Term::class)->create([
+                'name' => $term
+            ]);
+        }
     }
 }

@@ -19,7 +19,7 @@
                                     <th scope="col"></th>
                                     <th scope="col">Names</th>
                                     <th scope="col">Email</th>
-                                    @if(Auth::user()->role == 4)
+                                    @if(Auth::user()->hasRole('super-admin'))
                                         <th scope="col">Action</th>
                                     @endif
                                 </tr>
@@ -31,7 +31,7 @@
                                     <td><a href="{{ route('admin.students.show', $student) }}" style="text-decoration: none;">{{ Str::ucfirst($student->name) }}</a></td>
                                     <td><a href="{{ route('admin.students.show', $student) }}" style="text-decoration: none;">{{ $student->email }}</a></td>
                                     <td class="align-middle" style="width:40px">
-                                        @if(Auth::user()->role == 4)
+                                        @if(Auth::user()->hasRole('super-admin'))
                                             <a class="btn btn-white btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="material-icons md-18 align-middle">more_vert</i>
                                             </a>
