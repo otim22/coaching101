@@ -1,7 +1,7 @@
 <div>
     <div class="d-flex justify-content-between">
         <div>
-            <h4 class="mb-4 bold">My available video subjects</h4>
+            <h4 class="mb-3 bold">My available video subjects</h4>
         </div>
         <div>
             <a id="round-button-2" class="btn btn-primary" type="button" href="{{ route('subjects') }}">
