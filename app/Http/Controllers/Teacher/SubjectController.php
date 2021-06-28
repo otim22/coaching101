@@ -106,7 +106,15 @@ class SubjectController extends Controller
     public function update(Request $request, ItemContent $subject)
     {
         $this->validateData($request);
-        $subject->update($request->except(['cover_image']));
+        $std = Standard::find($request->input('standard_id'));
+
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        $subject->currency_id = $currency->id;
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
             foreach ($subject->media as $media) {
@@ -115,6 +123,7 @@ class SubjectController extends Controller
             $subject->addMediaFromRequest('cover_image')->toMediaCollection('videos');
         }
 
+        $subject->save();
         return redirect()->route('subjects.show', $subject)->with('success', 'Subject updated successfully');
     }
 

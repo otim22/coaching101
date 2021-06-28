@@ -6,6 +6,7 @@ use App\Models\Year;
 use App\Models\Term;
 use App\Models\Item;
 use App\Models\Level;
+use App\Models\Currency;
 use App\Models\Standard;
 use App\Models\Category;
 use Illuminate\Support\Arr;
@@ -110,6 +111,15 @@ class TeacherNoteController extends Controller
         $data = $this->validateData($request);
         $note->fill(Arr::except($data, ['objective', 'note']));
         $note->objective = array_filter($request->objective);
+        $std = Standard::find($request->input('standard_id'));
+
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        $note->currency_id = $currency->id;
         $note->save();
 
         if($request->hasFile('note') && $request->file('note')->isValid()) {

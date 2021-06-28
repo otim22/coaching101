@@ -120,6 +120,15 @@ class TeacherBookController extends Controller
         $data = $this->validateData($request);
         $book->fill(Arr::except($data, ['objective', 'note', 'book', 'cover_image']));
         $book->objective = array_filter($request->objective);
+        $std = Standard::find($request->input('standard_id'));
+
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        $book->currency_id = $currency->id;
         $book->save();
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {

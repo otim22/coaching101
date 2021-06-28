@@ -6,6 +6,7 @@ use App\Models\Item;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Level;
+use App\Models\Currency;
 use Illuminate\Support\Arr;
 use App\Models\Standard;
 use App\Models\Category;
@@ -55,6 +56,15 @@ class TeacherPastpaperController extends Controller
         $pastpaper->term_id = $request->input('term_id');
         $pastpaper->user_id = $request->input('user_id');
         $pastpaper->user_id = Auth::id();
+        $std = Standard::find($request->input('standard_id'));
+
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        $pastpaper->currency_id = $currency->id;
         $pastpaper->save();
 
         return redirect()->route('subPastpapers.create', $pastpaper)->with('success', 'Past paper saved successfully.');
@@ -100,6 +110,15 @@ class TeacherPastpaperController extends Controller
         $data = $this->validateData($request);
         $pastpaper->fill(Arr::except($data, ['objective']));
         $pastpaper->objective = array_filter($request->objective);
+        $std = Standard::find($request->input('standard_id'));
+
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        $pastpaper->currency_id = $currency->id;
         $pastpaper->save();
 
         return redirect()->route('teacher.pastpapers')->with('success', 'Past paper saved successfully.');
