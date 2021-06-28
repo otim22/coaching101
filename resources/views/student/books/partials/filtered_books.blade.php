@@ -6,25 +6,13 @@
                     @if($book->isSubscribedTo)
                         <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
                             @if($book->creator)
-                                <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                            @else
-                                <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                            @endif
-                        </a>
-                    @elseif(!$book->price)
-                        <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
-                            @if($book->creator)
-                                <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                            @else
-                                <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                                <img src="{{ $book->cover_image }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
                             @endif
                         </a>
                     @else
                         <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
                             @if($book->creator)
-                                <img src="{{ $book->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
-                            @else
-                                <img src="{{ $book->getFirstMediaUrl('cover_image') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                                <img src="{{ $book->cover_image }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
                             @endif
                         </a>
                     @endif
@@ -34,27 +22,10 @@
                                 <span class="bold">{{ $book->very_short_title }}</span><br />
                                 @if($book->creator)
                                     <span class="author-font">{{ $book->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($book->price)
                                     UGX {{ $book->formatPrice }}/- <span class="author-font">(Paid)</span>
-                                @else
-                                    <span class="bold paid_color">Free</span>
-                                @endif
-                            </a>
-                        @elseif(!$book->price)
-                            <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none" class="title-font">
-                                <span class="bold">{{ $book->very_short_title }}</span><br />
-                                @if($book->creator)
-                                    <span class="author-font">{{ $book->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
-                                @endif
-
-                                @if($book->price)
-                                    <span class="bold">UGX {{ $book->formatPrice }}/-</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif
@@ -64,8 +35,6 @@
                                 <span class="bold">{{ $book->very_short_title }}</span><br />
                                 @if($book->creator)
                                     <span class="author-font">{{ $book->creator->name }}</span><br />
-                                @else
-                                    <span class="author-font">{{ \App\Constants\GlobalConstants::ADMIN }}</span><br />
                                 @endif
 
                                 @if($book->price)

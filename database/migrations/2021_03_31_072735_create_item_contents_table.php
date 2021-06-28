@@ -21,7 +21,10 @@ class CreateItemContentsTable extends Migration
             $table->text('description')->nullable();
             $table->json('objective')->nullable();
             $table->float('price')->nullable();
+            // $table->string('currency');
             $table->boolean('is_approved')->default(false);
+            $table->foreignId('standard_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('level_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('item_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('year_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

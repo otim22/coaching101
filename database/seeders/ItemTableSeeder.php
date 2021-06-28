@@ -15,24 +15,12 @@ class ItemTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Item::class)->create([
-            'name' => 'Subject',
-            'slug' => 'subject',
-        ]);
+        $items = ['Subject', 'Book', 'Note', 'Pastpaper'];
 
-        factory(Item::class)->create([
-            'name' => 'Book',
-            'slug' => 'book',
-        ]);
-
-        factory(Item::class)->create([
-            'name' => 'Note',
-            'slug' => 'note',
-        ]);
-
-        factory(Item::class)->create([
-            'name' => 'Pastpaper',
-            'slug' => 'pastpaper',
-        ]);
+        foreach($items as $item) {
+            factory(Item::class)->create([
+                'name' => $item,
+            ]);
+        }
     }
 }

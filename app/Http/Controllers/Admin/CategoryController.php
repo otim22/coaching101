@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Year;
+use App\Models\Standard;
 use App\Models\Category;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -28,9 +28,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $years = Year::get();
+        $standards = Standard::get();
 
-        return view('admin.categories.create', compact('years'));
+        return view('admin.categories.create', compact('standards'));
     }
 
     /**
@@ -43,9 +43,12 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
+            'standard_id' => 'required|integer',
         ]);
 
-        Category::create(['name' => $request->name]);
+        $categoryData = Category::create(['name' => $request->name]);
+        $category = Category::find($categoryData->id);
+        $category->standards()->attach($request->standard_id);
 
         return redirect()->route('admin.categories.index')->with('success', 'Category added successfully.');
     }
@@ -69,9 +72,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $years = Year::get();
+        $standards = Standard::get();
 
-        return view('admin.categories.edit', compact(['category', 'years']));
+        return view('admin.categories.edit', compact(['category', 'standards']));
     }
 
     /**
@@ -85,6 +88,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
+            'standard_id' => 'required|integer',
         ]);
 
         $category->fill($request->all())->save();

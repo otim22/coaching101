@@ -16,8 +16,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        $studentCount = User::where('role', 1)->count();
-        $teacherCount = User::where('role', 2)->count();
+        $studentCount = User::role('student')->get()->count();
+        $teacherCount = User::role('teacher')->get()->count();
         $userCount = $studentCount + $teacherCount;
 
         $subjectCount = ItemContent::where('item_id', 1)->count();
@@ -32,7 +32,7 @@ class AdminController extends Controller
 
     public function adminUser()
     {
-        $admins = User::where('role', 3)->get();
+        $admins = User::where('role', "admin")->get();
 
         return view('admin.users.admins.index', compact('admins'));
     }
@@ -41,8 +41,8 @@ class AdminController extends Controller
     {
         $approveUser = User::find($student->id);
 
-        if($approveUser->role == 1) {
-            $approveUser->role = 3;
+        if($approveUser->role == "student") {
+            $approveUser->role = "admin";
             $approveUser->save();
         } else {
             return redirect()->route('admin.admins.index')->with('info', 'User already approved');

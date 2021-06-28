@@ -1,6 +1,6 @@
 @forelse($question->comments->whereNull('parent_id') as $comment)
     <div class="pb-2">
-        @if($comment->user->role == 1)
+        @if($comment->user->role == "student")
             <div class="circle_comment">
                 <span class="circle_comment__content">{{ InitialGenerator::generate_initials($comment->user->name) }}</span>
             </div>
@@ -13,7 +13,7 @@
     </div>
     @foreach($comment->replies as $reply)
         <div class="pb-2">
-            @if($reply->user->role == 1)
+            @if($reply->user->role == "student")
                 <div class="circle_comment">
                     <span class="circle_comment__content">{{ InitialGenerator::generate_initials($reply->user->name) }}</span>
                 </div>

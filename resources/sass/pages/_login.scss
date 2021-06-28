@@ -17,6 +17,12 @@
         max-width: 100px !important;
 }
 
+@include lg-screens  {
+    .hide-at-lg {
+        display: none;
+    }
+}
+
 @include md-screens {
     .hide-at-md {
         display: none;

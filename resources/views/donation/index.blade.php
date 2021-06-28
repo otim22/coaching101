@@ -78,64 +78,11 @@
                                         <div class="input-group">
                                             <select class="custom-select currency" name="currency">
                                                 <option selected>UGX</option>
-                                                <option value="AED">AED</option>
-                                                <option value="ARS">ARS</option>
-                                                <option value="AUD">AUD</option>
-                                                <option value="BGN">BGN</option>
-                                                <option value="BRL">BRL</option>
-                                                <option value="BWP">BWP</option>
-                                                <option value="CAD">CAD</option>
-                                                <option value="CFA">CFA</option>
-                                                <option value="CHF">CHF</option>
-                                                <option value="CNY">CNY</option>
-                                                <option value="COP">COP</option>
-                                                <option value="CRC">CRC</option>
-                                                <option value="CZK">CZK</option>
-                                                <option value="DKK">DKK</option>
-                                                <option value="EUR">EUR</option>
-                                                <option value="GBP">GBP</option>
-                                                <option value="GHS">GHS</option>
-                                                <option value="HKD">HKD</option>
-                                                <option value="HUF">HUF</option>
-                                                <option value="ILS">ILS</option>
-                                                <option value="INR">INR</option>
-                                                <option value="JPY">JPY</option>
-                                                <option value="KES">KES</option>
-                                                <option value="MAD">MAD</option>
-                                                <option value="MOP">MOP</option>
-                                                <option value="MUR">MUR</option>
-                                                <option value="MXN">MXN</option>
-                                                <option value="MYR">MYR</option>
-                                                <option value="NGN">NGN</option>
-                                                <option value="NOK">NOK</option>
-                                                <option value="NZD">NZD</option>
-                                                <option value="PEN">PEN</option>
-                                                <option value="PHP">PHP</option>
-                                                <option value="PLN">PLN</option>
-                                                <option value="RUB">RUB</option>
-                                                <option value="RWF">RWF</option>
-                                                <option value="SAR">SAR</option>
-                                                <option value="SEK">SEK</option>
-                                                <option value="SGD">SGD</option>
-                                                <option value="SLL">SLL</option>
-                                                <option value="THB">THB</option>
-                                                <option value="TRY">TRY</option>
-                                                <option value="TWD">TWD</option>
-                                                <option value="TZS">TZS</option>
-                                                <option value="UGX">UGX</option>
-                                                <option value="USD">USD</option>
-                                                <option value="VEF">VEF</option>
-                                                <option value="XAF">XAF</option>
-                                                <option value="XOF">XOF</option>
-                                                <option value="ZAR">ZAR</option>
-                                                <option value="ZMK">ZMK</option>
-                                                <option value="ZMW">ZMW</option>
-                                                <option value="ZMD">ZMD</option>
+                                                @foreach($currencies as $currency)
+                                                    <option value="{{ $currency->id }}">{{ $currency->name }}</option>
+                                                @endforeach
                                             </select>
                                             <input type="number"  name="amount" value="{{ old('amount') }}" aria-label="First name" class="form-control">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">.00</span>
-                                            </div>
                                         </div>
                                         @error('currency')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -171,8 +118,9 @@
                                     </div>
 
                                     <div class="form-group mt-4">
-                                        <label for="duration">Duration <span class="light_gray_color"></span></label>
+                                        <label for="duration">Duration of donation<span class="light_gray_color">(*Optional)</span></label>
                                         <input type="number" class="form-control" name="duration" value="{{ old('duration') }}" placeholder="Example: 1" />
+                                        <span class="light_gray_color"><small>Example: If set to 5 with interval of monthly you would be charged 5 months, and the subscription stops.</small></span>
                                         @error('duration')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                         @enderror
@@ -183,64 +131,11 @@
                                         <div class="input-group">
                                             <select class="custom-select currency" name="currency">
                                                 <option selected>UGX</option>
-                                                <option value="AED">AED</option>
-                                                <option value="ARS">ARS</option>
-                                                <option value="AUD">AUD</option>
-                                                <option value="BGN">BGN</option>
-                                                <option value="BRL">BRL</option>
-                                                <option value="BWP">BWP</option>
-                                                <option value="CAD">CAD</option>
-                                                <option value="CFA">CFA</option>
-                                                <option value="CHF">CHF</option>
-                                                <option value="CNY">CNY</option>
-                                                <option value="COP">COP</option>
-                                                <option value="CRC">CRC</option>
-                                                <option value="CZK">CZK</option>
-                                                <option value="DKK">DKK</option>
-                                                <option value="EUR">EUR</option>
-                                                <option value="GBP">GBP</option>
-                                                <option value="GHS">GHS</option>
-                                                <option value="HKD">HKD</option>
-                                                <option value="HUF">HUF</option>
-                                                <option value="ILS">ILS</option>
-                                                <option value="INR">INR</option>
-                                                <option value="JPY">JPY</option>
-                                                <option value="KES">KES</option>
-                                                <option value="MAD">MAD</option>
-                                                <option value="MOP">MOP</option>
-                                                <option value="MUR">MUR</option>
-                                                <option value="MXN">MXN</option>
-                                                <option value="MYR">MYR</option>
-                                                <option value="NGN">NGN</option>
-                                                <option value="NOK">NOK</option>
-                                                <option value="NZD">NZD</option>
-                                                <option value="PEN">PEN</option>
-                                                <option value="PHP">PHP</option>
-                                                <option value="PLN">PLN</option>
-                                                <option value="RUB">RUB</option>
-                                                <option value="RWF">RWF</option>
-                                                <option value="SAR">SAR</option>
-                                                <option value="SEK">SEK</option>
-                                                <option value="SGD">SGD</option>
-                                                <option value="SLL">SLL</option>
-                                                <option value="THB">THB</option>
-                                                <option value="TRY">TRY</option>
-                                                <option value="TWD">TWD</option>
-                                                <option value="TZS">TZS</option>
-                                                <option value="UGX">UGX</option>
-                                                <option value="USD">USD</option>
-                                                <option value="VEF">VEF</option>
-                                                <option value="XAF">XAF</option>
-                                                <option value="XOF">XOF</option>
-                                                <option value="ZAR">ZAR</option>
-                                                <option value="ZMK">ZMK</option>
-                                                <option value="ZMW">ZMW</option>
-                                                <option value="ZMD">ZMD</option>
+                                                @foreach($currencies as $currency)
+                                                    <option value="{{ $currency->id }}">{{ $currency->name }}</option>
+                                                @endforeach
                                             </select>
                                             <input type="number"  name="amount" value="{{ old('amount') }}" aria-label="First name" class="form-control">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">.00</span>
-                                            </div>
                                         </div>
                                         @error('currency')
                                             <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -285,6 +180,6 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/tab-selection.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/tab_selection.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/donate.js')}}" type="text/javascript"></script>
 @endpush

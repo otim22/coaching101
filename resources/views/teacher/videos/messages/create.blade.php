@@ -20,20 +20,24 @@
         </nav>
     </div>
 </section>
-
+<div class="container">
+    @include('flash.messages')
+</div>
 <section class="section-two">
     <div class="container">
         <div class="row justify-content-center mt-5 mb-5">
-            <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">
                 <form action="{{ route('messages', $subject) }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="fast-transition mb-3">
-                        <div class="row m-2">
+                    <div class="card p-3">
+                        <div class="card-body">
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <h5>Subject messages</h5> <hr />
+                                <h5 class="bold">Subject messages</h5>
                             </div>
-
+                            <div class="col-sm-12 col-md-12 col-lg-12 mt-4 mb-4">
+                                <hr />
+                            </div>
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="welcome_message">Welcome message</label>
@@ -57,8 +61,7 @@
                                                             name="congragulation_message"
                                                             placeholder="Example: Congragulations for completing the subject"
                                                             rows="3"
-                                                            required>{{ old('congragulation_message') }}
-                                        </textarea>
+                                                            required>{{ old('congragulation_message') }}</textarea>
                                     </div>
                                     @error('congragulation_message')
                                         <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
@@ -71,7 +74,7 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
                         <div><h5>Step 3 of 3</h5></div>
                         <div>
-                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-sm pl-5 pr-5 ml-3 mr-3">Save</button>
+                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Save</button>
                         </div>
                     </div>
                 </form>

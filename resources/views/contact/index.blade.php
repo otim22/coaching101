@@ -43,11 +43,13 @@
             </div>
             <div class="col-lg-7 col-md-7 col-sm-12">
                 <div class="card">
-                    <div class="card-header p-5">
-                        <h4>Write us a message</h4>
-                        <div>Get in touch with us in the form below or Make any inquiries and surely we will get back to you.</div>
-                    </div>
                     <div class="card-body p-5">
+                        <div class="text-center">
+                            <h4 class="bold">Write us a message</h4>
+                        </div>
+                        <div class="pt-3 pb-4">
+                            <hr />
+                        </div>
                         <form action="{{ route('contacts.store') }}" method="POST">
                             @csrf
                             <div class="form-group">

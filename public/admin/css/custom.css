@@ -13,12 +13,16 @@
 }
 
 .book_objective_section,
-.note_objective_section {
+.note_objective_section,
+.pastpaper_objective_section,
+.survey_answer_section {
   display: flex;
 }
 
 .books_objective_input,
-.notes_objective_input {
+.notes_objective_input,
+.pastpapers_objective_input,
+.survey_answer_input {
   flex-grow: 1;
 }
 
@@ -31,12 +35,16 @@
 }
 
 .btn_books_objective,
-.btn_notes_objective {
+.btn_notes_objective,
+.btn_pastpapers_objective,
+.btn_survey_answer {
   cursor: pointer;
 }
 
 .delete_book_objective,
-.delete_note_objective {
+.delete_note_objective,
+.delete_pastpaper_objective,
+.delete_survey_answer {
   color: white;
   background-color: #e74c3c;
   text-align: center;

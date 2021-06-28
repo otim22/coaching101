@@ -9,13 +9,13 @@
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 @foreach($items as $key => $item)
-                    <a class="nav-link {{ $key === $items->keys()->first() ? 'active' : '' }}" id="{{ $item->slug }}-tab" data-toggle="tab" href="#{{ $item->slug }}" role="tab" aria-controls="{{ $item->slug }}" aria-selected="true">{{ $item->name }}</a>
+                    <a class="nav-link {{ $key === $items->keys()->first() ? 'active' : '' }}" id="{{ $item->slug }}-tab" data-toggle="tab" href="#{{ $item->name }}" role="tab" aria-controls="{{ $item->name }}" aria-selected="true">{{ $item->name }}</a>
                 @endforeach
                 <a class="nav-link" id="wishlist-tab" data-toggle="tab" href="#wishlist" role="tab" aria-controls="wishlist" aria-selected="false">Wishlist</a>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active mt-4" id="subject" role="tabpanel" aria-labelledby="subject-tab">
+            <div class="tab-pane fade show active mt-4" id="Subject" role="tabpanel" aria-labelledby="subject-tab">
                 <div class="row">
                     @forelse($subjects as $item)
                         <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
@@ -50,19 +50,19 @@
                             </a>
                         </div>
                     @empty
-                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
-                        <p>You currently don't have subjects to learn.</p>
-                        <a type="button" href="{{ route('home') }}" class="btn btn-danger mb-4" id="round-button-2">
-                            Go shopping
-                        </a>
-                    </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
+                            <p>You currently don't have video subject(s) to learn.</p>
+                            <a type="button" href="{{ route('home') }}" class="btn btn-danger mb-4" id="round-button-2">
+                                Go shopping
+                            </a>
+                        </div>
                     @endforelse
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-center">
                         {{ $subjects->links() }}
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade mt-4" id="book" role="tabpanel" aria-labelledby="book-tab">
+            <div class="tab-pane fade mt-4" id="Book" role="tabpanel" aria-labelledby="book-tab">
                 <div class="row">
                     @forelse($books as $item)
                         <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
@@ -80,19 +80,19 @@
                             </a>
                         </div>
                     @empty
-                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
-                        <p>You currently don't have books</p>
-                        <a type="button" href="{{ route('student.books.index') }}" class="btn btn-danger mb-4" id="round-button-2">
-                            Go shopping
-                        </a>
-                    </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
+                            <p>You currently don't have book(s)</p>
+                            <a type="button" href="{{ route('student.books.index') }}" class="btn btn-danger mb-4" id="round-button-2">
+                                Go shopping
+                            </a>
+                        </div>
                     @endforelse
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-center">
                         {{ $books->links() }}
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade mt-4" id="note" role="tabpanel" aria-labelledby="note-tab">
+            <div class="tab-pane fade mt-4" id="Note" role="tabpanel" aria-labelledby="note-tab">
                 <div class="row">
                     @forelse($notes as $item)
                         <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
@@ -109,19 +109,19 @@
                             </a>
                         </div>
                     @empty
-                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
-                        <p>You currently don't have notes</p>
-                        <a type="button" href="{{ route('student.notes.index') }}" class="btn btn-danger mb-4" id="round-button-2">
-                            Go shopping
-                        </a>
-                    </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
+                            <p>You currently don't have notes</p>
+                            <a type="button" href="{{ route('student.notes.index') }}" class="btn btn-danger mb-4" id="round-button-2">
+                                Go shopping
+                            </a>
+                        </div>
                     @endforelse
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-center">
                         {{ $notes->links() }}
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade mt-4" id="pastpaper" role="tabpanel" aria-labelledby="pastpaper-tab">
+            <div class="tab-pane fade mt-4" id="Pastpaper" role="tabpanel" aria-labelledby="pastpaper-tab">
                 <div class="row">
                     @forelse($pastpapers as $item)
                         <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
@@ -138,12 +138,12 @@
                             </a>
                         </div>
                     @empty
-                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
-                        <p>You currently don't have pastpapers</p>
-                        <a type="button" href="{{ route('student.pastpapers.index') }}" class="btn btn-danger mb-4" id="round-button-2">
-                            Go shopping
-                        </a>
-                    </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
+                            <p>You currently don't have pastpaper(s)</p>
+                            <a type="button" href="{{ route('student.pastpapers.index') }}" class="btn btn-danger mb-4" id="round-button-2">
+                                Go shopping
+                            </a>
+                        </div>
                     @endforelse
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3 d-flex justify-content-center">
                         {{ $pastpapers->links() }}
@@ -193,7 +193,7 @@
                         </div>
                     @empty
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
-                        <p>No available wishlisted subjects</p>
+                        <p>No available wishlisted item(s)</p>
                         <a type="button" href="{{ route('home') }}" class="btn btn-danger mb-4" id="round-button-2">
                             Go shopping
                         </a>
@@ -209,5 +209,5 @@
 </div>
 
 @push('scripts')
-    <script src="{{ asset('js/tab-selection.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/tab_selection.js')}}" type="text/javascript"></script>
 @endpush

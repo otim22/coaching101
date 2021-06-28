@@ -14,18 +14,20 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Subjects</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('manage.subjects') }}">Dashboard</a></li>
                 <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('subjects.show', $subject) }}">{{ $subject->short_title }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">New Topic</li>
             </ol>
         </nav>
     </div>
 </section>
-
+<div class="container">
+    @include('flash.messages')
+</div>
 <section class="section-two">
     <div class="container">
         <div class="row justify-content-center mt-5 mb-5">
-            <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">
                 <div class="fast-transition mb-3">
                     <div class="row m-2 pt-2">
                         <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between">
@@ -108,7 +110,7 @@
                                                                 id="resource_attachment_path"
                                                                 name="resource_attachment_path[]"
                                                                 value="{{ old('resource_attachment_path[]') }}"
-                                                                multiple accept="image/*,.pdf,.doc">
+                                                                multiple accept="image/*,.pdf">
                                                 </div>
                                                 <div>
                                                     <p type="button" class="btn btn-upload btn-resource_attachment pr-3">

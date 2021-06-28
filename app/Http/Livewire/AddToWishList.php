@@ -29,8 +29,6 @@ class AddToWishList extends Component
 
     public function addToWishlist(int $subjectId)
     {
-        // $this->removeFromCart($subjectId);
-        // dd($subjectId);
         if(Auth::check()) {
             $status = Wishlist::where('user_id', Auth::id())
                                                 ->where('item_content_id', $subjectId)

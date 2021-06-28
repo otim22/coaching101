@@ -61,7 +61,11 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        $item->save();
+        $request->validate([
+            'name' =>  'required', 'string'
+        ]);
+
+        $item->fill($request->all())->save();
 
         return redirect()->route('admin.items.index')->with('success', 'Item added successfully.');
     }

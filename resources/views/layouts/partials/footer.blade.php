@@ -16,9 +16,9 @@
                         <li><a href="{{ route('subjects.starter') }}">Teacher</a></li>
                     @endguest
                     @auth
-                        @if(Auth::user()->role == 1)
+                        @if(Auth::user()->hasRole('student'))
                             <li><a href="{{ route('subjects.starter') }}">Teacher</a></li>
-                        @elseif(Auth::user()->role == 2)
+                        @elseif(Auth::user()->hasRole('teacher'))
                             <li><a href="{{ route('manage.subjects') }}">Teacher</a></li>
                         @else
                             <li><a href="{{ route('manage.subjects') }}">Teacher</a></li>
@@ -41,9 +41,9 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <h5>Social</h5>
                 <div class="mt-3">
-                    <a target="_blank" href="https://twitter.com/otim16"><i class="fa fa-sm fa-twitter"></i></a>
-                    <a target="_blank" href="https://medium.com/@otimfredrick"><i class="fa fa-sm fa-medium"></i></a>
-                    <a target="_blank" href="https://linkedin.com/in/otim-fredrick-29730a86"><i class="fa fa-sm fa-linkedin"></i></a>
+                    <a target="_blank" href="https://twitter.com/otim16"><i class="fa fa-sm fa-twitter mr-2"></i></a>
+                    <a target="_blank" href="https://medium.com/@otimfredrick"><i class="fa fa-sm fa-medium mr-2"></i></a>
+                    <a target="_blank" href="https://linkedin.com/in/otim-fredrick-29730a86"><i class="fa fa-sm fa-linkedin mr-2"></i></a>
                     <a target="_blank" href="https://www.facebook.com/fredrickot"><i class="fa fa-sm fa-facebook"></i></a>
                 </div>
             </div>

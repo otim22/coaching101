@@ -19,7 +19,7 @@
                                     <th scope="col"></th>
                                     <th scope="col">Names</th>
                                     <th scope="col">Email</th>
-                                    @if(Auth::user()->role == 4)
+                                    @if(Auth::user()->hasRole('super-admin'))
                                         <th scope="col">Action</th>
                                     @endif
                                 </tr>
@@ -30,7 +30,7 @@
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td>{{ Str::ucfirst($admin->name) }}</td>
                                     <td>{{ $admin->email }}</td>
-                                    @if(Auth::user()->role == 4)
+                                    @if(Auth::user()->hasRole('super-admin'))
                                         <td>
                                             <a class="btn btn-outline-danger"
                                                         href="#"
