@@ -7,6 +7,7 @@ use App\Models\Year;
 use App\Models\Term;
 use App\Models\Item;
 use App\Models\Level;
+use App\Models\Currency;
 use App\Models\Category;
 use App\Models\Standard;
 use Illuminate\Http\Request;
@@ -26,16 +27,16 @@ class TeacherBookController extends Controller
 
     public function create()
     {
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $standards = Standard::get();
-        $levels = Level::get();
-        $years =  Year::get();
         $terms =  Term::get();
         $categories = Category::get();
         $item = Item::where('name', 'Book')->firstOrFail();
 
         return view('teacher.books.create', compact([
-                'categories', 'years', 'terms', 'item', 'standards', 'levels'
-            ]));
+            'categories', 'years', 'terms', 'item', 'standards', 'levels'
+        ]));
     }
 
     /**
@@ -57,7 +58,15 @@ class TeacherBookController extends Controller
         $book->year_id = $request->input('year_id');
         $book->term_id = $request->input('term_id');
         $book->user_id = Auth::id();
+        $std = Standard::find($request->input('standard_id'));
 
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        $book->currency_id = $currency->id;
         $book->save();
 
         if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
@@ -68,7 +77,7 @@ class TeacherBookController extends Controller
             $book->addMediaFromRequest('book')->toMediaCollection('books');
         }
 
-        return redirect()->route('teacher.books')->with('success', 'Book added successfully.');
+        return redirect()->route('books.show', $book)->with('success', 'Book saved successfully.');
     }
 
     public function show(ItemContent $book)
@@ -84,20 +93,20 @@ class TeacherBookController extends Controller
      */
     public function edit(ItemContent $book)
     {
-        $years =  Year::get();
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $terms =  Term::get();
         $categories = Category::get();
         $standards = Standard::get();
         $standard = Standard::find($book->standard_id);
-        $levels = Level::get();
         $level = Level::find($book->level_id);
-        $category = Category::where('id', $book->category_id)->firstOrFail();
-        $year = Year::where('id', $book->year_id)->firstOrFail();
-        $term = Term::where('id', $book->term_id)->firstOrFail();
+        $category = Category::find( $book->category_id);
+        $year = Year::find($book->year_id);
+        $term = Term::find($book->term_id);
 
         return view('teacher.books.edit', compact([
-                'book', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'
-            ]));
+            'book', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'
+        ]));
     }
 
     /**
@@ -111,23 +120,37 @@ class TeacherBookController extends Controller
         $data = $this->validateData($request);
         $book->fill(Arr::except($data, ['objective', 'note', 'book', 'cover_image']));
         $book->objective = array_filter($request->objective);
+        $std = Standard::find($request->input('standard_id'));
+
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        $book->currency_id = $currency->id;
         $book->save();
 
-        if($request->hasFile('cover_image') && $request->file('cover_images')->isValid()) {
+        if($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+
             foreach ($book->media as $media) {
-                $media->delete();
+                if($media->collection_name == "cover_image") {
+                    $media->delete();
+                }
             }
             $book->addMediaFromRequest('cover_image')->toMediaCollection('cover_image');
         }
 
         if($request->hasFile('book') && $request->file('book')->isValid()) {
             foreach ($book->media as $media) {
-                $media->delete();
+                if($media->collection_name == "books") {
+                    $media->delete();
+                }
             }
             $book->addMediaFromRequest('book')->toMediaCollection('books');
         }
 
-        return redirect()->route('teacher.books')->with('success', 'Book added successfully.');
+        return redirect()->route('books.show', $book)->with('success', 'Book updated successfully.');
     }
 
     protected function validateData($request)
@@ -168,7 +191,6 @@ class TeacherBookController extends Controller
     {
         try {
             $book->delete();
-
             return redirect()->route('teacher.books')->with('success', 'Book deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());

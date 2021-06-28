@@ -34,7 +34,7 @@
                             <h6 class="bold">Subject</h6>
                             <div class="resource-filter_input">
                                 <select class="custom-select" id="notes_category">
-                                    <option>{{ \App\Constants\GlobalConstants::ALL_SUBJECTS }}</option>
+                                    <option selected>{{ \App\Constants\GlobalConstants::ALL_SUBJECTS }}</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -45,8 +45,8 @@
                         <div class="pt-3 mb-3">
                             <h6 class="bold">Level</h6>
                             <div class="resource-filter_input">
-                                <select class="custom-select" id="level">
-                                    <option>{{ \App\Constants\GlobalConstants::ALL_LEVELS }}</option>
+                                <select class="custom-select level" id="level">
+                                    <option selected>{{ \App\Constants\GlobalConstants::ALL_LEVELS }}</option>
                                     @foreach($levels as $level)
                                         <option value="{{ $level->id }}">{{ $level->name }}</option>
                                     @endforeach
@@ -58,10 +58,7 @@
                             <h6 class="pt-3 bold">Class</h6>
                             <div class="resource-filter_input">
                                 <select class="custom-select" id="notes_year">
-                                    <option>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
-                                    @foreach($years as $year)
-                                        <option value="{{ $year->id }}">{{ $year->name }}</option>
-                                    @endforeach
+                                    <option selected>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
                                 </select>
                             </div>
                         </div>
@@ -70,7 +67,7 @@
                             <h6 class="pt-3 bold">Term</h6>
                             <div class="resource-filter_input">
                                 <select class="custom-select" id="notes_term">
-                                    <option>{{ \App\Constants\GlobalConstants::ALL_TERMS }}</option>
+                                    <option selected>{{ \App\Constants\GlobalConstants::ALL_TERMS }}</option>
                                         @foreach($terms as $term)
                                     <option value="{{ $term->id }}">{{ $term->name }}</option>
                                     @endforeach
@@ -96,4 +93,5 @@
 
 @push('scripts')
     <script src="{{ asset('js/notes.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/student_notes.js')}}" type="text/javascript"></script>
 @endpush

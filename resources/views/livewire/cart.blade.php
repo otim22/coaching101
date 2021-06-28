@@ -17,7 +17,11 @@
                         </a>
                     </div>
                     <div class="order-2">
-                        <span class="red_color bold text-set">{{  number_format($subject['price']) }}/-</span>
+                        @if($subject['price'] != null)
+                            <span class="red_color bold text-set">{{  number_format($subject['price']) }}/-</span>
+                        @elseif($subject['price'] == null)
+                            <span class="bold">Free</span>
+                        @endif
                     </div>
                     <div class="d-flex pr-3 align-items-start flex-column">
                         <a type="button" wire:click="removeFromCart({{ $subject['id'] }})"><small>Remove</small></a>
@@ -66,11 +70,28 @@
             <div class="make-me-sticky">
                 <h5>Total:</h5>
                 <h4 class="bold">UGX {{  rtrim(rtrim(number_format($sum, 2), 2), '.') }}/-</h4>
-                <hr />
+                <div class="mb-4 mt-4">
+                    <hr />
+                </div>
                 @if($cartItemTotal > 0)
-                    <div class="mt-4">
-                        <a id="round-button-2" type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-block mb-2 text-white">Checkout</a>
-                    </div>
+                    @if($sum > 0)
+                        <div class="mt-4">
+                            <a id="round-button-2" type="submit"
+                                    data-toggle="modal"
+                                    data-target="#myModal"
+                                    class="btn btn-sm btn-danger btn-block mb-2 text-white">
+                                    Checkout
+                            </a>
+                        </div>
+                    @else
+                        <div class="mt-4">
+                            <a id="round-button-2" type="submit"
+                                    wire:click="clearCart()"
+                                    class="btn btn-sm btn-danger btn-block mb-2 text-white">
+                                    Checkout
+                            </a>
+                        </div>
+                    @endif
                 @endif
             </div>
         </aside>
@@ -79,7 +100,6 @@
 <!-- Modal -->
 <div wire:ignore class="modal fade" id="myModal" data-backdrop="static" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -147,13 +167,14 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" id="process">Process</button>
                 <button type="button" class="btn btn-sm btn-secondary" id="round-button-2" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm btn-danger" id="process">Process</button>
             </div>
         </div>
     </div>
 </div>
 </div>
+
 @push('scripts')
     <script src="{{ asset('js/card-js.js') }}"></script>
     <script>
@@ -245,7 +266,6 @@
                 myCard.attr("style","display:none !important");
                 provideDetails.attr("style","display:none !important");
                 spinner.removeAttr('style');
-
                 @this.cardDetails = cardDetails
                 @this.checkout()
             }

@@ -32,7 +32,6 @@ class NoteRequest extends FormRequest
             'item_id' => 'required|integer',
             'year_id' => 'required|integer',
             'term_id' => 'required|integer',
-            'note' => 'required|mimes:pdf',
             'user_id' => 'integer|nullable',
         ];
 

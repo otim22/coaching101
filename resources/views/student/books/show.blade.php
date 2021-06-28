@@ -47,7 +47,7 @@
                         <div class="mb-3">
                             <p>By {{ $book->creator->name }}</p>
                         </div>
-                        <embed src="{{ $book->getFirstMediaUrl('books') }}" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
+                        <embed src="{{ $book->getFirstMediaUrl('books') }}#toolbar=0" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
                     @endif
                 </div>
             </div>

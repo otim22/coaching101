@@ -18,7 +18,6 @@ class Cart extends Component
     public $cartItems = [];
     public $wishlistItems = [];
     public $cardDetails = [];
-
     public $response = [];
 
     protected $listeners = [
@@ -39,7 +38,6 @@ class Cart extends Component
         $cartFacade = new CartFacade;
         $this->cartItemTotal = count($cartFacade->get()['subjects']);
         $this->cartItems = $cartFacade->get()['subjects'];
-
         $this->wishlistItems = Wishlist::where('user_id', Auth::id())->get();
 
         foreach ($this->cartItems as $cartItem) {
@@ -89,7 +87,6 @@ class Cart extends Component
         $cartFacade = new CartFacade;
         $cartFacade->remove($subjectId);
         $this->cart = $cartFacade->get();
-
         $this->emit('itemRemoved');
         $this->emit('cartDeduction', $subjectId);
     }
@@ -210,7 +207,6 @@ class Cart extends Component
         }
 
         $cartFacade->add(ItemContent::where('id', $subjectId)->first());
-
         $this->emit('itemAdded');
         $this->emit('cartSumUpdate', $subjectId);
         $this->emit('itemRemovedFromWishlist', $subjectId);
@@ -220,7 +216,6 @@ class Cart extends Component
     {
         $cartFacade = new CartFacade;
         $cartFacade->remove($subjectId);
-
         $this->emit('itemRemoved');
         $this->emit('updateWishlist');
     }

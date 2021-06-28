@@ -20,7 +20,9 @@
         </nav>
     </div>
 </section>
-
+<div class="container">
+    @include('flash.messages')
+</div>
 <section class="section-two">
     <div class="container">
         <div class="row mt-5 mb-5">
@@ -84,7 +86,8 @@
                         <hr>
                         @forelse($subject->topics as $key => $topic)
                         <li class="nav-item">
-                            <a  class="nav-link" href="{{ route('topics.show', [$subject, $topic]) }}" style="text-decoration: none;">{{ $key+1 }} - {{ $topic->extra_very_short_title }}</a></li>
+                            <a  class="nav-link" href="{{ route('topics.show', [$subject, $topic]) }}" style="text-decoration: none;">{{ $key+1 }} - {{ $topic->extra_very_short_title }}</a>
+                        </li>
                         @empty
                         <li>No available Topics yet!</li>
                         @endforelse
@@ -184,14 +187,9 @@
                         </div>
                     </div>
                 @endforeach
-
             </div>
         </div>
     </div>
 </section>
 
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
-@endpush

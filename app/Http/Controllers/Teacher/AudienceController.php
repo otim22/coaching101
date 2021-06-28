@@ -46,7 +46,7 @@ class AudienceController extends Controller
 
         $subject->addAudience($audience);
 
-        return redirect()->route('messages', $subject);
+        return redirect()->route('messages', $subject)->with('success', 'Audience saved successfully.');
     }
 
     /**
@@ -78,7 +78,7 @@ class AudienceController extends Controller
         $audience->student_learn = array_filter($updatedObjectives);
         $subject->updateAudience($audience);
 
-        return redirect()->route('subjects.show', $subject);
+        return redirect()->route('subjects.show', $subject)->with('success', 'Student learn deleted successfully.');
     }
 
     public function deleteClassRequirement(ItemContent $subject, $classRequirementId)
@@ -89,7 +89,7 @@ class AudienceController extends Controller
         $audience->class_requirement = array_filter($updatedObjectives);
         $subject->updateAudience($audience);
 
-        return redirect()->route('subjects.show', $subject);
+        return redirect()->route('subjects.show', $subject)->with('success', 'Class requirement deleted successfully.');
     }
 
     public function deleteTargetStudent(ItemContent $subject, $targetStudentId)
@@ -100,6 +100,6 @@ class AudienceController extends Controller
         $audience->target_student = array_filter($updatedObjectives);
         $subject->updateAudience($audience);
 
-        return redirect()->route('subjects.show', $subject);
+        return redirect()->route('subjects.show', $subject)->with('success', 'Target student deleted successfully.');
     }
 }

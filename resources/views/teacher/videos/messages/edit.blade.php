@@ -21,23 +21,25 @@
         </nav>
     </div>
 </section>
-
+<div class="container">
+    @include('flash.messages')
+</div>
 <section>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">
                 <form action="{{ route('messages.update', $subject) }}" method="POST">
                     @csrf
                     @method('PATCH')
 
-                    <div class="fast-transition mb-3">
-                        <div class="row m-2">
+                    <div class="card p-3">
+                        <div class="card-body">
                             <div class="col-sm-12 col-md-12 col-lg-12 mb-2 mt-3 d-flex justify-content-between">
                                 <div>
                                     <h5 class="bold">Subject messages</h5>
                                 </div>
                                 <div>
-                                    <a id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-sm btn-secondary btn-block pl-5 pr-5">
+                                    <a id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-md btn-secondary btn-block pl-5 pr-5">
                                         <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
                                             <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
@@ -46,9 +48,10 @@
                                     </a>
                                 </div>
                             </div>
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-sm-12 col-md-12 col-lg-12 mt-4 mb-4">
                                 <hr />
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="welcome_message">Welcome message</label>
                                     <div class="input-group">
@@ -81,7 +84,7 @@
 
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between mt-5">
                         <div>
-                            <a id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-secondary btn-sm btn-block pl-5 pr-5">
+                            <a id="round-button-2" href="{{ route('subjects.show', $subject) }}" class="btn btn-secondary btn-md btn-block pl-5 pr-5">
                                 <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
                                     <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
@@ -90,7 +93,7 @@
                             </a>
                         </div>
                         <div>
-                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-sm pl-5 pr-5 ml-3 mr-3">Update</button>
+                            <button id="round-button-2" type="submit" class="btn btn-primary btn-block btn-md pl-5 pr-5 ml-3 mr-3">Update</button>
                         </div>
                     </div>
                 </form>

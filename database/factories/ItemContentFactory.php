@@ -7,6 +7,7 @@ use App\Models\Year;
 use App\Models\Item;
 use App\Models\Term;
 use App\Models\Level;
+use App\Models\Currency;
 use App\Models\Standard;
 use App\Models\Category;
 use App\Models\ItemContent;
@@ -25,6 +26,7 @@ $factory->define(ItemContent::class, function (Faker $faker) {
         'standard_id' => Standard::all()->random()->id,
         'level_id' => Level::all()->random()->id,
         'item_id' => Item::all()->random()->id,
+        'currency_id' => Currency::all()->random()->id,
         'category_id' => Category::all()->random()->id,
         'year_id' => Year::all()->random()->id,
         'term_id' => Term::all()->random()->id,

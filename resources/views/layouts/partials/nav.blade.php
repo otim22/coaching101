@@ -129,17 +129,17 @@
 
             <ul class="navbar-nav ml-auto nav nav-pills">
                 <li class="nav-item">
-                    <span class="badge badge-pill badge-light" style="margin-top: 13px;margin-right: 5px;">{{ $activeStandard->name }}</span>
+                    <span class="badge badge-pill badge-light" style="margin-top: 13px; padding-top: 4px; padding-bottom: 4px; margin-right: 5px;">{{ $activeStandard->name }}</span>
 				</li>
-                <li class="nav-item search mr-1 d-none d-md-block">
+                <li class="nav-item search d-none d-md-block">
 					<a class="nav-link" href="#"> <i class="fas fa-search pointer"></i></a>
 				</li>
-                <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-none d-md-block mr-2">
+                <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-none d-md-block">
                     <livewire:nav-cart />
                 </li>
 
                 @guest
-                    <li class="nav-item {{ InitialGenerator::set_active(['login']) }} mr-3 space-bottom">
+                    <li class="nav-item {{ InitialGenerator::set_active(['login']) }} ml-1 mr-2 space-bottom">
                         <a class="btn btn-danger btn-sm nav-link make-upper-case" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">Login</a>
                     </li>
                     @if (Route::has('register'))

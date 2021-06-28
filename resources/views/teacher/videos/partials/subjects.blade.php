@@ -1,10 +1,10 @@
 <div>
     <div class="d-flex justify-content-between">
         <div>
-            <h4 class="mb-4 bold">My available video subjects</h4>
+            <h4 class="mb-3 bold">My available video subjects</h4>
         </div>
         <div>
-            <a id="round-button-2" class="btn btn-sm btn-primary" type="button" href="{{ route('subjects') }}">
+            <a id="round-button-2" class="btn btn-primary" type="button" href="{{ route('subjects') }}">
                 <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-layout-sidebar" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M14 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"/>
                     <path fill-rule="evenodd" d="M4 14V2h1v12H4z"/>
@@ -17,7 +17,7 @@
         <div class="diff-content-card mb-4">
             <div>
                 <a href="{{ route('subjects.show', $subject) }}" style="text-decoration: none">
-                    <img src="{{ $subject->image_thumb }}" alt="subject image" width="140" height="140">
+                    <img src="{{ $subject->cover_image }}" alt="subject image" width="140" height="140">
                 </a>
             </div>
 
@@ -58,9 +58,9 @@
                             Do you really want to delete this subject? This process will delete the subject with all the topics inclusive and cannot be undone.
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary btn-sm mr-4" data-dismiss="modal">Cancel</button>
+                            <button id="round-button-2" type="button" class="btn btn-secondary btn-sm mr-2" data-dismiss="modal">Cancel</button>
                             {!! Form::open(['route' => ['subjects.destroy', $subject], 'method' => 'delete']) !!}
-                                <button type="submit" class="btn btn-primary btn-sm">Understood</button>
+                                <button id="round-button-2" type="submit" class="btn btn-danger btn-sm">Understood</button>
                             {!! Form::close() !!}
                         </div>
                     </div>

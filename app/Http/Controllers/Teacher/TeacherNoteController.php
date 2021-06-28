@@ -6,6 +6,7 @@ use App\Models\Year;
 use App\Models\Term;
 use App\Models\Item;
 use App\Models\Level;
+use App\Models\Currency;
 use App\Models\Standard;
 use App\Models\Category;
 use Illuminate\Support\Arr;
@@ -26,9 +27,9 @@ class TeacherNoteController extends Controller
 
     public function create()
     {
-        $years =  Year::get();
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $terms =  Term::get();
-        $levels = Level::get();
         $standards = Standard::get();
         $categories = Category::get();
         $item = Item::where('name', 'Note')->firstOrFail();
@@ -44,8 +45,7 @@ class TeacherNoteController extends Controller
      */
     public function store(NoteRequest $request)
     {
-        $note = new ItemContent($request->except('note'));
-
+        $note = new ItemContent();
         $note->title = $request->input('title');
         $note->objective = $request->input('objective');
         $note->price = $request->input('price');
@@ -57,14 +57,18 @@ class TeacherNoteController extends Controller
         $note->term_id = $request->input('term_id');
         $note->user_id = $request->input('user_id');
         $note->user_id = Auth::id();
+        $std = Standard::find($request->input('standard_id'));
 
-        $note->save();
-
-        if($request->hasFile('note') && $request->file('note')->isValid()) {
-            $note->addMediaFromRequest('note')->toMediaCollection('notes');
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
         }
 
-        return redirect()->route('teacher.notes')->with('success', 'Note added successfully.');
+        $note->currency_id = $currency->id;
+        $note->save();
+
+        return redirect()->route('subNotes.create', $note)->with('success', 'Notes saved successfully.');
     }
 
     public function show(ItemContent $note)
@@ -80,16 +84,16 @@ class TeacherNoteController extends Controller
      */
     public function edit(ItemContent $note)
     {
-        $years =  Year::get();
+        $levels = ItemContent::getLevelsToStandard();
+        $years = ItemContent::getYearsToLevel();
         $terms =  Term::get();
         $standards = Standard::get();
         $standard = Standard::find($note->standard_id);
-        $levels = Level::get();
         $level = Level::find($note->level_id);
         $categories = Category::get();
-        $category = Category::where('id', $note->category_id)->firstOrFail();
-        $year = Year::where('id', $note->year_id)->firstOrFail();
-        $term = Term::where('id', $note->term_id)->firstOrFail();
+        $category = Category::find($note->category_id);
+        $year = Year::find($note->year_id);
+        $term = Term::find($note->term_id);
 
         return view('teacher.notes.edit', compact([
             'note', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'
@@ -107,6 +111,15 @@ class TeacherNoteController extends Controller
         $data = $this->validateData($request);
         $note->fill(Arr::except($data, ['objective', 'note']));
         $note->objective = array_filter($request->objective);
+        $std = Standard::find($request->input('standard_id'));
+
+        if($std->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        $note->currency_id = $currency->id;
         $note->save();
 
         if($request->hasFile('note') && $request->file('note')->isValid()) {
@@ -116,7 +129,7 @@ class TeacherNoteController extends Controller
             $note->addMediaFromRequest('note')->toMediaCollection('notes');
         }
 
-        return redirect()->route('teacher.notes')->with('success', 'Note added successfully.');
+        return redirect()->route('teacher.notes')->with('success', 'Notes updated successfully.');
     }
 
     protected function validateData($request)
@@ -154,11 +167,9 @@ class TeacherNoteController extends Controller
     public function destroy(ItemContent $note)
     {
         try {
-            if(exists($note) && !empty($note)) {
-                $note->delete();
-            }
+            $note->delete();
 
-            return redirect()->route('teacher.notes')->with('success', 'Note deleted successfully');
+            return redirect()->route('teacher.notes')->with('success', 'Notes deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav ml-auto align-items-center">
                         <li class="nav-item nav-divider">
-                            <li class="nav-item">
+                            <li class="nav-item mt-3">
                                 <a href="#" class="nav-link dropdown-toggle dropdown-clear-caret" data-toggle="sidebar" data-target="#user-drawer">
                                     <div class="d-flex">
                                         <div class="pr-2">Menu</div>

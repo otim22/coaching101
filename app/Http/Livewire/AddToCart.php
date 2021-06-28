@@ -34,7 +34,6 @@ class AddToCart extends Component
             }
         }
 
-        // dd(ItemContent::where('id', $subjectId)->first());
         $cartFacade->add(ItemContent::where('id', $subjectId)->firstOrFail());
 
         $this->emit('itemAdded');

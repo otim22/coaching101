@@ -47,7 +47,7 @@ class TopicController extends Controller
 
         $subject->topics()->save($topic);
 
-        return redirect()->route('subjects.show', $subject);
+        return redirect()->route('subjects.show', $subject)->with('success', 'Topic saved successfully.');
     }
 
     public function update(Request $request, ItemContent $subject, Topic $topic)
@@ -56,7 +56,7 @@ class TopicController extends Controller
             'title' => 'required|string',
             'content_file_path' => 'nullable|mimes:mp4,mp3,mov,ogg|max:100000',
             'description' => 'required|string',
-            'resource_attachment_path.*' => 'nullable|mimes:doc,pdf,docx,zip|max:8000'
+            'resource_attachment_path.*' => 'nullable|mimes:pdf,zip|max:8000'
         ]);
 
         $topic->title = $request->title;
@@ -78,7 +78,7 @@ class TopicController extends Controller
 
         $subject->topics()->save($topic);
 
-        return redirect()->route('subjects.show', $subject);
+        return redirect()->route('subjects.show', $subject)->with('success', 'Topic updated successfully.');
     }
 
     public function destroy(ItemContent $subject, Topic $topic)

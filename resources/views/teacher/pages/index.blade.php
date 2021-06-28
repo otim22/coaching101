@@ -295,7 +295,7 @@
                     <div class="row text-center">
                         <div class="col-12 text-center">
                             <h3 class="bold">Become a techer today.</h3>
-                            <h5 class="mb-4 mt-4">Top teachers from the best, teaching millions of students. <br /> We provide the platform and tools so you can skill the students.</h5>
+                            <h5 class="mb-3 mt-4">Top teachers from the best, teaching millions of students. <br /> We provide the platform and tools so you can skill the students.</h5>
                             @guest
                                 <a id="round-button-2" class="btn btn-primary mt-5" href="{{ route('subjects.starter') }}" role="button">Become a teacher today &raquo;</a>
                             @endguest
