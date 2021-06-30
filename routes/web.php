@@ -114,7 +114,7 @@ Auth::routes(['verify' => true]);
 Route::get('/teacher/onBoard', [SubjectController::class, 'onBoard'])->name('subjects.onBoard');
 
 Route::middleware('auth')->group(function() {
-    Route::get('/cart/{response?}', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/cart/{response?}', [CartController::class, 'index'])->name('cart.response');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
     Route::post('/userSurveyAnswers', [UserSurveyAnswerController::class, 'store'])->name('userSurveyAnswer.store');

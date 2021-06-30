@@ -4,7 +4,7 @@ namespace Deployer;
 require 'recipe/laravel.php';
 
 // Project name
-set('application', 'coaching101');
+set('application', 'Coaching101');
 
 // Project repository
 set('repository', 'git@github.com:otim22/coaching101.git');
@@ -26,7 +26,13 @@ add('writable_dirs', []);
 //     ->set('deploy_path', '~/{{application}}');
 
 host('174.138.32.252')
-    ->set('deploy_path', '/var/www/html');
+    ->user('deployer')
+    ->identityFile('~/.ssh/deployerkey')
+    ->set('branch', 'master')
+    ->set('deploy_path', '/var/www/html/coaching101')
+    ->set('http_user', 'www-data')
+    ->set('writable_mode', 'chmod')
+    ->set('use_relative_symlink', '0');
 
 // Tasks
 
