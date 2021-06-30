@@ -22,9 +22,6 @@ add('writable_dirs', []);
 
 // Hosts
 
-// host('project.com')
-//     ->set('deploy_path', '~/{{application}}');
-
 host('174.138.32.252')
     ->user('deployer')
     ->identityFile('~/.ssh/deployerkey')
