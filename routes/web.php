@@ -137,7 +137,7 @@ Route::middleware('auth')->group(function() {
 
         Route::get('/get-years-to-level/{id}', [TeacherFilterController::class, 'getYearsToLevel'])->name('get-years-to-level');
         Route::get('/get-levels-to-standard/{id}', [TeacherFilterController::class, 'getLevelsToStandard'])->name('get-levels-to-standard');
-        Route::get('/get-right-currency/{id}', [TeacherFilterController::class, 'getRightCurrency'])->name('get-levels-to-standard');
+        Route::get('/get-right-currency/{id}', [TeacherFilterController::class, 'getRightCurrency'])->name('get-right-currency');
 
         /** Notes */
         Route::resource('/notes', 'Teacher\TeacherNoteController')->except(['index']);
