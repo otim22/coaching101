@@ -33,13 +33,31 @@ host('174.138.32.252')
 
 // Tasks
 
-task('build', function () {
-    run('cd {{release_path}} && build');
-});
+desc('Deploy your project');
+task('deploy', [
+    'deploy:info',
+    'deploy:prepare',
+    'deploy:lock',
+    'deploy:release',
+    'deploy:update_code',
+    'upload',
+    'deploy:shared',
+    'deploy:vendors',
+    // 'deploy:writable',
+    'artisan:storage:link',
+    'artisan:view:clear',
+    'artisan:cache:clear',
+    'artisan:config:cache',
+    'artisan:optimize',
+    'deploy:symlink',
+    'deploy:unlock',
+    'cleanup',
+    'success'
+]);
 
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
 
-before('deploy:symlink', 'artisan:migrate');
+after('deploy:vendors', 'artisan:migrate');
