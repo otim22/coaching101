@@ -13,18 +13,11 @@ set('repository', 'git@github.com:otim22/coaching101.git');
 set('git_tty', true);
 
 // Shared files/dirs between deploys
-add('shared_files', [
-    '.env'
-]);
-add('shared_dirs', [
-    'storage'
-]);
+add('shared_files', []);
+add('shared_dirs', []);
 
 // Writable dirs by web server
-add('writable_dirs', [
-    'storage',
-    'bootstrap/cache'
-]);
+add('writable_dirs', []);
 
 // Hosts
 
@@ -32,10 +25,7 @@ host('174.138.32.252')
     ->user('deployer')
     ->identityFile('~/.ssh/deployerkey')
     ->set('branch', 'master')
-    ->set('deploy_path', '/var/www/html/coaching101')
-    ->set('http_user', 'www-data')
-    ->set('writable_mode', 'chmod')
-    ->set('use_relative_symlink', '0');
+    ->set('deploy_path', '/var/www/html/coaching101');
 
 // Tasks
 
