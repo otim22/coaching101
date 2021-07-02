@@ -37,12 +37,6 @@ set('laravel_version', function () {
 // Set the worker process user
 set('http_user', 'worker');
 
-// Set the default deploy environment to production
-set('default_stage', 'production');
-
-// Disable multiplexing
-set('ssh_multiplexing', false);
-
 // Helper Tasks
 
 desc('Disable maintenance mode');
