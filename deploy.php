@@ -165,7 +165,7 @@ host('174.138.32.252')
     ->set('deploy_path', '/var/www/html/coaching101')
     ->set('http_user', 'www-data')
     ->set('writable_mode', 'chmod')
-    ->set('writable_chmod_mode', '0777')
+    ->set('writable_chmod_mode', '0775')
     ->set('use_relative_symlink', '0');
 
 // Group tasks
