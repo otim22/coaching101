@@ -13,12 +13,18 @@ set('repository', 'git@github.com:otim22/coaching101.git');
 set('git_tty', true);
 
 // Shared files/dirs between deploys
-add('shared_files', []);
-add('shared_dirs', []);
+add('shared_files', [
+    '.env'
+]);
+add('shared_dirs', [
+    'storage'
+]);
 
 // Writable dirs by web server
-add('writable_dirs', []);
-
+add('writable_dirs', [
+    'storage',
+    'bootstrap/cache'
+]);
 
 // Hosts
 
@@ -42,4 +48,4 @@ after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
 
-before('deploy:symlink', 'artisan:migrate --seed');
+before('deploy:symlink', 'artisan:migrate db:seed');
