@@ -19,6 +19,7 @@ add('shared_dirs', []);
 // Writable dirs by web server
 add('writable_dirs', []);
 
+
 // Hosts
 
 host('174.138.32.252')
@@ -27,29 +28,7 @@ host('174.138.32.252')
     ->set('branch', 'master')
     ->set('deploy_path', '/var/www/html/coaching101');
 
-// Group tasks
-
-desc('Deploy your project');
-task('deploy', [
-    'deploy:info',
-    'deploy:prepare',
-    'deploy:lock',
-    'deploy:release',
-    'deploy:update_code',
-    'upload',
-    'deploy:shared',
-    'deploy:vendors',
-    // 'deploy:writable',
-    'artisan:storage:link',
-    'artisan:view:clear',
-    'artisan:cache:clear',
-    'artisan:config:cache',
-    'artisan:optimize',
-    'deploy:symlink',
-    'deploy:unlock',
-    'cleanup',
-    'success'
-]);
+// Tasks
 
 task('build', function () {
     run('cd {{release_path}} && build');
@@ -60,4 +39,4 @@ after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
 
-after('deploy:vendors', 'artisan:migrate');
+before('deploy:symlink', 'artisan:migrate');
