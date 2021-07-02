@@ -12,9 +12,6 @@ set('repository', 'git@github.com:otim22/coaching101.git');
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true);
 
-set('writable_mode', 'chmod');
-set('writable_chmod_mode', '0777');
-
 // Shared files/dirs between deploys
 add('shared_files', [
     '.env'
@@ -38,6 +35,7 @@ host('174.138.32.252')
     ->set('deploy_path', '/var/www/html/coaching101')
     ->set('http_user', 'www-data')
     ->set('writable_mode', 'chmod')
+    ->set('writable_chmod_mode', '0777');
     ->set('use_relative_symlink', '0');
 
 // Tasks
