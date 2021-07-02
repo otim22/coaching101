@@ -25,7 +25,10 @@ host('174.138.32.252')
     ->user('deployer')
     ->identityFile('~/.ssh/deployerkey')
     ->set('branch', 'master')
-    ->set('deploy_path', '/var/www/html/coaching101');
+    ->set('deploy_path', '/var/www/html/coaching101')
+    ->set('http_user', 'www-data')
+    ->set('writable_mode', 'chmod')
+    ->set('use_relative_symlink', '0');
 
 // Tasks
 
