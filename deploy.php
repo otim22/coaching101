@@ -12,12 +12,22 @@ set('repository', 'git@github.com:otim22/coaching101.git');
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true);
 
+set('writable_mode', 'chmod');
+set('writable_chmod_mode', '0777');
+
 // Shared files/dirs between deploys
-add('shared_files', []);
-add('shared_dirs', []);
+add('shared_files', [
+    '.env'
+]);
+add('shared_dirs', [
+    'storage'
+]);
 
 // Writable dirs by web server
-add('writable_dirs', []);
+add('writable_dirs', [
+    'storage',
+    'bootstrap/cache'
+]);
 
 // Hosts
 
