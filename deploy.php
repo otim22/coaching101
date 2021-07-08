@@ -133,9 +133,7 @@ task('deploy:public_disk', function () {
 
 // Upload build assets
 task('upload', function () {
-    upload(__DIR__ . "/public/js/", '{{release_path}}/public/js/');
-    upload(__DIR__ . "/public/css/", '{{release_path}}/public/css/');
-    upload(__DIR__ . "/public/mix-manifest.json", '{{release_path}}/public/mix-manifest.json');
+    upload(__DIR__ . "/", '{{release_path}}');
 });
 
 // Hosts
