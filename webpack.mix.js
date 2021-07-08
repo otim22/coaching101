@@ -35,4 +35,4 @@ mix.browserSync({
         key: homedir + '/.config/valet/Certificates/' + domain + '.key',
         cert: homedir + '/.config/valet/Certificates/' + domain + '.crt',
     },
-})
+});

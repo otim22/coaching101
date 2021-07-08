@@ -153,7 +153,7 @@ $simditor-button-width: 46px;
           background: #cfcfcf;
           width: 1px;
           height: 18px;
-          margin: ($simditor-button-height - 18px) / 2 15px;
+          margin: ($simditor-button-height - 18px) * 0.5 15px;
           vertical-align: middle;
         }
 

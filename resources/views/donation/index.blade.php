@@ -34,7 +34,7 @@
                 <h4 class="bold">Give a Life Changing Gift Today!</h4>
                 <div class="mt-4 pr-3 mb-5">
                     <h5 class="donate-font"> As one of our great leaders Nelson Mandela once said... "Education is the most powerful weapon which you can use to change the world."</h5><br />
-                    <h5 class="donate-font">Sometimes this weapon "Education" could need sharpening in times of crisis such as Coronavirus (COVID-19), Limited Resources, Inequality among others.</h5><br />
+                    <h5 class="donate-font">Sometimes this weapon "Education" needs sharpening in times of crisis as COVID-19 times when resources are  limited,  disruptions and a lot of inequality.</h5><br />
                     <h5 class="donate-font">Well, your generous giving helps us normalize the distribution of quality education and also supporting the content creators on this platform who are based in Africa.</h5><br />
                     <h5 class="donate-font">Thank you!</h5>
                 </div>
@@ -118,7 +118,7 @@
                                     </div>
 
                                     <div class="form-group mt-4">
-                                        <label for="duration">Duration of donation<span class="light_gray_color">(*Optional)</span></label>
+                                        <label for="duration">Duration of donation <span class="light_gray_color">(*Optional)</span></label>
                                         <input type="number" class="form-control" name="duration" value="{{ old('duration') }}" placeholder="Example: 1" />
                                         <span class="light_gray_color"><small>Example: If set to 5 with interval of monthly you would be charged 5 months, and the subscription stops.</small></span>
                                         @error('duration')
