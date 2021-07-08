@@ -149,7 +149,6 @@ task('deploy', [
     'deploy:lock',
     'deploy:release',
     'deploy:update_code',
-    'upload',
     'deploy:shared',
     'deploy:vendors',
     // 'deploy:writable',
