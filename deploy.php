@@ -133,7 +133,7 @@ task('deploy:public_disk', function () {
 
 // Upload build assets
 task('upload', function () {
-    upload(__DIR__ . "current/", '{{release_path}}');
+    upload(__DIR__ . '/coaching101/current/', '{{release_path}}');
 });
 
 // Hosts
