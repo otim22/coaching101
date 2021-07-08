@@ -134,7 +134,7 @@ task('deploy:public_disk', function () {
 // Upload build assets
 task('upload', function () {
     echo __DIR__;
-    upload(__DIR__ . '/', '{{release_path}}');
+    upload(__DIR__ . '/current/', '{{release_path}}');
 });
 
 // Hosts
