@@ -2,9 +2,9 @@
 
 namespace Deployer;
 
-require 'recipe/laravel.php';
-require 'contrib/php-fpm.php';
-require 'contrib/npm.php';
+require 'vendor/deployer/deployer/recipe/laravel.php';
+require 'vendor/deployer/deployer/contrib/php-fpm.php';
+require 'vendor/deployer/deployer/contrib/npm.php';
 
 set('application', 'Coaching101');
 set('repository', 'git@github.com:otim22/coaching101.git');
