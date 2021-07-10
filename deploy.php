@@ -11,7 +11,7 @@ set('repository', 'git@github.com:otim22/coaching101.git');
 set('php_fpm_version', '7.4');
 
 host('production')
-    ->user('lapwony')
+    ->set('remote_user', 'lapwony')
     ->identityFile('~/.ssh/lapwonyrkey')
     ->set('branch', 'master')
     ->set('hostname', '167.71.47.82')
