@@ -12,7 +12,7 @@ set('php_fpm_version', '7.4');
 
 host('production')
     ->set('remote_user', 'lapwony')
-    ->set('identityFile', '~/.ssh/lapwonyrkey')
+    ->set('identityFile', '~/.ssh/lapwonykey')
     ->set('branch', 'master')
     ->set('hostname', '167.71.47.82')
     ->set('deploy_path', '/var/www/oncloudlearning.com');
