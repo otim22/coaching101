@@ -11,8 +11,7 @@ set('repository', 'git@github.com:otim22/coaching101.git');
 set('php_fpm_version', '7.4');
 
 host('production')
-    ->set('remote_user', 'lapwony')
-    ->set('identityFile', '~/.ssh/lapwonykey')
+    ->set('remote_user', 'root')
     ->set('branch', 'master')
     ->set('hostname', '167.71.47.82')
     ->set('deploy_path', '/var/www/oncloudlearning.com');
