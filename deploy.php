@@ -17,8 +17,9 @@ host('production')
     ->set('hostname', '167.71.47.82')
     ->set('deploy_path', '/var/www/oncloudlearning.com')
     ->set('http_user', 'www-data')
-    ->set('writable_mode', 'chmod');
-
+    ->set('writable_mode', 'chmod')
+    ->set('use_relative_symlink', '0');
+    
 task('dev', [
     'deploy:info',
     'deploy:prepare',
