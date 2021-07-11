@@ -15,12 +15,13 @@ host('production')
     ->set('identity_file', '~/.ssh/lapwonykey')
     ->set('branch', 'master')
     ->set('hostname', '167.71.47.82')
-    ->set('deploy_path', '/var/www/oncloudlearning.com');
+    ->set('deploy_path', '/var/www/oncloudlearning.com')
+    ->set('http_user', 'www-data')
+    ->set('writable_mode', 'chmod');
 
 task('dev', [
     'deploy:info',
     'deploy:prepare',
-    'deploy:lock',
     'deploy:release',
     'deploy:vendors',
     'artisan:storage:link',
@@ -30,7 +31,6 @@ task('dev', [
     'artisan:optimize',
     'artisan:migrate',
     'artisan:db:seed',
-    'composer:install',
     'npm:install',
     'npm:run:prod',
     'deploy:publish',
@@ -57,11 +57,6 @@ task('prod', [
     'php-fpm:reload',
     'deploy:unlock',
 ]);
-
-task('composer:install', function () {
-    cd('{{release_path}}');
-    run('composer install');
-});
 
 task('npm:run:prod', function () {
     cd('{{release_path}}');
