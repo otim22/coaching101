@@ -33,36 +33,33 @@ task('dev', [
     'artisan:cache:clear',
     'artisan:config:cache',
     'artisan:optimize',
-    'npm:install',
-    'npm:run:prod',
     'deploy:publish',
     'php-fpm:reload',
     'deploy:unlock',
 ]);
 
-task('prod', [
-    'deploy:info',
-    'deploy:prepare',
-    'deploy:lock',
-    'deploy:release',
-    'deploy:update_code',
-    'deploy:vendors',
-    'artisan:storage:link',
-    'artisan:view:cache',
-    'artisan:cache:clear',
-    'artisan:config:cache',
-    'artisan:optimize',
-    'npm:install',
-    'npm:run:prod',
-    'deploy:publish',
-    'php-fpm:reload',
-    'deploy:unlock',
-]);
+// task('prod', [
+//     'deploy:info',
+//     'deploy:prepare',
+//     'deploy:lock',
+//     'deploy:release',
+//     'deploy:update_code',
+//     'deploy:vendors',
+//     'artisan:storage:link',
+//     'artisan:view:cache',
+//     'artisan:cache:clear',
+//     'artisan:config:cache',
+//     'artisan:optimize',
+//     'npm:run:prod',
+//     'deploy:publish',
+//     'php-fpm:reload',
+//     'deploy:unlock',
+// ]);
 
-task('npm:run:prod', function () {
-    cd('{{release_path}}');
-    run('npm run prod');
-});
+// task('npm:run:prod', function () {
+//     cd('{{release_path}}');
+//     run('npm run prod');
+// });
 
 after('deploy:failed', 'deploy:unlock');
 
