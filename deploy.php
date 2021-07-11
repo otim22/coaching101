@@ -34,8 +34,6 @@ task('dev', [
     'artisan:config:cache',
     'artisan:optimize',
     'artisan:route:clear',
-    'artisan:route:list',
-    'artisan:migrate',
     'deploy:publish',
     'php-fpm:reload',
     'deploy:unlock',
@@ -65,3 +63,5 @@ task('dev', [
 // });
 
 after('deploy:failed', 'deploy:unlock');
+
+before('deploy:symlink', 'artisan:migrate');
