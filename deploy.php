@@ -38,7 +38,6 @@ task('dev', [
     'php-fpm:reload',
     'deploy:symlink',
     'deploy:unlock',
-    'cleanup',
     'success'
 ]);
 
