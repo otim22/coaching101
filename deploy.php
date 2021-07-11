@@ -9,6 +9,7 @@ require 'vendor/deployer/deployer/contrib/npm.php';
 set('application', 'Coaching101');
 set('repository', 'git@github.com:otim22/coaching101.git');
 set('php_fpm_version', '7.4');
+set('git_tty', true);
 
 host('production')
     ->set('remote_user', 'lapwony')
@@ -19,7 +20,7 @@ host('production')
     ->set('http_user', 'www-data')
     ->set('writable_mode', 'chmod')
     ->set('use_relative_symlink', '0');
-    
+
 task('dev', [
     'deploy:info',
     'deploy:prepare',
