@@ -33,7 +33,6 @@ task('dev', [
     'artisan:cache:clear',
     'artisan:config:cache',
     'artisan:optimize',
-    'artisan:migrate',
     'artisan:db:seed',
     'npm:install',
     'npm:run:prod',
@@ -54,7 +53,6 @@ task('prod', [
     'artisan:cache:clear',
     'artisan:config:cache',
     'artisan:optimize',
-    'artisan:migrate',
     'npm:install',
     'npm:run:prod',
     'deploy:publish',
@@ -68,3 +66,5 @@ task('npm:run:prod', function () {
 });
 
 after('deploy:failed', 'deploy:unlock');
+
+after('deploy:vendors', 'artisan:migrate');
