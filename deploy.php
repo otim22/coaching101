@@ -28,7 +28,6 @@ task('dev', [
     'deploy:release',
     'deploy:update_code',
     'deploy:vendors',
-    'artisan:key:generate',
     'artisan:storage:link',
     'artisan:view:cache',
     'artisan:cache:clear',
