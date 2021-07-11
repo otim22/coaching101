@@ -36,7 +36,6 @@ task('dev', [
     'artisan:route:clear',
     'artisan:route:list',
     'artisan:migrate',
-    'artisan:db:seed',
     'deploy:publish',
     'php-fpm:reload',
     'deploy:unlock',
