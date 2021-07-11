@@ -33,7 +33,6 @@ task('dev', [
     'artisan:cache:clear',
     'artisan:config:cache',
     'artisan:optimize',
-    'artisan:db:seed',
     'npm:install',
     'npm:run:prod',
     'deploy:publish',
