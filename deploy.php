@@ -9,6 +9,7 @@ require 'vendor/deployer/deployer/contrib/npm.php';
 set('application', 'Coaching101');
 set('repository', 'git@github.com:otim22/coaching101.git');
 set('php_fpm_version', '7.4');
+
 set('git_tty', true);
 
 host('production')
@@ -25,6 +26,7 @@ task('dev', [
     'deploy:info',
     'deploy:prepare',
     'deploy:release',
+    'deploy:update_code',
     'deploy:vendors',
     'artisan:storage:link',
     'artisan:view:cache',
@@ -45,6 +47,7 @@ task('prod', [
     'deploy:prepare',
     'deploy:lock',
     'deploy:release',
+    'deploy:update_code',
     'deploy:vendors',
     'artisan:storage:link',
     'artisan:view:cache',
