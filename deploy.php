@@ -33,9 +33,13 @@ task('dev', [
     'artisan:cache:clear',
     'artisan:config:cache',
     'artisan:optimize',
+    'artisan:migrate',
     'deploy:publish',
     'php-fpm:reload',
+    'deploy:symlink',
     'deploy:unlock',
+    'cleanup',
+    'success'
 ]);
 
 // task('prod', [
