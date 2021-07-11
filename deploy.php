@@ -50,7 +50,6 @@ task('prod', [
     'artisan:config:cache',
     'artisan:optimize',
     'artisan:migrate',
-    'composer:install',
     'npm:install',
     'npm:run:prod',
     'deploy:publish',
