@@ -28,15 +28,18 @@ task('dev', [
     'deploy:release',
     'deploy:update_code',
     'deploy:vendors',
+    'artisan:key:generate'
     'artisan:storage:link',
     'artisan:view:cache',
     'artisan:cache:clear',
     'artisan:config:cache',
     'artisan:optimize',
+    'artisan:route:clear',
+    'artisan:route:list',
     'artisan:migrate',
+    'artisan:db:seed',
     'deploy:publish',
     'php-fpm:reload',
-    'deploy:symlink',
     'deploy:unlock',
 ]);
 
@@ -64,5 +67,3 @@ task('dev', [
 // });
 
 after('deploy:failed', 'deploy:unlock');
-
-after('deploy:vendors', 'artisan:migrate');
