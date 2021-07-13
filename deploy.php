@@ -55,16 +55,14 @@ task('dev', [
 ]);
 
 // task('prod', [
-//     'deploy:info',
 //     'deploy:prepare',
-//     'deploy:lock',
-//     'deploy:release',
-//     'deploy:update_code',
 //     'deploy:vendors',
 //     'artisan:storage:link',
 //     'artisan:view:cache',
-//     'artisan:cache:clear',
 //     'artisan:config:cache',
+//     'artisan:migrate',
+//     'composer:install',
+//     'npm:install',
 //     'artisan:optimize',
 //     'npm:run:prod',
 //     'deploy:publish',
