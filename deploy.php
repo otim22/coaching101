@@ -10,6 +10,26 @@ set('application', 'Coaching101');
 set('repository', 'git@github.com:otim22/coaching101.git');
 set('php_fpm_version', '7.4');
 
+set('shared_dirs', ['storage']);
+set('shared_files', ['.env']);
+set('writable_dirs', [
+    'bootstrap/cache',
+    'storage',
+    'storage/app',
+    'storage/app/public',
+    'storage/framework',
+    'storage/framework/cache',
+    'storage/framework/sessions',
+    'storage/framework/views',
+    'storage/logs',
+]);
+set('log_files', 'storage/logs/*.log');
+set('laravel_version', function () {
+    $result = run('{{bin/php}} {{release_or_current_path}}/artisan --version');
+    preg_match_all('/(\d+\.?)+/', $result, $matches);
+    return $matches[0][0] ?? 5.5;
+});
+
 host('prod')
     ->set('remote_user', 'lapwony')
     ->set('identity_file', '~/.ssh/lapwonykey')
@@ -24,6 +44,7 @@ task('dev', [
     'artisan:view:cache',
     'artisan:config:cache',
     'artisan:migrate',
+    'artisan:db:seed',
     'npm:install',
     'composer:install',
     'npm:run:prod',
