@@ -46,6 +46,7 @@ task('dev', [
     'artisan:migrate',
     'composer:install',
     'npm:install',
+    'artisan:migrate:fresh',
     'artisan:db:seed',
     'artisan:optimize',
     'deploy:symlink',
