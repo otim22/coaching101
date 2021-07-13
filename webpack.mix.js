@@ -23,7 +23,6 @@ const mix = require('laravel-mix');
 ],  'public/css/card-js.css');
 
 mix.js('resources/js/app.js', 'public/js/')
-    .vue()
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/admin/custom.scss', 'public/admin/css')
     .copy('node_modules/font-awesome/fonts', 'public/fonts');
