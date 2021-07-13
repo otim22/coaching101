@@ -49,7 +49,6 @@ task('dev', [
     'artisan:migrate:fresh',
     'artisan:db:seed',
     'artisan:optimize',
-    'deploy:symlink',
     'npm:run:prod',
     'deploy:publish',
     'php-fpm:reload',
