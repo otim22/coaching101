@@ -12,15 +12,14 @@ set('php_fpm_version', '7.4');
 
 set('git_tty', true);
 
-host('production')
+host('prod')
     ->set('remote_user', 'lapwony')
     ->set('identity_file', '~/.ssh/lapwonykey')
     ->set('branch', 'master')
     ->set('hostname', '167.71.47.82')
     ->set('deploy_path', '/var/www/oncloudlearning.com')
     ->set('http_user', 'www-data')
-    ->set('writable_mode', 'chmod')
-    ->set('use_relative_symlink', '0');
+    ->set('writable_mode', 'chmod');
 
 task('dev', [
     'deploy:info',
@@ -34,9 +33,11 @@ task('dev', [
     'artisan:config:cache',
     'artisan:optimize',
     'artisan:route:clear',
+    'artisan:migrate',
+    'npm:install',
+    'npm:run:prod',
     'deploy:publish',
     'php-fpm:reload',
-    'deploy:unlock',
 ]);
 
 // task('prod', [
@@ -54,14 +55,11 @@ task('dev', [
 //     'npm:run:prod',
 //     'deploy:publish',
 //     'php-fpm:reload',
-//     'deploy:unlock',
 // ]);
 
-// task('npm:run:prod', function () {
-//     cd('{{release_path}}');
-//     run('npm run prod');
-// });
+task('npm:run:prod', function () {
+    cd('{{release_path}}');
+    run('npm run prod');
+});
 
 after('deploy:failed', 'deploy:unlock');
-
-before('deploy:symlink', 'artisan:migrate');
