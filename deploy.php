@@ -48,7 +48,6 @@ task('dev', [
     'npm:install',
     'artisan:db:seed',
     'artisan:optimize',
-    'deploy:public_disk',
     'deploy:symlink',
     'npm:run:prod',
     'deploy:publish',
