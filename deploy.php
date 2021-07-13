@@ -25,6 +25,7 @@ task('dev', [
     'artisan:config:cache',
     'artisan:migrate',
     'npm:install',
+    'composer:install',
     'npm:run:prod',
     'deploy:publish',
     'php-fpm:reload',
@@ -46,6 +47,11 @@ task('dev', [
 //     'deploy:publish',
 //     'php-fpm:reload',
 // ]);
+
+task('composer:install', function () {
+    cd('{{release_or_current_path}}');
+    run('composer install');
+});
 
 task('npm:run:prod', function () {
     cd('{{release_or_current_path}}');
