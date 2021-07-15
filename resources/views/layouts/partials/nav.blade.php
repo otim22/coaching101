@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-3 increased-font py-3">
     <div class="container-fluid" id="navbarSupportedContentOther">
-        <a class="navbar-brand mr-auto" href="{{ url('/') }}"><span class="logo-font">all cloud prep</span></a>
+        <a class="navbar-brand mr-auto" href="{{ url('/') }}"><span class="logo-font">onCloud Learning</span></a>
         <span class="sm-search d-md-none" id="smSearch"> <a class="ml-auto hide-at-md mr-1" href="#" style="text-decoration: none;"> <i class="fas fa-search pointer"></i></a></span>
         <div id="smCart" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-md-none">
             <livewire:nav-cart />

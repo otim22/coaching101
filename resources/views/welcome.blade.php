@@ -5,7 +5,7 @@
 <!-- Start jumbotron-->
 <section class="bg-image text-white mt-4" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 100vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
-        <div class="row mt-5 mb-5">
+        <div class="row mt-5 pt-4 mb-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
                 <div class="learn-today mb-5">
                     <h1 class="display-3 learn-today_title">{{ $sliders->title }}</h1>
@@ -43,7 +43,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h5 class="bold">Online classes</h5>
+                    <h5 class="bold">Online Classes</h5>
                     <p>Discover varied topics</p>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h5 class="bold">Expert teachers</h5>
+                    <h5 class="bold">Expert Teachers</h5>
                     <p>Connect with right teachers</p>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h5 class="bold">Lifetime access</h5>
+                    <h5 class="bold">Access Time </h5>
                     <p>Learn on your schedule</p>
                 </div>
             </div>
