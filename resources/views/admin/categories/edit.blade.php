@@ -35,15 +35,16 @@
 
                             <div class="form-group">
                                 <label for="standard_id">Standard</label>
-                                <div class="input-group mb-3">
-                                    <select class="custom-select" name="standard_id">
-                                        <option selected value="{{ $standard->id }}">{{ $standard->name }}</option>
-                                        @foreach($standards as $standard)
-                                            <option value="{{ $standard->id }}">{{ $standard->name }}</option>
-                                        @endforeach
-                                    </select>
+                                <div>
+                                    @foreach($standards as $standard)
+                                        <div class="mb-2">
+                                            <input type="checkbox" class="mr-1"
+                                                        name="standard_id[]" value="{{ $standard->id }}"  @if(in_array($standard->id, $setStandards))checked="checked"@endif>
+                                            <label for="{{ $standard->id }}">{{ $standard->name }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                @error('standard_id')
+                                @error('standard_id.*')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>

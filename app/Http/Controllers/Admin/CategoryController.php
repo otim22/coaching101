@@ -43,12 +43,12 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'standard_id' => 'required|integer',
+            'standard_id' => 'required|array',
         ]);
 
         $categoryData = Category::create(['name' => $request->name]);
         $category = Category::find($categoryData->id);
-        $category->standards()->attach($request->standard_id);
+        $category->standards()->attach($request->input('standard_id'));
 
         return redirect()->route('admin.categories.index')->with('success', 'Category added successfully.');
     }
@@ -73,9 +73,9 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $standards = Standard::get();
-        $standard = $category->standards->first();
-        
-        return view('admin.categories.edit', compact(['category', 'standards', 'standard']));
+        $setStandards = $category->standards->pluck('id')->toArray();
+
+        return view('admin.categories.edit', compact(['category', 'standards', 'setStandards']));
     }
 
     /**
@@ -89,10 +89,11 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'standard_id' => 'required|integer',
+            'standard_id' => 'required|array',
         ]);
-
-        $category->fill($request->all())->save();
+        $category->name = $request->name;
+        $category->save();
+        $category->standards()->sync($request->input('standard_id'));
 
         return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully');
     }

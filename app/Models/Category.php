@@ -68,7 +68,6 @@ class Category extends Model
 
     public function standards()
     {
-        return $this->belongsToMany('App\Models\Standard', 'standard_categories')
-                            ->wherePivot('standard_id', SessionWrapper::getData('standardId'));
+        return $this->belongsToMany('App\Models\Standard', 'standard_categories');
     }
 }

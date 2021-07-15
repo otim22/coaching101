@@ -28,18 +28,19 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group mb-4">
-                                <label for="standard_id" class="bold">Standard</label>
-                                <div class="input-group mb-3">
-                                    <select class="custom-select" name="standard_id">
-                                        <option selected>Choose standard...</option>
-                                        @foreach($standards as $standard)
-                                            <option value="{{ $standard->id }}">{{ $standard->name }}</option>
-                                        @endforeach
-                                    </select>
+                            <div class="form-group">
+                                <label for="standard_id">Standard</label>
+                                <div>
+                                    @foreach($standards as $standard)
+                                        <div class="mb-2">
+                                            <input type="checkbox" class="mr-1"
+                                                        name="standard_id[]" value="{{ $standard->id }}">
+                                            <label for="{{ $standard->id }}">{{ $standard->name }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                @error('standard_id')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @error('standard_id.*')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
