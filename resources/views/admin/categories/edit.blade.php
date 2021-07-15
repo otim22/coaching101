@@ -32,7 +32,23 @@
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                            <div class="form-group">
+                                <label for="standard_id">Standard</label>
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" name="standard_id">
+                                        <option selected value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                        @foreach($standards as $standard)
+                                            <option value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('standard_id')
+                                    <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </div>
                 </div>

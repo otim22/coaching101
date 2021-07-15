@@ -73,8 +73,9 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $standards = Standard::get();
-
-        return view('admin.categories.edit', compact(['category', 'standards']));
+        $standard = $category->standards->first();
+        
+        return view('admin.categories.edit', compact(['category', 'standards', 'standard']));
     }
 
     /**

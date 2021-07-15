@@ -87,6 +87,5 @@
 @endsection
 
 @push('scripts')
-<!-- <script type="text/javascript" src="{{ asset('admin/vendor/jquery.min.js') }}"></script> -->
-<script type="text/javascript" src="{{ asset('admin/js/slider_editor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admin/js/slider_editor.js') }}"></script>
 @endpush
