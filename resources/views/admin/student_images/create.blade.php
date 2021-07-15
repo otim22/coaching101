@@ -7,7 +7,7 @@
 <section>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-lg-9 col-md-10 col-sm-12 mt-5 pt-5">
+            <div class="col-lg-10 col-md-10 col-sm-12 mt-5 pt-5">
                 <form action="{{ route('admin.studentImages.store') }}" method="POST"
                             enctype="multipart/form-data">
                     @csrf

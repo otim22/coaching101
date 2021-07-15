@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>A</title>
+    <title>onCloudLearning</title>
 
     <link type="text/css" href="{{ asset('admin/css/vendor-morris.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('admin/css/vendor-bootstrap-datepicker.css') }}" rel="stylesheet">

@@ -16,13 +16,13 @@
 
                     @auth
                         @if(Auth::user()->hasRole('student'))
-                            <p><a id="round-button-2" class="btn btn-primary btn-lg get-started_student mt-5" href="#learn-now" role="button">Get started &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg get-started_student mt-5" href="#learn-now" role="button">Let's get started &raquo;</a></p>
                         @endif
                         @if(Auth::user()->hasRole('teacher'))
-                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get started &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Let's get started &raquo;</a></p>
                         @endif
                         @if(Auth::user()->hasRole('admin'))
-                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Get started &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Let's get started &raquo;</a></p>
                         @endif
                     @endauth
                 </div>
