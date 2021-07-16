@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,8 @@ class StudentProfileController extends Controller
 {
     public function index()
     {
+        // $studentProfile = User::with('profile')->paginate(20);
+        // dd($studentProfile);
         $students = Profile::whereNotNull('dob')->paginate(20);
 
         return view('admin.profiles.students.index', compact('students'));

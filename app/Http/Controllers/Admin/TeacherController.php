@@ -12,7 +12,7 @@ class TeacherController extends Controller
 {
     public function index()
     {
-        $teachers = User::where('role', 2)->paginate(20);
+        $teachers = User::role('teacher')->paginate(20);
 
         return view('admin.users.teachers.index', compact('teachers'));
     }
