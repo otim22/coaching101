@@ -94,7 +94,7 @@
                                 href="#{{ Str::slug($category->name) }}"
                                 role="tab"
                                 aria-controls="nav-{{ Str::slug($category->name) }}">
-                                <h6>{{ $category->name }} </h6>
+                                <h6 class="bold">{{ $category->name }} </h6>
                             </a>
                         @endforeach
                     </div>
@@ -320,9 +320,9 @@
                 <div class="accordion" id="accordionExample">
                     @foreach($faqs as $faq)
                         <div class="card mb-3">
-                            <div class="card-header" id="heading{{$faq->id}}">
+                            <div class="card-header" id="heading{{$faq->id}}" style="padding: 6px;">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{$faq->id}}" aria-expanded="true" aria-controls="collapse{{$faq->id}}" style="text-decoration: none">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{$faq->id}}" aria-expanded="true" aria-controls="collapse{{$faq->id}}" style="text-decoration: none;">
                                         <div class="d-flex justify-content-between">
                                             <div class="bold">
                                                 {{ $faq->title }}
