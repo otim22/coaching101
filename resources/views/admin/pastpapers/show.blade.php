@@ -45,7 +45,7 @@
 
                         @if($pastpaper->price)
                             <div class="mb-3">
-                                <span>UGX {{ number_format($pastpaper->price) }}/-</span>
+                                <span>{{ $subject->currency->name }} {{ number_format($pastpaper->price) }}/-</span>
                             </div>
                         @else
                             <div class="mb-3">

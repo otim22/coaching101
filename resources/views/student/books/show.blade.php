@@ -84,7 +84,7 @@
                                     <p>By {{ $book->creator->name }}</p>
                                 @endif
                                 @if($book->price)
-                                    <span class="bold">UGX {{ $book->formatPrice }}/-</span>
+                                    <span class="bold">{{ $subject->currency->name }} {{ $book->formatPrice }}/-</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                     @if($book->creator)

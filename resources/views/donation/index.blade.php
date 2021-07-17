@@ -77,7 +77,7 @@
                                         <label for="body">Amount</label>
                                         <div class="input-group">
                                             <select class="custom-select currency" name="currency">
-                                                <option selected>UGX</option>
+                                                <option selected>{{ $subject->currency->name }}</option>
                                                 @foreach($currencies as $currency)
                                                     <option value="{{ $currency->id }}">{{ $currency->name }}</option>
                                                 @endforeach
@@ -130,7 +130,7 @@
                                         <label for="body">Amount</label>
                                         <div class="input-group">
                                             <select class="custom-select currency" name="currency">
-                                                <option selected>UGX</option>
+                                                <option selected>{{ $subject->currency->name }}</option>
                                                 @foreach($currencies as $currency)
                                                     <option value="{{ $currency->id }}">{{ $currency->name }}</option>
                                                 @endforeach

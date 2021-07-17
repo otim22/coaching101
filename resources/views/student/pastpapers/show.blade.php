@@ -134,7 +134,7 @@
                                 <p>By {{ $pastpaper->creator->name }}</p>
                             @endif
                             @if($pastpaper->price)
-                                <span class="bold">UGX {{ $pastpaper->formatPrice }}/-</span>
+                                <span class="bold">{{ $subject->currency->name }} {{ $pastpaper->formatPrice }}/-</span>
                             @else
                                 <p class="bold paid_color">Free</p>
                             @endif

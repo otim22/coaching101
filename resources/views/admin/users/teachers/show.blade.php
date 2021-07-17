@@ -38,7 +38,7 @@
                                     @forelse($subjects as $subject)
                                         <div class="mb-4">
                                             <h6 class="bold">{{ $subject->title }}</h6>
-                                            <p>Total Revenue: <span>UGX {{ $subject->totalRevenue  }}/-</span></p>
+                                            <p>Total Revenue: <span>{{ $subject->currency->name }} {{ $subject->totalRevenue  }}/-</span></p>
                                         </div>
                                     @empty
                                         <p>No data to display</p>

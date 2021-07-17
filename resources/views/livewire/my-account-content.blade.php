@@ -179,7 +179,7 @@
                                         @endif
 
                                         @if($wishlistItem->itemContent->price)
-                                            <span class="bold">UGX {{  $wishlistItem->itemContent->formatPrice }}/-</span>
+                                            <span class="bold">{{ $subject->currency->name }} {{  $wishlistItem->itemContent->formatPrice }}/-</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif

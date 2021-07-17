@@ -12,7 +12,7 @@
                                 @endif
 
                                 @if($note->price)
-                                    UGX {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
+                                    {{ $subject->currency->name }} {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif
@@ -25,7 +25,7 @@
                                 @endif
 
                                 @if($note->price)
-                                    <span class="bold">UGX {{ $note->formatPrice }}/-</span>
+                                    <span class="bold">{{ $subject->currency->name }} {{ $note->formatPrice }}/-</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif

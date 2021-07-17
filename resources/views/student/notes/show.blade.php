@@ -102,7 +102,7 @@
                                 <p>By {{ $note->creator->name }}</p>
                             @endif
                             @if($note->price)
-                                <span class="bold">UGX {{ $note->formatPrice }}/-</span>
+                                <span class="bold">{{ $subject->currency->name }} {{ $note->formatPrice }}/-</span>
                             @else
                                 <span class="bold paid_color">Free</span>
                             @endif

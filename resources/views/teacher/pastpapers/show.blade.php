@@ -104,7 +104,7 @@
                                 @if(!$pastpaper->price)
                                 <p>Free</p>
                                 @else
-                                <p>UGX {{ $pastpaper->formatPrice }}/-</p>
+                                <p>{{ $subject->currency->name }} {{ $pastpaper->formatPrice }}/-</p>
                                 @endif
                             </li>
                         </div>

@@ -46,7 +46,7 @@
                     </div>
                 @endif
                 @if(!$subject->isSubscribedTo)
-                    <span class="bold mb-3">UGX {{  $subject->formatPrice }}/-</span>
+                    <span class="bold mb-3">{{ $subject->currency->name }} {{  $subject->formatPrice }}/-</span>
                 @endif
                 <p class="mb-5">Created by {{ $subject->creator->name }}</p>
             </div>
@@ -257,9 +257,9 @@
                                 </div>
                                 @endif
                                 @if($subject->isSubscribedTo)
-                                    <span class="author-font">UGX {{  $subject->formatPrice }}/- (Paid)</span></span>
+                                    <span class="author-font">{{ $subject->currency->name }} {{  $subject->formatPrice }}/- (Paid)</span></span>
                                 @else
-                                    <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
+                                    <span class="bold">{{ $subject->currency->name }} {{  $subject->formatPrice }}/-</span>
                                 @endif
                             </a>
                             <div class="mt-2 d-flex justify-content-between">

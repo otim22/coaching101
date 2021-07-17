@@ -85,9 +85,9 @@
 
                                 @if($subject->price)
                                     @if($subject->isSubscribedTo)
-                                        <span class="author-font">UGX {{  $subject->formatPrice }}/- (Paid)</span></span>
+                                        <span class="author-font">{{ $subject->currency->name }} {{  $subject->formatPrice }}/- (Paid)</span></span>
                                     @else
-                                        <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
+                                        <span class="bold">{{ $subject->currency->name }} {{  $subject->formatPrice }}/-</span>
                                     @endif
                                 @else
                                     <span class="bold paid_color">Free</span>
@@ -150,7 +150,7 @@
                                         @endif
 
                                         @if($book->price)
-                                            UGX {{ $book->formatPrice }}/- <span class="author-font">(Paid)</span>
+                                            {{ $subject->currency->name }} {{ $book->formatPrice }}/- <span class="author-font">(Paid)</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -163,7 +163,7 @@
                                         @endif
 
                                         @if($book->price)
-                                            <span class="bold">UGX {{ $book->formatPrice }}/-</span>
+                                            <span class="bold">{{ $subject->currency->name }} {{ $book->formatPrice }}/-</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -176,7 +176,7 @@
                                         @endif
 
                                         @if($book->price)
-                                            <span class="bold">UGX {{ $book->formatPrice }}/-</span>
+                                            <span class="bold">{{ $subject->currency->name }} {{ $book->formatPrice }}/-</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -216,7 +216,7 @@
                                         @endif
 
                                         @if($note->price)
-                                            UGX {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
+                                            {{ $subject->currency->name }} {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -229,7 +229,7 @@
                                         @endif
 
                                         @if($note->price)
-                                            UGX {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
+                                            {{ $subject->currency->name }} {{ $note->formatPrice }}/- <span class="author-font">(Paid)</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -242,7 +242,7 @@
                                         @endif
 
                                         @if($note->price)
-                                            <span class="bold">UGX {{ $note->formatPrice }}/-</span>
+                                            <span class="bold">{{ $subject->currency->name }} {{ $note->formatPrice }}/-</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -282,7 +282,7 @@
                                         @endif
 
                                         @if($pastpaper->price)
-                                            UGX {{ $pastpaper->formatPrice }}/- <span class="author-font">(Paid)</span>
+                                            {{ $subject->currency->name }} {{ $pastpaper->formatPrice }}/- <span class="author-font">(Paid)</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -295,7 +295,7 @@
                                         @endif
 
                                         @if($pastpaper->price)
-                                            UGX {{ $pastpaper->formatPrice }}/- <span class="author-font">(Paid)</span>
+                                            {{ $subject->currency->name }} {{ $pastpaper->formatPrice }}/- <span class="author-font">(Paid)</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif
@@ -308,7 +308,7 @@
                                         @endif
 
                                         @if($pastpaper->price)
-                                            <span class="bold">UGX {{ $pastpaper->formatPrice }}/-</span>
+                                            <span class="bold">{{ $subject->currency->name }} {{ $pastpaper->formatPrice }}/-</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif

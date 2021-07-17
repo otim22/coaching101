@@ -47,9 +47,9 @@
                                 <span class="author-font">{{ $search->searchable->creator->name }}</span><br />
                                 @if($search->searchable->price)
                                     @if($search->searchable->isSubscribedTo)
-                                        <span class="author-font">UGX {{  $search->searchable->formatPrice }}/- (Paid)</span><br />
+                                        <span class="author-font">{{ $subject->currency->name }} {{  $search->searchable->formatPrice }}/- (Paid)</span><br />
                                     @else
-                                        <span class="bold">UGX {{  $search->searchable->formatPrice }}/-</span><br />
+                                        <span class="bold">{{ $subject->currency->name }} {{  $search->searchable->formatPrice }}/-</span><br />
                                     @endif
                                 @else
                                     <span class="bold paid_color">Free</span>

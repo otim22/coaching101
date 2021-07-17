@@ -45,7 +45,7 @@
 
                         @if($note->price)
                             <div class="mb-3">
-                                <span class="mt-3">UGX {{ number_format($note->price) }}/-</span>
+                                <span class="mt-3">{{ $subject->currency->name }} {{ number_format($note->price) }}/-</span>
                             </div>
                         @else
                             <div class="mb-3">

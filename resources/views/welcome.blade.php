@@ -139,9 +139,9 @@
 
                                                     @if($subject->price)
                                                         @if($subject->isSubscribedTo)
-                                                            <span class="author-font">UGX {{  $subject->formatPrice }}/- (Paid)</span></span>
+                                                            <span class="author-font">{{ $subject->currency->name }} {{  $subject->formatPrice }}/- (Paid)</span></span>
                                                         @else
-                                                            <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
+                                                            <span class="bold">{{ $subject->currency->name }} {{  $subject->formatPrice }}/-</span>
                                                         @endif
                                                     @else
                                                         <span class="bold paid_color">Free</span>
@@ -210,9 +210,9 @@
 
                                 @if($subject->price)
                                     @if($subject->isSubscribedTo)
-                                        <span class="author-font">UGX {{  $subject->formatPrice }}/- (Paid)</span></span>
+                                        <span class="author-font">{{ $subject->currency->name }} {{  $subject->formatPrice }}/- (Paid)</span></span>
                                     @else
-                                        <span class="bold">UGX {{  $subject->formatPrice }}/-</span>
+                                        <span class="bold">{{ $subject->currency->name }} {{  $subject->formatPrice }}/-</span>
                                     @endif
                                 @else
                                     <span class="bold">Free</span>
