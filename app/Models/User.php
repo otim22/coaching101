@@ -82,4 +82,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany('App\Models\Standard', 'user_standards');
     }
+
+    public function category()
+    {
+        return $this->belongsTo('\App\Models\Category');
+    }
 }

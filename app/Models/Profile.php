@@ -41,12 +41,16 @@ class Profile extends Model implements HasMedia
 
     public function setDobAttribute($value)
     {
-        $this->attributes['dob'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+        if($value != null) {
+            $this->attributes['dob'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+        }
     }
 
     public function getDobAttribute()
     {
-        return  Carbon::createFromFormat('Y-m-d', $this->attributes['dob'])->format('m/d/Y');
+        if($this->attributes['dob'] != null) {
+            return  Carbon::createFromFormat('Y-m-d', $this->attributes['dob'])->format('m/d/Y');
+        }
     }
 
     public function getAgeAttribute()
@@ -57,5 +61,15 @@ class Profile extends Model implements HasMedia
     public function user()
     {
         return $this->belongsTo('\App\Models\User');
+    }
+
+    public function year()
+    {
+        return $this->belongsTo('\App\Models\Year');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('\App\Models\Category');
     }
 }

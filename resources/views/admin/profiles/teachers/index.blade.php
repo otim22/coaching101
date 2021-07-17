@@ -27,11 +27,11 @@
                                     <tr>
                                             <td>
                                                 <a href="{{ route('admin.teacher.profile.show', $teacher) }}" style="text-decoration: none;">
-                                                    {{ \App\Models\User::where('id', $teacher->user_id)->firstOrFail()->name }}
+                                                    {{ $teacher->user->name }}
                                                 </a>
                                             </td>
-                                            <td>{{ \App\Models\Category::where('id', $teacher->category_id)->firstOrFail()->name }}</td>
-                                            <td>{{ \App\Models\User::where('id', $teacher->user_id)->firstOrFail()->email }}</td>
+                                            <td>{{ $teacher->category->name }}</td>
+                                            <td>{{ $teacher->user->email }}</td>
                                             <td>{{ $teacher->phone }}</td>
                                     </tr>
                                 @empty

@@ -10,7 +10,7 @@ class TeacherProfileController extends Controller
 {
     public function index()
     {
-        $teachers = Profile::whereNull('dob')->paginate(20);
+        $teachers = Profile::with(['user', 'year', 'category'])->whereNotNull('category_id')->paginate(20);
 
         return view('admin.profiles.teachers.index', compact('teachers'));
     }

@@ -21,10 +21,10 @@
                     </div>
                     <div class="card-body">
                         <div>
-                            <p><span class="label-text">Names:</span> {{ \App\Models\User::where('id', $teacher->user_id)->firstOrFail()->name }}</p>
+                            <p><span class="label-text">Names:</span> {{ $teacher->user->name }}</p>
                         </div>
                         <div>
-                            <p><span class="label-text">Email:</span> {{ \App\Models\User::where('id', $teacher->user_id)->firstOrFail()->email }}</p>
+                            <p><span class="label-text">Email:</span> {{ $teacher->user->email }}</p>
                         </div>
                         <div class="mt-3">
                             <p><span class="label-text">Telephone:</span> {{ $teacher->phone }}</p>

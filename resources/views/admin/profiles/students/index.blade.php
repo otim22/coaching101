@@ -27,16 +27,16 @@
                                     <tr>
                                         <td>
                                             <a href="{{ route('admin.student.profile.show', $student) }}" style="text-decoration: none;">
-                                                {{ \App\Models\User::where('id', $student->user_id)->firstOrFail()->name }}
+                                                {{ $student->user->name }}
                                             </a>
                                         </td>
-                                        <td>{{ \App\Models\User::where('id', $student->user_id)->firstOrFail()->email }}</td>
+                                        <td>{{ $student->user->email }}</td>
                                         <td>{{ $student->phone }}</td>
-                                        <td>{{ \App\Models\Year::where('id', $student->year_id)->firstOrFail()->name }}</td>
+                                        <td>{{ $student->year->name }}</td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td>No teachers</td>
+                                        <td>No students</td>
                                     </tr>
                                 @endforelse
                             </tbody>

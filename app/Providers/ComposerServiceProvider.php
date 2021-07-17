@@ -84,13 +84,12 @@ class ComposerServiceProvider extends ServiceProvider
                 $userIds[] = $user->id;
             }
 
-            $userProfiles = User::with(['profile', 'roles' => function ($query) {
-                $query->where([
-                    'name' => 'teacher'
-                ]);
-            }])->whereIn('id', $userIds)->get()->take(12);
+            $teacherProfiles = Profile::with(['user', 'category'])
+                                                            ->whereNotNull('category_id')
+                                                            ->whereIn('id', $userIds)
+                                                            ->get()->take(12);
 
-            $view->withTeachers($userProfiles);
+            $view->withTeachers($teacherProfiles);
         });
 
         View::composer(['*'], function ($view) {
