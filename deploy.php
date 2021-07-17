@@ -17,22 +17,22 @@ host('prod')
     ->set('hostname', '167.71.47.82')
     ->set('deploy_path', '/var/www/oncloudlearning.com');
 
-task('dev', [
-    'deploy:prepare',
-    'deploy:vendors',
-    'artisan:storage:link',
-    'artisan:view:cache',
-    'artisan:config:cache',
-    'artisan:migrate',
-    'composer:install',
-    'npm:install',
-    'artisan:migrate:fresh',
-    'artisan:db:seed',
-    'artisan:optimize',
-    'npm:run:prod',
-    'deploy:publish',
-    'php-fpm:reload',
-]);
+// task('dev', [
+//     'deploy:prepare',
+//     'deploy:vendors',
+//     'artisan:storage:link',
+//     'artisan:view:cache',
+//     'artisan:config:cache',
+//     'artisan:migrate',
+//     'composer:install',
+//     'npm:install',
+//     'artisan:migrate:fresh',
+//     'artisan:db:seed',
+//     'artisan:optimize',
+//     'npm:run:prod',
+//     'deploy:publish',
+//     'php-fpm:reload',
+// ]);
 
 task('prod', [
     'deploy:prepare',
