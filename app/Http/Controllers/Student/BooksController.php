@@ -20,11 +20,12 @@ class BooksController extends Controller
         $standardId = SessionWrapper::getStandardId();
         $standards = Standard::find($standardId);
         $years =  $this->getMatchingYearsToLevel();
+        $standardYears = $standards->years;
         $terms =  Term::get();
         $levels = $standards->levels;
         $categories = $standards->categories;
 
-        return view('student.books.index', compact(['categories', 'years', 'terms', 'books', 'levels']));
+        return view('student.books.index', compact(['categories', 'years', 'standardYears', 'terms', 'books', 'levels']));
     }
 
     protected function getMatchingYearsToLevel($value = 'All levels')

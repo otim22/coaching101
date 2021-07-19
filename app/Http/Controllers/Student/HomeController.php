@@ -30,11 +30,12 @@ class HomeController extends Controller
         $standardId = SessionWrapper::getStandardId();
         $standards = Standard::find($standardId);
         $years =  $this->getMatchingYearsToLevel();
+        $standardYears = $standards->years;
         $terms =  Term::get();
         $levels = $standards->levels;
         $categories = $standards->categories;
 
-        return view('home', compact(['subjects', 'categories', 'years', 'terms', 'levels']));
+        return view('home', compact(['subjects', 'categories', 'years', 'standardYears', 'terms', 'levels']));
     }
 
     protected function getMatchingYearsToLevel($value = null)

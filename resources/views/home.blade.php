@@ -63,6 +63,9 @@
                             <div class="resource-filter_input">
                                 <select class="custom-select" id="year">
                                     <option selected>{{ \App\Constants\GlobalConstants::ALL_YEARS }}</option>
+                                    @foreach($standardYears as $standardYear)
+                                        <option value="{{ $standardYear->id }}">{{ $standardYear->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

@@ -55,6 +55,11 @@ class Standard extends Model
         return $this->hasMany('App\Models\Level');
     }
 
+    public function years()
+    {
+        return $this->hasMany('App\Models\Year');
+    }
+
     public static function categoryIds()
     {
         $categoryIds = [];
