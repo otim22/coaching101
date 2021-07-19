@@ -15,11 +15,6 @@ class YearTableSeeder extends Seeder
      */
     public function run()
     {
-        $years = [
-            'Senior one', 'Senior two', 'Senior three', 'Senior four', 'Senior five',
-            'Senior six', 'Year one', 'Year two', 'Year three', 'Year four'
-        ];
-
         $cambridge = 1;
         $uneb = 2;
         $standards = [$cambridge, $uneb];
