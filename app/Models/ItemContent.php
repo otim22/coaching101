@@ -198,12 +198,15 @@ class ItemContent extends Model implements HasMedia, Searchable
         );
     }
 
-    public static function getItemContents($category, $year, $term, $item = null)
+    public static function getItemContents($category, $level, $year, $term, $item = null)
     {
         $items = ['is_approved' => 1];
 
         if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
             $items['category_id'] = $category;
+        }
+        if ($level && $level !== GlobalConstants::ALL_LEVELS) {
+            $items['level_id'] = $level;
         }
         if ($year && $year !== GlobalConstants::ALL_YEARS) {
             $items['year_id'] = $year;

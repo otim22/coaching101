@@ -17,7 +17,7 @@ class NotesController extends Controller
 {
     public function index()
     {
-        $notes =  ItemContent::getItemContents(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS, GlobalConstants::NOTE);
+        $notes =  ItemContent::getItemContents(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_LEVELS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS, GlobalConstants::NOTE);
         $standardId = SessionWrapper::getStandardId();
         $standards = Standard::find($standardId);
         $years =  $this->getMatchingYearsToLevel();
@@ -49,11 +49,12 @@ class NotesController extends Controller
     {
         if ($request->ajax()) {
             $category = $request->notes_category;
+            $level= $request->level;
             $year = $request->notes_year;
             $term = $request->notes_term;
             $item = GlobalConstants::NOTE;
 
-            $notes = ItemContent::getItemContents($category, $year, $term, $item);
+            $notes = ItemContent::getItemContents($category, $level, $year, $term, $item);
 
             return view('student.notes.partials.filtered_notes', compact('notes'));
         }

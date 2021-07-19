@@ -16,7 +16,7 @@ class PastpaperController extends Controller
 {
     public function index()
     {
-        $pastpapers =  ItemContent::getItemContents(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS, GlobalConstants::PASTPAPER);
+        $pastpapers =  ItemContent::getItemContents(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_LEVELS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS, GlobalConstants::PASTPAPER);
         $standardId = SessionWrapper::getStandardId();
         $standards = Standard::find($standardId);
         $years =  $this->getMatchingYearsToLevel();
@@ -48,11 +48,12 @@ class PastpaperController extends Controller
     {
         if ($request->ajax()) {
             $category = $request->pastpaper_category;
+            $level= $request->level;
             $year = $request->pastpaper_year;
             $term = $request->pastpaper_term;
             $item = GlobalConstants::PASTPAPER;
 
-            $pastpapers = ItemContent::getItemContents($category, $year, $term, $item);
+            $pastpapers = ItemContent::getItemContents($category, $level, $year, $term, $item);
 
             return view('student.pastpapers.partials.filtered_pastpapers', compact('pastpapers'));
         }

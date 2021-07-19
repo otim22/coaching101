@@ -26,7 +26,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $subjects =  ItemContent::getItemContents(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS, GlobalConstants::SUBJECT);
+        $subjects =  ItemContent::getItemContents(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_LEVELS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS, GlobalConstants::SUBJECT);
         $standardId = SessionWrapper::getStandardId();
         $standards = Standard::find($standardId);
         $years =  $this->getMatchingYearsToLevel();
@@ -51,13 +51,13 @@ class HomeController extends Controller
 
     public function getMoreSubjects(Request $request)
     {
-        $category= $request->category;
-        $year= $request->year;
-        $term= $request->term;
-        $item = GlobalConstants::SUBJECT;
-
-        if ($request->ajax()) {
-            $subjects = ItemContent::getItemContents($category, $year, $term, $item);
+        if($request->ajax()) {
+            $category= $request->category;
+            $level= $request->level;
+            $year= $request->year;
+            $term= $request->term;
+            $item = GlobalConstants::SUBJECT;
+            $subjects = ItemContent::getItemContents($category, $level, $year, $term, $item);
 
             return view('student.subject_display.filtered_subjects', compact('subjects'));
         }

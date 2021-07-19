@@ -7,12 +7,13 @@ $(function() {
         getMoreBooks(page);
     });
 
-    $('#book_category, #book_year, #book_term').on('change', function() {
+    $('#book_category, #level, #book_year, #book_term').on('change', function() {
         getMoreBooks();
     });
 
     function getMoreBooks(page) {
         var selectedCategory = $("#book_category option:selected").val();
+        var selectedLevel = $("#level option:selected").val();
         var selectedYear = $("#book_year option:selected").val();
         var selectedTerm = $("#book_term option:selected").val();
 
@@ -20,6 +21,7 @@ $(function() {
             type: "GET",
             data: {
                 'book_category': selectedCategory,
+                'level': selectedLevel,
                 'book_year': selectedYear,
                 'book_term': selectedTerm
             },
@@ -98,7 +100,7 @@ $(function() {
 
         setTimeout(function () {
             document.location.reload(true);
-        }, 1000);
+        }, 800);
     }
     /** End Delete a particular objective **/
 });

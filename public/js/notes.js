@@ -7,12 +7,13 @@ $(function() {
         getMoreNotes(page);
     });
 
-    $('#notes_category, #notes_year, #notes_term').on('change', function() {
+    $('#notes_category, #level, #notes_year, #notes_term').on('change', function() {
         getMoreNotes();
     });
 
     function getMoreNotes(page) {
         var selectedCategory = $("#notes_category option:selected").val();
+        var selectedLevel = $("#level option:selected").val();
         var selectedYear = $("#notes_year option:selected").val();
         var selectedTerm = $("#notes_term option:selected").val();
 
@@ -20,6 +21,7 @@ $(function() {
             type: "GET",
             data: {
                 'notes_category': selectedCategory,
+                'level': selectedLevel,
                 'notes_year': selectedYear,
                 'notes_term': selectedTerm
             },
@@ -97,7 +99,7 @@ $(function() {
 
         setTimeout(function () {
             document.location.reload(true);
-        }, 1000);
+        }, 800);
     }
     /** End Delete a particular objective */
 });

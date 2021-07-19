@@ -16,7 +16,7 @@ class BooksController extends Controller
 {
     public function index()
     {
-        $books =  ItemContent::getItemContents(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS, GlobalConstants::BOOK);
+        $books =  ItemContent::getItemContents(GlobalConstants::ALL_SUBJECTS, GlobalConstants::ALL_LEVELS, GlobalConstants::ALL_YEARS, GlobalConstants::ALL_TERMS, GlobalConstants::BOOK);
         $standardId = SessionWrapper::getStandardId();
         $standards = Standard::find($standardId);
         $years =  $this->getMatchingYearsToLevel();
@@ -48,11 +48,12 @@ class BooksController extends Controller
     {
         if ($request->ajax()) {
             $category = $request->book_category;
+            $level= $request->level;
             $year = $request->book_year;
             $term = $request->book_term;
             $item = GlobalConstants::BOOK;
 
-            $books = ItemContent::getItemContents($category, $year, $term, $item);
+            $books = ItemContent::getItemContents($category, $level, $year, $term, $item);
 
             return view('student.books.partials.filtered_books', compact('books'));
         }

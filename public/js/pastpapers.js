@@ -7,12 +7,13 @@ $(function() {
         getMorePastpapers(page);
     });
 
-    $('#pastpaper_category, #pastpaper_year, #pastpaper_term').on('change', function() {
+    $('#pastpaper_category, #level, #pastpaper_year, #pastpaper_term').on('change', function() {
         getMorePastpapers();
     });
 
     function getMorePastpapers(page) {
         var selectedCategory = $("#pastpaper_category option:selected").val();
+        var selectedLevel = $("#level option:selected").val();
         var selectedYear = $("#pastpaper_year option:selected").val();
         var selectedTerm = $("#pastpaper_term option:selected").val();
 
@@ -20,6 +21,7 @@ $(function() {
             type: "GET",
             data: {
                 'pastpaper_category': selectedCategory,
+                'level': selectedLevel,
                 'pastpaper_year': selectedYear,
                 'pastpaper_term': selectedTerm
             },
@@ -93,10 +95,9 @@ $(function() {
                 console.log(xhr.responseText);
             }
         });
-
         setTimeout(function () {
             document.location.reload(true);
-        }, 1000);
+        }, 800);
     }
     /** End Delete a particular objective */
 });
