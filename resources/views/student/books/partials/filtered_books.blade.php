@@ -25,7 +25,7 @@
                                 @endif
 
                                 @if($book->price)
-                                    {{ $subject->currency->name }} {{ $book->formatPrice }}/- <span class="author-font">(Paid)</span>
+                                    {{ $book->currency->name }} {{ $book->formatPrice }}/- <span class="author-font">(Paid)</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif
@@ -38,7 +38,7 @@
                                 @endif
 
                                 @if($book->price)
-                                    <span class="bold">{{ $subject->currency->name }} {{ $book->formatPrice }}/-</span>
+                                    <span class="bold">{{ $book->currency->name }} {{ $book->formatPrice }}/-</span>
                                 @else
                                     <span class="bold paid_color">Free</span>
                                 @endif
