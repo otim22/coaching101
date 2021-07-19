@@ -5,7 +5,7 @@ namespace App\Constants;
 class GlobalConstants
 {
     const ALL_SUBJECTS = 'All subjects';
-    const ALL_YEARS = 'All years';
+    const ALL_YEARS = 'All classes';
     const ALL_TERMS = 'All terms';
     const ALL_LEVELS = 'All levels';
     const ALL_STANDARDS = 'All standards';

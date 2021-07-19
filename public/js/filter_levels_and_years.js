@@ -14,7 +14,7 @@ $(function() {
                 let len = response.length;
                 $("#level_id").empty();
                 if(len > 0) {
-                    $("#level_id").append("<option selected>Select year</option>");
+                    $("#level_id").append("<option selected>All classes</option>");
                     for(let i = 0; i < len; i++) {
                         let id = response[i]['id'];
                         let name = response[i]['name'];

@@ -15,7 +15,7 @@ class LevelTableSeeder extends Seeder
      */
     public function run()
     {
-        $levels = ['O Level', 'A Level','Check Point', 'IGCSE', 'AS / A2'];
+        $levels = ['O Level', 'A Level','KS 3', 'KS 4', 'AS', 'A Level'];
         $cambridge = 1;
         $uneb = 2;
 

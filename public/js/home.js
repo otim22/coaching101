@@ -43,7 +43,7 @@ $(function() {
                 var len = response.length;
                 $("#year").empty();
                 if(len > 0) {
-                    $("#year").append("<option selected>Select year</option>");
+                    $("#year").append("<option selected>All classes</option>");
                     for(var i = 0; i < len; i++) {
                         var id = response[i]['id'];
                         var name = response[i]['name'];
