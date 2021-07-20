@@ -79,7 +79,7 @@
                             <a id="round-button-2" type="submit"
                                     data-toggle="modal"
                                     data-target="#myModal"
-                                    class="btn btn-sm btn-danger btn-block mb-2 text-white">
+                                    class="btn btn-danger btn-block mb-2 text-white">
                                     Checkout
                             </a>
                         </div>
@@ -87,7 +87,7 @@
                         <div class="mt-4">
                             <a id="round-button-2" type="submit"
                                     wire:click="clearCart()"
-                                    class="btn btn-sm btn-danger btn-block mb-2 text-white">
+                                    class="btn btn-danger btn-block mb-2 text-white">
                                     Checkout
                             </a>
                         </div>
@@ -103,7 +103,7 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Process Payment</h4>
+                <h4 class="modal-title bold">Process payment</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">

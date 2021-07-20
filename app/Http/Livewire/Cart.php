@@ -5,7 +5,10 @@ namespace App\Http\Livewire;
 use Illuminate\View\View;
 use App\Models\Wishlist;
 use Livewire\Component;
+use App\Models\Currency;
+use App\Models\Standard;
 use App\Models\ItemContent;
+use App\Helpers\SessionWrapper;
 use Illuminate\Support\Facades\Auth;
 use App\Facades\Cart as CartFacade;
 use App\Helpers\ProcessPayment as Payment;
@@ -110,7 +113,7 @@ class Cart extends Component
                 "phone_number" => Auth::user()->profile->phone,
                 "fullname" => Auth::user()->name,
                 "customizations" => [
-                    "title" => "OTF Payments",
+                    "title" => "onCloudLearning Payments",
                     "description" => "Your transaction is secure with us.",
                     "logo" => "https://assets.piedpiper.com/logo.png"
                 ]
@@ -157,14 +160,14 @@ class Cart extends Component
     private function setPaymentDefaults() {
         $user = Auth::user();
         $paymentToken = 'REF-' . 'TX-'. time() . '-' . $user->id;
-        $currency = "UGX";
+        $currency = $this->getCurrency()->name;
         $userEmail = $user->email;
         $cartSum = $this->sum;
         $redirectLink = "https://coaching101.app/cart";
 
         return [
             "tx_ref" => $paymentToken,
-            "amount"=> '2000',
+            "amount"=> $cartSum,
             "currency"=> $currency,
             "redirect_url" => $redirectLink,
             "email" => $userEmail,
@@ -172,6 +175,19 @@ class Cart extends Component
                 "consumer_id" => Auth::id()
             ]
         ];
+    }
+
+    private function getCurrency()
+    {
+        $activeStandard = Standard::where('id', SessionWrapper::getStandardId())->first();
+
+        if($activeStandard->name == 'Cambridge') {
+            $currency = Currency::where('name', 'USD')->first();
+        } else {
+            $currency = Currency::where('name', 'UGX')->first();
+        }
+
+        return $currency;
     }
 
     public function clearCart() {
