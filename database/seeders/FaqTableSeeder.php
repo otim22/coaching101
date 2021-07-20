@@ -21,8 +21,8 @@ class FaqTableSeeder extends Seeder
                 'description' => 'The course is completely online so you can partake whenever and wherever you would like (as long as you have internet access).'
             ],
             [
-                'title' => 'Where is Coaching101 located?',
-                'description' => 'Coaching101 has an office located in Kampala, Uganda.'
+                'title' => 'Where is onCloudLearning located?',
+                'description' => 'onCloudLearning has an office located in Kampala, Uganda.'
             ],
             [
                 'title' => 'When does it begin?',
