@@ -22,6 +22,7 @@ class Cart extends Component
     public $wishlistItems = [];
     public $cardDetails = [];
     public $response = [];
+    public $currency = '';
 
     protected $listeners = [
         'goToCart' => 'getItems',
@@ -39,6 +40,7 @@ class Cart extends Component
     public function mount()
     {
         $cartFacade = new CartFacade;
+        $this->currency = $this->getCurrency()->name;
         $this->cartItemTotal = count($cartFacade->get()['subjects']);
         $this->cartItems = $cartFacade->get()['subjects'];
         $this->wishlistItems = Wishlist::where('user_id', Auth::id())->get();
@@ -160,7 +162,7 @@ class Cart extends Component
     private function setPaymentDefaults() {
         $user = Auth::user();
         $paymentToken = 'REF-' . 'TX-'. time() . '-' . $user->id;
-        $currency = $this->getCurrency()->name;
+        $itemCurrency = $this->currency;
         $userEmail = $user->email;
         $cartSum = $this->sum;
         $redirectLink = "https://coaching101.app/cart";
@@ -168,7 +170,7 @@ class Cart extends Component
         return [
             "tx_ref" => $paymentToken,
             "amount"=> $cartSum,
-            "currency"=> $currency,
+            "currency"=> $itemCurrency,
             "redirect_url" => $redirectLink,
             "email" => $userEmail,
             "meta" => [

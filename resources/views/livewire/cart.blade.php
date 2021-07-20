@@ -69,7 +69,7 @@
         <aside class="p-3 p-4 border rounded add-shadow">
             <div class="make-me-sticky">
                 <h5>Total:</h5>
-                <h4 class="bold">{{ $subject->currency->name }} {{  rtrim(rtrim(number_format($sum, 2), 2), '.') }}/-</h4>
+                <h4 class="bold">{{ $currency }} {{  rtrim(rtrim(number_format($sum, 2), 2), '.') }}/-</h4>
                 <div class="mb-4 mt-4">
                     <hr />
                 </div>
