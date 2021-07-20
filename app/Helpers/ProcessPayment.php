@@ -2,13 +2,11 @@
 
 namespace App\Helpers;
 
-use Config;
 use Illuminate\Support\Facades\Http;
 
 class ProcessPayment
 {
     public $data = [];
-    private $key = "FLWSECK_TESTdf9f6e191043";
 
     public function __construct($data, $url)
     {
@@ -17,7 +15,7 @@ class ProcessPayment
     }
 
     public function cardPayment() {
-        $postData = $this->encrypt3Des(json_encode($this->data), $this->key);
+        $postData = $this->encrypt3Des(json_encode($this->data), config('app.encryption_key'));
         return $this->postPayment('card', ['client' => $postData], $this->url);
     }
 

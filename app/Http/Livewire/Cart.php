@@ -15,7 +15,6 @@ use App\Helpers\ProcessPayment as Payment;
 
 class Cart extends Component
 {
-    private $url = "https://api.flutterwave.com/v3/charges";
     public $cartItemTotal = 0;
     public $sum = 0;
     public $cartItems = [];
@@ -39,8 +38,8 @@ class Cart extends Component
 
     public function mount()
     {
-        $cartFacade = new CartFacade;
         $this->currency = $this->getCurrency()->name;
+        $cartFacade = new CartFacade;
         $this->cartItemTotal = count($cartFacade->get()['subjects']);
         $this->cartItems = $cartFacade->get()['subjects'];
         $this->wishlistItems = Wishlist::where('user_id', Auth::id())->get();
@@ -121,7 +120,7 @@ class Cart extends Component
                 ]
             ]);
 
-            $payment = new Payment($data, $this->url);
+            $payment = new Payment($data, config('app.flutterwave_url'));
             $response = $payment->cardPayment();
             $data = json_decode($response->body(), true);
 
@@ -165,7 +164,7 @@ class Cart extends Component
         $itemCurrency = $this->currency;
         $userEmail = $user->email;
         $cartSum = $this->sum;
-        $redirectLink = "https://coaching101.app/cart";
+        $redirectLink = config('app.redirect_link');
 
         return [
             "tx_ref" => $paymentToken,
