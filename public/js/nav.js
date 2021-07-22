@@ -8,34 +8,30 @@ $(function() {
     var search = $('#search-bar');
 
      // open search
-    $('nav .navbar-nav li.search').on('click', 'a', function (e) {
+    $('[data-toggle=search-form]').click(function() {
         navItems.attr("style","display:none !important");
         navbarToggler.attr("style","display:none !important");
         search.removeAttr('style');
-     	e.preventDefault();
+        $('.top-search .search').focus();
     });
 
-    $('#navbarSupportedContentOther .sm-search').on('click', 'a', function (e) {
+    $('#navbarSupportedContentOther .sm-search').on('click', 'a', function () {
         navItems.attr("style","display:none !important");
         navbarToggler.attr("style","display:none !important");
         smSearch.attr("style","display:none !important");
         smCart.attr("style","display:none !important");
         smInitials.attr("style","display:none !important");
         search.removeAttr('style');
-     	e.preventDefault();
     });
 
      // close search
-    $(document).mouseup(function (e) {
-        var container = $('.search-bar form');
-        if (!container.is(e.target) && container.has(e.target).length === 0) {
-            search.attr("style","display:none !important");
-            navItems.removeAttr('style');
-            smSearch.removeAttr('style');
-            smCart.removeAttr('style');
-            smInitials.removeAttr('style');
-            navbarToggler.removeAttr('style');
-        }
+    $('[data-toggle=search-form-close]').click(function() {
+        search.attr("style","display:none !important");
+        navItems.removeAttr('style');
+        smSearch.removeAttr('style');
+        smCart.removeAttr('style');
+        smInitials.removeAttr('style');
+        navbarToggler.removeAttr('style');
     });
     /** End of search js */
 

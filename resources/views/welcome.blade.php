@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
 <!-- Start jumbotron-->
-<section class="bg-image text-white mt-4" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 100vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
+<section class="small-screen_padding text-white mt-4" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 100vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
         <div class="row mt-5 pt-4 mb-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
@@ -78,7 +77,7 @@
 <!-- End selling points-->
 
 <!-- Start to learn-->
-<section class="" id="learn-now">
+<section class="small-screen_padding" id="learn-now">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-12 mb-4">
@@ -170,7 +169,7 @@
 <!-- End Start learn-->
 
 <!-- Start most viewed subjects-->
-<section class="bg-white">
+<section class="small-screen_padding bg-white">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
@@ -236,7 +235,7 @@
 <!-- End most viewed subjects-->
 
 <!-- Start student Image-->
-<section class="bg-white" >
+<section class="bg-white small-screen_profile" >
     <div class="bg-green pt-5 pb-5">
     <div class="container">
         <div class="row">
@@ -261,13 +260,13 @@
 <!-- End student Image-->
 
 <!-- Start Categories-->
-<section class="bg-white">
+<section class="smaller-screen_padding bg-white">
     @include('partials.categories')
 </section>
 <!-- End Categories-->
 
 <!-- Start teacher Image-->
-<section class="bg-white">
+<section class="bg-white small-screen_profile">
     <div class="bg-blue-2 pt-5 pb-5">
     <div class="container">
         <div class="row">
@@ -304,19 +303,19 @@
 <!-- End teacher Image-->
 
 <!-- Start Top teacher-->
-<section class="bg-white">
+<section class="small-screen_padding bg-white">
     @include('partials.teachers')
 </section>
 <!-- End teacher-->
 
 <!-- Start FAQ-->
-<section class="bg-gray-2">
+<section class="small-screen_padding bg-gray-2">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12">
                 <h4 class="bold">Frequently Asked Questions</h4>
             </div>
-            <div class="col-lg-9 col-md-9 col-sm-12 mt-4 mb-5">
+            <div class="col-lg-9 col-md-9 col-sm-12 mt-4">
                 <div class="accordion" id="accordionExample">
                     @foreach($faqs as $faq)
                         <div class="card mb-3">
@@ -352,7 +351,6 @@
     </div>
 </section>
 <!-- End FAQ-->
-
 @endsection
 
 @push('scripts')

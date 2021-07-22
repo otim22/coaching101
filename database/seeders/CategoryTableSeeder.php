@@ -17,15 +17,15 @@ class CategoryTableSeeder extends Seeder
         $cambridge = 1;
         $uneb = 2;
         $categories = [
-            'Sciences', 'Mathematics', 'Chemistry', 'Literature',  'Political sciences',
-            'Physics', 'Languages', 'History', 'Social studies', 'Vocational subjects'
+            'Biology', 'Mathematics', 'Chemistry', 'Physics',  'English', 'French',
+            'Swahili', 'Computer studies', 'History'
         ];
 
         foreach($categories as $category) {
             $newCategory = factory(Category::class)->create([
                 'name' => $category
             ]);
-            if($newCategory->id <= 5) {
+            if($newCategory->id <= 7) {
                 $newCategory->standards()->attach($cambridge);
             }
             $newCategory->standards()->attach($uneb);
