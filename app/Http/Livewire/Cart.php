@@ -126,10 +126,16 @@ class Cart extends Component
 
             if ($response->successful()) {
                 $status = $response['data']['status'];
-                if ($status == 'successful') {
+
+                if ($status == 'successful' || $status == 'pending') {
                     $this->clearCart();
                 }
-                $this->emit('onSuccess', $data);
+
+                if($status == 'pending') {
+                    $this->emit('onPending', $data);
+                } else {
+                    $this->emit('onSuccess', $data);
+                }
             }
 
             if ($data['status'] == 'error') {
@@ -182,13 +188,9 @@ class Cart extends Component
     {
         $activeStandard = Standard::where('id', SessionWrapper::getStandardId())->first();
 
-        if($activeStandard->name == 'Cambridge') {
-            $currency = Currency::where('name', 'USD')->first();
-        } else {
-            $currency = Currency::where('name', 'UGX')->first();
-        }
+        $currency = $activeStandard->name == 'Cambridge' ? 'USD' : 'UGX';
 
-        return $currency;
+        return Currency::where('name', $currency)->first();
     }
 
     public function clearCart() {

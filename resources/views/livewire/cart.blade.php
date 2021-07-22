@@ -124,6 +124,9 @@
                         <div class="alert alert-success" role="alert" id="alert-success">
                             <span id="success-body"></span>
                         </div>
+                        <div class="alert alert-warning" role="alert" id="alert-warning">
+                            <span id="pending-body"></span>
+                        </div>
                         <div class="card-js pt-3 mb-4" id="my-card"></div>
                         <div class="secure-badge mb-2" id="flutterwave-card-badge" style="display: none !important;">
                             <a href="https://www.flutterwave.com" class="secure-badge__link" target="_blank" rel="external noreferrer noopener nofollow" aria-label="Flutterwave Website" style="text-decoration: none;">
@@ -222,10 +225,12 @@
             var myCard = $('#my-card');
             var proccessBtn = $('#process')
             var alertSuccess = $('#alert-success')
+            var alertPending = $('#alert-warning')
 
             spinner.attr("style","display:none !important");
             alert.attr("style","display:none !important");
             alertSuccess.attr("style","display:none !important");
+            alertPending.attr("style","display:none !important");
 
             function processCardPayment () {
                 var cardNumber = myCard.CardJs('cardNumber');
@@ -335,7 +340,17 @@
                 flutterwaveCardBadge.removeAttr('style');
                 flutterwaveMobileBadge.removeAttr('style');
                 proccessBtn.attr("style","display:none !important");
-                $('#success-body').append('Transaction Successful')
+                $('#success-body').append('Transaction successful')
+            }
+
+            var showPending = function() {
+                spinner.attr("style","display:none !important");
+                provideDetails.attr("style","display:none !important");
+                alertPending.removeAttr('style');
+                flutterwaveCardBadge.removeAttr('style');
+                flutterwaveMobileBadge.removeAttr('style');
+                proccessBtn.attr("style","display:none !important");
+                $('#pending-body').append('Transaction pending! You\'ll be notified shortly.')
             }
 
             @this.on('onSuccess', function (res) {
@@ -345,6 +360,10 @@
                 if (res.message.toLowerCase() === 'successful') {
                     showSuccess()
                 }
+            })
+
+            @this.on('onPending', function () {
+                showPending()
             })
 
             @this.on('onError', function (res) {

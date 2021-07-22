@@ -87,7 +87,8 @@ class ComposerServiceProvider extends ServiceProvider
             $teacherProfiles = Profile::with(['user', 'category'])
                                                             ->whereNotNull('category_id')
                                                             ->whereIn('id', $userIds)
-                                                            ->get()->take(12);
+                                                            ->get()
+                                                            ->take(12);
 
             $view->withTeachers($teacherProfiles);
         });
