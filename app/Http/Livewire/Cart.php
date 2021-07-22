@@ -187,9 +187,7 @@ class Cart extends Component
     private function getCurrency()
     {
         $activeStandard = Standard::where('id', SessionWrapper::getStandardId())->first();
-
         $currency = $activeStandard->name == 'Cambridge' ? 'USD' : 'UGX';
-
         return Currency::where('name', $currency)->first();
     }
 

@@ -65,11 +65,8 @@ class SubjectController extends Controller
         $subject->user_id = Auth::id();
         $std = Standard::find($request->input('standard_id'));
 
-        if($std->name == 'Cambridge') {
-            $currency = Currency::where('name', 'USD')->first();
-        } else {
-            $currency = Currency::where('name', 'UGX')->first();
-        }
+        $stdCurrency = $std->name == 'Cambridge' ? 'USD' : 'UGX';
+        $currency =  Currency::where('name', $stdCurrency)->first();
 
         $subject->currency_id = $currency->id;
         $category = Category::findOrFail($request->input('category_id'));
@@ -108,11 +105,8 @@ class SubjectController extends Controller
         $this->validateData($request);
         $std = Standard::find($request->input('standard_id'));
 
-        if($std->name == 'Cambridge') {
-            $currency = Currency::where('name', 'USD')->first();
-        } else {
-            $currency = Currency::where('name', 'UGX')->first();
-        }
+        $stdCurrency = $std->name == 'Cambridge' ? 'USD' : 'UGX';
+        $currency =  Currency::where('name', $stdCurrency)->first();
 
         $subject->currency_id = $currency->id;
 

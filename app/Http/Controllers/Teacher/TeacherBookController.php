@@ -60,11 +60,8 @@ class TeacherBookController extends Controller
         $book->user_id = Auth::id();
         $std = Standard::find($request->input('standard_id'));
 
-        if($std->name == 'Cambridge') {
-            $currency = Currency::where('name', 'USD')->first();
-        } else {
-            $currency = Currency::where('name', 'UGX')->first();
-        }
+        $stdCurrency = $std->name == 'Cambridge' ? 'USD' : 'UGX';
+        $currency =  Currency::where('name', $stdCurrency)->first();
 
         $book->currency_id = $currency->id;
         $book->save();
@@ -122,11 +119,8 @@ class TeacherBookController extends Controller
         $book->objective = array_filter($request->objective);
         $std = Standard::find($request->input('standard_id'));
 
-        if($std->name == 'Cambridge') {
-            $currency = Currency::where('name', 'USD')->first();
-        } else {
-            $currency = Currency::where('name', 'UGX')->first();
-        }
+        $stdCurrency = $std->name == 'Cambridge' ? 'USD' : 'UGX';
+        $currency =  Currency::where('name', $stdCurrency)->first();
 
         $book->currency_id = $currency->id;
         $book->save();

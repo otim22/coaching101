@@ -58,11 +58,8 @@ class TeacherPastpaperController extends Controller
         $pastpaper->user_id = Auth::id();
         $std = Standard::find($request->input('standard_id'));
 
-        if($std->name == 'Cambridge') {
-            $currency = Currency::where('name', 'USD')->first();
-        } else {
-            $currency = Currency::where('name', 'UGX')->first();
-        }
+        $stdCurrency = $std->name == 'Cambridge' ? 'USD' : 'UGX';
+        $currency =  Currency::where('name', $stdCurrency)->first();
 
         $pastpaper->currency_id = $currency->id;
         $pastpaper->save();
@@ -112,11 +109,8 @@ class TeacherPastpaperController extends Controller
         $pastpaper->objective = array_filter($request->objective);
         $std = Standard::find($request->input('standard_id'));
 
-        if($std->name == 'Cambridge') {
-            $currency = Currency::where('name', 'USD')->first();
-        } else {
-            $currency = Currency::where('name', 'UGX')->first();
-        }
+        $stdCurrency = $std->name == 'Cambridge' ? 'USD' : 'UGX';
+        $currency =  Currency::where('name', $stdCurrency)->first();
 
         $pastpaper->currency_id = $currency->id;
         $pastpaper->save();
