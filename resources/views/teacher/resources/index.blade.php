@@ -23,7 +23,7 @@
     </div>
 </section>
 
-<section class="section-two">
+<section class="small-screen_padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 mb-4">

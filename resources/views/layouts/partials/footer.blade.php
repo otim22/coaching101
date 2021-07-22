@@ -1,4 +1,4 @@
-<footer class="bg-dark-2 text-white pt-4 section-two">
+<footer class="bg-dark-2 text-white pt-4 small-screen_padding">
     <div class="container">
         <div class="row mt-5">
             <div class="col-sm-6 col-md-6 col-lg-3">

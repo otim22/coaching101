@@ -54,7 +54,7 @@
     </div>
 </section>
 
-<section class="section-two">
+<section class="small-screen_padding">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8">

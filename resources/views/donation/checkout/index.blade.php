@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="mt-5 section-two">
+<section class="mt-5 small-screen_padding">
     <livewire:checkout :donor="$donor" />
 </section>
 

@@ -23,7 +23,7 @@
     </div>
 </section>
 
-<section class="section-two">
+<section class="small-screen_padding">
     <div class="container">
         <div class="row mt-5 mb-5 justify-content-center">
             <div class="col-lg-8 col-md-8 col-sm-12 mb-3 off-set-2">
@@ -98,7 +98,7 @@
     </div>
 </section>
 
-<section class="section-two bg-white">
+<section class="small-screen_padding bg-white">
     <div class="container">
         <div class="row mt-5 mb-5 justify-content-center">
             <div class="col-lg-8 col-md-8 col-sm-12 off-set-2">

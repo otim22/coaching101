@@ -26,7 +26,7 @@
         </div>
     </div>
 </section>
-<section class="bg-white section-two">
+<section class="bg-white small-screen_padding">
     <div class="container">
         @include('flash.messages')
     </div>

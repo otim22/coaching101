@@ -24,7 +24,7 @@
 <div class="container">
     @include('flash.messages')
 </div>
-<section class="section-two">
+<section class="small-screen_padding">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">

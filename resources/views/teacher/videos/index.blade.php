@@ -22,7 +22,7 @@
 <div class="container">
     @include('flash.messages')
 </div>
-<section class="section-two">
+<section class="section-two small-screen_padding">
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-lg-3 col-md-12 col-sm-12">
