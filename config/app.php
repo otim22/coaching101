@@ -17,6 +17,7 @@ return [
     'rave_key' => env('SECRET_KEY'),
     'encryption_key' => env('ENCRYPTION_KEY'),
     'flutterwave_url' => env('FLUTTERWAVE_URL'),
+    'flutterwave_plan_url' => env('FLUTTERWAVE_PLAN_URL'),
     'redirect_link' => env('REDIRECT_LINK'),
 
     /*

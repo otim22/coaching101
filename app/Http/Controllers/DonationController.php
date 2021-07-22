@@ -11,12 +11,9 @@ use Illuminate\Support\Facades\Http;
 
 class DonationController extends Controller
 {
-    private $url = "https://api.flutterwave.com/v3/payment-plans";
-
     public function index()
     {
         $currencies = Currency::get();
-
         return view("donation.index", compact('currencies'));
     }
 
@@ -87,13 +84,14 @@ class DonationController extends Controller
     {
         $paymentPlanPayload = [
             "amount" => $requestData['amount'],
-            "name" =>  "Donation collection plan",
+            "name" =>  "onCloudLearning donation plan",
             "interval" =>  $requestData['interval'],
             "duration" => $requestData['duration'],
             "currency" => $requestData['currency']
         ];
 
-        $response = Http::withToken(config('app.rave_key'))->post($this->url, $paymentPlanPayload);
+        $response = Http::withToken(config('app.rave_key'))
+                                        ->post(config('app.flutterwave_plan_url'), $paymentPlanPayload);
         $data = json_decode($response->body(), true);
 
         if ($response->successful()) {
@@ -106,9 +104,11 @@ class DonationController extends Controller
     public function cancelDonation(Request $request)
     {
         $userCancellation = DonationUser::where('email', $request->email)->firstOrFail();
-        $paymentCancellation = DonationPayment::where('donation_user_id', $userCancellation->id)->latest()->firstOrFail();
+        $paymentCancellation = DonationPayment::where('donation_user_id', $userCancellation->id)
+                                                                                            ->latest()->firstOrFail();
 
-        $response = Http::withToken(config('app.rave_key'))->put($this->url . "/" . $paymentCancellation->payment_plan_id . "/cancel");
+        $response = Http::withToken(config('app.rave_key'))
+                                        ->put(config('app.flutterwave_plan_url') . "/" . $paymentCancellation->payment_plan_id . "/cancel");
         $data = json_decode($response->body(), true);
 
         if ($response->successful()) {
