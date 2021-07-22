@@ -26,3 +26,9 @@
     opacity: 1;
     filter: alpha(opacity=100);
 }
+
+@include sm-screens {
+    .bottom-spacing {
+        margin-bottom: 10px;
+    }
+}
