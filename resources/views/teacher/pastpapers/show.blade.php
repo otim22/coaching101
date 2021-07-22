@@ -30,7 +30,7 @@
 <div class="container">
     @include('flash.messages')
 </div>
-<section>
+<section class="small-screen_padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-12 col-sm-12">

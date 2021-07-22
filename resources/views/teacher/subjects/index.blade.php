@@ -45,7 +45,7 @@
     </div>
 </section>
 
-<section id="section-teacher_course" class="{{ (count($subjects) == 0) ? 'hide-me' : 'bg-white' }}">
+<section id="section-teacher_course" class="{{ (count($subjects) == 0) ? 'hide-me' : 'bg-white' }} section-two">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">

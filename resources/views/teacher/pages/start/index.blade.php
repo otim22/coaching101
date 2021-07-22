@@ -32,7 +32,7 @@
             </div>
         </nav>
 
-        <section>
+        <section class="small-screen_padding">
             <div class="container">
                 <div class="row justify-content-center mt-4">
                     <div class="col-lg-8 col-md-10 col-sm-12">

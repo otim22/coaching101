@@ -172,7 +172,7 @@
                 </div>
             </nav>
 
-            <section class="bg-teacher-image text-white mt-4">
+            <section class="bg-teacher-image small-screen_padding text-white mt-4">
                 <div class="container mt-5">
                     <h1 class="display-3 learn-today_title">Inspire students</h1>
                     <h4 class="pt-3 pm-3 bold student-font">We beleive you are a gifted person who wants to serve </h4>
@@ -193,7 +193,7 @@
                 </div>
             </section>
 
-            <section class="bg-gray-2">
+            <section class="bg-gray-2 small-screen_padding">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 text-center mb-5">
@@ -226,7 +226,7 @@
                 </div>
             </section>
 
-            <section class="three bg-gray">
+            <section class="three small-screen_padding bg-gray">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 text-center mb-5">
@@ -252,7 +252,7 @@
                 </div>
             </section>
 
-            <section class="bg-white">
+            <section class="bg-white small-screen_padding">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 text-center mb-5">
@@ -290,7 +290,7 @@
                 </div>
             </section>
 
-            <section class="bg-gray">
+            <section class="bg-gray small-screen_padding">
                 <div class="container">
                     <div class="row text-center">
                         <div class="col-12 text-center">

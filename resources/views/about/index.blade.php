@@ -23,7 +23,7 @@
     </div>
 </section>
 
-<section class="bg-white">
+<section class="bg-white section-two">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -51,7 +51,7 @@
     </div>
 </section>
 
-<section>
+<section class="section-two">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12 off-set-3">
