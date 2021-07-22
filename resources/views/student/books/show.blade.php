@@ -23,7 +23,7 @@
     </div>
 </section>
 
-<section>
+<section class="small-screen_padding">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-10">
@@ -119,7 +119,7 @@
     </div>
 </section>
 
-<section class="bg-gray-2">
+<section class="bg-gray-2 small-screen_padding">
     @include('partials.categories')
 </section>
 

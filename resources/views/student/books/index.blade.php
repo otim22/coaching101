@@ -23,7 +23,7 @@
     </div>
 </section>
 
-<section>
+<section class="small-screen_padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-2 col-md-3 col-sm-12 mb-4">
@@ -88,7 +88,7 @@
     </div>
 </section>
 
-<section class="bg-gray-2">
+<section class="bg-gray-2 small-screen_padding">
     @include('partials.categories')
 </section>
 

@@ -222,7 +222,7 @@
     </div>
 </section>
 
-<section class="bg-gray-2">
+<section class="bg-gray-2 small-screen_padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 mb-4">

@@ -31,13 +31,14 @@
         @include('flash.messages')
     </div>
 </section>
-<section class="bg-white">
+
+<section class="bg-white small-screen_padding">
     <div class="container">
         @livewire('cart', [ 'response' => $response])
     </div>
 </section>
 
-<section class="bg-gray-2">
+<section class="bg-gray-2 small-screen_padding">
     @include('partials.categories')
 </section>
 

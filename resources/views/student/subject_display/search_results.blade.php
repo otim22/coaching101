@@ -23,7 +23,7 @@
     </div>
 </section>
 
-<section>
+<section class="small-screen_padding">
     <div class="container">
         <div class="row">
             @if($results)
@@ -74,7 +74,7 @@
     </div>
 </section>
 
-<section class="bg-gray-2">
+<section class="bg-gray-2 small-screen_padding">
     @include('partials.categories')
 </section>
 

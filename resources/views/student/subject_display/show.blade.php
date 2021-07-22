@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section>
+<section class="small-screen_padding">
     <div class="container-fluid">
         <div class="row justify-content-center  pl-5 pr-5 mt-4">
             <div class="col-sm-12 col-md-12 col-lg-8 mb-4">
