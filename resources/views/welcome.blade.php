@@ -10,18 +10,18 @@
                     <h1 class="display-3 learn-today_title">{{ $sliders->title }}</h1>
                     <h4 class="pt-3 bold student-font">{!! $sliders->description !!}</h4>
                     @guest
-                        <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">Get started &raquo;</a></p>
+                        <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('login') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
                     @endguest
 
                     @auth
                         @if(Auth::user()->hasRole('student'))
-                            <p><a id="round-button-2" class="btn btn-primary btn-lg get-started_student mt-5" href="#learn-now" role="button">Let's get started &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg get-started_student mt-5" href="#learn-now" role="button">{{ $sliders->button_text }} &raquo;</a></p>
                         @endif
                         @if(Auth::user()->hasRole('teacher'))
-                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Let's get started &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
                         @endif
                         @if(Auth::user()->hasRole('admin'))
-                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">Let's get started &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-primary btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
                         @endif
                     @endauth
                 </div>

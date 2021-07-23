@@ -17,7 +17,7 @@ class StudentImageTableSeeder extends Seeder
         $studentImage = factory(StudentImage::class)->create([
             'title' => 'Start learning today',
             'description' => 'Tap from the experience of handpicked best teachers around and ace that examination you have all been waiting to do.',
-            'button_text' => 'Get started'
+            'button_text' => 'Let\'s get started'
         ]);
 
         $imageUrl = 'http://via.placeholder.com/800x650';

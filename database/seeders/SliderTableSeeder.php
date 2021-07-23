@@ -17,7 +17,7 @@ class SliderTableSeeder extends Seeder
         $slider = factory(Slider::class)->create([
             'title' => 'Learn today',
             'description' => '<p>At your own convenient time,</p> <p>From our verified seasoned teachers </p> <p>With proven experience in their fields.</p>',
-            'button_text' => 'Start Learning',
+            'button_text' => 'Get started for free',
             'button_link' => '/home'
         ]);
 
