@@ -98,7 +98,7 @@
                                 @if(!$note->price)
                                 <p>Free</p>
                                 @else
-                                <p>{{ $subject->currency->name }} {{ $note->formatPrice }}/-</p>
+                                <p>{{ $note->currency->name }} {{ $note->formatPrice }}/-</p>
                                 @endif
                             </li>
                         </div>

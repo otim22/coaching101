@@ -78,7 +78,7 @@
                         @if(!$book->price)
                             <p>Free</p>
                         @else
-                            <p>{{ $subject->currency->name }} {{ $book->formatPrice }}/-</p>
+                            <p>{{ $book->currency->name }} {{ $book->formatPrice }}/-</p>
                         @endif
 
                         <p>{{ $book->year->name }} {{ $book->category->name }}, {{ $book->term->name }}. </p>

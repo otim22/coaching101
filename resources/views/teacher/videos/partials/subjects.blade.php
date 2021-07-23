@@ -1,5 +1,5 @@
 <div>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mb-4">
         <div>
             <h4 class="mb-3 bold">My available video subjects</h4>
         </div>
