@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use JavaScript;
 use App\Models\SubNote;
 use Illuminate\Http\Request;
 use App\Models\ItemContent;
@@ -42,7 +43,12 @@ class TeacherSubNoteController extends Controller
 
     public function show(ItemContent $note, SubNote $subNote)
     {
-        return view('teacher.notes.sub_notes.show', compact(['subNote', 'note']));
+        $subNotePdfUrl = $subNote->getFirstMediaUrl('notes');
+    	JavaScript::put([
+            'data' => $subNotePdfUrl
+    	]);
+
+        return view('teacher.notes.sub_notes.show', compact(['subNote', 'note', 'subNotePdfUrl']));
     }
 
     /**

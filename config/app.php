@@ -183,6 +183,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
 
     ],
 
@@ -236,6 +237,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'InitialGenerator' => App\Helpers\InitialGenerator::class,
+        'JavaScript'=>Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
 
     ],
 

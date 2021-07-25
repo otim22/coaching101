@@ -3900,6 +3900,41 @@ form .btn button {
   color: #fff;
 }
 
+#pdf_renderer {
+  text-align: center;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px #cdcfd1;
+}
+
+.current-page {
+  width: 72px;
+  padding-left: 2px;
+}
+
+#current_page {
+  border-radius: 30px;
+  padding-left: 6px;
+  white-space: nowrap;
+}
+
+#go_previous, #go_next,
+#zoom_in, #zoom_out {
+  border-radius: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  white-space: nowrap;
+}
+
+#navigation_controls button:hover,
+#navigation_controls button:focus,
+#zoom_controls button:hover,
+#zoom_controls button:focus {
+  color: #6cb2eb;
+}
+
 /*-------------------------
    Background & Colors
 --------------------------*/
