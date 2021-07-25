@@ -80,12 +80,12 @@
 
                             <div class="form-group mb-4">
                                 <label for="pastpapers">Current answer</label>
-                                <embed src="{{ $subPastpaperAnswer->getFirstMediaUrl('answers') }}#toolbar=0" type="application/pdf" width="100%" height="300">
-                                <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
+                                <div>@include('teacher.partials.pdf_viewer')</div>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="answer">Upload answer</label>
+                                <p><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
                                 <input type="file" name="answer"
                                             class="form-control-file @error('answer') is-invalid @enderror"
                                             accept=".pdf">
@@ -106,7 +106,9 @@
 
 @endsection
 
-@prepend('scripts')
+@push('scripts')
     <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+    <script src="{{ asset('js/custom_pdf_view_sub_pastpaper_answer.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/pastpapers.js')}}" type="text/javascript"></script>
 @endpush

@@ -1,3 +1,4 @@
+/** Start teacher book */
 $(function() {
     var myState = {
         pdf: null,
@@ -5,7 +6,7 @@ $(function() {
         zoom: 1
     }
 
-    pdfjsLib.getDocument(window.data).then((pdf) => {
+    pdfjsLib.getDocument(window.book).then((pdf) => {
         myState.pdf = pdf;
         render();
     });
@@ -15,10 +16,8 @@ $(function() {
             var canvas = document.getElementById("pdf_renderer");
             var ctx = canvas.getContext('2d');
             var viewport = page.getViewport(myState.zoom);
-
             canvas.width = viewport.width;
             canvas.height = viewport.height;
-
             page.render({
                 canvasContext: ctx,
                 viewport: viewport
@@ -27,20 +26,20 @@ $(function() {
     }
 
     document.getElementById('go_previous').addEventListener('click', (e) => {
-            if(myState.pdf == null || myState.currentPage == 1)
-                return;
-            myState.currentPage -= 1;
-            document.getElementById("current_page").value = myState.currentPage;
-            render();
-        });
+        if(myState.pdf == null || myState.currentPage == 1)
+            return;
+        myState.currentPage -= 1;
+        document.getElementById("current_page").value = myState.currentPage;
+        render();
+    });
 
-        document.getElementById('go_next').addEventListener('click', (e) => {
-            if(myState.pdf == null || myState.currentPage > myState.pdf._pdfInfo.numPages)
-                return;
-            myState.currentPage += 1;
-            document.getElementById("current_page").value = myState.currentPage;
-            render();
-        });
+    document.getElementById('go_next').addEventListener('click', (e) => {
+        if(myState.pdf == null || myState.currentPage > myState.pdf._pdfInfo.numPages)
+            return;
+        myState.currentPage += 1;
+        document.getElementById("current_page").value = myState.currentPage;
+        render();
+    });
 
     document.getElementById('current_page').addEventListener('keypress', (e) => {
         if(myState.pdf == null) return;
@@ -72,3 +71,4 @@ $(function() {
         render();
     });
 });
+/** End teacher book */

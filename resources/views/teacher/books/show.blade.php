@@ -96,9 +96,7 @@
                                 @endforeach
                             </ul>
                         </div>
-
-                        <embed src="{{ $book->getFirstMediaUrl('books') }}#toolbar=0" type="application/pdf" width="100%" height="500">
-
+                        <div>@include('teacher.partials.pdf_viewer')</div>
                         <form action="{{ route('books.destroy', $book) }}" class="hidden" id="delete-teacher-book" method="POST">
                             @csrf
                             @method('delete')
@@ -111,3 +109,8 @@
 </section>
 
 @endsection
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+    <script src="{{ asset('js/custom_pdf_view_book.js')}}" type="text/javascript"></script>
+@endpush

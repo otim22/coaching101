@@ -73,9 +73,7 @@
                         <div class="mb-3 mt-4">
                             <h5 class="bold">{{ $subPastpaper->title }}</h5>
                         </div>
-                        <div>
-                            <embed  src="{{ $subPastpaper->getFirstMediaUrl('pastpapers') }}#toolbar=0" type="application/pdf" width="100%" height="400">
-                        </div>
+                        <div>@include('teacher.partials.pdf_viewer')</div>
                     </div>
                 </div>
                 <form action="{{ route('subPastpapers.delete', [$pastpaper, $subPastpaper]) }}" class="hidden" id="delete-teacher-subpastpapers" method="POST">
@@ -107,3 +105,8 @@
 </section>
 
 @endsection
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+    <script src="{{ asset('js/custom_pdf_view_sub_pastpaper.js')}}" type="text/javascript"></script>
+@endpush

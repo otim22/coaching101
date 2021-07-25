@@ -199,10 +199,9 @@
 
                             <div class="form-group mb-4">
                                 <p>Current book</p>
-                                <embed src="{{ $book->getFirstMediaUrl('books') }}#toolbar=0" type="application/pdf" width="50%" height="50%">
-                                <p class="mt-2"><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
-
+                                <div>@include('teacher.partials.pdf_viewer')</div>
                                 <label for="book">Upload Book</label>
+                                <p><small class="red_color">*Choosing another file replaces this current one and should be a pdf file.</small></p>
                                 <input type="file" name="book" class="form-control-file @error('book') is-invalid @enderror" id="book">
                                 <p><small class="light_gray_color">*Book should be a pdf file</small></p>
                                 @error('book')
@@ -227,7 +226,6 @@
                                         <span class="input-group-text">.00</span>
                                     </div>
                                 </div>
-                                <p><small class="red_color">*Price should be only digits</small></p>
                                 @error('price')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
@@ -245,6 +243,8 @@
 @endsection
 
 @push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+    <script src="{{ asset('js/custom_pdf_view_book.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/books.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/filter_levels_and_years.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/get_right_currency.js')}}" type="text/javascript"></script>

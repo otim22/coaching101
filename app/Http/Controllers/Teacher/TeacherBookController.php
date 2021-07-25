@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use Arr;
+use JavaScript;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Item;
@@ -79,6 +80,7 @@ class TeacherBookController extends Controller
 
     public function show(ItemContent $book)
     {
+        $this->passBookPdfUrlToJs($book);
         return view('teacher.books.show', compact('book'));
     }
 
@@ -101,9 +103,19 @@ class TeacherBookController extends Controller
         $year = Year::find($book->year_id);
         $term = Term::find($book->term_id);
 
+        $this->passBookPdfUrlToJs($book);
+
         return view('teacher.books.edit', compact([
             'book', 'years', 'terms', 'categories', 'category', 'year', 'term', 'standards', 'standard', 'levels', 'level'
         ]));
+    }
+
+    protected function passBookPdfUrlToJs($book)
+    {
+        $bookPdfUrl = $book->getFirstMediaUrl('books');
+    	return JavaScript::put([
+            'book' => $bookPdfUrl
+    	]);
     }
 
     /**

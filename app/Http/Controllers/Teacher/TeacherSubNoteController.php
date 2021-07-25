@@ -43,12 +43,8 @@ class TeacherSubNoteController extends Controller
 
     public function show(ItemContent $note, SubNote $subNote)
     {
-        $subNotePdfUrl = $subNote->getFirstMediaUrl('notes');
-    	JavaScript::put([
-            'data' => $subNotePdfUrl
-    	]);
-
-        return view('teacher.notes.sub_notes.show', compact(['subNote', 'note', 'subNotePdfUrl']));
+        $this->passSubNotesPdfUrlToJs($subNote);
+        return view('teacher.notes.sub_notes.show', compact(['subNote', 'note']));
     }
 
     /**
@@ -59,7 +55,16 @@ class TeacherSubNoteController extends Controller
      */
     public function edit(ItemContent $note, SubNote $subNote)
     {
+        $this->passSubNotesPdfUrlToJs($subNote);
         return view('teacher.notes.sub_notes.edit', compact(['subNote', 'note']));
+    }
+
+    protected function passSubNotesPdfUrlToJs($subNote)
+    {
+        $subNotePdfUrl = $subNote->getFirstMediaUrl('notes');
+    	return JavaScript::put([
+            'notes' => $subNotePdfUrl
+    	]);
     }
 
     /**

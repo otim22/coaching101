@@ -204,7 +204,6 @@
                                         <span class="input-group-text">.00</span>
                                     </div>
                                 </div>
-                                <p><small class="red_color">*Price should be only digits</small></p>
                                 @error('price')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
