@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
-        <h5 class="bold">My Account</h5>
+        <h5 class="bold dark-blue_color-2">My Account</h5>
     </div>
 
     <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
@@ -62,13 +62,14 @@
                     </div>
                 </div>
             </div>
+
             <div class="tab-pane fade mt-4" id="Book" role="tabpanel" aria-labelledby="book-tab">
                 <div class="row">
                     @forelse($books as $item)
                         <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
                             <a href="{{ route('student.books.show', $item->slug) }}" style="text-decoration: none">
                                 <div class="card mb-4">
-                                    <img src="{{ $item->getFirstMediaUrl('teacher_cover_image') }}" alt="{{ $item->very_short_title }}" width="100%" height="150">
+                                    <img src="{{ $item->getFirstMediaUrl('cover_images') }}" alt="{{ $item->very_short_title }}" width="100%" height="150">
                                     <div class="card-body">
                                         <span class="bold">{{ $item->very_short_title }}</span><br />
                                         <span class="author-font">{{$item->creator->name }}</span>
@@ -92,6 +93,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="tab-pane fade mt-4" id="Note" role="tabpanel" aria-labelledby="note-tab">
                 <div class="row">
                     @forelse($notes as $item)
@@ -121,6 +123,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="tab-pane fade mt-4" id="Pastpaper" role="tabpanel" aria-labelledby="pastpaper-tab">
                 <div class="row">
                     @forelse($pastpapers as $item)
@@ -150,6 +153,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="tab-pane fade mt-4" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
                 <div class="row">
                     @forelse($wishlistItems as $wishlistItem)

@@ -27,13 +27,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-                <h4 class="bold">{{ $category->name }}</h4>
+                <h4 class="bold dark-blue_color-2">{{ $category->name }}</h4>
             </div>
             @forelse($subjects as $subject)
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="card mb-4">
                         <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none">
-                            <img src="{{ $subject->cover_image}}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
+                            <img src="{{ $subject->getFirstMediaUrl('cover_images') }}" alt="{{ $subject->very_short_title }}" width="100%" height="150">
                         </a>
                         <div class="card-body">
                             <a href="{{ route('subjects.index', $subject->slug) }}" style="text-decoration: none" class="title-font">

@@ -32,7 +32,7 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                             <div class="mt-4">
-                                <h5 class="bold">Topic brief description</h5>
+                                <h5 class="bold dark-blue_color-2">Topic brief description</h5>
                                 <p>{{ $topic->description }}</p>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                 <aside>
                     <div class="accordion make-me-sticky mr-4 mb-5" id="accordionExample">
                         <div class="mb-3">
-                            <h5 class="bold">Subject contents</h5>
+                            <h5 class="bold dark-blue_color-2">Subject contents</h5>
                         </div>
                         <div class="card">
                             @foreach($subject->topics as $key => $topic)

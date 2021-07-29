@@ -28,11 +28,11 @@
         <div class="row">
             @if($results)
                 <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                    <h5>{{ $results->count() }} results for "{{ request('query') }}"</h5>
+                    <h5 class="bold dark-blue_color-2">{{ $results->count() }} results for "{{ request('query') }}"</h5>
                 </div>
             @else
                 <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                    <h5>Sorry, no results found for "{{ request('query') }}"</h5>
+                    <h5 class="bold dark-blue_color-2">Sorry, no results found for "{{ request('query') }}"</h5>
                 </div>
             @endif
         </div>

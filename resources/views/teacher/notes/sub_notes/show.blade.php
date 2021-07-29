@@ -70,10 +70,10 @@
                         <div>
                             <hr />
                         </div>
-                        <div class="mt-4 mb-3">
+                        <div class="mt-4 mb-4">
                             <h5 class="bold">{{ $subNote->title }}</h5>
                         </div>
-                        <embed src="{{ $subNote->getFirstMediaUrl('notes') }}#toolbar=0" type="application/pdf" width="100%" height="400">
+                        <div>@include('teacher.partials.pdf_viewer')</div>
                     </div>
                 </div>
                 <form action="{{ route('subNotes.delete', [$note, $subNote]) }}" class="hidden" id="delete-teacher-subnotes" method="POST">
@@ -103,5 +103,9 @@
         </div>
     </div>
 </section>
-
 @endsection
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+    <script src="{{ asset('js/custom_pdf_view_notes.js')}}" type="text/javascript"></script>
+@endpush

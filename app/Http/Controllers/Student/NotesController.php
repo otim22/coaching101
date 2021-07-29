@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Student;
 
+use JavaScript;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Subject;
@@ -43,7 +44,18 @@ class NotesController extends Controller
 
     public function show(ItemContent $note)
     {
+        foreach ($note->subnotes as  $subnote) {
+            $this->passNotesPdfUrlToJs($subnote);
+        }
         return view('student.notes.show', compact('note'));
+    }
+
+    protected function passNotesPdfUrlToJs($subnote)
+    {
+        $notePdfUrl = $subnote->getFirstMediaUrl('notes');
+    	return JavaScript::put([
+            'studentNotes' => $notePdfUrl
+    	]);
     }
 
     public function getMoreNotes(Request $request)

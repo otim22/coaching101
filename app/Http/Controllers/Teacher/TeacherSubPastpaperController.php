@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Teacher;
 
+use JavaScript;
 use Illuminate\Http\Request;
 use App\Models\ItemContent;
 use App\Models\SubPastpaper;
@@ -42,6 +43,7 @@ class TeacherSubPastpaperController extends Controller
 
     public function show(ItemContent $pastpaper, SubPastpaper $subPastpaper)
     {
+        $this->passSubPastpaperPdfUrlToJs($subPastpaper);
         return view('teacher.pastpapers.sub_pastpapers.show', compact(['subPastpaper', 'pastpaper']));
     }
 
@@ -53,7 +55,16 @@ class TeacherSubPastpaperController extends Controller
      */
     public function edit(ItemContent $pastpaper, SubPastpaper $subPastpaper)
     {
+        $this->passSubPastpaperPdfUrlToJs($subPastpaper);
         return view('teacher.pastpapers.sub_pastpapers.edit', compact(['subPastpaper', 'pastpaper']));
+    }
+
+    protected function passSubPastpaperPdfUrlToJs($subPastpaper)
+    {
+        $subPastpaperPdfUrl = $subPastpaper->getFirstMediaUrl('pastpapers');
+    	JavaScript::put([
+            'subPastpaper' => $subPastpaperPdfUrl
+    	]);
     }
 
     /**

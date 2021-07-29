@@ -59,7 +59,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="border mr-4 p-4 rounded bg-gray-3 mb-5">
-                    <h5 class="bold">What you will learn</h5>
+                    <h5 class="bold dark-blue_color-2">What you will learn</h5>
                     <ul>
                         @forelse($subject->audience['student_learn'] as $student_learn)
                         <li>

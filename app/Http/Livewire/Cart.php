@@ -174,8 +174,8 @@ class Cart extends Component
 
         return [
             "tx_ref" => $paymentToken,
-            "amount"=> $cartSum,
-            "currency"=> $itemCurrency,
+            "amount"=> '1000',
+            "currency"=> 'UGX',
             "redirect_url" => $redirectLink,
             "email" => $userEmail,
             "meta" => [

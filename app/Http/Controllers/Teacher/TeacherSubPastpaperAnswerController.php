@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Teacher;
 
+use JavaScript;
 use Illuminate\Http\Request;
 use App\Models\ItemContent;
 use App\Models\SubPastpaper;
@@ -12,7 +13,7 @@ class TeacherSubPastpaperAnswerController extends Controller
     public function create(ItemContent $pastpaper)
     {
         $subPastpapers = SubPastpaper::whereNull('parent_id')->get();
-        
+
         return view('teacher.pastpapers.sub_pastpaper_answers.create', compact(['pastpaper', 'subPastpapers']));
     }
 
@@ -44,6 +45,7 @@ class TeacherSubPastpaperAnswerController extends Controller
 
     public function show(ItemContent $pastpaper, SubPastpaper $subPastpaperAnswer)
     {
+        $this->passSubPastpaperAnswerPdfUrlToJs($subPastpaperAnswer);
         return view('teacher.pastpapers.sub_pastpaper_answers.show', compact(['subPastpaperAnswer', 'pastpaper']));
     }
 
@@ -55,10 +57,19 @@ class TeacherSubPastpaperAnswerController extends Controller
      */
     public function edit(ItemContent $pastpaper, SubPastpaper $subPastpaperAnswer)
     {
+        $this->passSubPastpaperAnswerPdfUrlToJs($subPastpaperAnswer);
         $subPastpapers = SubPastpaper::whereNull('parent_id')->get();
         $subPastpaper = SubPastpaper::find($subPastpaperAnswer->parent_id);
 
         return view('teacher.pastpapers.sub_pastpaper_answers.edit', compact(['subPastpaperAnswer', 'pastpaper', 'subPastpapers', 'subPastpaper']));
+    }
+
+    protected function passSubPastpaperAnswerPdfUrlToJs($subPastpaperAnswer)
+    {
+        $subPastpaperAnswerPdfUrl = $subPastpaperAnswer->getFirstMediaUrl('answers');
+    	JavaScript::put([
+            'subPastpaperAnswer' => $subPastpaperAnswerPdfUrl
+    	]);
     }
 
     /**
