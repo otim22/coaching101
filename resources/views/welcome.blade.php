@@ -281,20 +281,20 @@
                     <h4 class="bold">{{ $teacherImage->title }}</h4>
                     <p class="mb-4 sub-text">{{ $teacherImage->description }}</p>
                     @guest
-                        <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
+                        <a id="round-button-2" href="{{ url('login') }}" class="btn btn-light" name="button">{{ $teacherImage->button_text }} &raquo;</a>
                     @endguest
 
                     @auth
                         @if(Auth::user()->hasRole('student'))
-                            <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
+                            <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-light" name="button">{{ $teacherImage->button_text }} &raquo;</a>
                         @endif
 
                         @if(Auth::user()->hasRole('teacher'))
-                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
+                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-light" name="button">{{ $teacherImage->button_text }} &raquo;</a>
                         @endif
 
                         @if(Auth::user()->hasRole('admin'))
-                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-primary" name="button">{{ $teacherImage->button_text }} &raquo;</a>
+                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-light" name="button">{{ $teacherImage->button_text }} &raquo;</a>
                         @endif
                     @endauth
                 </div>
