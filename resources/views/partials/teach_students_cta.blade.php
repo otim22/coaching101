@@ -9,7 +9,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h4 class="bold">Teach students online</h4>
+                    <h4 class="bold dark-blue_color-2">Teach students online</h4>
                     <p>Top teachers from best schools teaching millions of students on Coaching101.</p>
                 </div>
             </div>

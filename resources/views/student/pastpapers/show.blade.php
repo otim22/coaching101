@@ -52,14 +52,14 @@
                                         @forelse($pastpaper->subpastpapers as $key => $subpastpaper)
                                             @if($subpastpaper->parent_id == null)
                                                 <a type="button" style="text-decoration: none; margin-bottom: 3px;"
-                                                        class="{{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }}"
+                                                        class="{{ $key == $pastpaper->subpastpapers->keys()->first() ? 'active' : '' }} bold"
                                                         id="v-pills-{{$subpastpaper->slug}}-tab"
                                                         data-toggle="pill"
                                                         href="#v-pills-{{$subpastpaper->slug}}"
                                                         role="tab"
                                                         aria-controls="v-pills-{{$subpastpaper->slug}}"
                                                         aria-selected="true">
-                                                    Qtn. {{ $subpastpaper->title }}
+                                                    Qtn: {{ $subpastpaper->title }}
                                                 </a>
                                             @endif
                                             @if($subpastpaper->parent_id != null)
@@ -71,7 +71,10 @@
                                                         role="tab"
                                                         aria-controls="v-pills-{{$subpastpaper->slug}}"
                                                         aria-selected="true">
-                                                    Ans. {{ $subpastpaper->title }}
+                                                        <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-check mb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                                                        </svg>
+                                                         {{ $subpastpaper->title }}
                                                 </a>
                                                 <div class="mb-1">
                                                     <hr />

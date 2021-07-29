@@ -6,13 +6,13 @@
                     @if($book->isSubscribedTo)
                         <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
                             @if($book->creator)
-                                <img src="{{ $book->cover_image }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                                <img src="{{ $book->getFirstMediaUrl('cover_images') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
                             @endif
                         </a>
                     @else
                         <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none">
                             @if($book->creator)
-                                <img src="{{ $book->cover_image }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
+                                <img src="{{ $book->getFirstMediaUrl('cover_images') }}" alt="{{ $book->very_short_title }}" width="100%" height="150">
                             @endif
                         </a>
                     @endif

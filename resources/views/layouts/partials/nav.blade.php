@@ -145,7 +145,7 @@
 
                 @guest
                     <li class="nav-item {{ InitialGenerator::set_active(['login']) }} ml-1 mr-2 space-bottom">
-                        <a class="btn btn-danger btn-sm nav-link make-upper-case" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">Login</a>
+                        <a class="btn btn-primary btn-sm nav-link make-upper-case" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">Login</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item {{ InitialGenerator::set_active(['register']) }} mr-2 hide-at-md">

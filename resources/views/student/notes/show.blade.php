@@ -67,6 +67,7 @@
                                             <div class="tab-pane fade show {{ $key == $note->subnotes->keys()->first() ? 'active' : '' }}" id="v-pills-{{$subnote->slug}}" role="tabpanel" aria-labelledby="v-pills-{{$subnote->slug}}-tab">
                                                 <p>{{ $subnote->title }}</p>
                                                 <embed src="{{ $subnote->getFirstMediaUrl('notes') }}#toolbar=0" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                                <!-- <div>@include('student.partials.pdf_viewer')</div> -->
                                             </div>
                                         @empty
                                             <p>No notes</p>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Student;
 
+use JavaScript;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Standard;
@@ -42,6 +43,11 @@ class BooksController extends Controller
 
     public function show(ItemContent $book)
     {
+        $bookPdfUrl = $book->getFirstMediaUrl('books');
+    	JavaScript::put([
+            'studentBook' => $bookPdfUrl
+    	]);
+
         return view('student.books.show', compact('book'));
     }
 

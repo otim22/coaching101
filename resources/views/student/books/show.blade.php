@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-10">
-                <div class="mb-4">
+                <div class="float-right">
                     <h5>
                         <a id="round-button-2" type="button" class="btn btn-secondary btn-sm" href="{{ route('student.books.index') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -47,25 +47,7 @@
                         <div class="mb-3">
                             <p>By {{ $book->creator->name }}</p>
                         </div>
-                        <embed src="{{ $book->getFirstMediaUrl('books') }}#toolbar=0" type="application/pdf" width="100%" height="800" frameborder="0" allowfullscreen>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-10 offset-1 mt-5 d-flex justify-content-between">
-                    @if($book->creator)
-                        <a id="round-button-2" class="btn btn-secondary btn-sm" href="{{ route('student.books.index') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                            </svg>
-                            Back
-                        </a>
-
-                        <a href="{{ $book->getFirstMediaUrl('books') }}" id="round-button-2"
-                                        name="button"
-                                        class="btn btn-primary btn-sm" target="_blank">
-                                        Download book
-                        </a>
+                        <div>@include('student.partials.pdf_viewer')</div>
                     @endif
                 </div>
             </div>
@@ -88,7 +70,7 @@
                                 @else
                                     <span class="bold paid_color">Free</span>
                                     @if($book->creator)
-                                        <embed src="{{ $book->getFirstMediaUrl('books') }}" type="application/pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                                        <div>@include('student.partials.pdf_viewer')</div>
                                     @endif
                                 @endif
                             </div>
@@ -124,3 +106,8 @@
 </section>
 
 @endsection
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+    <script src="{{ asset('js/custom_pdf_view_student_book.js')}}" type="text/javascript"></script>
+@endpush
