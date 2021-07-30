@@ -2,16 +2,16 @@
 
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
-        <h5 class="bold dark-blue_color-2">My Account</h5>
+        <h5 class="bold dark-blue_color-2">{{ auth()->user()->name }} account</h5>
     </div>
 
     <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 @foreach($items as $key => $item)
-                    <a class="nav-link {{ $key === $items->keys()->first() ? 'active' : '' }}" id="{{ $item->slug }}-tab" data-toggle="tab" href="#{{ $item->name }}" role="tab" aria-controls="{{ $item->name }}" aria-selected="true">{{ $item->name }}</a>
+                    <a class="bold nav-link {{ $key === $items->keys()->first() ? 'active' : '' }}" id="{{ $item->slug }}-tab" data-toggle="tab" href="#{{ $item->name }}" role="tab" aria-controls="{{ $item->name }}" aria-selected="true">{{ $item->name }}</a>
                 @endforeach
-                <a class="nav-link" id="wishlist-tab" data-toggle="tab" href="#wishlist" role="tab" aria-controls="wishlist" aria-selected="false">Wishlist</a>
+                <a class="bold nav-link" id="wishlist-tab" data-toggle="tab" href="#wishlist" role="tab" aria-controls="wishlist" aria-selected="false">Wishlist</a>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -183,7 +183,7 @@
                                         @endif
 
                                         @if($wishlistItem->itemContent->price)
-                                            <span class="bold">{{ $subject->currency->name }} {{  $wishlistItem->itemContent->formatPrice }}/-</span>
+                                            <span class="bold">{{ $wishlistItem->itemContent->currency->name }} {{  $wishlistItem->itemContent->formatPrice }}/-</span>
                                         @else
                                             <span class="bold paid_color">Free</span>
                                         @endif

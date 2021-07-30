@@ -28,9 +28,9 @@
 
                 <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
-                <a class="dropdown-item" href="{{ url('cart') }}">My Cart</a>
-                <a class="dropdown-item" href="{{ route('users.profile') }}">Profile Details</a>
+                <a class="dropdown-item" href="{{ route('my-account') }}">My account</a>
+                <a class="dropdown-item" href="{{ url('cart') }}">My cart</a>
+                <a class="dropdown-item" href="{{ route('users.profile') }}">Profile details</a>
 
                 <div class="dropdown-divider"></div>
 
@@ -76,10 +76,10 @@
                         Browse
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkUneb">
-                        <a class="dropdown-item" href="{{ route('home') }}">Video Subjects</a>
-                        <a class="dropdown-item" href="{{ route('student.books.index') }}">Pdf Books</a>
+                        <a class="dropdown-item" href="{{ route('home') }}">Video subjects</a>
+                        <a class="dropdown-item" href="{{ route('student.books.index') }}">Pdf books</a>
                         <a class="dropdown-item" href="{{ route('student.notes.index') }}">Notes</a>
-                        <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past Papers</a>
+                        <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past papers</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown hide-at-sslg">
@@ -175,9 +175,9 @@
 
                                 <div class="dropdown-divider"></div>
 
-                                <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
-                                <a class="dropdown-item" href="{{ url('cart') }}">My Cart</a>
-                                <a class="dropdown-item" href="{{ route('users.profile') }}">Profile Details</a>
+                                <a class="dropdown-item" href="{{ route('my-account') }}">My account</a>
+                                <a class="dropdown-item" href="{{ url('cart') }}">My cart</a>
+                                <a class="dropdown-item" href="{{ route('users.profile') }}">Profile details</a>
 
                                 <div class="dropdown-divider"></div>
 

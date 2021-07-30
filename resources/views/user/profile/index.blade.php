@@ -23,7 +23,8 @@
                         <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                     </li>
                 @endif
-                <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                <li class="breadcrumb-item" aria-current="page">Profile</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ auth()->user()->name }}</li>
             </ol>
         </nav>
     </div>
