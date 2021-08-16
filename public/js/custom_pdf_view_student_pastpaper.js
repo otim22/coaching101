@@ -1,26 +1,27 @@
-/** Start student notes */
+/** Start student questions */
 $(function() {
     let pdfState = {
         pdf: null,
         currentPage: 1,
-        zoom: 1,
+        zoom: 1
     };
     let pdfRendering = false;
     let pdfNumPending = null;
     let userState = {};
 
-    function getSubnotes() {
-        let subnotes = $('#v-pills-tab a.active').attr('data-notes');
+    function getPastpaper() {
+        let pastpaper = $('#v-pills-tab a.active span').attr('data-pastpaper');
+        let answer = $('#v-pills-tab a.active span').attr('data-answer');
         let slug = $('#v-pills-tab a.active').attr('data-slug');
-        if(subnotes && slug) {
+        if(pastpaper && slug) {
             return {
-                'url' : subnotes,
+                'url' : typeof pastpaper !== "undefined" ? pastpaper : answer,
                 'slug' : slug
             };
         }
     }
 
-    let config = getSubnotes();
+    let config = getPastpaper();
 
     if(config) {
         loadPdf(config.url, config.slug);
@@ -28,7 +29,7 @@ $(function() {
 
     // New active tab
     $('a[data-toggle="pill"]').on('shown.bs.tab', function (event) {
-        config = getSubnotes();
+        config = getPastpaper();
         removesEvents(config.slug);
         loadPdf(config.url, config.slug);
     });
@@ -52,16 +53,16 @@ $(function() {
         pdfRendering = true;
         document.getElementById('current_page-' + slug).textContent = pdfState.currentPage;
         document.getElementById('num_pages-' + slug).textContent = pdfState.pdf._pdfInfo.numPages;
+        userState[slug] = $.extend({}, pdfState);    // Clone pdfState object
         pdfState.pdf.getPage(pdfState.currentPage).then((page) => {
             let canvas = document.getElementById(slug);
-            let context = canvas.getContext('2d');
+            let ctx = canvas.getContext('2d');
             let viewport = page.getViewport(pdfState.zoom);
 
             canvas.width = viewport.width;
             canvas.height = viewport.height;
-
             let renderTask = page.render({
-                canvasContext: context,
+                canvasContext: ctx,
                 viewport: viewport
             });
 
@@ -69,10 +70,12 @@ $(function() {
             renderTask.promise.then(function() {
                 pdfRendering = false;
                 userState[slug] = $.extend({}, pdfState);    // Clone pdfState object
-                if(pdfNumPending !== null) {
+                if (pdfNumPending !== null) {
                     // New page rendering is pending
                     render(slug);
                     pdfNumPending = null;
+                    // pdfState.currentPage = 1;
+                    // userState[slug] = $.extend({}, pdfState);    // Clone pdfState object
                 }
             });
         }, function(reason) {
@@ -126,33 +129,31 @@ $(function() {
         document.getElementById('current_page-' + slug).addEventListener('keypress', (e) => {
             if(pdfState.pdf == null) return;
             // Get key code
-            var code = (e.keyCode ? e.keyCode : e.which);
+            let code = (e.keyCode ? e.keyCode : e.which);
 
             // If key code matches that of the Enter key
             if(code == 13) {
-                var desiredPage = document.getElementById('current_page-' + slug).valueAsNumber;
+                let desiredPage = document.getElementById('current_page-' + slug).valueAsNumber;
 
                 if(desiredPage >= 1 && desiredPage <= pdfState.pdf._pdfInfo.numPages) {
                     pdfState.currentPage = desiredPage;
                     document.getElementById("current_page-" + slug).value = desiredPage;
-                    // render(slug);
-                    queueRenderPdf(pdfState.currentPage, slug);
+                    queueRenderPdf(slug);
                 }
             }
         });
+
         document.getElementById('zoom_in-' + slug).addEventListener('click', (e) => {
             if(pdfState.pdf == null) return;
             pdfState.zoom += 0.5;
-            // render(slug);
-            queueRenderPdf(pdfState.currentPage, slug);
+            queueRenderPdf(slug);
         });
+
         document.getElementById('zoom_out-' + slug).addEventListener('click', (e) => {
             if(pdfState.pdf == null) return;
             pdfState.zoom -= 0.5;
-            // render(slug);
-            queueRenderPdf(pdfState.currentPage, slug);
+            queueRenderPdf(slug);
         });
     }
 });
-
-/** End student sub notes */
+/** End student questions */

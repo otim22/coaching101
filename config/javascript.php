@@ -17,7 +17,7 @@ return [
         'teacher.notes.sub_notes.show', 'teacher.notes.sub_notes.edit',
         'teacher.pastpapers.sub_pastpapers.show', 'teacher.pastpapers.sub_pastpapers.edit',
         'teacher.pastpapers.sub_pastpaper_answers.show', 'teacher.pastpapers.sub_pastpaper_answers.edit',
-        'teacher.books.show', 'teacher.books.edit', 'student.notes.show', 'student.books.show'
+        'teacher.books.show', 'teacher.books.edit', 'student.books.show'
     ],
 
     /*

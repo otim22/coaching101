@@ -96,7 +96,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div>@include('teacher.partials.pdf_viewer')</div>
+                        <div class="mt-4">@include('teacher.partials.pdf_viewer')</div>
                         <form action="{{ route('books.destroy', $book) }}" class="hidden" id="delete-teacher-book" method="POST">
                             @csrf
                             @method('delete')

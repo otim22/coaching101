@@ -9,7 +9,7 @@
             <div class="col-sm-6 col-md-4 col-lg-2 mt-3">
                 <a href="{{ route('categories.index', $category->slug) }}" style="text-decoration: none">
                     <div class="top-card make-it-slow text-center">
-                        <p class="bold" style="white-space: nowrap;">{{ $category->name }}</p>
+                        <p class="bold categories-text">{{ $category->name }}</p>
                     </div>
                 </a>
             </div>

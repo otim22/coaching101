@@ -2,10 +2,10 @@
 
 @section('content')
 
-<section class="section-one bg-subject text-white">
+<section class="section-one bg-gray-2">
     <div class="container">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-dark">
+            <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="{{ url('/') }}">
                         <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-house-fill pb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +34,7 @@
                         @endif
                     </div>
                 @else
-                    <div class="rating mb-3">
+                    <div class="rating mb-2">
                         @for($i = 0; $i < 5; $i++)
                             <svg class="bi bi-star-fill" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -54,12 +54,12 @@
     </div>
 </section>
 
-<section class="small-screen_padding">
+<section class="small-screen_padding bg-white">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8">
-                <div class="border mr-4 p-4 rounded bg-gray-3 mb-5">
-                    <h5 class="bold dark-blue_color-2">What you will learn</h5>
+                <div class="mb-5">
+                    <h5 class="bold">What you will learn</h5>
                     <ul>
                         @forelse($subject->audience['student_learn'] as $student_learn)
                         <li>
@@ -183,11 +183,9 @@
                 @else
                     <aside class="p-3 p-4 border rounded bg-white add-shadow">
                         <div class="make-me-sticky">
-                            <div class="mb-4 d-flex ">
+                            <div class="mb-4 d-flex justify-content-between">
                                 <livewire:add-to-cart :subject="$subject" :key="$subject->id" />
-                                <div>
-                                    <a id="round-button-2" class="btn btn-outline-primary btn-sm ml-3" href="{{ route('checkout.index') }}">Buy now</a>
-                                </div>
+                                <livewire:add-to-wish-list :subject="$subject" :key="$subject->id" />
                             </div>
                             </div>
                             <h5 class="bold">This subject includes:</h5>
@@ -222,7 +220,7 @@
     </div>
 </section>
 
-<section class="bg-gray-2 small-screen_padding">
+<section class="small-screen_padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
