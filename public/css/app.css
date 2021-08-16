@@ -3920,19 +3920,17 @@ form .btn button {
   white-space: nowrap;
 }
 
-#go_previous, #go_next,
-#zoom_in, #zoom_out {
+.canvas-border {
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.btn.circular-btn {
   border-radius: 30px;
   padding-left: 15px;
   padding-right: 15px;
   white-space: nowrap;
-}
-
-#navigation_controls button:hover,
-#navigation_controls button:focus,
-#zoom_controls button:hover,
-#zoom_controls button:focus {
-  color: #6cb2eb;
 }
 
 /*-------------------------
@@ -4118,7 +4116,6 @@ form .btn button {
 .section-one {
   margin-top: 16px;
   padding-bottom: 15px;
-  margin-bottom: 15px;
 }
 
 .section-two {
@@ -4328,15 +4325,6 @@ div > .student-image,
     margin-bottom: 25px;
   }
 }
-.section-one {
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-
-.section-two {
-  padding: 25px;
-}
-
 .add-shadow {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
