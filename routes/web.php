@@ -61,6 +61,8 @@ use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\SurveyController;
 use App\Http\Controllers\Admin\SurveyQuestionController;
 use App\Http\Controllers\Admin\SurveyAnswerController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::post('/standards/{standard}', [WelcomeController::class, 'activateStandard'])->name('student.standards.activate');
