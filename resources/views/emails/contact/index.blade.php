@@ -1,9 +1,9 @@
 @component('mail::message')
-# New message from website
+# Message from {{ config('app.name') }}
 
 **Name:** {{ $contactData->name }}<br>
-**Email:** {{ $contactData->email }}<br>
-**Subject:** {{ $contactData->subject }}<br>
+**Email:** {{ $contactData->email }}<br><br>
+**Subject:** {{ $contactData->subject }}<br><br>
 **Body:** <br>
 {{ $contactData->body }}
 

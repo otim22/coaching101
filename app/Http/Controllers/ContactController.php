@@ -19,12 +19,10 @@ class ContactController extends Controller
     {
         try {
             $request->validated();
-
             Mail::to(config('app.client_email'))->send(new UserContacted($request->validated()));
         } catch (\Exception $e) {
-            return redirect()->route('contacts')->with('error', 'Ooops, could not send email.');
+            return redirect()->route("contacts")->with("error", "Oops, Couldn\'t send email. Try again.");
         }
-
-        return redirect('contacts')->with('success', 'Thank you for contacting us!');
+        return redirect("contacts")->with("success", "Thank you for contacting us!");
     }
 }
