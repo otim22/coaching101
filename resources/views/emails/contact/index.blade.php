@@ -2,11 +2,11 @@
 # Message from {{ config('app.name') }}
 
 **Name:** {{ $contactData->name }}<br>
-**Email:** {{ $contactData->email }}<br><br>
-**Subject:** {{ $contactData->subject }}<br><br>
+
+**Email:** {{ $contactData->email }}<br>
+
+**Subject:** {{ $contactData->subject }}<br>
+
 **Body:** <br>
 {{ $contactData->body }}
-
-Thanks,<br>
-{{ config('app.name') }}
 @endcomponent
