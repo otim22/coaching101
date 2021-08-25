@@ -62,4 +62,36 @@ $(function() {
         });
     }
     /** End Filter levels by standards **/
+
+    /** Start Filter item_content by item **/
+    $("select.item").change(function() {
+        let selectedItemId = $(this).children("option:selected").val();
+        getCoursesOfACategory(selectedItemId)
+    });
+
+    function getCoursesOfACategory(selectedItemId) {
+        $.ajax({
+            type: "GET",
+            url: "/teacher/get-item_content-of-item/" + selectedItemId,
+            dataType: "JSON",
+            success: function (response) {
+                let len = response.length;
+                $("#item_content_id").empty();
+                if(len > 0) {
+                    $("#item_content_id").append("<option selected>Select course</option>");
+                    for(let i = 0; i < len; i++) {
+                        let id = response[i]['id'];
+                        let title = response[i]['title'];
+                        $("#item_content_id").append("<option value='"+id+"'>"+title+"</option>");
+                    }
+                } else {
+                    $("#item_content_id").append("<option selected>Not data</option>");
+                }
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
+    /** End Filter item_content by item **/
 });

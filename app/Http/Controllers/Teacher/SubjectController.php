@@ -6,7 +6,6 @@ use App\Models\Item;
 use App\Models\Year;
 use App\Models\Term;
 use App\Models\Level;
-use App\Models\Topic;
 use App\Models\Ratings;
 use App\Models\Subject;
 use App\Models\Currency;

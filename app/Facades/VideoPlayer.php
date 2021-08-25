@@ -3,7 +3,6 @@
 namespace App\Facades;
 
 use App\Models\Topic;
-use App\Models\Subject;
 
 class VideoPlayer
 {
@@ -19,7 +18,6 @@ class VideoPlayer
 
         if(!array_key_exists($topic->id, $player['playlist'])) {
             $player['playlist'][$topic->id] = $topic;
-
             $this->set($player);
         }
     }
@@ -27,9 +25,7 @@ class VideoPlayer
     public function previous(Topic $topic): void
     {
         $player = $this->get();
-
         array_splice($cart['subjects'], array_search($subjectId, array_column($cart['subjects'], 'id')), 1);
-
         $this->set($cart);
     }
 

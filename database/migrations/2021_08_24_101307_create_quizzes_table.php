@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemContentsTable extends Migration
+class CreateQuizzesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateItemContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_contents', function (Blueprint $table) {
+        Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->text('title');
             $table->string('slug');
-            $table->string('subtitle')->nullable();
-            $table->text('description')->nullable();
-            $table->json('objective')->nullable();
-            $table->float('price')->nullable();
             $table->boolean('is_approved')->default(false);
             $table->foreignId('standard_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('level_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
@@ -29,6 +25,7 @@ class CreateItemContentsTable extends Migration
             $table->foreignId('year_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('term_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('item_content_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -40,6 +37,6 @@ class CreateItemContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_contents');
+        Schema::dropIfExists('quizzes');
     }
 }

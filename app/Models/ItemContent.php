@@ -245,6 +245,15 @@ class ItemContent extends Model implements HasMedia, Searchable
         }
     }
 
+    protected function getCoursesOfACategory($value = 'Select category')
+    {
+        if($value == 'Select category') {
+            return ItemContent::get();
+        } else {
+            return  ItemContent::where(['item_id' => $value, 'user_id' => Auth::id()])->get();
+        }
+    }
+
     protected function getRightCurrency($value = 'Select standard')
     {
         if($value == 'Select standard') {

@@ -24,6 +24,8 @@ use App\Http\Controllers\Teacher\TeacherSubPastpaperAnswerController;
 use App\Http\Controllers\Teacher\TeacherFilterController;
 use App\Http\Controllers\Teacher\TeacherPastpaperController;
 use App\Http\Controllers\Teacher\UserSurveyAnswerController;
+use App\Http\Controllers\Teacher\TeacherQuizController;
+use App\Http\Controllers\Teacher\TeacherQuizQuestionController;
 use App\Http\Controllers\Student\HomeController;
 use App\Http\Controllers\Student\SubjectDisplayController;
 use App\Http\Controllers\Student\TopCategoryController;
@@ -139,6 +141,7 @@ Route::middleware('auth')->group(function() {
 
         Route::get('/get-years-to-level/{id}', [TeacherFilterController::class, 'getYearsToLevel'])->name('get-years-to-level');
         Route::get('/get-levels-to-standard/{id}', [TeacherFilterController::class, 'getLevelsToStandard'])->name('get-levels-to-standard');
+        Route::get('/get-item_content-of-item/{id}', [TeacherFilterController::class, 'getCoursesOfACategory'])->name('get-item_content-of-item');
         Route::get('/get-right-currency/{id}', [TeacherFilterController::class, 'getRightCurrency'])->name('get-right-currency');
 
         /** Notes */
@@ -174,6 +177,16 @@ Route::middleware('auth')->group(function() {
         Route::get('/pastpapers/{pastpaper}/subPastpaperAnswers/{subPastpaperAnswer}/edit', [TeacherSubPastpaperAnswerController::class, 'edit'])->name('subPastpaperAnswers.edit');
         Route::patch('/pastpapers/{pastpaper}/subPastpaperAnswers/{subPastpaperAnswer}/update', [TeacherSubPastpaperAnswerController::class, 'update'])->name('subPastpaperAnswers.update');
         Route::delete('/pastpapers/{pastpaper}/subPastpaperAnswers/{subPastpaperAnswer}/destroy', [TeacherSubPastpaperAnswerController::class, 'destroy'])->name('subPastpaperAnswers.delete');
+
+        /** Quizzes*/
+        Route::resource('/quizzes', 'Teacher\TeacherQuizController')->except(['index']);
+        Route::get('/quizzes', [TeacherQuizController::class, 'index'])->name('teacher.quizzes');
+
+        /** Teacher quizzes */
+        Route::get('/quizzes/{quiz}/quizQuestions', [TeacherQuizQuestionController::class, 'create'])->name('quizQuestions.create');
+        Route::post('/quizzes/{quiz}/quizQuestions', [TeacherQuizQuestionController::class, 'store'])->name('quizQuestions.store');
+        Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}', [TeacherQuizQuestionController::class, 'show'])->name('quizQuestions.show');
+        Route::patch('/quizzes/{quiz}/quizQuestions/{quizQuestion}', [TeacherQuizQuestionController::class, 'update'])->name('quizQuestions.update');
 
         /** Audiences to subjects */
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);

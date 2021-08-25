@@ -22,4 +22,9 @@ class TeacherFilterController extends Controller
     {
         return ItemContent::getRightCurrency($value);
     }
+
+    protected function getCoursesOfACategory($value = 'Select category')
+    {
+        return ItemContent::getCoursesOfACategory($value);
+    }
 }
