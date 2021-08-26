@@ -18,10 +18,10 @@
                     <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('teacher.pastpapers') }}" style="text-decoration: none;">Quizzes</a>
+                    <a href="{{ route('teacher.quizzes') }}" style="text-decoration: none;">Quizzes</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    {{$quiz->title}}
+                    {{ $quiz->short_title }}
                 </li>
             </ol>
         </nav>
@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-2">
                             <div>
-                                <h5 class="bold">Quiz</h5>
+                                <h5 class="bold">{{ $quiz->title }}</h5>
                             </div>
                             <div>
                                 <a id="round-button-2" href="{{ route('teacher.quizzes') }}" class="btn btn-secondary">

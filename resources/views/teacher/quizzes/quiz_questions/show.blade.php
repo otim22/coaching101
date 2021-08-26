@@ -18,10 +18,13 @@
                     <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('teacher.quizzes') }}" style="text-decoration: none;">Quiz question</a>
+                    <a href="{{ route('teacher.quizzes') }}" style="text-decoration: none;">Quizzes</a>
+                </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('quizzes.show', [$quiz, $quizQuestion]) }}" style="text-decoration: none;">Questions</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    {{ $quizQuestion->title }}
+                    {{ $quizQuestion->short_quiz_question }}
                 </li>
             </ol>
         </nav>
@@ -32,68 +35,95 @@
 </div>
 <section class="small-screen_padding">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 col-md-12 col-sm-12 off-set-1">
-                <div class="card p-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between mb-2">
-                            <div>
-                                <a id="round-button-2" href="{{ route('quizzes.show', $quiz) }}" class="btn btn-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2 mb-1" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <div class="fast-transition">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('quizzes.show', [$quiz, $quizQuestion]) }}">
+                                <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+                                    <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                                </svg>
+                                Back questions
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            @if(count($quizQuestion->options) <= 3)
+                                <a class="nav-link" href="{{ route('quizOptions.create', [$quiz, $quizQuestion])}}">
+                                    <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-journal-richtext" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                                        <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm1.639-4.208l1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047L11 4.75V7a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 7v-.5s1.54-1.274 1.639-1.208zM6.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
                                     </svg>
-                                    Back
+                                    Create option
                                 </a>
-                            </div>
-                            <div class="dropdown">
-                                <button id="round-button-2" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Action
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('quizQuestions.edit', [$quiz, $quizQuestion]) }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen mr-2" viewBox="0 0 16 16">
-                                            <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
-                                        </svg>
-                                        Edit
-                                    </a>
-                                    <a class="dropdown-item" href="#"
-                                            data-toggle="modal" data-target="#deleteQuizQuestion">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash mr-2" viewBox="0 0 16 16">
-                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                        </svg>
-                                        Delete
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <hr />
-                        </div>
-                        <div class="mb-3 mt-4">
-                            <h5 class="bold">{{ $quizQuestion->quiz_question }}</h5>
-                        </div>
-                        <p>{{ $quizQuestion->answer_explanation }}</p>
-                    </div>
+                            @else
+                                <span class="nav-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 20 20">
+                                        <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
+                                        <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+                                    </svg>
+                                    Edit current options
+                                </span>
+                            @endif
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('quizQuestions.edit', [$quiz, $quizQuestion]) }}">
+                                <svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                </svg>
+                                Edit question
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a type="button" class="nav-link" href="#" data-toggle="modal" data-target="#deleteQuizQuestion">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" fill="currentColor" class="bi bi-trash" viewBox="0 0 18 18">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                                Delete question
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <form action="{{ route('quizQuestions.delete', [$quiz, $quizQuestion]) }}" class="hidden" id="delete-teacher-quiz-question" method="POST">
-                    @csrf
-                    @method('delete')
-                </form>
             </div>
+            <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
+                <h5 class="mb-3"><span class="bold">Question:</span> {{ $quizQuestion->quiz_question }}</h5>
+                <p><span class="bold">Answer explanation:</span> {{ $quizQuestion->answer_explanation }}</p>
+                <div class="mb-3">
+                    <ul>
+                        @forelse($quizQuestion->options as $key => $quizOption)
+                            <li class="mb-2">
+                                <a href="{{ route('quizOptions.show', [$quiz, $quizQuestion, $quizOption]) }}" style="text-decoration:none;">
+                                    <span class="bold">Option {{ $key+1 }}.</span> {{ $quizOption->option }}
+                                </a>
+                            </li>
+                        @empty
+                            <p>No options</p>
+                        @endforelse
+                    </ul>
+                </div>
+            </div>
+            <form action="{{ route('quizQuestions.delete', [$quiz, $quizQuestion, ]) }}" class="hidden" id="delete-teacher-quiz-question" method="POST">
+                @csrf
+                @method('delete')
+            </form>
         </div>
     </div>
 
-    <div class="modal fade" id="deleteQuizQuestion" tabindex="-1" aria-labelledby="deleteQuizQuestionLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteQuizQuestion" tabindex="-1" aria-labelledby="deleteQuizQuestionQuestionLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
+                    <h5 class="modal-title" id="deleteQuizQuestionQuestionLabel">{{ $quizQuestion->quiz_question }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Deleting this question also deletes its option.
+                    Are you sure you want to delete these quiz?
                 </div>
                 <div class="modal-footer">
                     <button  id="round-button-2" type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
@@ -103,5 +133,4 @@
         </div>
     </div>
 </section>
-
 @endsection

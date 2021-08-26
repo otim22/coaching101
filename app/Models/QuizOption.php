@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -26,5 +27,15 @@ class QuizOption extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function quizQuestion()
+    {
+        return $this->belongsTo('App\Models\QuizQuestion', 'quiz_question_id');
+    }
+
+    public function getShortOptionAttribute()
+    {
+        return Str::limit($this->option, 20);
     }
 }

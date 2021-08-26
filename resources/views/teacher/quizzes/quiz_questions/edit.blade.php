@@ -17,7 +17,15 @@
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Books</li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('teacher.quizzes') }}" style="text-decoration: none;">Quizzes</a>
+                </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('quizzes.show', [$quiz, $quizQuestion]) }}" style="text-decoration: none;">Questions</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ $quizQuestion->short_quiz_question }}
+                </li>
             </ol>
         </nav>
     </div>
@@ -36,7 +44,7 @@
                                 <h5 class="bold">New quiz question</h5>
                             </div>
                             <div>
-                                <a id="round-button-2" href="{{ route('quizzes.show', $quiz) }}" class="btn btn-secondary">
+                                <a id="round-button-2" href="{{ route('quizQuestions.show', [$quiz, $quizQuestion]) }}" class="btn btn-secondary">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                                     </svg>

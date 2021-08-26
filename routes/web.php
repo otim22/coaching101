@@ -26,6 +26,7 @@ use App\Http\Controllers\Teacher\TeacherPastpaperController;
 use App\Http\Controllers\Teacher\UserSurveyAnswerController;
 use App\Http\Controllers\Teacher\TeacherQuizController;
 use App\Http\Controllers\Teacher\TeacherQuizQuestionController;
+use App\Http\Controllers\Teacher\TeacherQuizOptionController;
 use App\Http\Controllers\Student\HomeController;
 use App\Http\Controllers\Student\SubjectDisplayController;
 use App\Http\Controllers\Student\TopCategoryController;
@@ -189,6 +190,14 @@ Route::middleware('auth')->group(function() {
         Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}/edit', [TeacherQuizQuestionController::class, 'edit'])->name('quizQuestions.edit');
         Route::patch('/quizzes/{quiz}/quizQuestions/{quizQuestion}/update', [TeacherQuizQuestionController::class, 'update'])->name('quizQuestions.update');
         Route::delete('/quizzes/{quiz}/quizQuestions/{quizQuestion}/destroy', [TeacherQuizQuestionController::class, 'destroy'])->name('quizQuestions.delete');
+
+        /** Teacher quiz options */
+        Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions', [TeacherQuizOptionController::class, 'create'])->name('quizOptions.create');
+        Route::post('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions', [TeacherQuizOptionController::class, 'store'])->name('quizOptions.store');
+        Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions/{quizOption}', [TeacherQuizOptionController::class, 'show'])->name('quizOptions.show');
+        Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions/{quizOption}/edit', [TeacherQuizOptionController::class, 'edit'])->name('quizOptions.edit');
+        Route::patch('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions/{quizOption}/update', [TeacherQuizOptionController::class, 'update'])->name('quizOptions.update');
+        Route::delete('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions/{quizOption}/destroy', [TeacherQuizOptionController::class, 'destroy'])->name('quizOptions.delete');
 
         /** Audiences to subjects */
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);

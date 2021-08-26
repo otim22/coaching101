@@ -24,7 +24,12 @@
                     <a href="{{ route('quizzes.show', $quiz) }}" style="text-decoration: none;">Questions</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    New quiz question
+                    <a href="{{ route('quizQuestions.show', [$quiz, $quizQuestion]) }}" style="text-decoration: none;">
+                        {{ $quizQuestion->quiz_question }}
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    New option
                 </li>
             </ol>
         </nav>
@@ -55,20 +60,42 @@
                         <div>
                             <hr />
                         </div>
-                        <form action="{{ route('quizQuestions.store', $quiz) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('quizOptions.store', [$quiz, $quizQuestion]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+
+                            <div class="form-group mb-4">
+                                <label for="quiz_question_id">Which question does the option belong to?</label>
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" name="quiz_question_id">
+                                        <option selected>Select question</option>
+                                        @foreach($quizQuestions as $quizQuestion)
+                                            <option value="{{ $quizQuestion->id }}">{{ $quizQuestion->quiz_question }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('quiz_question_id')
+                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <div class="form-group">
-                                <label for="quiz_question">Quiz question</label>
-                                <input type="text" name="quiz_question" class="form-control @error('quiz_question') is-invalid @enderror" placeholder="Example: Introduction to relativity" value="{{ old('quiz_question') }}">
-                                @error('quiz_question')
+                                <label for="option">Enter the option to question</label>
+                                <input type="text" name="option" class="form-control @error('option') is-invalid @enderror" placeholder="Example: Everything is relativity" value="{{ old('option') }}">
+                                @error('option')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="form-group">
-                                <label for="answer_explanation">Answer explanation</label>
-                                <textarea type="text" name="answer_explanation" class="form-control @error('answer_explanation') is-invalid @enderror" placeholder="Example: Detailed explanation on the answer." value="{{ old('answer_explanation') }}" rows="3"></textarea>
-                                @error('answer_explanation')
+                                <label for="is_correct">Is this the correct answer?</label>
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" name="is_correct">
+                                        <option selected>Choose if answer is correct or wrong</option>
+                                        <option value="yes">Yes, It's the correct option</option>
+                                        <option value="no">No, It's the wrong option</option>
+                                    </select>
+                                </div>
+                                @error('is_correct')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>

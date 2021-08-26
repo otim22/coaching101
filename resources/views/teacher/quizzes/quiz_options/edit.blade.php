@@ -24,7 +24,12 @@
                     <a href="{{ route('quizzes.show', $quiz) }}" style="text-decoration: none;">Questions</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    New quiz question
+                    <a href="{{ route('quizQuestions.show', [$quiz, $quizQuestion]) }}" style="text-decoration: none;">
+                        {{ $quizQuestion->short_quiz_question }}
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ $quizOption->short_option }}
                 </li>
             </ol>
         </nav>
@@ -41,10 +46,10 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-2">
                             <div>
-                                <h5 class="bold">New quiz question</h5>
+                                <h5 class="bold">{{ $quizOption->option }}</h5>
                             </div>
                             <div>
-                                <a id="round-button-2" href="{{ route('quizzes.show', $quiz) }}" class="btn btn-secondary">
+                                <a id="round-button-2" href="{{ route('quizOptions.show', [$quiz, $quizQuestion, $quizOption])}}" class="btn btn-secondary">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mr-2" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                                     </svg>
@@ -55,25 +60,50 @@
                         <div>
                             <hr />
                         </div>
-                        <form action="{{ route('quizQuestions.store', $quiz) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('quizOptions.update', [$quiz, $quizQuestion, $quizOption]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('patch')
+
+                            <div class="form-group mb-4">
+                                <label for="quiz_question_id">Which question does this option belong to?</label>
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" name="quiz_question_id">
+                                        <option value="{{ $quizQuestion->id }}">{{ $quizQuestion->quiz_question }}</option>
+                                        @foreach($quizQuestions as $quizQuestion)
+                                            <option value="{{ $quizQuestion->id }}">{{ $quizQuestion->quiz_question }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('quiz_question_id')
+                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <div class="form-group">
-                                <label for="quiz_question">Quiz question</label>
-                                <input type="text" name="quiz_question" class="form-control @error('quiz_question') is-invalid @enderror" placeholder="Example: Introduction to relativity" value="{{ old('quiz_question') }}">
-                                @error('quiz_question')
+                                <label for="option">Enter the option to question</label>
+                                <input type="text" name="option"
+                                            class="form-control @error('option') is-invalid @enderror"
+                                            value="{{ old('option', $quizOption->option) }}">
+                                @error('option')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="form-group">
-                                <label for="answer_explanation">Answer explanation</label>
-                                <textarea type="text" name="answer_explanation" class="form-control @error('answer_explanation') is-invalid @enderror" placeholder="Example: Detailed explanation on the answer." value="{{ old('answer_explanation') }}" rows="3"></textarea>
-                                @error('answer_explanation')
+                                <label for="is_correct">Is this the correct answer?</label>
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" name="is_correct">
+                                        <option value="{{ $currentQuizOption }}">{{ $quizOptionToUpdate }}</option>
+                                        <option value="yes">Yes, It's correct </option>
+                                        <option value="no">No, It's wrong </option>
+                                    </select>
+                                </div>
+                                @error('is_correct')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
-                            <button id="round-button-2" type="submit" class="btn btn-primary float-right mt-3">Submit</button>
+                            <button id="round-button-2" type="submit" class="btn btn-primary float-right mt-3">Update</button>
                         </form>
                     </div>
                 </div>

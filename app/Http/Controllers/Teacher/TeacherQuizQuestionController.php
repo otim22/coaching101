@@ -6,6 +6,7 @@ use App\Models\Quiz;
 use Illuminate\Http\Request;
 use App\Models\QuizQuestion;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\QuizQuestionRequest;
 
 class TeacherQuizQuestionController extends Controller
@@ -29,7 +30,7 @@ class TeacherQuizQuestionController extends Controller
         $quizQuestion->quiz_id = $quiz->id;
         $quizQuestion->save();
 
-        return redirect()->route('quizQuestions.show', [$quiz, $quizQuestion])->with('success', 'Quiz saved successfully.');
+        return redirect()->route('quizQuestions.show', [$quiz, $quizQuestion])->with('success', 'Question saved successfully.');
     }
 
     public function show(Quiz $quiz, QuizQuestion $quizQuestion)

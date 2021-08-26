@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -73,5 +74,10 @@ class Quiz extends Model
     public function creator()
     {
         return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    public function getShortTitleAttribute()
+    {
+        return Str::limit($this->title, 20);
     }
 }

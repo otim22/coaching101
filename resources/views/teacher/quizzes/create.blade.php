@@ -17,7 +17,10 @@
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('manage.subjects') }}" style="text-decoration: none;">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Quizzes</li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('teacher.quizzes') }}" style="text-decoration: none;">Quizzes</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">New Quiz</li>
             </ol>
         </nav>
     </div>
