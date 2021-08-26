@@ -35,12 +35,6 @@ class TeacherQuizController extends Controller
         return view('teacher.quizzes.create', compact(['categories', 'items', 'years', 'terms', 'standards', 'levels']));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(QuizRequest $request)
     {
         $quiz = new Quiz();
@@ -64,12 +58,6 @@ class TeacherQuizController extends Controller
         return view('teacher.quizzes.show', compact('quiz'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Quiz $quiz)
     {
         $levels = ItemContent::getLevelsToStandard();
@@ -91,24 +79,12 @@ class TeacherQuizController extends Controller
         ]));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function update(QuizRequest $request, Quiz $quiz)
     {
         $quiz->update($request->all());
         return redirect()->route('teacher.quizzes')->with('success', 'quiz updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Quiz $quiz)
     {
         try {

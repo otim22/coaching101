@@ -60,7 +60,7 @@
                                     <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
                                     <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm1.639-4.208l1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047L11 4.75V7a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 7v-.5s1.54-1.274 1.639-1.208zM6.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
                                 </svg>
-                                Create answer
+                                Create option
                             </a>
                         </li>
                         <li class="nav-item">
@@ -106,12 +106,9 @@
                 <h5 class="bold mb-3">{{ $quiz->title }}</h5>
                 <div class="mb-3">
                     <ul>
-                        @forelse($quiz->quizQuestions as $quizQuestion)
+                        @forelse($quiz->quizQuestions as $key => $quizQuestion)
                             <li class="mb-2">
-                                <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-check mb-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                                </svg>
-                                {{ $quizQuestion }}
+                                <a href="{{ route('quizQuestions.show', [$quiz, $quizQuestion]) }}" style="text-decoration:none;">{{ $key+1 }}. {{ $quizQuestion->quiz_question }}</a>
                             </li>
                         @empty
                             <p>No quizzes</p>

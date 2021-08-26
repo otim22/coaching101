@@ -182,11 +182,13 @@ Route::middleware('auth')->group(function() {
         Route::resource('/quizzes', 'Teacher\TeacherQuizController')->except(['index']);
         Route::get('/quizzes', [TeacherQuizController::class, 'index'])->name('teacher.quizzes');
 
-        /** Teacher quizzes */
+        /** Teacher quiz questions */
         Route::get('/quizzes/{quiz}/quizQuestions', [TeacherQuizQuestionController::class, 'create'])->name('quizQuestions.create');
         Route::post('/quizzes/{quiz}/quizQuestions', [TeacherQuizQuestionController::class, 'store'])->name('quizQuestions.store');
         Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}', [TeacherQuizQuestionController::class, 'show'])->name('quizQuestions.show');
-        Route::patch('/quizzes/{quiz}/quizQuestions/{quizQuestion}', [TeacherQuizQuestionController::class, 'update'])->name('quizQuestions.update');
+        Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}/edit', [TeacherQuizQuestionController::class, 'edit'])->name('quizQuestions.edit');
+        Route::patch('/quizzes/{quiz}/quizQuestions/{quizQuestion}/update', [TeacherQuizQuestionController::class, 'update'])->name('quizQuestions.update');
+        Route::delete('/quizzes/{quiz}/quizQuestions/{quizQuestion}/destroy', [TeacherQuizQuestionController::class, 'destroy'])->name('quizQuestions.delete');
 
         /** Audiences to subjects */
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);
