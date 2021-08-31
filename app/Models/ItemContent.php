@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Models\Year;
 use App\Models\Level;
+use App\Traits\FilterTrait;
 use App\Models\Standard;
 use App\Models\Currency;
-use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\Traits\PresentsText;
 use App\Traits\PresentsItem;
@@ -28,7 +29,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ItemContent extends Model implements HasMedia, Searchable
 {
-    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable, PresentsItem;
+    use HasFactory, HasSlug, InteractsWithMedia, PresentsMedia, PresentsText, Rateable, PresentsItem, FilterTrait;
 
     protected $fillable = ['title', 'subtitle', 'description', 'objective', 'price', 'item_id', 'standard_id', 'level_id', 'category_id', 'year_id', 'term_id', 'user_id', 'is_approved', 'currency_id'];
     protected $with = ['media'];
@@ -196,35 +197,6 @@ class ItemContent extends Model implements HasMedia, Searchable
             $this,
             $this->title
         );
-    }
-
-    public static function getItemContents($category, $level, $year, $term, $item = null)
-    {
-        $items = ['is_approved' => 1];
-
-        if ($category && $category !== GlobalConstants::ALL_SUBJECTS) {
-            $items['category_id'] = $category;
-        }
-        if ($level && $level !== GlobalConstants::ALL_LEVELS) {
-            $items['level_id'] = $level;
-        }
-        if ($year && $year !== GlobalConstants::ALL_YEARS) {
-            $items['year_id'] = $year;
-        }
-        if ($term && $term !== GlobalConstants::ALL_TERMS) {
-            $items['term_id'] = $term;
-        }
-        if ($item && $item !== GlobalConstants::SUBJECT) {
-            $items['item_id'] = $item;
-        } else if($item && $item !== GlobalConstants::BOOK) {
-            $items['item_id'] = $item;
-        } else if($item && $item !== GlobalConstants::NOTE) {
-            $items['item_id'] = $item;
-        } else if($item && $item !== GlobalConstants::PASTPAPER) {
-            $items['item_id'] = $item;
-        }
-
-        return static::where($items)->paginate(12);
     }
 
     protected function getLevelsToStandard($value = 'Select standard')

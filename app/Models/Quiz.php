@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\FilterTrait;
 use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Quiz extends Model
 {
-    use HasFactory, HasSlug;
+    use HasFactory, HasSlug, FilterTrait;
 
     protected $fillable = ['standard_id', 'level_id', 'item_id', 'category_id', 'year_id', 'term_id', 'user_id', 'is_approved', 'title', 'item_content_id'];
     protected $dates = ['created_at', 'updated_at'];

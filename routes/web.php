@@ -36,6 +36,7 @@ use App\Http\Controllers\Student\SearchController;
 use App\Http\Controllers\Student\QuestionController;
 use App\Http\Controllers\Student\CommentController;
 use App\Http\Controllers\Student\WelcomeController;
+use App\Http\Controllers\Student\QuizController;
 use App\Http\Controllers\Student\BooksController as Books;
 use App\Http\Controllers\Student\NotesController as Notes;
 use App\Http\Controllers\Student\PastpaperController as Pastpapers;
@@ -86,6 +87,8 @@ Route::get('/pastpapers', [Pastpapers::class, 'index'])->name('student.pastpaper
 Route::get('/pastpapers/{pastpaper}', [Pastpapers::class, 'show'])->name('student.pastpapers.show')->middleware('auth');
 Route::get('/get-matching-years-to-level/{id}', [Pastpapers::class, 'getMatchingYearsToLevel'])->name('get-matching-years-to-level');
 Route::get('/get-more-pastpapers', [Pastpapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
+Route::get('/quizzes', [QuizController::class, 'index'])->name('student.quizzes');
+Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('student.quizzes.show');
 Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
 Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');
 Route::patch('/users/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');

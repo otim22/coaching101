@@ -8,8 +8,8 @@
         @foreach($topCategories as $category)
             <div class="col-sm-6 col-md-4 col-lg-2 mt-3">
                 <a href="{{ route('categories.index', $category->slug) }}" style="text-decoration: none">
-                    <div class="top-card make-it-slow text-center">
-                        <p class="bold categories-text">{{ $category->name }}</p>
+                    <div class="top-card make-it-slow text-center pt-2 pb-2">
+                        <span class="bold categories-text">{{ $category->name }}</span>
                     </div>
                 </a>
             </div>

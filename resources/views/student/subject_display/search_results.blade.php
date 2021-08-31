@@ -44,7 +44,7 @@
                         <div class="card-body">
                             <a href="{{ route('subjects.index', $search->searchable->slug) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $search->searchable->very_short_title }}</span><br />
-                                <span class="author-font">{{ $search->searchable->creator->name }}</span><br />
+                                By <span class="author-font">{{ $search->searchable->creator->name }}</span><br />
                                 @if($search->searchable->price)
                                     @if($search->searchable->isSubscribedTo)
                                         <span class="author-font">{{ $search->searchable->currency->name }} {{  $search->searchable->formatPrice }}/- (Paid)</span><br />

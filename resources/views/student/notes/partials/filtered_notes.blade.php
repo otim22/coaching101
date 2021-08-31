@@ -8,7 +8,7 @@
                             <a href="{{ route('student.notes.show', $note) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $note->very_short_title }}</span><br />
                                 @if($note->creator)
-                                    <span class="author-font">{{ $note->creator->name }}</span><br />
+                                    By <span class="author-font">{{ $note->creator->name }}</span><br />
                                 @endif
 
                                 @if($note->price)
@@ -21,7 +21,7 @@
                             <a href="{{ route('student.notes.show', $note) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $note->very_short_title }}</span><br />
                                 @if($note->creator)
-                                    <span class="author-font">{{ $note->creator->name }}</span><br />
+                                    By <span class="author-font">{{ $note->creator->name }}</span><br />
                                 @endif
 
                                 @if($note->price)

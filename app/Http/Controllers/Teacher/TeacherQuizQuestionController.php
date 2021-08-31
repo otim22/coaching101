@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Models\Quiz;
 use Illuminate\Http\Request;
+use App\Models\QuizOption;
 use App\Models\QuizQuestion;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,8 @@ class TeacherQuizQuestionController extends Controller
 
     public function show(Quiz $quiz, QuizQuestion $quizQuestion)
     {
-        return view('teacher.quizzes.quiz_questions.show', compact(['quizQuestion', 'quiz']));
+        $numOfTrueValues = QuizOption::where(['quiz_question_id' => $quizQuestion->id, 'is_correct' => 1])->count();
+        return view('teacher.quizzes.quiz_questions.show', compact(['quizQuestion', 'quiz', 'numOfTrueValues']));
     }
 
     public function edit(Quiz $quiz, QuizQuestion $quizQuestion)

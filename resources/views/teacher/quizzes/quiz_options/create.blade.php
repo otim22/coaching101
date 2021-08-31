@@ -64,7 +64,7 @@
                             @csrf
 
                             <div class="form-group mb-4">
-                                <label for="quiz_question_id">Which question does the option belong to?</label>
+                                <label for="quiz_question_id">Which question does this option belong to?</label>
                                 <div class="input-group mb-3">
                                     <select class="custom-select" name="quiz_question_id">
                                         <option selected>Select question</option>

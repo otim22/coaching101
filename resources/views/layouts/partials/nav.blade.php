@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-3 increased-font py-3">
     <div class="container-fluid" id="navbarSupportedContentOther">
         <a class="navbar-brand mr-auto" href="{{ url('/') }}"><span class="logo-font">onCloudLearning</span></a>
-        <!-- <a class="navbar-brand mr-auto" href="{{ url('/') }}"><img src="{{ asset('logo/ocl_logo4.png')}}" alt="onCloudLearning logo" width="200px" height="auto">   </a> -->
         <span class="sm-search d-md-none" id="smSearch"> <a class="ml-auto hide-at-md mr-1" href="#" style="text-decoration: none;"> <i class="fas fa-search pointer"></i></a></span>
         <div id="smCart" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-md-none">
             <livewire:nav-cart />
@@ -77,10 +76,11 @@
                         Browse
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkUneb">
-                        <a class="dropdown-item" href="{{ route('home') }}">Video subjects</a>
+                        <a class="dropdown-item" href="{{ route('home') }}">Video lesson</a>
                         <a class="dropdown-item" href="{{ route('student.books.index') }}">Pdf books</a>
                         <a class="dropdown-item" href="{{ route('student.notes.index') }}">Notes</a>
                         <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past papers</a>
+                        <a class="dropdown-item" href="{{ route('student.quizzes') }}"><span class="badge badge-pill badge-danger">Quizzes</span></a>
                     </div>
                 </li>
                 <li class="nav-item dropdown hide-at-sslg">
