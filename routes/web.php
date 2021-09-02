@@ -89,6 +89,7 @@ Route::get('/get-matching-years-to-level/{id}', [Pastpapers::class, 'getMatching
 Route::get('/get-more-pastpapers', [Pastpapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
 Route::get('/quizzes', [QuizController::class, 'index'])->name('student.quizzes');
 Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('student.quizzes.show');
+Route::get('/get-next-quiz', [QuizController::class, 'getNextQuiz'])->name('get-next-quiz');
 Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
 Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');
 Route::patch('/users/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');

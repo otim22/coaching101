@@ -92,7 +92,7 @@
             <div class="col-lg-9 col-md-12 col-sm-12 adds-padding upper-padding">
                 <h5 class="mb-2"><span class="bold">Question:</span> {{ $quizQuestion->quiz_question }}</h5>
                 <span><span class="bold">Answer explanation:</span> {{ $quizQuestion->answer_explanation }}</span><br />
-                @if($numOfTrueValues != 1)<small class="bold red_color">* There should be one correct answer</span>@endif
+                @if($numOfTrueValues != 1 && count($quizQuestion->options) > 3 )<small class="bold red_color">* There should be one correct answer</span>@endif
                 <div class="mb-3 mt-3">
                     <ul>
                         @forelse($quizQuestion->options as $key => $quizOption)

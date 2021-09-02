@@ -3660,6 +3660,22 @@ select {
   white-space: nowrap;
 }
 
+#round-button-3 {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.custom-check .form-check-label {
+  cursor: pointer;
+}
+.custom-check .form-check-label:hover {
+  color: #3490dc;
+}
+.custom-check input[type=checkbox]:checked + label {
+  color: #3490dc;
+}
+
 #round-input {
   border-radius: 22px;
   padding-left: 20px;

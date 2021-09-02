@@ -82,7 +82,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group form-check row ml-3 mr-3">
+                            <div class="form-group form-check custom-check  row ml-3 mr-3">
                                 <input class="mr-2" type="checkbox" name="agreement" id="agreement" {{ old('agreement') ? 'checked' : '' }}>
 
                                 <label class="form-check-label" for="agreement">

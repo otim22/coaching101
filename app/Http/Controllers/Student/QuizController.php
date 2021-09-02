@@ -47,6 +47,7 @@ class QuizController extends Controller
 
     public function show(Quiz $quiz)
     {
-        return view('student.quizzes.show', compact('quiz'));
+        $paginatedQuiz = $quiz->quizQuestions->paginate(1);
+        return view('student.quizzes.show', compact(['quiz', 'paginatedQuiz']));
     }
 }

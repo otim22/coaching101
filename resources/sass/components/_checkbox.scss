@@ -1,0 +1,8 @@
+.custom-check {
+    .form-check-label {
+        cursor: pointer;
+        &:hover { color: $blue; }
+    }
+
+    input[type="checkbox"]:checked+label { color: $blue; }
+}
