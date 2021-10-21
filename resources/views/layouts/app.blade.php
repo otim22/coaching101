@@ -7,8 +7,8 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <link rel="shortcut icon" href="favicon.svg">
         <link href="{{ asset('vendor/js/videojs/css/video-js.css') }}" rel="stylesheet">
-
         <link href="{{ asset('css/card-js.css') }}" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -25,7 +25,7 @@
     </div>
 
     @livewireScripts
-    
+
     <script src="{{ asset('vendor/js/videojs/videojs-ie8.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 

@@ -1,5 +1,6 @@
 $(function() {
     const optionsClicked = [];
+    const quizAns = {};
 
     /** handle checkbox **/
     $(".options input:checkbox").on('click', function() {
@@ -23,10 +24,61 @@ $(function() {
     /** handle checkbox **/
 
     $(".next-question").on('click', function() {
-        const optionSubmitted = optionsClicked[optionsClicked.length - 1]
+        const optionId = optionsClicked[optionsClicked.length - 1]
         const questionId = $(this).attr("data-question-id");
         const quizId = $(this).attr("data-quiz-id");
-        const correctAnswer = $(this).attr("data-correct-ans");
-        console.log(correctAnswer);
+        const userQuizAnsUrl = $(this).attr("data-user-ans");
+        const lastOption = $(this).attr("data-last-option");
+
+        quizAns.quizId = quizId;
+        quizAns.questionId = questionId;
+        quizAns.optionId = optionId;
+        quizAns.lastOption = lastOption;
+
+        $.ajax({
+            type: "POST",
+            url: userQuizAnsUrl,
+            dataType: "JSON",
+            contentType:'application/x-www-form-urlencoded',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: quizAns,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function(xhr) {
+                console.error();(xhr.responseText);
+           }
+        });
+    });
+    $(".submit-questions").on('click', function() {
+        const optionId = optionsClicked[optionsClicked.length - 1]
+        const questionId = $(this).attr("data-question-id");
+        const quizId = $(this).attr("data-quiz-id");
+        const userQuizAnsUrl = $(this).attr("data-user-ans");
+        const lastOption = $(this).attr("data-last-option");
+
+        quizAns.quizId = quizId;
+        quizAns.questionId = questionId;
+        quizAns.optionId = optionId;
+        quizAns.lastOption = lastOption;
+
+        $.ajax({
+            type: "POST",
+            url: userQuizAnsUrl,
+            dataType: "JSON",
+            contentType:'application/x-www-form-urlencoded',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: quizAns,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function(xhr) {
+                console.error();(xhr.responseText);
+           }
+        });
     });
 });

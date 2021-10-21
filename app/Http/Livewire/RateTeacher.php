@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class RateTeacher extends Component
 {
     use WithPagination;
-
+    
     public $subject;
     public $user;
     public $rating;

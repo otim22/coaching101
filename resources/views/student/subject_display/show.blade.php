@@ -81,7 +81,6 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 @include('student.subject_display.partials.replies')
-
                                                                 @include('student.subject_display.partials.comment')
                                                             </div>
                                                         </div>

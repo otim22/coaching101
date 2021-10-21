@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="answer_explanation">Answer explanation</label>
+                                <label for="answer_explanation">Answer details</label>
                                 <div class="input-group">
                                     <textarea class="form-control @error('answer_explanation') is-invalid @enderror"
                                                         name="answer_explanation"

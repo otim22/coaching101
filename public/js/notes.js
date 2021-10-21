@@ -28,7 +28,7 @@ $(function() {
             url: "get-more-notes" + "?page=" + page,
             success: function(data) {
                 $('#notes_data').html(data);
-                window.livewire.rescan();
+                window.location.reload();
             }
         });
     }

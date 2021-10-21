@@ -25,11 +25,6 @@ class QuizRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'standard_id' => 'required|integer',
-            'level_id' => 'required|integer',
-            'category_id' => 'required|integer',
-            'year_id' => 'required|integer',
-            'term_id' => 'required|integer',
             'item_id' => 'required|integer',
             'item_content_id' => 'required|integer',
             'user_id' => 'integer|nullable'
@@ -40,11 +35,6 @@ class QuizRequest extends FormRequest
     {
         return [
             'title.required' => 'Title is required.',
-            'standard_id.required' => 'Choose a standard',
-            'level.required' => 'Choose a level',
-            'category_id.required' => 'Choose a subject',
-            'year_id.required' => 'Choose a year',
-            'term_id.required' => 'Choose a term',
             'item_id' => 'Choose a category',
             'item_content_id' => 'Choose a course where the quiz belongs',
             'user_id.nullable' => 'Should be logged in'

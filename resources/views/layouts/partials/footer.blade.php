@@ -2,16 +2,14 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-sm-6 col-md-6 col-lg-3">
-                <h5 class="uppercase">onCloudLearning</h5>
-                <ul class="list-unstyled">
-                    <li><a href="{{ route('about') }}">About</a></li>
-                    <li><a href="{{ route('contacts') }}">Contact</a></li>
-                    <li><a href="{{ route('donate.index') }}">Donate</a></li>
-                </ul>
+                <img src="{{ asset('logo/trand_footer.svg') }}" alt="Trand Icon">
+                <p>Test</p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <h5>Resources</h5>
                 <ul class="list-unstyled">
+                    <li><a href="{{ route('contacts') }}">Contact</a></li>
+                    <li><a href="{{ route('about') }}">About</a></li>
                     @guest
                         <li><a href="{{ route('subjects.starter') }}">Teacher</a></li>
                     @endguest
@@ -25,16 +23,17 @@
                         @endif
                     @endauth
                     <li><a href="{{ url('/#learn-now') }}">Learner</a></li>
-                    <li><a href="#">Affiliate</a></li>
+                    <!-- <li><a href="#">Affiliate</a></li> -->
                 </ul>
             </div>
 
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <h5 class="wraps-text">Useful Links</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#">Privacy</a></li>
                     <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
                     <li><a href="{{ route('contacts') }}">Support</a></li>
+                    <li><a href="{{ route('donate.index') }}">Donate</a></li>
                 </ul>
             </div>
 
@@ -54,7 +53,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <p class="copyright">
-                    <span class="light_gray_color">Copyright &copy;  <?php echo date("Y"); ?> onCloudLearning.</span> <a class="footer-text" href="#">Terms and conditions</a> <span class="light_gray_color"> | </span><a class="footer-text" href="#">All Rights Reserved.</a>
+                    <span class="light_gray_color">Copyright &copy;  <?php echo date("Y"); ?> Trand.</span> <a class="footer-text" href="#">Terms and conditions</a> <span class="light_gray_color"> | </span><a class="footer-text" href="#">All Rights Reserved.</a>
                 </p>
             </div>
         </div>

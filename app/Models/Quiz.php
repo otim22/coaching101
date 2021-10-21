@@ -36,26 +36,12 @@ class Quiz extends Model
         return $this->belongsTo('App\Models\Category', 'category_id');
     }
 
-    /**  Get the standard that owns the ItemContent. */
-    public function standard()
-    {
-        return $this->belongsTo('App\Models\Standard', 'standard_id');
-    }
-
-    /**
-     * Get the year that owns the ItemContent.
-     */
-    public function year()
-    {
-        return $this->belongsTo('App\Models\Year', 'year_id');
-    }
-
     /**
      * Get the term that owns the ItemContent.
      */
-    public function term()
+    public function itemContent()
     {
-        return $this->belongsTo('App\Models\Term', 'term_id');
+        return $this->belongsTo('App\Models\ItemContent', 'item_content_id');
     }
 
     /**

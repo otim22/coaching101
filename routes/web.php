@@ -37,6 +37,7 @@ use App\Http\Controllers\Student\QuestionController;
 use App\Http\Controllers\Student\CommentController;
 use App\Http\Controllers\Student\WelcomeController;
 use App\Http\Controllers\Student\QuizController;
+use App\Http\Controllers\Student\QuizResultController;
 use App\Http\Controllers\Student\BooksController as Books;
 use App\Http\Controllers\Student\NotesController as Notes;
 use App\Http\Controllers\Student\PastpaperController as Pastpapers;
@@ -88,8 +89,11 @@ Route::get('/pastpapers/{pastpaper}', [Pastpapers::class, 'show'])->name('studen
 Route::get('/get-matching-years-to-level/{id}', [Pastpapers::class, 'getMatchingYearsToLevel'])->name('get-matching-years-to-level');
 Route::get('/get-more-pastpapers', [Pastpapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
 Route::get('/quizzes', [QuizController::class, 'index'])->name('student.quizzes');
-Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('student.quizzes.show');
-Route::get('/get-next-quiz', [QuizController::class, 'getNextQuiz'])->name('get-next-quiz');
+Route::get('/quizzes/{quiz:slug}', [QuizController::class, 'show'])->name('student.quizzes.show');
+// Route::get('/get-next-quiz', [QuizController::class, 'getNextQuiz'])->name('get-next-quiz');
+// Route::get('/quiz/results', [QuizController::class, 'quizResults'])->name('quiz.results');  //Create results controller
+Route::get('/quiz-results', [QuizResultController::class, 'index'])->name('quiz.results');
+Route::post('/quizzes', [QuizController::class, 'store'])->name('user.quiz.store');
 Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
 Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');
 Route::patch('/users/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');

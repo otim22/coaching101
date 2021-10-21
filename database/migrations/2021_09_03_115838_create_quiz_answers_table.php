@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuizzesTable extends Migration
+class CreateQuizAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateQuizzesTable extends Migration
      */
     public function up()
     {
-        Schema::create('quizzes', function (Blueprint $table) {
+        Schema::create('quiz_answers', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
-            $table->string('slug');
-            $table->boolean('is_approved')->default(true);
-            $table->foreignId('item_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('quiz_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('quiz_question_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('quiz_option_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('item_content_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateQuizzesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quizzes');
+        Schema::dropIfExists('quiz_answers');
     }
 }

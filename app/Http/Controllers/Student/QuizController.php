@@ -8,8 +8,10 @@ use App\Models\Term;
 use App\Models\Standard;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\QuizAnswer;
 use App\Helpers\SessionWrapper;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Constants\GlobalConstants;
 
 class QuizController extends Controller
@@ -49,5 +51,32 @@ class QuizController extends Controller
     {
         $paginatedQuiz = $quiz->quizQuestions->paginate(1);
         return view('student.quizzes.show', compact(['quiz', 'paginatedQuiz']));
+    }
+
+    // public function quizResults(Quiz $quiz)
+    // {
+    //     $paginatedQuiz = $quiz->quizQuestions->paginate(1);
+    //     return view('student.quizzes.results', compact(['quiz', 'paginatedQuiz']));
+    // }
+
+    public function store(Request $request)
+    {
+        dd('quizzes.results');
+    }
+
+    public function userQuizOption(Request $request)
+    {
+        dd('Test');
+        $quizAnswer =  new QuizAnswer();
+        $quizAnswer->quiz_id = $request->quizId;
+        $quizAnswer->quiz_question_id = $request->questionId;
+        $quizAnswer->quiz_option_id = $request->optionId;
+        $quizAnswer->user_id = Auth::id();
+        // dd($request->lastOption);
+        $quizAnswer->save();
+        // if($request->lastOption) {
+        //     $quizAnswer->save();
+        //     return view('student.quizzes.results');
+        // }
     }
 }

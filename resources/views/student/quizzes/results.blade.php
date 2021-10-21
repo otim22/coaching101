@@ -20,7 +20,7 @@
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('student.quizzes') }}" style="text-decoration:none;">Quizzes</a>
                 </li>
-                <li class="breadcrumb-item" aria-current="page">{{ $quiz->title }}</li>
+                <li class="breadcrumb-item" aria-current="page">Title</li>
             </ol>
         </nav>
     </div>
@@ -30,7 +30,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="d-flex justify-content-end mb-4">
+                <div class="d-flex justify-content-end mb-3">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
                             <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
@@ -38,7 +38,17 @@
                         </svg>
                     </div>
                 </div>
-                <livewire:student-quiz :quiz="$quiz" />
+                <div>
+                    <div class="card p-1">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="bold">Title</h5>
+                            </div>
+                            <hr>
+                            <p>Sampla</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

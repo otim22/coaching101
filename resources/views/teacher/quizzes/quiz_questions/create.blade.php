@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="answer_explanation">Answer explanation</label>
+                                <label for="answer_explanation">Answer details</label>
                                 <textarea type="text" name="answer_explanation" class="form-control @error('answer_explanation') is-invalid @enderror" placeholder="Example: Detailed explanation on the answer." value="{{ old('answer_explanation') }}" rows="3"></textarea>
                                 @error('answer_explanation')
                                     <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
