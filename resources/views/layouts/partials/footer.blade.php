@@ -3,7 +3,6 @@
         <div class="row mt-5">
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <img src="{{ asset('logo/trand_footer.svg') }}" alt="Trand Icon">
-                <p>Test</p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <h5>Resources</h5>
@@ -53,7 +52,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <p class="copyright">
-                    <span class="light_gray_color">Copyright &copy;  <?php echo date("Y"); ?> Trand.</span> <a class="footer-text" href="#">Terms and conditions</a> <span class="light_gray_color"> | </span><a class="footer-text" href="#">All Rights Reserved.</a>
+                    <span class="light_gray_color">Copyright &copy;  <?php echo date("Y"); ?> <a href="https://www.trand.com" target="_blank" style="text-decoration: none;">Trand</a> |</span> <a class="footer-text" href="#">Terms & conditions</a> <span class="light_gray_color"> | </span><a class="footer-text" href="#">All Rights Reserved.</a>
                 </p>
             </div>
         </div>

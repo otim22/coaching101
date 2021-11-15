@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('home') }}" style="text-decoration: none;">Leader board</a>
+                    <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Quizzes</li>
             </ol>
@@ -106,7 +106,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>

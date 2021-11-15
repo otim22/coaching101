@@ -196,7 +196,6 @@
                 startIndex = 3
                 endIndex = 5
             }
-
             if (number.length === 13) {
                 startIndex = 4
                 endIndex = 6

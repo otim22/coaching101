@@ -53,15 +53,16 @@ class QuizController extends Controller
         return view('student.quizzes.show', compact(['quiz', 'paginatedQuiz']));
     }
 
-    // public function quizResults(Quiz $quiz)
-    // {
-    //     $paginatedQuiz = $quiz->quizQuestions->paginate(1);
-    //     return view('student.quizzes.results', compact(['quiz', 'paginatedQuiz']));
-    // }
-
     public function store(Request $request)
     {
-        dd('quizzes.results');
+        // $request->validate(['quiz_option_id' => 'required|integer']);
+        $quizAnswer = new QuizAnswer();
+        $quizAnswer->quiz_id = $request->quiz_id;
+        $quizAnswer->quiz_question_id = $request->quiz_question_id;
+        $quizAnswer->quiz_option_id = $request->quiz_option_id;
+        $quizAnswer->user_id = Auth::id();
+        $quizAnswer->save();
+        return redirect()->back();
     }
 
     public function userQuizOption(Request $request)

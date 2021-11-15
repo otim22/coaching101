@@ -1,84 +1,121 @@
 $(function() {
-    const optionsClicked = [];
-    const quizAns = {};
+    let questions = []
+    let quizAns = {}
+    let arrayOfAns = []
+    let parsedLocalData = []
+    let isEmpty = false
+
+    const quiz_id = $('.quiz').attr("data-quiz-id")
+    const quiz_question_id = $('.question').attr("data-question-id")
+    const user_id = $('.question').attr("data-user")
+
+    let localData = localStorage.getItem("answers")
+    if(localData) {
+        parsedLocalData = JSON.parse(localData)
+    }
+
+    if(parsedLocalData.length) {
+        let $box = $(document).find(".options input[type=checkbox]")
+        parsedLocalData.map(function(currentObject) {
+            if (currentObject.hasOwnProperty('quiz_question_id') && currentObject.quiz_question_id == quiz_question_id) {
+                $box.each(function() {
+                    if($(this).val() === currentObject.quiz_option_id) {
+                        $(this).prop("checked", true)
+                    }
+                })
+            }
+        })
+    }
 
     /** handle checkbox **/
     $(".options input:checkbox").on('click', function() {
-        // in the handler, 'this' refers to the box clicked on
-        let $box = $(this);
+        let $box = $(this)
         if ($box.is(":checked")) {
-            // the name of the box is retrieved using the .attr() method
-            // as it is assumed and expected to be immutable
-            let group = "input:checkbox[name='" + $box.attr("name") + "']";
-            // the checked state of the group/box on the other hand will change
-            // and the current value is retrieved using .prop() method
-            $(group).prop("checked", false);
-            $box.prop("checked", true);
-
-            hiddenCorrectAnswer = $(this).attr("data-correct");
+            let group = "input:checkbox[name='" + $box.attr("name") + "']"
+            $(group).prop("checked", false)
+            $box.prop("checked", true)
+            isEmpty = false
         } else {
-            $box.prop("checked", false);
+            $box.prop("checked", false)
+            isEmpty = true;
         }
-        if (optionsClicked.includes($box.val()) === false) optionsClicked.push($box.val());
+        submitToLocalStorage($box.val())
     });
     /** handle checkbox **/
 
-    $(".next-question").on('click', function() {
-        const optionId = optionsClicked[optionsClicked.length - 1]
-        const questionId = $(this).attr("data-question-id");
-        const quizId = $(this).attr("data-quiz-id");
-        const userQuizAnsUrl = $(this).attr("data-user-ans");
-        const lastOption = $(this).attr("data-last-option");
+    function submitToLocalStorage(quiz_option_id) {
+        quizAns.quiz_id = quiz_id
+        quizAns.quiz_question_id = quiz_question_id
+        quizAns.quiz_option_id = quiz_option_id
+        quizAns.user_id = user_id
 
-        quizAns.quizId = quizId;
-        quizAns.questionId = questionId;
-        quizAns.optionId = optionId;
-        quizAns.lastOption = lastOption;
+        updateLocalStorage(quiz_option_id)
+        removeItemFromArr(quiz_option_id)
+        addItemToQuestionsArr()
 
-        $.ajax({
-            type: "POST",
-            url: userQuizAnsUrl,
-            dataType: "JSON",
-            contentType:'application/x-www-form-urlencoded',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: quizAns,
-            success: function (response) {
-                console.log(response);
-            },
-            error: function(xhr) {
-                console.error();(xhr.responseText);
-           }
-        });
-    });
+        localStorage.setItem("answers", JSON.stringify(arrayOfAns))
+    }
+
+    function updateLocalStorage(quiz_option_id) {
+        if(parsedLocalData.length) {
+            parsedLocalData.map(function(currentObject, index) {
+                if (currentObject.hasOwnProperty('quiz_question_id') && currentObject.quiz_question_id == quiz_question_id) {
+                    currentObject['quiz_option_id'] = quiz_option_id
+                    parsedLocalData[index] = currentObject
+                }
+                if (!questions.includes(currentObject.quiz_question_id)) {
+                    questions.push(currentObject.quiz_question_id)
+                }
+            })
+            arrayOfAns = parsedLocalData
+        }
+    }
+
+    function removeItemFromArr(quiz_option_id) {
+        if (isEmpty) {
+            arrayOfAns = parsedLocalData.filter(function(el) {
+                return el.quiz_option_id != quiz_option_id
+            })
+        }
+    }
+
+    function addItemToQuestionsArr() {
+        if (!questions.includes(quiz_question_id)) {
+            arrayOfAns.push(quizAns)
+            questions.push(quiz_question_id)
+        }
+    }
+
     $(".submit-questions").on('click', function() {
-        const optionId = optionsClicked[optionsClicked.length - 1]
-        const questionId = $(this).attr("data-question-id");
-        const quizId = $(this).attr("data-quiz-id");
-        const userQuizAnsUrl = $(this).attr("data-user-ans");
-        const lastOption = $(this).attr("data-last-option");
+        let dataUrl = $(this).attr("data-url")
+        let dataUser = $(this).attr("data-user")
+        let data = localStorage.getItem("answers")
 
-        quizAns.quizId = quizId;
-        quizAns.questionId = questionId;
-        quizAns.optionId = optionId;
-        quizAns.lastOption = lastOption;
-
-        $.ajax({
-            type: "POST",
-            url: userQuizAnsUrl,
-            dataType: "JSON",
-            contentType:'application/x-www-form-urlencoded',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: quizAns,
-            success: function (response) {
-                console.log(response);
-            },
-            error: function(xhr) {
-                console.error();(xhr.responseText);
-           }
-        });
-    });
-});
+        if (data) {
+            let parsedData = JSON.parse(data)
+            parsedData.map((item) => {
+                $.ajax({
+                    type: "POST",
+                    url: dataUrl,
+                    dataType: "JSON",
+                    contentType:'application/x-www-form-urlencoded',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: item,
+                    success: function (response) {
+                        console.log(response)
+                    },
+                    error: function(xhr) {
+                        console.error(xhr.responseText)
+                    }
+                })
+            })
+            localStorage.removeItem("answers")
+            window.location.href = "/quiz-results"
+        } else {
+            var flash = $('#flashMessage')
+            $('.flash-message').removeClass('hidden')
+        }
+    })
+})

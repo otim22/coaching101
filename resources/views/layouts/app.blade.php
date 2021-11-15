@@ -7,7 +7,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="shortcut icon" href="favicon.svg">
+        <link rel="shortcut icon" href="{{ asset('favicon.svg') }}">
         <link href="{{ asset('vendor/js/videojs/css/video-js.css') }}" rel="stylesheet">
         <link href="{{ asset('css/card-js.css') }}" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
