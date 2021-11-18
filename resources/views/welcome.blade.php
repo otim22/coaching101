@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
 <!-- Start jumbotron-->
-<section class="small-screen_padding text-white mt-4" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 100vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
+<section class="custom-background text-white" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 100vh; background-attachment: fixed; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
         <div class="row mt-5 pt-4 mb-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
@@ -36,21 +37,21 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-sm-12 col-md-6 col-lg-4 d-flex">
-                <img src="{{ asset('images/class2.png') }}" alt="" class="pr-4" width="30%" height="auto">
+                <img src="{{ asset('images/online.svg') }}" alt="Online image" class="pr-4" width="25%">
                 <div class="bottom-spacing mt-2">
                     <h5 class="bold">Online Classes</h5>
                     <p>Discover varied topics</p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 d-flex">
-                <img src="{{ asset('images/expert2.png') }}" alt="" class="pr-4" width="30%" height="auto">
+                <img src="{{ asset('images/medal.svg') }}" alt="Expert image" class="pr-4" width="25%">
                 <div class="bottom-spacing mt-2">
                     <h5 class="bold">Expert Teachers</h5>
                     <p>Connect with right teachers</p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 d-flex">
-                <img src="{{ asset('images/timetable.png') }}" alt="" class="pr-4" width="30%" height="auto">
+                <img src="{{ asset('images/timer.svg') }}" alt="Access Time image" class="pr-4" width="25%">
                 <div class="mt-2">
                     <h5 class="bold">Access Time </h5>
                     <p>Learn on your schedule</p>
@@ -303,7 +304,7 @@
             <div class="col-lg-9 col-md-9 col-sm-12 mt-4">
                 <div class="accordion" id="accordionExample">
                     @foreach($faqs as $faq)
-                        <div class="card mb-3">
+                        <div class="card mb-4">
                             <div class="card-header" id="heading{{$faq->id}}" style="padding: 6px;">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{$faq->id}}" aria-expanded="true" aria-controls="collapse{{$faq->id}}" style="text-decoration: none;">

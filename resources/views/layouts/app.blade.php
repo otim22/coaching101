@@ -17,10 +17,8 @@
       </head>
 <body>
     <div id="app">
-        @include('layouts.partials.nav')
-
+        @include('layouts.partials.header')
         @yield('content')
-
         @include('layouts.partials.footer')
     </div>
 

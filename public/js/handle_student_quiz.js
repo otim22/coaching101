@@ -118,4 +118,33 @@ $(function() {
             $('.flash-message').removeClass('hidden')
         }
     })
+
+    var timeoutHandle
+    function secondsToTime(seconds){
+        if(seconds < 60) {
+            return seconds
+        } else {
+            if(seconds / 60 < 60) {
+                const mins = Math.floor(seconds/60)
+                return `${mins}:${seconds - mins * 60}`
+            } else {
+                const hours = Math.floor((seconds / 60) / 60)
+                const mins = Math.floor(seconds / 60 - hours * 60)
+                return `${hours}:${mins}:${seconds - mins * 60 - hours * 60 * 60}`
+            }
+        }
+    }
+
+    function countdown(minutes) {
+        var seconds = minutes * 60
+        function tick() {
+            var counter = document.getElementById("timer")
+            seconds--
+            counter.innerHTML = secondsToTime(seconds)
+            if(seconds > 1) timeoutHandle = setTimeout(tick, 1000)
+        }
+        tick()
+    }
+    var duration = $("#timer").data("timer")
+    countdown(duration)
 })

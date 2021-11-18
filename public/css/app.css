@@ -3240,6 +3240,10 @@ select {
   font-weight: 600 !important;
 }
 
+.top-most {
+  max-height: 55px;
+}
+
 .increased-font {
   font-size: 18px;
   font-weight: bold;
@@ -3464,7 +3468,7 @@ select {
 .fas.fa-search.pointer {
   font-family: FontAwesome;
   font-style: normal;
-  color: #cdcfd1;
+  color: #e6e6e6;
 }
 
 @media only screen and (min-width: 1300px) {
@@ -3548,6 +3552,11 @@ select {
 }
 .background-style {
   padding-top: 50px;
+  padding-bottom: 5px;
+}
+
+.custom-background {
+  padding-top: 20px;
   padding-bottom: 5px;
 }
 

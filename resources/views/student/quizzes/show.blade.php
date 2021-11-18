@@ -32,7 +32,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="d-flex justify-content-end mb-4">
                     <div class="mr-3">
-                        <h2><span  id="time">05:00</span></h2>
+                        <h2><span  id="timer" data-timer="120"></span></h2>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
