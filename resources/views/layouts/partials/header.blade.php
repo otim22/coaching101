@@ -7,17 +7,18 @@
                         <a class="text-white uniqueStandard" href="#" data-standard-id="{{ $key }}" data-standard-url="{{ route('student.standards.activate', ['standard' => $standard]) }}"
                             style="text-decoration: none;">
                             @if($standard->id == $id)
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-toggle-on mb-1" viewBox="0 0 16 16">
-                                    <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mb-1 mr-2 ml-2 bi bi-clipboard-check" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
                                 </svg>
                             @else
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-toggle-off mb-1" viewBox="0 0 16 16">
-                                    <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mb-1 mr-2 ml-2 bi bi-clipboard" viewBox="0 0 16 16">
+                                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
                                 </svg>
                             @endif
-                            &nbsp;
                             {{ $standard->name }}
-                            &nbsp;
                         </a>
                     @endforeach
                 </div>
@@ -125,7 +126,7 @@
             <div class="collapse topmenu navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link make-upper-case" href="#" id="navbarDropdownMenuLinkUneb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLinkUneb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Browse
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkUneb">
@@ -137,9 +138,9 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link make-upper-case" href="{{ route('student.quizzes') }}">Tests</a>
+                        <a class="nav-link" href="{{ route('student.quizzes') }}">Try out Tests</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link make-upper-case" href="#" id="navbarDropdownMenuLinkStart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Start
                         </a>
@@ -153,15 +154,15 @@
                                 <a class="dropdown-item" href="{{ route('home') }}">Learning</a>
                                 <a class="dropdown-item" href="{{ route('my-account') }}">My courses</a>
                                 @if(Auth::user()->hasRole('student'))
-                                    <!-- <a class="dropdown-item" href="{{ route('subjects.onBoard') }}">Teaching</a> -->
+                                    <a class="dropdown-item" href="{{ route('subjects.onBoard') }}">Teaching</a>
                                 @elseif(Auth::user()->hasRole('teacher') || Auth::user()->hasRole('admin'))
                                     <a class="dropdown-item" href="{{ route('manage.subjects') }}">Teaching</a>
                                 @endif
                             @endauth
                         </div>
-                    </li>
-                    <li class="nav-item hide-at-md d-lg-none d-xl-block {{ InitialGenerator::set_active(['donate.index']) }}">
-                        <a class="nav-link make-upper-case" href="{{ route('donate.index') }}">donate</a>
+                    </li> -->
+                    <li class="nav-item {{ InitialGenerator::set_active(['donate.index']) }}">
+                        <a class="nav-link" href="{{ route('donate.index') }}">Donate</a>
                     </li>
                 </ul>
 

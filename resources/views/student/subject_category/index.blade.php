@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-                <h4 class="bold dark-blue_color-2">{{ $category->name }}</h4>
+                <h3 class="bold dark-blue_color-2">{{ $category->name }}</h3>
             </div>
             @forelse($subjects as $subject)
                 <div class="col-sm-6 col-md-6 col-lg-3">

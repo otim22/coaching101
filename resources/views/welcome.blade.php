@@ -3,26 +3,26 @@
 @section('content')
 
 <!-- Start jumbotron-->
-<section class="custom-background text-white" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 100vh; background-attachment: fixed; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
+<section class="custom-background text-white" id="custom-background" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url({{ $sliders->getFirstMediaUrl() }}); width: 100%; height: 100vh; background-attachment: fixed; background-repeat: no-repeat; background-size: cover; opacity: 1; filter: alpha(opacity=100);">
     <div class="container">
-        <div class="row mt-5 pt-4 mb-5">
+        <div class="row mt-5 pt-5 mb-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
-                <div class="learn-today mb-5">
-                    <h1 class="display-3 learn-today_title">{{ $sliders->title }}</h1>
-                    <h4 class="pt-3 bold student-font">{!! $sliders->description !!}</h4>
+                <div class="learn-today mb-4">
+                    <h1 class="display-3 learn-today_title my-animation-1">{{ $sliders->title }}</h1>
+                    <h4 class="pt-3 bold student-font my-animation-2">{!! $sliders->description !!}</h4>
                     @guest
-                        <p><a id="round-button-2" class="btn btn-danger btn-lg mt-5" href="{{ route('login') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
+                        <p><a id="round-button-2" class="btn btn-danger btn-lg mt-5  my-animation-3" href="{{ route('login') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
                     @endguest
 
                     @auth
                         @if(Auth::user()->hasRole('student'))
-                            <p><a id="round-button-2" class="btn btn-danger btn-lg get-started_student mt-5" href="#learn-now" role="button">{{ $sliders->button_text }} &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-danger btn-lg get-started_student mt-5 my-animation-3" href="#learn-now" role="button">{{ $sliders->button_text }} &raquo;</a></p>
                         @endif
                         @if(Auth::user()->hasRole('teacher'))
-                            <p><a id="round-button-2" class="btn btn-danger btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-danger btn-lg mt-5  my-animation-3" href="{{ route('manage.subjects') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
                         @endif
                         @if(Auth::user()->hasRole('admin'))
-                            <p><a id="round-button-2" class="btn btn-danger btn-lg mt-5" href="{{ route('manage.subjects') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
+                            <p><a id="round-button-2" class="btn btn-danger btn-lg mt-5 my-animation-3" href="{{ route('manage.subjects') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
                         @endif
                     @endauth
                 </div>
@@ -33,24 +33,24 @@
 <!-- End jumbotron-->
 
 <!-- Start selling points-->
-<section class="bg-gray-2 background-style">
-    <div class="container">
+<section class="bg-gray-2 background-style" id="animate-scroll">
+    <div class="container scroll-starts">
         <div class="row mb-5">
-            <div class="col-sm-12 col-md-6 col-lg-4 d-flex">
+            <div class="col-sm-12 col-md-6 col-lg-4 d-flex" id="animated-online">
                 <img src="{{ asset('images/online.svg') }}" alt="Online image" class="pr-4" width="25%">
-                <div class="bottom-spacing mt-2">
+                <div class="bottom-spacing mt-2  my-animation-1">
                     <h5 class="bold">Online Classes</h5>
                     <p>Discover varied topics</p>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 d-flex">
+            <div class="col-sm-12 col-md-6 col-lg-4 d-flex" id="animated-expert">
                 <img src="{{ asset('images/medal.svg') }}" alt="Expert image" class="pr-4" width="25%">
                 <div class="bottom-spacing mt-2">
                     <h5 class="bold">Expert Teachers</h5>
                     <p>Connect with right teachers</p>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 d-flex">
+            <div class="col-sm-12 col-md-6 col-lg-4 d-flex" id="animated-access">
                 <img src="{{ asset('images/timer.svg') }}" alt="Access Time image" class="pr-4" width="25%">
                 <div class="mt-2">
                     <h5 class="bold">Access Time </h5>
@@ -67,7 +67,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-12 mb-4">
-                <h4 class="bold dark-blue_color-2"> At your own convience start learning</h4>
+                <h3 class="bold dark-blue_color-2"> At your own convience start learning</h3>
             </div>
             <div class="col-sm-12 col-md-12 col-12">
                 <nav>
@@ -159,7 +159,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
-                <h4 class="bold dark-blue_color-2">Mosted viewed </h4>
+                <h3 class="bold dark-blue_color-2">Mosted viewed lessons</h3>
             </div>
             @foreach($mostViewedSubjects as $subject)
                 <div class="col-sm-6 col-md-6 col-lg-3">
@@ -299,7 +299,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12">
-                <h4 class="bold dark-blue_color-2">Frequently Asked Questions</h4>
+                <h3 class="bold dark-blue_color-2">Frequently Asked Questions</h3>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 mt-4">
                 <div class="accordion" id="accordionExample">

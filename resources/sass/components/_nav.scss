@@ -164,6 +164,44 @@
 }
 /** End Hamburger */
 
+/** Start animation effects */
+.my-animation-1 {
+  display: inline-block;
+  margin: 0 0.5rem;
+  animation: fadeInLeft;     /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s;   /* don't forget to set a duration! */
+}
+.my-animation-2 {
+  display: inline-block;
+  margin: 0 0.5rem;
+  animation: fadeInLeft;
+  animation-duration: 3s;
+}
+.my-animation-3 {
+  display: inline-block;
+  margin: 0 0.5rem;
+  animation: fadeInLeft;
+  animation-duration: 4s;
+}
+.fade-left-animation {
+  animation: fadeInLeft;
+  animation-duration: 3s;
+}
+.zoom-in-animation {
+    animation: zoomIn;
+    animation-duration: 4s;
+}
+.fade-right-animation {
+  animation: fadeInRight;
+  animation-duration: 3s;
+}
+.nav-fade-down {
+  display: inline-block;
+  animation: fadeInDown;
+  animation-duration: 1.5s;
+}
+/** End animation effects */
+
 @media (max-width: 992px) {
     .dropdown-menu {
         width: 50%;

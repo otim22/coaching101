@@ -1,8 +1,8 @@
 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
     <defs>
-        <style>.cls-1{fill:#6e9cd3;}.cls-2{fill:#fff;}</style>
+        <style>.cls-1{fill:#05579E;}.cls-2{fill:#fff;}</style>
     </defs>
     <title>trand icon</title>
-    <rect class="cls-1" x="-0.5" width="33" height="32"/>
+    <rect class="cls-1" x="-0.5" width="32" height="32"/>
     <path class="cls-2" d="M20,21.91a2.77,2.77,0,0,0,0,.42h-3.8V18.25h2l-2.72-7.49-2.72,7.49h2v4.08H11.18a2.77,2.77,0,0,0,0-.42,2.73,2.73,0,0,0-1.68-2.55L13.6,7.8h4.11L21.8,19.44A3,3,0,0,0,20,21.91Z"/>
 </svg>

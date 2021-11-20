@@ -61,4 +61,17 @@ $(function() {
         });
     }
     /** End Filter years by levels **/
+
 });
+
+$(window).on("scroll", function() {
+    if($(window).scrollTop() + $(window).height() - 100 >= $("#animate-scroll").offset().top) {
+        $("#animated-online").addClass("fade-left-animation")
+        $("#animated-expert").addClass("zoom-in-animation")
+        $("#animated-access").addClass("fade-right-animation")
+    } else {
+        $("#animated-online").removeClass("fade-left-animation")
+        $("#animated-expert").removeClass("zoom-in-animation")
+        $("#animated-access").removeClass("fade-right-animation")
+    }
+})

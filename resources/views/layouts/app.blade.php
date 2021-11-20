@@ -10,6 +10,7 @@
         <link rel="shortcut icon" href="{{ asset('favicon.svg') }}">
         <link href="{{ asset('vendor/js/videojs/css/video-js.css') }}" rel="stylesheet">
         <link href="{{ asset('css/card-js.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <title>@yield('title') {{ config('app.name') }}</title>

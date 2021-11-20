@@ -3404,6 +3404,66 @@ select {
 }
 
 /** End Hamburger */
+/** Start animation effects */
+.my-animation-1 {
+  display: inline-block;
+  margin: 0 0.5rem;
+  -webkit-animation: fadeInLeft;
+          animation: fadeInLeft;
+  /* referring directly to the animation's @keyframe declaration */
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  /* don't forget to set a duration! */
+}
+
+.my-animation-2 {
+  display: inline-block;
+  margin: 0 0.5rem;
+  -webkit-animation: fadeInLeft;
+          animation: fadeInLeft;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+
+.my-animation-3 {
+  display: inline-block;
+  margin: 0 0.5rem;
+  -webkit-animation: fadeInLeft;
+          animation: fadeInLeft;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+}
+
+.fade-left-animation {
+  -webkit-animation: fadeInLeft;
+          animation: fadeInLeft;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+
+.zoom-in-animation {
+  -webkit-animation: zoomIn;
+          animation: zoomIn;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+}
+
+.fade-right-animation {
+  -webkit-animation: fadeInRight;
+          animation: fadeInRight;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+
+.nav-fade-down {
+  display: inline-block;
+  -webkit-animation: fadeInDown;
+          animation: fadeInDown;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+}
+
+/** End animation effects */
 @media (max-width: 992px) {
   .dropdown-menu {
     width: 50%;
@@ -4152,7 +4212,7 @@ form .btn button {
 }
 
 .section-bread {
-  margin-top: 25px;
+  padding-top: 55px;
   padding-bottom: 40px;
 }
 

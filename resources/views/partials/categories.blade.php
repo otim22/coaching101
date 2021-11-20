@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-            <h4 class="bold dark-blue_color-2">Top subjects</h4>
+            <h3 class="bold dark-blue_color-2">Explore top subjects</h3>
         </div>
     </div>
     <div class="row">
