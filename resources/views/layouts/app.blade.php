@@ -21,13 +21,15 @@
         @include('layouts.partials.header')
         @yield('content')
         @include('layouts.partials.footer')
+
+        <a id="scroll-up-button" style="text-decoration: none;"></a>
     </div>
 
     @livewireScripts
 
     <script src="{{ asset('vendor/js/videojs/videojs-ie8.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-
+    <script src="{{ asset('js/scroll-top.js') }}"></script>
     @stack('scripts')
 </body>
 </html>

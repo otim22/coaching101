@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row mt-5 pt-5 mb-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
-                <div class="learn-today mb-4">
+                <div class="learn-today mb-4 mt-5">
                     <h1 class="display-3 learn-today_title my-animation-1">{{ $sliders->title }}</h1>
                     <h4 class="pt-3 bold student-font my-animation-2">{!! $sliders->description !!}</h4>
                     @guest
@@ -38,7 +38,7 @@
         <div class="row mb-5">
             <div class="col-sm-12 col-md-6 col-lg-4 d-flex" id="animated-online">
                 <img src="{{ asset('images/online.svg') }}" alt="Online image" class="pr-4" width="25%">
-                <div class="bottom-spacing mt-2  my-animation-1">
+                <div class="bottom-spacing mt-2">
                     <h5 class="bold">Online Classes</h5>
                     <p>Discover varied topics</p>
                 </div>

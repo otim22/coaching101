@@ -1,55 +1,55 @@
-<header>
-    <div class="container-fluid bg-dark-3">
-        <div class="pr-3 pl-3 pt-3 top-most">
-            <div class="d-flex justify-content-between">
-                <div class="std-menu">
-                    @foreach($standards as $key => $standard)
-                        <a class="text-white uniqueStandard" href="#" data-standard-id="{{ $key }}" data-standard-url="{{ route('student.standards.activate', ['standard' => $standard]) }}"
-                            style="text-decoration: none;">
-                            @if($standard->id == $id)
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mb-1 mr-2 ml-2 bi bi-clipboard-check" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                                </svg>
-                            @else
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mb-1 mr-2 ml-2 bi bi-clipboard" viewBox="0 0 16 16">
-                                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                                </svg>
-                            @endif
-                            {{ $standard->name }}
-                        </a>
-                    @endforeach
-                </div>
-                <div>
-                    <div class="d-flex justify-content-between">
-                        @guest
-                            <div class="nav-item {{ InitialGenerator::set_active(['login']) }} ml-1 mr-2">
-                                <a class="btn btn-primary btn-sm make-upper-case" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">Login</a>
-                            </div>
-                            @if (Route::has('register'))
-                                <div class=nav-item "{{ InitialGenerator::set_active(['register']) }} mr-2 hide-at-md">
-                                    <a class="btn btn-secondary btn-sm make-upper-case" id="round-button" href="{{ route('register') }}">Register</a>
-                                </div>
-                            @endif
-                        @endguest
-                        @auth
-                            <a class="btn btn-outline-secondary btn-sm make-upper-case" href="{{ route('logout') }}"  id="round-button"
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                                {{ __('Log Out') }}
+<div id="top-bar">
+    <nav class="top-most navbar navbar-expand-md bg-dark-3">
+        <div class="container-fluid mt-2">
+            <div class="std-menu mr-auto">
+                @foreach($standards as $key => $standard)
+                <a class="text-white uniqueStandard" href="#" data-standard-id="{{ $key }}" data-standard-url="{{ route('student.standards.activate', ['standard' => $standard]) }}"
+                    style="text-decoration: none;">
+                    @if($standard->id == $id)
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mb-1 mr-1 ml-1 bi bi-clipboard-check" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                    </svg>
+                    @else
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mb-1 mr-1 ml-1 bi bi-clipboard" viewBox="0 0 16 16">
+                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                    </svg>
+                    @endif
+                    <small>{{ $standard->name }}</small>
+                </a>
+                @endforeach
+            </div>
+            <div class=" ml-auto">
+                <div class="d-flex justify-content-between">
+                    @guest
+                        <div class="nav-item {{ InitialGenerator::set_active(['login']) }} ml-1 mr-2">
+                            <a class="btn btn-primary btn-sm" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">
+                                Login
                             </a>
-                            <form id="logout-form" class="bold" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        @endauth
-                    </div>
+                        </div>
+                        @if (Route::has('register'))
+                        <div class=nav-item "{{ InitialGenerator::set_active(['register']) }}">
+                            <a class="btn btn-outline-secondary btn-sm" id="round-button" href="{{ route('register') }}" style="color: white;font-weight: bold;">
+                                Register
+                            </a>
+                        </div>
+                        @endif
+                    @endguest
+                    @auth
+                        <a class="btn btn-outline-secondary btn-sm make-upper-case" href="{{ route('logout') }}"  id="round-button"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('Log Out') }}
+                        </a>
+                        <form id="logout-form" class="bold" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endauth
                 </div>
             </div>
         </div>
-    </div>
-
+    </nav>
     <nav id="navbar_top" class="navbar navbar-expand-md navbar-dark bg-dark-3 increased-font">
         <div class="container-fluid" id="navbarSupportedContentOther">
             <a class="navbar-brand mr-auto" href="{{ url('/') }}">
@@ -211,9 +211,10 @@
             </div>
         </div>
     </nav>
-</header>
+</div>
 
 @push('scripts')
     <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/nav.js') }}"></script>
+    <script src="{{ asset('js/handle-navbar.js') }}"></script>
 @endpush
