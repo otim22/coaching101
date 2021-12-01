@@ -8,7 +8,7 @@ $(function() {
     var search = $('#search-bar')
 
      // open search
-    $('[data-toggle=search-form]').click(function() {
+    $('#search-icon').click(function() {
         navItems.attr("style","display:none !important")
         navbarToggler.attr("style","display:none !important")
         search.removeAttr('style')
@@ -25,7 +25,7 @@ $(function() {
     })
 
      // close search
-    $('[data-toggle=search-form-close]').click(function() {
+    $('#cancel-search-button').click(function() {
         search.addClass("hidden")
         navItems.removeAttr('style')
         smSearch.removeAttr('style')

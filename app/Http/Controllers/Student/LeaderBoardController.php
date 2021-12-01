@@ -9,6 +9,6 @@ class LeaderBoardController extends Controller
 {
     public function index()
     {
-        return view('student.quizzes.leader_board.index');
+        return view('student.exams.leader_board.index');
     }
 }

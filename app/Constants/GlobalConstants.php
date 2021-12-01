@@ -13,7 +13,7 @@ class GlobalConstants
     const BOOK = 2;
     const NOTE = 3;
     const PASTPAPER = 4;
-    const QUIZ = 'quiz';
+    const EXAM = 'exam';
     const ADMIN = 'Coaching101';
     const ALL_TIME = 0;
 }

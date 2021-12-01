@@ -24,9 +24,9 @@ use App\Http\Controllers\Teacher\TeacherSubPastpaperAnswerController;
 use App\Http\Controllers\Teacher\TeacherFilterController;
 use App\Http\Controllers\Teacher\TeacherPastpaperController;
 use App\Http\Controllers\Teacher\UserSurveyAnswerController;
-use App\Http\Controllers\Teacher\TeacherQuizController;
-use App\Http\Controllers\Teacher\TeacherQuizQuestionController;
-use App\Http\Controllers\Teacher\TeacherQuizOptionController;
+use App\Http\Controllers\Teacher\TeacherExamController;
+use App\Http\Controllers\Teacher\TeacherExamQuestionController;
+use App\Http\Controllers\Teacher\TeacherExamOptionController;
 use App\Http\Controllers\Student\HomeController;
 use App\Http\Controllers\Student\SubjectDisplayController;
 use App\Http\Controllers\Student\TopCategoryController;
@@ -36,9 +36,9 @@ use App\Http\Controllers\Student\SearchController;
 use App\Http\Controllers\Student\QuestionController;
 use App\Http\Controllers\Student\CommentController;
 use App\Http\Controllers\Student\WelcomeController;
-use App\Http\Controllers\Student\QuizController;
+use App\Http\Controllers\Student\ExamController;
 // use App\Http\Controllers\Student\LeaderBoardController;
-use App\Http\Controllers\Student\QuizResultController;
+use App\Http\Controllers\Student\ExamResultController;
 use App\Http\Controllers\Student\BooksController as Books;
 use App\Http\Controllers\Student\NotesController as Notes;
 use App\Http\Controllers\Student\PastpaperController as Pastpapers;
@@ -89,11 +89,12 @@ Route::get('/pastpapers', [Pastpapers::class, 'index'])->name('student.pastpaper
 Route::get('/pastpapers/{pastpaper}', [Pastpapers::class, 'show'])->name('student.pastpapers.show')->middleware('auth');
 Route::get('/get-matching-years-to-level/{id}', [Pastpapers::class, 'getMatchingYearsToLevel'])->name('get-matching-years-to-level');
 Route::get('/get-more-pastpapers', [Pastpapers::class, 'getMorePastpapers'])->name('get-more-pastpapers');
-Route::get('/quizzes', [QuizController::class, 'index'])->name('student.quizzes');
-Route::get('/quizzes/{quiz:slug}', [QuizController::class, 'show'])->name('student.quizzes.show');
-// Route::get('/get-next-quiz', [QuizController::class, 'getNextQuiz'])->name('get-next-quiz');
-Route::get('/quiz-results', [QuizResultController::class, 'index']);
-Route::post('/quizzes', [QuizController::class, 'store'])->name('user.quiz.store');
+Route::get('/practice-exams', [ExamController::class, 'index'])->name('student.exams');
+Route::get('/exams/{exam:slug}', [ExamController::class, 'show'])->name('student.exams.show');
+Route::get('/exams/{exam:slug}/practice', [ExamController::class, 'practiceExam'])->name('student.exams.practice');
+// Route::get('/get-next-exam', [ExamController::class, 'getNextExam'])->name('get-next-exam');
+Route::get('/exam-results/{exam:slug}', [ExamResultController::class, 'index'])->name('exam.results');
+Route::post('/exams', [ExamController::class, 'store'])->name('user.exam.store');
 // Route::get('/leader-board', [LeaderBoardController::class, 'index'])->name('student.leader_board.index');
 Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
 Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');
@@ -188,25 +189,25 @@ Route::middleware('auth')->group(function() {
         Route::patch('/pastpapers/{pastpaper}/subPastpaperAnswers/{subPastpaperAnswer}/update', [TeacherSubPastpaperAnswerController::class, 'update'])->name('subPastpaperAnswers.update');
         Route::delete('/pastpapers/{pastpaper}/subPastpaperAnswers/{subPastpaperAnswer}/destroy', [TeacherSubPastpaperAnswerController::class, 'destroy'])->name('subPastpaperAnswers.delete');
 
-        /** Quizzes*/
-        Route::resource('/quizzes', 'Teacher\TeacherQuizController')->except(['index']);
-        Route::get('/quizzes', [TeacherQuizController::class, 'index'])->name('teacher.quizzes');
+        /** exams*/
+        Route::resource('/exams', 'Teacher\TeacherExamController')->except(['index']);
+        Route::get('/exams', [TeacherExamController::class, 'index'])->name('teacher.exams');
 
-        /** Teacher quiz questions */
-        Route::get('/quizzes/{quiz}/quizQuestions', [TeacherQuizQuestionController::class, 'create'])->name('quizQuestions.create');
-        Route::post('/quizzes/{quiz}/quizQuestions', [TeacherQuizQuestionController::class, 'store'])->name('quizQuestions.store');
-        Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}', [TeacherQuizQuestionController::class, 'show'])->name('quizQuestions.show');
-        Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}/edit', [TeacherQuizQuestionController::class, 'edit'])->name('quizQuestions.edit');
-        Route::patch('/quizzes/{quiz}/quizQuestions/{quizQuestion}/update', [TeacherQuizQuestionController::class, 'update'])->name('quizQuestions.update');
-        Route::delete('/quizzes/{quiz}/quizQuestions/{quizQuestion}/destroy', [TeacherQuizQuestionController::class, 'destroy'])->name('quizQuestions.delete');
+        /** Teacher exam questions */
+        Route::get('/exams/{exam}/examQuestions', [TeacherExamQuestionController::class, 'create'])->name('examQuestions.create');
+        Route::post('/exams/{exam}/examQuestions', [TeacherExamQuestionController::class, 'store'])->name('examQuestions.store');
+        Route::get('/exams/{exam}/examQuestions/{examQuestion}', [TeacherExamQuestionController::class, 'show'])->name('examQuestions.show');
+        Route::get('/exams/{exam}/examQuestions/{examQuestion}/edit', [TeacherExamQuestionController::class, 'edit'])->name('examQuestions.edit');
+        Route::patch('/exams/{exam}/examQuestions/{examQuestion}/update', [TeacherExamQuestionController::class, 'update'])->name('examQuestions.update');
+        Route::delete('/exams/{exam}/examQuestions/{examQuestion}/destroy', [TeacherExamQuestionController::class, 'destroy'])->name('examQuestions.delete');
 
-        /** Teacher quiz options */
-        Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions', [TeacherQuizOptionController::class, 'create'])->name('quizOptions.create');
-        Route::post('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions', [TeacherQuizOptionController::class, 'store'])->name('quizOptions.store');
-        Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions/{quizOption}', [TeacherQuizOptionController::class, 'show'])->name('quizOptions.show');
-        Route::get('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions/{quizOption}/edit', [TeacherQuizOptionController::class, 'edit'])->name('quizOptions.edit');
-        Route::patch('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions/{quizOption}/update', [TeacherQuizOptionController::class, 'update'])->name('quizOptions.update');
-        Route::delete('/quizzes/{quiz}/quizQuestions/{quizQuestion}/quizOptions/{quizOption}/destroy', [TeacherQuizOptionController::class, 'destroy'])->name('quizOptions.delete');
+        /** Teacher exam options */
+        Route::get('/exams/{exam}/examQuestions/{examQuestion}/examOptions', [TeacherExamOptionController::class, 'create'])->name('examOptions.create');
+        Route::post('/exams/{exam}/examQuestions/{examQuestion}/examOptions', [TeacherExamOptionController::class, 'store'])->name('examOptions.store');
+        Route::get('/exams/{exam}/examQuestions/{examQuestion}/examOptions/{examOption}', [TeacherExamOptionController::class, 'show'])->name('examOptions.show');
+        Route::get('/exams/{exam}/examQuestions/{examQuestion}/examOptions/{examOption}/edit', [TeacherExamOptionController::class, 'edit'])->name('examOptions.edit');
+        Route::patch('/exams/{exam}/examQuestions/{examQuestion}/examOptions/{examOption}/update', [TeacherExamOptionController::class, 'update'])->name('examOptions.update');
+        Route::delete('/exams/{exam}/examQuestions/{examQuestion}/examOptions/{examOption}/destroy', [TeacherExamOptionController::class, 'destroy'])->name('examOptions.delete');
 
         /** Audiences to subjects */
         Route::get('/subjects/{subject}/audiences', [AudienceController::class, 'index']);

@@ -38,9 +38,9 @@
                         @endif
                     @endguest
                     @auth
-                        <a class="btn btn-outline-secondary btn-sm make-upper-case" href="{{ route('logout') }}"  id="round-button"
+                        <a class="btn btn-outline-secondary btn-sm" href="{{ route('logout') }}"  id="round-button" style="font-weight: bold;"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('Log Out') }}
+                            {{ __('Log out') }}
                         </a>
                         <form id="logout-form" class="bold" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -104,15 +104,15 @@
                     <div class="input-group space-bottom">
                         <input type="text" name="query" class="form-control search" placeholder="Search for content...">
                         <div class="input-group-append">
-                            <button class="btn btn-secondary" type="submit">
+                            <button class="btn btn-light" id="cancel-search-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="0.8em" height="0.8em" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                                </svg>
+                            </button>
+                            <button class="btn btn-secondary" type="submit"  id="search-button">
                                 <svg class="bi bi-search top-search-svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
                                     <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
-                                </svg>
-                            </button>
-                            <button class="btn btn-secondary" id="top-search-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="0.8em" height="0.8em" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
                                 </svg>
                             </button>
                         </div>
@@ -134,11 +134,11 @@
                             <a class="dropdown-item" href="{{ route('student.books.index') }}">Pdf books</a>
                             <a class="dropdown-item" href="{{ route('student.notes.index') }}">Notes</a>
                             <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past papers</a>
-                            <!-- <a class="dropdown-item" href="{{ route('student.quizzes') }}"><span class="badge badge-pill badge-danger">Quizzes</span></a> -->
+                            <!-- <a class="dropdown-item" href="{{ route('student.exams') }}"><span class="badge badge-pill badge-danger">exams</span></a> -->
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('student.quizzes') }}">Try out Tests</a>
+                        <a class="nav-link" href="{{ route('student.exams') }}">Practice exams</a>
                     </li>
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link make-upper-case" href="#" id="navbarDropdownMenuLinkStart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -171,7 +171,7 @@
                         <span class="badge badge-pill badge-light" style="margin-top: 13px; padding-top: 4px; padding-bottom: 4px; margin-right: 5px;">{{ $activeStandard->name }}</span>
                     </li>
                     <li class="nav-item search d-none d-md-block">
-                        <a class="nav-link mt-1" href="#search" data-toggle="search-form"> <i class="fas fa-search pointer"></i></a>
+                        <a class="nav-link mt-1" href="#search" data-toggle="search-form"  id="search-icon"> <i class="fas fa-search pointer"></i></a>
                     </li>
                     <li id="cartId2" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-none d-md-block">
                         <livewire:nav-cart />
@@ -216,5 +216,5 @@
 @push('scripts')
     <script src="{{ asset('vendor/js/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/nav.js') }}"></script>
-    <script src="{{ asset('js/handle-navbar.js') }}"></script>
+    <script src="{{ asset('js/handle_navbar.js') }}"></script>
 @endpush

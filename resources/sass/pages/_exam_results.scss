@@ -1,0 +1,17 @@
+.border-results {
+    position: relative;
+    background-color: $color-gray;
+    padding: 20px;
+    max-width: 300px;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.border-results.animate-it-slow {
+    box-shadow: 1px 4px 2px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
+}
+.animate-it-slow:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}

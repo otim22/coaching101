@@ -65,7 +65,7 @@ $(function() {
 });
 
 $(window).on("scroll", function() {
-    if($(window).scrollTop() + $(window).height() - 100 >= $("#animate-scroll").offset().top) {
+    if($('#animate-scroll').length && $(window).scrollTop() + $(window).height() - 100 >= $("#animate-scroll").offset().top) {
         $("#animated-online").addClass("fade-left-animation")
         $("#animated-expert").addClass("zoom-in-animation")
         $("#animated-access").addClass("fade-right-animation")

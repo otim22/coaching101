@@ -15,21 +15,22 @@
 
         <title>@yield('title') {{ config('app.name') }}</title>
         @livewireStyles
-      </head>
+    </head>
 <body>
     <div id="app">
         @include('layouts.partials.header')
         @yield('content')
         @include('layouts.partials.footer')
 
+        <div class="overlay"></div>
         <a id="scroll-up-button" style="text-decoration: none;"></a>
     </div>
 
     @livewireScripts
-
-    <script src="{{ asset('vendor/js/videojs/videojs-ie8.min.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/scroll-top.js') }}"></script>
+        <script src="{{ asset('vendor/js/videojs/videojs-ie8.min.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/scroll_top.js') }}"></script>
+        <script src="{{ asset('js/loading_modal.js') }}"></script>
     @stack('scripts')
 </body>
 </html>

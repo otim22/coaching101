@@ -5,9 +5,9 @@
             <nav class="drawer  drawer--dark">
                 <div class="drawer-spacer">
                     <div class="media align-items-center">
-                        <a href="index.html" class="drawer-brand-circle mr-2">on</a>
+                        <a href="index.html" class="drawer-brand-circle mr-2">TL</a>
                         <div class="media-body">
-                            <a href="{{ url('/admin/dashboard') }}" class="h5 m-0 text-link">onCloudLearning</a>
+                            <a href="{{ url('/admin/dashboard') }}" class="h5 m-0 text-link">trandLessons</a>
                         </div>
                     </div>
                 </div>
