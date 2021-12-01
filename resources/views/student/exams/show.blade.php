@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-2">
+<section class="section-bread bg-gray-2"  style="background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05)), url({{ asset('/images/bridge.jpg') }}); width: 100%; height: auto; background-size: cover;">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -14,13 +14,13 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item">
+                <li class="breadcrumb-item bold">
                     <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                 </li>
-                <li class="breadcrumb-item" aria-current="page">
+                <li class="breadcrumb-item bold" aria-current="page">
                     <a href="{{ route('student.exams') }}" style="text-decoration:none;">Practice exams</a>
                 </li>
-                <li class="breadcrumb-item" aria-current="page">{{ $exam->short_title }}</li>
+                <li class="breadcrumb-item bold" aria-current="page">{{ $exam->medium_snippet }}</li>
             </ol>
         </nav>
     </div>

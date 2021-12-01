@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-2">
+<section class="section-bread bg-gray-2" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05)), url({{ asset('/images/bridge.jpg') }}); width: 100%; height: auto; background-size: cover;">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -14,10 +14,10 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item">
+                <li class="breadcrumb-item bold">
                     <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Practice Exams</li>
+                <li class="breadcrumb-item bold active" aria-current="page">Practice Exams</li>
             </ol>
         </nav>
     </div>
@@ -29,7 +29,7 @@
             <div class="col-lg-2 col-md-3 col-sm-12 mb-4">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <h5 class="bold dark-blue_color-2">Filter by:</h5>
+                        <h4 class="bold">Filter by:</h4>
                         <div class="pt-3 mb-3">
                             <h6 class="bold">Subject</h6>
                             <div class="resource-filter_input">
@@ -86,21 +86,19 @@
                     @forelse($exams as $exam)
                         <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                             <div class="mb-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                            <a href="{{ route('student.exams.show', $exam) }}" style="text-decoration: none" class="title-font">
-                                                <p class="bold">{{ $exam->title }}</p>
-                                                <div class="d-flex justify-content-between">
-                                                    <div>
-                                                        Questions ({{ count($exam->examQuestions) }})
-                                                    </div>
-                                                    <div>
-                                                        <button id="round-button-2" type="button" class="btn btn-outline-danger btn-sm">Start</button>
-                                                    </div>
-                                                </div>
-                                            </a>
+                                <a href="{{ route('student.exams.show', $exam) }}" style="text-decoration: none">
+                                    <div class="exam-card make-it-slow">
+                                        <p class="bold">{{ $exam->title }}</p>
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                By {{ $exam->creator->name }}
+                                            </div>
+                                            <div>
+                                                <button id="round-button-2" type="button" class="btn btn-outline-danger btn-sm">Start</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     @empty

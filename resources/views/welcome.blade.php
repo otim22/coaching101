@@ -7,22 +7,38 @@
     <div class="container">
         <div class="row mt-5 pt-5 mb-5">
             <div class="col-lg-6 col-md-8 col-sm-12">
-                <div class="learn-today mb-4 mt-5">
+                <div class="learn-today mb-4 mt-4">
                     <h1 class="display-3 learn-today_title my-animation-1">{{ $sliders->title }}</h1>
                     <h4 class="pt-3 bold student-font my-animation-2">{!! $sliders->description !!}</h4>
                     @guest
-                        <p><a id="round-button-2" class="btn btn-danger btn-lg mt-5  my-animation-3" href="{{ route('login') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
+                        <p>
+                            <a id="round-button-2" class="btn customised-btn-1 btn-lg mt-5  my-animation-3" href="{{ route('login') }}" role="button" style="font-weight: bold;">
+                                {{ $sliders->button_text }} &raquo;
+                            </a>
+                        </p>
                     @endguest
 
                     @auth
                         @if(Auth::user()->hasRole('student'))
-                            <p><a id="round-button-2" class="btn btn-danger btn-lg get-started_student mt-5 my-animation-3" href="#learn-now" role="button">{{ $sliders->button_text }} &raquo;</a></p>
+                            <p>
+                                <a id="round-button-2" class="btn customised-btn-1 btn-lg get-started_student mt-5 my-animation-3" href="#learn-now" role="button"  style="font-weight: bold;">
+                                    {{ $sliders->button_text }} &raquo;
+                                </a>
+                            </p>
                         @endif
                         @if(Auth::user()->hasRole('teacher'))
-                            <p><a id="round-button-2" class="btn btn-danger btn-lg mt-5  my-animation-3" href="{{ route('manage.subjects') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
+                            <p>
+                                <a id="round-button-2" class="btn customised-btn-1 btn-lg mt-5  my-animation-3" href="{{ route('manage.subjects') }}" role="button"  style="font-weight: bold;">
+                                    {{ $sliders->button_text }} &raquo;
+                                </a>
+                            </p>
                         @endif
                         @if(Auth::user()->hasRole('admin'))
-                            <p><a id="round-button-2" class="btn btn-danger btn-lg mt-5 my-animation-3" href="{{ route('manage.subjects') }}" role="button">{{ $sliders->button_text }} &raquo;</a></p>
+                            <p>
+                                <a id="round-button-2" class="btn customised-btn-1 btn-lg mt-5 my-animation-3" href="{{ route('manage.subjects') }}" role="button" style="font-weight: bold;">
+                                    {{ $sliders->button_text }} &raquo;
+                                </a>
+                            </p>
                         @endif
                     @endauth
                 </div>
@@ -39,21 +55,21 @@
             <div class="col-sm-12 col-md-6 col-lg-4 d-flex" id="animated-online">
                 <img src="{{ asset('images/online.svg') }}" alt="Online image" class="pr-4" width="25%">
                 <div class="bottom-spacing mt-2">
-                    <h5 class="bold">Online Classes</h5>
+                    <h4 class="bold">Online classes</h4>
                     <p>Discover varied topics</p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 d-flex" id="animated-expert">
                 <img src="{{ asset('images/medal.svg') }}" alt="Expert image" class="pr-4" width="25%">
                 <div class="bottom-spacing mt-2">
-                    <h5 class="bold">Expert Teachers</h5>
+                    <h4 class="bold">Expert teachers</h4>
                     <p>Connect with right teachers</p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 d-flex" id="animated-access">
                 <img src="{{ asset('images/timer.svg') }}" alt="Access Time image" class="pr-4" width="25%">
                 <div class="mt-2">
-                    <h5 class="bold">Access Time </h5>
+                    <h4 class="bold">Access time </h4>
                     <p>Learn on your schedule</p>
                 </div>
             </div>
@@ -226,14 +242,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 student-text">
-                <h4 class="bold student-head-font">{{ $studentImage->title }}</h4>
-                <p class="mb-4 sub-text student-font">{{ $studentImage->description }}</p>
+                <h3 class="bold student-head-font mb-2">{{ $studentImage->title }}</h3>
+                <p class="sub-text student-font pb-2">{{ $studentImage->description }}</p>
                 @guest
-                    <a id="round-button-2" href="{{ url('login') }}" class="btn btn-primary" name="button">{{ $studentImage->button_text }} &raquo;</a>
+                    <a id="round-button-2" href="{{ url('login') }}" class="btn  customised-btn-1" name="button" style="font-weight: bold">{{ $studentImage->button_text }} &raquo;</a>
                 @endguest
 
                 @auth
-                    <a id="round-button-2" href="#learn-now" class="btn btn-primary" name="button">{{ $studentImage->button_text }} &raquo;</a>
+                    <a id="round-button-2" href="#learn-now" class="btn customised-btn-1" name="button" style="font-weight: bold">{{ $studentImage->button_text }} &raquo;</a>
                 @endauth
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -261,23 +277,23 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 text-white">
                 <div class="mb-2">
-                    <h4 class="bold">{{ $teacherImage->title }}</h4>
-                    <p class="mb-4 sub-text">{{ $teacherImage->description }}</p>
+                    <h3 class="bold mb-2">{{ $teacherImage->title }}</h3>
+                    <p class="sub-text pb-2">{{ $teacherImage->description }}</p>
                     @guest
-                        <a id="round-button-2" href="{{ url('login') }}" class="btn btn-light" name="button">{{ $teacherImage->button_text }} &raquo;</a>
+                        <a id="round-button-2" href="{{ url('login') }}" class="btn customised-btn-2" name="button" style="font-weight: bold">{{ $teacherImage->button_text }} &raquo;</a>
                     @endguest
 
                     @auth
                         @if(Auth::user()->hasRole('student'))
-                            <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn btn-light" name="button">{{ $teacherImage->button_text }} &raquo;</a>
+                            <a id="round-button-2" href="{{ route('subjects.starter') }}" class="btn customised-btn-2" name="button" style="font-weight: bold">{{ $teacherImage->button_text }} &raquo;</a>
                         @endif
 
                         @if(Auth::user()->hasRole('teacher'))
-                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-light" name="button">{{ $teacherImage->button_text }} &raquo;</a>
+                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn customised-btn-2" name="button" style="font-weight: bold">{{ $teacherImage->button_text }} &raquo;</a>
                         @endif
 
                         @if(Auth::user()->hasRole('admin'))
-                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn btn-light" name="button">{{ $teacherImage->button_text }} &raquo;</a>
+                            <a id="round-button-2" href="{{ route('manage.subjects') }}" class="btn customised-btn-2" name="button" style="font-weight: bold">{{ $teacherImage->button_text }} &raquo;</a>
                         @endif
                     @endauth
                 </div>
@@ -299,7 +315,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12">
-                <h3 class="bold dark-blue_color-2">Frequently Asked Questions</h3>
+                <h3 class="bold dark-blue_color-2">Frequently asked questions</h3>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 mt-4">
                 <div class="accordion" id="accordionExample">

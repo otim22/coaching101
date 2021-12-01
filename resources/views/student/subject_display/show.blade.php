@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="small-screen_padding">
+<section class="small-screen_padding"  style="background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05)), url({{ asset('/images/bridge.jpg') }}); width: 100%; height: auto; background-size: cover;">
     <div class="container-fluid">
         <div class="row justify-content-center  pl-5 pr-5 mt-4">
             <div class="col-sm-12 col-md-12 col-lg-8 mb-4">

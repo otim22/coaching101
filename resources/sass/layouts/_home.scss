@@ -8,19 +8,119 @@
     white-space: nowrap;
 }
 
+.customised-btn-1 {
+    display: inline-block;
+    padding: .75rem 1.25rem;
+    border-radius: 10rem;
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $blue;
+        border-radius: 10rem;
+        z-index: -2;
+    }
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: darken($blue, 15%);
+        transition: all .3s;
+        border-radius: 10rem;
+        z-index: -1;
+    }
+    &:hover {
+        color: #fff;
+        &:before {
+            width: 100%;
+        }
+    }
+}
+
+.customised-btn-2 {
+    display: inline-block;
+    padding: .75rem 1.25rem;
+    border-radius: 10rem;
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-white;
+        border-radius: 10rem;
+        z-index: -2;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: darken($color-white, 15%);
+        transition: all .3s;
+        border-radius: 10rem;
+        z-index: -1;
+    }
+
+    &:hover {
+        color: #fff;
+
+        &:before {
+            width: 100%;
+        }
+    }
+}
+
+.exam-card {
+    background-color: $color-white;
+    border-radius: 10px;
+    padding: 15px;
+    white-space: nowrap;
+}
+
 .top-card .categories-text {
     white-space: nowrap;
     margin-top: 10px;
 }
 
 .top-card.make-it-slow {
-  box-shadow: 1px 4px 2px rgba(0, 0, 0, 0.15);
-  transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 1px 4px 2px rgba(0, 0, 0, 0.18);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.exam-card.make-it-slow {
+    box-shadow: 4px 6px 5px rgba(0, 0, 0, 0.18);
+    transition: box-shadow 0.4s ease-in-out;
 }
 
 /* Transition to a bigger shadow on hover */
 .make-it-slow:hover {
-  box-shadow: 0 7px 17px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 7px 17px rgba(0, 0, 0, 0.4);
 }
 
 div > .teacher-image {
