@@ -37,57 +37,31 @@
                         <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
                 </div>
-                <h5 class="gray_color wraps-text">Old Butabika Road,</h5>
+                <h5 class="gray_color wraps-text">Mutungo, Old Butabika Road</h5>
                 <h5 class="gray_color wraps-text">2<sup>nd</sup> Floor</h5>
-                <h5 class="mb-5 gray_color">Mutungo, <span class="wraps-text">Kampala Uganda.</span></h5>
+                <h5 class="mb-5 gray_color"> <span class="wraps-text">Kampala, Uganda.</span></h5>
             </div>
             <div class="col-lg-7 col-md-7 col-sm-12">
                 <div class="card">
                     <div class="card-body p-5">
                         <div class="text-center">
-                            <h4 class="bold">Write us a message</h4>
+                            <h4 class="bold">Write to us a message</h4>
                         </div>
                         <div class="pt-3 pb-4">
                             <hr />
                         </div>
-                        <form action="{{ route('contacts.store') }}" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label for="name">Full names</label>
-                                <input type="text" class="form-control" id="name" placeholder="John Deere" name="name" value="{{ old('name') }}">
-                                @error('name')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <label for="email">Email address</label>
-                                <input type="text" class="form-control" placeholder="example@domain.com" name="email" value="{{ old('email') }}" />
-                                @error('email')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <label for="subject">Subject</label>
-                                <input class="form-control" type="text" name="subject" value="{{ old('subject') }}" />
-                                @error('subject')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <label for="body">Body</label>
-                                <textarea class="form-control" type="text" name="body" rows="3" />{{ old('body') }}</textarea>
-                                @error('body')
-                                <div class="alert alert-danger p-2 mt-2">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="pt-4">
-                                <button id="round-button-2" type="submit" class="btn btn-primary btn-block">Submit</button>
-                            </div>
-                        </form>
+                        <div>
+                            <p>We appreciate you for reaching out</p>
+                            <p>Please, write to us here</p>
+                            <p>
+                                <a href="mailto:trandlessons@gmail.com"  target="_blank" style="text-decoration: none;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-envelope mb-1 mr-1" viewBox="0 0 16 16">
+                                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                                    </svg>
+                                    Trandlessons Support
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <p class="copyright">
-                    <span class="light_gray_color">Copyright &copy;  <?php echo date("Y"); ?> Trand |</span> <a class="footer-text" href="#">Terms & conditions</a> <span class="light_gray_color"> | </span><a class="footer-text" href="#">All Rights Reserved.</a>
+                    <span class="light_gray_color">Copyright &copy;  <?php echo date("Y"); ?> TrandLessons |</span> <a class="footer-text" href="#">Terms & conditions</a> <span class="light_gray_color"> | </span><a class="footer-text" href="#">All Rights Reserved.</a>
                 </p>
             </div>
         </div>
