@@ -37,7 +37,6 @@ use App\Http\Controllers\Student\QuestionController;
 use App\Http\Controllers\Student\CommentController;
 use App\Http\Controllers\Student\WelcomeController;
 use App\Http\Controllers\Student\ExamController;
-// use App\Http\Controllers\Student\LeaderBoardController;
 use App\Http\Controllers\Student\ExamResultController;
 use App\Http\Controllers\Student\BooksController as Books;
 use App\Http\Controllers\Student\NotesController as Notes;
@@ -92,10 +91,8 @@ Route::get('/get-more-pastpapers', [Pastpapers::class, 'getMorePastpapers'])->na
 Route::get('/practice-exams', [ExamController::class, 'index'])->name('student.exams');
 Route::get('/exams/{exam:slug}', [ExamController::class, 'show'])->name('student.exams.show');
 Route::get('/exams/{exam:slug}/practice', [ExamController::class, 'practiceExam'])->name('student.exams.practice');
-// Route::get('/get-next-exam', [ExamController::class, 'getNextExam'])->name('get-next-exam');
 Route::get('/exam-results/{exam:slug}', [ExamResultController::class, 'index'])->name('exam.results');
 Route::post('/exams', [ExamController::class, 'store'])->name('user.exam.store');
-// Route::get('/leader-board', [LeaderBoardController::class, 'index'])->name('student.leader_board.index');
 Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
 Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');
 Route::patch('/users/profile/update', [ProfileController::class, 'update'])->name('users.profile.update');
