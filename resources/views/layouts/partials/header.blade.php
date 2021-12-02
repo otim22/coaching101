@@ -25,7 +25,7 @@
                 <div class="d-flex justify-content-between">
                     @guest
                         <div class="nav-item {{ InitialGenerator::set_active(['login']) }} ml-1 mr-2">
-                            <a class="btn btn-primary btn-sm" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">
+                            <a class="btn btn-secondary btn-sm" id="round-button" href="{{ route('login') }}" style="color: white;font-weight: bold;">
                                 Login
                             </a>
                         </div>

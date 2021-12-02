@@ -3,13 +3,13 @@
 @section('content')
 <section>
     <div class="container">
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8 col-sm-12 pt-4">
                 <div class="card auth-card">
                     <div class="card-header" id="grayBg">
                         <div class="pt-3 mb-3 text-center">
-                            <h4 class="bold">{{ __('Register And Enjoy Learning') }}</h4>
-                            <p class="text-muted">Create an account. It's free and takes a minute.</p>
+                            <h3 class="bold">{{ __('Register') }}</h3>
+                            <p class="text-muted">Create a free account and takes a minute.</p>
                         </div>
                     </div>
 
@@ -17,7 +17,7 @@
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
-                            <div class="form-group row ml-3 mr-3">
+                            <div class="form-group row ml-3 mr-3 mt-3">
                                 <label for="name" class="pl-3 col-form-label">{{ __('Full Names') }}</label>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12">
