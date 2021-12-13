@@ -12,7 +12,7 @@
                     <h4 class="pt-3 bold student-font my-animation-2">{!! $sliders->description !!}</h4>
                     @guest
                         <p>
-                            <a id="round-button-2" class="btn customised-btn-1 btn-lg mt-5  my-animation-3" href="{{ route('login') }}" role="button" style="font-weight: bold;">
+                            <a id="round-button-2" class="btn customised-btn-1 text-white btn-lg mt-5  my-animation-3" href="{{ route('login') }}" role="button" style="font-weight: bold;">
                                 {{ $sliders->button_text }} &raquo;
                             </a>
                         </p>
@@ -21,21 +21,21 @@
                     @auth
                         @if(Auth::user()->hasRole('student'))
                             <p>
-                                <a id="round-button-2" class="btn customised-btn-1 btn-lg get-started_student mt-5 my-animation-3" href="#learn-now" role="button"  style="font-weight: bold;">
+                                <a id="round-button-2" class="btn customised-btn-1 text-white btn-lg get-started_student mt-5 my-animation-3" href="#learn-now" role="button"  style="font-weight: bold;">
                                     {{ $sliders->button_text }} &raquo;
                                 </a>
                             </p>
                         @endif
                         @if(Auth::user()->hasRole('teacher'))
                             <p>
-                                <a id="round-button-2" class="btn customised-btn-1 btn-lg mt-5  my-animation-3" href="{{ route('manage.subjects') }}" role="button"  style="font-weight: bold;">
+                                <a id="round-button-2" class="btn customised-btn-1 text-white btn-lg mt-5  my-animation-3" href="{{ route('manage.subjects') }}" role="button"  style="font-weight: bold;">
                                     {{ $sliders->button_text }} &raquo;
                                 </a>
                             </p>
                         @endif
                         @if(Auth::user()->hasRole('admin'))
                             <p>
-                                <a id="round-button-2" class="btn customised-btn-1 btn-lg mt-5 my-animation-3" href="{{ route('manage.subjects') }}" role="button" style="font-weight: bold;">
+                                <a id="round-button-2" class="btn customised-btn-1 text-white btn-lg mt-5 my-animation-3" href="{{ route('manage.subjects') }}" role="button" style="font-weight: bold;">
                                     {{ $sliders->button_text }} &raquo;
                                 </a>
                             </p>
@@ -245,11 +245,11 @@
                 <h3 class="bold student-head-font mb-2">{{ $studentImage->title }}</h3>
                 <p class="sub-text student-font pb-2">{{ $studentImage->description }}</p>
                 @guest
-                    <a id="round-button-2" href="{{ url('login') }}" class="btn  customised-btn-1" name="button" style="font-weight: bold">{{ $studentImage->button_text }} &raquo;</a>
+                    <a id="round-button-2" href="{{ url('login') }}" class="btn  customised-btn-1 text-white" name="button" style="font-weight: bold">{{ $studentImage->button_text }} &raquo;</a>
                 @endguest
 
                 @auth
-                    <a id="round-button-2" href="#learn-now" class="btn customised-btn-1" name="button" style="font-weight: bold">{{ $studentImage->button_text }} &raquo;</a>
+                    <a id="round-button-2" href="#learn-now" class="btn customised-btn-1 text-white" name="button" style="font-weight: bold">{{ $studentImage->button_text }} &raquo;</a>
                 @endauth
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">

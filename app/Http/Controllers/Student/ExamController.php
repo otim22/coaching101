@@ -57,6 +57,12 @@ class ExamController extends Controller
     {
         $questions = $request->all();
         $exam = Exam::find($questions[0]['exam_id']);
+        $answers = ExamAnswer::where('exam_id', $exam->id)->get();
+        if (count($answers) > 1) {
+            foreach ($answers as $answer) {
+                $answer->delete();
+            }
+        }
 
         foreach ($questions as $question) {
             $examAnswer = new ExamAnswer();

@@ -89,29 +89,27 @@ $(function() {
 
     $(".submit-questions").on('click', function() {
         let dataUrl = $(this).attr("data-url")
+        let dataExamId = $(this).attr("data-exam-id")
         let data = localStorage.getItem("answers")
 
-        if (data) {
-            $.ajax({
-                type: "POST",
-                url: dataUrl,
-                contentType:'application/json; charset=utf-8',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: data,
-                success: function (response) {
-                    console.log("success")
-                    localStorage.removeItem("answers")
-                    localStorage.removeItem("saved_countdown")
-                },
-                error: function(xhr) {
-                    console.error(xhr.responseText)
-                }
-            })
-        } else {
-            var flash = $('#flashMessage')
-            $('.flash-message').removeClass('hidden')
-        }
+        $.ajax({
+            type: "POST",
+            url: dataUrl,
+            contentType:'application/json; charset=utf-8',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: data,
+            success: function (response) {
+                console.log("success")
+                localStorage.removeItem("answers")
+                localStorage.removeItem("saved_countdown")
+                console.log(dataExamId);
+                window.location.href = "/exam-results/" + dataExamId
+            },
+            error: function(xhr) {
+                console.error(xhr.responseText)
+            }
+        })
     })
 })

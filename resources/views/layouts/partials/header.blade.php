@@ -54,7 +54,7 @@
     <nav id="navbar_top" class="navbar navbar-expand-md navbar-dark bg-dark-3 increased-font">
         <div class="container-fluid" id="navbarSupportedContentOther">
             <a class="navbar-brand mr-auto" href="{{ url('/') }}">
-                <img src="{{ asset('logo/trand.svg') }}" alt="TrandLessons Icon">
+                <img src="{{ asset('logo/trand.svg') }}" alt="TrandLessons Icon" width="250" class="mb-2">
             </a>
             <span class="sm-search d-md-none" id="smSearch"> <a class="ml-auto hide-at-md mr-1" href="#" style="text-decoration: none;"> <i class="fas fa-search pointer"></i></a></span>
             <div id="smCart" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-md-none">
@@ -135,34 +135,12 @@
                             <a class="dropdown-item" href="{{ route('student.books.index') }}">Pdf books</a>
                             <a class="dropdown-item" href="{{ route('student.notes.index') }}">Notes</a>
                             <a class="dropdown-item" href="{{ route('student.pastpapers.index') }}">Past papers</a>
-                            <!-- <a class="dropdown-item" href="{{ route('student.exams') }}"><span class="badge badge-pill badge-danger">exams</span></a> -->
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('student.exams') }}">Practice exams</a>
+                        <a class="nav-link wraps-text" href="{{ route('student.exams') }}">Practice exams</a>
                     </li>
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link make-upper-case" href="#" id="navbarDropdownMenuLinkStart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Start
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkStart">
-                            @guest
-                                <a class="dropdown-item" href="{{ route('login') }}">Learning</a>
-                                <a class="dropdown-item" href="{{ route('subjects.onBoard') }}">Teaching</a>
-                            @endguest
-                                <a class="dropdown-item d-none d-lg-block d-xl-none d-md-block d-lg-none" href="{{ route('donate.index') }}">Donate</a>
-                            @auth()
-                                <a class="dropdown-item" href="{{ route('home') }}">Learning</a>
-                                <a class="dropdown-item" href="{{ route('my-account') }}">My courses</a>
-                                @if(Auth::user()->hasRole('student'))
-                                    <a class="dropdown-item" href="{{ route('subjects.onBoard') }}">Teaching</a>
-                                @elseif(Auth::user()->hasRole('teacher') || Auth::user()->hasRole('admin'))
-                                    <a class="dropdown-item" href="{{ route('manage.subjects') }}">Teaching</a>
-                                @endif
-                            @endauth
-                        </div>
-                    </li> -->
-                    <li class="nav-item {{ InitialGenerator::set_active(['donate.index']) }}">
+                    <li class="nav-item hide-at-md {{ InitialGenerator::set_active(['donate.index']) }}">
                         <a class="nav-link" href="{{ route('donate.index') }}">Donate</a>
                     </li>
                 </ul>

@@ -4463,6 +4463,7 @@ a.disabled {
 
 .exam-card {
   background-color: #ffffff;
+  border: 1px solid #e6e6e6;
   border-radius: 10px;
   padding: 15px;
   white-space: nowrap;
@@ -4475,6 +4476,7 @@ a.disabled {
 
 .top-card.make-it-slow {
   box-shadow: 1px 4px 2px rgba(0, 0, 0, 0.18);
+  border: 1px solid #cdcfd1;
   transition: box-shadow 0.3s ease-in-out;
 }
 

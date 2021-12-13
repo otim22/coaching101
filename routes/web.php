@@ -91,7 +91,7 @@ Route::get('/get-more-pastpapers', [Pastpapers::class, 'getMorePastpapers'])->na
 Route::get('/practice-exams', [ExamController::class, 'index'])->name('student.exams');
 Route::get('/exams/{exam:slug}', [ExamController::class, 'show'])->name('student.exams.show');
 Route::get('/exams/{exam:slug}/practice', [ExamController::class, 'practiceExam'])->name('student.exams.practice');
-Route::get('/exam-results/{exam:slug}', [ExamResultController::class, 'index'])->name('exam.results');
+Route::get('/exam-results/{id}', [ExamResultController::class, 'index'])->name('exam.results');
 Route::post('/exams', [ExamController::class, 'store'])->name('user.exam.store');
 Route::get('/users/profile', [ProfileController::class, 'index'])->name('users.profile');
 Route::post('/users/profile', [ProfileController::class, 'store'])->name('users.profile.store');

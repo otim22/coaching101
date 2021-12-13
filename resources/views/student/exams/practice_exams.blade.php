@@ -117,7 +117,7 @@
                                     @endif
 
                                     @if($paginator->currentPage() === count($exam->examQuestions))
-                                        <a id="round-button-2" type="submit" class="btn btn-sm btn-primary mt-2 submit-questions" data-url="{{ route('user.exam.store') }}">
+                                        <a id="round-button-2" type="submit" class="btn btn-sm btn-primary mt-2 submit-questions" data-exam-id="{{ $exam->id }}" data-url="{{ route('user.exam.store') }}">
                                             Save
                                         </a>
                                     @else
