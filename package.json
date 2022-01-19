@@ -37,6 +37,7 @@
         "bootstrap-icons": "^1.4.1",
         "card-js": "^1.0.13",
         "font-awesome": "^4.7.0",
+        "os": "^0.1.2",
         "videojs-playlist": "^4.3.1",
         "vue": "^2.6.12",
         "vuelidate": "^0.7.6",

@@ -12,7 +12,6 @@ const mix = require('laravel-mix');
  */
 
  const domain = 'coaching101.app';
- const homedir = require('os').homedir();
 
  mix.scripts([
     'node_modules/card-js/card-js.min.js',
@@ -32,7 +31,7 @@ mix.browserSync({
     host: domain,
     open: 'external',
     https: {
-        key: homedir + '/.config/valet/Certificates/' + domain + '.key',
-        cert: homedir + '/.config/valet/Certificates/' + domain + '.crt',
+        key: process.env.HOME + '/.config/valet/Certificates/' + domain + '.key',
+        cert: process.env.HOME + '/.config/valet/Certificates/' + domain + '.crt',
     },
 });
