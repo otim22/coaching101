@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-sm-6 col-md-6 col-lg-3">
-                <img src="{{ asset('logo/trand_footer.svg') }}" alt="Trand Icon">
+                <!-- <img src="{{ asset('logo/trand_footer.svg') }}" alt="Trand Icon"> -->
             </div>
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <h5 class="bold">Resources</h5>
@@ -113,7 +113,7 @@
             </div>
 
             <div class="col-sm-6 col-md-6 col-lg-3">
-                <h5 class="bold">Social</h5>
+                <h5 class="bold">Socials</h5>
                 <div class="mt-3">
                     <a target="_blank" href="https://twitter.com/otim16"><i class="fa fa-sm fa-twitter mr-2"></i></a>
                     <a target="_blank" href="https://www.facebook.com/fredrickot"><i class="fa fa-sm fa-facebook"></i></a>
