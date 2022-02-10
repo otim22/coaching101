@@ -5,7 +5,7 @@
 <section>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8 mt-5">
+            <div class="col-md-8">
                 <div class="card auth-card">
                     <div class="card-header pt-3" id="grayBg">
                         <h5 class="bold">{{ __('Verify your email address !!') }}</h5>

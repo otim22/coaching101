@@ -19,10 +19,12 @@
 @import 'components/landing_page';
 @import 'components/footer';
 @import 'components/button';
+@import 'components/checkbox';
 @import 'components/input';
 @import 'components/rating';
 @import 'components/limit_items';
 @import 'components/pdf_canvas';
+@import 'components/loading_modal';
 
 // Components
 @import 'layouts/bg-colors';
@@ -43,6 +45,7 @@
 @import 'pages/cart';
 @import 'pages/welcome';
 @import 'pages/objectives';
+@import 'pages/exam_results';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

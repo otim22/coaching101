@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-2">
+<section class="section-bread bg-gray-2"  style="background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05)), url({{ asset('/images/bridge.jpg') }}); width: 100%; height: auto; background-size: cover;">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -14,10 +14,10 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item" aria-current="page">
+                <li class="breadcrumb-item bold" aria-current="page">
                     <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Donation</li>
+                <li class="breadcrumb-item bold active" aria-current="page">Donation</li>
             </ol>
         </nav>
     </div>
@@ -30,13 +30,14 @@
 <section class="bg-white small-screen_padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 ">
-                <h4 class="bold">Give a Life Changing Gift Today!</h4>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h4 class="bold mt-5">Give A Gift Today!</h4>
                 <div class="mt-4 pr-3 mb-5">
-                    <h5 class="donate-font"> As one of our great leaders Nelson Mandela once said... "Education is the most powerful weapon which you can use to change the world."</h5><br />
-                    <h5 class="donate-font">Sometimes this weapon "Education" needs sharpening in times of crisis as Covid-19 times when resources are  limited,  disruptions and a lot of inequality.</h5><br />
-                    <h5 class="donate-font">Well, your generous giving helps us normalize the distribution of quality education and also supporting the content creators on this platform who are based in Africa.</h5><br />
-                    <h5 class="donate-font">Thank you!</h5>
+                    <h5 class="donate-font">
+                        To be precise, We are asking you to help support TrandLessons a start-up based in Uganda, Africa to build an online learning platform.<br /><br />
+                        Your generous giving helps us normalize the distribution of quality education and also support content creators on this platform.
+                    </h5>
+                    <h5 class="donate-font mt-4">Thank you! <br /><br /> -  Otim Fredrick, Founder and CEO.</h5>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">

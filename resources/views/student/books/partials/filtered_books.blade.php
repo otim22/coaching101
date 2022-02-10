@@ -21,7 +21,7 @@
                             <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $book->very_short_title }}</span><br />
                                 @if($book->creator)
-                                    <span class="author-font">{{ $book->creator->name }}</span><br />
+                                    By <span class="author-font">{{ $book->creator->name }}</span><br />
                                 @endif
 
                                 @if($book->price)
@@ -34,7 +34,7 @@
                             <a href="{{ route('student.books.show', $book) }}" style="text-decoration: none; color: #515152;">
                                 <span class="bold">{{ $book->very_short_title }}</span><br />
                                 @if($book->creator)
-                                    <span class="author-font">{{ $book->creator->name }}</span><br />
+                                    By <span class="author-font">{{ $book->creator->name }}</span><br />
                                 @endif
 
                                 @if($book->price)

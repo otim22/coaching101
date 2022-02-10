@@ -64,9 +64,4 @@ class Topic extends Model implements HasMedia
                                 ->setManipulations(['w' => 368, 'h' => 232, 'sharp'=> 20]);
                 });
     }
-
-    // public function subject()
-    // {
-    //     return $this->belongsTo('App\Models\Subject');
-    // }
 }

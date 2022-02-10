@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-2">
+<section class="section-bread bg-gray-2"  style="background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05)), url({{ asset('/images/bridge.jpg') }}); width: 100%; height: auto; background-size: cover;">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -14,10 +14,10 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item" aria-current="page">
+                <li class="breadcrumb-item bold" aria-current="page">
                     <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">About us</li>
+                <li class="breadcrumb-item bold active" aria-current="page">About us</li>
             </ol>
         </nav>
     </div>
@@ -26,20 +26,23 @@
 <section class="bg-white small-screen_padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <img src="{{ asset('images/founder.jpg') }}" alt="Founder image" width="80%" class="rounded-circle p-2">
+            <div class="col-lg-6 col-md-6 col-sm-12 mt-3">
+                <img src="{{ asset('images/founder.jpeg') }}" alt="Founder image" width="80%" class="rounded-circle p-2">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <h3 class="mt-4 mb-4">Our Founder</h3>
+                <h3 class="bold mt-4 mb-4">Our Founder</h3>
                 <hr>
                 <p class="mt-4">
-                    At quarter year of 2020 when Covid-19 became a global pandermic and the world went undersiege with schools closed, businesses stopped, disrupting economies and social fabrics of some communities interrupted.
-                    It was around that time a light buld idea dropped into my mind to create an online learning platform for students who where struggling to find quality learning resources while at their on convience anywhere.
+                    It all started with a request from my senior six nephew to help him with some learning materials as students were at home but required to study. I looked around newspapers, searched the internet
+                    and a number of sites popped up. However, the results weren’t well differentiated, modularized, tailored learning materials.
+                    And just like that an idea sparked in my head
                 </p>
                 <p class="mt-4">
-                    Well, If you are wondering who this is. I am called Otim Fredrick, With a Bachelors Of Science In Software Engineering, over
+                    Now, If you are wondering who this is? I am called Otim Fredrick, With a Bachelors of Science in Software Engineering, over
                     the years  I have worked on a number of projects ranging from Fin-Tech,
                     Agric-Tech, Pharmaceutical and E-Commerce.
+                    <a href="{{ route('contacts') }}" style="text-decoration: none;">Contact me here.</a>
+                    And below are my social handles.
                 </p>
                 <div class="mt-4">
                     <a target="_blank" href="https://twitter.com/otim16"><i class="fa fa-sm fa-twitter mr-2"></i></a>
@@ -55,81 +58,25 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-9 col-md-9 col-sm-12 off-set-3">
-                <h3 class="mb-4">Overview</h3>
+                <h3 class="bold mb-4">Problem</h3>
                 <p class="mt-4">
-                    As technologies infiltrate most aspects of our everyday life, it is imperative that we are kept up to date, learning the most effective ways to use technology to enhance our lives.
-                    Looking at learning, schools spend on technology and the number of computers in schools continue to grow, but less is spent on the professional development and training needed for teachers to implement this technology in the classroom.
+                    Approximately 13 million school going children in Uganda face less curated, low quality, and not well tailored content to our community’s education curriculum from accredited teachers with online content.
                 </p>
+                <h3 class="bold mt-5">Solution</h3>
                 <p class="mt-4">
-                    We focus on the use of online studies to boost the learning capacity of students who can have access to either; smartphones, tablets, or computers providing a quality professional platform to enable administrators and teachers to integrate technology into the curriculum while meeting standards. This improves student achievement through the use of technology, to raise student technology literacy, and to ensure that teachers can integrate technology into the curriculum effectively.
+                    Trandlessons provides well structured online learning resources focused on Science, Technology, Engineering, and Mathematics (STEM) curriculum to boost the learning capacity of children who can access either smartphones, tablets, or computers.
+                    We also provide a quality professional platform to enable teachers and administrators to integrate technology into the curriculum while meeting standards.
                 </p>
-                <p class="mt-4">
-                    Many of the professional development programs that are currently offered to teachers fail to provide the kind of ongoing support teachers need to make effective use of educational technology, and as a result, few teachers are in a position to integrate new technologies into their classroom practices. Teachers may attend a one day workshop and return to school the following day not knowing how or have the time to integrate what they learnt into their curricula, they may even lack the support from colleagues that is necessary for their attempts to be successful in their endeavors to learn and implement new technologies, teachers need hands on learning rooted in their own curricula that will enable them to translate training into practice.
-                </p>
-                <p class="mt-4">We train teachers to be Online Course Learning and Delivery Professionals who design and deliver a rigorous program of standards based technology enhanced online courses for students across all subject areas and grade levels. Participants are trained to use online tools to evaluate the effectiveness of the online professional development courses, and to use online assessment techniques to measure the impact of the online courses on teacher practice and student achievement. All curriculum materials created are in alignment with the Educational Standards. </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- <section>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12  d-flex justify-content-center mb-4">
-                <h2>The team</h2>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-                <div id="team-1">
-                    <img src="{{ asset('images/founder.jpg') }}" alt="Founder image" width="60%" class="rounded-circle">
-                    <h6 class="mt-4 bold">Founder </h6>
-                    <p class="student-text">Otim Fredrick<br />
-                    Bsc in Software Engineering  <br />
-                    Worked with a number of start ups </p>
-                        <div class="mt-4" id="hidden-social-1">
-                            <a target="_blank" href="https://twitter.com/otim16"><i class="fa fa-sm fa-twitter"></i></a>
-                            <a target="_blank" href="https://medium.com/@otimfredrick"><i class="fa fa-sm fa-medium"></i></a>
-                            <a target="_blank" href="https://linkedin.com/in/otim-fredrick-29730a86"><i class="fa fa-sm fa-linkedin"></i></a>
-                            <a target="_blank" href="https://www.facebook.com/fredrickot"><i class="fa fa-sm fa-facebook"></i></a>
-                        </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-                <div id="team-2">
-                    <img src="{{ asset('images/founder.jpg') }}" alt="Founder image" width="60%" class="rounded-circle">
-                    <h6 class="mt-4 bold">Senior Developer</h6>
-                    <p class="author-text">Abok Isaac <br />
-                    Bsc in Software Engineering <br />
-                    Former SafeBoda Developer </p>
-                        <div class="mt-4" id="hidden-social-2">
-                            <a target="_blank" href="https://twitter.com/otim16"><i class="fa fa-sm fa-twitter"></i></a>
-                            <a target="_blank" href="https://medium.com/@otimfredrick"><i class="fa fa-sm fa-medium"></i></a>
-                            <a target="_blank" href="https://linkedin.com/in/otim-fredrick-29730a86"><i class="fa fa-sm fa-linkedin"></i></a>
-                            <a target="_blank" href="https://www.facebook.com/fredrickot"><i class="fa fa-sm fa-facebook"></i></a>
-                        </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-                <div id="team-3">
-                    <img src="{{ asset('images/founder.jpg') }}" alt="Founder image" width="60%" class="rounded-circle">
-                    <h6 class="mt-4 bold">Senior Developer </h6>
-                    <p class="author-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
-                        <div class="mt-4" id="hidden-social-3">
-                            <a target="_blank" href="https://twitter.com/otim16"><i class="fa fa-sm fa-twitter"></i></a>
-                            <a target="_blank" href="https://medium.com/@otimfredrick"><i class="fa fa-sm fa-medium"></i></a>
-                            <a target="_blank" href="https://linkedin.com/in/otim-fredrick-29730a86"><i class="fa fa-sm fa-linkedin"></i></a>
-                            <a target="_blank" href="https://www.facebook.com/fredrickot"><i class="fa fa-sm fa-facebook"></i></a>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-
 <section class="bg-white small-screen_padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mb-4">
-                <h3 class="mb-4">Our office</h3>
+                <h3 class="bold mb-4">Our office</h3>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 text-center mb-4">
                 <img src="{{ asset('images/kampala.jpg') }}" alt="office image" class="rounded-corners" width="85%">
@@ -141,9 +88,9 @@
                         <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
                 </div>
-                <h5 class="gray_color wraps-text">Old Butabika Road,</h5>
+                <h5 class="gray_color wraps-text">Mutungo, Old Butabika Road</h5>
                 <h5 class="gray_color wraps-text">2<sup>nd</sup> Floor</h5>
-                <h5 class="mb-5 gray_color">Mutungo, <span class="wraps-text">Kampala Uganda.</span></h5>
+                <h5 class="mb-5 gray_color"><span class="wraps-text">Kampala, Uganda.</span></h5>
             </div>
         </div>
     </div>

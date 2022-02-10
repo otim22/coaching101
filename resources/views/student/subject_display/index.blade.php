@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-one bg-gray-2">
+<section class="section-one bg-gray-2"  style="background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05)), url({{ asset('/images/bridge.jpg') }}); width: 100%; height: auto; background-size: cover;">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -14,12 +14,13 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item" aria-current="page">
+                <li class="breadcrumb-item bold" aria-current="page">
                     <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $subject->title }}</li>
+                <li class="breadcrumb-item bold active" aria-current="page">{{ $subject->title }}</li>
             </ol>
         </nav>
+        
         <div class="row mt-5">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h5 class="bold mb-3">{{ $subject->title }}</h5>

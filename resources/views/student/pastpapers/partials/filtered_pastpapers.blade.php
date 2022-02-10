@@ -8,7 +8,7 @@
                             <a href="{{ route('student.pastpapers.show', $pastpaper) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                 @if($pastpaper->creator)
-                                    <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
+                                    By <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
                                 @endif
 
                                 @if($pastpaper->price)
@@ -21,7 +21,7 @@
                             <a href="{{ route('student.pastpapers.show', $pastpaper) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $pastpaper->very_short_title }}</span><br />
                                 @if($pastpaper->creator)
-                                    <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
+                                    By <span class="author-font">{{ $pastpaper->creator->name }}</span><br />
                                 @endif
 
                                 @if($pastpaper->price)

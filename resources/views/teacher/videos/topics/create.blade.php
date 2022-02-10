@@ -48,7 +48,7 @@
 
                         <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
                             <p>
-                                Start putting together your subject by creating topics, lectures and practice (quizzes, coding exercises and assignments).
+                                Start putting together your subject by creating topics, lectures and practice (exams, coding exercises and assignments).
                             </p>
                         </div>
                     </div>

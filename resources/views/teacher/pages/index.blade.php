@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+        <link rel="shortcut icon" href="{{ asset('favicon.svg') }}">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <title>@yield('title') {{ config('app.name') }}</title>
@@ -17,7 +17,7 @@
 
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-3 increased-font py-3">
                 <div class="container-fluid" id="navbarSupportedContentOther">
-                    <a class="navbar-brand mr-auto" href="{{ url('/') }}"><span class="logo-font">all cloud prep</span></a>
+                    <a class="navbar-brand mr-auto" href="{{ url('/') }}"><span class="logo-font">TrandLessons</span></a>
                     <span class="sm-search d-md-none" id="smSearch"> <a class="ml-auto hide-at-md mr-1" href="#" style="text-decoration: none;"> <i class="fas fa-search pointer"></i></a></span>
                     <div id="smCart" class="nav-item {{ InitialGenerator::set_active(['cart']) }} d-md-none">
                         <livewire:nav-cart />
@@ -67,7 +67,7 @@
                             <div class="input-group space-bottom">
                                 <input type="text" name="query" class="form-control" placeholder="Search for content...">
                                 <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="submit" id="top-search-button">
+                                    <button class="btn btn-secondary" type="submit" id="cancel-search-button">
                                         <svg class="bi bi-search top-search-svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
                                             <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>

@@ -5,13 +5,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>onCloudLearning</title>
+    <title>Trand</title>
 
     <link type="text/css" href="{{ asset('admin/css/vendor-morris.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('admin/css/vendor-bootstrap-datepicker.css') }}" rel="stylesheet">
 
     <!-- Prevent the demo from appearing in search engines -->
     <meta name="robots" content="noindex">
+
+    <link rel="shortcut icon" href="{{ asset('favicon.svg') }}">
 
     <!-- App CSS -->
     <link type="text/css" href="{{ asset('admin/css/app.css') }}" rel="stylesheet">

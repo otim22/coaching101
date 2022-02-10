@@ -27,7 +27,7 @@ class MaxButtonTextValidator implements Rule
     {
         $words = explode(' ', $value);
         $wordCount = count($words);
-        return ($wordCount >= 1 && $wordCount <= 3);
+        return ($wordCount >= 1 && $wordCount <= 10);
     }
 
     /**

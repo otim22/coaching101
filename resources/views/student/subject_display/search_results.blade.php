@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section-bread bg-gray-2">
+<section class="section-bread bg-gray-2"  style="background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05)), url({{ asset('/images/bridge.jpg') }}); width: 100%; height: auto; background-size: cover;">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -14,10 +14,10 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item">
+                <li class="breadcrumb-item bold">
                     <a href="{{ route('home') }}" style="text-decoration: none;">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Search results</li>
+                <li class="breadcrumb-item bold active" aria-current="page">Search results</li>
             </ol>
         </nav>
     </div>
@@ -44,7 +44,7 @@
                         <div class="card-body">
                             <a href="{{ route('subjects.index', $search->searchable->slug) }}" style="text-decoration: none" class="title-font">
                                 <span class="bold">{{ $search->searchable->very_short_title }}</span><br />
-                                <span class="author-font">{{ $search->searchable->creator->name }}</span><br />
+                                By <span class="author-font">{{ $search->searchable->creator->name }}</span><br />
                                 @if($search->searchable->price)
                                     @if($search->searchable->isSubscribedTo)
                                         <span class="author-font">{{ $search->searchable->currency->name }} {{  $search->searchable->formatPrice }}/- (Paid)</span><br />

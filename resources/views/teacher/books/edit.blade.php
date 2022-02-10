@@ -246,6 +246,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
     <script src="{{ asset('js/custom_pdf_view_book.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/books.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('js/filter_levels_and_years.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/filter_item_content.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/get_right_currency.js')}}" type="text/javascript"></script>
 @endpush

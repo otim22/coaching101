@@ -203,6 +203,6 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/filter_levels_and_years.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/filter_item_content.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/get_right_currency.js')}}" type="text/javascript"></script>
 @endpush
