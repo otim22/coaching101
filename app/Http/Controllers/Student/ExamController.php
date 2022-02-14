@@ -56,6 +56,9 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         $questions = $request->all();
+        if (!$questions) {
+            return;
+        }
         $exam = Exam::find($questions[0]['exam_id']);
         $answers = ExamAnswer::where('exam_id', $exam->id)->get();
         if (count($answers) > 1) {
@@ -82,6 +85,14 @@ class ExamController extends Controller
     {
         $paginator = $exam->examQuestions->simplePaginate(1);
         return view('student.exams.practice_exams', compact(['exam', 'paginator']));
+    }
+
+    public function solutionExam(Exam $exam)
+    {
+        $paginator = $exam->examQuestions->simplePaginate(1);
+        $answeredOptions = ExamAnswer::where(['exam_id' => $exam->id, 'user_id' => Auth::id()])->get();
+        // dd($answeredOptions);
+        return view('student.exams.solution_exams', compact(['exam', 'paginator']));
     }
 
     protected function checkCorrectAnswer($optionId)
