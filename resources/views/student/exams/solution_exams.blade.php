@@ -33,17 +33,6 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="d-flex justify-content-end mb-3">
-                    <div class="mr-3">
-                        <h2 class="bold"><span  id="timer" data-timer="120"></span></h2>
-                    </div>
-                    <div>
-                        <svg id="clock-image" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
-                            <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
-                            <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
-                        </svg>
-                    </div>
-                </div>
                 <div class="card p-2">
                     <div class="card-body">
                         <div>
@@ -81,15 +70,11 @@
                                     @foreach($examQuestion->options as $examOptions)
                                         <div class="mb-2 form-check custom-check options">
                                             <input type="checkbox"  name="exam_option_id" value="{{ $examOptions->id }}"
-                                                        class="form-check-input exam-check mt-2" id="{{ $examOptions->id }}"
-                                                        data-check-id="option-id-{{$examOptions->id}}">
+                                                        class="form-check-input exam-check mt-2" id="{{ $examOptions->id }}" {{ $examOptions->is_correct ? "checked" : "" }}>
                                             <label class="form-check-label" for="{{ $examOptions->id }}">{{ $examOptions->option }}</label>
                                         </div>
                                     @endforeach
                                 </div>
-
-                                <input type="hidden"  name="exam_id" value="{{ $exam->id }}" class="exam" data-exam-id="{{ $exam->id }}">
-                                <input type="hidden"  name="exam_question_id" value="{{ $examQuestion->id }}" class="question" data-question-id="{{ $examQuestion->id }}">
 
                                 <div class="pt-2"><hr /></div>
 
@@ -102,34 +87,16 @@
                                                 Previous
                                             </a>
                                         </div>
-                                        <div class="hidden" id="hidden-timeup">
-                                            <button id="round-button-2" type="button" aria-label="Time up" class="btn btn-sm btn-light mt-2" style="color: red;">
-                                                It's time up
-                                            </button>
-                                        </div>
                                     @endif
 
-                                    @if($paginator->currentPage() === count($exam->examQuestions))
-                                        <a id="round-button-2" type="submit" class="btn btn-sm btn-primary mt-2 submit-questions" data-exam-id="{{ $exam->id }}" data-url="{{ route('user.exam.store') }}">
-                                            Save
-                                        </a>
-                                    @else
-
-                                        <div class="hidden" id="hidden-save">
-                                            <a id="round-button-2" type="submit" class="btn btn-sm btn-primary mt-2 submit-questions" data-url="{{ route('user.exam.store') }}">
-                                                Save
+                                    @if($paginator->currentPage() <= count($exam->examQuestions))
+                                        <div id="visible-next">
+                                            <a id="round-button-2" type="button" href="{{ $paginator->url($paginator->currentPage() + 1) }}" aria-label="Next"
+                                                class="btn btn-sm btn-primary next-button mt-2 next-question @if ($paginator->currentPage() == count($exam->examQuestions)) ? disabled : '' @endif">
+                                                Next
+                                                <span aria-hidden="true">»</span>
                                             </a>
                                         </div>
-
-                                        @if($paginator->currentPage() < count($exam->examQuestions))
-                                            <div id="visible-next">
-                                                <a id="round-button-2" type="button" href="{{ $paginator->url($paginator->currentPage() + 1) }}" aria-label="Next"
-                                                    class="btn btn-sm btn-primary next-button mt-2 next-question">
-                                                    Next
-                                                    <span aria-hidden="true">»</span>
-                                                </a>
-                                            </div>
-                                        @endif
                                     @endif
                                 </div>
                             @endforeach
@@ -146,8 +113,3 @@
 </section>
 
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('js/handle_student_exam.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('js/handle_exam_timing.js')}}" type="text/javascript"></script>
-@endpush

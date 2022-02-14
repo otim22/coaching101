@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Models\Exam;
 use Illuminate\Http\Request;
 use App\Models\ExamAnswer;
+use App\Models\ItemContent;
 use App\Models\ExamQuestion;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,9 @@ class ExamResultController extends Controller
             }
         }
 
-        return view('student.exams.results.index', compact(['answers', 'correctAnswers', 'inCorrectAnswers', 'unAnswerOnes']));
+        $exam = Exam::find($id);
+        $revisions = ItemContent::where(['id' => $exam->item_content_id, 'user_id' => $exam->creator->id])->get();
+
+        return view('student.exams.results.index', compact(['answers', 'correctAnswers', 'inCorrectAnswers', 'unAnswerOnes', 'revisions', 'exam']));
     }
 }
